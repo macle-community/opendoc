@@ -1,0 +1,37 @@
+<h2 id="maonsocketclosefunction-callback">ma.onSocketClose(function callback)</h2>
+<blockquote>
+<p>Listen for WebSocket connection closing events.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function used when a WebSocket connection closing event is detected.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res**</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">code</td>
+<td align="left">Number</td>
+<td align="left">A numeric value representing the status number of the closed connection, indicating the reason why the connection is closed.</td>
+</tr>
+<tr>
+<td align="left">reason</td>
+<td align="left">String</td>
+<td align="left">A readable string, indicating the reason why the connection is closed.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.connectSocket({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>
+});
+ma.closeSocket();
+ma.onSocketClose(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+});
+</code></pre>

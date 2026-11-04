@@ -1,0 +1,61 @@
+<h2 id="maauthorizeobject-object">ma.authorize(Object object)</h2>
+<blockquote>
+<p>Send an authorization request to the user in advance. After this API is invoked, a dialog box is displayed immediately, asking the user whether to authorize the Mini Program to use a function or obtain some user data. However, the corresponding API is not invoked. If the user has agreed to the authorization, no dialog box is displayed and a success message is returned. For details, see <a onclick="_mdLinkClick(this.href)" href="#/api/authority">User authorization</a>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scope</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Scope of the permission to be obtained. For details, see  <a onclick="_mdLinkClick(this.href)" href="#/api/authority">Scope list</a>.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">//You can use ma.getSetting to check whether the scope.location is authorized to the user.</span>
+ma<span class="hljs-selector-class">.getSetting</span>({
+  <span class="hljs-built_in">success</span>(res) {
+    <span class="hljs-keyword">if</span> (!res<span class="hljs-selector-class">.authSetting</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scope.location&#x27;</span>]</span>) {
+      ma<span class="hljs-selector-class">.authorize</span>({
+        scope: <span class="hljs-string">&#x27;scope.location&#x27;</span>,
+        success () {
+<span class="hljs-comment">// The user has agreed that the Mini Program uses the location information. No dialog box will be displayed when the ma.getLocation API is invoked.</span>
+          ma<span class="hljs-selector-class">.getLocation</span>()
+        }
+      })
+    }
+  }
+})
+</code></pre>

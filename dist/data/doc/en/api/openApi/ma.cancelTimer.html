@@ -1,0 +1,89 @@
+<h2 id="macanceltimer">ma.cancelTimer()</h2>
+<blockquote>
+<p>Cancel the timer created by the current Mini Program and notify the developer through the success callback <strong>(minimum version: 25.9.0)</strong></p>
+</blockquote>
+<blockquote>
+<p>Supported only on iOS</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for interface invoking failure.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface invoking is complete (regardless of whether the invoking is successful)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelTimer: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>error message</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.cancelTimer({
+    success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+        ma.showModal({
+            title: <span class="hljs-string">&#x27;cancelTimer success&#x27;</span>,
+            content: <span class="hljs-built_in">JSON</span>.stringify(res),
+            showCancel: <span class="hljs-literal">false</span>
+        })
+    },
+    fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+        ma.showModal({
+            title: <span class="hljs-string">&#x27;cancelTimer fail&#x27;</span>,
+            content: <span class="hljs-built_in">JSON</span>.stringify(res),
+            showCancel: <span class="hljs-literal">false</span>
+        })
+    }
+})
+</code></pre>

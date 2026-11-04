@@ -1,0 +1,25 @@
+<h2 id="maoffapphidefunction-callback">ma.offAppHide(function callback)</h2>
+<blockquote>
+<p>取消监听小程序切后台事件</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>function callback</strong></p>
+<p>小程序切后台事件的回调函数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> <span class="hljs-number">_</span><span class="hljs-keyword">this</span>;
+<span class="hljs-keyword">let</span> test<span class="hljs-number">1</span> = <span class="hljs-keyword">function</span> () {
+    console.log(<span class="hljs-string">&#x27;aaa&#x27;</span>)
+    <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.setData({
+        detail: <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.data.detail + <span class="hljs-string">&#x27;\r\n&#x27;</span> + <span class="hljs-string">&#x27;offAppHide:ok&#x27;</span>,
+    })
+};
+
+Page({
+    offAppHide () {
+        <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.setData({
+            detail: <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.data.detail + <span class="hljs-string">&#x27;\r\n&#x27;</span> + <span class="hljs-string">&#x27;offAppHide&#x27;</span>,
+        })
+        ma.offAppHide(test<span class="hljs-number">1</span>)
+    }
+})
+</code></pre>

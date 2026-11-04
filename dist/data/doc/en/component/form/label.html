@@ -1,0 +1,58 @@
+<h2 id="label">label</h2>
+<blockquote>
+<p>It is used to improve the usability of form components. The <code>for</code> attribute is used to find the corresponding ID or place the control under the tag. When the control is clicked, the corresponding control is triggered. The <strong>for</strong> attribute has a higher priority than the internal control. If multiple internal controls exist, the first control is triggered by default. Currently, the button, checkbox, radio, and switch controls can be bound.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">for</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">ID of the bound control.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> &gt;</span>label-for<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;radioChange&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radioGroup&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">radioItems</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.checked</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;pink&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">radio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-keyword">data</span>: {
+    radioItems: [
+      { name: <span class="hljs-string">&#x27;USA&#x27;</span>, value: <span class="hljs-string">&#x27;USA&#x27;</span> },
+      { name: <span class="hljs-string">&#x27;CHN&#x27;</span>, value: <span class="hljs-string">&#x27;China&#x27;</span>, checked: <span class="hljs-string">&#x27;true&#x27;</span> }
+    ],
+    hidden: <span class="hljs-literal">false</span>
+  },
+  radioChange: function(e) {
+    <span class="hljs-keyword">var</span> checked = e.detail.value
+    <span class="hljs-keyword">var</span> changed = {}
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.radioItems.length; i++) {
+      <span class="hljs-keyword">if</span> (checked.indexOf(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.radioItems[i].name) !== -<span class="hljs-number">1</span>) {
+        changed[<span class="hljs-string">&#x27;radioItems[&#x27;</span> + i + <span class="hljs-string">&#x27;].checked&#x27;</span>] = <span class="hljs-literal">true</span>
+      } <span class="hljs-keyword">else</span> {
+        changed[<span class="hljs-string">&#x27;radioItems[&#x27;</span> + i + <span class="hljs-string">&#x27;].checked&#x27;</span>] = <span class="hljs-literal">false</span>
+      }
+    }
+    <span class="hljs-keyword">this</span>.setData(changed)
+  }
+})
+</code></pre>

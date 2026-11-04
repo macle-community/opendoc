@@ -1,0 +1,10 @@
+<h1 id="incremental-compilation">Incremental Compilation</h1>
+<p>To improve the development experience of large-scale Mini Program projects and reduce the compilation waiting time, incremental compilation is enabled in package splitting mode of the develop state. That is, only packages associated with modified resources are compiled to improve the compilation speed. The principles are as follows:</p>
+<ul>
+<li>If resources in a subpackage are modified, only the subpackage is compiled.</li>
+<li>If the non-style (in MASS format) resource, <strong>app.json</strong>, or <strong>project.config.json</strong> resource in the main package is modified, only the main package is compiled.</li>
+<li>In other scenarios, all packages are complied.</li>
+</ul>
+<blockquote>
+<p>Note: Incremental compilation takes effect only in package splitting mode of the develop state.</p>
+</blockquote>

@@ -1,0 +1,98 @@
+<h2 id="页面配置">页面配置</h2>
+<blockquote>
+<p>每一个小程序页面也可以使用 .json 文件来对本页面的窗口表现进行配置。页面中配置项在当前页面会覆盖 app.json 的 window 中相同的配置项。文件内容为一个 JSON 对象，有以下属性：</p>
+</blockquote>
+<h3 id="配置项">配置项</h3>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">navigationBarBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#000000</td>
+<td align="left">导航栏背景颜色，如 #000000</td>
+</tr>
+<tr>
+<td align="left">navigationBarTextStyle</td>
+<td align="left">String</td>
+<td align="left">white</td>
+<td align="left">导航栏标题颜色，仅支持 black / white</td>
+</tr>
+<tr>
+<td align="left">navigationBarTitleText</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">导航栏标题文字内容</td>
+</tr>
+<tr>
+<td align="left">navigationStyle</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">导航栏样式，支持以下值：<code>default</code>、<code>left</code>、<code>center</code>、<code>custom</code>；custom 自定义导航栏，只保留右上角胶囊按钮。配置left时，小程序显示标题栏，且标题居左显示；配置center时，小程序显示标题栏，且标题居中显示，default选项，ios上显示标题栏，标题居中显示，android上显示标题栏，标题居左显示（**25.12.0变更，新增<code>left</code>、<code>center</code>**）</td>
+</tr>
+<tr>
+<td align="left">showHomeButton</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">是否展示 Home 图标</td>
+</tr>
+<tr>
+<td align="left">enablePullDownRefresh</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否开启当前页面下拉刷新</td>
+</tr>
+<tr>
+<td align="left">usingComponents</td>
+<td align="left">Object</td>
+<td align="left">否</td>
+<td align="left">页面自定义组件配置</td>
+</tr>
+<tr>
+<td align="left">onReachBottomDistance</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">页面上拉触底事件触发时距页面底部距离，单位为px。</td>
+</tr>
+<tr>
+<td align="left">safeAreaBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#ffffff</td>
+<td align="left">底部安全区域背景颜色，如 #ffffff（最低版本26.3.0，仅支持ios）</td>
+</tr>
+<tr>
+<td align="left">allowGestueNavigate</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">小程序是否允许通过手势左右滑动进入上一个页面或者下一个页面, 默认允许，可以配置为false，全局不允许（最低版本26.3.0，仅支持ios）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>页面配置中只能设置 app.json 中 window 对应的配置项，以决定本页面的窗口表现，所以无需写 window 这个属性。</p>
+</blockquote>
+<h3 id="tips：">Tips：</h3>
+<ol>
+<li>全局配置项作用于小程序的所有页面，页面配置仅作用于页面配置对应的页面，页面配置项的优先级高于全局配置</li>
+<li><code>showHomeButton</code> 为非必填项，当小程序未配置时，以宿主APP配置为准，若宿主APP未配置则默认 <code>showHomeButton</code> 为true</li>
+<li>若当前页面配置了<code>showHomeButton</code>，且以当前页面作为指定页面打开时，左上角是否显示HomeIcon将受 <code>showHomeButton</code>配置项影响</li>
+<li>针对ios机型，当navigationStyle的值为 <code>custom</code>时，可在对应页面的mass文件中添加如下样式以保证页面正常铺满 <pre><code class="language-css"><span class="hljs-selector-pseudo">:root</span> {
+   <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="配置示例">配置示例</h3>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;navigationBarBackgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#ffffff</span>&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTextStyle&quot;</span>: <span class="hljs-string">&quot;black&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTitleText&quot;</span>: <span class="hljs-string">&quot;演示页面&quot;</span>,
+  <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#eeeeee</span>&quot;</span>,
+  <span class="hljs-string">&quot;backgroundTextStyle&quot;</span>: <span class="hljs-string">&quot;light&quot;</span>
+}
+</code></pre>

@@ -1,0 +1,32 @@
+<h2 id="videocontext">VideoContext</h2>
+<blockquote>
+<p>VideoContext 实例，可通过 <code>ma.createVideoContext()</code> 获取。
+VideoContext 通过 <code>id</code> 跟一个 video 组件绑定，操作对应的 video 组件。</p>
+</blockquote>
+<h3 id="方法">方法</h3>
+<h4 id="videocontextplay">VideoContext.play()</h4>
+<p>播放视频</p>
+<h4 id="videocontextpause">VideoContext.pause()</h4>
+<p>暂停视频</p>
+<h4 id="videocontextseeknumber-position">VideoContext.seek(number position)</h4>
+<p>跳转到的位置，单位 s</p>
+<h4 id="videocontextstop">VideoContext.stop()</h4>
+<p>停止播放视频</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;section tc&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myVideo&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://example/pkg/example.mp4&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn-area&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">bindblur</span>=<span class="hljs-string">&quot;bindInputBlur&quot;</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span> = ma.<span class="hljs-title function_">createVideoContext</span>(<span class="hljs-string">&#x27;myVideo&#x27;</span>);
+  },
+  <span class="hljs-attr">inputValue</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+  <span class="hljs-title function_">bindInputBlur</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">inputValue</span> = e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>;
+  }
+});
+</code></pre>

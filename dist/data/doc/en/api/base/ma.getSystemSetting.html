@@ -1,0 +1,43 @@
+<h2 id="magetsystemsetting">ma.getSystemSetting()</h2>
+<blockquote>
+<p>Get device settings (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="return-value">Return Value</h3>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bluetoothEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Bluetooth system switch</td>
+</tr>
+<tr>
+<td align="left">locationEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Geographical location system switch</td>
+</tr>
+<tr>
+<td align="left">WiFiEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Wi-Fi system switch</td>
+</tr>
+<tr>
+<td align="left">deviceOrientation</td>
+<td align="left">String</td>
+<td align="left">The valid value can be <code>portrait</code> or <code>landscape</code>, indicating the device direction. (Note: The <code>deviceOrientation</code> obtained for landscape games on iOS clients may be inaccurate. You are advised to use the screen width and height.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const systemSetting = ma.getSystemSetting();
+
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.bluetoothEnabled);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.deviceOrientation);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.locationEnabled);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.wifiEnabled);
+</code></pre>

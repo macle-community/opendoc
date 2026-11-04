@@ -1,0 +1,86 @@
+<h1 id="behaviorobject-object">Behavior(Object object)</h1>
+<p>注册一个 <code>behavior</code>，接受一个 <code>Object</code> 类型的参数。</p>
+<h2 id="参数">参数</h2>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>定义段</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>properties</td>
+<td>Object Map</td>
+<td>否</td>
+<td>组件的对外属性，是属性名到属性设置的映射表</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>否</td>
+<td>组件的内部数据，和 <code>properties</code> 一同用于组件的模板渲染</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>Object</td>
+<td>否</td>
+<td>组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/events">组件间通信与事件</a></td>
+</tr>
+<tr>
+<td>behaviors</td>
+<td>String Array</td>
+<td>否</td>
+<td>类似于 mixins 和traits的组件间代码复用机制，参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/behaviors">behaviors</a></td>
+</tr>
+<tr>
+<td>created</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例刚刚被创建时执行，注意此时不能调用 <code>setData</code> )</td>
+</tr>
+<tr>
+<td>attached</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例进入页面节点树时执行)</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件布局完成后执行)</td>
+</tr>
+<tr>
+<td>moved</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例被移动到节点树另一个位置时执行)</td>
+</tr>
+<tr>
+<td>detached</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例被从页面节点树移除时执行)</td>
+</tr>
+</tbody></table>
+<h2 id="示例代码">示例代码</h2>
+<pre><code><span class="hljs-comment">// my-behavior.js</span>
+module.<span class="hljs-attr">exports</span> <span class="hljs-operator">=</span> Behavior(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  behaviors:</span> [],
+<span class="hljs-symbol">  properties:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorProperty:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">      type:</span> String
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  data:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorData:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  attached:</span> function()<span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  methods:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorMethod:</span> function()<span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>)
+</code></pre>

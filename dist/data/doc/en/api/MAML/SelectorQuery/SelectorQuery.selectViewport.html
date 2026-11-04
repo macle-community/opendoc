@@ -1,0 +1,15 @@
+<h2 id="nodesref-selectorqueryselectviewport"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.selectViewport()</h2>
+<blockquote>
+<p>Select the display area. It can be used to obtain the size and scrolling position of the display area.</p>
+</blockquote>
+<h3 id="return-value">Return Value</h3>
+<h4 id="nodesref"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const SelectorQuery <span class="hljs-operator">=</span> ma.createSelectorQuery()
+
+SelectorQuery.selectViewport()
+  .boundingClientRect()
+  .exec((res) <span class="hljs-operator">=</span>&gt; {
+    console.log(res)<span class="hljs-comment">;</span>
+  })<span class="hljs-comment">;</span>
+</code></pre>

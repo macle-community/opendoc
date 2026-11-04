@@ -1,0 +1,22 @@
+<h2 id="manexttickfunction-callback">ma.nextTick(function callback)</h2>
+<blockquote>
+<p>Defer some operations to the next time slice (similar to setTimeout).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<h4 id="description">Description</h4>
+<p>The setData and triggerEvent APIs in the custom components are synchronous operations. When these APIs are called consecutively, they are executed in a synchronization process. Therefore, errors may occur if the logic is improper.</p>
+<p>An extreme case is as follows: When setData of the parent component triggers triggerEvent of the child component, the parent component performs setData again. During this period, the <strong>ma:If</strong> statement uninstalls the child component, which may cause a strange error. Therefore, for logic that does not need to be completed in a synchronization process, you can defer this interface execution to the next time slice.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Component</span>({
+  <span class="hljs-title function_">doSth</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">number</span>: <span class="hljs-number">1</span>}) <span class="hljs-comment">// Directly executed in the current synchronization process.</span>
+
+    ma.<span class="hljs-title function_">nextTick</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">number</span>: <span class="hljs-number">3</span>}) <span class="hljs-comment">// Executed in the next time slice after the current synchronization process ends.</span>
+    })
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">number</span>: <span class="hljs-number">2</span>}) <span class="hljs-comment">// Directly executed in the current synchronization process.</span>
+  }
+})
+</code></pre>

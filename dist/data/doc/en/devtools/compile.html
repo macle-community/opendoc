@@ -1,0 +1,35 @@
+<h2 id="code-compilation">Code Compilation</h2>
+<h3 id="compiling-javascript-code-into-ecmascript-5-standard-code">Compiling JavaScript Code into ECMAScript 5 Standard Code</h3>
+<p>If this function is enabled, the development tool uses Babel to compile JavaScript code into ECMAScript 5 standard code to meet the requirements of running on phones of earlier versions.</p>
+<p>Function description:</p>
+<ul>
+<li><p>Based on Babel 7, use preset-env, and support the latest ECMAScript syntax. The compilation target is <strong>{android:4.4, ios:9}</strong>.</p>
+</li>
+<li><p>Enable <strong>use strict</strong>, that is, the strict mode.</p>
+</li>
+<li><p>Configure <strong>setting.es5</strong> in <strong>project.config.json</strong> to enable or disable the compilation.</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;appid&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wx64d368b8c5ad3f98&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;projectname&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;calendar&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;calendar&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;setting&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;es5&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="supplementing-code-styles">Supplementing Code Styles</h3>
+<p>The development tool automatically detects and supplements missing code styles to ensure that the code can be properly displayed in the system of an earlier version. Although most problems can be avoided, it is recommended that developers check the real performance of Mini Programs both on iOS and Android devices.</p>
+<h3 id="compressing-and-obfuscating-the-code">Compressing and Obfuscating the Code</h3>
+<p>During code compilation, the developer tool helps developers compress and obfuscate JavaScript code and CSS code to reduce the size of the code package and protect the code.</p>
+<h3 id="enabling-multi-core-compilation">Enabling Multi-Core Compilation</h3>
+<p>If this function is enabled, CPU resources are fully used to compile projects, improving compilation efficiency. This function is disabled by default. To enable this function, choose <strong>Settings</strong> &gt; <strong>macle</strong> and select <strong>Enable multi-core compilation</strong>. 
+Restriction:</p>
+<ol>
+<li>Multi-thread compilation is enabled by package. Therefore, this parameter is valid only in package splitting scenarios.</li>
+<li>This function takes effect only on a server with four or more cores.</li>
+<li>The performance improvement of multi-core compilation is obvious only in complex scenarios with a large number of Mini Program packages. Otherwise, you are advised not to enable this function due to the performance overhead of thread startup and communication.</li>
+</ol>
+<h3 id="high-level-css-feature-support">High-level CSS Feature Support</h3>
+<p>The developer tools will automatically escape high-level CSS syntax, making syntax such as <code>nesting</code>, <code>variables</code>, and <code>inset</code> more compatible on lower version systems. Developers only need to upgrade the development kit to <code>24.12.0</code> and above versions can get support for high-level css features.</p>

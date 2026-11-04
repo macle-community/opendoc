@@ -1,0 +1,131 @@
+<h2 id="mawriteblecharacteristicvalueobject-object">ma.writeBLECharacteristicValue(Object object)</h2>
+<blockquote>
+<p>Write binary data to Bluetooth Low Energy device characteristics (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth device id</td>
+</tr>
+<tr>
+<td align="left">serviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">The UUID of the service corresponding to the Bluetooth feature</td>
+</tr>
+<tr>
+<td align="left">characteristicId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth characteristic UUID</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Binary value corresponding to Bluetooth device characteristics</td>
+</tr>
+<tr>
+<td align="left">writeType</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Write mode setting for Bluetooth characteristic values. The default value for iOS is <code>write</code>, and the default value for Android is <code>writeNoResponse</code>.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="writetype-valid-values">writeType Valid Values</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>write</td>
+<td>Forced reply writing, reporting an error is not supported</td>
+</tr>
+<tr>
+<td>writeNoResponse</td>
+<td>It is mandatory to write without reply, and it will report an error if it is not supported.</td>
+</tr>
+<tr>
+<td>signedWrite</td>
+<td>Force signature when writing</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">writeBLECharacteristicValue: ok</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> <span class="hljs-keyword">buffer</span> = <span class="hljs-keyword">new</span> ArrayBuffer(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">let</span> dataView = <span class="hljs-keyword">new</span> DataView(<span class="hljs-keyword">buffer</span>)
+dataView.setUint8(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">ma</span>.writeBLECharacteristicValue({
+  deviceId,
+  serviceId,
+  characteristicId,
+  value: <span class="hljs-keyword">buffer</span>,
+  success(<span class="hljs-keyword">res</span>) {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;writeBLECharacteristicValue success&#x27;</span>, <span class="hljs-keyword">res</span>.errMsg)
+  }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The characteristics of the device must support write before it can be called successfully.</li>
+<li>For IOS models, according to the current BLE protocol, it is recommended that the amount of data transmitted in a single time should not exceed 20 bytes. When the transmitted data is large, it is recommended to perform fragmentation processing.</li>
+</ol>

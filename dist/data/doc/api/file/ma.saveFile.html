@@ -1,0 +1,84 @@
+<h2 id="masavefileobject-object">ma.saveFile(Object object)</h2>
+<blockquote>
+<p>保存文件到本地。注意：<strong>saveFile 会把临时文件移动，因此调用成功后传入的 tempFilePath 将不可用</strong></p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要保存的文件的临时路径 (本地路径)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-回调函数">object.success 回调函数</h5>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">saveFile: ok</td>
+</tr>
+<tr>
+<td align="left">savedFilePath</td>
+<td align="left">String</td>
+<td align="left">存储后的文件路径 (本地路径)</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+    ma.<span class="hljs-title function_">saveFile</span>({
+      <span class="hljs-attr">tempFilePath</span>: tempFilePaths[<span class="hljs-number">0</span>],
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-keyword">const</span> savedFilePath = res.<span class="hljs-property">savedFilePath</span>;
+      }
+    });
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>支持通过 <code>FileSystemManager</code> 调用</li>
+</ol>

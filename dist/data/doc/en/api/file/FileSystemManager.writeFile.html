@@ -1,0 +1,115 @@
+<h2 id="filesystemmanagerwritefileobject-object">FileSystemManager.writeFile(Object object)</h2>
+<blockquote>
+<p>Write a file. If a directory does not exist in the path, writing the file fails. If the file exists, the content is overwritten. If the file does not exist, a new file is created and the content is written(Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">File path to write to. (The local user path can only be in the usr directory. It can be a relative directory. However, the final real path cannot be outside the usr directory, and cannot be a temporary path or cache path.)</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String/ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Text or binary data to be written, which can be null.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">String</td>
+<td align="left">utf8</td>
+<td align="left">No</td>
+<td align="left">Specifies the character encoding to be written to the file.</td>
+</tr>
+</tbody></table>
+<h5 id="encoding">encoding</h5>
+<table>
+<thead>
+<tr>
+<th>Valid  Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ascii</td>
+<td></td>
+</tr>
+<tr>
+<td>base64</td>
+<td>Note that if Base64 encoding is selected, only the Base64 content needs to be transferred for data. Do not transfer the Data URI prefix. Otherwise, the fail base64 encode error error message is displayed. For example, pass aGVsbG8= instead of data:image/png;base64,aGVsbG8=</td>
+</tr>
+<tr>
+<td>ucs2</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>ucs-2</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf16le</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf-16le</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf-8</td>
+<td></td>
+</tr>
+<tr>
+<td>utf8</td>
+<td>Default value</td>
+</tr>
+<tr>
+<td>latin1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+fs.<span class="hljs-title function_">writeFile</span>({
+  <span class="hljs-attr">filePath</span>: <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/test.txt`</span>,
+  <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;data&#x27;</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The maximum length of the file name to be written is 255 characters. If the file name is too long, the API fails to be invoked.</li>
+<li>The file size is 10 MB.</li>
+</ol>

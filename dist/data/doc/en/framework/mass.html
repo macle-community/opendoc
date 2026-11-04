@@ -1,0 +1,70 @@
+<h2 id="mass">MASS</h2>
+<p><strong>Mass is a style language used to describe MAML component styles.</strong>  </p>
+<p>Mass has most of the features of CSS in order to adapt to the vast number of front-end developers. At the same time, in order to be more suitable for the development of small programs, Mass has been extended and modified to CSS.
+Compared with the CSS, the Mass has the following extended features:</p>
+<ul>
+<li>Dimensional unit</li>
+<li>Style import</li>
+</ul>
+<h3 id="dimension-unit">Dimension Unit</h3>
+<ul>
+<li>rpx (responsive pixel): adaptively adapts to the screen width. The screen width is specified to be 750rpx. For example, on an iPhone 6, the screen width is 375px and there are 750 physical pixels, then 750rpx = 375px = 750 physical pixels and 1rpx = 0.5px = 1 physical pixel</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Equipment</th>
+<th align="left">Rpx Conversion Px (Screen Width/750)</th>
+<th align="left">Px Conversion Rpx (750 / Screen Width)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iPhone5</td>
+<td align="left">1rpx = 0.42px</td>
+<td align="left">1px = 2.34rpx</td>
+</tr>
+<tr>
+<td align="left">iPhone6</td>
+<td align="left">1rpx = 0.5px</td>
+<td align="left">1px = 2rpx</td>
+</tr>
+<tr>
+<td align="left">iPhone6 Plus</td>
+<td align="left">1rpx = 0.552px</td>
+<td align="left">1px = 1.81rpx</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Suggestion: Designers can use the iPhone 6 as a standard for visual manuscripts when developing Mini Program programs.</p>
+</blockquote>
+<h3 id="style-import">Style Import</h3>
+<p>Use the @import statement to import an outreach style sheet. Use the @import statement to follow the relative or absolute path of the outreach style sheet to be imported. Indicates the end of the statement.</p>
+<pre><code><span class="hljs-comment">/** common.mass **/</span>
+<span class="hljs-selector-class">.small-p</span> {
+  <span class="hljs-attribute">padding</span>:<span class="hljs-number">5px</span>;
+}
+</code></pre>
+<pre><code><span class="hljs-comment">/** app.mass **/</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;common.mass&quot;</span>;
+<span class="hljs-selector-class">.middle-p</span> {
+  <span class="hljs-attribute">padding</span>:<span class="hljs-number">15px</span>;
+}
+</code></pre>
+<h3 id="inline-style">Inline Style</h3>
+<p>The style and class attributes can be used on framework components to control the style of components.</p>
+<ul>
+<li>style: Static styles are written to the class. The style receives dynamic styles and parses them during running. Do not write static styles into styles to avoid affecting the rendering speed.<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">color</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">;&quot;</span> /&gt;</span></span>
+</code></pre>
+</li>
+<li>class: used to specify a style rule. The attribute value is a set of class selector names (style class names) in the style rule. The style class names do not need to be carried with a dot (.). Style class names are separated by spaces.<pre><code>&lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;normal_view&quot;</span> /&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="global-vs-local-styles">Global vs. Local Styles</h3>
+<p>Styles defined in app. mass are global styles and apply to each page. Styles defined in the page mass file are local styles and apply only to the corresponding page and override the same selector in app. mass.</p>
+<h3 id="local-resource-image-support">Local Resource Image Support</h3>
+<p>In versions after <code>25.3.0</code>, Macle supports developers to use local resource images in mass files (previous versions only support the use of online addresses or base64 encoding). The following is a simple example</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.yourClass</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;./yourLocalUrl.png&#x27;</span>);
+}
+</code></pre>

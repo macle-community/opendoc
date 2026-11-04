@@ -1,0 +1,140 @@
+<h2 id="magetnetworktypeobject-object">ma.getNetworkType(Object object)</h2>
+<blockquote>
+<p>Obtain the network type.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getNetworkType:ok</td>
+</tr>
+<tr>
+<td align="left">networkType</td>
+<td align="left">String</td>
+<td align="left">Network type.</td>
+</tr>
+<tr>
+<td align="left">isConnectVPN</td>
+<td align="left">String</td>
+<td align="left">Is the VPN enabled</td>
+</tr>
+<tr>
+<td align="left">signalStrength</td>
+<td align="left">Number</td>
+<td align="left">Signal strength, unit dbm (Android only)</td>
+</tr>
+</tbody></table>
+<h3 id="valid-value-of-networktype">Valid value of networkType</h3>
+<table>
+<thead>
+<tr>
+<th>Valid Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Wifi</td>
+<td>Wi-Fi Network</td>
+</tr>
+<tr>
+<td>2g</td>
+<td>2G network</td>
+</tr>
+<tr>
+<td>3g</td>
+<td>3G Network</td>
+</tr>
+<tr>
+<td>4g</td>
+<td>4G Network</td>
+</tr>
+<tr>
+<td>5g</td>
+<td>5G Network</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>Uncommon network type in Android</td>
+</tr>
+<tr>
+<td>none</td>
+<td>The device has no network connection.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-value-of-isconnectvpnthe-minimum-version-is-2590">Valid value of isConnectVPN(<strong>The minimum version is 25.9.0</strong>)</h3>
+<table>
+<thead>
+<tr>
+<th>Valid Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>VPN enabled</td>
+</tr>
+<tr>
+<td>false</td>
+<td>VPN turned off</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getNetworkType</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> networkType = res.<span class="hljs-property">networkType</span>;
+    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">isConnectVPN</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;The current device is using a VPN&quot;</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;The current device is not using a VPN&quot;</span>);
+    }
+  }
+});
+</code></pre>
+<h3 id="bug--tips">Bug &amp; Tips</h3>
+<ol>
+<li>When connected to VPN while using Wi-Fi, or when all network connections are disabled, network reachability verification is required. Since this involves API requests, it may take some time. It is recommended to show a loading indicator during the process.</li>
+</ol>

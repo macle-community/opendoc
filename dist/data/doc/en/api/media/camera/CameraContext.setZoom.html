@@ -1,0 +1,76 @@
+<h2 id="cameracontextsetzoomobject-object">CameraContext.setZoom(Object object)</h2>
+<blockquote>
+<p>Setting the Zoom Level(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">zoom</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Zoom level. The value ranges from 1 to maxZoom. Zoom is a positive integer. The value of maxZoom can be obtained from the return value of bindinitdone.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success callback function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">zoom</td>
+<td align="left">Number</td>
+<td align="left">Actual zoom level. If the zoom value exceeds the maximum value supported by the system, the value closest to the target value is selected from [1, maxZoom].</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">stopRecord</span>(<span class="hljs-params"></span>){
+    const ctx = ma.createCameraContext();
+    ctx.setZoom({
+      <span class="hljs-attr">zoom</span>:zoom,
+      <span class="hljs-attr">success</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;success&#x27;</span>,res.zoom);
+      },
+      <span class="hljs-attr">fail</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;fail&#x27;</span>);
+      }
+    })
+  }
+</code></pre>

@@ -1,0 +1,189 @@
+<h2 id="magetbledevicecharacteristicsobject-object">ma.getBLEDeviceCharacteristics(Object object)</h2>
+<blockquote>
+<p>Get all characteristics of a service of a Bluetooth low energy device (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth device id</td>
+</tr>
+<tr>
+<td align="left">serviceId</td>
+<td align="left">string</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth service UUID. You need to call <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBLEDeviceServices">ma.getBLEDeviceServices</a> first to obtain</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getBLEDeviceCharacteristics: ok</td>
+</tr>
+<tr>
+<td align="left">characteristics</td>
+<td align="left">Array</td>
+<td align="left">Device characteristics list</td>
+</tr>
+</tbody></table>
+<h4 id="array-characteristics">Array characteristics</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uuid</td>
+<td>String</td>
+<td>UUID of Bluetooth device characteristics</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>Object</td>
+<td>Operation types supported by this feature</td>
+</tr>
+</tbody></table>
+<h5 id="object-properties">Object properties</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>broadcast</td>
+<td>Boolean</td>
+<td>Whether the feature supports broadcast operations</td>
+</tr>
+<tr>
+<td>read</td>
+<td>Boolean</td>
+<td>Whether this feature supports read operations</td>
+</tr>
+<tr>
+<td>write</td>
+<td>Boolean</td>
+<td>Whether this feature supports write operations</td>
+</tr>
+<tr>
+<td>notify</td>
+<td>Boolean</td>
+<td>Whether this feature supports notify operation</td>
+</tr>
+<tr>
+<td>indicate</td>
+<td>Boolean</td>
+<td>Whether the feature supports indicate operation</td>
+</tr>
+<tr>
+<td>writeNoResponse</td>
+<td>Boolean</td>
+<td>Whether this feature supports no-reply write operations</td>
+</tr>
+<tr>
+<td>signedWrite</td>
+<td>Boolean</td>
+<td>Whether this feature supports signed write operations</td>
+</tr>
+<tr>
+<td>extendedProperties</td>
+<td>Boolean</td>
+<td>Whether the feature supports extended attributes</td>
+</tr>
+<tr>
+<td>notifyEncryption</td>
+<td>Boolean</td>
+<td>Whether this feature supports encrypted notify operation (only related to IOS)</td>
+</tr>
+<tr>
+<td>indicateEncryption</td>
+<td>Boolean</td>
+<td>Whether this feature supports encryption indicate operation (only related to IOS)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getBLEDeviceCharacteristics</span>({
+  deviceId,
+  serviceId,
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;getBLEDeviceCharacteristics success&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res),
+      <span class="hljs-attr">showCancel</span>: <span class="hljs-literal">false</span>
+    })
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; res.<span class="hljs-property">characteristics</span>.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">const</span> item = res.<span class="hljs-property">characteristics</span>[i]
+      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">read</span>) {
+        ma.<span class="hljs-title function_">readBLECharacteristicValue</span>({
+          deviceId,
+          serviceId,
+          <span class="hljs-attr">characteristicId</span>: item.<span class="hljs-property">uuid</span>,
+        })
+      }
+      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">write</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;write&#x27;</span>)
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">writeBLECharacteristicValue</span>()
+      }
+    }
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;getBLEDeviceCharacteristics fail&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res),
+      <span class="hljs-attr">showCancel</span>: <span class="hljs-literal">false</span>
+    })
+  }
+})
+</code></pre>

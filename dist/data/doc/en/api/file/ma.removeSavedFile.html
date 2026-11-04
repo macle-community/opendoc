@@ -1,0 +1,63 @@
+<h2 id="maremovesavedfileobject-object">ma.removeSavedFile(Object object)</h2>
+<blockquote>
+<p>Delete local cached files.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Path of the file to be deleted (local path).</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-variable">ma</span>.<span class="hljs-property">getSavedFileList</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">res</span>.<span class="hljs-property">fileList</span>.<span class="hljs-property">length</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>) {
+      <span class="hljs-variable">ma</span>.<span class="hljs-property">removeSavedFile</span>({
+        <span class="hljs-variable">filePath</span>: <span class="hljs-variable">res</span>.<span class="hljs-property">fileList</span>[<span class="hljs-number">0</span>].<span class="hljs-property">filePath</span>,
+        <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+          <span class="hljs-variable">console</span>.<span class="hljs-property">log</span>(<span class="hljs-variable">res</span>);
+        }
+      });
+    }
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Support calling through <code>FileSystemManager</code></li>
+</ol>

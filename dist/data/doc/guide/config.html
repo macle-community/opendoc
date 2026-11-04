@@ -1,0 +1,51 @@
+<h2 id="小程序配置">小程序配置</h2>
+<h3 id="全局配置">全局配置</h3>
+<p>小程序根目录下的 app.json 文件用来对小程序进行全局配置，决定页面文件的路径、窗口表现、设置多 tab 等。</p>
+<p>完整配置项说明请参考 <a onclick="_mdLinkClick(this.href)" href="#/framework/app-config">小程序全局配置</a></p>
+<p>以下是一个包含了部分常用配置选项的 app.json ：</p>
+<pre><code class="language-json">{
+  &quot;pages&quot;: [&quot;pages/<span class="hljs-keyword">index</span>/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;, &quot;</span>pages/logs/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;],
+  &quot;</span>window<span class="hljs-string">&quot;: {
+    &quot;</span>navigationBarTitleText<span class="hljs-string">&quot;: &quot;</span>Demo<span class="hljs-string">&quot;
+  },
+  &quot;</span>tabBar<span class="hljs-string">&quot;: {
+    &quot;</span>list<span class="hljs-string">&quot;: [
+      {
+        &quot;</span>pagePath<span class="hljs-string">&quot;: &quot;</span>pages/<span class="hljs-keyword">index</span>/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;,
+        &quot;</span>text<span class="hljs-string">&quot;: &quot;</span>首页<span class="hljs-string">&quot;
+      },
+      {
+        &quot;</span>pagePath<span class="hljs-string">&quot;: &quot;</span>pages/logs/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;,
+        &quot;</span>text<span class="hljs-string">&quot;: &quot;</span>日志<span class="hljs-string">&quot;
+      }
+    ]
+  }
+}</span>
+</code></pre>
+<h3 id="页面配置">页面配置</h3>
+<p>每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。</p>
+<p>完整配置项说明请参考 <a onclick="_mdLinkClick(this.href)" href="#/framework/page-config">小程序页面配置</a></p>
+<p>例如：</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;navigationBarBackgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#ffffff</span>&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTextStyle&quot;</span>: <span class="hljs-string">&quot;black&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTitleText&quot;</span>: <span class="hljs-string">&quot;Macle接口功能演示&quot;</span>,
+  <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#eeeeee</span>&quot;</span>,
+  <span class="hljs-string">&quot;backgroundTextStyle&quot;</span>: <span class="hljs-string">&quot;light&quot;</span>
+}
+</code></pre>
+<h2 id="拓展配置">拓展配置</h2>
+<p>安装插件后，可以进行一些拓展参数的配置，功能入口如下：</p>
+<p><img src="/openplatform/macledocs/data/doc/guide/image/start/extendedConfigPosition.png" alt="image" ></p>
+<p>配置界面如下：</p>
+<p><img src="/openplatform/macledocs/data/doc/guide/image/start/extendedConfig.png" alt="image" ></p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li><code>Auto Format After Save</code>功能仅对maml文件生效，开启后将对maml文件内的代码进行格式化</li>
+<li><code>Enable Log</code>为针对问题定位开启的功能，便于用户定位异常，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/devtools/errLog">日志打印</a></li>
+</ol>
+<p>为了方便开发者快速浏览开放文档，macle开发插件中集成了开放文档入口（最低版本23.3.0），可通过拓展配置设置开放文档的打开方式，当前支持两种打开方式：</p>
+<ul>
+<li>Open in VS Code ： 直接在vscode编辑器中打开 （默认）</li>
+<li>Open in Chrome ： 新建一个谷歌浏览器窗口并跳转到开放文档页面</li>
+</ul>

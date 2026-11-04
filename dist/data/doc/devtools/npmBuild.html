@@ -1,0 +1,222 @@
+<h1 id="npm-支持">npm 支持</h1>
+<p>小程序支持使用 npm 安装第三方包。此文档要求开发者们对 npm 有一定的了解，如若之前未接触过 npm，请翻阅<a onclick="_mdLinkClick(this.href)" href="https://docs.npmjs.com/about-npm">官方 npm 文档</a>进行学习。</p>
+<blockquote>
+<p>tips：在小程序中使用 npm 包前，需先构建 npm </p>
+</blockquote>
+<h2 id="使用-npm-包">使用 npm 包</h2>
+<h3 id="1、安装-npm-包">1、安装 npm 包</h3>
+<p>在小程序 package.json 目录下执行</p>
+<pre><code>npm <span class="hljs-keyword">install</span>
+</code></pre>
+<p>此处要求参与构建 npm 的 package.json 需要在 project.config.json 定义的 miniprogramRoot 之内。详情可见原理介绍。</p>
+<blockquote>
+<p>tips：目前参与构建的 npm 包根据 package.json 的 dependencies 字段，所以声明在 devDependencies 里的包也可以在开发过程中被安装使用但不会参与到构建中。</p>
+</blockquote>
+<blockquote>
+<p>tips：miniprogramRoot 字段不存在时，miniprogramRoot 就是 project.config.json 所在的目录</p>
+</blockquote>
+<h3 id="2、构建-npm-包">2、构建 npm 包</h3>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/npm/npmBuild.png" alt="image" ></p>
+<h3 id="3、-构建完成后即可使用-npm-包">3、 构建完成后即可使用 npm 包</h3>
+<p>js 中引入 npm 包：</p>
+<pre><code><span class="hljs-variable">const</span> <span class="hljs-variable">dayjs</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;dayjs&#x27;</span>)</span>
+</code></pre>
+<p>使用 npm 包中的自定义组件：</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;myPackage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageName&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;package-other&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageName/other&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>tips：此处使用 npm 包时如果只引入包名，则默认寻找包名下的 index.js 文件或者 index 组件。</p>
+</blockquote>
+<h2 id="发布-npm-包">发布 npm 包</h2>
+<h4 id="发布小程序-npm-包约束">发布小程序 npm 包约束</h4>
+<p>这里要发布的 npm 包是特指专为小程序定制的 npm 包（下称小程序 npm 包）。因为小程序自定义组件的特殊性，原有的 npm 包机制无法满足我们的需求，所以这里需要对小程序 npm 包做一些约束：</p>
+<ul>
+<li>小程序 npm 包要求根目录下必须有构建文件生成目录，此目录通过在 package.json 文件中新增一个 miniprogram 字段来指定，比如：</li>
+</ul>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;miniprogram-component&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;miniprogram&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dist&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<ul>
+<li>小程序 npm 包里只有构建文件生成目录会被算入小程序包的占用空间，上传小程序代码时也只会上传该目录的代码。</li>
+<li>测试、构建相关的依赖请放入 devDependencies 字段中避免被一起打包到小程序包中。</li>
+</ul>
+<h4 id="发布其他-npm-包的约束">发布其他 npm 包的约束</h4>
+<ul>
+<li><p>只支持纯 js 包，不支持自定义组件。</p>
+</li>
+<li><p>必须有入口文件，保证 package.json 中的 main 字段是指向一个正确的入口，如果 package.json 中没有 main 字段，则以 npm 包根目录下的 index.js 作为入口文件。</p>
+</li>
+<li><p>不支持依赖 c++ addon，不支持依赖 nodejs 的内置库:</p>
+<pre><code class="language-js"> <span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./addon.node&#x27;</span>); <span class="hljs-comment">// 不支持！</span>
+ <span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>); <span class="hljs-comment">// 不支持！</span>
+</code></pre>
+</li>
+<li><p>使用 require 依赖的时候下列几种方式也是不允许的：</p>
+</li>
+</ul>
+<pre><code class="language-js">   <span class="hljs-comment">// 不允许将 require 赋值给其他变量后再使用，以下代码不会去解析出具体依赖</span>
+   <span class="hljs-keyword">let</span> r;
+   r = <span class="hljs-built_in">require</span>;
+   <span class="hljs-title function_">r</span>(<span class="hljs-string">&#x27;testa&#x27;</span>);
+
+   <span class="hljs-keyword">let</span> r2 = <span class="hljs-built_in">require</span>;
+   <span class="hljs-title function_">r2</span>(<span class="hljs-string">&#x27;testa&#x27;</span>);
+
+   <span class="hljs-comment">//不允许 require 一个变量，以下代码依赖运行时，无法解析出具体依赖。</span>
+   <span class="hljs-keyword">let</span> m = <span class="hljs-string">&#x27;testa&#x27;</span>;
+   <span class="hljs-built_in">require</span>(m);
+</code></pre>
+<ul>
+<li>小程序运行环境限制，不支持使用部分全局变量（如 window 对象）和构造器（如 Function）等。</li>
+<li>构建、测试等非运行时依赖放在 devDependencies 中，避免被打包。</li>
+</ul>
+<h2 id="原理介绍">原理介绍</h2>
+<h4 id="为什么需要构建">为什么需要构建</h4>
+<p>首先 node_modules 不会参与到编译、上传和打包中，所以小程序想要使用 npm 包必须走一遍“构建 npm”的过程，在 miniprogramRoot 内开发者声明的 package.json 的最外层的 node_modules 的同级目录下都会生成一个 miniprogram_npm 目录，里面会存放构建打包后的 npm 包，也就是小程序真正使用的 npm 包。</p>
+<h4 id="构建做了什么">构建做了什么</h4>
+<ul>
+<li>构建打包分为两种：小程序 npm 包会直接拷贝构建文件生成目录下的所有文件到 miniprogram_npm 中；其他 npm 包则会从入口 js 文件开始走一遍依赖分析和打包过程（类似 webpack）。</li>
+<li>小程序是不能 require 变量等，构建 npm 需要做一下检查，同时给每个被构建 npm 包打 sourcemap。</li>
+<li>寻找 npm 包的过程和 npm 的实现类似，从依赖 npm 包的文件所在目录开始逐层往外找，直到找到可用的 npm 包或是小程序根目录为止。</li>
+</ul>
+<h2 id="tips：构建-npm-的两种方式">Tips：构建 npm 的两种方式</h2>
+<h4 id="默认构建-npm-方式">默认构建 npm 方式</h4>
+<p>默认情况下，在 miniprogramRoot 内正确配置了 package.json 并执行 npm i 之后，构建 npm 的结果是，为每一个 package.json 对应的 node_modules 构建一份 miniprogram_npm，并放置在对应 package.json 所在目录的子目录中。</p>
+<p>构建 npm 前</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   │   ├── 略
+│   ├── node_modules <span class="hljs-comment">// 可被默认方式构建 npm，因为它在 miniprogramRoot 内</span>
+│   ├── package<span class="hljs-selector-class">.json</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span> <span class="hljs-comment">// 没有配置miniprogramRoot，默认该目录</span>
+│   └── sub_package
+│       ├── node_modules <span class="hljs-comment">// 可被默认方式构建 npm，因为它在 miniprogramRoot 内</span>
+│       ├── package<span class="hljs-selector-class">.json</span>
+│       └── sub_package_page
+</code></pre>
+<p>构建 npm 后</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   │   ├── 略
+│   ├── miniprogram_npm <span class="hljs-comment">// miniprogram_npm 是构建结果</span>
+│   ├── node_modules
+│   ├── package<span class="hljs-selector-class">.json</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span> <span class="hljs-comment">// 没有配置miniprogramRoot，默认该目录</span>
+│   └── sub_package
+│       ├── miniprogram_npm  <span class="hljs-comment">// miniprogram_npm 是构建结果</span>
+│       ├── node_modules
+│       ├── package<span class="hljs-selector-class">.json</span>
+│       └── sub_package_page
+</code></pre>
+<h4 id="自定义构建-npm">自定义构建 npm</h4>
+<p>该方案需要开发者在 project.config.json 中指定 node_modules 的位置 和目标 miniprogram_npm 的位置，一般用于 node_modules 与小程序不在同一目录的场景。通常情况下，推荐使用默认方式。</p>
+<p>使用方法：</p>
+<ul>
+<li>配置 project.config.json 的 setting.packNpmManually 为 true，开启自定义 node_modules 和 miniprogram_npm 位置的构建 npm 方式。</li>
+<li>配置 project.config.json 的 setting.packNpmRelationList 项，指定 packageJsonPath 和 miniprogramNpmDistDir 的位置。
+packNpmRelationList 的格式为</li>
+</ul>
+<pre><code class="language-text">packNpmRelationList: <span class="hljs-built_in">Array</span>&lt;{
+  <span class="hljs-string">&quot;packageJsonPath&quot;</span>: <span class="hljs-built_in">string</span>,
+  <span class="hljs-string">&quot;miniprogramNpmDistDir&quot;</span>: <span class="hljs-built_in">string</span>
+}&gt;
+</code></pre>
+<ul>
+<li>packageJsonPath 表示 node_modules 源对应的 package.json</li>
+<li>miniprogramNpmDistDir 表示 node_modules 的构建结果目标位置</li>
+</ul>
+<p>构建 npm 前</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app.<span class="hljs-keyword">js
+</span>│   ├── app.<span class="hljs-keyword">json
+</span>│   ├── app.mass
+│   ├── index
+│   ├── sitemap.<span class="hljs-keyword">json
+</span>│   ├── project.config.<span class="hljs-keyword">json
+</span>│   └── <span class="hljs-keyword">sub_package
+</span>│       └── <span class="hljs-keyword">sub_package_page
+</span>├── node_modules_1
+│   ├── node_modules
+│   └── package.<span class="hljs-keyword">json
+</span>└── node_modules_2
+    ├── node_modules
+    └── package.<span class="hljs-keyword">json</span>
+</code></pre>
+<p>其中 project.config.json 存在配置</p>
+<pre><code class="language-text"><span class="hljs-attr">&quot;setting&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;packNpmManually&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;packNpmRelationList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;packageJsonPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../node_modules_1/package.json&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;miniprogramNpmDistDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;packageJsonPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../node_modules_2/package.json&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;miniprogramNpmDistDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./sub_package&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>构建 npm 后</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   ├── sitemap<span class="hljs-selector-class">.json</span>
+│   ├── miniprogram_npm <span class="hljs-comment">// 由 node_modules_1/node_modules 构建得到</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span>
+│   └── sub_package
+│       └── sub_package_page
+│       └── miniprogram_npm <span class="hljs-comment">// 由 node_modules_2/node_modules 构建得到</span>
+├── node_modules_1
+│   ├── node_modules
+│   └── package<span class="hljs-selector-class">.json</span>
+└── node_modules_2
+    ├── node_modules
+    └── package.json
+</code></pre>
+<h3 id="miniprogram_npm-寻址顺序">miniprogram_npm 寻址顺序</h3>
+<p>页面配置文件（如：pages/index/index.json）中使用 <code>usingComponents</code></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;myPackage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;myPackage&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>其寻址顺序为</p>
+<pre><code class="language-js">[
+  <span class="hljs-regexp">//</span> 先尝试寻址 miniprogram_npm 下的组件
+
+  <span class="hljs-string">&quot;pages/index/miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;pages/index/miniprogram_npm/myPackage/index&quot;</span>,
+
+  <span class="hljs-regexp">//</span> 再尝试其父层级中的 miniprogram_npm 目录
+
+  <span class="hljs-string">&quot;pages/miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;pages/miniprogram_npm/myPackage/index&quot;</span>,
+
+  <span class="hljs-regexp">//</span> 找到
+
+  <span class="hljs-string">&quot;miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;miniprogram_npm/myPackage/index&quot;</span>
+  
+  <span class="hljs-regexp">//</span> 再找不到报错，注意是否写法错误
+]
+</code></pre>

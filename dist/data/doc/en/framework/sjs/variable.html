@@ -1,0 +1,52 @@
+<h2 id="variable">Variable</h2>
+<h3 id="concept">Concept</h3>
+<ul>
+<li>Variables in the SJS code are references of values.</li>
+<li>If a variable is not declared but assigned a value, it is defined as a global variable.</li>
+<li>If a variable is declared but no value is assigned, the default value is undefined.</li>
+<li>If the performance of var is the same as that of JavaScript, variables are improved.</li>
+</ul>
+<pre><code>var foo <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span>
+var bar <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello world&quot;</span><span class="hljs-comment">;</span>
+var i<span class="hljs-comment">; // i === undefined</span>
+</code></pre>
+<h3 id="variable-name">Variable Name</h3>
+<p>Variable names must comply with the following rules:</p>
+<ul>
+<li>The first character must be a letter (a-z, A-Z), underscore (\ _).</li>
+<li>The remaining characters can be letters (a-zA-Z), underscores (\ _), and digits (0-9).</li>
+</ul>
+<h3 id="reserved-identifiers">Reserved Identifiers</h3>
+<p>Complying with the JavaScript syntax rules, the following identifiers cannot be used as variable names:</p>
+<pre><code><span class="hljs-keyword">delete</span>
+<span class="hljs-keyword">void</span>
+<span class="hljs-keyword">typeof</span>
+
+<span class="hljs-literal">null</span>
+<span class="hljs-literal">undefined</span>
+<span class="hljs-title class_">NaN</span>
+<span class="hljs-title class_">Infinity</span>
+<span class="hljs-keyword">var</span>
+
+<span class="hljs-keyword">if</span>
+<span class="hljs-keyword">else</span>
+
+<span class="hljs-literal">true</span>
+<span class="hljs-literal">false</span>
+
+<span class="hljs-built_in">require</span>
+
+<span class="hljs-variable language_">this</span>
+<span class="hljs-keyword">function</span>
+<span class="hljs-variable language_">arguments</span>
+<span class="hljs-keyword">return</span>
+
+<span class="hljs-keyword">for</span>
+<span class="hljs-keyword">while</span>
+<span class="hljs-keyword">do</span>
+<span class="hljs-keyword">break</span>
+<span class="hljs-keyword">continue</span>
+<span class="hljs-keyword">switch</span>
+<span class="hljs-keyword">case</span>
+<span class="hljs-keyword">default</span>
+</code></pre>

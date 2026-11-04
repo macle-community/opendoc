@@ -1,0 +1,145 @@
+<h2 id="filesystemmanagerreadfileobject-object">FileSystemManager.readFile(Object object)</h2>
+<blockquote>
+<p>Read the file(Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Path of the file to be read. (Local path. The usr directory can be a relative directory, but the final real path cannot be outside the usr directory. Temporary path and cache path files can be read.)</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Character encoding of the file to be read. If encoding is not transferred, the binary content of the file is read in the ArrayBuffer format.</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Read data from the specified position in the file. If this parameter is not specified, read data from the file header. The read range should be left closed and right open interval [position, position+length). Valid range: [0, fileLength - 1]. Unit: byte</td>
+</tr>
+<tr>
+<td align="left">length</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Specifies the length of the file, if not specified, read to the end of the document. Scope of validity:[1, fileLength]. Unit: byte</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="encoding">encoding</h5>
+<table>
+<thead>
+<tr>
+<th>Valid Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ascii</td>
+<td></td>
+</tr>
+<tr>
+<td>base64</td>
+<td>Note that if Base64 encoding is selected, only the Base64 content needs to be transferred for data. Do not transfer the Data URl prefix. Otherwise, the fail base64 encode error message is displayed. For example, pass aGVsbG8= instead of data:image/png;base64,aGVsbG8=</td>
+</tr>
+<tr>
+<td>ucs2</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>ucs-2</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf16le</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf-16le</td>
+<td>Read in little-endian order</td>
+</tr>
+<tr>
+<td>utf-8</td>
+<td></td>
+</tr>
+<tr>
+<td>utf8</td>
+<td>Default value</td>
+</tr>
+<tr>
+<td>latin1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h5 id="success-callback-function">success callback function</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String/ArrayBuffer</td>
+<td align="left">File content (If encoding is not transferred, ArrayBuffer is returned.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">let fs = ma.getFileSystemManager();
+
+fs.readFile({
+  <span class="hljs-attr">filePath</span>:  <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/testFile.txt`</span>,
+  <span class="hljs-attr">encoding</span>: <span class="hljs-string">&#x27;utf8&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+  },
+  fail(err) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The size of the read file is limited to 10 MB.</li>
+</ol>

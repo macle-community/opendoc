@@ -1,0 +1,104 @@
+<h2 id="maopendocumentobject-object">ma.openDocument(Object object)</h2>
+<blockquote>
+<p>新开页面打开文档。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">文件路径 (本地路径) ，可通过 downloadFile 获得</td>
+</tr>
+<tr>
+<td align="left">fileType</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">文件类型，指定文件类型打开文件</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectfiletype">object.fileType</h5>
+<table>
+<thead>
+<tr>
+<th align="left">合法值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">doc</td>
+<td align="left">doc 格式</td>
+</tr>
+<tr>
+<td align="left">docx</td>
+<td align="left">docx 格式</td>
+</tr>
+<tr>
+<td align="left">xls</td>
+<td align="left">xls 格式</td>
+</tr>
+<tr>
+<td align="left">xlsx</td>
+<td align="left">xlsx 格式</td>
+</tr>
+<tr>
+<td align="left">ppt</td>
+<td align="left">ppt 格式</td>
+</tr>
+<tr>
+<td align="left">pptx</td>
+<td align="left">pptx 格式</td>
+</tr>
+<tr>
+<td align="left">pdf</td>
+<td align="left">pdf 格式</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.downloadFile({
+  <span class="hljs-comment">// 示例 url，并非真实存在</span>
+  url: <span class="hljs-string">&#x27;http://example.com/somefile.pdf&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+    const filePath = res.tempFilePath;
+    ma.openDocument({
+      <span class="hljs-attr">filePath</span>: filePath,
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;打开文档成功&#x27;</span>);
+      }
+    });
+  }
+});
+</code></pre>

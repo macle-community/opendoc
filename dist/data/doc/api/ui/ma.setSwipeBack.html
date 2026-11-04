@@ -1,0 +1,108 @@
+<h3 id="masetswipebackobject-object">ma.setSwipeBack(Object object)</h3>
+<blockquote>
+<p>设置是否禁用IOS手势滑动控制（该接口最低版本为 26.3.0，仅IOS侧生效）</p>
+</blockquote>
+<blockquote>
+<p>注意：H5小程序调用此API控制全局是否支持滑动，DSL小程序调用此API控制当前页面是否支持滑动</p>
+</blockquote>
+<h4 id="参数">参数</h4>
+<h5 id="object-object">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">enableSwipeBack</td>
+<td align="left">Boolean</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">是否禁止滑动，false不禁止，true禁止</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setSwipeBack: ok</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-2">参数</h5>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setSwipeBack: fail, + 错误原因（无返回则为空）</td>
+</tr>
+</tbody></table>
+<h4 id="示例代码">示例代码</h4>
+<pre><code class="language-js">ma.setSwipeBack({
+  enableSwipeBack: <span class="hljs-literal">true</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack success&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack fail&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack complete&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  }
+});
+</code></pre>

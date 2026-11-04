@@ -1,0 +1,120 @@
+<h1 id="overlay-遮罩层">Overlay 遮罩层</h1>
+<h3 id="介绍">介绍</h3>
+<p>创建一个遮罩层，用于强调特定的页面元素，并阻止用户进行其他操作。</p>
+<h2 id="代码演示">代码演示</h2>
+<h3 id="基础用法">基础用法</h3>
+<pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;显示遮罩层&lt;/maui-button&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-overlay</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;onClickHide&quot;</span> /&gt;</span></span>
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>,
+  },
+
+  <span class="hljs-title function_">onClickShow</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> });
+  },
+
+  <span class="hljs-title function_">onClickHide</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span> });
+  },
+});
+</code></pre>
+<h3 id="嵌入内容">嵌入内容</h3>
+<p>通过默认插槽可以在遮罩层上嵌入任意内容。</p>
+<pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=&quot;primary&quot; bind:click=&quot;onClickShow&quot;&gt;嵌入内容&lt;/maui-button&gt;
+&lt;maui-overlay <span class="hljs-keyword">show</span>=&quot;{{ show }}&quot; bind:click=&quot;onClickHide&quot;&gt;
+  &lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=&quot;wrapper&quot;&gt;
+    &lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=&quot;block&quot; catch:tap=&quot;noop&quot; /&gt;
+  &lt;/<span class="hljs-keyword">view</span>&gt;
+&lt;/maui-overlay&gt;
+Page({
+  data: {
+    <span class="hljs-keyword">show</span>: <span class="hljs-keyword">false</span>,
+  },
+
+  onClickShow() {
+    this.setData({ <span class="hljs-keyword">show</span>: <span class="hljs-keyword">true</span> });
+  },
+
+  onClickHide() {
+    this.setData({ <span class="hljs-keyword">show</span>: <span class="hljs-keyword">false</span> });
+  },
+
+  noop() {},
+});
+.<span class="hljs-keyword">wrapper</span> {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: <span class="hljs-number">100</span>%;
+}
+
+.block {
+  width: <span class="hljs-number">120</span>px;
+  height: <span class="hljs-number">120</span>px;
+  background-color: #fff;
+}
+</code></pre>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">是否展示遮罩层</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">z-index</td>
+<td align="left">z-index 层级</td>
+<td align="left">String | Number</td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">动画时长，单位毫秒</td>
+<td align="left">String | Number</td>
+<td align="left">300</td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">自定义样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">点击时触发</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h3 id="slots">Slots</h3>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">默认插槽，用于在遮罩层上方嵌入内容</td>
+</tr>
+</tbody></table>

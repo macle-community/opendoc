@@ -1,0 +1,85 @@
+<h1 id="overlay">Overlay</h1>
+<h3 id="introduction">Introduction</h3>
+<p>Create a mask layer to emphasize specific page elements and prevent users from performing other operations.</p>
+<h2 id="sample-code">Sample Code</h2>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;show mask layer &lt;/maui-button&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-overlay</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;onClickHide&quot;</span> /&gt;</span></span>
+<span class="hljs-title class_">Page</span>({ <span class="hljs-attr">data</span>: { <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>, }, <span class="hljs-title function_">onClickShow</span>(<span class="hljs-params"></span>) { <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> }); }, <span class="hljs-title function_">onClickHide</span>(<span class="hljs-params"></span>) { <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>:
+<span class="hljs-literal">false</span> }); },});
+</code></pre>
+<h3 id="embedded-content">Embedded Content</h3>
+<p>Any content can be embedded at the mask layer through the default slot.</p>
+<pre><code class="language-maml">&lt;maui-button type=<span class="hljs-string">&quot;primary&quot;</span> bind:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;embedded <span class="hljs-built_in">content</span> &lt;/maui-button&gt;
+&lt;maui-overlay <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> bind:click=<span class="hljs-string">&quot;onClickHide&quot;</span>&gt;
+  &lt;<span class="hljs-built_in">view</span> class=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> class=<span class="hljs-string">&quot;block&quot;</span> <span class="hljs-built_in">catch</span>:tap=<span class="hljs-string">&quot;noop&quot;</span> /&gt;
+  &lt;/<span class="hljs-built_in">view</span>&gt;
+&lt;/maui-overlay&gt;
+Page({ data: { <span class="hljs-built_in">show</span>: <span class="hljs-literal">false</span>, }, onClickShow() { this.setData({ <span class="hljs-built_in">show</span>: <span class="hljs-literal">true</span> }); }, onClickHide() { this.setData({ <span class="hljs-built_in">show</span>:
+<span class="hljs-literal">false</span> }); }, noop() {}, }); .wrapper { <span class="hljs-built_in">display</span>: flex; align-items: <span class="hljs-built_in">center</span>; justify-<span class="hljs-built_in">content</span>: <span class="hljs-built_in">center</span>; <span class="hljs-built_in">height</span>: <span class="hljs-number">100</span><span class="hljs-symbol">%</span>; }
+.<span class="hljs-built_in">block</span> { <span class="hljs-built_in">width</span>: 120px; <span class="hljs-built_in">height</span>: 120px; <span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: #fff; }
+</code></pre>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">Whether to display the mask layer.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">z-index</td>
+<td align="left">z-index level.</td>
+<td align="left">String | Number</td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Animation duration, in milliseconds.</td>
+<td align="left">String | Number</td>
+<td align="left">300</td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">Custom style.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Callback Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">Triggered at a click.</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h3 id="slots">Slots</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Default slot for embedding content at the mask layer.</td>
+</tr>
+</tbody></table>

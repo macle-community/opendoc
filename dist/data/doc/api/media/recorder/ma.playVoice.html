@@ -1,0 +1,88 @@
+<h2 id="maplayvoiceobject-object">ma.playVoice(Object object)</h2>
+<blockquote>
+<p>开始播放音频。同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filePath</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>需要播放的语音文件的文件路径（本地路径）</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>在线音频网址（新增属性，最低版本：23.12.0）</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>60</td>
+<td>否</td>
+<td>指定播放时长，到达指定的播放时长后会自动停止播放，单位：秒 (仅播放本地音频文件时生效)</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript"><span class="hljs-title function_">page</span>({
+    <span class="hljs-title function_">playVoice</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> {filePath, <span class="hljs-attr">playDuration</span>: duration} = <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({<span class="hljs-attr">playParams</span>: {filePath, duration}});
+        ma.<span class="hljs-title function_">playVoice</span>({
+            filePath,
+            duration,
+            <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({res});
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                    <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+                });
+            },
+            <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({err});
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                    <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(err)
+                });
+            }
+        });
+    }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>调用此API时，至少要传入本地音频路径<code>filePath</code>或在线音频网址<code>url</code>中的一项</li>
+<li>本地音频路径<code>filePath</code>与在线音频网址<code>url</code>同时传入时，<code>filePath</code>优先级更高</li>
+</ol>

@@ -1,0 +1,169 @@
+<h1 id="plugin-debugging">Plugin Debugging</h1>
+<h2 id="simulator-and-debugging-tool">Simulator and Debugging Tool</h2>
+<p>The simulator simulates most mobile APIs and is equipped with debugging tools. 
+You are advised to debug basic functions and styles in the simulator, and then verify and debug the APIs on mobile devices. 
+The final running effect depends on mobile devices.</p>
+<h2 id="simulator">Simulator</h2>
+<p>A <a onclick="_mdLinkClick(this.href)" href="#/devtools/simulator">simulator</a> provides the following functions:</p>
+<ul>
+<li>Device simulation (such as size and display ratio)</li>
+<li>Operation simulation</li>
+<li>Refreshing</li>
+<li>Macle JsAPI simulation</li>
+<li>Gesture simulation</li>
+</ul>
+<h2 id="debugging-tool">Debugging Tool</h2>
+<p>With the simulator, the customized Chrome DevTools and extensions such as MAML based on the Chrome DevTools are provided. The following information is displayed by default:</p>
+<ul>
+<li><strong>MAML</strong>: DOM and CSS debugging based on Mini Program elements (not implemented yet)</li>
+<li><strong>Console</strong>: run log and error viewing</li>
+<li><strong>Sources</strong>: source code viewing and breakpoint debugging</li>
+<li><strong>Network</strong>: network resource and request viewing</li>
+</ul>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/debug/debug.PNG" alt="image" ></p>
+<h2 id="debugging-in-the-vs-code">Debugging in the VS Code</h2>
+<p>In addition to debugging Mini Program code in the debugger, you can also debug source code in the VS Code.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>You have installed the following software:</p>
+<ul>
+<li>VS Code</li>
+<li>Macle MiniProgram Tools VSCode plugin</li>
+<li>Google Chrome</li>
+</ul>
+<h3 id="configuring-the-launchjson-file">Configuring the launch.json File</h3>
+<p>Click the <code>Debugger</code> icon in the <code>Activity Bar</code> to go to the <code>Debug</code> page, click <code>create a launch.json file</code>, and select the <code>Chrome</code> environment.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/debug/vscode-debugger-activity-bar.PNG" alt="image" ></p>
+<p>Replace the content of the generated <code>launch.json</code> file with the corresponding configuration. The following is an example:</p>
+<pre><code class="language-json">{
+  <span class="hljs-comment">// Use IntelliSense to learn about possible attributes.</span>
+  <span class="hljs-comment">// Hover to view descriptions of existing attributes.</span>
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.2.0&quot;</span>,
+  <span class="hljs-string">&quot;configurations&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;pwa-chrome&quot;</span>,
+      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;attach&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Attach Chrome against localhost&quot;</span>,
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:[port]/[projectname][appid]/root/simulator/&quot;</span>,
+      <span class="hljs-string">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${workspaceFolder}</span>&quot;</span>,
+      <span class="hljs-string">&quot;port&quot;</span>: <span class="hljs-number">31000</span>,
+      <span class="hljs-string">&quot;sourceMapPathOverrides&quot;</span>: {
+        <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${webRoot}</span>/*&quot;</span>
+      }
+    },
+    {
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;pwa-chrome&quot;</span>,
+      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;launch&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Launch Chrome against localhost&quot;</span>,
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:[port]/[projectname][appid]/root/simulator/&quot;</span>,
+      <span class="hljs-string">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${workspaceFolder}</span>&quot;</span>,
+      <span class="hljs-string">&quot;sourceMapPathOverrides&quot;</span>: {
+        <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${webRoot}</span>/*&quot;</span>
+      }
+    }
+  ]
+}
+</code></pre>
+<p><strong>Note:</strong></p>
+<ul>
+<li><p>he attributes of the <code>URL </code> are as follows:</p>
+<ul>
+<li><p>Replace <em>port</em> with the actual port number for starting the simulator. The default port number is <strong>30000</strong>. If port 30000 is occupied, another port number is used based on the actual port number for starting the simulator.</p>
+</li>
+<li><p>Replace <em>projectname</em> with the actual project name.</p>
+</li>
+<li><p>Replace <em>appid</em> with the actual app ID in the project.</p>
+<p>Example: <code>http://localhost:30000/calculator300s00i1ggac5n020107z1abcdef/root/simulator/</code></p>
+<p>You can also copy the URL in Google Chrome to replace it.</p>
+</li>
+</ul>
+</li>
+<li><p>The <em>port</em> attribute in attach mode can be configured on the <code>Settings</code> page. The default value is <strong>31000</strong>.</p>
+</li>
+</ul>
+<h3 id="configuring-a-breakpoint"><strong>Configuring a Breakpoint</strong></h3>
+<p>Click the <strong>gutter</strong> area on the left of the Mini Program source code where the breakpoint is required.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/debug/breakpoint.PNG" alt="image" ></p>
+<h3 id="starting-the-debugger">Starting the Debugger</h3>
+<p><code>Launch mode</code> is configured in <strong>launch.json</strong>:</p>
+<ul>
+<li>Launch mode: Google Chrome is opened and the debugger is automatically attached to the program.</li>
+</ul>
+<h4 id="enabling-launch-mode">Enabling Launch Mode</h4>
+<ol>
+<li><p>Click the simulator function in the plugin to start the simulator.</p>
+</li>
+<li><p>After the simulator is started, select <code>Launch Chrome against localhost</code> from the <code>RUN AND DEBUG</code> drop-down list, and then press <code>F5</code> or click the green <code>play</code> button to debug the Mini Program code. (You are advised to change the Google Chrome mode to the mobile mode.)</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/debug/launch-mode.PNG" alt="image" ></p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/debug/launch-mode-debug.PNG" alt="image" ></p>
+</li>
+</ol>
+<h2 id="simulator--jssdk-debugging">Simulator + JSSDK debugging</h2>
+<p>Macle supports emulation debugging and adaptation of JSSDK through simulators. <strong>Currently, the webview component cannot be used to navigate to the web debugging page for debugging.</strong></p>
+<p>Debugging process:</p>
+<ol>
+<li>Introduce Macle JSSDK in H5.</li>
+<li>Convert the h5 Mini Program to an Mini Program that can run on the macle engine through a <a onclick="_mdLinkClick(this.href)" href="#/devtools/converter">converter</a>.</li>
+<li>The simulator opens the converted Mini Program.</li>
+</ol>
+<p>The following table lists JSSDK APIs supported by the simulator.</p>
+<table>
+<thead>
+<tr>
+<th>Interface Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ma.miniProgram.close</td>
+<td>Closes the Mini Program without callback.</td>
+</tr>
+<tr>
+<td>ma.chooseImage</td>
+<td>Photo or Upload</td>
+</tr>
+<tr>
+<td>ma.getLocation</td>
+<td>Obtains the current geographical location information.</td>
+</tr>
+<tr>
+<td>ma.previewImage</td>
+<td>Preview Image</td>
+</tr>
+<tr>
+<td>ma.openDocument</td>
+<td>Open File</td>
+</tr>
+<tr>
+<td>ma.getStorage</td>
+<td>The parameters are consistent with those of the Mini Program interface.</td>
+</tr>
+<tr>
+<td>ma.setStorage</td>
+<td>The parameters are consistent with those of the Mini Program interface.</td>
+</tr>
+<tr>
+<td>ma.removeStorage</td>
+<td>The parameter is consistent with that of the Mini Program interface.</td>
+</tr>
+<tr>
+<td>ma.clearStorage</td>
+<td>The parameters are consistent with those of the Mini Program interface.</td>
+</tr>
+<tr>
+<td>ma.getNetworkType</td>
+<td>Obtain the network status.</td>
+</tr>
+<tr>
+<td>ma.scanCode</td>
+<td>Pull up and scan the QR code. One-dimensional codes are also supported.</td>
+</tr>
+<tr>
+<td>ma.callNativeAPI</td>
+<td>H5 Invoking Native Capabilities</td>
+</tr>
+<tr>
+<td>ma.native</td>
+<td>Invoking native capabilities in H5</td>
+</tr>
+</tbody></table>
+<p>This feature supports <a onclick="_mdLinkClick(this.href)" href="#/devtools/customAPI">custom APIs</a>.</p>

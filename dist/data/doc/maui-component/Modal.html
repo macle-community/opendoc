@@ -1,0 +1,290 @@
+<h2 id="modal">Modal</h2>
+<blockquote>
+<p>弹出模态框，常用于消息提示、消息确认，支持组件调用（最低版本：25.12.0）</p>
+</blockquote>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="maml">maml</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;基础弹窗&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal1&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮文本&#x27;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(无标题)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal2&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;确认&#x27;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;基础弹窗&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(双按钮横向排列)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal3&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主要按钮&#x27;</span>
+              <span class="hljs-attr">secondaryButtonText</span>=<span class="hljs-string">&#x27;辅助&#x27;</span> <span class="hljs-attr">bindsecondaryButtonTap</span>=<span class="hljs-string">&#x27;secondaryButtonTap&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;基础弹窗&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(带辅助和取消按钮)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal4&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮&#x27;</span> <span class="hljs-attr">secondaryButtonText</span>=<span class="hljs-string">&#x27;辅助&#x27;</span> <span class="hljs-attr">cancelButtonText</span>=<span class="hljs-string">&#x27;取消&#x27;</span> <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span>
+              <span class="hljs-attr">bindcancelButtonTap</span>=<span class="hljs-string">&#x27;cancelButtonTap&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>
+              <span class="hljs-attr">bindsecondaryButtonTap</span>=<span class="hljs-string">&#x27;secondaryButtonTap&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;强调模式&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal5&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮文本&#x27;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;focus&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;强调模式&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(双按钮横向排列)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal6&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主要按钮&#x27;</span>
+              <span class="hljs-attr">secondaryButtonText</span>=<span class="hljs-string">&#x27;辅助&#x27;</span> <span class="hljs-attr">bindsecondaryButtonTap</span>=<span class="hljs-string">&#x27;secondaryButtonTap&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;focus&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;强调模式&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(带辅助和取消按钮)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal7&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮&#x27;</span> <span class="hljs-attr">secondaryButtonText</span>=<span class="hljs-string">&#x27;辅助&#x27;</span> <span class="hljs-attr">cancelButtonText</span>=<span class="hljs-string">&#x27;取消&#x27;</span> <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span>
+              <span class="hljs-attr">bindcancelButtonTap</span>=<span class="hljs-string">&#x27;cancelButtonTap&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>
+              <span class="hljs-attr">bindsecondaryButtonTap</span>=<span class="hljs-string">&#x27;secondaryButtonTap&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;focus&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;强调模式&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;测试内容(可关闭)&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modal8&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮文本&#x27;</span> <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>
+              <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;focus&#x27;</span> <span class="hljs-attr">closable</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;自定义Modal&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;DIY主按钮&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modalDIYPrimary&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+              <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮文本&#x27;</span> <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>
+              <span class="hljs-attr">primaryButtonStyle</span>=<span class="hljs-string">&#x27;color: red&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-modal</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;自定义Modal&#x27;</span> <span class="hljs-attr">visible</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentModal</span> === <span class="hljs-string">&#x27;modalDIYContent&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">primaryButtonText</span>=<span class="hljs-string">&#x27;主按钮文本&#x27;</span>
+              <span class="hljs-attr">bindclose</span>=<span class="hljs-string">&#x27;handleClose&#x27;</span> <span class="hljs-attr">bindprimaryButtonTap</span>=<span class="hljs-string">&#x27;primaryButtonTap&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>DIY主内容为按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-modal</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;基础用法&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;基础弹窗&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal1&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;提示弹窗(无标题)&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal2&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;双按钮弹窗&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal3&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;三按钮弹窗&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal4&#x27;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;强调模式&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;只有主按钮&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal5&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;带辅助按钮&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal6&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;带辅助和取消按钮&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal7&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;显示关闭&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modal8&#x27;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;自定义按钮&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;DIY主按钮&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modalDIYPrimary&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;DIY主内容&#x27;</span> <span class="hljs-attr">bindclick</span>=<span class="hljs-string">&#x27;showModal&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;&gt;&#x27;</span> <span class="hljs-attr">data-modal-value</span>=<span class="hljs-string">&#x27;modalDIYContent&#x27;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">currentModal</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">showOverlay</span>: <span class="hljs-literal">false</span>,
+  },
+  <span class="hljs-title function_">showModal</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">currentModal</span>: res.<span class="hljs-property">currentTarget</span>.<span class="hljs-property">dataset</span>[<span class="hljs-string">&#x27;modal-value&#x27;</span>],
+    });
+  },
+  <span class="hljs-title function_">handleClose</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">currentModal</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    });
+  },
+
+  <span class="hljs-title function_">primaryButtonTap</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleClose</span>();
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;点击主要按钮&#x27;</span>,
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">1000</span>,
+      <span class="hljs-attr">mask</span>: <span class="hljs-literal">false</span>,
+    });
+  },
+
+  <span class="hljs-title function_">secondaryButtonTap</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleClose</span>();
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;点击辅助按钮&#x27;</span>,
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">1000</span>,
+      <span class="hljs-attr">mask</span>: <span class="hljs-literal">false</span>,
+    });
+  },
+
+  <span class="hljs-title function_">cancelButtonTap</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleClose</span>();
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;点击取消按钮&#x27;</span>,
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">1000</span>,
+      <span class="hljs-attr">mask</span>: <span class="hljs-literal">false</span>,
+    });
+  },
+
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params">options</span>) {
+  },
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+  },
+  <span class="hljs-title function_">onShow</span>(<span class="hljs-params"></span>) {
+  },
+  <span class="hljs-title function_">onHide</span>(<span class="hljs-params"></span>) {
+  },
+  <span class="hljs-title function_">onUnload</span>(<span class="hljs-params"></span>) {
+  },
+});
+</code></pre>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;navigationBarTitleText&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Modal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;maui-modal&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../components/modal/index&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;maui-cell-group&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../components/cell-group/index&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;maui-cell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../components/cell/index&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<pre><code class="language-css">
+<span class="hljs-selector-tag">button</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bodyClassName</td>
+<td align="left">body 类名</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bodyStyle</td>
+<td align="left">body 样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cancelButtonStyle</td>
+<td align="left">取消按钮样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cancelButtonText</td>
+<td align="left">取消按钮文本</td>
+<td align="left">String/Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">closable</td>
+<td align="left">是否显示右上角的关闭按钮。仅在 type 为 focus 生效</td>
+<td align="left">Boolean</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">content</td>
+<td align="left">内容</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">destroyOnClose</td>
+<td align="left">不可见时是否卸载内容</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">maskClosable</td>
+<td align="left">点击蒙层是否触发 bind:close</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">maskClassName</td>
+<td align="left">蒙层的类名</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">maskStyle</td>
+<td align="left">蒙层的样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">primaryButtonStyle</td>
+<td align="left">主按钮样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">primaryButtonText</td>
+<td align="left">主按钮文本</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">secondaryButtonStyle</td>
+<td align="left">辅助按钮样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">secondaryButtonText</td>
+<td align="left">辅助按钮文本</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">cancelButtonColor</td>
+<td align="left">取消按钮的字体颜色</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">标题</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">类型，可选 <code>default</code>(默认)、<code>focus</code>(强调模式)</td>
+<td align="left">String</td>
+<td align="left"><code>default</code></td>
+</tr>
+<tr>
+<td align="left">visible</td>
+<td align="left">是否显示</td>
+<td align="left">Boolean</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:cancelButtonTap</td>
+<td align="left">取消按钮点击事件</td>
+</tr>
+<tr>
+<td align="left">bind:close</td>
+<td align="left">点击蒙层或强调模式下点击右上角关闭按钮，触发回调</td>
+</tr>
+<tr>
+<td align="left">bind:primaryButtonTap</td>
+<td align="left">主按钮点击事件</td>
+</tr>
+<tr>
+<td align="left">bind:secondaryButtonTap</td>
+<td align="left">辅助按钮点击事件</td>
+</tr>
+</tbody></table>
+<h4 id="slot">Slot</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>自定义content</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,192 @@
+<h2 id="dialog">Dialog</h2>
+<blockquote>
+<p>弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作，支组件调用（最低版本：24.9.0）</p>
+</blockquote>
+<h3 id="引入">引入</h3>
+<p>目前只支持手动引入,npm 功能正在孵化中</p>
+<pre><code class="language-html"><span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;maui-dialog&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../component/dialog/index&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="消息提示">消息提示</h4>
+<p>用于提示一些消息，只包含一个确认按钮。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
+</code></pre>
+<p>带标题的提示</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标题&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="消息确认">消息确认</h4>
+<p>用于确认消息，包含取消和确认按钮</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标题&quot;</span> message=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>/&gt;
+</code></pre>
+<p>自定义按钮文案</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标题&quot;</span> cancelButtonText=<span class="hljs-string">&quot;取消按钮自定义&quot;</span> confirmButtonText=<span class="hljs-string">&quot;确认按钮自定义&quot;</span> message=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<p>自定义按钮颜色</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标题&quot;</span> confirmButtonColor=<span class="hljs-string">&quot;red&quot;</span> cancelButtonColor=<span class="hljs-string">&quot;blue&quot;</span> message=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<h4 id="自定义样式">自定义样式</h4>
+<p>通过 messageStyle 修改提示消息的样式
+通过 titleStyle 修改标题样式</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-attribute">message</span>=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-attribute">messageStyle</span>=<span class="hljs-string">&quot;color:orange&quot;</span> <span class="hljs-attribute">titleStyle</span>=<span class="hljs-string">&quot;color:#F0F000&quot;</span> <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;标题&quot;</span> show={{show}} show-cancel-button bind:<span class="hljs-attribute">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;
+</code></pre>
+<p>通过 overlay-style 修改 overlay 样式</p>
+<pre><code class="language-html"> &lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标题&quot;</span> overlay-<span class="hljs-built_in">style</span>=<span class="hljs-string">&quot;background-color:red&quot;</span> message=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-built_in">show</span>={{show4}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<h4 id="其他">其他</h4>
+<p>close-on-click-overlay 来设置点击 overlay 关闭 dialog</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;提示消息&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> <span class="hljs-attr">close-on-click-overlay</span> /&gt;</span></span>
+</code></pre>
+<p>通过插槽自定义提示内容</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span>  <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标题&quot;</span> <span class="hljs-attr">useSlot</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:orange&quot;</span>&gt;</span>使用插槽<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>自定义按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-dialog</span>&gt;</span></span>
+</code></pre>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">是否显示弹窗</td>
+<td align="left">Boolean</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">标题</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">titleStyle</td>
+<td align="left">标题样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">弹窗宽度，默认单位为 px</td>
+<td align="left">String/Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">文本内容</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">messageStyle</td>
+<td align="left">文本内容样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">messageAlign</td>
+<td align="left">内容对齐方式，可选值为 left right</td>
+<td align="left">String</td>
+<td align="left">center</td>
+</tr>
+<tr>
+<td align="left">zIndex</td>
+<td align="left">z-index 层级</td>
+<td align="left">Number</td>
+<td align="left">2000</td>
+</tr>
+<tr>
+<td align="left">customStyle</td>
+<td align="left">自定义样式</td>
+<td align="left">String</td>
+<td align="left">&#39;&#39;</td>
+</tr>
+<tr>
+<td align="left">showConfirmButton</td>
+<td align="left">是否展示确认按钮</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">showCancelButton</td>
+<td align="left">是否展示取消按钮</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">confirmButtonText</td>
+<td align="left">确认按钮的文案</td>
+<td align="left">String</td>
+<td align="left">确认</td>
+</tr>
+<tr>
+<td align="left">cancelButtonText</td>
+<td align="left">取消按钮的文案</td>
+<td align="left">String</td>
+<td align="left">取消</td>
+</tr>
+<tr>
+<td align="left">confirmButtonColor</td>
+<td align="left">确认按钮的字体颜色</td>
+<td align="left">String</td>
+<td align="left">red</td>
+</tr>
+<tr>
+<td align="left">cancelButtonColor</td>
+<td align="left">取消按钮的字体颜色</td>
+<td align="left">String</td>
+<td align="left">gray</td>
+</tr>
+<tr>
+<td align="left">overlay</td>
+<td align="left">是否展示遮罩层</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">overlayStyle</td>
+<td align="left">自定义遮罩层样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">closeOnClickOverlay</td>
+<td align="left">点击遮罩层时是否关闭弹窗</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">use-slot</td>
+<td align="left">是否使用自定义内容的插槽</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:close</td>
+<td align="left">弹窗关闭时触发</td>
+</tr>
+<tr>
+<td align="left">bind:confirm</td>
+<td align="left">点击确认按钮时触发</td>
+</tr>
+<tr>
+<td align="left">bind:cancel</td>
+<td align="left">点击取消按钮时触发</td>
+</tr>
+</tbody></table>

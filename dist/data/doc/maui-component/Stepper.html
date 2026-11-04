@@ -1,0 +1,222 @@
+<h2 id="stepper-步进器">Stepper 步进器</h2>
+<blockquote>
+<p>步进器由增加按钮、减少按钮和输入框组成，用于在一定范围内输入、调整数字（最低版本：24.9.0）</p>
+</blockquote>
+<h3 id="引入">引入</h3>
+<p>在<code>app.json</code>或<code>index.json</code>中引入组件。</p>
+<pre><code class="language-json"><span class="hljs-string">&quot;usingComponents&quot;</span>: {
+  <span class="hljs-string">&quot;maui-stepper&quot;</span>: <span class="hljs-string">&quot;@macle/maui/stepper/index&quot;</span>
+}
+</code></pre>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<p>通过<code>value</code>设置输入值，可以通过<code>change</code>事件监听到输入值的变化。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>);
+  }
+});
+</code></pre>
+<h4 id="步长设置">步长设置</h4>
+<p>通过<code>step</code>属性设置每次点击增加或减少按钮时变化的值，默认为<code>1</code>。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;2&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="限制输入范围">限制输入范围</h4>
+<p>通过<code>min</code>和<code>max</code>属性限制输入值的范围。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">5</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;8&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="限制输入整数">限制输入整数</h4>
+<p>设置<code>integer</code>属性后，输入框将限制只能输入整数。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">integer</span> /&gt;</span></span>
+</code></pre>
+<h4 id="禁用状态">禁用状态</h4>
+<p>通过设置<code>disabled</code>属性来禁用步进器，禁用状态下无法点击按钮或修改输入框。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">disabled</span> /&gt;</span></span>
+</code></pre>
+<h4 id="关闭长按">关闭长按</h4>
+<p>通过设置<code>long-press</code>属性决定步进器是否开启长按手势。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">long-press</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="固定小数位数">固定小数位数</h4>
+<p>通过设置<code>decimal-length</code>属性可以保留固定的小数位数。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;0.2&quot;</span> <span class="hljs-attr">decimal-length</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="异步变更">异步变更</h4>
+<p>如果需要异步地修改输入框的值，可以设置<code>async-change</code>属性，并在<code>change</code>事件中手动修改<code>value</code>。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">async-change</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title function_">changeValue</span>(<span class="hljs-params">val</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(val);
+    ma.<span class="hljs-title function_">showToast</span>({
+        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;2秒后更新&#x27;</span>,
+        <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span>,
+        <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+            <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                    <span class="hljs-attr">stepVal1</span>: val.<span class="hljs-property">detail</span>,
+                });
+                }, <span class="hljs-number">2000</span>);
+            },
+    });
+}
+</code></pre>
+<h4 id="自定义大小">自定义大小</h4>
+<p>通过<code>input-width</code>属性设置输入框宽度，通过<code>button-size</code>属性设置按钮大小和输入框高度。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">input-width</span>=<span class="hljs-string">&quot;40px&quot;</span> <span class="hljs-attr">button-size</span>=<span class="hljs-string">&quot;32px&quot;</span> /&gt;</span></span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>输入值</td>
+<td>String | Number</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+<td>String | Number</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+<td>String | Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>step</td>
+<td>步长</td>
+<td>String | Number</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>integer</td>
+<td>是否只允许输入整数</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>disable-input</td>
+<td>是否禁用输入框</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>async-change</td>
+<td>是否开启异步变更，开启后需要手动控制输入值</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>input-width</td>
+<td>输入框宽度，默认单位为  <code>px</code></td>
+<td>String | Number</td>
+<td><code>32px</code></td>
+</tr>
+<tr>
+<td>button-size</td>
+<td>按钮大小，默认单位为  <code>px</code>，输入框高度会和按钮大小保持一致</td>
+<td>String | Number</td>
+<td><code>28px</code></td>
+</tr>
+<tr>
+<td>show-plus</td>
+<td>是否显示增加按钮</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>show-minus</td>
+<td>是否显示减少按钮</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>decimal-length</td>
+<td>固定显示的小数位数</td>
+<td>Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>样式风格，可选值为  <code>round</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>disable-plus</td>
+<td>是否禁用增加按钮</td>
+<td>Boolean</td>
+<td>-</td>
+</tr>
+<tr>
+<td>disable-minus</td>
+<td>是否禁用减少按钮</td>
+<td>Boolean</td>
+<td>-</td>
+</tr>
+<tr>
+<td>long-press</td>
+<td>是否开启长按手势</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>说明</th>
+<th>回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind:change</td>
+<td>当绑定值变化时触发的事件</td>
+<td>event.detail: 当前输入的值</td>
+</tr>
+<tr>
+<td>bind:overlimit</td>
+<td>点击不可用的按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bind:plus</td>
+<td>点击增加按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bind:minus</td>
+<td>点击减少按钮时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bind:focus</td>
+<td>输入框聚焦时触发</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bind:blur</td>
+<td>输入框失焦时触发</td>
+<td>-</td>
+</tr>
+</tbody></table>

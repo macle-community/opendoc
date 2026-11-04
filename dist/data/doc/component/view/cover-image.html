@@ -1,0 +1,66 @@
+<h2 id="cover-image">cover-image</h2>
+<blockquote>
+<p>覆盖在原生组件之上的图片视图。 若原生组件均已支持同层渲染，建议使用 <a onclick="_mdLinkClick(this.href)" href="#/component/image">image</a>替代。可覆盖的原生组件同<a onclick="_mdLinkClick(this.href)" href="#/component/cover-view">cover-view</a>。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">图标路径，支持临时路径、网络地址、本地路径（确保路径不超过项目根目录）</td>
+</tr>
+</tbody></table>
+<h3 id="支持的格式">支持的格式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JPG</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">PNG</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">SVG</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">WEBP</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">GIF</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">BASE64</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+&lt;cover-image <span class="hljs-attribute">class</span>=<span class="hljs-string">&#x27;cover-image&#x27;</span> <span class="hljs-attribute">src</span>=<span class="hljs-string">&#x27;https://example.jpg&#x27;</span>&gt;&lt;/cover-image&gt;
+</code></pre>

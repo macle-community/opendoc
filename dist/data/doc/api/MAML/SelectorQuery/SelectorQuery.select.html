@@ -1,0 +1,28 @@
+<h2 id="nodesref-selectorqueryselectstring-selector"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.select(string selector)</h2>
+<blockquote>
+<p>在当前页面下选择第一个匹配选择器 <code>selector</code> 的节点。返回一个 <code>NodesRef</code> 对象实例，可以用于获取节点信息。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-selector">string selector</h4>
+<p>选择器</p>
+<h3 id="返回值">返回值</h3>
+<h4 id="nodesref">NodesRef</h4>
+<h3 id="selector-语法">selector 语法</h3>
+<p>selector类似于 CSS 的选择器，但仅支持下列语法。</p>
+<ul>
+<li>ID选择器：#the-id</li>
+<li>class选择器（可以连续指定多个）：.a-class.another-class</li>
+<li>子元素选择器：.the-parent &gt; .the-child</li>
+<li>后代选择器：.the-ancestor .the-descendant</li>
+<li>多选择器的并集：#a-node, .some-other-nodes</li>
+</ul>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">Page({
+  onCreateSelectorQuery() {
+    ma.createSelectorQuery()
+      .select(&#x27;test1&#x27;).boundingClientRect()
+      .select(&#x27;test2&#x27;).boundingClientRect()
+      .selectAll(&#x27;.all&#x27;).boundingClientRect()<span class="hljs-comment">;</span>
+  }
+})<span class="hljs-comment">;</span>
+</code></pre>

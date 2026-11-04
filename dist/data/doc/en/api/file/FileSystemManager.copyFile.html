@@ -1,0 +1,71 @@
+<h2 id="filesystemmanagercopyfileobject-object">FileSystemManager.copyFile(Object object)</h2>
+<blockquote>
+<p>Copy files (Do not copy folders. The target path is a file. If the target file already exists, the copy will overwrite the existing target file.)(Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">srcPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Source file path. (Local path. It can be a relative directory in the usr directory, but the final real path cannot be outside the usr directory. <strong>Files in temporary paths and cache paths can be copied</strong>)</td>
+</tr>
+<tr>
+<td align="left">destPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Destination path. (Local path, which can only be in the usr directory and can be a relative directory, but the final real path cannot be outside the usr directory.<strong>cannot be a temporary path or cache path</strong>)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">let fs = ma.getFileSystemManager();
+
+fs.copyFile({
+  <span class="hljs-attr">srcPath</span>: <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/resourceFile.txt`</span>,
+  <span class="hljs-attr">destPath</span>: <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/targetFile.txt`</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+  },
+  <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The maximum length of the copied new file name is 255 characters. If the file name is too long, the API fails to be invoked.</li>
+<li>The maximum size of a file is 10 MB.</li>
+</ol>

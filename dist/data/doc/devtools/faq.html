@@ -1,0 +1,36 @@
+<h2 id="插件常见问题">插件常见问题</h2>
+<h3 id="如何更新模拟器？">如何更新模拟器？</h3>
+<p>当前版本不支持模拟器自动更新，如需更新模拟器，需手动修改，操作步骤如下：</p>
+<ol>
+<li><p>找到插件安装位置，不同操作系统的插件默认安装位置如下</p>
+<ul>
+<li><strong>Windows</strong> <code>%USERPROFILE%\.vscode\extensions</code></li>
+<li><strong>macOS</strong> <code>~/.vscode/extensions</code></li>
+</ul>
+</li>
+<li><p>选择<code>%USERPROFILE%\\.vscode\extensions\macleteam.macle-miniprogram-tools-[version-no]\src\utils\simulator</code>目录，其中 version-no 指的是插件的版本号。</p>
+</li>
+<li><p>替换相应模拟器即可，不同操作系统对应不同的模拟器（暂不支持 Linux 系统）</p>
+<ul>
+<li><strong>Windows</strong> 解压模拟器压缩包到 2 中<code>windows</code>目录</li>
+<li><strong>macOS</strong> 解压模拟器压缩包到 2 中<code>mac</code>目录</li>
+</ul>
+</li>
+<li><p>替换完成后，点击清除缓存功能，清除旧的模拟器缓存信息。</p>
+</li>
+</ol>
+<h3 id="插件更新后，模拟器页面一直加载中，无法显示小程序，怎么解决？">插件更新后，模拟器页面一直加载中，无法显示小程序，怎么解决？</h3>
+<ol>
+<li><p>找到小程序目录，不同操作系统位置如下</p>
+<ul>
+<li><strong>Windows</strong> <code>%USERPROFILE%\.macle\</code></li>
+<li><strong>macOS</strong> <code>~/.macle/</code></li>
+</ul>
+</li>
+<li><p>删除 1 中<code>.macle</code>文件夹，即可解决</p>
+</li>
+</ol>
+<h3 id="更新插件后，显示插件的版本还是旧版本，怎么解决？">更新插件后，显示插件的版本还是旧版本，怎么解决？</h3>
+<p>更新完插件后，一定要点击 VS Code 右下角的弹框提示，重新加载 VS Code</p>
+<h3 id="模拟器发生异常后，模拟器调试功能始终显示正在启动中，怎么解决？">模拟器发生异常后，模拟器调试功能始终显示正在启动中，怎么解决？</h3>
+<p>模拟器启动发生未知异常后，状态会变为启动中，可以通过关闭当前窗口，重新启动vscode重置模拟器状态</p>

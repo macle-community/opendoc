@@ -1,0 +1,85 @@
+<h2 id="转换器-cli">转换器 cli</h2>
+<h3 id="简介">简介</h3>
+<p>为了便于小程序跨平台开发，我们提供了基于支付宝/微信小程序转化为 macle 小程序的转换器</p>
+<h3 id="获取方式">获取方式</h3>
+<p>前往<a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">下载页面</a>，下载转换器包 <code>Macle_xx.x.x_DevSuite_Converter.zip</code></p>
+<blockquote>
+<p>将 Macle_xx.x.x_DevSuite_Converter.zip 解压后进入目录并打开文件夹内的package.json</p>
+</blockquote>
+<h3 id="使用方式">使用方式</h3>
+<p>在scripts对象中添加转换器的命令行</p>
+<p><strong>示例</strong></p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;@macle/convertor-embedding&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.1&quot;</span>,
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Macle convertor embedding&quot;</span>,
+  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;ISC&quot;</span>,
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;node ../macle-convertor-cli/build/build.js ../macle-convertor-embedding/dist&quot;</span>,
+    <span class="hljs-string">&quot;exchange&quot;</span>: <span class="hljs-string">&quot;node ./exchange.js&quot;</span>,
+    <span class="hljs-string">&quot;convertor&quot;</span>: <span class="hljs-string">&quot;macle-convertor-cli -t h5-macle -i <span class="hljs-subst">${inputProject}</span> -o <span class="hljs-subst">${outputProject}</span>&quot;</span>
+  }
+}
+</code></pre>
+<p>转换器命令行相关参数含义如下：</p>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-t</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要转换的小程序类别,微信为wx-macle，支付宝为ali-macle，H5转换为h5-macle</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">String</td>
+<td align="left">命令行执行位置的父文件夹</td>
+<td align="left">否</td>
+<td align="left">转换的小程序目录</td>
+</tr>
+<tr>
+<td align="left">-o</td>
+<td align="left">String</td>
+<td align="left">命令行执行位置的父文件夹</td>
+<td align="left">否</td>
+<td align="left">转换后的目录</td>
+</tr>
+<tr>
+<td align="left">-e</td>
+<td align="left">String</td>
+<td align="left">index.html</td>
+<td align="left">否</td>
+<td align="left">H5转换为小程序的首页入口（仅H5转换时生效）</td>
+</tr>
+<tr>
+<td align="left">-c</td>
+<td align="left">String</td>
+<td align="left">npm run build</td>
+<td align="left">否</td>
+<td align="left">H5工程执行编译操作的命令行（仅H5转换时生效）</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">String</td>
+<td align="left">命令行执行位置同级的dist文件夹</td>
+<td align="left">否</td>
+<td align="left">H5工程编译后生成的静态资源文件夹（仅H5转换时生效）</td>
+</tr>
+</tbody></table>
+<p>切换到转换器目录执行相关命令，以上述json文件为例，执行 <code>npm run convertor</code></p>
+<p><strong>转换成功界面</strong></p>
+<p><img src="/openplatform/macledocs/data/doc/extended/image/succeedExample.png" alt="image" ></p>
+<p><strong>转换失败页面</strong></p>
+<p><img src="/openplatform/macledocs/data/doc/extended/image/failedExample.png" alt="image" ></p>
+<h4 id="tips">Tips:</h4>
+<p>1、前端框架目前仅支持vue、react、angular，使用其他前端框架的H5工程暂不支持转换</p>

@@ -1,0 +1,68 @@
+<h2 id="machoosecontactobject-object">ma.chooseContact(Object object)</h2>
+<blockquote>
+<p>Open the phone address book to select a contact.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">phoneNumber</td>
+<td align="left">String</td>
+<td align="left">Phone number.</td>
+</tr>
+<tr>
+<td align="left">displayName</td>
+<td align="left">String</td>
+<td align="left">Contact person name.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.chooseContact({
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.phoneNumber);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.displayName);
+  }
+})
+</code></pre>

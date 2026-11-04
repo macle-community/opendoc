@@ -1,0 +1,14 @@
+<h2 id="recordermanagerofferrorfunction-listener">RecorderManager.offError(function listener)</h2>
+<blockquote>
+<p>Remove the listening function of the recording error event(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Specifies the listening function to be removed. If you do not specify a listener to remove, all registered listeners will be removed.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">Page</span>({
+    <span class="hljs-title">clearListener</span>() {
+        <span class="hljs-variable">recorderManager.offError</span>();
+    }
+})</span>
+</code></pre>

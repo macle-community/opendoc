@@ -1,0 +1,154 @@
+<h2 id="数据预拉取">数据预拉取</h2>
+<blockquote>
+<p>小程序冷启动时提前发起请求，<strong>并缓存请求内容</strong>，在真实请求时使用缓存数据，减少网络请求的时间。</p>
+</blockquote>
+<h3 id="简介">简介</h3>
+<p>通常来说，小程序获取网络数据是在首页 page 加载后使用 ma.request 来实现的。在运行时，小程序开发者可以对用户可能触发的下一步流程去进行数据的提前获取。小程序数据预取的主要功能是在启动前，提前按照小程序配置好的规则发起网络请求并缓存，在小程序启动后直接使用缓存数据，来避免因为等待网络数据返回而展示的 loading 或页面展示不全的情况</p>
+<h3 id="使用流程">使用流程</h3>
+<h3 id="配置预取规则">配置预取规则</h3>
+<p>在小程序项目根目录创建 preload.fetch，填写预加载配置。</p>
+<p><img src="/openplatform/macledocs/data/doc/api/storage/image/preload.png" alt="示例图" ></p>
+<h3 id="preloadfetch-配置">preload.fetch 配置</h3>
+<p><strong>注意：</strong> 实际的配置文件不支持注释，下面文件中的注释部分只是为了更好说明每个字段的作用，请在拷贝的时候从配置文件中删除。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th align="left">说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td>否</td>
+<td align="left">缓存数据类型，固定值为 <code>pre</code></td>
+<td>pre</td>
+</tr>
+<tr>
+<td>params</td>
+<td>Object</td>
+<td>是</td>
+<td align="left">解析配置的请求</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code class="language-json"><span class="hljs-regexp">//</span> preload.fetch
+[
+  {
+    <span class="hljs-string">&quot;fetchType&quot;</span>: <span class="hljs-string">&quot;pre&quot;</span>, <span class="hljs-regexp">//</span> 数据预拉取，固定为pre
+    <span class="hljs-string">&quot;params&quot;</span>: {
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https:*****&quot;</span>, <span class="hljs-regexp">//</span> 请求的 URL 地址
+      <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-regexp">//</span> http method，支持 GET/POST。
+      <span class="hljs-string">&quot;data&quot;</span>: { <span class="hljs-string">&quot;foo&quot;</span>: <span class="hljs-string">&quot;bar&quot;</span> },
+      <span class="hljs-string">&quot;timeout&quot;</span>: <span class="hljs-number">60000</span>,
+      <span class="hljs-string">&quot;header&quot;</span>: {
+        <span class="hljs-regexp">//</span> 可选。额外的 header 信息
+        <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>
+      }
+    }
+  }
+]
+</code></pre>
+<p>（目前 preload.fetch 限定只取<font color="red"><strong>前 10 条</strong></font> 数据）</p>
+<h3 id="params-配置说明">params 配置说明</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>String</td>
+<td>是</td>
+<td align="left">开发者服务器接口地址，支持变量 ${token}，通过 storage 获取 token</td>
+</tr>
+<tr>
+<td>header</td>
+<td>Object</td>
+<td>否</td>
+<td align="left">设置请求的 header，header 中不能设置 <strong>Referer</strong>。content-type 默认为 <strong>application/json</strong>，支持变量</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>Number</td>
+<td>否</td>
+<td align="left">超时时间，单位为毫秒</td>
+</tr>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>否</td>
+<td align="left">HTTP 请求方法，支持 Get 和 Post</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>否</td>
+<td align="left">请求的参数，支持变量</td>
+</tr>
+</tbody></table>
+<h3 id="获取预取数据">获取预取数据</h3>
+<h4 id="marequest-获取预取数据">ma.request 获取预取数据</h4>
+<p>当 preload.fetch 中 <code>fetchType</code> 参数值为 <code>pre</code> 时，调用 ma.request 返回预取数据</p>
+<p>ma.request 新增 <code>preload</code> 回调，返回预取数据</p>
+<p>如果正常请求到来时，对应预取请求还没有执行完，<code>preload</code> 返回上一次预取数据</p>
+<p>(首次启动小程序，如果预取未完成，返回为空)</p>
+<h5 id="preload-返回值">preload 返回值</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td>开发者服务器返回的数据</td>
+</tr>
+<tr>
+<td>statusCode</td>
+<td>Number</td>
+<td>预取数据状态码</td>
+</tr>
+<tr>
+<td>errMsg</td>
+<td>String</td>
+<td>预取成功或失败的详细信息</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// 当 preload.fetch 中 fetchType 参数值为 pre 时获取预取数据</span>
+<span class="hljs-variable">ma</span>.<span class="hljs-property">request</span>({
+<span class="hljs-string">&quot;method&quot;</span>:<span class="hljs-string">&quot;GET&quot;</span>,
+ <span class="hljs-string">&quot;url&quot;</span>:<span class="hljs-string">&quot;https:*****&quot;</span>,
+ <span class="hljs-string">&quot;header&quot;</span>:{
+   <span class="hljs-string">&quot;content-type&quot;</span>:<span class="hljs-string">&quot;application/json&quot;</span>
+ },
+ <span class="hljs-string">&quot;data&quot;</span>:{
+   <span class="hljs-string">&quot;token&quot;</span>:<span class="hljs-string">&quot;xxxxxxx&quot;</span>,
+   },
+ <span class="hljs-variable">timeout</span>:<span class="hljs-string">&quot;60000&quot;</span>，
+ <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>){},
+ <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>){},
+ <span class="hljs-title function_">preload</span>(<span class="hljs-params">res</span>){ <span class="hljs-comment">// 返回预取数据</span>
+    <span class="hljs-variable">console</span>.<span class="hljs-property">log</span>(<span class="hljs-variable">res</span>.<span class="hljs-property">data</span>)
+ }
+})
+</code></pre>
+<h4 id="magetbackgroundfetchdata-获取预取数据">ma.getBackgroundFetchData 获取预取数据</h4>
+<p>调用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">ma.getBackgroundFetchData</a>  可获取数据预拉取缓存的所有数据</p>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ul>
+<li>每次小程序启动时会重新进行预取更新缓存</li>
+<li>在小程序每次更新时会清空缓存避免缓存过大</li>
+<li>每条缓存数据最大为 1M</li>
+</ul>

@@ -1,0 +1,151 @@
+<h2 id="scroll-view">scroll-view</h2>
+<blockquote>
+<p>Scrollable view area. When the vertical scrolling mode is used, you need to set a fixed height using MASS. The default length unit of component attributes is pixel.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scroll-x</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Horizontal scrolling.</td>
+</tr>
+<tr>
+<td align="left">scroll-y</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Vertical scrolling.</td>
+</tr>
+<tr>
+<td align="left">upper-threshold</td>
+<td align="left">Number/String</td>
+<td align="left">50</td>
+<td align="left">No</td>
+<td align="left">Threshold of the distance to the top or left to trigger the scrolltoupper event.</td>
+</tr>
+<tr>
+<td align="left">lower-threshold</td>
+<td align="left">Number/String</td>
+<td align="left">50</td>
+<td align="left">No</td>
+<td align="left">Threshold of the distance to the bottom or right to trigger the scrolltolower event.</td>
+</tr>
+<tr>
+<td align="left">scroll-top</td>
+<td align="left">Number/String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Position of the vertical scrollbar.</td>
+</tr>
+<tr>
+<td align="left">scroll-left</td>
+<td align="left">Number/String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Position of the horizontal scrollbar.</td>
+</tr>
+<tr>
+<td align="left">scroll-into-view</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Direction in which an element can be scrolled. The value must be the ID of a subelement. The ID cannot start with a digit.</td>
+</tr>
+<tr>
+<td align="left">scroll-with-animation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to use animated transitions when setting the position of the scrollbar.</td>
+</tr>
+<tr>
+<td align="left">enhanced</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable the <strong>scroll-view</strong> enhancement feature.</td>
+</tr>
+<tr>
+<td align="left">show-scrollbar</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">No</td>
+<td align="left">Whether to display the scrollbar. It is available when the <strong>enhanced</strong> attribute is enabled.</td>
+</tr>
+<tr>
+<td align="left">bindscrolltoupper</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when you scroll to the top or left.</td>
+</tr>
+<tr>
+<td align="left">bindscrolltolower</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when you scroll to the bottom or right.</td>
+</tr>
+<tr>
+<td align="left">bindscroll</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when scrolling is performed. The output is <strong>event.detail =</strong> <em>{ scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY }</em>.</td>
+</tr>
+<tr>
+<td align="left">binddragstart</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Sliding start event. It is available when the <strong>enhanced</strong> attribute is enabled. The output is <strong>detail</strong> <em>{ scrollTop, scrollLef }</em>.</td>
+</tr>
+<tr>
+<td align="left">binddragging</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Sliding event. It is available when the <strong>enhanced</strong> attribute is enabled. The output is <strong>detail</strong> <em>{ scrollTop, scrollLeft }</em>.</td>
+</tr>
+<tr>
+<td align="left">binddragend</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Sliding end event. It is available when the <strong>enhanced</strong> attribute is enabled. The output is <strong>detail</strong> <em>{ scrollTop, scrollLeft}</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;<span class="hljs-built_in">view</span>&gt;
+  &lt;scroll-<span class="hljs-built_in">view</span> scroll-y=&#x27;<span class="hljs-literal">true</span>&#x27; <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">height</span>: 200px;&#x27;&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: red; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: blue; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: green; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: yellow; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+  &lt;/scroll-<span class="hljs-built_in">view</span>&gt;
+&lt;/<span class="hljs-built_in">view</span>&gt;
+
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li><p>The priority of scroll-into-view is higher than that of scroll-top. scroll-into-view is valid only in the initial
+state.</p>
+</li>
+<li><p>When scroll-view is scrolled, the page is prevented from rebounding. Therefore, when scroll-view is scrolled, the
+onPullDownRefresh hook function cannot be called.</p>
+</li>
+<li><p>To use the drop-down refresh, you need to use the scrolling of the page instead of scroll-view. In this case, you can
+return to the top of the page by clicking the top status bar.</p>
+</li>
+</ol>

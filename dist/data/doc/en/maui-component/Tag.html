@@ -1,0 +1,158 @@
+<h2 id="tag">Tag</h2>
+<blockquote>
+<p>Used to tag keywords and summarize the main content.(Minimum version: 24.9.0)</p>
+</blockquote>
+<h3 id="import">Import</h3>
+<p>Introduce the component to&#39;app.json&#39; or&#39;index.json&#39;.</p>
+<pre><code class="language-json"><span class="hljs-string">&quot;usingComponents&quot;</span>: {
+  <span class="hljs-string">&quot;maui-tag&quot;</span>: <span class="hljs-string">&quot;@mauit/app/tag/index&quot;</span>
+}
+</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>The  type attribute controls the color of the label. The default color is gray.</p>
+<pre><code class="language-html">
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;label <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;label <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;label <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+</code></pre>
+<h4 id="hollow-style">Hollow Style</h4>
+<p>Set the&#39;plain&#39; property to a hollow style.</p>
+<pre><code class="language-html">
+&lt;maui-<span class="hljs-meta">tag</span> plain <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> plain <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;label <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> plain <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;label <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> plain <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;label <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+</code></pre>
+<h4 id="rounded-corner-style">Rounded Corner Style</h4>
+<p>Use&#39;round&#39; to set the rounded corner style.</p>
+<pre><code class="language-html">
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;label <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;label <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;label <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+</code></pre>
+<h4 id="marker-style">Marker Style</h4>
+<p>Use&#39;mark&#39; to set it to the mark style (semi-circular corner).</p>
+<pre><code class="language-html">
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-keyword">mark</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-keyword">mark</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;success&quot;</span>&gt;label <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-keyword">mark</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;label <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+&lt;maui-<span class="hljs-keyword">tag</span> <span class="hljs-keyword">mark</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;label <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-keyword">tag</span>&gt;
+</code></pre>
+<h4 id="custom-colors">Custom Colors</h4>
+<pre><code class="language-html">
+&lt;maui-tag <span class="hljs-built_in">color</span>=<span class="hljs-string">&quot;#f2826a&quot;</span>&gt;<span class="hljs-built_in">label</span> <span class="hljs-number">1</span>&lt;/maui-tag&gt;
+&lt;maui-tag <span class="hljs-built_in">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span>&gt;<span class="hljs-built_in">label</span> <span class="hljs-number">2</span>&lt;/maui-tag&gt;
+&lt;maui-tag <span class="hljs-built_in">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span> plain&gt;<span class="hljs-built_in">label</span> <span class="hljs-number">3</span>&lt;/maui-tag&gt;
+&lt;maui-tag <span class="hljs-built_in">color</span>=<span class="hljs-string">&quot;#ffe1e1&quot;</span> text-<span class="hljs-built_in">color</span>=<span class="hljs-string">&quot;#ad0000&quot;</span>&gt;<span class="hljs-built_in">label</span> <span class="hljs-number">4</span>&lt;/maui-tag&gt;
+</code></pre>
+<h4 id="label-size">Label Size</h4>
+<pre><code class="language-html">
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;danger&quot;</span> size=<span class="hljs-string">&quot;medium&quot;</span>&gt;label <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+&lt;maui-<span class="hljs-meta">tag</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;danger&quot;</span> size=<span class="hljs-string">&quot;large&quot;</span>&gt;label <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-meta">tag</span>&gt;
+</code></pre>
+<h4 id="closeable-tags">Closeable Tags</h4>
+<p>Adding the&#39;closeable&#39; attribute indicates that the tag can be closed. When the tag is closed, the&#39;close&#39; event is
+triggered. In the&#39;close&#39; event, the logic for hiding the tag can be executed.</p>
+<pre><code class="language-html">
+&lt;maui-tag <span class="hljs-attr">ma</span>:<span class="hljs-keyword">if</span>=<span class="hljs-string">&quot;{{ show.primary }}&quot;</span> closeable size=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> data-id=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bind</span>:close=<span class="hljs-string">&quot;onClose&quot;</span>&gt;label <span class="hljs-number">1</span>&lt;/maui-tag&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tag</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;{{ show.success }}&quot;</span> <span class="hljs-attr">closeable</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;medium&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;success&quot;</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;success&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>label 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tag</span>&gt;</span></span>
+<span class="hljs-title class_">Page</span>({
+   <span class="hljs-attr">data</span>: {
+     <span class="hljs-attr">show</span>: {
+       <span class="hljs-attr">primary</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>,
+    },
+  },
+  <span class="hljs-title function_">onClose</span>(<span class="hljs-params">event</span>) {
+   <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+     [<span class="hljs-string">`show.<span class="hljs-subst">${event.currentTarget.dataset.id}</span>`</span>]: <span class="hljs-literal">false</span>,
+   });
+  },
+});
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Type</td>
+<td align="left">Type. The value can be <code>primary</code> <code>success</code> <code>danger</code> <code>warning</code></td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Size. The value can be &#39;large&#39; or &#39;medium&#39;</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">plain</td>
+<td align="left">Whether it is a hollow style</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left">Whether it is a rounded corner style</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">mark</td>
+<td align="left">Whether it is marker style</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">text-color</td>
+<td align="left">Text color. The priority is higher than &#39;color&#39; attribute.</td>
+<td align="left">String</td>
+<td align="left"><code>white</code></td>
+</tr>
+<tr>
+<td align="left">closeable</td>
+<td align="left">Whether it is closeable tag</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="slot">Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Customized Tag Display Content</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+<th align="left">Callback Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:close</td>
+<td align="left">Triggered when a tag is closed.</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

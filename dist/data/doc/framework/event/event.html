@@ -1,0 +1,271 @@
+<h2 id="事件">事件</h2>
+<h4 id="什么是事件">什么是事件</h4>
+<ul>
+<li>事件是视图层到逻辑层的通讯方式。</li>
+<li>事件可以将用户的行为反馈到逻辑层进行处理。</li>
+<li>事件可以绑定在组件上，当达到触发事件，就会执行逻辑层中对应的事件处理函数。</li>
+<li>事件对象可以携带额外信息，如 id, dataset, touches。</li>
+</ul>
+<h4 id="事件的使用方式">事件的使用方式</h4>
+<ul>
+<li><p>在组件中绑定一个事件处理函数。
+如 bindtap，当用户点击该组件的时候会在该页面对应的 Page 中找到相应的事件处理函数。</p>
+<pre><code>&lt;<span class="hljs-keyword">view</span> id=<span class="hljs-string">&quot;tapTest&quot;</span> data-<span class="hljs-keyword">hi</span>=<span class="hljs-string">&quot;Macle&quot;</span> bindtap=<span class="hljs-string">&quot;tapName&quot;</span>&gt; Click me! &lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+</li>
+<li><p>在相应的 Page 定义中写上相应的事件处理函数，参数是 event。</p>
+<pre><code>Page({
+  <span class="hljs-attr">tapName</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e)
+  }
+})
+</code></pre>
+</li>
+<li><p>可以看到 log 出来的信息大致如下：</p>
+</li>
+</ul>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;tap&quot;</span>,
+  <span class="hljs-string">&quot;timeStamp&quot;</span>: <span class="hljs-number">895</span>,
+  <span class="hljs-string">&quot;target&quot;</span>: {
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;tapTest&quot;</span>,
+    <span class="hljs-string">&quot;dataset&quot;</span>: {
+      <span class="hljs-string">&quot;hi&quot;</span>: <span class="hljs-string">&quot;macle&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;currentTarget&quot;</span>: {
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;tapTest&quot;</span>,
+    <span class="hljs-string">&quot;dataset&quot;</span>: {
+      <span class="hljs-string">&quot;hi&quot;</span>: <span class="hljs-string">&quot;macle&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;detail&quot;</span>: {
+    <span class="hljs-string">&quot;x&quot;</span>: <span class="hljs-number">53</span>,
+    <span class="hljs-string">&quot;y&quot;</span>: <span class="hljs-number">14</span>
+  },
+  <span class="hljs-string">&quot;touches&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;identifier&quot;</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-string">&quot;pageX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;pageY&quot;</span>: <span class="hljs-number">14</span>,
+      <span class="hljs-string">&quot;clientX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;clientY&quot;</span>: <span class="hljs-number">14</span>
+    }
+  ],
+  <span class="hljs-string">&quot;changedTouches&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;identifier&quot;</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-string">&quot;pageX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;pageY&quot;</span>: <span class="hljs-number">14</span>,
+      <span class="hljs-string">&quot;clientX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;clientY&quot;</span>: <span class="hljs-number">14</span>
+    }
+  ]
+}
+</code></pre>
+<h3 id="事件详解">事件详解</h3>
+<h4 id="事件分类">事件分类</h4>
+<p>事件分为冒泡事件和非冒泡事件：</p>
+<ol>
+<li>冒泡事件：当一个组件上的事件被触发后，该事件会向父节点传递。</li>
+<li>非冒泡事件：当一个组件上的事件被触发后，该事件不会向父节点传递。</li>
+</ol>
+<p>MAML 的冒泡事件列表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">触发条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">touchstart</td>
+<td align="left">手指触摸动作开始</td>
+</tr>
+<tr>
+<td align="left">touchmove</td>
+<td align="left">手指触摸后移动</td>
+</tr>
+<tr>
+<td align="left">touchcancel</td>
+<td align="left">手指触摸动作被打断，如来电提醒，弹窗</td>
+</tr>
+<tr>
+<td align="left">touchend</td>
+<td align="left">手指触摸动作结束</td>
+</tr>
+<tr>
+<td align="left">tap</td>
+<td align="left">手指触摸后马上离开</td>
+</tr>
+<tr>
+<td align="left">longtap</td>
+<td align="left">手指触摸后，超过 350ms 再离开（推荐使用 longpress 事件代替）</td>
+</tr>
+</tbody></table>
+<p><strong>注：除上表之外的其他组件自定义事件如无特殊声明都是非冒泡事件，如 form 的<code>submit</code>事件，input 的<code>input</code>事件，scroll-view 的<code>scroll</code>事件，(详见各个组件))</strong></p>
+<h4 id="普通事件绑定">普通事件绑定</h4>
+<p>事件绑定的写法类似于组件的属性，如：</p>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handleTap&quot;</span>&gt;</span> Click here! <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>如果用户点击这个 view ，则页面的 <code>handleTap</code> 会被调用。</p>
+<p>事件绑定函数可以是一个数据绑定，如：</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">handlerName</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> Click here! <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>此时，页面的 <code>this.data.handlerName</code> 必须是一个字符串，指定事件处理函数名；如果它是个空字符串，则这个绑定会失效（可以利用这个特性来暂时禁用一些事件）。</p>
+<p>在大多数组件和自定义组件中， <code>bind</code> 后可以紧跟一个冒号，其含义不变，如 <code>bind:tap</code> 。</p>
+<h4 id="绑定并阻止事件冒泡">绑定并阻止事件冒泡</h4>
+<p>除 <code>bind</code> 外，也可以用 <code>catch</code> 来绑定事件。与 <code>bind</code> 不同， <code>catch</code> 会阻止事件向上冒泡。</p>
+<p>例如在下边这个例子中，点击 inner view 会先后调用<code>handleTap3</code>和<code>handleTap2</code>(因为 tap 事件会冒泡到 middle view，而 middle view 阻止了 tap 事件冒泡，不再向父节点传递)，点击 middle view 会触发<code>handleTap2</code>，点击 outer view 会触发<code>handleTap1</code>。</p>
+<pre><code class="language-maml"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;outer&quot; bindtap<span class="hljs-operator">=</span>&quot;handleTap1&quot;<span class="hljs-operator">&gt;</span>
+  <span class="hljs-keyword">outer</span> <span class="hljs-keyword">view</span>
+  <span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;middle&quot; catchtap<span class="hljs-operator">=</span>&quot;handleTap2&quot;<span class="hljs-operator">&gt;</span>
+    middle <span class="hljs-keyword">view</span>
+    <span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;inner&quot; bindtap<span class="hljs-operator">=</span>&quot;handleTap3&quot;<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">view</span> <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+</code></pre>
+<h4 id="事件对象">事件对象</h4>
+<p>如无特殊说明，当组件触发事件时，逻辑层绑定该事件的处理函数会收到一个事件对象。</p>
+<p><strong>BaseEvent 基础事件对象属性列表：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">type</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">timeStamp</td>
+<td align="left">Integer</td>
+</tr>
+<tr>
+<td align="left">target</td>
+<td align="left">Object</td>
+</tr>
+<tr>
+<td align="left">currentTarget</td>
+<td align="left">Object</td>
+</tr>
+</tbody></table>
+<p><strong>TouchEvent 触摸事件对象属性列表（继承 BaseEvent）：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">touches</td>
+<td align="left">Array</td>
+<td align="left">触摸事件，当前停留在屏幕中的触摸点信息的数组</td>
+</tr>
+<tr>
+<td align="left">changedTouches</td>
+<td align="left">Array</td>
+<td align="left">触摸事件，当前变化的触摸点信息的数组</td>
+</tr>
+</tbody></table>
+<h4 id="type">type</h4>
+<p>代表事件的类型。</p>
+<h4 id="timestamp">timeStamp</h4>
+<p>页面打开到触发事件所经过的毫秒数。</p>
+<h4 id="target">target</h4>
+<p>触发事件的源组件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">事件源组件的 id</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">事件源组件上由<code>data-</code>开头的自定义属性组成的集合</td>
+</tr>
+</tbody></table>
+<h4 id="currenttarget">currentTarget</h4>
+<p>事件绑定的当前组件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">当前组件的 id</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">当前组件上由<code>data-</code>开头的自定义属性组成的集合</td>
+</tr>
+</tbody></table>
+<p><strong>说明： target 和 currentTarget 可以参考上例中，点击 inner view 时，<code>handleTap3</code> 收到的事件对象 target 和 currentTarget 都是 inner，而 <code>handleTap2</code> 收到的事件对象 target 就是 inner，currentTarget 就是 middle。</strong></p>
+<h4 id="dataset">dataset</h4>
+<p>在组件节点中可以附加一些自定义数据。这样，在事件中可以获取这些自定义的节点数据，用于事件的逻辑处理。</p>
+<p>在 MAML 中，这些自定义数据以 <code>data-</code> 开头，多个单词由连字符 <code>-</code> 连接。这种写法中，连字符写法会转换成驼峰写法，而大写字符会自动转成小写字符。如：</p>
+<ul>
+<li><code>data-element-type</code> ，最终会呈现为 <code>event.currentTarget.dataset.elementType</code> ；</li>
+<li><code>data-elementType</code> ，最终会呈现为 <code>event.currentTarget.dataset.elementtype</code> 。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre><code class="language-maml">&lt;<span class="hljs-keyword">view</span> data-<span class="hljs-keyword">alpha</span>-beta=<span class="hljs-string">&quot;1&quot;</span> data-alphaBeta=<span class="hljs-string">&quot;2&quot;</span> bindtap=<span class="hljs-string">&quot;bindViewTap&quot;</span>&gt; DataSet <span class="hljs-keyword">Test</span> &lt;/<span class="hljs-keyword">view</span>&gt; 
+
+Page({
+  bindViewTap:function(event){
+    event.currentTarget.dataset.alphaBeta === 1 <span class="hljs-comment">// - 会转为驼峰写法</span>
+    event.currentTarget.dataset.alphabeta === 2 <span class="hljs-comment">// 大写会转为小写</span>
+  }
+})
+</code></pre>
+<h4 id="touches">touches</h4>
+<p>touches 是一个数组，每个元素为一个 Touch 对象（canvas 触摸事件中携带的 touches 是 CanvasTouch 数组）。 表示当前停留在屏幕上的触摸点。</p>
+<h4 id="touch-对象">Touch 对象</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">identifier</td>
+<td align="left">Number</td>
+<td align="left">触摸点的标识符</td>
+</tr>
+<tr>
+<td align="left">pageX, pageY</td>
+<td align="left">Number</td>
+<td align="left">距离文档左上角的距离，文档的左上角为原点 ，横向为 X 轴，纵向为 Y 轴</td>
+</tr>
+<tr>
+<td align="left">clientX, clientY</td>
+<td align="left">Number</td>
+<td align="left">距离页面可显示区域（屏幕除去导航条）左上角距离，横向为 X 轴，纵向为 Y 轴</td>
+</tr>
+</tbody></table>
+<h4 id="changedtouches">changedTouches</h4>
+<p>changedTouches 数据格式同 touches。 表示有变化的触摸点，如从无变有（touchstart），位置变化（touchmove），从有变无（touchend、touchcancel）。</p>
+<h4 id="detail">detail</h4>
+<p>自定义事件所携带的数据，如表单组件的提交事件会携带用户的输入，媒体的错误事件会携带错误信息，详见组件定义中各个事件的定义。</p>
+<p>点击事件的<code>detail</code> 带有的 x, y 同 pageX, pageY 代表距离文档左上角的距离。</p>
+<h4 id="sjs-响应事件"><a onclick="_mdLinkClick(this.href)" href="#/framework/sjs-event">SJS 响应事件</a></h4>

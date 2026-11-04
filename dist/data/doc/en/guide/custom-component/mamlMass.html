@@ -1,0 +1,60 @@
+<h2 id="component-templates-and-styles">Component Templates and Styles</h2>
+<p>Similar to a page, a custom component has its own MAML template and MASS style.</p>
+<h2 id="component-templates">Component Templates</h2>
+<p>The method for writing component templates is the same as that for writing the page template. The node tree generated after the component template and component data are combined is inserted to the reference position of the component.</p>
+<p>A slot node can be provided in a component template to bear the child nodes provided when the component is referenced.</p>
+<pre><code><span class="hljs-comment">&lt;!-- Component template --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>This is the internal node of the component.<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-comment">&lt;!--Page template that references the component --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- This part of content is added to the position of the &lt;slot&gt; component. --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>This is the content inserted into the <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span> component.<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>Note: A custom component referenced in the template and the corresponding node name must be explicitly defined in the JSON file. Otherwise, the component is regarded as a meaningless node.</p>
+<h2 id="binding-template-data">Binding Template Data</h2>
+<p>Similar to a normal MAML template, you can use data binding to pass dynamic data to the attributes of a child component.</p>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- Page template that references the component --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">prop-a</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">dataFieldA</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">prop-b</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">dataFieldB</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- This part of content is added to the position of the &lt;slot&gt; component. --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>This is the content inserted into the <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span> component.<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>In the preceding example, the propA and propB attributes of the component receive the data transferred by the page. The page can use setData to change the bound data fields.</p>
+<h2 id="component-styles">Component Styles</h2>
+<p>Style of the MASS file corresponding to the component, which takes effect only for the nodes in the MAML component. Pay attention to the following points when compiling the component style:</p>
+<ul>
+<li>ID selectors (#a), attribute selectors ([a]), and tag name selectors cannot be used on the components and pages that reference components. Use class selectors instead.</li>
+<li>Unexpected behavior may happen in extreme cases if you use descendant selectors (.a .b) in components and pages that reference components. If the unexpected behavior happens, avoid using the descendant selectors.</li>
+<li>Child selectors (.a&gt;.b) can be used only between the view component and its child nodes. If they are used between other components, unexpected behavior may occur.</li>
+<li>Inherited styles, such as font and color, are inherited from outside the component to inside the component.</li>
+<li>Except the inherited styles, the styles in app.mass and the style of the page where the component is located are invalid for the custom component (unless the component style isolation option is changed).</li>
+<li>The custom component supports style, class, and tap events.</li>
+</ul>
+<pre><code class="language-css"><span class="hljs-selector-id">#a</span> {
+} <span class="hljs-comment">/* It cannot be used in the component. */</span>
+<span class="hljs-selector-attr">[a]</span> {
+} <span class="hljs-comment">/* It cannot be used in the component.*/</span>
+<span class="hljs-selector-tag">button</span> {
+} <span class="hljs-comment">/* It cannot be used in the component. */</span>
+<span class="hljs-selector-class">.a</span> &gt; <span class="hljs-selector-class">.b</span> {
+} <span class="hljs-comment">/* It may not take effect unless .a is a view component node. */</span>
+</code></pre>
+<h2 id="component-style-isolation">Component Style Isolation</h2>
+<p>The principle is the same as that of Alipay:</p>
+<pre><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;styleIsolation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;apply-shared&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>The options are as follows:</p>
+<ul>
+<li>apply-shared: The app.mass style and other styles (pages for which shared is set and other custom components) affect the custom component, but the style specified in MASS of the custom component does not affect the external.</li>
+<li>(Default) shared: The app.mass style and other styles (pages for which shared is set and other custom components) affect the page. The style specified in MASS of the custom component also affects the external.</li>
+</ul>

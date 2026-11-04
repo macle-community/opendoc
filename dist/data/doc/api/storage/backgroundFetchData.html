@@ -1,0 +1,103 @@
+<h2 id="magetbackgroundfetchdata">ma.getBackgroundFetchData</h2>
+<blockquote>
+<p>获取数据预拉取缓存的所有数据，该 Api 会等待所有的预取请求完成之后（不使用上次数据），将所有的预取数据存放在一个 JsonArray 中返回给用户（最低版本：23.12.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th align="left">必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td></td>
+<td align="left">是</td>
+<td>缓存数据类型，固定值为 <code>pre</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td align="left">否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td align="left">否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td align="left">否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="success回调函数">success回调函数</h4>
+<h5 id="返回值">返回值</h5>
+<h5 id="object">object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>Array</td>
+<td>缓存数据集合</td>
+</tr>
+</tbody></table>
+<h5 id="data">data</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchedData</td>
+<td>String</td>
+<td>缓存数据</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>Number</td>
+<td>客户端拿到缓存数据的时间戳</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>页面路径</td>
+</tr>
+<tr>
+<td>query</td>
+<td>String</td>
+<td>查询参数</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// ma.getBackgroundFetchData api</span>
+ma.getBackgroundFetchData({
+  <span class="hljs-attr">fetchType</span>: <span class="hljs-string">&#x27;pre&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].fetchedData); <span class="hljs-comment">// 缓存数据</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].<span class="hljs-built_in">timeStamp</span>); <span class="hljs-comment">// 客户端拿到缓存数据的时间戳</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].path); <span class="hljs-comment">// 页面路径</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].query); <span class="hljs-comment">// query 参数</span>
+  }
+});
+</code></pre>

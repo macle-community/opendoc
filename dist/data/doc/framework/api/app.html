@@ -1,0 +1,84 @@
+<h2 id="appobject-object">App(Object object)</h2>
+<p>注册小程序。接受一个 Object 参数，其指定小程序的生命周期回调等。</p>
+<blockquote>
+<p>App() 必须在 app.js 中调用，必须调用且只能调用一次。不然会出现无法预期的后果。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">onLaunch</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">生命周期回调——监听小程序初始化</td>
+</tr>
+<tr>
+<td align="left">onShow</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">生命周期回调——监听小程序启动或切前台</td>
+</tr>
+<tr>
+<td align="left">onHide</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">生命周期回调——监听小程序切后台</td>
+</tr>
+<tr>
+<td align="left">onError</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">错误监听函数</td>
+</tr>
+<tr>
+<td align="left">其他</td>
+<td align="left">Any</td>
+<td align="left">否</td>
+<td align="left">开发者可以添加任意的函数或数据变量到 Object 参数中，用 this 可以访问</td>
+</tr>
+</tbody></table>
+<h4 id="onlaunchobject-object">onLaunch(Object object)</h4>
+<p>小程序初始化完成时触发，全局只触发一次。</p>
+<h4 id="onshowobject-object">onShow(Object object)</h4>
+<p>小程序启动，或从后台进入前台显示时触发。</p>
+<h4 id="onhide">onHide()</h4>
+<p>小程序从前台进入后台时触发。</p>
+<h4 id="onerrorstring-error">onError(String error)</h4>
+<p>小程序发生脚本错误或 API 调用报错时触发。</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-built_in">App</span>({
+  onLaunch (options) {
+    <span class="hljs-comment">// Do something initial when launch.</span>
+  },
+  onShow (options) {
+    <span class="hljs-comment">// Do something when show.</span>
+  },
+  onHide () {
+    <span class="hljs-comment">// Do something when hide.</span>
+  },
+  onError (msg) {
+    console<span class="hljs-selector-class">.log</span>(msg)
+  },
+  globalData: <span class="hljs-string">&#x27;I am global data&#x27;</span>
+})
+</code></pre>
+<h2 id="appobject-getapp">AppObject getApp()</h2>
+<p>获取到小程序全局唯一的 App 实例。</p>
+<h3 id="示例代码-1">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// other.js</span>
+<span class="hljs-keyword">var</span> appInstance = getApp()
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(appInstance.globalData) <span class="hljs-comment">// I am global data</span>
+</code></pre>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li>不要在定义于 App() 内的函数中，或调用 App 前调用 getApp() ，使用 this 就可以拿到 app 实例。</li>
+<li>通过 getApp() 获取实例之后，不要私自调用生命周期函数。</li>
+</ul>

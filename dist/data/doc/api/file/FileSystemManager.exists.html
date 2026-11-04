@@ -1,0 +1,80 @@
+<h2 id="filesystemmanagerexistsobject-object">FileSystemManager.exists(Object object)</h2>
+<blockquote>
+<p>判断文件或文件夹是否存在（最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要判断的路径 (本地路径，允许在usr目录下是相对目录，但最终的真实路径不能在usr之外，<strong>允许检查临时路径和缓存路径文件</strong>)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="success-回调函数">success 回调函数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">exist</td>
+<td align="left">Boolean</td>
+<td align="left">是否存在</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">是文件类型（<strong>file</strong>）还是文件夹类型（<strong>directory</strong>）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+
+fs.<span class="hljs-title function_">readdir</span>({
+  <span class="hljs-attr">path</span>: <span class="hljs-string">`path`</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">exists</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">type</span>);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>

@@ -1,0 +1,92 @@
+<h2 id="magetmenubuttonboundingclientrectobject-object">ma.getMenuButtonBoundingClientRect(Object object)</h2>
+<blockquote>
+<p>Obtain the layout position information of a menu button (capsule button in the upper right corner). The coordinate information uses the upper left corner of the screen as the origin.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="return-value">Return Value</h4>
+<h4 id="object">Object</h4>
+<p>Layout position information of a menu button.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">Width, in pixels.</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">Height, in pixels.</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">Number</td>
+<td align="left">Upper boundary coordinate, in pixels.</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">Number</td>
+<td align="left">Right boundary coordinate, in pixels.</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">Number</td>
+<td align="left">Lower boundary coordinate, in pixels.</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">Number</td>
+<td align="left">Left boundary coordinate, in pixels.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getMenuButtonBoundingClientRect({
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.width);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">top</span>);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">right</span>);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.bottom);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">left</span>);
+  }
+});
+</code></pre>

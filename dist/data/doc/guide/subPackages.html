@@ -1,0 +1,72 @@
+<h2 id="分包加载">分包加载</h2>
+<p>某些情况下，开发者需要将小程序划分成不同的子包，在构建时打包成不同的分包，用户在使用时按需进行加载。</p>
+<p>在构建小程序分包项目时，构建会输出一个或多个分包。每个使用分包小程序必定含有一个主包。所谓的主包，即放置默认启动页面/ TabBar 页面，以及一些所有分包都需用到公共资源/ JS 脚本；而分包则是根据开发者的配置进行划分。</p>
+<p>在小程序启动时，默认会下载主包并启动主包内页面，当用户进入分包内某个页面时，客户端会把对应分包下载下来，下载完成后再进行展示。</p>
+<p>对小程序进行分包，可以优化小程序首次启动的下载时间，以及在多团队共同开发时可以更好的解耦协作。</p>
+<h3 id="使用分包">使用分包</h3>
+<h4 id="配置方法">配置方法</h4>
+<p>假设支持分包的小程序目录结构如下：</p>
+<pre><code>├── <span class="hljs-keyword">app</span>.js
+├── <span class="hljs-keyword">app</span>.json
+├── <span class="hljs-keyword">app</span>.mass
+├── packageA
+│   └── pages
+│       ├── apple
+│       └── banana
+├── packageB
+│   └── pages
+│       ├── dog
+│       └── <span class="hljs-keyword">cat</span>
+├── pages
+│   ├── index
+│   └── logs
+└── utils
+</code></pre>
+<p>开发者通过在 app.json subPackages 字段声明项目分包结构：</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index&quot;</span>, <span class="hljs-string">&quot;pages/logs&quot;</span>],
+  <span class="hljs-string">&quot;subPackages&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;root&quot;</span>: <span class="hljs-string">&quot;packageA&quot;</span>,
+      <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/apple&quot;</span>, <span class="hljs-string">&quot;pages/banana&quot;</span>]
+    },
+    {
+      <span class="hljs-string">&quot;root&quot;</span>: <span class="hljs-string">&quot;packageB&quot;</span>,
+      <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/cat&quot;</span>, <span class="hljs-string">&quot;pages/dog&quot;</span>]
+    }
+  ]
+}
+</code></pre>
+<p>subPackages 中，每个分包的配置属性如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">root</td>
+<td align="left">String</td>
+<td align="left">分包根目录</td>
+</tr>
+<tr>
+<td align="left">pages</td>
+<td align="left">Array&lt;String&gt;</td>
+<td align="left">分包页面路径，相对与分包根目录</td>
+</tr>
+</tbody></table>
+<h4 id="打包原则">打包原则</h4>
+<ul>
+<li>声明 subPackages 后，将按 subPackages 配置路径进行打包，subPackages 配置路径外的目录将被打包到 主包 中</li>
+<li>主包 也可以有自己的 pages（即最外层的 pages 字段）</li>
+<li>subPackages 的根目录不能是另外一个 subPackages 内的子目录</li>
+<li>tabBar 页面必须在 主包 内</li>
+</ul>
+<h4 id="引用原则">引用原则</h4>
+<ul>
+<li>packageA 无法 require packageB JS 文件，但可以 require 主包、自己 package 内的 JS 文件</li>
+<li>packageA 无法 import packageB 的 template，但可以 import 主包、自己 package 内的 template</li>
+<li>packageA 无法使用 packageB 的资源，但可以使用 主包、自己 package 内的资源</li>
+</ul>

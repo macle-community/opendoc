@@ -1,0 +1,241 @@
+<h1 id="componentobject-object">Component(Object object)</h1>
+<p>创建自定义组件，接受一个 <code>Object</code> 类型的参数。</p>
+<h2 id="参数">参数</h2>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>定义段</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>properties</td>
+<td>Object Map</td>
+<td>否</td>
+<td>组件的对外属性，是属性名到属性设置的映射表</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>否</td>
+<td>组件的内部数据，和 <code>properties</code> 一同用于组件的模板渲染</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>Object</td>
+<td>否</td>
+<td>组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/events">组件间通信与事件</a></td>
+</tr>
+<tr>
+<td>behaviors</td>
+<td>String Array</td>
+<td>否</td>
+<td>类似于 mixins 和traits的组件间代码复用机制，参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/behaviors">behaviors</a></td>
+</tr>
+<tr>
+<td>created</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例刚刚被创建时执行，注意此时不能调用 <code>setData</code> )</td>
+</tr>
+<tr>
+<td>attached</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例进入页面节点树时执行)</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件布局完成后执行)</td>
+</tr>
+<tr>
+<td>moved</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例被移动到节点树另一个位置时执行)</td>
+</tr>
+<tr>
+<td>detached</td>
+<td>Function</td>
+<td>否</td>
+<td>组件生命周期函数 - 在组件实例被从页面节点树移除时执行)</td>
+</tr>
+</tbody></table>
+<p>生成的组件实例可以在组件的方法、生命周期函数和属性 <code>observer</code> 中通过 <code>this</code> 访问。组件包含一些通用属性和方法。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is</td>
+<td>String</td>
+<td>组件的文件路径</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>节点id</td>
+</tr>
+<tr>
+<td>dataset</td>
+<td>String</td>
+<td>节点dataset</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>组件数据，<strong>包括内部数据和属性值</strong></td>
+</tr>
+<tr>
+<td>properties</td>
+<td>Object</td>
+<td>组件数据，<strong>包括内部数据和属性值</strong>（与 <code>data</code> 一致）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setData</td>
+<td>Object <code>newData</code></td>
+<td>设置 data 并执行视图层渲染</td>
+</tr>
+<tr>
+<td>triggerEvent</td>
+<td>String <code>name</code>, Object <code>detail</code>, Object <code>options</code></td>
+<td>触发事件，参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/events">组件间通信与事件</a></td>
+</tr>
+<tr>
+<td>createSelectorQuery</td>
+<td></td>
+<td>创建一个 <a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> 对象，选择器选取范围为这个组件实例内</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code>Component({
+
+  behaviors: [],
+
+  <span class="hljs-regexp">//</span> 属性定义（详情参见下文）
+  properties: {
+    myProperty: { <span class="hljs-regexp">//</span> 属性名
+      type: String,
+      value: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    myProperty2: String <span class="hljs-regexp">//</span> 简化的定义方式
+  },
+
+  data: {}, <span class="hljs-regexp">//</span> 私有数据，可用于模板渲染
+
+
+    <span class="hljs-regexp">//</span> 生命周期函数，可以为函数，或一个在 methods 段中定义的方法名
+    attached: <span class="hljs-keyword">function</span> () { },
+    moved: <span class="hljs-keyword">function</span> () { },
+
+
+
+  methods: {
+    onMyButtonTap: <span class="hljs-keyword">function</span>(){
+      this.setData({
+        <span class="hljs-regexp">//</span> 更新属性和数据的方法与更新页面数据的方法类似
+      })
+    },
+    <span class="hljs-regexp">//</span> 内部方法建议以下划线开头
+    _myPrivateMethod: <span class="hljs-keyword">function</span>(){
+      <span class="hljs-regexp">//</span> 这里将 data.A[<span class="hljs-number">0</span>].B 设为 <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      this.setData({
+        <span class="hljs-string">&#x27;A[0].B&#x27;</span>: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    _propertyChange: <span class="hljs-keyword">function</span>(newVal, oldVal) {
+
+    }
+  }
+
+})
+</code></pre>
+<p>注意：在 <code>properties</code> 定义段中，属性名采用驼峰写法（<code>propertyName</code>）；在 <code>maml</code> 中，指定属性值时则对应使用连字符写法（<code>component-tag-name property-name=&quot;attr value&quot;</code>），应用于数据绑定时采用驼峰写法。</p>
+<h3 id="properties-定义">properties 定义</h3>
+<table>
+<thead>
+<tr>
+<th>定义段</th>
+<th>类型</th>
+<th>是否必填</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td></td>
+<td>是</td>
+<td>属性的类型</td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td>否</td>
+<td>属性的初始值</td>
+</tr>
+<tr>
+<td>observer</td>
+<td>Function/String</td>
+<td>否</td>
+<td>属性值变化时的回调函数</td>
+</tr>
+</tbody></table>
+<p>属性值的改变情况可以使用 observer 来监听，当observer类型为function时可以直接绑定对应的实现，当类型为string时则需要绑定对应的方法名。</p>
+<p><strong>请注意：</strong> 定义段中的 <code>type</code> 字段为 <strong>必填</strong> 项。</p>
+<h3 id="示例代码-1">示例代码</h3>
+<pre><code>Component(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  properties:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    min:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    type:</span> Number,
+<span class="hljs-symbol">      value:</span> <span class="hljs-number">0</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">    min:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    type:</span> Number,
+<span class="hljs-symbol">      value:</span> <span class="hljs-number">0</span>,
+<span class="hljs-symbol">    observer:</span> function(newVal, oldVal) <span class="hljs-punctuation">{</span>
+        <span class="hljs-comment">// 属性值变化时执行</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">    lastLeaf:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-comment">// 这个属性可以是 Number 、 String 、 Boolean 三种类型中的一种</span>
+<span class="hljs-symbol">      type:</span> Number,
+<span class="hljs-symbol">      value:</span> <span class="hljs-number">0</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>)
+</code></pre>
+<p>  属性的类型可以为 <code>String</code> <code>Number</code> <code>Boolean</code> <code>Object</code> <code>Array</code> 其一，也可以为 <code>null</code> 表示不限制类型。</p>
+<p>  多数情况下，属性最好指定一个确切的类型。这样，在 MAML 中以字面量指定属性值时，值可以获得一个确切的类型，如：</p>
+<pre><code>&lt;custom-<span class="hljs-built_in">comp</span> <span class="hljs-built_in">min</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-built_in">max</span>=<span class="hljs-string">&quot;5&quot;</span> /&gt;
+</code></pre>
+<p>  此时，由于自定义组件的对应属性被规定为 <code>Number</code> 类型， <code>min</code> 和 <code>max</code> 会被赋值为 <code>1</code> 和 <code>5</code> ，而非 <code>&quot;1&quot;</code> 和 <code>&quot;5&quot;</code> ，即：</p>
+<pre><code>  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.min === <span class="hljs-number">1</span> <span class="hljs-comment">// true</span>
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.max === <span class="hljs-number">5</span> <span class="hljs-comment">// true</span>
+</code></pre>
+<h2 id="bug--tip">Bug &amp; Tip</h2>
+<ul>
+<li>使用 <code>this.data</code> 可以获取内部数据和属性值；但直接修改它不会将变更应用到界面上，应使用 <code>setData</code> 修改。</li>
+<li>生命周期函数无法在组件方法中通过 <code>this</code> 访问到。<ul>
+<li>属性名应避免以 data 开头，即不要命名成 <code>dataXyz</code> 这样的形式，因为在 MAML 中， <code>data-xyz=&quot;&quot;</code> 会被作为节点 dataset 来处理，而不是组件属性。</li>
+</ul>
+</li>
+<li>在一个组件的定义和使用时，组件的属性名和 data 字段相互间都不能冲突（尽管它们位于不同的定义段中）。</li>
+</ul>

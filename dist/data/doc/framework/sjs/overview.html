@@ -1,0 +1,119 @@
+<h2 id="sjs-语法参考">SJS 语法参考</h2>
+<p>SJS（safe/subset javascript）是小程序一套自定义脚本语言，可以在 MAML 中使用其构建页面结构。<br>SJS 是 JavaScript 语言的子集，与 JavaScript 是不同的语言，其语法并不与 JavaScript 一致，请勿将其等同于 JavaScript。<br>SJS 函数支持响应基础组件的事件，无需数据更新，可直接驱动视图元素的样式、类名等的变更，也可查询元素的布局信息等。</p>
+<h3 id="模块">模块</h3>
+<p>每一个 .sjs 文件和 &lt;sjs&gt; 标签都是一个单独的模块。</p>
+<p>每个模块都有自己独立的作用域。即在一个模块里面定义的变量与函数，默认为私有的，对其他模块不可见。</p>
+<p>一个模块要想对外暴露其内部的私有变量与函数，只能通过 module.exports 实现。</p>
+<h3 id="sjs-文件">.sjs 文件</h3>
+<p>示例：</p>
+<pre><code class="language-sjs"><span class="hljs-comment">// /pages/comm.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello macle sjs&#x27; from comm.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  foo: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<p>上述例子在 /pages/comm.sjs 的文件里面编写了 SJS 代码。该 .sjs 文件可以被其他的 .sjs 文件 或 MAML 中的 <sjs> 标签引用。</p>
+<h3 id="module-对象">module 对象</h3>
+<p>每个 sjs 模块均有一个内置的 module 对象，通过 exports 属性，可以对外共享本模块的私有变量与函数。
+示例：</p>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/tools.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello world&#x27; from tools.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  FOO: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-comment">&lt;!-- page/index/index.maml --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">sjs</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../tools.sjs&quot;</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;tools&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">tools.msg</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">tools.bar</span>(<span class="hljs-name">tools.FOO</span>)}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="require-函数">require 函数</h3>
+<p>在 .sjs 模块中引用其他 sjs 文件模块，可以使用 require 函数，约束如下：</p>
+<ul>
+<li>只能引用 .sjs 文件模块，且必须使用相对路径；</li>
+<li>sjs 模块均为单例，sjs 模块在第一次被引用时，会自动初始化为单例对象。同个页面多个地方，多次引用，使用的都是同一个 sjs 模块对象；</li>
+<li>如果一个 sjs 模块在定义之后，一直没有被引用，则该模块不会被解析与运行；</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/tools.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello world&#x27; from tools.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  FOO: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/logic.sjs</span>
+
+<span class="hljs-keyword">var</span> tools = require(<span class="hljs-string">&#x27;./tools.sjs&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.FOO);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.bar(<span class="hljs-string">&#x27;logic.sjs&#x27;</span>));
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.msg);
+</code></pre>
+<pre><code class="language-maml"><span class="hljs-comment">&lt;!-- /page/index/index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sjs</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../logic.sjs&quot;</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;logic&quot;</span> /&gt;</span>
+</code></pre>
+<p>控制台输出：</p>
+<pre><code><span class="hljs-string">&#x27;hello world&#x27;</span> <span class="hljs-keyword">from</span> tools.sjs
+logic.sjs
+<span class="hljs-keyword">some</span> msg
+</code></pre>
+<h3 id="sjs-标签">&lt;sjs&gt; 标签</h3>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">module</td>
+<td align="left">String</td>
+<td align="left">sjs 模块名</td>
+</tr>
+<tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left">引用.sjs 文件的相对路径，仅当本标签为单闭合标签或标签的内容为空时有效</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>module 属性：<ul>
+<li>在单个 maml 文件内，建议其值唯一，有重复模块名则按照先后顺序覆盖（后者覆盖前者）。不同文件之间的 sjs 模块名不会相互覆盖。；</li>
+<li>命名必须符合下面两个规则：a、首字符必须是：字母（a-zA-Z），下划线（_）；b、剩余字符可以是：字母（a-zA-Z），下划线（_）， 数字（0-9）；</li>
+</ul>
+</li>
+<li>src 属性：<ul>
+<li>只能引用 .sjs 文件模块，且必须使用相对路径；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="注意事项">注意事项*</h3>
+<ul>
+<li>SJS 的运行环境和其他 JavaScript 代码是隔离的， sjs 中不能调用其他 JavaScript 文件中定义的函数，也不能调用小程序提供的 API。</li>
+<li>SJS 函数不能作为组件事件回调。</li>
+<li>&lt;sjs&gt; 模块只能在定义模块的 MAML 文件中被访问到。使用 &lt;include&gt; 或 &lt;import&gt; 时，&lt;sjs&gt; 模块不会被引入到对应的 MAML 文件中。</li>
+<li>&lt;template&gt; 标签中，只能使用定义该 &lt;template&gt; 的 MAML 文件中定义的 &lt;sjs&gt; 模块。</li>
+</ul>

@@ -1,0 +1,76 @@
+<h2 id="api">API</h2>
+<p>The macle-i18n API is an interface for operating i18n on the JavaScript side during runtime.</p>
+<h2 id="apis">APIs</h2>
+<ul>
+<li>initI18n(localesConfig: object): I18n</li>
+<li>getI18nInstance(): I18n</li>
+<li>t(key: string, params: object): string</li>
+<li>getLocale(): string</li>
+<li>setLocale(currentLocale: string): void</li>
+<li>getFallbackLocale(): string</li>
+<li>onLocaleChange(handler: (currentLocale: string) =&gt; void): object</li>
+<li>mergeLocaleMessage(locale,message)</li>
+</ul>
+<h3 id="initializing-the-i18n-runtime">Initializing the I18n Runtime</h3>
+<h4 id="initi18nlocalesconfig-object-i18n">initI18n(localesConfig: object): I18n</h4>
+<p>Invoke the initI18n API in <code>app.js</code> to load the I18n text and specify the default language. If the default language is not specified, the I18n text is generated for the user based on the I18n text provided by the user and the default language is English (en-US).</p>
+<pre><code class="language-js"><span class="hljs-comment">// src/app.js</span>
+<span class="hljs-keyword">let</span> locales = {
+  defaultLocale: &#x27;zh-CN&#x27;
+};
+init<span class="hljs-constructor">I18n(<span class="hljs-params">locales</span>)</span>;
+<span class="hljs-constructor">App({})</span>;
+</code></pre>
+<h3 id="obtaining-the-i18n-runtime">Obtaining the I18n Runtime</h3>
+<h4 id="geti18ninstance-i18n">getI18nInstance(): I18n</h4>
+<p>This API returns the I18n runtime instance.</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> i18n = getI18nInstance();
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+</code></pre>
+<h3 id="i18n-apis">I18n APIs</h3>
+<p>The following APIs are used for I18n and can be invoked on the I18n instance or I18nPage.</p>
+<p>You can use this to access member functions in I18nPage.</p>
+<pre><code class="language-js">I18nPage({
+  onLoad() {
+    <span class="hljs-keyword">this</span>.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+    <span class="hljs-keyword">this</span>.getLocale(); <span class="hljs-comment">// en-US</span>
+    <span class="hljs-keyword">this</span>.setLocale(<span class="hljs-string">&#x27;zh-CN&#x27;</span>);
+    <span class="hljs-keyword">this</span>.getFallbackLocale(); <span class="hljs-comment">// zh-CN</span>
+    <span class="hljs-keyword">this</span>.onLocaleChange(currentLocale =&gt; {
+      console.log(<span class="hljs-string">&#x27;Locale changed to&#x27;</span>, currentLocale);
+    });
+    <span class="hljs-keyword">this</span>.mergeLocaleMessage(<span class="hljs-string">&#x27;en-US&#x27;</span>,{ui:<span class="hljs-string">&#x27;UI2&#x27;</span>});
+  }
+});
+</code></pre>
+<p>You can invoke the I18n instance:</p>
+<pre><code class="language-js">const i18n = getI18nInstance();
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+i18n.getLocale(); <span class="hljs-comment">// en-US</span>
+i18n.setLocale(<span class="hljs-string">&#x27;zh-CN&#x27;</span>);
+i18n.getFallbackLocale(); <span class="hljs-comment">// zh-CN</span>
+i18n.onLocaleChange(<span class="hljs-function"><span class="hljs-params">currentLocale</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Locale changed to&#x27;</span>, currentLocale);
+});
+i18n.mergeLocaleMessage(<span class="hljs-string">&#x27;en-US&#x27;</span>,{<span class="hljs-attr">ui</span>:<span class="hljs-string">&#x27;UI2&#x27;</span>});
+</code></pre>
+<h4 id="getfallbacklocale-string">getFallbackLocale(): string</h4>
+<p>Default language of the Mini Program framework. The default language is English.</p>
+<h4 id="tkey-string-params-object-string">t(key: string, params: object): string</h4>
+<p>The most important translation function, through which the predefined i18n text can be obtained.</p>
+<h4 id="getlocale-string">getLocale(): string</h4>
+<p>Gets the currently set language. The default language is English en-US.</p>
+<h4 id="onlocalechangehandler-currentlocale-string--void-object">onLocaleChange(handler: (currentLocale: string) =&gt; void): object</h4>
+<p>Event callback is triggered when the current language is modified. The return value (object) can be used to cancel event listening.</p>
+<pre><code>const event = i18n.onLocaleChange(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {})
+event.<span class="hljs-literal">off</span>()
+</code></pre>
+<h4 id="mergelocalemessagelocalemessage-minimum-version-2412-0">mergeLocaleMessage(locale,message) (Minimum version: 24.12. 0)</h4>
+<p>Combine internationalization resources. If resources in the same language (key-value pair mode) exist, the same key is overwritten by the resources in the same language. Otherwise, the internationalization resource data in a language is added.</p>
+<h5 id="parameter">Parameter</h5>
+<p>locale: language, which must comply with the language-country naming rule, for example, zh-CN or en-US.
+message: flattened JSON language resource, for example,
+{title:title name:name}</p>
+<pre><code>const i18n = get<span class="hljs-constructor">I18nInstance()</span>;
+i18n.merge<span class="hljs-constructor">LocaleMessage(&#x27;<span class="hljs-params">en</span>-US&#x27;,{<span class="hljs-params">ui</span>:&#x27;UI2&#x27;})</span>;
+</code></pre>

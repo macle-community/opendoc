@@ -1,0 +1,241 @@
+<h2 id="checkbox-复选框">Checkbox 复选框</h2>
+<blockquote>
+<p>在一组备选项中进行多选（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-variable">data</span>: {
+    <span class="hljs-variable">checked</span>: <span class="hljs-literal">true</span>,
+  },
+
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">setData</span>({
+      <span class="hljs-variable">checked</span>: <span class="hljs-variable">event</span>.<span class="hljs-property">detail</span>,
+    });
+  },
+});
+</code></pre>
+<h4 id="禁用状态">禁用状态</h4>
+<p>设置<code>disabled</code>属性可以禁用复选框。</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  复选框
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="自定义形状">自定义形状</h4>
+<p><code>shape</code>属性可以控制复选框的形状，例如设置为<code>square</code>时，复选框形状会变为方形</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  复选框
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="自定义颜色">自定义颜色</h4>
+<p><code>checked-color</code>属性可以自定义选中状态下的图标颜色。</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+  <span class="hljs-attr">checked-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>
+  <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>
+&gt;</span>
+  复选框
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="自定义大小">自定义大小</h4>
+<p><code>icon-size</code>属性可以自定义图标的大小。</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;25px&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="自定义图标">自定义图标</h4>
+<p><code>custom-icon</code>属性可以自定义选中时的图标</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/icon.png&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="禁用文本点击">禁用文本点击</h4>
+<p>设置<code>label-disabled</code>属性可以禁用复选框文本点击。</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="复选框组">复选框组</h4>
+<p>需要与<code>maui-checkbox-group</code>一起使用，选中值是一个数组，通过<code>value</code>绑定在<code>maui-checkbox-group</code>
+上，数组中的项即为选中的<code>Checkbox</code>的<code>name</code>属性设置的值。</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>复选框 a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;b&#x27;</span>&gt;</span>复选框 b<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;c&#x27;</span>&gt;</span>复选框 c<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox-group</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    result: [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>],
+  },
+
+  onChange(<span class="hljs-keyword">event</span>) {
+    <span class="hljs-keyword">this</span>.setData({
+      result: <span class="hljs-keyword">event</span>.detail,
+    });
+  },
+});
+</code></pre>
+<h4 id="限制最大可选数">限制最大可选数</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">2</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>复选框 a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;b&#x27;</span>&gt;</span>复选框 b<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;c&#x27;</span>&gt;</span>复选框 c<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox-group</span>&gt;</span></span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="checkbox-props">Checkbox Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">标识 Checkbox 名称</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">shape</td>
+<td align="left">形状，可选值为 <code>round</code> <code>square</code></td>
+<td align="left">String</td>
+<td align="left"><code>round</code></td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">是否为选中状态</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">是否禁用单选框</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-disabled</td>
+<td align="left">是否禁用单选框内容点击</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-position</td>
+<td align="left">文本位置，可选值为 <code>left</code></td>
+<td align="left">String</td>
+<td align="left"><code>right</code></td>
+</tr>
+<tr>
+<td align="left">custom-icon</td>
+<td align="left">自定义图标，支持名称和图片链接</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">checked-color</td>
+<td align="left">选中状态颜色</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">icon-size</td>
+<td align="left">icon 大小</td>
+<td align="left">String | Number</td>
+<td align="left"><code>20px</code></td>
+</tr>
+</tbody></table>
+<h4 id="checkboxgroup-props">CheckboxGroup Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">在表单内提交时的标识符</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">所有选中项的 name</td>
+<td align="left">Array</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">是否禁用所有单选框</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">设置最大可选数</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code>（无限制）</td>
+</tr>
+<tr>
+<td align="left">direction</td>
+<td align="left">排列方向，可选值为 <code>horizontal</code></td>
+<td align="left">String</td>
+<td align="left"><code>vertical</code></td>
+</tr>
+</tbody></table>
+<h4 id="checkbox-event">Checkbox Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">当绑定值变化时触发的事件</td>
+<td align="left">当前组件的值</td>
+</tr>
+</tbody></table>
+<h4 id="checkboxgroup-event">CheckboxGroup Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">当绑定值变化时触发的事件</td>
+<td align="left">当前组件的值</td>
+</tr>
+</tbody></table>
+<h4 id="checkbox-slot">Checkbox Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">自定义文本</td>
+</tr>
+</tbody></table>

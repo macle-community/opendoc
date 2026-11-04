@@ -1,0 +1,78 @@
+<h2 id="magetsmallappinfoobject-object">ma.getsmallappinfo(Object object)</h2>
+<blockquote>
+<p>Query the basic information of the Mini Program (minimum version: 23.12.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success callback function</h3>
+<p><strong>parameter</strong></p>
+<p><strong>Object res</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">appId</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td>Mini Program id</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td>Mini Program name</td>
+</tr>
+<tr>
+<td align="left">appIcon</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td>Mini Program icon</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getsmallappinfo({
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.appId);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.name);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.appIcon);
+  }
+});
+</code></pre>

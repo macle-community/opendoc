@@ -1,0 +1,74 @@
+<h2 id="masettabbarstyleobject-object">ma.setTabBarStyle(Object object)</h2>
+<blockquote>
+<p>Dynamically set the overall style of tabBar.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">color</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Default color (hex color) of the text on the tab.</td>
+</tr>
+<tr>
+<td align="left">selectedColor</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Color (hex color) of the selected text on the tab.</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Background color (hex color) of the tab.</td>
+</tr>
+<tr>
+<td align="left">borderStyle</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Border color of tabBar. Only <code>black</code> and <code>white</code> are supported.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-selector-tag">ma</span><span class="hljs-selector-class">.setTabBarStyle</span>({
+  <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;#FF0000&#x27;</span>,
+  <span class="hljs-attribute">selectedColor</span>: <span class="hljs-string">&#x27;#00FF00&#x27;</span>,
+  <span class="hljs-attribute">backgroundColor</span>: <span class="hljs-string">&#x27;#0000FF&#x27;</span>,
+  <span class="hljs-attribute">borderStyle</span>: <span class="hljs-string">&#x27;white&#x27;</span>
+});
+</code></pre>

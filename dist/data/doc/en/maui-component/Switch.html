@@ -1,0 +1,144 @@
+<h2 id="switch">Switch</h2>
+<blockquote>
+<p>Used to toggle between on and off state (minimum version: 24.9.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> /&gt;</span>
+</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">checked</span>: <span class="hljs-literal">true</span>,
+  },
+
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">{ detail }</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">checked</span>: detail });
+  },
+});
+</code></pre>
+<h4 id="disabled-state">Disabled State</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">disabled</span> /&gt;</span></span>
+</code></pre>
+<h4 id="loading-status">Loading Status</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">loading</span> /&gt;</span></span>
+</code></pre>
+<h4 id="custom-size">Custom Size</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&#x27;20px&#x27;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="custom-color">Custom Color</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span>
+  <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+  <span class="hljs-attr">active-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>
+  <span class="hljs-attr">inactive-color</span>=<span class="hljs-string">&#x27;#ee0a24&#x27;</span>
+/&gt;</span></span>
+</code></pre>
+<h4 id="asynchronous-control">Asynchronous Control</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-switch</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> /&gt;</span>
+</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">checked</span>: <span class="hljs-literal">true</span>,
+  },
+
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">{ detail }</span>) {
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Tips&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Whether to switch?&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">confirm</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">checked2</span>: detail });
+        }
+      },
+    });
+  },
+});
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Identifier when submitting within the form</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">checked</td>
+<td align="left">Switch selected state</td>
+<td align="left">Any</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">Whether it is loading status</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether it is disabled</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Switch size</td>
+<td align="left">String</td>
+<td align="left"><code>30px</code></td>
+</tr>
+<tr>
+<td align="left">active-color</td>
+<td align="left">Background color when opening</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">inactive-color</td>
+<td align="left">Background color when closed</td>
+<td align="left">String</td>
+<td align="left"><code>#fff</code></td>
+</tr>
+<tr>
+<td align="left">active-value</td>
+<td align="left">value when opened</td>
+<td align="left">Any</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">inactive-value</td>
+<td align="left">value when closed</td>
+<td align="left">Any</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bindchange</td>
+<td align="left">Switch state switching callback</td>
+<td align="left">event.detail: Whether to select the switch</td>
+</tr>
+</tbody></table>

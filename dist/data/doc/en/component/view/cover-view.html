@@ -1,0 +1,24 @@
+<h2 id="cover-view">cover-view</h2>
+<blockquote>
+<p>Text view that covers the native component.</p>
+</blockquote>
+<p>If native components support rendering at the same layer, you are advised to use <a onclick="_mdLinkClick(this.href)" href="#/component/view">view</a> instead. Native components that can be covered include <a onclick="_mdLinkClick(this.href)" href="#/component/video">video</a> and <a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a>.</p>
+<p>Only nesting is supported.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;camera device-position=<span class="hljs-symbol">&#x27;back</span>&#x27; flash=<span class="hljs-symbol">&#x27;off</span>&#x27; style=<span class="hljs-symbol">&#x27;width</span>: <span class="hljs-number">100</span>%; height: <span class="hljs-number">360</span>px;&#x27;&gt;
+  &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;cover</span>-<span class="hljs-keyword">view</span>&#x27;&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> red&#x27;&gt;red&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> green&#x27;&gt;green&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> yellow&#x27;&gt;yellow&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+  &lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+&lt;/camera&gt;
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The event model complies with the pop-up model, but does not pop up to the native component.</li>
+<li>It is recommended that the cover-view tag be added to the text to avoid typesetting errors.</li>
+<li>Only basic positioning, layout, and text styles are supported. The <code>border</code>, <code>background-image</code>, <code>shadow</code>, and <code>overflow: visible</code> parameters cannot be set on a single side.</li>
+<li>It is recommended that the child node do not overflow the parent node.</li>
+<li>By default, <code>white-space : nowrap</code>, <code>line-height : 1.2</code>, and <code>display : block</code>.</li>
+</ol>

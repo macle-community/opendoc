@@ -1,0 +1,35 @@
+<h2 id="page-meta">page-meta</h2>
+<blockquote>
+<p>Page attribute configuration node, which is used to specify page attributes and listen to page events.</p>
+</blockquote>
+<blockquote>
+<p>Through this node, you can obtain the effect similar to the invoking of interfaces such as <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setBackgroundTextStyle">ma.setBackgroundTextStyle</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setBackgroundColor">ma.setBackgroundColor</a>.</p>
+</blockquote>
+<h3 id="attribute-description">Attribute Description</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Default Value</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>root-font-size</td>
+<td>&quot;&quot;</td>
+<td>String</td>
+<td>No</td>
+<td>Root font size of the page. All rem units on the page will use this font size as a reference value, that is, <code>1rem</code> is equal to this font size.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">page-meta</span> <span class="hljs-attr">root-font-size</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">rootSize</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;page-meta&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;font-size:2rem&#x27;</span>&gt;</span>
+    page-meta
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;fontStyle&#x27;</span>&gt;</span>Second node<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">page-meta</span>&gt;</span></span>
+</code></pre>

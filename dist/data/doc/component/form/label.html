@@ -1,0 +1,59 @@
+<h2 id="label">label</h2>
+<blockquote>
+<p>用来改进表单组件的可用性。 使用 for 属性找到对应的 id，或者将控件放在该标签下，当点击时，就会触发对应的控件。 for
+优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。 目前可以绑定的控件有：button, checkbox, radio, switch。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">for</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">绑定控件的 id</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> &gt;</span>label-for<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;radioChange&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radioGroup&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">radioItems</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.checked</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;pink&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">radio</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-keyword">data</span>: {
+    radioItems: [
+      { name: <span class="hljs-string">&#x27;USA&#x27;</span>, value: <span class="hljs-string">&#x27;USA&#x27;</span> },
+      { name: <span class="hljs-string">&#x27;CHN&#x27;</span>, value: <span class="hljs-string">&#x27;China&#x27;</span>, checked: <span class="hljs-string">&#x27;true&#x27;</span> }
+    ],
+    hidden: <span class="hljs-literal">false</span>
+  },
+  radioChange: function(e) {
+    <span class="hljs-keyword">var</span> checked = e.detail.value
+    <span class="hljs-keyword">var</span> changed = {}
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.radioItems.length; i++) {
+      <span class="hljs-keyword">if</span> (checked.indexOf(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.radioItems[i].name) !== -<span class="hljs-number">1</span>) {
+        changed[<span class="hljs-string">&#x27;radioItems[&#x27;</span> + i + <span class="hljs-string">&#x27;].checked&#x27;</span>] = <span class="hljs-literal">true</span>
+      } <span class="hljs-keyword">else</span> {
+        changed[<span class="hljs-string">&#x27;radioItems[&#x27;</span> + i + <span class="hljs-string">&#x27;].checked&#x27;</span>] = <span class="hljs-literal">false</span>
+      }
+    }
+    <span class="hljs-keyword">this</span>.setData(changed)
+  }
+})
+</code></pre>

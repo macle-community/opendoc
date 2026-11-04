@@ -1,0 +1,117 @@
+[
+  {
+    "name": "开始",
+    "child": [
+      {
+        "name": "安装开发者工具",
+        "path": "/installDevtool",
+        "data": "/data/doc/guide/installDevtool.md"
+      },
+      {
+        "name": "你的第一个小程序",
+        "path": "/developMacle",
+        "data": "/data/doc/guide/developMacle.md"
+      },
+      {
+        "name": "发布小程序",
+        "path": "/releaseMacle",
+        "data": "/data/doc/guide/releaseMacle.md"
+      }
+    ]
+  },
+  {
+    "name": "配置小程序",
+    "path": "/config",
+    "data": "/data/doc/guide/config.md"
+  },
+  {
+    "name": "分包加载",
+    "path": "/subPackages",
+    "data": "/data/doc/guide/subPackages.md"
+  },
+  {
+    "name": "安全菜单",
+    "child": [
+      {
+        "name": "安全开发指引",
+        "path": "/safetyGuidelines",
+        "data": "/data/doc/guide/safetyGuidelines.md"
+      },
+      {
+        "name": "合规安全要求",
+        "path": "/complianceIssue",
+        "data": "/data/doc/guide/complianceIssue.md"
+      }
+    ]
+  },
+  {
+    "name": "自定义组件",
+    "child": [
+      {
+        "name": "介绍",
+        "path": "/custom-component",
+        "data": "/data/doc/guide/custom-component/introductory.md"
+      },
+      {
+        "name": "组件模板和样式",
+        "path": "/custom-component-maml-mass",
+        "data": "/data/doc/guide/custom-component/mamlMass.md"
+      },
+      {
+        "name": "组件生命周期",
+        "path": "/lifetimes",
+        "data": "/data/doc/guide/custom-component/lifeTime.md"
+      },
+      {
+        "name": "Component构造器",
+        "path": "/component",
+        "data": "/data/doc/guide/custom-component/component.md"
+      },
+      {
+        "name": "组件间通信与事件",
+        "path": "/events",
+        "data": "/data/doc/guide/custom-component/events.md"
+      },
+      {
+        "name": "behaviors",
+        "path": "/behaviors",
+        "data": "/data/doc/guide/custom-component/behaviors.md"
+      },
+      {
+        "name": "Relations",
+        "path": "/relations",
+        "data": "/data/doc/guide/custom-component/relations.md"
+      }
+    ]
+  },
+  {
+    "name": "连接硬件能力",
+    "child": [
+      {
+        "name": "蓝牙",
+        "child":[
+          {
+            "name": "介绍",
+            "path": "/link-hardware-capability",
+            "data": "/data/doc/guide/link-hardware-capability/introductory.md"
+          },
+          {
+            "name": "蓝牙低功耗 (BLE)",
+            "path": "/bleDevice",
+            "data": "/data/doc/guide/link-hardware-capability/bleDevice.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "小程序适配RTL框架",
+    "path": "/rtl",
+    "data": "/data/doc/guide/rtl.md"
+  },
+  {
+    "name": "支持小程序横屏",
+    "path": "/pageOrientation",
+    "data": "/data/doc/guide/pageOrientation.md"
+  }
+]

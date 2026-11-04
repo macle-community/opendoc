@@ -1,0 +1,25 @@
+<h2 id="maoffnetworkstatuschangefunction-callback">ma.offNetworkStatusChange(function callback)</h2>
+<blockquote>
+<p>Cancel the listening for network status change events. If the parameter is empty, the listening to all events is canceled.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function for listening for network status change events.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">&lt;view&gt;
+  &lt;button bindtap=<span class="hljs-string">&quot;onNetworkStatusChange&quot;</span>&gt;Start to<span class="hljs-built_in"> monitor </span>the network status change.&lt;/button&gt;
+  &lt;button bindtap=<span class="hljs-string">&quot;offNetworkStatusChange&quot;</span>&gt;Canceling the Monitoring of Network Status Changes&lt;/button&gt;
+&lt;/view&gt;
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+    <span class="hljs-title function_">listener</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)
+    },
+    <span class="hljs-title function_">onNetworkStatusChange</span>(<span class="hljs-params"></span>){
+        ma.<span class="hljs-title function_">onNetworkStatusChange</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listener</span>)
+    },
+    <span class="hljs-title function_">offNetworkStatusChange</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">offNetworkStatusChange</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listener</span>)
+    },
+});
+</code></pre>

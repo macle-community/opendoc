@@ -1,0 +1,61 @@
+<h2 id="maauthorizeobject-object">ma.authorize(Object object)</h2>
+<blockquote>
+<p>提前向用户发起授权请求。调用后会立刻弹窗询问用户是否同意授权小程序使用某项功能或获取用户的某些数据，但不会实际调用对应接口。如果用户之前已经同意授权，则不会出现弹窗，直接返回成功。更多用法详见 <a onclick="_mdLinkClick(this.href)" href="#/api/authority">用户授权</a>。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scope</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要获取权限的 scope，详见 <a onclick="_mdLinkClick(this.href)" href="#/api/authority">scope 列表</a></td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// 可以通过 ma.getSetting 先查询一下用户是否授权了 &quot;scope.location&quot; 这个 scope</span>
+ma<span class="hljs-selector-class">.getSetting</span>({
+  <span class="hljs-built_in">success</span>(res) {
+    <span class="hljs-keyword">if</span> (!res<span class="hljs-selector-class">.authSetting</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scope.location&#x27;</span>]</span>) {
+      ma<span class="hljs-selector-class">.authorize</span>({
+        scope: <span class="hljs-string">&#x27;scope.location&#x27;</span>,
+        success () {
+          <span class="hljs-comment">// 用户已经同意小程序使用位置信息，后续调用 ma.getLocation 接口不会弹窗询问</span>
+          ma<span class="hljs-selector-class">.getLocation</span>()
+        }
+      })
+    }
+  }
+})
+</code></pre>

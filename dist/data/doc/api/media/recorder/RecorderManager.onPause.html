@@ -1,0 +1,20 @@
+<h2 id="recordermanageronpausefunction-listener">RecorderManager.onPause(function listener)</h2>
+<blockquote>
+<p>监听录音暂停事件，此时录音机进入到录音暂停状态，只能由 RecorderManager.pause() 触发（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-listener">function listener</h4>
+<p>录音暂停事件的监听函数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onPause(() =&gt; {
+            ma.showToast({
+                title: &#x27;录音暂停&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

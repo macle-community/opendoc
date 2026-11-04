@@ -1,0 +1,31 @@
+<h2 id="citation">Citation</h2>
+<p>The MAML provides two file reference modes: import and include. The relative path and absolute path are supported.</p>
+<h3 id="import">Import</h3>
+<p>Uses the template defined in the target file. For example, a template named item is defined in the item.maml file.</p>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- item.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<p>If item.maml is referenced in index.maml, the item template can be used.</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;item.maml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">text:</span> <span class="hljs-string">&#x27;forbar&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span>
+</code></pre>
+<h3 id="scope-of-import">Scope of import</h3>
+<p>Import has the concept of scope. That is, only the template defined in the target file is imported, but not the template imported in the target file.</p>
+<blockquote>
+<p>For example, C imports B and B imports A. In C, the template defined by B can be used. In B, the template defined by A can be used. In C, however, the template defined by A cannot be used.</p>
+</blockquote>
+<h3 id="include">Include</h3>
+<p>Imports the entire code of the target file except <template>. That is, the code is copied to the position of include. Example:</p>
+<pre><code><span class="hljs-comment">&lt;!-- index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;header.maml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> body <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;footer.maml&quot;</span>/&gt;</span>
+</code></pre>
+<pre><code><span class="hljs-comment">&lt;!-- header.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> header <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code><span class="hljs-comment">&lt;!-- footer.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> footer <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>

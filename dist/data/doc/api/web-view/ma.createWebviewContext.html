@@ -1,0 +1,51 @@
+<h2 id="macreatewebviewcontext">ma.createWebviewContext()</h2>
+<blockquote>
+<p>创建一个WebviewContext 对象，用于向 web-view 组件发送消息（最低版本： 25.12.0）</p>
+</blockquote>
+<h3 id="返回值">返回值</h3>
+<h4 id="webviewcontext">WebviewContext</h4>
+<p>WebviewContext 对象，支持与webview组件内的H5应用双向通信</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th>入参</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">postMessage</td>
+<td align="left">Function</td>
+<td>Any</td>
+<td align="left">小程序向 <code>web-view</code> 组件内的H5应用发送消息，配合 <code>js-sdk</code> 提供的 <code>ma.postMessage</code> 可以实现小程序和 <code>web-view</code> 网页的双向通信</td>
+</tr>
+<tr>
+<td align="left">onMessage</td>
+<td align="left">Function</td>
+<td>Function</td>
+<td align="left">小程序监听组件内H5应用向小程序发送信息事件，仅支持传入function，如传入非法值则无法接收到消息</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const webviewContext = ma.createWebviewContext();
+
+<span class="hljs-regexp">//</span> 小程序向容器内H5发送消息
+webviewContext.postMessage({
+  testMsg: <span class="hljs-string">&#x27;111&#x27;</span>,
+});
+<span class="hljs-regexp">//</span> 监听容器内H5向小程序通信
+webviewContext.onMessage(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  console.log(res, <span class="hljs-string">&#x27;DSL Get Message&#x27;</span>);
+  ma.showModal({
+    content: <span class="hljs-built_in">JSON</span>.stringify(res),
+    title: <span class="hljs-string">&#x27;DSL Get Message&#x27;</span>,
+    success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    },
+    fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    },
+    complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    },
+  });
+});
+</code></pre>

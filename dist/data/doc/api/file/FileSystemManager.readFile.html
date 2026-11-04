@@ -1,0 +1,145 @@
+<h2 id="filesystemmanagerreadfileobject-object">FileSystemManager.readFile(Object object)</h2>
+<blockquote>
+<p>读文件（最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要读取的文件路径 (本地路径，允许在usr目录下可以是相对目录，但最终的真实路径不能在usr之外，<strong>允许读取临时路径和缓存路径文件</strong>)</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">指定读取文件的字符编码，如果不传 encoding，则以 ArrayBuffer 格式读取文件的二进制内容</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">从文件指定位置开始读，如果不指定，则从文件头开始读。读取的范围应该是左闭右开区间 [position, position+length)。有效范围：[0, fileLength - 1]。单位：byte</td>
+</tr>
+<tr>
+<td align="left">length</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">指定文件的长度，如果不指定，则读到文件末尾。有效范围：[1, fileLength]。单位：byte</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="encoding">encoding</h5>
+<table>
+<thead>
+<tr>
+<th>合法值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ascii</td>
+<td></td>
+</tr>
+<tr>
+<td>base64</td>
+<td>注意，选择 base64 编码，data 只需要传 base64 内容本身，不要传 Data URl 前缀，否则会报 fail base64 encode error 错误。例如，传 aGVsbG8= 而不是传 data:image/png;base64,aGVsbG8=</td>
+</tr>
+<tr>
+<td>ucs2</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>ucs-2</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf16le</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf-16le</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf-8</td>
+<td></td>
+</tr>
+<tr>
+<td>utf8</td>
+<td>默认值</td>
+</tr>
+<tr>
+<td>latin1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h5 id="success-回调函数">success 回调函数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String/ArrayBuffer</td>
+<td align="left">文件内容（如果没传encoding返回ArrayBuffer）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">let fs = ma.getFileSystemManager();
+
+fs.readFile({
+  <span class="hljs-attr">filePath</span>:  <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/testFile.txt`</span>,
+  <span class="hljs-attr">encoding</span>: <span class="hljs-string">&#x27;utf8&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+  },
+  fail(err) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>读取文件的大小限制为 10 MB</li>
+</ol>

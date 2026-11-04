@@ -1,0 +1,36 @@
+<h2 id="page-meta">page-meta</h2>
+<blockquote>
+<p>页面属性配置节点，用于指定页面的一些属性、监听页面事件。</p>
+</blockquote>
+<blockquote>
+<p>通过这个节点可以获得类似于调用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setBackgroundTextStyle"><code>ma.setBackgroundTextStyle</code></a> <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setBackgroundColor"><code>ma.setBackgroundColor</code></a>
+等接口调用的效果。</p>
+</blockquote>
+<h3 id="属性说明">属性说明</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>默认值</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>root-font-size</td>
+<td>&quot;&quot;</td>
+<td>String</td>
+<td>否</td>
+<td>页面的根字体大小，页面中的所有 rem 单位，将使用这个字体大小作为参考值，即 <code>1rem</code> 等于这个字体大小。</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">page-meta</span> <span class="hljs-attr">root-font-size</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">rootSize</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;page-meta&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;font-size:2rem&#x27;</span>&gt;</span>
+    page-meta
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;fontStyle&#x27;</span>&gt;</span>第二个节点<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">page-meta</span>&gt;</span></span>
+</code></pre>

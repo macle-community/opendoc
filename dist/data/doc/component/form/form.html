@@ -1,0 +1,64 @@
+<h2 id="form">form</h2>
+<blockquote>
+<p>表单。将组件内的用户输入的<a onclick="_mdLinkClick(this.href)" href="#/component/switch">switch</a> <a onclick="_mdLinkClick(this.href)" href="#/component/input">input</a> <a onclick="_mdLinkClick(this.href)" href="#/component/checkbox">checkbox</a> <a onclick="_mdLinkClick(this.href)" href="#/component/slider">slider</a> <a onclick="_mdLinkClick(this.href)" href="#/component/radio">radio</a> <a onclick="_mdLinkClick(this.href)" href="#/component/picker">picker</a>
+提交。</p>
+</blockquote>
+<p>当点击 <a onclick="_mdLinkClick(this.href)" href="#/component/form">form</a> 表单中 form-type 为 submit 的 <a onclick="_mdLinkClick(this.href)" href="#/component/button">button</a> 组件时，会将表单组件中的
+value 值进行提交，需要在表单组件中加上 name 来作为 key。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bindsubmit</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">携带 form 中的数据触发 submit 事件，event.detail = {value : {&#39;name&#39;: &#39;value&#39;} , formId: &#39;&#39;}</td>
+</tr>
+<tr>
+<td align="left">bindreset</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">表单重置时会触发 reset 事件</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">bindsubmit</span>=<span class="hljs-string">&#x27;submit&#x27;</span> <span class="hljs-attr">bindreset</span>=<span class="hljs-string">&#x27;reset&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;form&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>radio<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;radio&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radioGroup&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> /&gt;</span>
+        radio1
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> /&gt;</span>
+        radio2
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;submit&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">formType</span>=<span class="hljs-string">&#x27;submit&#x27;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;reset&#x27;</span> <span class="hljs-attr">formType</span>=<span class="hljs-string">&#x27;reset&#x27;</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">submit</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
+  },
+  <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;rest&#x27;</span>)
+  }
+})
+</code></pre>

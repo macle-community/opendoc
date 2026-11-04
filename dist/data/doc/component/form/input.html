@@ -1,0 +1,214 @@
+<h2 id="input">input</h2>
+<blockquote>
+<p>输入框。该组件是原生组件，使用时请注意相关限制</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">输入框的初始内容</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">text</td>
+<td align="left">否</td>
+<td align="left">input 的类型</td>
+</tr>
+<tr>
+<td align="left">password</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否是密码类型</td>
+</tr>
+<tr>
+<td align="left">placeholder</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">输入框为空时占位符</td>
+</tr>
+<tr>
+<td align="left">placeholder-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">指定 placeholder 的样式，目前仅支持 color,font-size 和 font-weight</td>
+</tr>
+<tr>
+<td align="left">placeholder-class</td>
+<td align="left">String</td>
+<td align="left">input-placeholder</td>
+<td align="left">否</td>
+<td align="left">指定 placeholder 的样式类，目前仅支持 color,font-size 和 font-weight</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否禁用</td>
+</tr>
+<tr>
+<td align="left">maxlength</td>
+<td align="left">Number</td>
+<td align="left">140</td>
+<td align="left">否</td>
+<td align="left">最大输入长度，设置为 -1 的时候不限制最大长度</td>
+</tr>
+<tr>
+<td align="left">focus</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">获取焦点</td>
+</tr>
+<tr>
+<td align="left">confirm-type</td>
+<td align="left">String</td>
+<td align="left">done</td>
+<td align="left">否</td>
+<td align="left">设置键盘右下角按钮的文字，仅在 type=&#39;text&#39;时生效</td>
+</tr>
+<tr>
+<td align="left">confirm-hold</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">点击键盘右下角按钮时是否保持键盘不收起</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">是</td>
+<td align="left">指定 focus 时的光标位置，默认为行尾</td>
+</tr>
+<tr>
+<td align="left">selection-start</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">否</td>
+<td align="left">光标起始位置，自动聚集时有效，需与 selection-end 搭配使用</td>
+</tr>
+<tr>
+<td align="left">selection-end</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">否</td>
+<td align="left">光标结束位置，自动聚集时有效，需与 selection-start 搭配使用</td>
+</tr>
+<tr>
+<td align="left">adjust-position</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">键盘弹起时，是否自动上推页面</td>
+</tr>
+<tr>
+<td align="left">bindinput</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">键盘输入时触发，event.detail = {value, cursor}，处理函数可以直接 return 一个字符串，将替换输入框的内容。</td>
+</tr>
+<tr>
+<td align="left">bindfocus</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">输入框聚焦时触发，event.detail = { value}</td>
+</tr>
+<tr>
+<td align="left">bindblur</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">输入框失去焦点时触发，event.detail = { value}</td>
+</tr>
+<tr>
+<td align="left">bindconfirm</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">点击完成按钮时触发，event.detail = { value }</td>
+</tr>
+</tbody></table>
+<h3 id="type-的合法值">type 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">text</td>
+<td align="left">文本输入键盘</td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">数字输入键盘</td>
+</tr>
+<tr>
+<td align="left">digit</td>
+<td align="left">带小数点的数字键盘</td>
+</tr>
+</tbody></table>
+<h3 id="confirm-type-的合法值">confirm-type 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">send</td>
+<td align="left">右下角按钮为“发送”</td>
+</tr>
+<tr>
+<td align="left">search</td>
+<td align="left">右下角按钮为“搜索”</td>
+</tr>
+<tr>
+<td align="left">next</td>
+<td align="left">右下角按钮为“下一个”</td>
+</tr>
+<tr>
+<td align="left">go</td>
+<td align="left">右下角按钮为“前往”</td>
+</tr>
+<tr>
+<td align="left">done</td>
+<td align="left">右下角按钮为“完成”</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;Hello World&#x27;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>confirm-type 的最终表现与手机输入法本身的实现有关，部分安卓系统输入法和第三方输入法可能不支持或不完全支持</li>
+<li>input 组件是一个原生组件，字体是系统字体，所以无法设置 font-family</li>
+<li>在 input 聚焦期间，避免使用 css 动画</li>
+<li>对于将 input 封装在自定义组件中、而 form 在自定义组件外的情况， form 将不能获得这个自定义组件中 input 的值。</li>
+<li>cursor 和 selection-start 、selection-end 的属性共存时，selection-start 及 selection-end 优先级更高。</li>
+<li>含 focus 属性的 input 不要超出屏幕可视范围，且同一页面不应出现两个及以上的含 focus 属性的 input。</li>
+<li>input组件的高度会影响其中的placeholder-class字体样式设置，需联合考虑这两者以保证小程序用户的相关体验。</li>
+</ol>

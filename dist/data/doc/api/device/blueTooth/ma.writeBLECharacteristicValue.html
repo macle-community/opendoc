@@ -1,0 +1,131 @@
+<h2 id="mawriteblecharacteristicvalueobject-object">ma.writeBLECharacteristicValue(Object object)</h2>
+<blockquote>
+<p>向蓝牙低功耗设备特征值中写入二进制数据（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙设备 id</td>
+</tr>
+<tr>
+<td align="left">serviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙特征对应服务的 UUID</td>
+</tr>
+<tr>
+<td align="left">characteristicId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙特征的 UUID</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙设备特征对应的二进制值</td>
+</tr>
+<tr>
+<td align="left">writeType</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">蓝牙特征值的写模式设置。iOS 默认值为 <code>write</code>，安卓默认值为 <code>writeNoResponse</code> 。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="writetype-有效值">writeType 有效值</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>write</td>
+<td>强制回复写，不支持时报错</td>
+</tr>
+<tr>
+<td>writeNoResponse</td>
+<td>强制无回复写，不支持时报错</td>
+</tr>
+<tr>
+<td>signedWrite</td>
+<td>强制有签名写</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">writeBLECharacteristicValue: ok</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> <span class="hljs-keyword">buffer</span> = <span class="hljs-keyword">new</span> ArrayBuffer(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">let</span> dataView = <span class="hljs-keyword">new</span> DataView(<span class="hljs-keyword">buffer</span>)
+dataView.setUint8(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">ma</span>.writeBLECharacteristicValue({
+  deviceId,
+  serviceId,
+  characteristicId,
+  value: <span class="hljs-keyword">buffer</span>,
+  success(<span class="hljs-keyword">res</span>) {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;writeBLECharacteristicValue success&#x27;</span>, <span class="hljs-keyword">res</span>.errMsg)
+  }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>必须设备的特征支持 write 才可以成功调用</li>
+<li>针对IOS机型，根据当前BLE协议，单次传输数据量建议不超过20字节，传输的数据较大时建议做分片处理</li>
+</ol>

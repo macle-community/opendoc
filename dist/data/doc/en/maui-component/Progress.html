@@ -1,0 +1,100 @@
+<h2 id="progress">Progress</h2>
+<blockquote>
+<p>Used to display the current progress of the operation (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>The progress bar is blue by default, and the current progress can be set through the <code>percentage</code> property.</p>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
+</code></pre>
+<h4 id="line-thickness">line thickness</h4>
+<p><code>stroke-width</code> can set the thickness of the progress bar.</p>
+<pre><code class="language-html">
+&lt;maui-progress percentage=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-built_in">stroke</span>-<span class="hljs-built_in">width</span>=<span class="hljs-string">&#x27;8&#x27;</span> /&gt;
+</code></pre>
+<h4 id="gray-out">Gray Out</h4>
+<p>The progress bar will be grayed out by setting the <code>inactive</code> attribute.</p>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">inactive</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
+</code></pre>
+<h4 id="custom-style">Custom Style</h4>
+<p>Use the <code>pivot-text</code> attribute to customize the text and the <code>color</code> attribute to customize the progress bar color.</p>
+<pre><code class="language-html">
+&lt;maui-progress <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;Orange&#x27;</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;#f2826a&#x27;</span> <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;25&#x27;</span> /&gt;
+
+&lt;maui-progress <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;Red&#x27;</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;#ee0a24&#x27;</span> <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;
+
+&lt;maui-progress
+  <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;75&#x27;</span>
+  <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;Purple&#x27;</span>
+  <span class="hljs-attribute">pivot-color</span>=<span class="hljs-string">&#x27;#7232dd&#x27;</span>
+  <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;linear-gradient(to right, #be99ff, #7232dd)&#x27;</span>
+/&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">inactive</td>
+<td align="left">Whether to gray out</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">percentage</td>
+<td align="left">progress percentage</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code></td>
+</tr>
+<tr>
+<td align="left">stroke-width</td>
+<td align="left">progress bar thickness, default unit is <code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>4px</code></td>
+</tr>
+<tr>
+<td align="left">show-pivot</td>
+<td align="left">Whether to display progress text</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">progress bar color</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">text-color</td>
+<td align="left">progress text color</td>
+<td align="left">String</td>
+<td align="left"><code>#fff</code></td>
+</tr>
+<tr>
+<td align="left">track-color</td>
+<td align="left">track color</td>
+<td align="left">String</td>
+<td align="left"><code>#e5e5e5</code></td>
+</tr>
+<tr>
+<td align="left">pivot-text</td>
+<td align="left">text display</td>
+<td align="left">String</td>
+<td align="left">percent text</td>
+</tr>
+<tr>
+<td align="left">pivot-color</td>
+<td align="left">text background color</td>
+<td align="left">String</td>
+<td align="left">same color as the progress bar</td>
+</tr>
+</tbody></table>

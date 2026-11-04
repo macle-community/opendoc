@@ -1,0 +1,120 @@
+<h2 id="数据绑定">数据绑定</h2>
+<p>MAML 中的动态数据均来自对应 Page 的 data。</p>
+<h3 id="简单绑定">简单绑定</h3>
+<p>数据绑定使用 Mustache 语法（双大括号）将变量包起来，可以作用于：</p>
+<h4 id="内容">内容</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{ <span class="hljs-name">message</span> }}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">message</span>: &#x27;<span class="hljs-type">Hello</span> <span class="hljs-type">Macle</span>!&#x27;
+  }</span>
+})
+</code></pre>
+<h4 id="组件属性需要在双引号之内">组件属性(需要在双引号之内)</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;m-</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">id</span>: 1
+  }</span>
+})
+</code></pre>
+<h4 id="条件属性需要在双引号之内">条件属性(需要在双引号之内)</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">condition</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">condition</span>: <span class="hljs-title">true</span>
+  }</span>
+})
+</code></pre>
+<h4 id="关键字需要在双引号之内">关键字(需要在双引号之内)</h4>
+<p>true：boolean 类型的 true，代表真值。
+false： boolean 类型的 false，代表假值。</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">checkbox</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">false</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">checkbox</span>&gt;</span></span>
+</code></pre>
+<blockquote>
+<p>注意：不要直接写 checked=&quot;false&quot;，其计算结果是一个字符串。</p>
+</blockquote>
+<h3 id="运算">运算</h3>
+<p>可以在 {{}} 内进行简单的运算，支持的有如下几种方式：</p>
+<h4 id="三元运算">三元运算</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flag</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> Hidden <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="算数运算">算数运算</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">a</span> + b}}</span><span class="language-xml"> + </span><span class="hljs-template-variable">{{<span class="hljs-name">c</span>}}</span><span class="language-xml"> + d <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  data:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    a:</span> <span class="hljs-number">1</span>,
+<span class="hljs-symbol">    b:</span> <span class="hljs-number">2</span>,
+<span class="hljs-symbol">    c:</span> <span class="hljs-number">3</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>)
+</code></pre>
+<p>输出结果 3 + 3 + d</p>
+<h4 id="逻辑判断">逻辑判断</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">length</span> &gt; <span class="hljs-number">5</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="字符串运算">字符串运算</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">&quot;hello&quot;</span> + name}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="数据路径运算">数据路径运算</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">object.key</span>}}</span><span class="language-xml"> </span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[0]}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    <span class="hljs-selector-tag">object</span>: {
+      key: <span class="hljs-string">&#x27;Hello &#x27;</span>
+    },
+    array: [<span class="hljs-string">&#x27;Macle&#x27;</span>]
+  }
+})
+</code></pre>
+<h3 id="组合">组合</h3>
+<p>也可以在 Mustache 内直接进行组合，构成新的对象或者数组。</p>
+<h4 id="数组">数组</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[zero, 1, 2, 3, 4]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">zero</span>: 0
+  }</span>
+})
+</code></pre>
+<p>最终组合成数组[0, 1, 2, 3, 4]</p>
+<blockquote>
+<p>注意：花括号和引号之间如果有空格，将最终被解析成为字符串</p>
+</blockquote>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1,2,3]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string"> &quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>等价于</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1,2,3]</span> + <span class="hljs-string">&#x27; &#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="对象">对象</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;objectCombine&quot;</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">for:</span> a, bar: b}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    <span class="hljs-selector-tag">a</span>: <span class="hljs-number">1</span>,
+    b: <span class="hljs-number">2</span>
+  }
+})
+</code></pre>
+<p>最终组合成的对象是 {for: 1, bar: 2}</p>
+<h3 id="常见问题">常见问题</h3>
+<h4 id="maml页面对标签绑定方法，如何绑定对应方法的参数，对事件进行传值？">maml页面对标签绑定方法，如何绑定对应方法的参数，对事件进行传值？</h4>
+<p><strong>A</strong>：事件传值通用语法为在标签内添加 data-参数名称 = 想绑定的参数值，例如:</p>
+<pre><code class="language-js">&lt;<span class="hljs-keyword">view</span> bindtap=<span class="hljs-string">&quot;testTap&quot;</span> data-<span class="hljs-keyword">test</span>-value = <span class="hljs-string">&quot;1&quot;</span>&gt; &lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+<p>相应的，在js文件中，可以通过如下写法取得入参中的值：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">testTap</span><span class="hljs-params">(e)</span></span>{
+    console<span class="hljs-selector-class">.log</span>(e<span class="hljs-selector-class">.currentTarget</span><span class="hljs-selector-class">.dataset</span>.testValue)
+}
+</code></pre>
+<p>这种传值使用的连词符写法最终会被转换成驼峰写法，具体内容可以参见 <a onclick="_mdLinkClick(this.href)" href="#/framework/event">事件</a>。</p>

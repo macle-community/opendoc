@@ -1,0 +1,70 @@
+<h2 id="text">text</h2>
+<blockquote>
+<p>Text。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">user-select</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether the text is available. It causes the text node to be displayed as <strong>inline-block</strong>.</td>
+</tr>
+<tr>
+<td align="left">space</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Consecutive spaces.</td>
+</tr>
+<tr>
+<td align="left">decode</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to decode.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-space">Valid Values of space</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ensp</td>
+<td align="left">Half of the size of a Chinese character space.</td>
+</tr>
+<tr>
+<td align="left">emsp</td>
+<td align="left">Size of a Chinese character space.</td>
+</tr>
+<tr>
+<td align="left">nbsp</td>
+<td align="left">Space size based on the font.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;view&gt;
+  &lt;<span class="hljs-built_in">text</span> userSelect=<span class="hljs-literal">false</span> <span class="hljs-literal">space</span>=<span class="hljs-string">&quot;nbsp&quot;</span>&gt;Chinese <span class="hljs-built_in">characters</span> <span class="hljs-literal">space</span> nbsp&lt;/<span class="hljs-built_in">text</span>&gt;
+&lt;/view&gt;
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li><code>&amp;nbsp</code>, <code>&amp;lt</code>, <code>&amp;gt</code>, <code>&amp;amp</code>, <code>&amp;apos</code>, <code>&amp;ensp</code>, and <code>&amp;emsp</code> can be parsed by <code>decode</code>.</li>
+<li>The space standards vary according to OSs.</li>
+<li>The text component supports only text nesting.</li>
+<li>Only text nodes can be selected.</li>
+</ol>

@@ -1,0 +1,108 @@
+<h3 id="masetswipebackobject-object">ma.setSwipeBack(Object object)</h3>
+<blockquote>
+<p>Sets whether to disable iOS gesture control.(minimum version: 26.3.0,effective only on iOS devices).</p>
+</blockquote>
+<blockquote>
+<p>Note: This API is called by an H5 mini program to control whether sliding is supported globally, or called by a DSL mini program to control whether sliding is supported on the current page.</p>
+</blockquote>
+<h4 id="parameter">Parameter</h4>
+<h5 id="object-object">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">enableSwipeBack</td>
+<td align="left">Boolean</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Indicates Whether to disable sliding. Not disabled: false; Disabled: false.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setSwipeBack: ok</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-callback-function">object.fail Callback Function</h4>
+<h5 id="parameter-2">Parameter</h5>
+<h4 id="object-res-1">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setSwipeBack: fail, + error cause (null if no result is returned)</td>
+</tr>
+</tbody></table>
+<h4 id="sample-code">Sample Code</h4>
+<pre><code class="language-js">ma.setSwipeBack({
+  enableSwipeBack: <span class="hljs-literal">true</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack success&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack fail&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;setSwipeBack complete&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  }
+});
+</code></pre>

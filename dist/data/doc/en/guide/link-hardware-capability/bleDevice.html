@@ -1,0 +1,185 @@
+<h2 id="bluetooth-low-energyble">Bluetooth Low Energy(BLE)</h2>
+<p>Bluetooth Low Energy is a protocol supported since Bluetooth 4.0. Compared with Bluetooth Classic, Bluetooth Low Energy
+features extremely low power consumption and faster transmission speed, but transmits a small amount of data. It is
+commonly used in various intelligent electronic products that have a relatively high requirement on a battery life and
+require only a small amount of data to be transmitted, such as an intelligent wearable device, an intelligent home
+appliance, and a sensor, and is widely applied to a wide range of scenarios.</p>
+<h3 id="1-work-mode">1. work mode</h3>
+<p>The Bluetooth low energy protocol defines several roles, or operating modes for devices. Currently, the Bluetooth Mini Program
+supports the following working modes:</p>
+<ul>
+<li>Central mode：The central device may scan a peripheral device, and after finding that a peripheral device exists,
+establish a connection to the peripheral device, and then may use a service (Service) provided by the peripheral
+device.</li>
+<li>peripheral mode: not supported currently</li>
+<li>Beacon: not supported currently。</li>
+</ul>
+<p>In general, the mobile phone will play the role of a central device, using data provided by peripheral devices for
+processing or display. The Mini Program provides a low-power Bluetooth interface that defaults to setting the phone as the
+central device.</p>
+<h5 id="precautions">Precautions</h5>
+<p>In the Mini Program, the current Mini Program Bluetooth BLE only supports the mobile Bluetooth device in host mode. On a terminal
+device, you only need to call ma.openBluetoothAdapter to initialize the Bluetooth adapter once to use the Bluetooth
+capability of the Mini Program.</p>
+<h3 id="2-communication-protocol">2. Communication Protocol</h3>
+<p>After two Bluetooth low energy devices establish a connection, data exchange between the two parties is based on the
+GATT (Generic Attribute Profile) specification. A profile (Profile) may be defined according to the specification, to
+describe a service (Service) provided by the Bluetooth device.</p>
+<p>There are several key concepts in the whole communication process:</p>
+<ul>
+<li><strong>Profile</strong>: A profile is a collection of services predefined by the Bluetooth standard and does not exist on a
+Bluetooth device. For Bluetooth devices to be compatible with each other, they only need to support the same profile.
+A Bluetooth device can support multiple profiles.</li>
+<li><strong>Service</strong>: A Bluetooth device can provide multiple services, such as the battery level information service and
+system information service. Each service is uniquely identified by a UUID.</li>
+<li><strong>Characteristic</strong>:  Each service contains zero or more characteristics. For example, the power information service
+has a characteristic to indicate the power data. A characteristic consists of a ** value and zero or more
+descriptors**.. <strong>When the Bluetooth device is communicated, the communication is mainly completed by reading and
+writing the value of the characteristic</strong>. Each characteristic is uniquely identified by a UUID.</li>
+<li><strong>Descriptor</strong>: A descriptor is a defined property that describes the value of a feature. For example, a Descriptor
+may specify a human-readable description, a range of values for a feature value, or a unit of measure specific to a
+feature value. Each descriptor is uniquely identified by a UUID.</li>
+</ul>
+<p>As shown in the following figure, each Bluetooth device may provide multiple services, and each service may have
+multiple characteristics. You can read and write the value of the corresponding characteristic based on the protocol of
+the Bluetooth device to communicate with the Bluetooth device.
+<img src="/openplatform/macledocs/data/doc/en/guide/link-hardware-capability/../image/start/bluetoothProfile.PNG" alt="image" ></p>
+<h3 id="3-uuid-universally-unique-identifier">3. UUID (Universally Unique Identifier)</h3>
+<p>According to the Bluetooth 4.2 protocol specification (Vol 3, Part B, section 2.5.1 UUID), a UUID is a 128-bit unique
+identifier used to identify a Service, a Characteristic, and etc.</p>
+<p>To reduce the burden of storing and transmitting 128-bit UUID values, the Bluetooth consortium pre-allocates UUIDs that
+have a common part called the 00000000-0000-1000-8000-00805F9B34FB. Therefore, the pre-allocation of UUID of can also be
+represented using 16 bits or 32 bits, with 16-bit UUIDs being the most common. Using 16-bit and 32-bit UUIDs reduces the
+storage and transmission load. The UUID defined by the developer cannot conflict with the pre-allocated UUID.</p>
+<p>In the Mini Program, the parameters for ma.startBluetoothDevicesDiscovery and ma.getConnectedBluetoothDevices support
+16/32/128-bit UUIDs. In the parameters of other interfaces,</p>
+<ul>
+<li>iOS supports 16-bit and 128-bit UUIDs directly.</li>
+<li>Android 8.0.9 and later versions support 16-bit, 32-bit, and 128-bit UUIDs.</li>
+<li>Versions earlier than Android 8.0.9 support only 128-bit UUIDs. Developers need to manually add 128-bit UUIDs. Place
+filling method is as follows:<blockquote>
+<p>128-bit UUID = 16-bit UUID * 2^96 + Bluetooth Base UUID
+128-bit UUID = 32-bit UUID * 2^96 + Bluetooth Base UUID</p>
+</blockquote>
+<p>for example</p>
+<blockquote>
+<p>0x180F -&gt; 0000180F-0000-1000-8000-00805F9B34FB
+The return values of all interfaces are 128-bit UUIDs.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-process-of-using-central-devices">4. Process of Using Central Devices</h3>
+<h4 id="41-initialize-the-bluetooth-module">4.1 Initialize the Bluetooth module.</h4>
+<p>Before using the Bluetooth APIs, you must call ma.openBluetoothAdapter to initialize the Bluetooth adapter module. Other
+APIs can be called only after the initialization is successful.
+If Bluetooth is disabled or your phone does not support Bluetooth, an error message will be displayed. In this case, the
+Mini Program Bluetooth module has been initialized, and the API related to Bluetooth BLE can be called to start Bluetooth
+interaction. Developers should consider compatibility with the situation that users turn on/off the Bluetooth switch
+during the use of the Mini Program, and provide necessary prompts to improve usability.</p>
+<pre><code class="language-javascript">ma.openBluetoothAdapter({
+  <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-comment">// Initialized successs</span>
+  }
+})
+</code></pre>
+<h4 id="42-scan-and-discover-bluetooth-peripherals">4.2 Scan and discover Bluetooth peripherals</h4>
+<p>After the Bluetooth module is initialized successfully, you need to scan peripheral devices by running
+ma.startBluetoothDevicesDiscovery. When a Bluetooth peripheral device is scanned, the ma.onBluetoothDeviceFound event is
+called back and the scanned device is returned. Scanning devices consumes system resources. Call
+ma.stopBluetoothDevicesDiscovery to stop scanning after the required device is found. If you do not manually stop the
+search, the Mini Program API will search for 5 minutes by default. After 5 minutes, the search stops.</p>
+<blockquote>
+<p>If a device has been connected and the device ID has been obtained, skip the scanning step.</p>
+</blockquote>
+<pre><code class="language-javascript"><span class="hljs-comment">// Listening to the event of detecting a new device</span>
+ma.onBluetoothDeviceFound(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  res.devices.forEach(<span class="hljs-function">(<span class="hljs-params">device</span>) =&gt;</span> {
+    <span class="hljs-comment">// You can do some filtering here.</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Device Found&#x27;</span>, device)
+  })
+  <span class="hljs-comment">// Stop scanning as soon as you find the device you&#x27;re searching for</span>
+  ma.stopBluetoothDevicesDiscovery()
+})
+
+<span class="hljs-comment">// Initialize the Bluetooth module</span>
+ma.openBluetoothAdapter({
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-comment">// Start searching for nearby Bluetooth peripherals</span>
+    ma.startBluetoothDevicesDiscovery({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;startBluetoothDevicesDiscovery successs&#x27;</span> + res)
+      }
+    })
+  },
+  <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;openBluetoothAdapter fail&#x27;</span> + res)
+  }
+})
+</code></pre>
+<h4 id="43-connected-device">4.3 Connected device</h4>
+<p>For Bluetooth Low Energy devices to communicate with each other, a connection must first be established.</p>
+<pre><code class="language-javascript">ma.createBLEConnection({
+  deviceId, <span class="hljs-comment">// deviceId of the found device.</span>
+  success: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-comment">// Connection succeeded. Obtain the service.</span>
+    ma.getBLEDeviceServices({
+      deviceId,
+    })
+  }
+})
+</code></pre>
+<h4 id="44-get-services-for-bluetooth-peripherals">4.4 Get Services for Bluetooth Peripherals</h4>
+<pre><code class="language-javascript">ma.getBLEDeviceServices({
+  deviceId, <span class="hljs-comment">// deviceId of the found device.</span>
+  success: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; res.services.<span class="hljs-built_in">length</span>; i++) {
+      <span class="hljs-keyword">if</span> (res.services[i].isPrimary) {
+        <span class="hljs-comment">// Select a main service for communication based on service requirements.</span>
+      }
+    }
+  }
+})
+</code></pre>
+<h4 id="45-write-the-feature-value-of-the-service">4.5 Write the feature value of the service.</h4>
+<pre><code class="language-javascript">ma.<span class="hljs-title function_">getBLEDeviceCharacteristics</span>({
+  deviceId, <span class="hljs-comment">// deviceId of the found device.</span>
+  serviceId, <span class="hljs-comment">// One of the services id found in the previous step</span>
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; res.<span class="hljs-property">characteristics</span>.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">let</span> item = res.<span class="hljs-property">characteristics</span>[i]
+      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">write</span>) { <span class="hljs-comment">// The characteristic value can be written</span>
+        <span class="hljs-comment">// This example is to send a 0x00 hexadecimal data to the Bluetooth device.</span>
+        <span class="hljs-comment">// In practice, data should be sent according to the specific device protocol.</span>
+        <span class="hljs-keyword">let</span> buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBuffer</span>(<span class="hljs-number">1</span>)
+        <span class="hljs-keyword">let</span> dataView = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataView</span>(buffer)
+        dataView.<span class="hljs-title function_">setUint8</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+        ma.<span class="hljs-title function_">writeBLECharacteristicValue</span>({
+          deviceId,
+          serviceId,
+          <span class="hljs-attr">characteristicId</span>: item.<span class="hljs-property">uuid</span>,
+          <span class="hljs-attr">value</span>: buffer,
+        })
+      }
+    }
+  }
+})
+</code></pre>
+<h4 id="46-disconnecting-and-turning-off-the-bluetooth-adapter">4.6 Disconnecting and Turning Off the Bluetooth Adapter</h4>
+<p>When you are finished, disconnect and turn off the Bluetooth adapter at the appropriate time.</p>
+<h3 id="5-precautions">5. Precautions</h3>
+<ul>
+<li>For the read, write, and notify operations on feature values on iOS devices, the system needs to obtain feature value
+instances. Therefore, the input serviceId and characteristicId must be obtained from ma.getBLEDeviceServices and
+ma.getBLEDeviceCharacteristics.It can be used only after it is taken. It is recommended that ma.getBLEDeviceServices
+and ma.getBLEDeviceCharacteristics be executed before data exchange with the Bluetooth device after the connection is
+established.</li>
+<li>The Bluetooth function can be used for indirect location. For Android 6.0 and later versions, if you do not have the
+location permission or the location switch is turned off, you cannot search for devices.</li>
+<li>On Android, when some models obtain device services, the 00001800 and 00001801 UUID services are displayed. This is a
+system behavior. Do not use these two services.</li>
+<li>The functions of establishing and closing a connection must be invoked in pairs. If the connection is not closed in
+time to release resources, exceptions may occur.</li>
+<li>When transferring data to and from a Bluetooth device, you need to be aware of the MTU (Maximum Transmission Unit). If
+the data size exceeds the MTU, an error occurs. It is recommended that the data be transmitted in segments based on
+the Bluetooth device protocol. If the MTU is unknown, it is recommended that the transmission unit be 20 bytes.</li>
+</ul>

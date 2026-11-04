@@ -1,0 +1,221 @@
+<h2 id="view">view</h2>
+<blockquote>
+<p>视图容器</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hover-class</td>
+<td align="left">String</td>
+<td align="left">none</td>
+<td align="left">否</td>
+<td align="left">指定按下去的样式类。当 hover-class=&quot;none&quot; 时，没有点击态效果</td>
+</tr>
+<tr>
+<td align="left">hover-stop-propagation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">指定是否阻止本节点的祖先节点出现点击态</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">否</td>
+<td align="left">按住后多久出现点击态，单位毫秒</td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">Number</td>
+<td align="left">400</td>
+<td align="left">否</td>
+<td align="left">手指松开后点击态保留时间，单位毫秒</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">
+Page({
+    data: {
+        pageName: <span class="hljs-string">&#x27;component/view&#x27;</span>,
+    },
+});
+</code></pre>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-description&quot;</span>&gt;</span>视图容器相当于 web 的 div 或 react-native 的 View<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section-demo&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stream&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Zoe<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
+                            欢迎来到Macle小程序！
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
+                            June 12
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Jim<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
+                            @Zog 如何开始？
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
+                            June 13
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Zog<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
+                            你可以看 Demo，有一个简单的了解；下载我们的 IDE 进行开发~
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
+                            June 14
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Alice<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-comment">&lt;!-- hover blue --&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span> <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&quot;burlywood&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
+                            excellent!
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span> <span class="hljs-attr">hidden</span>&gt;</span>
+                            June 15
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">hidden</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Alice<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
+                            excellent +1
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
+                            June 15
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-css">
+<span class="hljs-selector-class">.burlywood</span> {
+    <span class="hljs-attribute">background</span>: burlywood;
+}
+
+<span class="hljs-selector-class">.stream</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15</span>rpx;
+}
+
+<span class="hljs-selector-class">.post</span> + <span class="hljs-selector-class">.post</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">15</span>rpx;
+}
+
+<span class="hljs-selector-class">.post</span> {
+    <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-selector-class">.postUser</span> {
+    <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">1</span> auto;
+    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">20</span>rpx;
+}
+
+<span class="hljs-selector-class">.postUserName</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">180</span>rpx;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#7197a5</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24</span>rpx;
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">60</span>rpx;
+}
+
+<span class="hljs-selector-class">.postBody</span> {
+    <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0%</span>;
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">30</span>rpx;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">2</span>rpx solid <span class="hljs-number">#b0b7b9</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8</span>rpx;
+}
+
+<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:after</span>,
+<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">70</span>rpx;
+    <span class="hljs-attribute">border</span>: solid transparent;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; &quot;</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">pointer-events</span>: none;
+}
+
+<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:after</span> {
+    <span class="hljs-attribute">border-color</span>: transparent;
+    <span class="hljs-attribute">border-right-color</span>: <span class="hljs-number">#ffffff</span>;
+    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">16</span>rpx;
+    <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">16</span>rpx;
+}
+
+<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:before</span> {
+    <span class="hljs-attribute">border-color</span>: transparent;
+    <span class="hljs-attribute">border-right-color</span>: <span class="hljs-number">#deebf0</span>;
+    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">18</span>rpx;
+    <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">18</span>rpx;
+}
+
+<span class="hljs-selector-class">.postBodyContent</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#769caa</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24</span>rpx;
+}
+
+<span class="hljs-selector-class">.postBodyDate</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">15</span>rpx;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#708188</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20</span>rpx;
+    <span class="hljs-attribute">text-transform</span>: uppercase;
+    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">2</span>rpx;
+}
+
+<span class="hljs-selector-class">.burlywood</span> {
+    <span class="hljs-attribute">color</span>: burlywood;
+}
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>如果需要使用滚动视图，请使用 scroll-view</li>
+</ol>

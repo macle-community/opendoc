@@ -1,0 +1,50 @@
+<h2 id="converters">Converters</h2>
+<blockquote>
+<p>Mini Program cross-platform conversion tool (minimum version 23.3.0)</p>
+</blockquote>
+<p>The macle Mini Program development plug-in provides developers with conversion capabilities, making cross-platform development more convenient.</p>
+<p>Based on the type of the project to be converted, the conversion scenarios supported by the converter are classified into <strong>H5 project</strong> and <strong>Other platform Mini Program</strong>.</p>
+<h3 id="h5-to-mini-program">H5 to Mini Program</h3>
+<h4 id="gui">GUI</h4>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/ConverterH5GUIPart1.png" alt="image" ></p>
+<ol>
+<li>Function entry</li>
+<li>The current project type is H5 application.</li>
+<li>Project directory to be converted. The current project directory is read by default during initialization.</li>
+<li>Button for changing the project directory</li>
+<li>Conversion function button</li>
+</ol>
+<h4 id="configuration-gui">Configuration GUI</h4>
+<p>If the original HTML5 project uses the converter for the first time, you need to configure the converter. The configuration page is as follows:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/ConverterH5GUIPart2.png" alt="image" ></p>
+<ol>
+<li>Folders to be converted</li>
+<li>Button for quickly selecting a folder</li>
+<li>Home page of the converted Mini Program</li>
+<li>Confirm the conversion button. Click the button to start the conversion.</li>
+</ol>
+<h4 id="conversion-result">Conversion Result</h4>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/ConverterH5Res.png" alt="image" ></p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Only HTML5 projects whose frontend and backend are separated are supported. For example, pages generated based on server rendering are not supported.</li>
+<li>After the conversion is confirmed, the project is automatically converted and the .macle.config.json file is generated in the original project directory. You can view the compilation information on the output page.</li>
+<li>If static resources are introduced in the original project, change the resource path to the relative path .<strong>You can change the common basic path</strong>. Adjust the configuration based on the packaging tool.Take the vite as an example. The default value of base in the vite shared configuration item is <code>/</code>, which needs to be changed to<code>./</code>.</li>
+<li>For a project that has been built, you need to manually pull the dependency. That is, you need to run the <code>npm install</code> command in the current project directory. Ensure that the compilation and packaging task can be successfully executed on the local host before using the converter to convert the task.</li>
+<li>If garbled characters are displayed in the lower right corner when the converter is used, the encoding format of system is inconsistent with that of node. This problem can be solved by unifying the encoding format.</li>
+</ol>
+<h3 id="other-platform-mini-program-to-mini-program">Other platform Mini Program to Mini Program</h3>
+<h4 id="gui-1">GUI</h4>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/ConverterGUI.png" alt="image" ></p>
+<p>1: function entry</p>
+<p>2: Select the original project type to be converted.</p>
+<p>3: Select the original project file directory.</p>
+<p>4: Select the path for storing the converted project file.</p>
+<p>5: conversion function entry</p>
+<h4 id="conversion-result-1">Conversion Result</h4>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/ConverterRes.png" alt="image" ></p>
+<h3 id="faqs">FAQs</h3>
+<h4 id="how-do-i-distinguish-between-the-current-project-with-or-without-a-build">How do I distinguish between the current project with or without a build?</h4>
+<p><strong>A</strong>: No build indicates that the current project is native HTML. With build indicates that the current project uses the front-end framework and needs to be compiled into HTML. The simplest method is to check whether the package.json file exists in the current project. If the project exists, the current project is a build project. If the project does not exist, the current project is a build project.</p>
+<h4 id="what-can-i-do-if-the-error-message-command-failed-npm-run-buildxxx-is-not-an-internal-or-external-command-is-displayed-during-build-conversion">What can I do if the error message &quot;Command failed: npm run build&#39;xxx&#39; is not an internal or external command&quot; is displayed during build conversion?</h4>
+<p><strong>A</strong>: Delete the .macle.config.json file, run the <code>npm install</code> command in the current directory to complete the dependency installation, and perform the conversion again.</p>

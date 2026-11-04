@@ -1,0 +1,86 @@
+<h1 id="behaviorobject-object">Behavior(Object object)</h1>
+<p>Registers a <code>behavior</code> and accepts a parameter of the <code>Object </code>type.</p>
+<h2 id="parameter"><strong>Parameter</strong></h2>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Definition Field</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>properties</td>
+<td>Object Map</td>
+<td>No</td>
+<td>External properties of the component, which form a map between property names and property settings.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>No</td>
+<td>Internal data of the component, which is used together with <code>properties</code> to render the template of the component.</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>Object</td>
+<td>No</td>
+<td>Component methods, including event response functions and any custom methods. For the use of event response functions, see <a onclick="_mdLinkClick(this.href)" href="#/guide/events">Events and Communication Between Components</a>.</td>
+</tr>
+<tr>
+<td>behaviors</td>
+<td>String Array</td>
+<td>No</td>
+<td>Inter-component code reuse mechanism similar to <code>mixins</code> and <code>traits</code>. For details, see <a onclick="_mdLinkClick(this.href)" href="#/guide/behaviors">behaviors</a>.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is created. Note that <code>setData</code> cannot be called in this function.</td>
+</tr>
+<tr>
+<td>attached</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance enters the page node tree.</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when the component layout is completed.</td>
+</tr>
+<tr>
+<td>moved</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is moved to another node in the node tree.</td>
+</tr>
+<tr>
+<td>detached</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is removed from the page node tree.</td>
+</tr>
+</tbody></table>
+<h2 id="sample-code"><strong>Sample Code</strong></h2>
+<pre><code><span class="hljs-comment">// my-behavior.js</span>
+module.<span class="hljs-attr">exports</span> <span class="hljs-operator">=</span> Behavior(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  behaviors:</span> [],
+<span class="hljs-symbol">  properties:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorProperty:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">      type:</span> String
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  data:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorData:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  attached:</span> function()<span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  methods:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    myBehaviorMethod:</span> function()<span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>)
+</code></pre>

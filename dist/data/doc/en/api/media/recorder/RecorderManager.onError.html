@@ -1,0 +1,36 @@
+<h2 id="recordermanageronerrorfunction-listener">RecorderManager.onError(function listener)</h2>
+<blockquote>
+<p>Listen to recording error events. If a status exception, operation exception, or system exception occurs during the operation of the recording manager, the recording manager will listen to errors(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function for recording error events</p>
+<h5 id="parameters">Parameters</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">Error information</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onError(() =&gt; {
+            ma.showToast({
+                title: &#x27;onError&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

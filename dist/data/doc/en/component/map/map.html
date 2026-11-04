@@ -1,0 +1,321 @@
+<h2 id="map">Map</h2>
+<blockquote>
+<p>The map component provides functions such as map display and interaction. Related api: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createMapContext">ma.createMapContext</a></p>
+</blockquote>
+<h2 id="basic-map-attributes">Basic Map Attributes</h2>
+<h3 id="attribute-description">Attribute Description</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>longitude</td>
+<td>Number</td>
+<td></td>
+<td>No</td>
+<td>Center longitude</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td></td>
+<td>No</td>
+<td>Center latitude</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>Number</td>
+<td>16</td>
+<td>No</td>
+<td>Zoom level. The value ranges from 3 to 20.</td>
+</tr>
+<tr>
+<td>markers</td>
+<td>Array</td>
+<td></td>
+<td>No</td>
+<td>Mark points</td>
+</tr>
+<tr>
+<td>polyline</td>
+<td>Array</td>
+<td></td>
+<td>No</td>
+<td>Route</td>
+</tr>
+<tr>
+<td>circles</td>
+<td>Array</td>
+<td></td>
+<td>No</td>
+<td>Circle</td>
+</tr>
+<tr>
+<td>include-points</td>
+<td>Array</td>
+<td></td>
+<td>No</td>
+<td>Scale the field of view to include all given coordinate points.</td>
+</tr>
+<tr>
+<td>show-location</td>
+<td>Boolean</td>
+<td>false</td>
+<td>No</td>
+<td>Display the current anchor with direction(The positioning point obtained by the simulator does not have a direction).</td>
+</tr>
+<tr>
+<td>bindtap</td>
+<td>Eventhandle</td>
+<td></td>
+<td>No</td>
+<td>Triggered when a map is clicked, e.detail={longitude,latitude}</td>
+</tr>
+<tr>
+<td>bindmarkertap</td>
+<td>Eventhandle</td>
+<td></td>
+<td>No</td>
+<td>Triggered by clicking a map marker, e.detail={markerId}</td>
+</tr>
+</tbody></table>
+<h4 id="marker">marker</h4>
+<blockquote>
+<p>Marker points are used to display the location of the marker on the map.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>Marker point ID</td>
+<td>Number</td>
+<td>No</td>
+<td>This ID is returned in the marker click event.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>latitude</td>
+<td>Number</td>
+<td>Yes</td>
+<td>floating point number, ranging from - 90 to 90</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>longitude</td>
+<td>Number</td>
+<td>Yes</td>
+<td>floating point number, ranging from - 180 to 180</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Mark the roll call</td>
+<td>String</td>
+<td>No</td>
+<td>Display when clicked</td>
+</tr>
+<tr>
+<td>iconPath</td>
+<td>Displayed Icons</td>
+<td>String</td>
+<td>No</td>
+<td>Image path in the project path. Only the local path is supported.</td>
+</tr>
+<tr>
+<td>width</td>
+<td>width of the mark icon</td>
+<td>Number</td>
+<td>No</td>
+<td>default to the actual width of the image</td>
+</tr>
+<tr>
+<td>height</td>
+<td>height of the mark icon</td>
+<td>Number</td>
+<td>No</td>
+<td>default to the actual height of the image</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>The longitude and latitude are in the anchor point of the annotation icon. The default value is the middle point at the bottom.</td>
+<td>Object</td>
+<td>No</td>
+<td>{x,y}. x indicates horizontal (0 - 1), and y indicates vertical (0 - 1). {x:0.5,y:1} indicates the midpoint of the bottom edge.(The simulator does not support this attribute)</td>
+</tr>
+</tbody></table>
+<h4 id="polyline">polyline</h4>
+<blockquote>
+<p>Specifies a series of coordinate points, from the first line of the array to the last line. When drawing a rainbow line, you need to specify the colors of different segments. For example, if points contain five points, four color values must be transferred in colorList. If the length of colorList is less than points.length - 1, the color of the remaining segments is the same as that of the last item.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>points</td>
+<td>longitude and latitude array</td>
+<td>Array</td>
+<td>Yes</td>
+<td>[{latitude:0,longitude:0}]</td>
+</tr>
+<tr>
+<td>color</td>
+<td>Line color</td>
+<td>String</td>
+<td>No</td>
+<td>Hexadecimal, for example, #FFFFFF.The default value is &#39;# 000000&#39;.</td>
+</tr>
+<tr>
+<td>colorList</td>
+<td>Rainbow line</td>
+<td>Array</td>
+<td>No</td>
+<td><strong>Ignore the color if it exists</strong>, for example, [&#39;#FF0000&#39;,&#39;#00FF00&#39;,&#39;#0000FF&#39;,&#39;#112233&#39;,&#39;#223344&#39;].The default value is [&#39;#000000&#39;].</td>
+</tr>
+<tr>
+<td>width</td>
+<td>line width</td>
+<td>Number</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="circle">circle</h4>
+<p>Display a circle on a map</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>latitude</td>
+<td>latitude</td>
+<td>Number</td>
+<td>Yes</td>
+<td>floating point number, ranging from - 90 to 90</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>longitude</td>
+<td>Number</td>
+<td>Yes</td>
+<td>floating point number, ranging from - 180 to 180</td>
+</tr>
+<tr>
+<td>color</td>
+<td>stroke color</td>
+<td>String</td>
+<td>No</td>
+<td>hexadecimal.The default value is &#39;#000000&#39;.</td>
+</tr>
+<tr>
+<td>fillColor</td>
+<td>Fill Color</td>
+<td>String</td>
+<td>No</td>
+<td>Hexadecimal</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>radius</td>
+<td>Number</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">// index.maml
+
+ <span class="hljs-tag">&lt;<span class="hljs-name">map</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myMap&quot;</span> <span class="hljs-attr">show-location</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">showLocation</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">scale</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">scale</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">markers</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">markers</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">polyline</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">polyline</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">longitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">longitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">latitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">latitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">include-points</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">includePoints</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">circles</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">circles</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bindmarkertap</span>=<span class="hljs-string">&quot;markerTap&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;mapTap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
+</span>
+</code></pre>
+<pre><code class="language-js">
+<span class="hljs-string">//</span> <span class="hljs-string">index.js</span> 
+<span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {
+    <span class="hljs-attr">markers:</span> [],
+    <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+    <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+    <span class="hljs-attr">circles:</span> [
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+        <span class="hljs-attr">radius:</span> <span class="hljs-number">20</span>,
+        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#87CEEB&#x27;</span>,
+      }
+    ],
+    <span class="hljs-attr">includePoints:</span> [
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
+      },
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+      },
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+      }
+    ],
+    <span class="hljs-attr">polyline:</span> [
+      {
+        <span class="hljs-attr">points:</span> [
+          {
+            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
+            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
+          },
+          {
+            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+          }
+        ],
+        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#FFFFFF&#x27;</span>
+      }
+    ],
+    <span class="hljs-attr">showLocation:</span> <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">scale:</span> <span class="hljs-number">18</span>,
+  }<span class="hljs-string">,</span>
+   <span class="hljs-string">markerTap(e)</span> {
+    <span class="hljs-string">ma.showModal(</span>{
+      <span class="hljs-attr">content:</span> <span class="hljs-string">`markerTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">mapTap(e)</span> {
+    <span class="hljs-string">ma.showModal(</span>{
+      <span class="hljs-attr">content:</span> <span class="hljs-string">`mapTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">})</span>
+</code></pre>
+<h4 id="tips">Tips</h4>
+<ol>
+<li>The value of color, fillColor, and colorList on the map must be a six-digit hexadecimal number. For example, #87CEEB.</li>
+<li>If the longitude and latitude of the map component are not specified, the longitude and latitude of the Beijing are used by default.</li>
+<li>The simulator needs to import the API key of Google. The API key needs to be applied for by the developer,as shown in the following figure:
+<img src="/openplatform/macledocs/data/doc/en/component/map/image/googleMap.png" alt="image" ></li>
+</ol>

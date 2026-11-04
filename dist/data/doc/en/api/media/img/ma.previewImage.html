@@ -1,0 +1,58 @@
+<h2 id="mapreviewimageobject-object">ma.previewImage(Object object)</h2>
+<blockquote>
+<p>Preview an image in full screen on a new page.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">urls</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">List of image links to be previewed. (The simulator supports only the code package path, network path, and code package path. Note that the code package path is case sensitive.) If a local link is used, ensure that the path does not exceed the root directory of the project.</td>
+</tr>
+<tr>
+<td align="left">current</td>
+<td align="left">String</td>
+<td align="left">First value of <strong>urls</strong></td>
+<td align="left">No</td>
+<td align="left">Link to the current image. (The code package path is case sensitive.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.previewImage({
+  current: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-regexp">//</span> HTTP link of the currently displayed image.
+  urls: [] <span class="hljs-regexp">//</span> List of HTTP links of images to be previewed.
+});
+</code></pre>

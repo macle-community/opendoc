@@ -1,0 +1,85 @@
+<h2 id="manavigatetoobject-object">ma.navigateTo(Object object)</h2>
+<blockquote>
+<p>保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 ma.navigateBack 可以返回到原页面。小程序中页面栈最多十层。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要跳转的应用内非 tabBar 的页面的路径 (代码包路径), 路径后可以带参数。参数与路径之间使用 ? 分隔，参数键与参数值用 = 相连，不同参数用 &amp; 分隔；如 &#39;path?key=value&amp;key2=value2&#39;</td>
+</tr>
+<tr>
+<td align="left">event</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">页面间通信接口，用于监听被打开页面发送到当前页面的数据。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.navigateTo({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;example?id=1&#x27;</span>,
+  <span class="hljs-attr">events</span>: {
+    <span class="hljs-comment">// 给指定事件添加一个监听器，得到被打开页面传送到当前页面的数据</span>
+    acceptDataFromOpenedPage: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data)
+    },
+    <span class="hljs-attr">someEvent</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data)
+    },
+    ...
+  },
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-comment">// 通过eventChannel向被打开页面传送数据</span>
+    res.eventChannel.emit(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> })
+  }
+})
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-comment">//example.js</span>
+Page({
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">option</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(option.query);
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.emit(<span class="hljs-string">&#x27;acceptDataFromOpenedPage&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> });
+    eventChannel.emit(<span class="hljs-string">&#x27;someEvent&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> });
+    <span class="hljs-comment">// 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据</span>
+    eventChannel.on(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data);
+    });
+  }
+});
+</code></pre>

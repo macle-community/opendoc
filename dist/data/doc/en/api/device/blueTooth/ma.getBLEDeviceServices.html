@@ -1,0 +1,114 @@
+<h2 id="magetbledeviceservicesobject-object">ma.getBLEDeviceServices(Object object)</h2>
+<blockquote>
+<p>Get all services of Bluetooth low energy devices (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth device id. The connection needs to have been established via <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createBLEConnection">ma.createBLEConnection</a>.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getBLEDeviceServices: ok</td>
+</tr>
+<tr>
+<td align="left">services</td>
+<td align="left">Array</td>
+<td align="left">Device service list</td>
+</tr>
+</tbody></table>
+<h4 id="array-services">Array services</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uuid</td>
+<td>String</td>
+<td>UUID of the Bluetooth device service</td>
+</tr>
+<tr>
+<td>isPrimary</td>
+<td>Boolean</td>
+<td>Whether the service is the main service</td>
+</tr>
+</tbody></table>
+<h3 id=""></h3>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getBLEDeviceServices({
+  deviceId,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;getBLEDeviceService success&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+    <span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; res.services.length; i++) {
+      <span class="hljs-keyword">if</span> (res.services[i].isPrimary) {
+        console.log(<span class="hljs-built_in">JSON</span>.stringify(res.services[i]));
+        <span class="hljs-keyword">return</span>
+      }
+    }
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;getBLEDeviceService fail&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  }
+}) 
+</code></pre>

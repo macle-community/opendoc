@@ -1,0 +1,39 @@
+<h2 id="require">require</h2>
+<p>引入模块，返回模块通过 module.exports 暴露的接口。</p>
+<h4 id="参数">参数</h4>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left">需要引入模块文件相对于当前文件的相对路径，或 npm 模块名，或 npm 模块路径。<strong>不支持绝对路径</strong></td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// common.js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Hello <span class="hljs-subst">${name}</span> !`</span>)
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayGoodbye</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Goodbye <span class="hljs-subst">${name}</span> !`</span>)
+}
+
+module.exports.sayHello = sayHello
+module.exports.sayGoodbye = sayGoodbye
+</code></pre>
+<pre><code class="language-js"><span class="hljs-selector-tag">var</span> common = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;common.js&#x27;</span>)
+<span class="hljs-built_in">Page</span>({
+  helloMacle: <span class="hljs-built_in">function</span>() {
+    common<span class="hljs-selector-class">.sayHello</span>(<span class="hljs-string">&#x27;Macle&#x27;</span>)
+  },
+  goodbyeMacle: <span class="hljs-built_in">function</span>() {
+    common<span class="hljs-selector-class">.sayGoodbye</span>(<span class="hljs-string">&#x27;Macle&#x27;</span>)
+  }
+})
+</code></pre>

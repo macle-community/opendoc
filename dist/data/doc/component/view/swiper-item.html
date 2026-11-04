@@ -1,0 +1,39 @@
+<h2 id="swiper-item">swiper-item</h2>
+<blockquote>
+<p>仅可放置在 swiper 组件中，宽高自动设置为 100%。</p>
+</blockquote>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">swiper</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">swiper-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>页面A<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">swiper-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">swiper-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>页面B<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">swiper-item</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">swiper-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>页面C<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">swiper-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">swiper</span>&gt;</span>
+</code></pre>
+<pre><code class="language-css">
+<span class="hljs-selector-class">.swiper-container</span>{
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">160px</span>;
+}
+
+<span class="hljs-selector-class">.item</span>{
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">180px</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+}
+
+swiper-item<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">1</span>) <span class="hljs-selector-class">.item</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">81</span>, <span class="hljs-number">170</span>, <span class="hljs-number">81</span>);
+}
+swiper-item<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">2</span>) <span class="hljs-selector-class">.item</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">112</span>, <span class="hljs-number">183</span>, <span class="hljs-number">228</span>);
+}
+swiper-item<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">3</span>) <span class="hljs-selector-class">.item</span>{
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">230</span>, <span class="hljs-number">174</span>, <span class="hljs-number">182</span>);
+}
+</code></pre>

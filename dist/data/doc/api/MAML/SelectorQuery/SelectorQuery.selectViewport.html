@@ -1,0 +1,15 @@
+<h2 id="nodesref-selectorqueryselectviewport"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.selectViewport()</h2>
+<blockquote>
+<p>选择显示区域。可用于获取显示区域的尺寸、滚动位置等信息。</p>
+</blockquote>
+<h3 id="返回值">返回值</h3>
+<h4 id="nodesref"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a></h4>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const SelectorQuery <span class="hljs-operator">=</span> ma.createSelectorQuery()
+
+SelectorQuery.selectViewport()
+  .boundingClientRect()
+  .exec((res) <span class="hljs-operator">=</span>&gt; {
+    console.log(res)<span class="hljs-comment">;</span>
+  })<span class="hljs-comment">;</span>
+</code></pre>

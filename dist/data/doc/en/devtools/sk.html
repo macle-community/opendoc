@@ -1,0 +1,125 @@
+<h1 id="skeleton-screen">Skeleton Screen</h1>
+<p>The skeletal screen is a blank version of the page. It is usually outlined by some gray blocks before the page is fully rendered. After the data is loaded, it is replaced with the real content.</p>
+<p>The skeleton screen mechanism is provided by the Mini Program framework. This mechanism can be used to load the skeleton screen earlier than the skeleton screen created in the service. This mechanism can reduce the white screen waiting time of users and bring better user experience.</p>
+<p>To facilitate development, the developer tool provides the capability of automatically generating skeleton screen code. The skeleton screen can be generated based on the developer&#39;s configuration.</p>
+<h3 id="skeleton-screen-compiling">Skeleton Screen Compiling</h3>
+<p>There are two ways to compile the skeleton screen: automatic generation and manual development. Automatic generation is simple and efficient, and manual development is more flexible. After automatic generation, developers can manually modify it. Developers can flexibly select it according to their own requirements. The skeleton screen depends on the template file. The following describes the skeleton screen template <code>SK</code> file in detail.</p>
+<h4 id="sk-file"><code>SK</code> file</h4>
+<p>The <code>SK</code> file is the template file of the frame skeleton screen. The file is named <code>*.sk</code> and consists of <code>template</code> and <code>style</code>.</p>
+<p>The <code>template</code> tag is the standard <code>HTML</code> subset. Only the <code>div</code> tag and the <code>id</code>, <code>class</code>, and <code>style</code> attributes are supported. <code>style</code> is the standard <code>CSS</code>.</p>
+<p>The sample code is as follows:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--  Skeleton screen HTML code, standard HTML subset; Only the `div` tag and the `id`, `class`, and `style` attributes are supported --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;sk-main&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sk-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sk_6_2_5_46&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 2.7287%; width: 6.8792%; top: 5.4575%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+  <span class="hljs-comment">/* Skeleton screen style code, standard CSS */</span>
+  <span class="hljs-selector-class">.sk_6_2_5_46</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(transparent <span class="hljs-number">0%</span>, <span class="hljs-number">#efefef</span> <span class="hljs-number">0%</span>, <span class="hljs-number">#efefef</span> <span class="hljs-number">100%</span>, transparent <span class="hljs-number">0%</span>) <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">1.6rem</span>;
+    <span class="hljs-attribute">background-repeat</span>: <span class="hljs-string">&#x27;repeat-y&#x27;</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">position</span>: fixed <span class="hljs-meta">!important</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<h4 id="auto-generated">Auto Generated</h4>
+<p>1.Developers can use the developer tool to generate skeleton screen code for the page that is being previewed. The generation button entry is located in the selection list at the lower left corner of the simulator panel.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/devAss/skeleton.png" alt="image" ></p>
+<p>2.Click Generate Skeleton to generate the Skeleton configuration in the <code>app.json</code> file.
+The generated configuration is as follows:</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;page/tabbar/component/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page/tabbar/component/index.sk&quot;</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">}</span>
+</code></pre>
+<p>3.After you click this button, a <code>*.sk</code> file is generated in the directory at the same level on the current page（* indicates the page name）. The file contains the code template and style of the skeleton screen. Developers can modify and adjust the file.</p>
+<h4 id="manual-development">Manual development</h4>
+<p>Developers can create and compile <code>*.sk</code> files anywhere in the Mini Program project, depending on the preceding skeleton screen template.</p>
+<h3 id="generating-configurations">Generating Configurations</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Default value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loading</td>
+<td>String</td>
+<td>spin</td>
+<td>no</td>
+<td>Animation displayed on the skeleton screen. The following enumerated values are supported: <code>spin</code>, <code>chiaroscuro</code>, <code>shine</code></td>
+</tr>
+<tr>
+<td>image</td>
+<td>Object</td>
+<td>{shape:&#39;rect&#39;, color:&#39;#efefef&#39;}</td>
+<td>no</td>
+<td>This configuration accepts 2 fields，<code>color</code>、<code>shape</code>。<code>color</code> and <code>shape</code> are used to determine the color and shape of the picture blocks in the skeleton page，The <code>color</code> supports only hexadecimal, and the <code>shape</code> supports two enumerated values，<code>circle</code> and <code>rect</code></td>
+</tr>
+<tr>
+<td>button</td>
+<td>Object</td>
+<td>{color:&#39;#efefef&#39;}</td>
+<td>no</td>
+<td>This configuration receives one field <code>color</code>. <code>color</code> is used to determine the color that is considered a button block in the skeleton page</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>String</td>
+<td>&#39;#fff&#39;</td>
+<td>no</td>
+<td>Background color of the skeleton screen</td>
+</tr>
+</tbody></table>
+<h3 id="display-control">Display Control</h3>
+<p>The display of the skeleton screen needs to be configured in <code>[&quot;skeleton&quot;][&quot;page&quot;]</code> in the <code>app.json</code> file. The configuration example is the same as the preceding configuration example.
+The <code>skeleton</code> configuration file app.json provides the skeleton screen display configuration in the Mini Program global configuration file. The rules are as follows:</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;page/tabbar/component/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page/tabbar/component/index.sk&quot;</span>
+  <span class="hljs-punctuation">}</span>
+ <span class="hljs-punctuation">}</span>
+</code></pre>
+<p>When the skeleton screen is automatically generated, the display configuration is automatically written into the configuration file. Configurations need to be manually written during manual generation.</p>
+<h3 id="remove-control">Remove Control</h3>
+<p>The skeleton screen can be removed in two ways: timeout hiding and active hiding. Timeout hiding is controlled by configuration, which is easy to use. Active hiding is controlled by calling the API to control the hiding time more accurately. In addition, local hiding is supported to achieve the effect of progressive loading.</p>
+<h4 id="timeout-hide">Timeout Hide</h4>
+<p>Without any configuration, the frame skeleton screen will be automatically hidden <code>2000ms</code> after loading.
+You can set the global timeout interval in the <code>[&quot;skeleton&quot;][&quot;config&quot;][&quot;timeout&quot;]</code> field in the <code>app.json</code> file. The unit is <code>ms</code>. When <code>timeout</code> is set to <code>0</code>, the global timeout hiding configuration is disabled.</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;:</span> {
+  <span class="hljs-attr">&quot;config&quot;:</span> {
+   <span class="hljs-attr">&quot;timeout&quot;:</span> <span class="hljs-number">1000</span>
+  }
+ }
+</code></pre>
+<h4 id="actively-hide">Actively hide</h4>
+<p>After setting <code>timeout</code> to <code>0</code> to disable the skeleton screen timeout hiding configuration, you can use the <code>this.removeSkeleton()</code> API to hide the skeleton screen.</p>
+<p>The sample code is as follows:</p>
+<pre><code class="language-json"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">removeSkeleton</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeSkeleton</span>();
+  },
+});
+</code></pre>
+<h4 id="partially-hidden">Partially hidden</h4>
+<p>You can use the <code>this.removeSkeleton({id:&#39;&#39;})</code> API to partially hide the skeleton screen node with a specified ID.
+The sample code is as follows:</p>
+<pre><code class="language-json"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">removeSkeleton</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeSkeleton</span>({ <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;node-id&quot;</span> });
+  },
+});
+</code></pre>
+<h2 id="bug--tip">Bug &amp; Tip</h2>
+<ul>
+<li>Tip: You can click to generate a skeleton screen only after the current page is loaded；</li>
+<li>Tip: The skeleton screen only includes the visible area on the first screen of the page. For container components such as the <code>swiper</code> that scroll horizontally, subelements beyond the screen are ignored；</li>
+<li>Tip: If the effect is not satisfactory, you are advised to adjust the related configuration to automatically generate the screen again or modify the automatically generated skeleton screen code（Each element uses absolute positioning, allowing developers to modify the element without affecting the fixed position and size of other elements）；</li>
+<li>Tip: Skeleton screens are usually used on pages such as product lists and news lists. The display effect is poor on pages with many animations, native components, and complex components；</li>
+<li>Tip: The generated skeleton screen code will contain the page data during preview(such as text) and will be used to fill the page；</li>
+<li>Tip: If an element with a background color (<code>backgroundColor</code>) is directly deleted, the generated skeleton screen may not meet the expectation. Developers can change the background color of the skeleton screen module as required；</li>
+<li>Tip: The skeleton screen configuration does not support configurations such as <code>remove</code> to handle the <code>DOM</code> element selected by the operation separately. To remove or hide certain elements, you can change the <code>*.sk</code> file.</li>
+</ul>

@@ -1,0 +1,67 @@
+<h2 id="maclosesocketobject-object">ma.closeSocket(Object object)</h2>
+<blockquote>
+<p>关闭 WebSocket 连接。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">code</td>
+<td align="left">Number</td>
+<td align="left">1000(表示正常关闭连接)</td>
+<td align="left">否</td>
+<td align="left">一个数字值表示关闭连接的状态号，表示连接被关闭的原因。</td>
+</tr>
+<tr>
+<td align="left">reason</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">一个可读的字符串，表示连接被关闭的原因。这个字符串必须是不长于 123 字节的 UTF-8 文本（不是字符）。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">    ma.<span class="hljs-title function_">connectSocket</span>({
+       <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;wss://example.huawei.com&#x27;</span>,
+    });
+    <span class="hljs-comment">// 注意时序问题</span>
+    <span class="hljs-comment">// 如果ma.connectSocket还没回调ma.onSocketOpen，而优先调用ma.closeSocket，那么就做不到关闭WebSocket的目的。</span>
+    <span class="hljs-comment">// 必须在WebSocket打开期间调用ma.closeSocket 才能关闭。</span>
+    ma.<span class="hljs-title function_">onSocketOpen</span>(<span class="hljs-title function_">funtion</span>(<span class="hljs-params"></span>) {
+      ma.<span class="hljs-title function_">closeSocket</span>()
+    })
+
+    ma.<span class="hljs-title function_">onSocketClose</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WebSocket已关闭！&#x27;</span>)
+    })
+</code></pre>

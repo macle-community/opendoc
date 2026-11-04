@@ -1,0 +1,29 @@
+<h2 id="downloadtask">DownloadTask</h2>
+<blockquote>
+<p>An object that can listen to download progress changes and cancel download tasks (Minimum version: 23.6.0)</p>
+</blockquote>
+<h3 id="method">Method</h3>
+<h4 id="downloadtaskabort"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.abort">DownloadTask.abort()</a></h4>
+<p>Interrupting a Download Task</p>
+<h4 id="downloadtaskonprogressupdatefunction-listener"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.onProgressUpdate">DownloadTask.onProgressUpdate(function listener)</a></h4>
+<p>Listening to the download progress change event</p>
+<h4 id="downloadtaskoffprogressupdatefunction-listener"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.offProgressUpdate">DownloadTask.offProgressUpdate(function listener)</a></h4>
+<p>The function for listening to the download progress change event is removed.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const downloadTask = ma.downloadFile({
+    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example.com/audio/123&#x27;</span>, <span class="hljs-comment">//Just an example, not a real resource.</span>
+    success (res) {
+        ma.playVoice({
+            <span class="hljs-attr">filePath</span>: res.tempFilePath
+        })
+    }
+})
+
+downloadTask.onProgressUpdate(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Download Progress&#x27;</span>, res.progress)
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Length of the downloaded data&#x27;</span>, res.totalBytesWritten)
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Expected total length of data to be downloaded&#x27;</span>, res.totalBytesExpectedToWrite)
+})
+
+downloadTask.abort() <span class="hljs-comment">// Canceling a Download Task</span>
+</code></pre>

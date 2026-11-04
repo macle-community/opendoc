@@ -1,0 +1,73 @@
+<h2 id="masetstorageobject-object">ma.setStorage(Object object)</h2>
+<blockquote>
+<p>Store data in the specified key in the local cache. The original content corresponding to the key is overwritten. The data is always available unless it is deleted by the user or cleared by the system due to storage space reasons. The maximum data size of a single key is 1 MB, and the maximum size of all data is 10 MB.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">key</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Specified key in the local cache.</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">Any</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Content to be stored. Only native types, dates, and objects that can be serialized using JSON.stringify are supported.</td>
+</tr>
+<tr>
+<td align="left">encrypt</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable encrypted storage (new parameter in version <strong>23.12.0</strong>)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    ma.setStorage(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">      key:</span><span class="hljs-string">&quot;key&quot;</span>,
+<span class="hljs-symbol">      encrypt:</span> true,
+<span class="hljs-symbol">      data:</span><span class="hljs-string">&quot;value&quot;</span>
+    <span class="hljs-punctuation">}</span>)
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>If encrypted storage is not enabled, please do not store sensitive personal data in clear text.</li>
+<li>Currently, only the asynchronous interface setStorage is supported to enable encrypted storage. When enabled, AES256 encryption will be used for data, and the interface callback time will increase.</li>
+<li>If encrypted storage is enabled, setStorage and getStorage need to declare the value of encrypt to be true at the same time. In addition, since encrypted data will expand 1.4 times compared to the original data, when encrypt is turned on, the maximum data length allowed to be stored by a single key is 0.7MB, and the upper limit of all data storage is 7.1MB.</li>
+<li>The Alipay Mini Program does not support encrypted parameters. If you use a converter to convert this API, please pay attention to whether encrypted storage is enabled.</li>
+</ol>

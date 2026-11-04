@@ -1,0 +1,86 @@
+<h2 id="selectorquery-nodesreffieldsobject-fields-function-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> NodesRef.fields(Object fields, function callback)</h2>
+<blockquote>
+<p>获取节点的相关信息。需要获取的字段在 fields 中指定。返回值是 <code>nodesRef</code> 对应的 <code>selectorQuery</code></p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-fields">Object fields</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否返回节点 id</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否返回节点 dataset</td>
+</tr>
+<tr>
+<td align="left">rect</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否返回节点布局位置（<code>left</code> <code>right</code> <code>top</code> <code>bottom</code>）</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否返回节点尺寸（<code>width</code> <code>height</code>）</td>
+</tr>
+<tr>
+<td align="left">scrollOffset</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">否 是否返回节点的 <code>scrollLeft</code> <code>scrollTop</code>，节点必须是 <code>scroll-view</code> 或者 <code>viewport</code></td>
+</tr>
+<tr>
+<td align="left">properties</td>
+<td align="left">Array</td>
+<td align="left">[]</td>
+<td align="left">否</td>
+<td align="left">指定属性名列表，返回节点对应属性名的当前属性值（只能获得组件文档中标注的常规属性值，id class style 和事件绑定的属性值不可获取）</td>
+</tr>
+</tbody></table>
+<h4 id="function-callback">function callback</h4>
+<p>回调函数</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<p>节点的相关信息</p>
+<h3 id="返回值">返回值</h3>
+<h3 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h3>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  getFields () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.select</span>(<span class="hljs-string">&#x27;#the-id&#x27;</span>)<span class="hljs-selector-class">.fields</span>({
+      dataset: true,
+      size: true,
+      scrollOffset: true,
+      properties: <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scrollX&#x27;</span>, <span class="hljs-string">&#x27;scrollY&#x27;</span>]</span>
+    }, function (res) {
+      res<span class="hljs-selector-class">.dataset</span>    <span class="hljs-comment">// 节点的dataset</span>
+      res<span class="hljs-selector-class">.width</span>      <span class="hljs-comment">// 节点的宽度</span>
+      res<span class="hljs-selector-class">.height</span>     <span class="hljs-comment">// 节点的高度</span>
+      res<span class="hljs-selector-class">.scrollLeft</span> <span class="hljs-comment">// 节点的水平滚动位置</span>
+      res<span class="hljs-selector-class">.scrollTop</span>  <span class="hljs-comment">// 节点的竖直滚动位置</span>
+      res<span class="hljs-selector-class">.scrollX</span>    <span class="hljs-comment">// 节点 scroll-x 属性的当前值</span>
+      res<span class="hljs-selector-class">.scrollY</span>    <span class="hljs-comment">// 节点 scroll-y 属性的当前值</span>
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

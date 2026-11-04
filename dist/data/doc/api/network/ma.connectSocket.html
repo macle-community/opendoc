@@ -1,0 +1,94 @@
+<h2 id="maconnectsocketobject-object">ma.connectSocket(Object object)</h2>
+<blockquote>
+<p>创建一个 WebSocket 连接。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">开发者服务器 wss/ws 接口地址</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">HTTP Header，Header 中不能设置 Referer</td>
+</tr>
+<tr>
+<td align="left">protocols</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">子协议数组</td>
+</tr>
+<tr>
+<td align="left">tcpNoDelay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">建立 TCP 连接的时候的 TCP_NODELAY 设置</td>
+</tr>
+<tr>
+<td align="left">perMessageDeflate</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否开启压缩扩展</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">超时时间，单位为毫秒</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">    ma<span class="hljs-selector-class">.connectSocket</span>({
+      url: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>,
+      <span class="hljs-selector-tag">header</span>:{
+         <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>
+      },
+      protocols: <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;protocol1&#x27;</span>]</span>
+    })
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: 目前不会进行安全域的校验，建议优先使用 wss</li>
+<li>tip: 当前wss无证书校验，需要在<code>MacleEventHandler</code>接口实现中提供证书校验能力</li>
+</ol>

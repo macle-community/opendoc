@@ -1,0 +1,88 @@
+<h2 id="maplayvoiceobject-object">ma.playVoice(Object object)</h2>
+<blockquote>
+<p>Start playing the audio. Only one voice file can be played at a time. If the previous voice file is not played completely, the previous voice file will be interrupted(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filePath</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>File path of the voice file to be played (local path)</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Online audio URL (new attribute, minimum version: 23.12.0)</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>60</td>
+<td>No</td>
+<td>Indicates the playback duration. When the playback duration reaches the specified value, the playback automatically stops. The unit is second.(Only takes effect when playing local audio files)</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript"><span class="hljs-title function_">page</span>({
+    <span class="hljs-title function_">playVoice</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> {filePath, <span class="hljs-attr">playDuration</span>: duration} = <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({<span class="hljs-attr">playParams</span>: {filePath, duration}});
+        ma.<span class="hljs-title function_">playVoice</span>({
+            filePath,
+            duration,
+            <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({res});
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                    <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+                });
+            },
+            <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({err});
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                    <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(err)
+                });
+            }
+        });
+    }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>When calling this API, at least one of the local audio path <code>filePath</code> or the online audio URL <code>url</code> must be passed in</li>
+<li>When the local audio path <code>filePath</code> and the online audio URL <code>url</code> are passed in at the same time, <code>filePath</code> has a higher priority.</li>
+</ol>

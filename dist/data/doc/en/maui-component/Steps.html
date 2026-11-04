@@ -1,0 +1,179 @@
+<h2 id="steps">Steps</h2>
+<blockquote>
+<p>It is used to display each link of the operation process and let users understand the position of the current operation in the overall process.(Minimum version: 24.9.0)</p>
+</blockquote>
+<h3 id="import">Import</h3>
+<p>Import components in <code>app.json</code> or <code>index.json</code>.</p>
+<pre><code class="language-json"><span class="hljs-string">&quot;usingComponents&quot;</span>: {
+  <span class="hljs-string">&quot;maui-steps&quot;</span>: <span class="hljs-string">&quot;@macle/maui/steps/index&quot;</span>
+}
+</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-steps</span> <span class="hljs-attr">steps</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">steps</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
+</code></pre>
+<pre><code class="language-javascript">Page({
+  data: {
+    steps: [
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 1&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 2&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 3&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 4&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>
+      }
+    ]
+  }
+});
+</code></pre>
+<h4 id="custom-style">Custom style</h4>
+<p>The icon and color in the active state can be set through the <code>active-icon</code> and <code>active-color</code> properties.</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-steps</span> <span class="hljs-attr">steps</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">steps</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">active-icon</span>=<span class="hljs-string">&quot;success&quot;</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#38f&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="custom-icon">Custom icon</h4>
+<p>The icon of each item can be set separately through the <code>inactiveIcon</code> and <code>activeIcon</code> properties.</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-steps</span> <span class="hljs-attr">steps</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">steps</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
+</code></pre>
+<pre><code class="language-javascript">Page({
+  data: {
+    steps: [
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 1&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>,
+        inactiveIcon: <span class="hljs-string">&#x27;location-o&#x27;</span>,
+        activeIcon: <span class="hljs-string">&#x27;success&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 2&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>,
+        inactiveIcon: <span class="hljs-string">&#x27;like-o&#x27;</span>,
+        activeIcon: <span class="hljs-string">&#x27;plus&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 3&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>,
+        inactiveIcon: <span class="hljs-string">&#x27;star-o&#x27;</span>,
+        activeIcon: <span class="hljs-string">&#x27;cross&#x27;</span>
+      },
+      {
+        <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;Step 4&#x27;</span>,
+        <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;Description&#x27;</span>,
+        inactiveIcon: <span class="hljs-string">&#x27;phone-o&#x27;</span>,
+        activeIcon: <span class="hljs-string">&#x27;fail&#x27;</span>
+      }
+    ]
+  }
+});
+</code></pre>
+<h4 id="vertical-step-bar">Vertical step bar</h4>
+<p>You can change the way the step bar is displayed by setting the <code>direction</code> attribute.</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-steps</span> <span class="hljs-attr">steps</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">steps</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;vertical&quot;</span> <span class="hljs-attr">active-color</span>=<span class="hljs-string">&quot;#ee0a24&quot;</span> /&gt;</span></span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="steps-props">Steps Props</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>active</td>
+<td>current step</td>
+<td>Number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>steps</td>
+<td>Step configuration collection, see configuration items below</td>
+<td>Step configuration item array</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>Display direction, optional values ​​are <code>horizontal</code> <code>vertical</code></td>
+<td>String</td>
+<td><code>horizontal</code></td>
+</tr>
+<tr>
+<td>active-color</td>
+<td>Activation state color</td>
+<td>String</td>
+<td><code>#07c160</code></td>
+</tr>
+<tr>
+<td>inactive-color</td>
+<td>Inactive status color</td>
+<td>String</td>
+<td><code>#969799</code></td>
+</tr>
+<tr>
+<td>active-icon</td>
+<td>The icon at the bottom of the activated state. See the Icon component for optional values.</td>
+<td>String</td>
+<td><code>checked</code></td>
+</tr>
+<tr>
+<td>inactive-icon</td>
+<td>The bottom icon in the inactive state. See the Icon component for optional values.</td>
+<td>String</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th>event name</th>
+<th>Description</th>
+<th>Callback parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind:clickstep</td>
+<td>Event triggered when a step is clicked</td>
+<td>event.detail: index of the current step</td>
+</tr>
+</tbody></table>
+<h4 id="step-configuration-items">Step configuration items</h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td>Current step name</td>
+<td>String</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>Current step description information</td>
+<td>String</td>
+</tr>
+<tr>
+<td>activeIcon</td>
+<td>Current step activation status bottom icon</td>
+<td>String</td>
+</tr>
+<tr>
+<td>inactiveIcon</td>
+<td>The bottom icon of the inactive status of the current step. See the Icon component for optional values.</td>
+<td>String</td>
+</tr>
+</tbody></table>

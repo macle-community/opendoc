@@ -1,0 +1,328 @@
+<h2 id="video">video</h2>
+<blockquote>
+<p>Video. Rendering at the same layer is not supported. Related API: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createVideoContext">ma.createVideoContext</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">URL of the resource to be played. The value can be a network path or a local temporary path (ensure that the path does not exceed the root directory of the project).</td>
+</tr>
+<tr>
+<td align="left">controls</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">No</td>
+<td align="left">Whether to display the default playback control (play/pause button, playback progress, and time).</td>
+</tr>
+<tr>
+<td align="left">autoplay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable the automatic playback.</td>
+</tr>
+<tr>
+<td align="left">loop</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable the cyclic playback.</td>
+</tr>
+<tr>
+<td align="left">muted</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable the playback in mute mode.</td>
+</tr>
+<tr>
+<td align="left">direction</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Video direction in full-screen mode. If it is not specified, the system automatically determines the direction based on the aspect ratio.</td>
+</tr>
+<tr>
+<td align="left">Object-fit</td>
+<td align="left">String</td>
+<td align="left">contain</td>
+<td align="left">No</td>
+<td align="left">Display mode of a video when the video size is different from the video container size.</td>
+</tr>
+<tr>
+<td align="left">poster</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Network resource address of the video cover image. If the <strong>controls</strong> attribute is set to <strong>false</strong>, the <strong>poster</strong> attribute is unavailable.</td>
+</tr>
+<tr>
+<td align="left">bindplay</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Whether to trigger the play event when the playback starts or continues.</td>
+</tr>
+<tr>
+<td align="left">bindpause</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Whether to trigger the pause event when the playback is paused.</td>
+</tr>
+<tr>
+<td align="left">bindended</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Whether to trigger the ended event when the playback ends.</td>
+</tr>
+<tr>
+<td align="left">bindtimeupdate</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the playback progress changes. The output is <strong>event.detail =</strong> <em>{currentTime, duration}</em>. It is triggered every 250 milliseconds.</td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when an error occurs during video playback.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-direction">Valid Values of direction</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">Normal vertical.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">90</td>
+<td align="left">Rotated 90 degrees counterclockwise.</td>
+<td>Not supported in Android.</td>
+</tr>
+<tr>
+<td align="left">-90</td>
+<td align="left">Rotated 90 degrees clockwise.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-object-fit">Valid Values of object-fit</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">contain</td>
+<td align="left">Contain.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">fill</td>
+<td align="left">Fill.</td>
+<td>Not supported in Android.</td>
+</tr>
+<tr>
+<td align="left">cover</td>
+<td align="left">Cover.</td>
+<td>Not supported in Android.</td>
+</tr>
+</tbody></table>
+<h4 id="supported-formats">Supported Formats</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Format</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">mp4</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">mov</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">m4v</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">3gp</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">avi</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">m3u8</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">webm</td>
+<td align="left">x</td>
+<td align="left">√</td>
+</tr>
+</tbody></table>
+<h3 id="supported-encoding-formats">Supported Encoding Formats</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Format</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">H.264</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">HEVC</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">MPEG-4</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">VP9</td>
+<td align="left">x</td>
+<td align="left">√</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;myVideo&#x27;</span>
+         <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">autoplay</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">autoplay</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">loop</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loop</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">hidden</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">hidden</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">controls</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">controls</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">objectFit</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">objectFit</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">poster</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">poster</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">muted</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">muted</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>
+         <span class="hljs-attr">bindtimeupdate</span>=<span class="hljs-string">&#x27;bindtimeupdate&#x27;</span>
+         <span class="hljs-attr">bindplay</span>=<span class="hljs-string">&#x27;bindplay&#x27;</span>
+         <span class="hljs-attr">bindpause</span>=<span class="hljs-string">&#x27;bindpause&#x27;</span>
+         <span class="hljs-attr">bindended</span>=<span class="hljs-string">&#x27;bindended&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Jump location<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">bindinput</span>=<span class="hljs-string">&#x27;bindInput&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span>
+               <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&#x27;Enter specific location here&#x27;</span>
+               <span class="hljs-attr">adjustPosition</span>=<span class="hljs-string">&#x27;false&#x27;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;btn-area&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;play&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Play<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;pause&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Pause<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;seek&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Jump to the specified location (unit: seconds)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;stop&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-body-button stop&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Stop<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span> = ma.<span class="hljs-title function_">createVideoContext</span>(<span class="hljs-string">&#x27;myVideo&#x27;</span>)
+  },
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;http://example.mp4&#x27;</span>,
+    <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">inputValue</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">controls</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">hidden</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">objectFit</span>: <span class="hljs-string">&#x27;contain&#x27;</span>,
+    <span class="hljs-attr">muted</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">loop</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">poster</span>: <span class="hljs-string">&#x27;http://example.png&#x27;</span>,
+    <span class="hljs-attr">showFullscreenBtn</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">bindInput</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">position</span>: e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>
+    })
+  },
+  <span class="hljs-attr">play</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">play</span>()
+  },
+  <span class="hljs-attr">pause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">pause</span>()
+  },
+  <span class="hljs-attr">seek</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">position</span>)
+  },
+  <span class="hljs-attr">stop</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">stop</span>()
+   },
+
+  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>)
+  },
+  <span class="hljs-attr">bindplay</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video start&#x27;</span>)
+  },
+  <span class="hljs-attr">bindpause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video pause&#x27;</span>)
+  },
+  <span class="hljs-attr">bindended</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video end&#x27;</span>)
+  },
+  <span class="hljs-attr">bindtimeupdate</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">currentTime</span>)
+  }
+})
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The default width and height of the video are 300 px and 225 px. You can set the width and height by using the mass
+parameter.</li>
+</ol>

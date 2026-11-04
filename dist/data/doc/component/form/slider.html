@@ -1,0 +1,137 @@
+<h2 id="slider">slider</h2>
+<blockquote>
+<p>滑动选择器。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">min</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">否</td>
+<td align="left">最小值</td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">Number</td>
+<td align="left">100</td>
+<td align="left">否</td>
+<td align="left">最大值</td>
+</tr>
+<tr>
+<td align="left">step</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+<td align="left">否</td>
+<td align="left">步长，取值必须大于 0，并且可被(max - min)整除</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否禁用</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">否</td>
+<td align="left">当前取值</td>
+</tr>
+<tr>
+<td align="left">activeColor</td>
+<td align="left">String</td>
+<td align="left">#1aad19</td>
+<td align="left">否</td>
+<td align="left">已选择的颜色</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left">#e9e9e9</td>
+<td align="left">否</td>
+<td align="left">背景条的颜色</td>
+</tr>
+<tr>
+<td align="left">block-size</td>
+<td align="left">Number</td>
+<td align="left">28</td>
+<td align="left">否</td>
+<td align="left">滑块的大小，取值范围为 12 - 28</td>
+</tr>
+<tr>
+<td align="left">block-color</td>
+<td align="left">String</td>
+<td align="left">#ffffff</td>
+<td align="left">否</td>
+<td align="left">滑块的颜色</td>
+</tr>
+<tr>
+<td align="left">show-value</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否显示当前 value</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">完成一次拖动后触发的事件，event.detail = {value}</td>
+</tr>
+<tr>
+<td align="left">bindchanging</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">拖动过程中触发的事件，event.detail = {value}</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>滑块<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>设置step<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;5&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider1change&#x27;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&#x27;5&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>设置最小/最大值范围<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;33&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider2change&#x27;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&#x27;25&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">show-value</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>自定义样式<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;33&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider3change&#x27;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&#x27;25&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">show-value</span>
+              <span class="hljs-attr">backgroundColor</span>=<span class="hljs-string">&#x27;#FFAA00&#x27;</span> <span class="hljs-attr">activeColor</span>=<span class="hljs-string">&#x27;#00aaee&#x27;</span> <span class="hljs-attr">trackSize</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">handleSize</span>=<span class="hljs-string">&#x27;6&#x27;</span> <span class="hljs-attr">handleColor</span>=<span class="hljs-string">&#x27;blue&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> pageData = {};
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">3</span>; ++i) {
+  (<span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) {
+    pageData[<span class="hljs-string">&#x27;slider&#x27;</span> + index + <span class="hljs-string">&#x27;change&#x27;</span>] = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;slider&#x27;</span> + index + <span class="hljs-string">&#x27;发生change事件，携带值为&#x27;</span>, e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>);
+    };
+  })(i);
+}
+<span class="hljs-title class_">Page</span>(pageData);
+</code></pre>

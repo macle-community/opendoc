@@ -1,0 +1,187 @@
+<h1 id="popup">Popup</h1>
+<h3 id="introduction"><strong>Introduction</strong></h3>
+<p>The popup layer container provides popups and messages. Multiple popup layers can be stacked.</p>
+<h2 id="sample-code"><strong>Sample Code</strong></h2>
+<h3 id="basic-usage"><strong>Basic usage</strong></h3>
+<p>Use the <code>show</code> attribute to determine whether to display the popup layer.</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;show popup layer&quot;</span> <span class="hljs-attr">is-link</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;showPopup&quot;</span> /&amp;<span class="hljs-attr">gt</span>&quot;;
+
+&lt;<span class="hljs-attr">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ show }</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">}&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>content <span class="hljs-tag">&lt;/<span class="hljs-name">maui-popup</span>&gt;</span>
+Page(</span><span class="hljs-template-variable">{ data: { show: false, }</span><span class="language-xml">, showPopup() </span><span class="hljs-template-variable">{ this.setData({ show: true }</span><span class="language-xml">); }, onClose() </span><span class="hljs-template-variable">{ this.setData({ show: false }</span><span class="language-xml">);
+}, });</span>
+</code></pre>
+<h3 id="popup-position"><strong>Popup Position</strong></h3>
+<p>Use the <code>position</code> attribute to set the popup position. By default, the popup is centered. You can set it
+to <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code>.</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top&quot;</span> <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%;&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
+</code></pre>
+<h3 id="close-icon"><strong>Close icon</strong></h3>
+<p>Setting the <code>closeable</code> attribute displays the close icon in the upper right corner of the popup layer. You can set
+the <code>close-icon</code> attribute to customize the icon and set the <code>close-icon-position</code> attribute to customize the icon
+position.</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">closeable</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span> <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span>
+
+<span class="hljs-comment">&lt;!-- custom icon --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">closeable</span>
+  <span class="hljs-attr">close-icon</span>=<span class="hljs-string">&quot;close&quot;</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span>
+
+<span class="hljs-comment">&lt;!-- icon position --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">closeable</span>
+  <span class="hljs-attr">close-icon-position</span>=<span class="hljs-string">&quot;top-left&quot;</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span></span>
+</code></pre>
+<h3 id="round-corner-popup-window"><strong>Round corner popup window</strong></h3>
+<p>Setting the <code>round</code> attribute adds different round corner styles to the popup window based on the popup position.</p>
+<pre><code class="language-maml">&lt;maui-popup <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">position</span>=<span class="hljs-string">&quot;bottom&quot;</span> custom-<span class="hljs-built_in">style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span> bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<h3 id="scroll-penetration-forbidden"><strong>Scroll penetration forbidden</strong></h3>
+<p>If you continue to slide content to the end of a component, the underlying page will be scrolled. This is called scroll
+penetration.</p>
+<p>Setting the <code>lock-scroll</code> attribute of the component can resolve some of the scroll penetration problems, but due to
+Mini Program&#39;s own reasons, scroll penetration still occurs in the content area of a popup window. The following
+solution is recommended to solve all the scroll penetration problems:</p>
+<h4 id="page-meta"><a onclick="_mdLinkClick(this.href)" href="#/component/page-meta">page-meta</a></h4>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-comment">&lt;!-- page-meta must be the first node on the page --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">page-meta</span> <span class="hljs-attr">page-style</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> ? <span class="hljs-string">&#x27;overflow: hidden;&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">catch:touchstart</span> /&gt;</span></span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">Whether to display the popup layer.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">z-index</td>
+<td align="left">z-index level.</td>
+<td align="left">Number</td>
+<td align="left"><code>100</code></td>
+</tr>
+<tr>
+<td align="left">overlay</td>
+<td align="left">Whether to display the mask layer.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">Popup position. The options are <code>top</code>, <code>bottom</code>, <code>right</code>, and <code>left</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>center</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Animation duration, in milliseconds.</td>
+<td align="left">Number</td>
+<td align="left"><code>300</code></td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left">Whether to display round corners.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">Custom popup layer style.</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">overlay-style</td>
+<td align="left">Custom mask layer style.</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">close-on-click-overlay</td>
+<td align="left">Whether to close the mask layer by clicking it.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">closeable</td>
+<td align="left">Whether to display the close icon.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">close-icon</td>
+<td align="left">Close icon name or image URL.</td>
+<td align="left">String</td>
+<td align="left"><code>cancel</code></td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:close</td>
+<td align="left">Triggered when closing the popup layer.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:click-overlay</td>
+<td align="left">Triggered when clicking the mask layer.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:before-enter</td>
+<td align="left">Triggered before the entry.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:enter</td>
+<td align="left">Triggered during the entry.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:after-enter</td>
+<td align="left">Triggered after the entry.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:before-leave</td>
+<td align="left">Triggered before the exit.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:leave</td>
+<td align="left">Triggered during the exit.</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:after-leave</td>
+<td align="left">Triggered after the exit.</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

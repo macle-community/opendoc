@@ -1,0 +1,61 @@
+<h2 id="recordermanageronstopfunction-listener">RecorderManager.onStop(function listener)</h2>
+<blockquote>
+<p>Listen to the recording end event. At this time, the recorder enters the recording idle state again. This event can be triggered by RecorderManager.stop() or automatically triggered when an exception such as recording interruption occurs(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function of the recording end event</p>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">Temporary path of the recording file (local path)</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">Total recording duration, in ms</td>
+</tr>
+<tr>
+<td align="left">fileSize</td>
+<td align="left">Number</td>
+<td align="left">Recording file size, in byte</td>
+</tr>
+</tbody></table>
+<h4 id="parameter-description">Parameter Description</h4>
+<ol>
+<li>The format of a recording file is fixed to AAC, and the file is named after the recording start time. The file is saved in a local temporary directory. Therefore, the format of tempFilePath is mafile://tmp_yyyyMMddHHmmss.aac.</li>
+<li>There may be millisecond-level difference between the duration and the duration specified at the start of recording.</li>
+</ol>
+<h3 id="description-of-the-scenario-where-recording-ends-automatically">Description of the scenario where recording ends automatically</h3>
+<ol>
+<li>The route on the current page changes. For example, the navigateTo, navigateBack, redirectTo, and reLaunch interfaces are invoked.</li>
+<li>The current Mini Program is not running in the foreground of the host app. For example, the Mini Program is minimized or closed.</li>
+<li>Perform menu operations on the current Mini Program.</li>
+<li>The host app is not running on the foreground of the device.</li>
+<li>The device turns off the screen.</li>
+<li>The speaker or microphone is occupied by other applications.</li>
+<li>Disconnect the headset from the phone if the microphone in use changes during recording. For example, if the headset microphone is being used for recording, disconnect the headset from the phone.</li>
+<li>Other system exceptions.</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onStop(() =&gt; {
+            ma.showToast({
+                title: &#x27;onStop&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

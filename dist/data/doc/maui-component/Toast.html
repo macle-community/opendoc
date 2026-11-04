@@ -1,0 +1,107 @@
+<h1 id="toast-轻提示">Toast 轻提示</h1>
+<h3 id="介绍">介绍</h3>
+<p>在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。</p>
+<h2 id="代码演示">代码演示</h2>
+<h3 id="文字提示">文字提示</h3>
+<pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;text&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;文字提示&#x27;</span>/&gt;
+</code></pre>
+<h3 id="加载提示">加载提示</h3>
+<p>使用 <code>Toast.loading</code> 方法展示加载提示，通过 <code>forbidClick</code> 属性可以禁用背景点击，通过 <code>loadingType</code> 属性可以自定义加载图标类型。</p>
+<pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;loading&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;加载提示&#x27;</span>/&gt;
+</code></pre>
+<h3 id="成功失败提示">成功/失败提示</h3>
+<pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;成功提示&#x27;</span>/&gt;
+&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;fail&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;失败提示&#x27;</span>/&gt;
+</code></pre>
+<h3 id="动态更新提示">动态更新提示</h3>
+<pre><code class="language-javascript"><span class="hljs-title function_">page</span>({
+    <span class="hljs-title function_">selectToast</span>(<span class="hljs-params">e</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">currentType</span>: e.<span class="hljs-property">currentTarget</span>.<span class="hljs-property">dataset</span>.<span class="hljs-property">type</span>
+        })
+        <span class="hljs-keyword">if</span> (e.<span class="hljs-property">currentTarget</span>.<span class="hljs-property">dataset</span>.<span class="hljs-property">type</span> == <span class="hljs-string">&quot;changing&quot;</span>) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+                <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                        <span class="hljs-attr">loadingTime</span>: <span class="hljs-number">3</span> - i
+                    })
+                }, i * <span class="hljs-number">1000</span>);
+            }
+        }
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                <span class="hljs-attr">currentType</span>: <span class="hljs-string">&quot;&quot;</span>
+            })
+        }, <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">duration</span>);
+    }
+})
+</code></pre>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-toast</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentType</span> == <span class="hljs-string">&#x27;changing&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;loading&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;倒计时</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loadingTime</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">秒&quot;</span> <span class="hljs-attr">duration</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">duration</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">loadingType</span>=<span class="hljs-string">&quot;spinner&quot;</span> /&gt;</span></span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">type</td>
+<td align="left">提示类型，可选值为 <code>loading</code> <code>success</code> <code>fail</code> <code>html</code></td>
+<td align="left">String</td>
+<td align="left"><code>text</code></td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">内容</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">mask</td>
+<td align="left">是否显示遮罩层</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">forbidClick</td>
+<td align="left">是否禁止背景点击</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">loadingType</td>
+<td align="left">加载图标类型, 可选值为 <code>spinner</code></td>
+<td align="left">String</td>
+<td align="left"><code>circular</code></td>
+</tr>
+<tr>
+<td align="left">zIndex</td>
+<td align="left">z-index 层级</td>
+<td align="left">Number</td>
+<td align="left"><code>1000</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">展示时长(ms)</td>
+<td align="left">Number</td>
+<td align="left"><code>2000</code></td>
+</tr>
+</tbody></table>
+<h3 id="slot">Slot</h3>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">自定义内容</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,90 @@
+<h2 id="selectorquery-nodesrefboundingclientrectfunction-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> NodesRef.boundingClientRect(function callback)</h2>
+<blockquote>
+<p>Query request for the layout position of an added node. Relative to the display area, the unit is pixel. Its function is similar to <code>getBoundingClientRect</code> of the DOM. The return value is <code>SelectorQuery</code> corresponding to <code>NodesRef</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function. Executing the SelectorQuery.exec method returns the node information in <code>callback</code>.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">Node ID.</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">Node dataset.</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">Number</td>
+<td align="left">Coordinates of the left boundary of a node.</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">Number</td>
+<td align="left">Coordinates of the right boundary of a node.</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">Number</td>
+<td align="left">Coordinates of the upper boundary of a node.</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">Number</td>
+<td align="left">Coordinates of the lower boundary of a node.</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">Width of a node.</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">Height of a node.</td>
+</tr>
+</tbody></table>
+<h3 id="return-value">Return Value</h3>
+<h4 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  getRect () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.select</span>(<span class="hljs-string">&#x27;#the-id&#x27;</span>)<span class="hljs-selector-class">.boundingClientRect</span>(<span class="hljs-built_in">function</span>(rect){
+      rect<span class="hljs-selector-class">.id</span>      <span class="hljs-comment">// Node ID.</span>
+      rect<span class="hljs-selector-class">.dataset</span> <span class="hljs-comment">// Node dataset.</span>
+      rect<span class="hljs-selector-class">.left</span>    <span class="hljs-comment">// Coordinates of the left boundary of the node.</span>
+      rect<span class="hljs-selector-class">.right</span>   <span class="hljs-comment">// Coordinates of the right boundary of the node.</span>
+      rect<span class="hljs-selector-class">.top</span>    <span class="hljs-comment">// Coordinates of the upper boundary of the node.</span>
+      rect<span class="hljs-selector-class">.bottom</span>  <span class="hljs-comment">// Coordinates of the lower boundary of the node.</span>
+      rect<span class="hljs-selector-class">.bottom</span>  <span class="hljs-comment">// Width of the node.</span>
+      rect<span class="hljs-selector-class">.height</span>  <span class="hljs-comment">// Height of the node.</span>
+    })<span class="hljs-selector-class">.exec</span>()
+  },
+  getAllRects () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.selectAll</span>(<span class="hljs-string">&#x27;.a-class&#x27;</span>)<span class="hljs-selector-class">.boundingClientRect</span>(<span class="hljs-built_in">function</span>(rects){
+      rects<span class="hljs-selector-class">.forEach</span>(<span class="hljs-built_in">function</span>(rect){
+      rect<span class="hljs-selector-class">.id</span>      <span class="hljs-comment">// Node ID.</span>
+        rect<span class="hljs-selector-class">.dataset</span> <span class="hljs-comment">// Node dataset.</span>
+        rect<span class="hljs-selector-class">.left</span>    <span class="hljs-comment">// Coordinates of the left boundary of the node.</span>
+        rect<span class="hljs-selector-class">.right</span>   <span class="hljs-comment">// Coordinates of the right boundary of the node.</span>
+        rect<span class="hljs-selector-class">.top</span>    <span class="hljs-comment">// Coordinates of the upper boundary of the node.</span>
+        rect<span class="hljs-selector-class">.bottom</span>  <span class="hljs-comment">// Coordinates of the lower boundary of the node.</span>
+        rect<span class="hljs-selector-class">.bottom</span>  <span class="hljs-comment">// Width of the node.</span>
+        rect<span class="hljs-selector-class">.height</span>  <span class="hljs-comment">// Height of the node.</span>
+      })
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

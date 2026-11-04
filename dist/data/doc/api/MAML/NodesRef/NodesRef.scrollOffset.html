@@ -1,0 +1,52 @@
+<h2 id="selectorquery-nodesrefscrolloffsetfunction-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> NodesRef.scrollOffset(function callback)</h2>
+<blockquote>
+<p>添加节点的滚动位置查询请求。以像素为单位。节点必须是 <code>scroll-view</code> 或者 <code>viewport</code>，返回 <code>NodesRef</code> 对应的 <code>SelectorQuery</code>。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-callback">function callback</h4>
+<p>回调函数，在执行 <code>SelectorQuery.exec</code> 方法后，节点信息会在 <code>callback</code> 中返回。</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">节点的 ID</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">节点的 dataset</td>
+</tr>
+<tr>
+<td align="left">scrollLeft</td>
+<td align="left">Number</td>
+<td align="left">节点的水平滚动位置</td>
+</tr>
+<tr>
+<td align="left">scrollTop</td>
+<td align="left">Number</td>
+<td align="left">节点的竖直滚动位置</td>
+</tr>
+</tbody></table>
+<h3 id="返回值">返回值</h3>
+<h4 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h4>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  getScrollOffset () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.selectViewport</span>()<span class="hljs-selector-class">.scrollOffset</span>(<span class="hljs-built_in">function</span>(res){
+      res<span class="hljs-selector-class">.id</span>      <span class="hljs-comment">// 节点的ID</span>
+      res<span class="hljs-selector-class">.dataset</span> <span class="hljs-comment">// 节点的dataset</span>
+      res<span class="hljs-selector-class">.scrollLeft</span> <span class="hljs-comment">// 节点的水平滚动位置</span>
+      res<span class="hljs-selector-class">.scrollTop</span>  <span class="hljs-comment">// 节点的竖直滚动位置</span>
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

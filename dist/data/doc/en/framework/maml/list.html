@@ -1,0 +1,73 @@
+<h2 id="list-rendering">List Rendering</h2>
+<h3 id="mafor">ma:for</h3>
+<p>Use the ma:for control attribute to bind an array to the component. In this case, the component can be rendered repeatedly using the data of each item in the array. By default, the subscript variable name of the current item in the array is index, and the variable name of the current item in the array is item.</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    array: [
+      {
+        message: <span class="hljs-string">&#x27;foo&#x27;</span>,
+        id: <span class="hljs-number">1</span>,
+      },
+      {
+        message: <span class="hljs-string">&#x27;bar&#x27;</span>,
+        id: <span class="hljs-number">2</span>,
+      },
+    ],
+  }
+})
+</code></pre>
+<p>Use ma:for-item to specify the variable name of the current element in the array, and use ma:for-index to specify the variable name of the current index in the array.</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-index</span>=<span class="hljs-string">&quot;idx&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;itemName&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">idx</span>+<span class="hljs-number">1</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">itemName</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="block-mafor">block ma:for</h3>
+<p>Similar to block ma:if, ma:for can also be used on the tag to render a structure block that contains multiple nodes. Example:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1, 2, 3]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+</code></pre>
+<h3 id="makey">ma:key</h3>
+<p>If the positions of items in the list change dynamically or new items are added to the list, and you want the items to retain their own characteristics and status (for example, the input content in input and the selection status in switch), you need to use ma:key to specify the unique identifier of the item in the list.</p>
+<p>The value of ma:key is in either of the following formats:</p>
+<ul>
+<li>1.String: a property of an item in the array of the for loop. The value of the property must be a unique string or number in the list and cannot be changed dynamically.</li>
+<li>2.Reserved keyword *this: the item in the for loop, which requires that the item be a unique string or number.</li>
+</ul>
+<p>When the data change triggers re-rendering of the rendering layer, the components with keys are corrected. The framework ensures that the components are re-sorted instead of being re-created to ensure that the components remain in their own states, improving the efficiency of list rendering.</p>
+<blockquote>
+<p>If ma:key is not provided, a warning is reported. If the list is static or the sequence of the list is not required, you can ignore it.</p>
+</blockquote>
+<h3 id="note">Note</h3>
+<p>When the value of ma:for is a character string, the character string is parsed into a character string array.</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;macle&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>Equivalent to:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[&#x27;m&#x27;,&#x27;a&#x27;,&#x27;c&#x27;,&#x27;l&#x27;,&#x27;e&#x27;]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="fqs">F&amp;Qs</h3>
+<p><strong>Q:</strong> What do I do if the alarm &quot;should provide attr &#39;ma:key&#39; for a &#39;ma:for&#39; to improve performance.&quot; is displayed during list rendering?</p>
+<p><strong>A</strong>: The MAML supports the list loop syntax, which can efficiently and simply render the same structured component in batches. For details, see <a onclick="_mdLinkClick(this.href)" href="#/framework/maml-list">List Rendering</a>. However, the alarm &quot;should provide attr &#39;ma:key&#39; for a &#39;ma:for&#39; to improve performance&quot; may be displayed during the use. If the position of an item in the list changes dynamically or a new item is added to the list, and you want the item in the list to maintain its own characteristics and status (for example, the input content in <strong>input</strong> and the selected status in <strong>switch</strong>), you need to use <strong>ma:key</strong> to specify a unique identifier for an item in the list. When the preceding alarm is generated in the compiler, you only need to add <strong>ma:key</strong> to the tag.</p>
+<p>Example:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>You can modify the preceding content to the following:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p><strong>Q:</strong> Can <code>ma:if</code> and <code>ma:for</code> be used on the same tag?</p>
+<p><strong>A:</strong> Performing if judgment and list rendering at the same time is a writing method that can easily cause performance waste and logic errors. It is recommended that you place <code>ma:if</code> and <code>ma:for</code> on different tags according to the actual needs during the development process to achieve the best results. Better development results</p>

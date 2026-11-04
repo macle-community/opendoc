@@ -1,0 +1,177 @@
+[
+  {
+    "name": "Framework Overview",
+    "path": "/overview",
+    "data": "/data/doc/framework/overview.md"
+  },
+  {
+    "name": "Mini Program Configuration",
+    "child": [
+      {
+        "name": "Global Configuration",
+        "path": "/app-config",
+        "data": "/data/doc/framework/config/app.md"
+      },
+      {
+        "name": "Page Configuration",
+        "path": "/page-config",
+        "data": "/data/doc/framework/config/page.md"
+      }
+    ]
+  },
+  {
+    "name": "Framework Interface",
+    "child": [
+      {
+        "name": "App",
+        "path": "/app-api",
+        "data": "/data/doc/framework/api/app.md"
+      },
+      {
+        "name": "Page",
+        "path": "/page-api",
+        "data": "/data/doc/framework/api/page.md"
+      },
+      {
+        "name": "Custom Components",
+        "child": [
+          {
+            "name": "Behavior",
+            "path": "/Behavior",
+            "data": "/data/doc/framework/api/Behavior.md"
+          },
+          {
+            "name": "Component",
+            "path": "/Component",
+            "data": "/data/doc/framework/api/Component.md"
+          }
+        ]
+      },
+      {
+        "name": "Modular",
+        "child": [
+          {
+            "name": "Require",
+            "path": "/require",
+            "data": "/data/doc/framework/api/module/require.md"
+          },
+          {
+            "name": "Module",
+            "path": "/module",
+            "data": "/data/doc/framework/api/module/module.md"
+          },
+          {
+            "name": "Exports",
+            "path": "/exports",
+            "data": "/data/doc/framework/api/module/exports.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Events",
+    "path": "/event",
+    "data": "/data/doc/framework/event/event.md"
+  },
+  {
+    "name": "JavaScript",
+    "path": "/js",
+    "data": "/data/doc/framework/js.md"
+  },
+  {
+    "name": "MAML Syntax Reference",
+    "child": [
+      {
+        "name": "Data Binding",
+        "path": "/maml-data",
+        "data": "/data/doc/framework/maml/data.md"
+      },
+      {
+        "name": "List Rendering",
+        "path": "/maml-list",
+        "data": "/data/doc/framework/maml/list.md"
+      },
+      {
+        "name": "Conditional Rendering",
+        "path": "/maml-condition",
+        "data": "/data/doc/framework/maml/condition.md"
+      },
+      {
+        "name": "Template",
+        "path": "/maml-template",
+        "data": "/data/doc/framework/maml/template.md"
+      },
+      {
+        "name": "Citation",
+        "path": "/maml-import",
+        "data": "/data/doc/framework/maml/import.md"
+      }
+    ]
+  },
+  {
+    "name": "MASS Syntax Reference",
+    "path": "/mass",
+    "data": "/data/doc/framework/mass.md"
+  },
+  {
+    "name": "SJS Syntax Reference",
+    "child": [
+      {
+        "name": "Overview",
+        "path": "/sjs-overview",
+        "data": "/data/doc/framework/sjs/overview.md"
+      },
+      {
+        "name": "Variable",
+        "path": "/sjs-variable",
+        "data": "/data/doc/framework/sjs/variable.md"
+      },
+      {
+        "name": "Comments",
+        "path": "/sjs-comment",
+        "data": "/data/doc/framework/sjs/comment.md"
+      },
+      {
+        "name": "Operator",
+        "path": "/sjs-operator",
+        "data": "/data/doc/framework/sjs/operator.md"
+      },
+      {
+        "name": "Statement",
+        "path": "/sjs-statement",
+        "data": "/data/doc/framework/sjs/statement.md"
+      },
+      {
+        "name": "Data Type",
+        "path": "/sjs-datatype",
+        "data": "/data/doc/framework/sjs/datatype.md"
+      },
+      {
+        "name": "Basic Class Library",
+        "path": "/sjs-basiclib",
+        "data": "/data/doc/framework/sjs/basiclib.md"
+      },
+      {
+        "name": "Response Events",
+        "path": "/sjs-event",
+        "data": "/data/doc/framework/sjs/event.md"
+      }
+    ]
+  },
+  {
+    "name": "Internationalization",
+    "child": [
+      {
+        "name": "Quick Start",
+        "path": "/quickView",
+        "data": "/data/doc/framework/i18n/quickView.md"
+      },
+      {
+        "name": "API Documentation",
+        "path": "/interface",
+        "data": "/data/doc/framework/i18n/interface.md"
+      }
+    ]
+  }
+]

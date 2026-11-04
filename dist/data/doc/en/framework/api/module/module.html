@@ -1,0 +1,28 @@
+<h2 id="moduleexports">module.exports</h2>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">exports</td>
+<td align="left">Object</td>
+<td align="left">Object exposed by a module. This object can be obtained when the module is referenced by require.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code><span class="hljs-comment">// common.js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Hello <span class="hljs-subst">${name}</span> !`</span>)
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayGoodbye</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Goodbye <span class="hljs-subst">${name}</span> !`</span>)
+}
+
+module.exports.sayHello = sayHello
+module.exports.sayGoodbye = sayGoodbye
+</code></pre>

@@ -1,0 +1,70 @@
+<h2 id="masendsocketmessageobject-object">ma.sendSocketMessage(Object object)</h2>
+<blockquote>
+<p>Send data through the WebSocket connection. The data can be sent only after ma.connectSocket is called and ma.onSocketOpen is called back.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Content to be sent.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    <span class="hljs-keyword">let</span> socketOpen = <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">let</span> socketMsgQueue = []
+    ma.<span class="hljs-title function_">connectSocket</span>({
+        <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;test.php&#x27;</span>
+    })
+    
+    ma.<span class="hljs-title function_">onSocketOpen</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+       socketOpen = <span class="hljs-literal">true</span>
+       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; socketMsgQueue.<span class="hljs-property">length</span>; i++){
+           <span class="hljs-title function_">sendSocketMessage</span>(socketMsgQueue[i])
+       }
+       socketMsgQueue = []
+    })
+    
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">sendSocketMessage</span>(<span class="hljs-params">msg</span>) {
+        <span class="hljs-keyword">if</span> (socketOpen) {
+            ma.<span class="hljs-title function_">sendSocketMessage</span>({
+             <span class="hljs-attr">data</span>:msg
+            })
+        } <span class="hljs-keyword">else</span> {
+            socketMsgQueue.<span class="hljs-title function_">push</span>(msg)
+        }
+    }
+</code></pre>

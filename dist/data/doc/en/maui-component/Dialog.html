@@ -1,0 +1,192 @@
+<h2 id="dialog">Dialog</h2>
+<blockquote>
+<p>Pop-up modal, commonly used for message prompts, message confirmations, or completing specific interactive operations within the current page,support component invoking.(Minimum version: 24.9.0)</p>
+</blockquote>
+<h3 id="import">Import</h3>
+<p>Currently, only manual import is supported, npm functionality is still in incubation.</p>
+<pre><code><span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-attr">&quot;maui-dialog&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../component/dialog/index&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="message-prompt">Message Prompt</h4>
+<p>Used to prompt some messages, only containing a confirm button.</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
+</code></pre>
+<p>Prompt with title</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Title&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
+</code></pre>
+<h4 id="message-confirmation">Message Confirmation</h4>
+<p>Used for confirming messages, including cancel and confirm buttons</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>/&gt;
+</code></pre>
+<p>Customize button text</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> cancelButtonText=<span class="hljs-string">&quot;Customize Cancel&quot;</span> confirmButtonText=<span class="hljs-string">&quot;Customize Confirm&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<p>Customize button color</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> confirmButtonColor=<span class="hljs-string">&quot;red&quot;</span> cancelButtonColor=<span class="hljs-string">&quot;blue&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<h4 id="custom-styles">Custom Styles</h4>
+<p>Modify message style using messageStyle
+Modify title style using titleStyle</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-attribute">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attribute">messageStyle</span>=<span class="hljs-string">&quot;color:orange&quot;</span> <span class="hljs-attribute">titleStyle</span>=<span class="hljs-string">&quot;color:#F0F000&quot;</span> <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;Title&quot;</span> show={{show}} show-cancel-button bind:<span class="hljs-attribute">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;
+</code></pre>
+<p>Modify overlay style using overlay-style</p>
+<pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> overlay-<span class="hljs-built_in">style</span>=<span class="hljs-string">&quot;background-color:red&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{show4}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
+</code></pre>
+<h4 id="others">Others</h4>
+<p>Use close-on-click-overlay to close dialog when clicking overlay</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> <span class="hljs-attr">close-on-click-overlay</span> /&gt;</span></span>
+</code></pre>
+<p>Customize content using slots</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span>  <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Title&quot;</span> <span class="hljs-attr">useSlot</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;color:orange&quot;</span>&gt;</span>Using slots<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Customize button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-dialog</span>&gt;</span></span>
+</code></pre>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">Whether to display the dialog</td>
+<td align="left">Boolean</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">Title</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">titleStyle</td>
+<td align="left">Title style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">Dialog width, default unit is px</td>
+<td align="left">String/number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">Text content</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">messageStyle</td>
+<td align="left">Text content style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">messageAlign</td>
+<td align="left">Content alignment, options: left, right</td>
+<td align="left">String</td>
+<td align="left">center</td>
+</tr>
+<tr>
+<td align="left">zIndex</td>
+<td align="left">z-index layer level</td>
+<td align="left">Number</td>
+<td align="left">2000</td>
+</tr>
+<tr>
+<td align="left">customStyle</td>
+<td align="left">Custom style</td>
+<td align="left">String</td>
+<td align="left">&#39;&#39;</td>
+</tr>
+<tr>
+<td align="left">showConfirmButton</td>
+<td align="left">Whether to show confirm button</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">showCancelButton</td>
+<td align="left">Whether to show cancel button</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">confirmButtonText</td>
+<td align="left">Text for confirm button</td>
+<td align="left">String</td>
+<td align="left">Confirm</td>
+</tr>
+<tr>
+<td align="left">cancelButtonText</td>
+<td align="left">Text for cancel button</td>
+<td align="left">String</td>
+<td align="left">Cancel</td>
+</tr>
+<tr>
+<td align="left">confirmButtonColor</td>
+<td align="left">Font color for confirm button</td>
+<td align="left">String</td>
+<td align="left">red</td>
+</tr>
+<tr>
+<td align="left">cancelButtonColor</td>
+<td align="left">Font color for cancel button</td>
+<td align="left">String</td>
+<td align="left">gray</td>
+</tr>
+<tr>
+<td align="left">overlay</td>
+<td align="left">Whether to show overlay</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">overlayStyle</td>
+<td align="left">Custom overlay style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">closeOnClickOverlay</td>
+<td align="left">Whether to close dialog when clicking overlay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">use-slot</td>
+<td align="left">Whether to use custom content slot</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:close</td>
+<td align="left">Triggered when dialog is closed</td>
+</tr>
+<tr>
+<td align="left">bind:confirm</td>
+<td align="left">Triggered when confirm button is clicked</td>
+</tr>
+<tr>
+<td align="left">bind:cancel</td>
+<td align="left">Triggered when cancel button is clicked</td>
+</tr>
+</tbody></table>

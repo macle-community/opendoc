@@ -1,0 +1,22 @@
+<h2 id="nodesref-selectorqueryexecfunction-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.exec(function callback)</h2>
+<blockquote>
+<p>Execute all requests. The request results form an array based on the request sequence and are returned in the first parameter of <code>callback</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function.</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="nodesref"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">Page({
+  onCreateSelectorQuery() {
+    ma.createSelectorQuery()
+      .select(&#x27;test1&#x27;).boundingClientRect()
+      .select(&#x27;test2&#x27;).boundingClientRect()
+      .selectAll(&#x27;.all&#x27;).boundingClientRect()
+      .exec((<span class="hljs-name">res</span>) =&gt; {
+          console.log(<span class="hljs-name">res</span>)<span class="hljs-comment">;</span>
+      })<span class="hljs-comment">;</span>
+  }
+})<span class="hljs-comment">;</span>
+</code></pre>

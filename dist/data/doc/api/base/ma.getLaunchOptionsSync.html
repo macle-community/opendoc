@@ -1,0 +1,58 @@
+<h2 id="magetlaunchoptionssyncobject-object">ma.getLaunchOptionsSync(Object object)</h2>
+<blockquote>
+<p>获取小程序启动时的启动参数（最低版本：23.12.0）</p>
+</blockquote>
+<h3 id="返回值">返回值</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">serviceConfig</td>
+<td align="left">Array</td>
+<td>服务器下发的启动参数</td>
+</tr>
+</tbody></table>
+<h4 id="array-serviceconfig">Array serviceConfig</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">configName</td>
+<td align="left">String</td>
+<td>配置项名称</td>
+</tr>
+<tr>
+<td align="left">configValue</td>
+<td align="left">String</td>
+<td>配置项值</td>
+</tr>
+</tbody></table>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const { serviceConfig } = ma.getLaunchOptionsSync();
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(serviceConfig[<span class="hljs-number">0</span>].configName);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(serviceConfig[<span class="hljs-number">0</span>].configValue);
+
+<span class="hljs-comment">// serviceConfig example</span>
+serviceConfig = [
+  {
+    <span class="hljs-attr">configName</span>: <span class="hljs-string">&quot;id&quot;</span>,
+    <span class="hljs-attr">configValue</span>: <span class="hljs-string">&quot;123456&quot;</span>
+  }
+]
+</code></pre>

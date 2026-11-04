@@ -1,0 +1,56 @@
+<h2 id="marelaunchobject-object">ma.reLaunch(Object object)</h2>
+<blockquote>
+<p>Close all pages and opens a page in the app.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Path (code package path) of a page to be redirected to in the app. The path can be followed by a parameter. Separate a parameter and a path with a question mark (?), separate a parameter key and a parameter value with an equal sign (=), and separate different parameters with ampersands (&amp;), for example, <strong>&#39;path?key=value&amp;key2=value2&#39;</strong>.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.reLaunch({
+  url: <span class="hljs-string">&#x27;test?id=1&#x27;</span>
+});
+<span class="hljs-comment">// test</span>
+Page({
+  onLoad(<span class="hljs-keyword">option</span>) {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">option</span>.query);
+  }
+});
+</code></pre>

@@ -1,0 +1,314 @@
+<h2 id="picker">picker</h2>
+<blockquote>
+<p>Picker that pops up from the bottom.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">header-text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Picker title, which is available only for Android.</td>
+</tr>
+<tr>
+<td align="left">cancel-text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Text of the cancel button of the selector (Minimum version: 24.12. 0)</td>
+</tr>
+<tr>
+<td align="left">confirm-text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Confirm button text of the selector (Minimum version: 24.12. 0)</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">String</td>
+<td align="left">selector</td>
+<td align="left">No</td>
+<td align="left">Picker type.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">bindcancel</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the pick is canceled.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-mode">Valid Values of mode</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">selector</td>
+<td align="left">Common picker.</td>
+</tr>
+<tr>
+<td align="left">multiSelector</td>
+<td align="left">Multi-column picker.</td>
+</tr>
+<tr>
+<td align="left">time</td>
+<td align="left">Time picker.</td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left">Date picker.</td>
+</tr>
+<tr>
+<td align="left">region</td>
+<td align="left">Region picker.</td>
+</tr>
+</tbody></table>
+<p>In addition to the preceding common attributes, <code>picker</code> has different attributes for different modes.</p>
+<h3 id="common-picker-mode--selector">Common picker: mode = selector</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">range</td>
+<td align="left">Array/Object array</td>
+<td align="left">[]</td>
+<td align="left">It is valid when <strong>mode</strong> is set to <strong>selector</strong> or <strong>multiSelector</strong>.</td>
+</tr>
+<tr>
+<td align="left">range-key</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Specifies the value of <strong>key</strong> in the object as the picker display content when <strong>range</strong> is an object array.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">Sequence number of the selected range (the subscript starts from 0).</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">The change event triggered when <strong>value</strong> changes. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="multi-column-picker-mode--multiselector">Multi-column picker: mode = multiSelector</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">range</td>
+<td align="left">Array/Object array</td>
+<td align="left">[]</td>
+<td align="left">It is valid when <strong>mode</strong> is set to <strong>selector</strong> or <strong>multiSelector</strong>.</td>
+</tr>
+<tr>
+<td align="left">range-key</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Specifies the value of <strong>key</strong> in the object as the picker display content when <strong>range</strong> is an object array.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Array</td>
+<td align="left">[]</td>
+<td align="left">Sequence number of the selected range (the subscript starts from 0).</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">The change event triggered when <strong>value</strong> changes. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindcolumnchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Triggered when the column changes.</td>
+</tr>
+</tbody></table>
+<h3 id="time-picker-mode--time">Time picker: mode = time</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Selected time, in the format of <em>hh:mm</em>.</td>
+</tr>
+<tr>
+<td align="left">start</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Start time of a valid time range, in the format of <em>hh:mm</em>.</td>
+</tr>
+<tr>
+<td align="left">end</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">End time of a valid time range, in the format of <em>hh:mm</em>.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">The change event triggered when <strong>value</strong> changes. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="date-picker-mode--date">Date picker: mode = date</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left">If the current day is within the valid range, the current day is displayed. Otherwise, the end date of the valid range is displayed.</td>
+<td align="left">Selected date, in the format of <em>YYYY-MM-DD</em>.</td>
+</tr>
+<tr>
+<td align="left">start</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Start date of a valid date range, in the format of <em>YYYY-MM-DD</em>.</td>
+</tr>
+<tr>
+<td align="left">end</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">End date of a valid date range, in the format of <em>YYYY-MM-DD</em>.</td>
+</tr>
+<tr>
+<td align="left">fields</td>
+<td align="left">String</td>
+<td align="left">day</td>
+<td align="left">Granularity of the picker. The options are as follows: <strong>year</strong>, <strong>month</strong>, and <strong>day</strong>.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">The change event triggered when <strong>value</strong> changes. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+</tbody></table>
+<h4 id="valid-values-of-fields">Valid Values of fields</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">year</td>
+<td align="left">Picker granularity is year.</td>
+</tr>
+<tr>
+<td align="left">month</td>
+<td align="left">Picker granularity is month.</td>
+</tr>
+<tr>
+<td align="left">day</td>
+<td align="left">Picker granularity is day.</td>
+</tr>
+</tbody></table>
+<h3 id="region-picker-mode--region">Region picker: mode = region</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">Array</td>
+<td align="left">[]</td>
+<td align="left">Selected region. By default, the first value in each column is selected.</td>
+</tr>
+<tr>
+<td align="left">custom-item</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Customize an entry to the top of each column.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Triggers the change event when <strong>value</strong> changes. The output is <strong>event.detail =</strong> <em>{value, code}</em>. The <strong>code</strong> field is the zoning code for statistics.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">picker</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;picker1&#x27;</span> <span class="hljs-attr">headerText</span>=<span class="hljs-string">&#x27;title&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;bindPickerChange&#x27;</span> <span class="hljs-attr">bindcancel</span>=<span class="hljs-string">&#x27;bindcancel&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+          <span class="hljs-attr">range</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[index]}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">picker</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  data: {
+    array: <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-string">&#x27;China&#x27;</span>, <span class="hljs-string">&#x27;Brazil&#x27;</span>, <span class="hljs-string">&#x27;Japan&#x27;</span>]</span>,
+    index: <span class="hljs-number">0</span>,
+  },
+  bindPickerChange: <span class="hljs-built_in">function</span>(e) {
+    console<span class="hljs-selector-class">.log</span>(e<span class="hljs-selector-class">.detail</span>.value)
+    this<span class="hljs-selector-class">.setData</span>({
+      index: e<span class="hljs-selector-class">.detail</span><span class="hljs-selector-class">.value</span>
+    })
+  },
+  bindcancel: <span class="hljs-built_in">function</span>(e) {
+    console<span class="hljs-selector-class">.log</span>(e)
+  },
+})
+</code></pre>

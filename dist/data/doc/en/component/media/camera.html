@@ -1,0 +1,385 @@
+<h2 id="camera">camera</h2>
+<blockquote>
+<p>System camera. QR code scanning function is supported. Related
+API: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createCameraContext">ma.createCameraContext</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">device-position</td>
+<td align="left">String</td>
+<td align="left">back</td>
+<td align="left">No</td>
+<td align="left">Camera direction.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">resolution</td>
+<td align="left">String</td>
+<td align="left">medium</td>
+<td align="left">No</td>
+<td align="left">Resolution. Dynamic modification is not supported.</td>
+<td>Not supported in Android.</td>
+</tr>
+<tr>
+<td align="left">flash</td>
+<td align="left">String</td>
+<td align="left">auto</td>
+<td align="left">No</td>
+<td align="left">Flash. The options are as follows: <strong>auto</strong>, <strong>on</strong>, and <strong>off</strong>.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">bindstop</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the camera stops abnormally, for example, when the camera exits the backend.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when a camera is not allowed to use.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">bindinitdone</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the camera initialization is complete. e.detail = {maxZoom}</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">bindrecorderror</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">This event is triggered when a recording exits abnormally. The error information and the storage path of the stopped recording are returned.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-resolution">Valid Values of resolution</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">low</td>
+<td align="left">Low.</td>
+<td>Not supported in Android.</td>
+</tr>
+<tr>
+<td align="left">medium</td>
+<td align="left">Medium.</td>
+<td>Not supported in Android.</td>
+</tr>
+<tr>
+<td align="left">high</td>
+<td align="left">High.</td>
+<td>Not supported in Android.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-device-position">Valid Values of device-position</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">front</td>
+<td align="left">Front.</td>
+</tr>
+<tr>
+<td align="left">back</td>
+<td align="left">Back.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-flash">Valid Values of flash</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">auto</td>
+<td align="left">Automatic.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">on</td>
+<td align="left">On.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">off</td>
+<td align="left">Off.</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">torch</td>
+<td align="left">Torch.</td>
+<td>Not supported in Android.</td>
+</tr>
+</tbody></table>
+<h3 id="bindrecorderror-callback-function">bindrecorderror Callback Function</h3>
+<h4 id="parameters">Parameters</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td>Error message indicating that recording stops abnormally.</td>
+</tr>
+<tr>
+<td align="left">tempVideoPath</td>
+<td align="left">String</td>
+<td>Path for storing abnormally stopped recordings.</td>
+</tr>
+<tr>
+<td align="left">tempThumbPath</td>
+<td align="left">String</td>
+<td>Path for storing the cover of the recording that stops abnormally.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flash</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;width: 100%; height: 300px;&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;error&#x27;</span>
+        <span class="hljs-attr">bindstop</span>=<span class="hljs-string">&#x27;stop&#x27;</span> <span class="hljs-attr">bindinitdone</span>=<span class="hljs-string">&#x27;initdone&#x27;</span> <span class="hljs-attr">bindrecorderror</span>=<span class="hljs-string">&#x27;recorderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">camera</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;slider2&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;slider2change&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">sliderMax</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">show-value</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&#x27;1&#x27;</span>
+        <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;margin-top:50px ;&#x27;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;button-group&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;takephoto&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;takePhoto&#x27;</span>&gt;</span>Take Photos<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;takephoto&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;startRecord&#x27;</span>&gt;</span>Video<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;takephoto&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;stopRecord&#x27;</span>&gt;</span>Stop Recording<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;button-group&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;takephoto&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;takePosition&#x27;</span>&gt;</span>Switch Camera<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;takephoto&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;takeFlash&#x27;</span>&gt;</span>Turn on Flash<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">format</span> = (<span class="hljs-params">res</span>) =&gt; <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res, <span class="hljs-literal">null</span>, <span class="hljs-number">4</span>);
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">showText</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;back&#x27;</span>,
+    <span class="hljs-attr">flash</span>: <span class="hljs-string">&#x27;off&#x27;</span>,
+    <span class="hljs-attr">videoSrc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">sliderMax</span>: <span class="hljs-number">100</span>,
+    <span class="hljs-attr">info</span>: <span class="hljs-string">&#x27;&#x27;</span>
+  },
+  <span class="hljs-title function_">slider2change</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
+    <span class="hljs-keyword">let</span> zoom = <span class="hljs-built_in">parseInt</span>(res.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>);
+    ctx.<span class="hljs-title function_">setZoom</span>({
+      <span class="hljs-attr">zoom</span>: zoom,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Set zoom success&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>
+        });
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Set zoom fail&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;error&#x27;</span>
+        });
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Set zoom complete&#x27;</span>);
+      }
+    });
+  },
+  <span class="hljs-title function_">initdone</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">sliderMax</span>: res.<span class="hljs-property">detail</span>.<span class="hljs-property">maxZoom</span>
+    });
+  },
+  <span class="hljs-title function_">takePhoto</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
+    ctx.<span class="hljs-title function_">takePhoto</span>({
+      <span class="hljs-attr">quality</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempImagePath</span>,
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+      }
+    });
+  },
+  <span class="hljs-title function_">takePosition</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">position</span> === <span class="hljs-string">&#x27;front&#x27;</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;back&#x27;</span>
+      });
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;front&#x27;</span>
+      });
+    }
+  },
+  <span class="hljs-title function_">startRecord</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
+    ctx.<span class="hljs-title function_">startRecord</span>({
+      <span class="hljs-attr">timeoutCallback</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Recording timer ends&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>
+        });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempThumbPath</span>,
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">videoSrc</span>: res.<span class="hljs-property">tempVideoPath</span>
+        });
+      },
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Recording started successfully&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>
+        });
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Recording startup failed&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;error&#x27;</span>
+        });
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Recording start completed&#x27;</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  },
+  <span class="hljs-title function_">stopRecord</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
+    ctx.<span class="hljs-title function_">stopRecord</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;End recording successfully&#x27;</span>);
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: res.<span class="hljs-property">tempVideoPath</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>
+        }),
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempThumbPath</span>,
+            <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+          });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">videoSrc</span>: res.<span class="hljs-property">tempVideoPath</span>
+        });
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+        });
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Failed to end recording&#x27;</span>);
+        ma.<span class="hljs-title function_">showToast</span>({
+          <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Failed to end recording&#x27;</span>,
+          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;error&#x27;</span>
+        });
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;End recording completely&#x27;</span>);
+      }
+    });
+  },
+  <span class="hljs-title function_">takeFlash</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">flash</span>: <span class="hljs-string">&#x27;on&#x27;</span>
+    });
+  },
+  <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(e)
+    });
+  },
+  <span class="hljs-attr">stop</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;camera stop:stopstop&#x27;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(res)
+    });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>);
+  },
+  <span class="hljs-attr">recorderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;camera recorderror&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;error&#x27;</span>
+    });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">tempThumbPath</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">tempVideoPath</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">src</span>: e.<span class="hljs-property">detail</span>.<span class="hljs-property">tempThumbPath</span>
+    });
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">videoSrc</span>: e.<span class="hljs-property">detail</span>.<span class="hljs-property">tempVideoPath</span>
+    });
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">info</span>: <span class="hljs-title function_">format</span>(e.<span class="hljs-property">detail</span>)
+    });
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>Only one camera component can be inserted into a page.</li>
+<li>Pay attention to the usage restrictions of native components.</li>
+</ol>

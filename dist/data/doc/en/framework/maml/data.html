@@ -1,0 +1,120 @@
+<h2 id="data-binding">Data Binding</h2>
+<p>The dynamic data in the MAML is obtained from the data of the corresponding page.</p>
+<h3 id="simple-binding">Simple Binding</h3>
+<p>Data binding uses the Mustache syntax (double braces) to wrap variables and can be used to:</p>
+<h4 id="content">Content</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{ <span class="hljs-name">message</span> }}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">message</span>: &#x27;<span class="hljs-type">Hello</span> <span class="hljs-type">Macle</span>!&#x27;
+  }</span>
+})
+</code></pre>
+<h4 id="component-attributes-enclosed-in-double-quotation-marks">Component Attributes (Enclosed in Double Quotation Marks)</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;m-</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">id</span>: 1
+  }</span>
+})
+</code></pre>
+<h4 id="condition-attributes-enclosed-in-double-quotation-marks">Condition Attributes (Enclosed in Double Quotation Marks)</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">condition</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">condition</span>: <span class="hljs-title">true</span>
+  }</span>
+})
+</code></pre>
+<h4 id="keywords-enclosed-in-double-quotation-marks">Keywords (Enclosed in Double Quotation Marks)</h4>
+<p>true: true value of the boolean type.
+false: false value of the boolean type.</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">checkbox</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">false</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">checkbox</span>&gt;</span></span>
+</code></pre>
+<blockquote>
+<p>Note: Do not directly write checked=&quot;false&quot;. The calculation result is a string.</p>
+</blockquote>
+<h3 id="perform-calculations">Perform Calculations</h3>
+<p>You can perform simple operations in {{}}. The following methods are supported:</p>
+<h4 id="ternary-operation">Ternary Operation</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">hidden</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flag</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> Hidden <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="arithmetic-operation">Arithmetic Operation</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">a</span> + b}}</span><span class="language-xml"> + </span><span class="hljs-template-variable">{{<span class="hljs-name">c</span>}}</span><span class="language-xml"> + d <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  data:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">    a:</span> <span class="hljs-number">1</span>,
+<span class="hljs-symbol">    b:</span> <span class="hljs-number">2</span>,
+<span class="hljs-symbol">    c:</span> <span class="hljs-number">3</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>)
+</code></pre>
+<p>Output: 3 + 3 + d</p>
+<h4 id="logic-judgment">Logic Judgment</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">length</span> &gt; <span class="hljs-number">5</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="character-string-operation">Character String Operation</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">&quot;hello&quot;</span> + name}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="data-path-operation">Data Path Operation</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">object.key</span>}}</span><span class="language-xml"> </span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[0]}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    <span class="hljs-selector-tag">object</span>: {
+      key: <span class="hljs-string">&#x27;Hello &#x27;</span>
+    },
+    array: [<span class="hljs-string">&#x27;Macle&#x27;</span>]
+  }
+})
+</code></pre>
+<h3 id="portfolio">Portfolio</h3>
+<p>You can also combine them directly within Mustache to form a new object or array.</p>
+<h4 id="array">Array</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[zero, 1, 2, 3, 4]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-type">Page</span>({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: {
+    <span class="hljs-title">zero</span>: 0
+  }</span>
+})
+</code></pre>
+<p>Finally, the values are combined into an array [0, 1, 2, 3, 4].</p>
+<blockquote>
+<p>Note: If a space exists between the brace and the quotation mark, it is parsed into a string.</p>
+</blockquote>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1,2,3]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string"> &quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>Equivalent to:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1,2,3]</span> + <span class="hljs-string">&#x27; &#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="object">Object</h4>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;objectCombine&quot;</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">for:</span> a, bar: b}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    <span class="hljs-selector-tag">a</span>: <span class="hljs-number">1</span>,
+    b: <span class="hljs-number">2</span>
+  }
+})
+</code></pre>
+<p>The final combined object is {for: 1, bar: 2}.</p>
+<h3 id="fqs">F&amp;Qs</h3>
+<h4 id="how-do-i-bind-parameters-of-a-tag-binding-method-on-the-maml-page-and-transfer-values-for-events">How do I bind parameters of a tag binding method on the MAML page and transfer values for events?</h4>
+<p><strong>A</strong>: The general syntax for transferring event values is to add <strong>data-</strong>{Parameter name} <strong>= &quot;</strong>{Parameter value to be bound}<strong>&quot;</strong> to the tag. The following is an example:</p>
+<pre><code class="language-js">&lt;<span class="hljs-keyword">view</span> bindtap=<span class="hljs-string">&quot;testTap&quot;</span> data-<span class="hljs-keyword">test</span>-value = <span class="hljs-string">&quot;1&quot;</span>&gt; &lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+<p>Accordingly, you can obtain the value of the input parameter in the JavaScript file as follows:</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-title">testTap</span><span class="hljs-params">(e)</span></span>{
+    console<span class="hljs-selector-class">.log</span>(e<span class="hljs-selector-class">.currentTarget</span><span class="hljs-selector-class">.dataset</span>.testValue)
+}
+</code></pre>
+<p>The hyphen used for value transfer is converted to camel case. For details, see <a onclick="_mdLinkClick(this.href)" href="#/framework/event">Events</a>.</p>

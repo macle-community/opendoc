@@ -1,0 +1,36 @@
+<h2 id="recordermanageronerrorfunction-listener">RecorderManager.onError(function listener)</h2>
+<blockquote>
+<p>监听录音错误事件，在录音管理器操作的任意环节出现了状态异常、操作异常、系统异常等都会监听到错误（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-listener">function listener</h4>
+<p>录音错误事件的监听函数</p>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onError(() =&gt; {
+            ma.showToast({
+                title: &#x27;录音错误&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

@@ -1,0 +1,18 @@
+<h2 id="recordermanagerstop">RecorderManager.stop()</h2>
+<blockquote>
+<p>停止录音，必须要用户授予当前小程序麦克风权限才可调用（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>stop 接口仅支持录音机 正在录音\录音暂停 时调用，录音空闲时无法调用 stop 接口</li>
+<li>stop 是对录音管理器的操作，操作结果还是通过录音管理器来获取，不同于通常接口的回调方式；录音机停止了录音，可以通过 RecorderManager.onStop (listener) 监听到（各种异常导致的停止也会被 onStop 监听到），发生错误可以通过 RecorderManager.onError(listener) 监听到</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-maml">&lt;button <span class="hljs-attribute">bindtap</span>=<span class="hljs-string">&quot;recorderStop&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;recorderStop&lt;/button&gt;
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">Page</span>({
+    <span class="hljs-title">recorderStop</span>() {
+        <span class="hljs-variable">recorderManager.stop</span>();
+    }
+})</span>
+</code></pre>

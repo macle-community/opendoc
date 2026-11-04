@@ -1,0 +1,21 @@
+<h2 id="logical-layers">Logical Layers</h2>
+<p>The logical layer of the Mini Program development framework uses the JavaScript engine to provide a runtime environment for developers&#39; JavaScript code and APIs specific to Mini Programs. </p>
+<p>All code written by developers is packaged into a JavaScript file and run when the Mini Program is started until the Mini Program is ended.</p>
+<h3 id="support-for-javascript">Support for JavaScript</h3>
+<h4 id="running-restrictions">Running Restrictions</h4>
+<p>For security purposes, a Mini Program does not support dynamic execution of JavaScript code.</p>
+<ul>
+<li>You cannot use eval to execute the JavaScript code.</li>
+<li>You cannot use new Function to create function.<ul>
+<li>Except new Function(&quot;return this&quot;).</li>
+</ul>
+</li>
+</ul>
+<p>Windows and documents are not supported.</p>
+<h3 id="support-for-standard-ecmascript">Support for Standard ECMAScript</h3>
+<p>The JavaScript execution environments of Mini Programs vary according to the platform. For an environment that does not support ECMAScript 6, such as iOS 9, you need to enable the conversion from ECMAScript 6 to ECMAScript 5 and introduce related polyfills.</p>
+<h3 id="apis-that-cannot-be-polyfilled">APIs that Cannot be Polyfilled</h3>
+<p>The following API cannot be used in some earlier browser versions. Do not use the API if possible.</p>
+<ul>
+<li>Proxy objects</li>
+</ul>

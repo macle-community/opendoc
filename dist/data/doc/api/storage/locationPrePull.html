@@ -1,0 +1,48 @@
+<h2 id="地理位置预拉取">地理位置预拉取</h2>
+<blockquote>
+<p>小程序首次获取地理位置（<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a>）通常比较耗时，小程序框架提供预拉取（预调用）机制将这一过程提前，帮助改进用户体验。</p>
+</blockquote>
+<h3 id="使用流程">使用流程</h3>
+<h3 id="配置预取规则">配置预取规则</h3>
+<p>在小程序项目根目录创建 preload.fetch，填写预加载配置。</p>
+<p><img src="/openplatform/macledocs/data/doc/api/storage/image/preload.png" alt="示例图" ></p>
+<h3 id="preloadfetch-配置">preload.fetch 配置</h3>
+<p><strong>注意：</strong> 实际的配置文件不支持注释，下面文件中的注释部分只是为了更好说明每个字段的作用，请在拷贝的时候从配置文件中删除。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th align="left">说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td>否</td>
+<td align="left">缓存数据类型，固定值为 <strong><code>getLocation</code></strong></td>
+<td>pre</td>
+</tr>
+</tbody></table>
+<pre><code class="language-json"><span class="hljs-regexp">//</span> preload.fetch
+[
+  {
+    <span class="hljs-string">&quot;fetchType&quot;</span>: <span class="hljs-string">&quot;getLocation&quot;</span>, <span class="hljs-regexp">//</span> 地理位置预拉取，固定值为 getLocation
+  }
+]
+</code></pre>
+<p>（目前 preload.fetch 限定只取<font color="red"><strong>前 10 条</strong></font> 数据）</p>
+<h3 id="获取预取数据">获取预取数据</h3>
+<p>ma.getLocation 新增 <strong><code>useFetchData</code></strong> 参数区分数据是否为预取</p>
+<p>配置 <strong><code>useFetchData:true</code></strong> 如果有预取数据，<code>success</code> 返回预取数据，如果没有则进行正常的地理位置请求</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// 当 preload.fetch 中 fetchType 参数值为 getLocation 时获取预取数据</span>
+ma.<span class="hljs-title function_">getLocation</span>({
+  <span class="hljs-attr">useFetchData</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+</code></pre>

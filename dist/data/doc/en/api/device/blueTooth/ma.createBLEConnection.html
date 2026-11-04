@@ -1,0 +1,108 @@
+<h2 id="macreatebleconnectionobject-object">ma.createBLEConnection(Object object)</h2>
+<blockquote>
+<p>Connect Bluetooth Low Energy devices (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Bluetooth device id</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">number</td>
+<td align="left">30000</td>
+<td align="left">No</td>
+<td align="left">Connection timeout in ms. If left blank, the default timeout is 30 seconds.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">createBLEConnection: ok</td>
+</tr>
+</tbody></table>
+<h3 id="objectfail-callback-function">object.fail Callback Function</h3>
+<h4 id="parameter-2">Parameter</h4>
+<h4 id="object-object-2">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">error message</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.createBLEConnection({
+  deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;createBLEConnection success&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;createBLEConnection fail&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<p>If already searched for a Bluetooth device and successfully established a connection, it can directly pass the deviceId obtained from the previous search to directly attempt to connect to the device without searching again. If the Bluetooth adapter module is disabled on the iOS device, the interface for connecting to 
+the Bluetooth low energy device must be called again after the Bluetooth device is found by calling ma.startBluetoothDevicesDiscovery api.</p>

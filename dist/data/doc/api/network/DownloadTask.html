@@ -1,0 +1,29 @@
+<h2 id="downloadtask">DownloadTask</h2>
+<blockquote>
+<p>一个可以监听下载进度变化事件，以及取消下载任务的对象（最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="方法">方法</h3>
+<h4 id="downloadtaskabort"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.abort">DownloadTask.abort()</a></h4>
+<p>中断下载任务</p>
+<h4 id="downloadtaskonprogressupdatefunction-listener"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.onProgressUpdate">DownloadTask.onProgressUpdate(function listener)</a></h4>
+<p>监听下载进度变化事件</p>
+<h4 id="downloadtaskoffprogressupdatefunction-listener"><a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask.offProgressUpdate">DownloadTask.offProgressUpdate(function listener)</a></h4>
+<p>移除下载进度变化事件的监听函数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const downloadTask = <span class="hljs-keyword">ma</span>.downloadFile({
+  url: <span class="hljs-string">&#x27;http://example.com/audio/123&#x27;</span>, //仅为示例，并非真实的资源
+  success (<span class="hljs-keyword">res</span>) {
+    <span class="hljs-keyword">ma</span>.playVoice({
+      filePath: <span class="hljs-keyword">res</span>.tempFilePath
+    })
+  }
+})
+
+downloadTask.onProgressUpdate((<span class="hljs-keyword">res</span>) =&gt; {
+  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;下载进度&#x27;</span>, <span class="hljs-keyword">res</span>.progress)
+  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;已经下载的数据长度&#x27;</span>, <span class="hljs-keyword">res</span>.totalBytesWritten)
+  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;预期需要下载的数据总长度&#x27;</span>, <span class="hljs-keyword">res</span>.totalBytesExpectedToWrite)
+})
+
+downloadTask.abort() // 取消下载任务
+</code></pre>

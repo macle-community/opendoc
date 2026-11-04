@@ -1,0 +1,189 @@
+<h2 id="magetbledevicecharacteristicsobject-object">ma.getBLEDeviceCharacteristics(Object object)</h2>
+<blockquote>
+<p>获取蓝牙低功耗设备某个服务中所有特征（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙设备 id</td>
+</tr>
+<tr>
+<td align="left">serviceId</td>
+<td align="left">string</td>
+<td align="left">NA</td>
+<td align="left">是</td>
+<td align="left">蓝牙服务 UUID。需要先调用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBLEDeviceServices">ma.getBLEDeviceServices</a> 获取</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getBLEDeviceCharacteristics: ok</td>
+</tr>
+<tr>
+<td align="left">characteristics</td>
+<td align="left">Array</td>
+<td align="left">设备特征列表</td>
+</tr>
+</tbody></table>
+<h4 id="array-characteristics">Array characteristics</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uuid</td>
+<td>String</td>
+<td>蓝牙设备特征的  UUID</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>Object</td>
+<td>该特征支持的操作类型</td>
+</tr>
+</tbody></table>
+<h5 id="object-properties">Object properties</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>broadcast</td>
+<td>Boolean</td>
+<td>该特征是否支持广播操作</td>
+</tr>
+<tr>
+<td>read</td>
+<td>Boolean</td>
+<td>该特征是否支持read操作</td>
+</tr>
+<tr>
+<td>write</td>
+<td>Boolean</td>
+<td>该特征是否支持write操作</td>
+</tr>
+<tr>
+<td>notify</td>
+<td>Boolean</td>
+<td>该特征是否支持notify操作</td>
+</tr>
+<tr>
+<td>indicate</td>
+<td>Boolean</td>
+<td>该特征是否支持indicate操作</td>
+</tr>
+<tr>
+<td>writeNoResponse</td>
+<td>Boolean</td>
+<td>该特征是否支持无回复写操作</td>
+</tr>
+<tr>
+<td>signedWrite</td>
+<td>Boolean</td>
+<td>该特征是否支持有签名写操作</td>
+</tr>
+<tr>
+<td>extendedProperties</td>
+<td>Boolean</td>
+<td>该特征是否支持支持扩展属性</td>
+</tr>
+<tr>
+<td>notifyEncryption</td>
+<td>Boolean</td>
+<td>该特征是否支持加密notify操作（仅IOS涉及）</td>
+</tr>
+<tr>
+<td>indicateEncryption</td>
+<td>Boolean</td>
+<td>该特征是否支持加密indicate操作（仅IOS涉及）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getBLEDeviceCharacteristics</span>({
+  deviceId,
+  serviceId,
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;getBLEDeviceCharacteristics success&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res),
+      <span class="hljs-attr">showCancel</span>: <span class="hljs-literal">false</span>
+    })
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; res.<span class="hljs-property">characteristics</span>.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">const</span> item = res.<span class="hljs-property">characteristics</span>[i]
+      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">read</span>) {
+        ma.<span class="hljs-title function_">readBLECharacteristicValue</span>({
+          deviceId,
+          serviceId,
+          <span class="hljs-attr">characteristicId</span>: item.<span class="hljs-property">uuid</span>,
+        })
+      }
+      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">write</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;write&#x27;</span>)
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">writeBLECharacteristicValue</span>()
+      }
+    }
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;getBLEDeviceCharacteristics fail&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res),
+      <span class="hljs-attr">showCancel</span>: <span class="hljs-literal">false</span>
+    })
+  }
+})
+</code></pre>

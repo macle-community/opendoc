@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Version Updates",
+    "child": [
+      {
+        "name": "Devtools",
+        "path": "/release_ide",
+        "data": "/data/doc/devtools/release.md"
+      },
+      {
+        "name": "SDK",
+        "path": "/release_sdk",
+        "data": "/data/doc/sdk/release.md"
+      }
+    ]
+  }
+]

@@ -1,0 +1,165 @@
+<h2 id="machoosevideoobject-object">ma.chooseVideo(Object object)</h2>
+<blockquote>
+<p>Select an video from the local album or shoots a photo using the camera.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sourceType</td>
+<td align="left">Array</td>
+<td align="left">[&#39;album&#39;, &#39;camera&#39;]</td>
+<td align="left">No</td>
+<td align="left">Source of the selected video.</td>
+</tr>
+<tr>
+<td align="left">camera</td>
+<td align="left">String</td>
+<td align="left">&#39;back&#39;</td>
+<td align="left">No</td>
+<td align="left">The front or rear camera is pulled up by default. Android is not supported.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="valid-values-of-objectsourcetype">Valid Values of object.sourceType</h4>
+<h5 id="parameter-1">Parameter</h5>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>album</td>
+<td>Selects videos from the album.</td>
+<td>The album is directly called for video selection if this parameter is set.</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>Uses the camera.</td>
+<td>The camera is directly called for photographing if this parameter is set.</td>
+</tr>
+</tbody></table>
+<h4 id="value-range-of-objectcamera">Value range of object.camera</h4>
+<h5 id="parameter-2">Parameter</h5>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back</td>
+<td>Pull up the rear camera by default.</td>
+</tr>
+<tr>
+<td>front</td>
+<td>Pull up the front camera by default.</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-3">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">References:chooseVideo:ok.</td>
+</tr>
+<tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">Temporary file path (local path) for the selected video.</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">The length of time (to two decimal places of seconds) of the selected video.</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Number</td>
+<td align="left">Data size of the selected video.</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">Returns the height of the selected video.</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">Returns the width of the selected video.</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-callback-function">object.fail Callback Function</h4>
+<h5 id="parameter-4">Parameter</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>Reference: chooseVideo: fail, +Error cause (If no value is returned, this parameter is left empty.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.chooseVideo({
+  <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  success(res) {
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.tempFilePath);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.duration);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.size);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.width);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>It is recommended that the duration of the video to be recorded or selected does not exceed 5 minutes. If the duration exceeds 5 minutes, the Mini Program may freeze.</li>
+</ol>

@@ -1,0 +1,24 @@
+<h2 id="masetstoragesyncstring-keyany-data">ma.setStorageSync(string key,any data)</h2>
+<blockquote>
+<p>Store data in the specified key in the local cache. The original content corresponding to the key is overwritten. The data is always available unless it is deleted by the user or cleared by the system due to storage space reasons. The maximum data size of a single key is 10 KB for Android and is 1 MB for iOS, and the maximum size of all data is 10 MB.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-key">string key</h4>
+<p>Specified key in the local cache.</p>
+<h4 id="any-data">any data</h4>
+<p>Content to be stored. Only native types, dates, and objects that can be serialized using JSON.stringify are supported.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorage</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;key&#x27;</span>;
+    <span class="hljs-keyword">const</span> data = <span class="hljs-string">&#x27;data&#x27;</span>;
+    <span class="hljs-keyword">try</span> {
+        ma.setStorageSync(key, data)
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-comment">// Do something when catch error</span>
+    }
+}
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: The storage is not encrypted. Do not store sensitive personal data in plaintext.</li>
+</ol>

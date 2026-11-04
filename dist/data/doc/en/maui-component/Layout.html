@@ -1,0 +1,71 @@
+<h2 id="layout">Layout</h2>
+<blockquote>
+<p>Layout provides two components <code>maui-row</code> and <code>maui-col</code> for row and column layout (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>The Layout component provides a <code>24-column grid</code>, and the width percentage of the columns is set by adding the <code>span</code> attribute on <code>Col</code>. In addition, adding the <code>offset</code> attribute can set the offset width of the column, calculated in the same way as span.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>span: 4<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>offset: 4, span: 10<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>offset: 12, span: 12<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+</code></pre>
+<h4 id="set-column-element-spacing">Set column element spacing</h4>
+<p>The spacing between column elements can be set through the <code>gutter</code> attribute. The default spacing is 0.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span> <span class="hljs-attr">gutter</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="row-props">Row Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">gutter</td>
+<td align="left">Spacing between column elements in px</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="col-props">Col Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">span</td>
+<td align="left">Column element width</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">offset</td>
+<td align="left">Column element offset distance</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

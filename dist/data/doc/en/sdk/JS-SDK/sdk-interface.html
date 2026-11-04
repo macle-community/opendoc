@@ -1,0 +1,2055 @@
+<h2 id="interface-description">Interface Description</h2>
+<h3 id="related-interfaces">Related Interfaces</h3>
+<p>On the web page loaded by the web-view component, the interface provided by the JS SDK can be used to invoke the
+miniprogram-related capabilities.</p>
+<p>The following interfaces are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Interface Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ma.miniProgram.navigateTo</td>
+<td>The event is not supported. The parameters are the same as other parameters of the miniprogram interface(DSL mini-program only,for details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">Introduction</a>).</td>
+</tr>
+<tr>
+<td>ma.miniProgram.navigateBack</td>
+<td>The delta parameter is required. If the delta parameter is not transferred, the value is 1(DSL mini-program only,for details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">Introduction</a>).</td>
+</tr>
+<tr>
+<td>ma.miniProgram.switchTab</td>
+<td>The parameters are consistent with the miniprogram interface(DSL mini-program only,for details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">Introduction</a>).</td>
+</tr>
+<tr>
+<td>ma.miniProgram.redirectTo</td>
+<td>The parameters are consistent with the miniprogram interface(DSL mini-program only,for details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">Introduction</a>).</td>
+</tr>
+<tr>
+<td>ma.miniProgram.reLaunch</td>
+<td>The parameters are consistent with the miniprogram interface(DSL mini-program only,for details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">Introduction</a>).</td>
+</tr>
+<tr>
+<td>ma.miniProgram.getEnv</td>
+<td>Obtains the current environment. You can use the window._majs_environment variable to determine whether the environment is in the miniprogram.</td>
+</tr>
+<tr>
+<td>ma.miniProgram.close</td>
+<td>Close miniprogram, no callback</td>
+</tr>
+<tr>
+<td>ma.chooseImage</td>
+<td>Select pictures from your local album or take pictures with your camera.</td>
+</tr>
+<tr>
+<td>ma.chooseVideo</td>
+<td>Take a video or select a video from your phone&#39;s album(<strong>The minimum version of this interface is 24.9.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getLocation</td>
+<td>Obtain the current geographical location information.</td>
+</tr>
+<tr>
+<td>ma.previewImage</td>
+<td>Preview Picture</td>
+</tr>
+<tr>
+<td>ma.getsmallappinfo</td>
+<td>Obtain basic information of the Mini Program (<strong>The minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.openDocument</td>
+<td>Open File</td>
+</tr>
+<tr>
+<td>ma.getStorage</td>
+<td>The parameters are consistent with the miniprogram interface.</td>
+</tr>
+<tr>
+<td>ma.setStorage</td>
+<td>The parameters are consistent with the miniprogram interface.</td>
+</tr>
+<tr>
+<td>ma.removeStorage</td>
+<td>The parameters are consistent with the miniprogram interface.</td>
+</tr>
+<tr>
+<td>ma.clearStorage</td>
+<td>The parameters are consistent with the miniprogram interface.</td>
+</tr>
+<tr>
+<td>ma.getNetworkType</td>
+<td>Obtaining the Network Status</td>
+</tr>
+<tr>
+<td>ma.scanCode</td>
+<td>Pull up the QR code to scan, also support the one-dimensional code.</td>
+</tr>
+<tr>
+<td>ma.callNativeAPI</td>
+<td>Invoke the native method in HTML5. (<strong>The earliest version of this interface is 23.3.0</strong>.)</td>
+</tr>
+<tr>
+<td>ma.native</td>
+<td>Invoke native capabilities. (<strong>The earliest version of this interface is 23.3.0</strong>.)</td>
+</tr>
+<tr>
+<td>ma.request</td>
+<td>Request sending interface (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.uploadFile</td>
+<td>Upload interface (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.downloadFile</td>
+<td>Download interface (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.reportLog</td>
+<td>Developer-defined log reporting interface (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.reportPerformance</td>
+<td>Developer-defined indicator reporting interface (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.submitReport</td>
+<td>Log reporting triggered by a developer (<strong>The earliest version of this interface is 23.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.isOnline</td>
+<td>Determine the Mini Program’s networking status (<strong>The minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.playAudio</td>
+<td>Play audio (<strong>minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.stopAudio</td>
+<td>Stop playing audio (<strong>minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.navigateToMiniProgram</td>
+<td>Jump to other Mini Programs within a Mini Program (<strong>minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getBackgroundFetchData</td>
+<td>Get all the data in the data pre-fetch cache (<strong>minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getLaunchOptionsSync</td>
+<td>Get the startup parameters when starting the miniprogram (<strong>minimum version of this interface is 23.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getStatusBarHeight</td>
+<td>Get status bar height (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.capsuleStyle</td>
+<td>Set capsule style (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.gotoBrowser</td>
+<td>Jump to third-party browsing (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.saveFileToPhone</td>
+<td>Save base64 to the mobile phone (the storage can be accessed by users) (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.saveImage</td>
+<td>Save picture to photo album (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.saveBase64Image</td>
+<td>Save base64 to album (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.chooseContact</td>
+<td>Get the mobile phone address book and select the contact (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.showToast</td>
+<td>Show message box (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.showLoading</td>
+<td>The loading prompt box is displayed and needs to be actively called <code>ma.hideLoading</code> to close it. (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.hideLoading</td>
+<td>Hide loading prompt box (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getAuthCode</td>
+<td>Call the interface to obtain login credentials. Obtain user login status information through credentials (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getOpenUserInfo</td>
+<td>Call the interface to obtain user public information (<strong>The minimum version of this interface is 24.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.openBluetoothAdapter</td>
+<td>Initialize Bluetooth module(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.closeBluetoothAdapter</td>
+<td>Turn off the Bluetooth module(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.startBluetoothDevicesDiscovery</td>
+<td>Start searching for nearby Bluetooth peripherals(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.stopBluetoothDevicesDiscovery</td>
+<td>Stop searching for nearby Bluetooth peripherals(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.onBluetoothDeviceFound</td>
+<td>Listen for events when new devices are found(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.offBluetoothDeviceFound</td>
+<td>Remove the global listening function for the event of new device being searched(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.createBLEConnection</td>
+<td>Connect Bluetooth Low Energy devices(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.closeBLEConnection</td>
+<td>Disconnect from Bluetooth Low Energy device(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getBLEDeviceServices</td>
+<td>Get all services of Bluetooth low energy devices(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getBLEDeviceCharacteristics</td>
+<td>Get all characteristics of a service of a Bluetooth low energy device(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.writeBLECharacteristicValue</td>
+<td>Write binary data to Bluetooth Low Energy device characteristics(<strong>The minimum version of this interface is 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.exitMiniProgram</td>
+<td>exit the current miniProgram (<strong>minimum version: 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.reportEvent</td>
+<td>Incident reporting (<strong>minimum version: 24.6.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.setStorageSync</td>
+<td>Stores data in the specified key in the local cache. The original content corresponding to the key is overwritten(<strong>minimum version: 24.9.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getStorageSync</td>
+<td>Synchronously Obtaining Content with a Specified Key from the Local Cache(<strong>minimum version: 24.9.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.onScreenRecordingStateChanged</td>
+<td>Listening to Screen Recording Events(<strong>minimum version: 24.9.0</strong>,Supported on: iOS only)</td>
+</tr>
+<tr>
+<td>ma.offScreenRecordingStateChanged</td>
+<td>Remove Listener Screen Recording Event(<strong>minimum version: 24.9.0</strong>,Supported on: iOS only)</td>
+</tr>
+<tr>
+<td>ma.deauthorize</td>
+<td>Cancel all authorization information of the current miniprogram(<strong>minimum version: 24.9.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.cancelAuthorize</td>
+<td>Cancel part of the authorization information of the current miniprogram(<strong>minimum version: 24.9.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.onKeyboardHeightChange</td>
+<td>Listening function for keyboard height change events（<strong>minimum version: 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.offKeyboardHeightChange</td>
+<td>Removes the listening function for the keyboard height change event（<strong>minimum version: 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setClipboardData</td>
+<td>Sets the content of the system clipboard. (<strong>The earliest version of this interface is 24.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getClipboardData</td>
+<td>Obtains the content of the system clipboard. (<strong>The earliest version of this interface is 24.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.arrayBufferToBase64</td>
+<td>Convert an ArrayBuffer object to a Base64 character string. (**The earliest version of this interface is 24.12.0 **)</td>
+</tr>
+<tr>
+<td>ma.base64ToArrayBuffer</td>
+<td>Converts a Base64 character string to an ArrayBuffer object. (<strong>The earliest version of this interface is 24.12. 0</strong>)</td>
+</tr>
+<tr>
+<td>ma.getSystemSetting</td>
+<td>Obtain device settings. (<strong>The earliest version of this interface is 24.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.setCapsuleShow</td>
+<td>CapsuleHide (<strong>The earliest version of this interface is 25.3.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.setCustomEvent</td>
+<td>Register a custom event for your mini-program to trigger a callback in a specified scenario (<strong>Minimum version of this interface is 25.12.0</strong>).</td>
+</tr>
+<tr>
+<td>ma.removeCustomEvent</td>
+<td>Remove custom event listeners for mini-programs (<strong>Minimum version of this interface is 25.12.0</strong>)</td>
+</tr>
+<tr>
+<td>ma.setSwipeBack</td>
+<td>Sets whether to disable iOS gesture control. Note: This API is called by an H5 mini program to control whether sliding is supported globally, or called by a DSL mini program to control whether sliding is supported on the current page.(<strong>Minimum version of this interface is 26.3.0，effective only on iOS devices</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id="unique-apis">Unique APIS</h3>
+<blockquote>
+<p>JS SDK has unique interfaces and related instructions compared to DSL basic API</p>
+</blockquote>
+<h4 id="mapostmessageany-message">ma.postMessage(Any message)</h4>
+<blockquote>
+<p>Sending information from an H5 application embedded in a web-view component to a mini-program (minimum version: 25.12.0)</p>
+</blockquote>
+<h5 id="any-message">Any message</h5>
+<p>Message to be sent</p>
+<h4 id="maonmessagefunction-listener">ma.onMessage(Function listener)</h4>
+<blockquote>
+<p>Listen for messages sent from the mini-program to the H5 application (minimum version: 25.12.0)</p>
+</blockquote>
+<h5 id="function-listener">Function listener</h5>
+<p>Listener function executed when a message is sent by the mini-program</p>
+<h4 id="masetcapsuleshowobject-object">ma.setCapsuleShow(Object object)</h4>
+<blockquote>
+<p>Sets whether to hide the capsule (minimum version: 25.3.0)</p>
+</blockquote>
+<h5 id="object-object">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default value</th>
+<th align="left">Mandatory</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">isShow</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">No</td>
+<td align="left">Whether to display the capsule (false: no; true: yes)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking. (The function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h4 id="magetsystemsetting">ma.getSystemSetting()</h4>
+<blockquote>
+<p>Get device settings (minimum version: 24.12. 0)</p>
+</blockquote>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bluetoothEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Bluetooth system switch</td>
+</tr>
+<tr>
+<td align="left">locationEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Geographical location system switch</td>
+</tr>
+<tr>
+<td align="left">Wi-FiEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Wi-Fi system switch</td>
+</tr>
+<tr>
+<td align="left">deviceOrientation</td>
+<td align="left">String</td>
+<td align="left">The valid value can be portrait or landscape, indicating the device direction. (Note: The deviceOrientation obtained for landscape games on iOS clients may be inaccurate. You are advised to use the screen width and height.)</td>
+</tr>
+</tbody></table>
+<h4 id="mabase64toarraybufferstring-base64">ma.base64ToArrayBuffer(string base64)</h4>
+<p>Convert Base64 strings to ArrayBuffer objects (minimum version: 24.12.0)</p>
+<h5 id="return-value">Return value</h5>
+<p><strong>ArrayBuffer</strong></p>
+<p>ArrayBuffer object</p>
+<h4 id="arraybuffer-maarraybuffertobase64arraybuffer-arraybuffer">ArrayBuffer ma.arrayBufferToBase64(ArrayBuffer arrayBuffer)</h4>
+<blockquote>
+<p>Convert ArrayBuffer object to Base64 string (minimum version: 24.12.0)</p>
+</blockquote>
+<h5 id="return-value-1">Return value</h5>
+<p><strong>string</strong></p>
+<p>Base64 string</p>
+<h4 id="magetclipboarddataobject-object">ma.getClipboardData(Object object)</h4>
+<blockquote>
+<p>Get the contents of the system clipboard (minimum version: 24.12. 0)</p>
+</blockquote>
+<h5 id="object-object-1">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default value</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h4 id="masetclipboarddataobject-object">ma.setClipboardData(Object object)</h4>
+<blockquote>
+<p>Set the contents of the system clipboard. After the interface is invoked successfully, a toast message is displayed,
+indicating that the content has been copied. The message lasts for 1.5 seconds (the earliest version is 24.12. 0).</p>
+</blockquote>
+<h5 id="object-object-2">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default value</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Content of the clipboard</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h4 id="maonkeyboardheightchangefunction-listener">ma.onKeyboardHeightChange(function listener)</h4>
+<blockquote>
+<p>Listening for Keyboard Height Change Events (minimum version: 24.12.0)</p>
+</blockquote>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">height</td>
+<td align="left">number</td>
+<td align="left">keyboard height</td>
+</tr>
+</tbody></table>
+<h4 id="maoffkeyboardheightchangefunction-listener">ma.offKeyboardHeightChange(function listener)</h4>
+<blockquote>
+<p>Removes the listening function for the keyboard height change event (minimum version: 24.12.0)</p>
+</blockquote>
+<h4 id="madeauthorizeobject-object">ma.deauthorize(Object object)</h4>
+<blockquote>
+<p>Cancel all authorization information of the current miniprogram <strong>(The minimum version of this interface is 24.9.0)</strong></p>
+</blockquote>
+<h5 id="parameter">Parameter</h5>
+<h5 id="object-object-3">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for interface invoking failure.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface invoking is complete (regardless of whether the invoking is successful)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>deauthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + error cause (empty if no value is returned)</td>
+</tr>
+</tbody></table>
+<h4 id="macancelauthorizeobject-object">ma.cancelAuthorize(Object object)</h4>
+<blockquote>
+<p>Cancel part of the authorization information of the current miniprogram <strong>(The minimum version of this interface is 24.9.0)</strong></p>
+</blockquote>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-object-4">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Cancel the authorization scope of the current miniprogram.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for interface invoking failure.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface invoking is complete (regardless of whether the invoking is successful)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-1">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail-1">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + error cause (empty if no value is returned)</td>
+</tr>
+</tbody></table>
+<h5 id="permission-set-list-provided-by-the-miniprogram-externally">Permission set list provided by the miniprogram externally</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scope.location</td>
+<td>Precise geographical location</td>
+</tr>
+<tr>
+<td>scope.camera</td>
+<td>camera</td>
+</tr>
+<tr>
+<td>scope.photosAlbums</td>
+<td>Read and write albums</td>
+</tr>
+<tr>
+<td>scope.contacts</td>
+<td>Contacts</td>
+</tr>
+<tr>
+<td>scope.record</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td>scope.gotoBrowser</td>
+<td>Permission to Open Other Applications</td>
+</tr>
+<tr>
+<td>scope.bluetooth</td>
+<td>Bluetooth Permission</td>
+</tr>
+<tr>
+<td>scope.payment</td>
+<td>Payment Permission</td>
+</tr>
+<tr>
+<td>scope.video</td>
+<td>Recording permission</td>
+</tr>
+<tr>
+<td>scope.AUTH_BASE</td>
+<td>Silent Authorization</td>
+</tr>
+<tr>
+<td>scope.AUTH_USER</td>
+<td>User Information</td>
+</tr>
+<tr>
+<td>scope.SEND_MESSAGE</td>
+<td>Send information</td>
+</tr>
+<tr>
+<td>scope.USER_NICKNAME</td>
+<td>Nickname</td>
+</tr>
+<tr>
+<td>scope.USER_NAME</td>
+<td>User name</td>
+</tr>
+<tr>
+<td>scope.USER_LOGIN_ID</td>
+<td>User login ID</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_USER_LOGIN_ID</td>
+<td>Plaintext Login ID</td>
+</tr>
+<tr>
+<td>scope.HASH_LOGIN_ID</td>
+<td>Hash login ID</td>
+</tr>
+<tr>
+<td>scope.USER_AVATAR</td>
+<td>User avatar</td>
+</tr>
+<tr>
+<td>scope.USER_GEND</td>
+<td>User Gender</td>
+</tr>
+<tr>
+<td>scope.USER_BIRTHDAY</td>
+<td>Subscriber&#39;s birthday</td>
+</tr>
+<tr>
+<td>scope.USER_NATIONALITY</td>
+<td>Nationality</td>
+</tr>
+<tr>
+<td>scope.USER_CONTACTINFO</td>
+<td>User Contact</td>
+</tr>
+<tr>
+<td>scope.USER_ADDRESS</td>
+<td>User address</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_MOBILE_phone</td>
+<td>Plaintext mobile number of a user</td>
+</tr>
+</tbody></table>
+<h4 id="maonscreenrecordingstatechangedfunction-listener">ma.onScreenRecordingStateChanged(function listener)</h4>
+<blockquote>
+<p>H5 Invoke the native method.<strong>Listening to Screen Recording Events(The minimum version of this interface is 24.9.0)</strong></p>
+</blockquote>
+<h5 id="parameters">Parameters</h5>
+<p>function listener ：Function for listening on user screen recording events</p>
+<h5 id="object-res-2">Object res</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Data Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>state</td>
+<td>string</td>
+<td>screen recording status</td>
+</tr>
+</tbody></table>
+<h5 id="values-of-state">Values of state</h5>
+<table>
+<thead>
+<tr>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>start</td>
+<td>Starts screen recording</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>Stop screen recording</td>
+</tr>
+</tbody></table>
+<h4 id="maoffscreenrecordingstatechangedfunction-listener">ma.offScreenRecordingStateChanged(function listener)</h4>
+<blockquote>
+<p>H5 Invoke the native method.Remove Listener Screen Recording Event(The minimum version of this interface is 24.9.0)</p>
+</blockquote>
+<h5 id="parameters-1">Parameters</h5>
+<p>function listener:Incoming Listener Function by onScreenRecordingStateChanged</p>
+<h4 id="macallnativeapiapinamestringparamobjectcallback">ma.callNativeAPI(apiName:string,param:object,callback)</h4>
+<blockquote>
+<p>H5 calls native methods. <strong>Parameters are all required. If param has no content, please fill in the empty object {}</strong></p>
+</blockquote>
+<h5 id="parameters-2">Parameters</h5>
+<h5 id="string-apiname">String apiName</h5>
+<p>API name called</p>
+<h5 id="object-param">Object param</h5>
+<p>Input parameters of the called API</p>
+<h5 id="function-callback">Function callback</h5>
+<p>Call the callback function of the API</p>
+<h4 id="manativeapinamestringparamobject">ma.native(apiName:string,param:object)</h4>
+<blockquote>
+<p>To call native capabilities, callback needs to be processed using promise syntax</p>
+</blockquote>
+<h5 id="parameters-3">Parameters</h5>
+<h5 id="string-apiname-1">String apiName</h5>
+<p>API name called</p>
+<h5 id="object-param-1">Object param</h5>
+<p>Input parameters of the called API</p>
+<h4 id="maplayaudioobject-object">ma.playAudio(Object object)</h4>
+<blockquote>
+<p>Play audio (<strong>minimum version of this interface is 23.12.0</strong>)</p>
+</blockquote>
+<h5 id="parameter-2">Parameter</h5>
+<h5 id="object-object-5">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Online audio URL</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="mastopaudioobject-object">ma.stopAudio(Object object)</h4>
+<blockquote>
+<p>Stop playing audio (<strong>minimum version of this interface is 23.12.0</strong>)</p>
+</blockquote>
+<h5 id="parameter-3">Parameter</h5>
+<h5 id="object-object-6">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h4 id="magotobrowserobject-object">ma.gotoBrowser(Object object)</h4>
+<blockquote>
+<p>Jump to third-party browsing (<strong>The minimum version of this interface is 24.3.0</strong>)</p>
+</blockquote>
+<h5 id="parameter-4">Parameter</h5>
+<h5 id="object-object-7">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>openUrl</td>
+<td>String</td>
+<td>Yes</td>
+<td>Jump URL</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h4 id="masavefiletophoneobject-object">ma.saveFileToPhone(Object object)</h4>
+<blockquote>
+<p>Save base64 to the mobile phone (the storage can be accessed by users) (<strong>The minimum version of this interface is 24.3.0</strong>)</p>
+</blockquote>
+<blockquote>
+<p>Used to save Base64-encoded file data to the local storage of a mobile device.
+On Android, files are saved by default in the device&#39;s public Downloads directory (Downloads/).
+In iOS, files are stored within the app&#39;s sandbox directory, and users cannot directly access them through the Files app. To enable file preview functionality, the openDocument interface must be utilized.</p>
+</blockquote>
+<blockquote>
+<p>If the image is accessed through this interface, it is best to configure openSharePanel (<strong>The configuration is available in version 25.9.0 and lower</strong>） to directly save to the album for the convenience of the customer.</p>
+</blockquote>
+<h5 id="parameter-5">Parameter</h5>
+<h5 id="object-object-8">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>String</td>
+<td>Yes</td>
+<td>base64 encoding</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>String</td>
+<td>Yes</td>
+<td>file name</td>
+</tr>
+<tr>
+<td>openSharePanel</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Default is false,Set to true to invoke the system share panel after saving the file (iOS only)</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h5 id="return-value-2">Return Value</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>String</td>
+<td>saved results</td>
+</tr>
+<tr>
+<td>filePath</td>
+<td>String</td>
+<td>saved file path</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>saved file path(This path is used when ma.openDocument is invoked to open the file.)</td>
+</tr>
+</tbody></table>
+<h4 id="masaveimageobject-object">ma.saveImage(Object object)</h4>
+<blockquote>
+<p>Save picture to photo album (<strong>The minimum version of this interface is 24.3.0</strong>)</p>
+</blockquote>
+<h5 id="parameter-6">Parameter</h5>
+<h5 id="object-object-9">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>String</td>
+<td>Yes</td>
+<td>base64 encoding</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h5 id="return-value-3">Return Value</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>String</td>
+<td>saved results</td>
+</tr>
+</tbody></table>
+<h4 id="masavebase64imageobject-object">ma.saveBase64Image(Object object)</h4>
+<blockquote>
+<p>Save base64 to album (<strong>The minimum version of this interface is 24.3.0</strong>)</p>
+</blockquote>
+<h5 id="parameter-7">Parameter</h5>
+<h5 id="object-object-10">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>base64</td>
+<td>String</td>
+<td>Yes</td>
+<td>base64 encoding</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h5 id="return-value-4">Return Value</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>prompt message</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code-for-invoking-apis">Sample Code for Invoking APIs</h3>
+<h4 id="sample-maml-code">Sample Maml Code</h4>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">web-view</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://example/jssdk/calc/index.html&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">web-view</span>&gt;</span>
+</code></pre>
+<h4 id="h5-api-call-code-example">H5 API Call Code Example</h4>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-keyword">var</span> vConsole = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VConsole</span>();
+  ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">getEnv</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+    console.log(JSON.stringify(res));
+  }</span><span class="language-xml"><span class="language-javascript">);
+
+  ma.<span class="hljs-title function_">onMessage</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+     console.log(res)
+  }</span><span class="language-xml"><span class="language-javascript">);
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">postMessage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.postMessage({ <span class="hljs-string">&#x27;sendToMiniProgram&#x27;</span>: <span class="hljs-string">&#x27;0&#x27;</span> }</span><span class="language-xml">);
+  }
+  
+  ma.createTimer(</span><span class="language-xquery">{
+     duration: <span class="hljs-number">10</span>,
+     success: (res) =&gt; {
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">,
+     <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml">
+  })
+  ma.cancelTimer(</span><span class="language-xquery">{
+     success: (res) =&gt; {
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">,
+     <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">
+  })
+  <span class="hljs-comment">//Sets whether to disable iOS gesture control.</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setSwipeBack</span> () </span></span><span class="language-xquery">{
+     ma.setSwipeBack({
+        enableSwipeBack:<span class="hljs-built_in"> true</span>,
+        success: () =&gt; {
+           console.log(`setSwipeBack success`);
+           resolve();
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> </span></span><span class="language-xquery">{
+           console<span class="hljs-built_in">.error</span>(`setSwipeBack fail`);
+           reject(err);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+  <span class="hljs-comment">//Capsule show</span>
+  ma.<span class="hljs-title function_">setCapsuleShow</span>(</span></span><span class="language-xquery">{
+     isShow:<span class="hljs-built_in"> false</span>,
+     success(res) {
+        console.log(res);
+     }</span><span class="language-xml">,
+     fail(res) </span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml">,
+     complete(res) </span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">
+  });
+  <span class="hljs-comment">//Set the contents of the system clipboard</span>
+  ma.<span class="hljs-title function_">setClipboardData</span>(</span></span><span class="language-xquery">{
+     data: <span class="hljs-string">&#x27;data&#x27;</span>,
+     success (res) {
+        ma.getClipboardData({
+           success (res) {
+              console.log(res.data);
+           }</span><span class="language-xml"><span class="language-javascript">
+        });
+     }
+  });
+  <span class="hljs-comment">//Gets the contents of the system clipboard</span>
+  ma.<span class="hljs-title function_">getClipboardData</span>(</span></span><span class="language-xquery">{
+     success (res){
+        console.log(res.data)
+     }</span><span class="language-xml"><span class="language-javascript">
+  });
+  <span class="hljs-comment">//ArrayBuffer ma.base64ToArrayBuffer(string base64)</span>
+  <span class="hljs-keyword">const</span> base64 = <span class="hljs-string">&#x27;CxYh&#x27;</span>;
+  <span class="hljs-keyword">const</span> arrayBuffer = ma.<span class="hljs-title function_">base64ToArrayBuffer</span>(base64);
+  <span class="hljs-comment">//ArrayBuffer ma.arrayBufferToBase64(ArrayBuffer arrayBuffer)</span>
+  <span class="hljs-keyword">const</span> arrayBuffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>([<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>]);
+  <span class="hljs-keyword">const</span> base64 = ma.<span class="hljs-title function_">arrayBufferToBase64</span>(arrayBuffer);
+  <span class="hljs-comment">//Get Device Settings</span>
+  <span class="hljs-keyword">const</span> systemSetting = ma.<span class="hljs-title function_">getSystemSetting</span>();
+
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">bluetoothEnabled</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">deviceOrientation</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">locationEnabled</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">wifiEnabled</span>);
+  <span class="hljs-comment">//Listening function for keyboard height change events</span>
+  ma.<span class="hljs-title function_">onKeyboardHeightChange</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+     console.log(res.height);
+  }</span><span class="language-xml"><span class="language-javascript">);
+  <span class="hljs-comment">//Disabling listening</span>
+  <span class="hljs-keyword">const</span> listener = <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) </span></span><span class="language-xquery">{
+     console.log(res);
+  }</span><span class="language-xml"><span class="language-javascript">;
+
+  ma.<span class="hljs-title function_">onKeyboardHeightChange</span>(listener);
+  <span class="hljs-comment">// The same function object as that used during listening must be transferred.</span>
+  ma.<span class="hljs-title function_">offKeyboardHeightChange</span>(listener);
+  
+  <span class="hljs-comment">// Cancel all listening.</span>
+  ma.<span class="hljs-title function_">offKeyboardHeightChange</span>();
+
+  <span class="hljs-comment">//Select a video from the local album or use the camera to shoot.</span>
+  ma.<span class="hljs-title function_">chooseVideo</span>(</span></span><span class="language-xquery">{
+     sourceType: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+     success(res) {
+        console.log(res.tempFilePath);
+        console.log(res.tempFileVirtualPath);console.log(res.tempFileVirtualPath);
+        console.log(res.duration);
+        console.log(res.size);
+        console.log(res.height);
+        console.log(res.width);
+     }</span><span class="language-xml"><span class="language-javascript">
+  });
+  <span class="hljs-comment">//Cancel part of the authorization information of the current miniprogram</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">cancelAuthorize</span> () </span></span><span class="language-xquery">{
+      ma.cancelAuthorize({
+          scopes: [<span class="hljs-string">&#x27;scope.location&#x27;</span>],
+          success: () =&gt; {
+              console.log(`Authorization canceled successfully`);
+              resolve();
+          }</span><span class="language-xml"><span class="language-javascript">,
+          <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> </span></span><span class="language-xquery">{
+              console<span class="hljs-built_in">.error</span>(`Failed <span class="hljs-keyword">to</span> cancel the authorization`);
+              reject(err);
+          }</span><span class="language-xml"><span class="language-javascript">
+      });
+  }
+  <span class="hljs-comment">//Cancel all authorization information of the current miniprogram</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">deauthorize</span> () </span></span><span class="language-xquery">{
+      ma.deauthorize({
+          success: () =&gt; {
+              console.log(`All authorizations canceled successfully`);
+              resolve();
+          }</span><span class="language-xml"><span class="language-javascript">,
+          <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> </span></span><span class="language-xquery">{
+              console<span class="hljs-built_in">.error</span>(`Failed <span class="hljs-keyword">to</span> cancel all authorizations`);
+              reject(err);
+          }</span><span class="language-xml"><span class="language-javascript">
+      });
+  }
+  
+  <span class="hljs-comment">// Listening to Screen Recording Events</span>
+  <span class="hljs-keyword">const</span> handlingEvent = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     console.log(<span class="hljs-string">&#x27;start listening&#x27;</span>);
+  }</span><span class="language-xml"><span class="language-javascript">
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">onScreenRecordingStateChanged</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.onScreenRecordingStateChanged(handlingEvent);
+  }</span><span class="language-xml"><span class="language-javascript">
+
+  <span class="hljs-comment">// Canceling Listening on Screen Recording Events</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">offScreenRecordingStateChanged</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.offScreenRecordingStateChanged(handlingEvent);
+  }</span><span class="language-xml"><span class="language-javascript">
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorageSync</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    <span class="hljs-keyword">try</span> {
+      ma.setStorageSync(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;data&#x27;</span>);
+    }</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">catch</span> (e) </span></span><span class="language-xquery">{
+      console.log(e);
+    }</span><span class="language-xml"><span class="language-javascript">
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStorageSync</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    <span class="hljs-keyword">try</span> {
+      const val = ma.getStorageSync(<span class="hljs-string">&#x27;key&#x27;</span>);
+      console.log(<span class="hljs-string">&#x27;res&#x27;</span>, val.data);
+    }</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">catch</span> (e) </span></span><span class="language-xquery">{
+      console.log(e);
+    }</span><span class="language-xml"><span class="language-javascript">
+  }
+
+
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportEvent</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     const eventId = <span class="hljs-string">&#x27;your eventId&#x27;</span>;
+     ma.reportEvent(eventId);
+  }</span><span class="language-xml"><span class="language-javascript">
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">exitMiniProgram</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.exitMiniProgram({
+        clearCache:<span class="hljs-built_in"> false</span>,
+        success: (res) =&gt; {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> </span></span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">writeBLECharacteristicValue</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     <span class="hljs-keyword">let</span> buffer = new ArrayBuffer(<span class="hljs-number">1</span>)
+     <span class="hljs-keyword">let</span> dataView = new DataView(buffer)
+     dataView.setUint8(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+     ma.writeBLECharacteristicValue({
+        deviceId,
+        serviceId,
+        characteristicId,
+        value: buffer,
+        success(res) {
+           console.log(<span class="hljs-string">&#x27;writeBLECharacteristicValue success&#x27;</span>, res.errMsg)
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBLEDeviceCharacteristics</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getBLEDeviceCharacteristics({
+        deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+        serviceId: <span class="hljs-string">&#x27;serviceId&#x27;</span>,
+        success: (res) =&gt; {
+           console.log(res);
+           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; res.characteristics.length; i++) {
+              const <span class="hljs-type">item</span> = res.characteristics[i]
+              <span class="hljs-keyword">if</span> (<span class="hljs-type">item</span>.properties.read) {
+                 ma.readBLECharacteristicValue({
+                    deviceId,
+                    serviceId,
+                    characteristicId: <span class="hljs-type">item</span>.uuid,
+                 }</span><span class="language-xml">)
+              }
+              if (item.properties.write) </span><span class="language-xquery">{
+                 console.log(<span class="hljs-string">&#x27;write&#x27;</span>)
+                 this.writeBLECharacteristicValue()
+              }</span><span class="language-xml">
+           }
+        },
+        fail(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBLEDeviceServices</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getBLEDeviceServices({
+        deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+        success: (res) =&gt; {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">closeBLEConnection</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.closeBLEConnection({
+        deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+        success: (res) =&gt; {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">createBLEConnection</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.createBLEConnection({
+        deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+        success: (res) =&gt; {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">offBluetoothDeviceFound</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.offBluetoothDeviceFound();
+  }</span><span class="language-xml"><span class="language-javascript">
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">onBluetoothDeviceFound</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.onBluetoothDeviceFound((res) =&gt; {
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">)
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">stopBluetoothDevicesDiscovery</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.stopBluetoothDevicesDiscovery({
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">startBluetoothDevicesDiscovery</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.startBluetoothDevicesDiscovery({
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">closeBluetoothAdapter</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.closeBluetoothAdapter({
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">openBluetoothAdapter</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.openBluetoothAdapter({
+        success(res) {
+           console.log(res.state);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOpenUserInfo</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getOpenUserInfo({
+        success: <span class="hljs-keyword">function</span>(res) {
+           console.log(res.userInfo.nickName);
+           console.log(res.userInfo.avatarUrl);
+           console.log(res.userInfo.country);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAuthCode</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getAuthCode({
+        scopes: [], // The scope <span class="hljs-keyword">of</span> authority <span class="hljs-literal">is</span> subject <span class="hljs-keyword">to</span> the current site operation definition; this <span class="hljs-literal">is</span> <span class="hljs-keyword">for</span> illustration purposes <span class="hljs-keyword">only</span>.
+        success: <span class="hljs-keyword">function</span>(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">hideLoading</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.hideLoading({
+        success: <span class="hljs-keyword">function</span>(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showLoading</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.showLoading({
+        title: <span class="hljs-string">&#x27;loading...&#x27;</span>
+     }</span><span class="language-xml"><span class="language-javascript">);
+
+     <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+        ma.hideLoading();
+     }</span><span class="language-xml"><span class="language-javascript">, <span class="hljs-number">2000</span>);
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">chooseContact</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.chooseContact({
+        success(res) {
+           console.log(res.phoneNumber);
+           console.log(res.displayName);
+        }</span><span class="language-xml"><span class="language-javascript">
+     })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showToast</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.showToast({
+        title: <span class="hljs-string">&#x27;xxxx&#x27;</span>
+     }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">);
+
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">showToast</span>(</span></span><span class="language-xquery">{
+        title: <span class="hljs-string">&#x27;success&#x27;</span>,
+        message: <span class="hljs-string">&#x27;success&#x27;</span> // <span class="hljs-string">&#x27;message&#x27;</span> <span class="hljs-keyword">attribute</span> has the same effect as &#x27;title&#x27;, but &#x27;title&#x27; has a higher priority.
+        icon: &#x27;success&#x27;,
+        duration: 2000,
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveBase64Image</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.saveBase64Image({ base64: <span class="hljs-string">&#x27;xxxx&#x27;</span> }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">);
+
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">saveBase64Image</span>(</span></span><span class="language-xquery">{
+        base64: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveImage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.saveImage({ content: <span class="hljs-string">&#x27;xxxx&#x27;</span> }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res.result);
+     }</span><span class="language-xml"><span class="language-javascript">);
+
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">saveImage</span>(</span></span><span class="language-xquery">{
+        content: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+        success(res) {
+           console.log(res.result);
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveFileToPhone</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.saveFileToPhone({ content: <span class="hljs-string">&#x27;xxxx&#x27;</span>, fileName: <span class="hljs-string">&#x27;xxxx&#x27;</span>, openSharePanel:true }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res.filePath);
+        console.log(res<span class="hljs-built_in">.path</span>);
+     }</span><span class="language-xml"><span class="language-javascript">);
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">saveFileToPhone</span>(</span></span><span class="language-xquery">{
+        content: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+        fileName: <span class="hljs-string">&#x27;xxxxxx&#x27;</span>,
+        openSharePanel:true,
+        success(res) {
+           console.log(res.filePath);
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">gotoBrowser</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.gotoBrowser({ openUrl: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span> }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">);
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">gotoBrowser</span>(</span></span><span class="language-xquery">{
+        openUrl: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span>,
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">capsuleStyle</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     // Support promise
+     ma.capsuleStyle({ style: <span class="hljs-number">0</span> }</span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery">{
+        console.log(res);
+     }</span><span class="language-xml"><span class="language-javascript">);
+     <span class="hljs-comment">// Support callback</span>
+     ma.<span class="hljs-title function_">capsuleStyle</span>(</span></span><span class="language-xquery">{
+        style: <span class="hljs-number">1</span>,
+        success(res) {
+           console.log(res);
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStatusBarHeight</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getStatusBarHeight({
+        success(res) {
+           console.log(res.xm_string_callback_key);// // Please note the difference with DSL parameters
+        }</span><span class="language-xml">,
+        fail(err) </span><span class="language-xquery">{
+           console.log(err);
+        }</span><span class="language-xml">,
+        complete(res) </span><span class="language-xquery">{
+           console.log(res);
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStatusBarHeightPromise</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getStatusBarHeight().<span class="hljs-keyword">then</span>(res =&gt; {
+        console.log(res.xm_string_callback_key)
+     }</span><span class="language-xml"><span class="language-javascript">)
+  }
+
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getLaunchOptionsSync</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    const { serviceConfig }</span><span class="language-xml"><span class="language-javascript"> = ma.<span class="hljs-title function_">getLaunchOptionsSync</span>();
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(serviceConfig)
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBackgroundFetchData</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.getBackgroundFetchData({
+      fetchType: <span class="hljs-string">&#x27;pre&#x27;</span>,
+      success(res) {
+        console.log(res.data[i].fetchedData);
+        console.log(res.data[i].timeStamp);
+        console.log(res.data[i]<span class="hljs-built_in">.path</span>);
+        console.log(res.data[i].query);
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateToMiniProgram</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.navigateToMiniProgram({
+      appId: appId,
+       capsuleShow:<span class="hljs-built_in"> false</span>,
+     <span class="hljs-built_in"> path</span>: appPath,
+      params: <span class="hljs-string">&#x27;test&#x27;</span>, //If params are passed <span class="hljs-keyword">in</span>,<span class="hljs-built_in"> path</span> must be passed <span class="hljs-keyword">in</span>
+      success: (res) =&gt; {
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">downloadFile</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.downloadFile({
+      url: <span class="hljs-string">&#x27;https://example.com/audio/123&#x27;</span>,
+      success(res) {
+        <span class="hljs-keyword">if</span> (res.statusCode === <span class="hljs-number">200</span>) {
+          ma.playVoice({
+            filePath: res.tempFilePath
+          }</span><span class="language-xml"><span class="language-javascript">);
+        }
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">uploadFile</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.uploadFile({
+      url: <span class="hljs-string">&#x27;https://example.test.com/upload&#x27;</span>,
+      filePath: testPath,
+     <span class="hljs-built_in"> name</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      success(res) {
+        console.log(res);
+        //do something
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">request</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.request({
+      url: <span class="hljs-string">&#x27;http://example/testUrl&#x27;</span>,
+      timeout: <span class="hljs-number">5000</span>,
+      dataType: <span class="hljs-string">&#x27;JSON&#x27;</span>,
+      header: {
+        <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      }</span><span class="language-xml">,
+      data: </span><span class="language-xquery">{}</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span></span><span class="language-xquery">{
+        console.log(res);
+        console.log(<span class="hljs-string">&#x27;request success&#x27;</span>);
+      }</span><span class="language-xml"><span class="language-javascript">,
+
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+        console.log(<span class="hljs-string">&#x27;request fail&#x27;</span>, err.errMsg);
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getsmallappinfo</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.getsmallappinfo({
+      success(res) {
+        console.log(res.appId);
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">isOnline</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    const isOnline = ma.isOnline()
+    console.log(isOnline ? <span class="hljs-string">&#x27;online&#x27;</span> : <span class="hljs-string">&#x27;offline&#x27;</span>)
+  }</span><span class="language-xml"><span class="language-javascript">
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">playAudio</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.playAudio({
+      url: <span class="hljs-string">&#x27;https://example/test/audio&#x27;</span>,
+      success(res) {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">stopAudio</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.stopAudio({
+      success(res) {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportLog</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.reportLog({
+      level: <span class="hljs-string">&#x27;info&#x27;</span>,
+      log: <span class="hljs-string">&#x27;errMsg&#x27;</span>
+    }</span><span class="language-xml"><span class="language-javascript">);
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportPerformance</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.reportPerformance({
+      reportEvent: <span class="hljs-string">&#x27;testEvent&#x27;</span>,
+      reportParams: {
+        customPerformance: <span class="hljs-string">&#x27;error&#x27;</span>
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">submitReport</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.submitReport({
+      success() {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">swithTab</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.miniProgram.switchTab({
+      url: <span class="hljs-string">&#x27;/pages/demo1/index&#x27;</span>,
+      success() {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">redirectTo</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.miniProgram.redirectTo({
+      url: <span class="hljs-string">&#x27;/pages/logs/index&#x27;</span>,
+      success() {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">relauch</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.miniProgram.reLaunch({
+      url: <span class="hljs-string">&#x27;/pages/logs/index&#x27;</span>,
+      success() {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">close1</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.miniProgram.close();
+  }</span><span class="language-xml"><span class="language-javascript">
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getLocation</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.getLocation({
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">previewImage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    const current = <span class="hljs-string">&#x27;https://example/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg&#x27;</span>;
+    const list = [
+      <span class="hljs-string">&#x27;https://example/a1ec08fa513d2697e542494057fbb2fb4316d81e.jpg&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/img/bdlogo.png&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/docs_demo_rongcloud_logo.png&#x27;</span>,
+    ];
+    ma.previewImage({
+      current,
+      urls: list,
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">openDocument</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.openDocument({
+      filePath: <span class="hljs-string">&#x27;mafile://tmp_Macle.doc&#x27;</span>,
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStorage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.getStorage({
+       <span class="hljs-built_in"> key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+        encrypt:<span class="hljs-built_in"> true</span>,
+        success: res =&gt; {
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+     ma.setStorage({
+       <span class="hljs-built_in"> key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+        encrypt:<span class="hljs-built_in"> true</span>,
+        data: <span class="hljs-string">&#x27;storageValue&#x27;</span>,
+        success: res =&gt; {
+        }</span><span class="language-xml"><span class="language-javascript">
+     });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">removeStorage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.removeStorage({
+     <span class="hljs-built_in"> key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">clearStorage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.clearStorage({
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getNetworkType</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.getNetworkType({
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">scanCode</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    ma.scanCode({
+      success: (res) =&gt; {
+      }</span><span class="language-xml">,
+      fail(err) </span><span class="language-xquery">{
+      }</span><span class="language-xml">,
+      complete(res) </span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateBack</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    console.log(<span class="hljs-keyword">window</span>.__ma_environment);
+    ma.miniProgram.navigateBack({
+      success: <span class="hljs-keyword">function</span>(res) {
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateTo1</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    var data = { motto: <span class="hljs-string">&#x27;My absolute path in webview&#x27;</span> }</span><span class="language-xml">;
+    ma.miniProgram.navigateTo(</span><span class="language-xquery">{
+      url: <span class="hljs-string">&#x27;/pages/test1/index?data=&#x27;</span> + JSON.stringify(data),
+      success: <span class="hljs-keyword">function</span>(res) {
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+      <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span></span><span class="language-xquery">{
+      }</span><span class="language-xml"><span class="language-javascript">,
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateTo2</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery">{
+    var data = {
+      motto: <span class="hljs-string">&#x27;I&#x27;</span>m relative<span class="hljs-built_in"> path</span> <span class="hljs-keyword">in</span> webview<span class="hljs-string">&#x27; }</span></span><span class="language-xml">;
+      ma.miniProgram.navigateTo(</span><span class="language-xquery"><span class="hljs-string">{
+        url: &#x27;</span>../test1/index?data=<span class="hljs-string">&#x27; + JSON.stringify(data),
+        success: function(res) {
+        }</span></span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+        }</span></span><span class="language-xml"><span class="language-javascript">,
+        <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+        }</span></span><span class="language-xml"><span class="language-javascript">,
+      });
+    }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">chooseImage</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+      ma.chooseImage({
+        success() {
+        }</span></span><span class="language-xml"><span class="language-javascript">,
+      });
+    }
+
+     <span class="hljs-keyword">function</span> <span class="hljs-title function_">callNativeAPI</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+        window.ma.callNativeAPI(
+                &quot;setNavigationBarTitle&quot;,
+                { title: &#x27;</span>NewTitle<span class="hljs-string">&#x27; }</span></span><span class="language-xml"><span class="language-javascript">,
+                <span class="hljs-function">(<span class="hljs-params">success</span>) =&gt;</span> </span></span><span class="language-xquery"><span class="hljs-string">{
+                   console.log(success)
+                }</span></span><span class="language-xml"><span class="language-javascript">,
+                <span class="hljs-function">(<span class="hljs-params">fail</span>) =&gt;</span> </span></span><span class="language-xquery"><span class="hljs-string">{
+                   console.log(fail)
+                }</span></span><span class="language-xml"><span class="language-javascript">
+        );
+     }
+
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">native</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+      ma.native(&#x27;</span>setNavigationBarTitle<span class="hljs-string">&#x27;, { title: &#x27;</span>TEST<span class="hljs-string">&#x27; }</span></span><span class="language-xml"><span class="language-javascript">).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> </span></span><span class="language-xquery"><span class="hljs-string">{
+        console.log(res);
+      }</span></span><span class="language-xml"><span class="language-javascript">);
+    }
+
+     <span class="hljs-keyword">function</span> <span class="hljs-title function_">setCustomEvent</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+        ma.setCustomEvent({
+           eventName: &#x27;</span>lockScreen<span class="hljs-string">&#x27;,
+           callback: (res) =&gt; {
+              console.log(res);
+           }</span></span><span class="language-xml"><span class="language-javascript">,
+        });
+     }
+
+     <span class="hljs-keyword">function</span> <span class="hljs-title function_">removeCustomEvent</span>(<span class="hljs-params"></span>) </span></span><span class="language-xquery"><span class="hljs-string">{
+        ma.removeCustomEvent({
+           eventName: &#x27;</span>lockScreen<span class="hljs-string">&#x27;,
+        }</span></span><span class="language-xml">);
+     }
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+</code></pre>
+<p><strong>tips</strong>:</p>
+<ol>
+<li>APIs implemented by Native but not currently implemented by JSSDK can still be invoked through ma.native or
+ma.callNativeAPI.</li>
+</ol>

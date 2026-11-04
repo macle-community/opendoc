@@ -1,0 +1,221 @@
+<h1 id="npm-support">Npm Support</h1>
+<p>The miniprogram supports using npm to install third-party packages. This document requires developers to have a certain understanding of npm. If you have not been exposed to npm before, please read the <a onclick="_mdLinkClick(this.href)" href="https://docs.npmjs.com/about-npm">official npm document</a> to learn.</p>
+<blockquote>
+<p>tips：Before using the npm package in the miniprogram, you need to build npm first</p>
+</blockquote>
+<h2 id="use-npm">Use npm</h2>
+<h3 id="1、npm-i">1、Npm i</h3>
+<p>Execute in the directory of the same level as package.json</p>
+<pre><code>npm <span class="hljs-keyword">install</span>
+</code></pre>
+<p>It is required that the package.json needs to be within the miniprogramRoot defined in project.config.json. See the principle introduction for details.</p>
+<blockquote>
+<p>tips：The npm packages participating in the build are based on the dependencies of package.json, so packages declared in devDependencies can also be installed and used during the development process but will not participate in the build.</p>
+</blockquote>
+<blockquote>
+<p>tips：When the miniprogramRoot field does not exist, miniprogramRoot is the directory where project.config.json is located.</p>
+</blockquote>
+<h3 id="2、npm-build">2、Npm Build</h3>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/npm/npmBuild.png" alt="image" ></p>
+<h3 id="3、use-the-npm-package-once-the-build-is-complete">3、Use the npm package once the build is complete</h3>
+<p>use npm package in js:</p>
+<pre><code><span class="hljs-variable">const</span> <span class="hljs-variable">dayjs</span> = <span class="hljs-function"><span class="hljs-title">require</span>(<span class="hljs-string">&#x27;dayjs&#x27;</span>)</span>
+</code></pre>
+<p>use npm package in custom components:</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;myPackage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageName&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;package-other&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;packageName/other&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>tips：If you only use the name when using the npm package, it will look for the index.js or index component under the package by default.</p>
+</blockquote>
+<h2 id="publish-npm-packages">Publish npm packages</h2>
+<h4 id="constraints-on-publishing-miniprogram-npm-packages">Constraints on publishing miniprogram npm packages</h4>
+<p>The npm packages to be published here specifically refers to the npm packages customized for miniprogram (hereinafter referred to as miniprogram npm packages). Because of the particularity of miniprogram custom components, the original npm packages mechanism cannot meet our needs, so some constraints need to be made on the miniprogram npm packages:</p>
+<ul>
+<li>The miniprogram npm package requires that there must be a build file generation directory in the root directory. This directory is specified by adding a miniprogram field in the package.json file, for example:</li>
+</ul>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;miniprogram-component&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;miniprogram&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dist&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<ul>
+<li>Only the build file generation directory in the package will be counted into the space occupied by the miniprogram package. When uploading the miniprogram code, only the code in this directory will be uploaded.</li>
+<li>Please put test and build related dependencies in the devDependencies field to avoid being packaged into packages.</li>
+</ul>
+<h4 id="constraints-on-publishing-other-npm-packages">Constraints on publishing other npm packages</h4>
+<ul>
+<li><p>Only pure js packages are supported, custom components are not supported.</p>
+</li>
+<li><p>There must be an entry file to ensure that the main field in package.json points to a correct entry. If there is no main field in package.json, index.js in the npm package root directory will be used as the entry file.</p>
+</li>
+<li><p>Does not support dependency on the C++ addon or the built-in libraries of Node.js.</p>
+<pre><code class="language-js"> <span class="hljs-keyword">const</span> addon = <span class="hljs-built_in">require</span> (<span class="hljs-string">&#x27;. /addon.node&#x27;</span>); <span class="hljs-comment">//Not supported.</span>
+ <span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span> (<span class="hljs-string">&#x27;http&#x27;</span>); <span class="hljs-comment">//Not supported.</span>
+</code></pre>
+</li>
+<li><p>The following methods are also not allowed when using require dependencies:</p>
+</li>
+</ul>
+<pre><code class="language-js">   <span class="hljs-comment">//Do not assign the value of require to other variables before using it. The following code does not parse the specific dependency.</span>
+   <span class="hljs-keyword">let</span> r;
+   r = <span class="hljs-built_in">require</span>;
+   r (<span class="hljs-string">&#x27;testa&#x27;</span>);
+
+   <span class="hljs-keyword">let</span> r2 = <span class="hljs-built_in">require</span>;
+   r2 (<span class="hljs-string">&#x27;testa&#x27;</span>);
+
+   <span class="hljs-comment">// Do not require a variable. The following code depends on the runtime and cannot parse the specific dependency.</span>
+   <span class="hljs-keyword">let</span> m = <span class="hljs-string">&#x27;testa&#x27;</span>;
+   <span class="hljs-built_in">require</span>(m);
+</code></pre>
+<ul>
+<li>Due to the limitations of the miniprogram&#39;s running environment, the use of some global variables (such as window objects) and constructors (such as Function) is not supported.</li>
+<li>Non-runtime dependencies such as construction and testing are placed in devDependencies to avoid being packaged.</li>
+</ul>
+<h2 id="principle-introduction">Principle introduction</h2>
+<h4 id="why-you-need-to-build">Why you need to build</h4>
+<p>First of all, node_modules will not participate in compilation, uploading and packaging, so if the miniprogram wants to use the npm, it must go through the process of &quot;building npm&quot;. In the miniprogramRoot, the outermost node_modules of the package.json declared by the developer is the same level. A miniprogram_npm directory will be generated in the directory, which will store the built and packaged npm packages, which are the packages actually used by the Mini Program.</p>
+<h4 id="what-the-build-does">What the build does</h4>
+<ul>
+<li>There are two types of building: the miniprogram npm packages will directly copy all the files in the build file generation directory to miniprogram_npm; other npm packages will go through the dependency analysis and packaging process starting from the entry js file (similar to webpack).</li>
+<li>Miniprogram cannot require variables, etc. When building npm, you need to do some checks and provide a sourcemap for each npm package being built.</li>
+<li>The process of finding npm packages is similar to the implementation of npm. Start from the directory where the files that depend on npm packages are located and search layer by layer until you find an available npm package or the root directory of the Mini Program.</li>
+</ul>
+<h2 id="tips-two-ways-to-build-npm">Tips: two ways to build npm</h2>
+<h4 id="default-way">Default way</h4>
+<p>By default, after package.json is correctly configured in miniprogramRoot and npm i is executed, the result of building npm is to build a miniprogram_npm for each node_modules corresponding to package.json and place it in the sub-folder of the directory where the corresponding package.json is located in the directory.</p>
+<p>Before building npm</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   │   ├── ...
+│   ├── node_modules <span class="hljs-comment">// can be built as it is inside miniprogramRoot</span>
+│   ├── package<span class="hljs-selector-class">.json</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span> <span class="hljs-comment">// no miniprogramRoot，default directory</span>
+│   └── sub_package
+│       ├── node_modules <span class="hljs-comment">// can be built as it is inside miniprogramRoot</span>
+│       ├── package<span class="hljs-selector-class">.json</span>
+│       └── sub_package_page
+</code></pre>
+<p>After building npm</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   │   ├── ...
+│   ├── miniprogram_npm  <span class="hljs-comment">// miniprogram_npm is the result</span>
+│   ├── node_modules
+│   ├── package<span class="hljs-selector-class">.json</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span> <span class="hljs-comment">// no miniprogramRoot，default directory</span>
+│   └── sub_package
+│       ├── miniprogram_npm  <span class="hljs-comment">// miniprogram_npm is the result</span>
+│       ├── node_modules
+│       ├── package<span class="hljs-selector-class">.json</span>
+│       └── sub_package_page
+</code></pre>
+<h4 id="custom-build">Custom build</h4>
+<p>This solution requires developers to specify the location of node_modules and the location of the target miniprogram_npm in project.config.json. It is generally used in scenarios where node_modules and the miniprogram are not in the same directory. Normally, it is recommended to use the default method.</p>
+<p>Instructions:</p>
+<ul>
+<li>Configure setting.packNpmManually in project.config.json to true to enable the npm build method of customizing node_modules and miniprogram_npm locations.</li>
+<li>Configure the setting.packNpmRelationList item of project.config.json and specify the location of packageJsonPath and miniprogramNpmDistDir.</li>
+</ul>
+<p>The format of packNpmRelationList is</p>
+<pre><code class="language-text">packNpmRelationList: <span class="hljs-built_in">Array</span>&lt;{
+  <span class="hljs-string">&quot;packageJsonPath&quot;</span>: <span class="hljs-built_in">string</span>,
+  <span class="hljs-string">&quot;miniprogramNpmDistDir&quot;</span>: <span class="hljs-built_in">string</span>
+}&gt;
+</code></pre>
+<ul>
+<li>packageJsonPath represents the package.json corresponding to the node_modules source</li>
+<li>miniprogramNpmDistDir represents the build result target location of node_modules</li>
+</ul>
+<p>Before building npm</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app.<span class="hljs-keyword">js
+</span>│   ├── app.<span class="hljs-keyword">json
+</span>│   ├── app.mass
+│   ├── index
+│   ├── sitemap.<span class="hljs-keyword">json
+</span>│   ├── project.config.<span class="hljs-keyword">json
+</span>│   └── <span class="hljs-keyword">sub_package
+</span>│       └── <span class="hljs-keyword">sub_package_page
+</span>├── node_modules_1
+│   ├── node_modules
+│   └── package.<span class="hljs-keyword">json
+</span>└── node_modules_2
+    ├── node_modules
+    └── package.<span class="hljs-keyword">json</span>
+</code></pre>
+<p>There is configuration in project.config.json</p>
+<pre><code class="language-text"><span class="hljs-attr">&quot;setting&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;packNpmManually&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;packNpmRelationList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;packageJsonPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../node_modules_1/package.json&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;miniprogramNpmDistDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;packageJsonPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../node_modules_2/package.json&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;miniprogramNpmDistDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./sub_package&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>After building npm</p>
+<pre><code class="language-text">├── miniprogram
+│   ├── app<span class="hljs-selector-class">.js</span>
+│   ├── app<span class="hljs-selector-class">.json</span>
+│   ├── app<span class="hljs-selector-class">.mass</span>
+│   ├── index
+│   ├── sitemap<span class="hljs-selector-class">.json</span>
+│   ├── miniprogram_npm <span class="hljs-comment">// built from node_modules_1/node_modules</span>
+│   ├── project<span class="hljs-selector-class">.config</span><span class="hljs-selector-class">.json</span>
+│   └── sub_package
+│       └── sub_package_page
+│       └── miniprogram_npm <span class="hljs-comment">// built from node_modules_2/node_modules</span>
+├── node_modules_1
+│   ├── node_modules
+│   └── package<span class="hljs-selector-class">.json</span>
+└── node_modules_2
+    ├── node_modules
+    └── package.json
+</code></pre>
+<h3 id="miniprogram_npm-addressing-order">miniprogram_npm addressing order</h3>
+<p>Use <code>usingComponents</code> in the page configuration file (such as: pages/index/index.json)</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;myPackage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;myPackage&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>the order</p>
+<pre><code class="language-js">[
+  <span class="hljs-comment">// first try to address the components under miniprogram_npm</span>
+
+  <span class="hljs-string">&quot;pages/index/miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;pages/index/miniprogram_npm/myPackage/index&quot;</span>,
+
+  <span class="hljs-comment">// try the miniprogram_npm directory in its parent hierarchy again</span>
+
+  <span class="hljs-string">&quot;pages/miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;pages/miniprogram_npm/myPackage/index&quot;</span>,
+
+  <span class="hljs-comment">// find</span>
+  <span class="hljs-string">&quot;miniprogram_npm/myPackage&quot;</span>,
+  <span class="hljs-string">&quot;miniprogram_npm/myPackage/index&quot;</span>
+
+  <span class="hljs-comment">// can’t find. Please pay attention to whether the writing is wrong.</span>
+]
+</code></pre>

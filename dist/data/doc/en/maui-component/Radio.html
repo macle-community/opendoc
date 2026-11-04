@@ -1,0 +1,210 @@
+<h2 id="radio">Radio</h2>
+<blockquote>
+<p>Make a single selection among a set of alternatives (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>Bind the name of the currently selected item to the value via <code>value</code>.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    radio: <span class="hljs-string">&#x27;1&#x27;</span>,
+  },
+
+  onChange(<span class="hljs-keyword">event</span>) {
+    <span class="hljs-keyword">this</span>.setData({
+      radio: <span class="hljs-keyword">event</span>.detail,
+    });
+  },
+}); 
+</code></pre>
+<h4 id="arrange-horizontally">Arrange Horizontally</h4>
+<p>After setting the <code>direction</code> attribute to <code>horizontal</code>, the radio button group will become horizontally arranged.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+  <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>
+  <span class="hljs-attr">direction</span>=<span class="hljs-string">&#x27;horizontal&#x27;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h3 id="disabled-state">Disabled State</h3>
+<p>Disable option switching through the <code>disabled</code> attribute, and set <code>diabled</code> on <code>Radio</code> to disable individual options.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-shape">Custom Shape</h4>
+<p>Set the <code>shape</code> attribute to <code>square</code>, and the shape of the radio button will become a square.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-color">Custom Color</h4>
+<p>Set the icon color of the checked state through the <code>checked-color</code> attribute.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">checked-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">checked-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-size">Custom Size</h4>
+<p>The size of the icon can be customized through the <code>icon-size</code> attribute.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;24px&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;24px&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-icon">Custom Icon</h4>
+<p><code>custom-icon</code> can set the icon when checked</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/customIcon.png&#x27;</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/customIcon.png&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="disable-label-click">Disable Label Click</h4>
+<p>Radio button text clicks can be disabled by setting the <code>label-disabled</code> attribute.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>radio 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
+</code></pre>
+<h2 id="api">API</h2>
+<h4 id="radiogroup-props">RadioGroup Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Identifier when submitting within the form</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">The identifier of the currently selected item</td>
+<td align="left">Any</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether to disable all radio buttons</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">direction</td>
+<td align="left">Arrangement direction, optional value is <code>horizontal</code></td>
+<td align="left">String</td>
+<td align="left"><code>vertical</code></td>
+</tr>
+</tbody></table>
+<h4 id="radio-props">Radio Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">identifier</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">shape</td>
+<td align="left">The shape of the checkbox, optional value is <code>square</code></td>
+<td align="left">String</td>
+<td align="left"><code>round</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether it is disabled</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-disabled</td>
+<td align="left">Whether to disable clicks on text content</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-position</td>
+<td align="left">Text position, optional value is <code>left</code></td>
+<td align="left">String</td>
+<td align="left"><code>right</code></td>
+</tr>
+<tr>
+<td align="left">icon-size</td>
+<td align="left">Icon size, default unit is <code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>20px</code></td>
+</tr>
+<tr>
+<td align="left">checked-color</td>
+<td align="left">Selected state color</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">custom-icon</td>
+<td align="left">Custom icon, support name or image link</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="radio-events">Radio Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">Event triggered when bound value changes</td>
+<td align="left">The name of the currently selected item</td>
+</tr>
+</tbody></table>
+<h4 id="radiogroup-events">RadioGroup Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">Event triggered when bound value changes</td>
+<td align="left">The name of the currently selected item</td>
+</tr>
+</tbody></table>

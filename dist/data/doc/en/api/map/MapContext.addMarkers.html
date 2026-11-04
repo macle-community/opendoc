@@ -1,0 +1,101 @@
+<h2 id="mapcontextaddmarkersobject-object">MapContext.addMarkers(Object object)</h2>
+<blockquote>
+<p>Add a marker.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>markers</td>
+<td>Array</td>
+<td></td>
+<td>Yes</td>
+<td>Same as the marker attribute of the transferred map component</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>Boolean</td>
+<td>false</td>
+<td>No</td>
+<td>Whether to clear all markers on the map first</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for interface invoking failure</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-string">//maml</span>
+    <span class="hljs-string">&lt;button</span> <span class="hljs-string">bindtap=&quot;addMarkers&quot;&gt;</span> <span class="hljs-string">addMarkers&lt;/button&gt;</span>
+
+<span class="hljs-string">//js</span>
+<span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {
+    <span class="hljs-attr">markers:</span> [
+      {
+        <span class="hljs-attr">id:</span> <span class="hljs-number">0</span>,
+        <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;marker0&#x27;</span>,
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.984686</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.574979</span>,
+        <span class="hljs-attr">width:</span> <span class="hljs-number">10</span>,
+        <span class="hljs-attr">height:</span> <span class="hljs-number">15</span>,
+        <span class="hljs-attr">anchor:</span> { <span class="hljs-attr">x:</span> <span class="hljs-number">0.5</span>, <span class="hljs-attr">y:</span> <span class="hljs-number">0.5</span> },
+      },
+    ]
+  }<span class="hljs-string">,</span>
+
+  <span class="hljs-string">addMarkers()</span> {
+    <span class="hljs-string">let</span> <span class="hljs-string">markerArr</span> <span class="hljs-string">=</span> [
+      {
+        <span class="hljs-attr">id:</span> <span class="hljs-number">2</span>,
+        <span class="hljs-attr">title:</span> <span class="hljs-string">`marker2`</span>,
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">32.130366</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.995885</span>,
+      }
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">this.setData(</span>{
+      <span class="hljs-attr">markers:</span> <span class="hljs-string">markerArr</span>,
+    }<span class="hljs-string">);</span>
+    <span class="hljs-string">this.mapContext.addMarkers(</span>{
+      <span class="hljs-attr">markers:</span> <span class="hljs-string">markerArr</span>,
+      <span class="hljs-attr">clear:</span> <span class="hljs-literal">true</span>,
+      <span class="hljs-string">success(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+      <span class="hljs-string">fail(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+<span class="hljs-string">});</span>
+</code></pre>

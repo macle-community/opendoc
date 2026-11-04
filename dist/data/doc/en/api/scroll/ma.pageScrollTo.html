@@ -1,0 +1,64 @@
+<h2 id="mapagescrolltoobject-object">ma.pageScrollTo(Object object)</h2>
+<blockquote>
+<p>Scroll the page to the target position. Scrolling distance positioning is supported.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scrollTop</td>
+<td>Number</td>
+<td>0</td>
+<td>No</td>
+<td>Scrolls to the target position on the page. The unit is pixel.</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>300</td>
+<td>No</td>
+<td>The duration of the scrolling animation, in ms. If set to 0, it will automatically take 300.</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used regardless of whether the API call success or failed.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.pageScrollTo({
+  <span class="hljs-attr">scrollTop</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">duration</span>: <span class="hljs-number">300</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+  },
+  <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(err);
+  }
+})
+</code></pre>

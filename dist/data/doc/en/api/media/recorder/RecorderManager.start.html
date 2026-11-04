@@ -1,0 +1,127 @@
+<h2 id="recordermanagerstartobject-object">RecorderManager.start(Object object)</h2>
+<blockquote>
+<p>To start recording, the user must grant the microphone permission to the current Mini Program and the host app is allowed to use the system microphone(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">No</td>
+<td align="left">Recording duration, in ms. The maximum value is 180000 (3 minutes). If the user does not stop recording after the specified duration, the recording will be automatically stopped.</td>
+</tr>
+<tr>
+<td align="left">numberOfChannels</td>
+<td align="left">Number</td>
+<td align="left">2</td>
+<td align="left">No</td>
+<td align="left">Maximum number of recording channels. A larger number of recording channels indicates a higher recording quality and a larger file size.</td>
+</tr>
+<tr>
+<td align="left">sampleRate</td>
+<td align="left">Number</td>
+<td align="left">8000</td>
+<td align="left">No</td>
+<td align="left">Sampling rate, in Hz. A higher sampling rate indicates a higher recording quality and a larger file size.The simulator does not support the setting of the sampling rate.</td>
+</tr>
+<tr>
+<td align="left">encodeBitRate</td>
+<td align="left">Number</td>
+<td align="left">480000</td>
+<td align="left">No</td>
+<td align="left">Encoding bit rate, in bit/s. A higher encoding bit rate indicates higher recording quality and file size.The simulator does not support the setting of the encoding bit rate.</td>
+</tr>
+</tbody></table>
+<h4 id="numberofchannels-valid-value">numberOfChannels Valid value</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">1 channel</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">2 channels</td>
+</tr>
+</tbody></table>
+<h3 id="limitations-on-the-sampling-rate-and-encoding-bit-rate">Limitations on the sampling rate and encoding bit rate</h3>
+<p>Each sampling rate has a valid encoding bit rate range. If an invalid sampling rate or encoding bit rate is set, recording fails. The following table lists the mapping between the sampling rate and encoding bit rate.</p>
+<h4 id="samplerate--encodebitrate-valid-value">sampleRate &amp; encodeBitRate Valid value</h4>
+<table>
+<thead>
+<tr>
+<th>Valid Sampling Rate</th>
+<th>Valid Encoding Bit Rate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8000</td>
+<td>16000 - 48000</td>
+</tr>
+<tr>
+<td>11025</td>
+<td>16000 - 48000</td>
+</tr>
+<tr>
+<td>12000</td>
+<td>24000 - 64000</td>
+</tr>
+<tr>
+<td>16000</td>
+<td>24000 - 96000</td>
+</tr>
+<tr>
+<td>22050</td>
+<td>32000 - 128000</td>
+</tr>
+<tr>
+<td>24000</td>
+<td>32000 - 128000</td>
+</tr>
+<tr>
+<td>32000</td>
+<td>48000 - 192000</td>
+</tr>
+<tr>
+<td>44100</td>
+<td>64000 - 320000</td>
+</tr>
+<tr>
+<td>48000</td>
+<td>64000 - 320000</td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The format of the recording file is fixed as AAC. The recording file is named (yyyyMMddHHmmss.aac) after the recording start time. The recording file is saved in the local temporary directory.</li>
+<li>The start interface can be invoked only when the recording is idle. The start interface cannot be invoked when the recording is being performed or when the recording is paused.</li>
+<li>The start operation is performed on the recording manager. The operation result is obtained from the recording manager, which is different from the callback mode of common interfaces. The recorder starts recording normally. You can use RecorderManager.onStart(listener) to monitor the recording. If an error occurs, you can use RecorderManager.onError(listener) to monitor the recording.</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">&lt;button <span class="hljs-attribute">bindtap</span>=<span class="hljs-string">&quot;recorderStart&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;recorderStart&lt;/button&gt;
+</code></pre>
+<pre><code class="language-javascript">Page({
+    recorderStart() {
+        const { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate } = this.<span class="hljs-built_in">data</span>;
+        const <span class="hljs-keyword">params</span> = { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate };
+        console.<span class="hljs-keyword">log</span>({ startParams: <span class="hljs-keyword">params</span> });
+        recorderManager.start(<span class="hljs-keyword">params</span>);
+    }
+})
+</code></pre>

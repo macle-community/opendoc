@@ -1,0 +1,61 @@
+<h2 id="manavigatebackobject-object">ma.navigateBack(Object object)</h2>
+<blockquote>
+<p>关闭当前页面，返回上一级页面或多级页面。可通过 getCurrentPages 获取当前的页面栈，决定需要返回几层。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">delta</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+<td align="left">否</td>
+<td align="left">返回的页面数，如果 delta 大于现有页面数，则返回到首页。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-regexp">//</span>注意：调用 navigateTo 跳转时，调用该方法的页面会被加入堆栈，而 redirectTo 方法则不会。见下方示例代码
+ma.navigateTo({
+  url: <span class="hljs-string">&#x27;B?id=1&#x27;</span>
+});
+
+<span class="hljs-regexp">//</span> 此处是B页面
+ma.navigateTo({
+  url: <span class="hljs-string">&#x27;C?id=1&#x27;</span>
+});
+
+<span class="hljs-regexp">//</span> 在C页面内 navigateBack，将返回A页面
+ma.navigateBack({
+  delta: <span class="hljs-number">2</span>
+});
+</code></pre>

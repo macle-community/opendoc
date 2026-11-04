@@ -1,0 +1,318 @@
+<h2 id="map">Map</h2>
+<blockquote>
+<p>map组件提供了地图展示、交互等功能。相关api:  <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createMapContext">ma.createMapContext</a></p>
+</blockquote>
+<h2 id="地图基础属性">地图基础属性</h2>
+<h3 id="属性说明">属性说明</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>longitude</td>
+<td>Number</td>
+<td>116.46</td>
+<td>否</td>
+<td>中心经度</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td>39.92</td>
+<td>否</td>
+<td>中心纬度</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>Number</td>
+<td>16</td>
+<td>否</td>
+<td>缩放级别，取值范围3-20</td>
+</tr>
+<tr>
+<td>markers</td>
+<td>Array</td>
+<td></td>
+<td>否</td>
+<td>标记点</td>
+</tr>
+<tr>
+<td>polyline</td>
+<td>Array</td>
+<td></td>
+<td>否</td>
+<td>路线</td>
+</tr>
+<tr>
+<td>circles</td>
+<td>Array</td>
+<td></td>
+<td>否</td>
+<td>圆</td>
+</tr>
+<tr>
+<td>include-points</td>
+<td>Array</td>
+<td></td>
+<td>否</td>
+<td>缩放视野以包含所有给定的坐标点</td>
+</tr>
+<tr>
+<td>show-location</td>
+<td>Boolean</td>
+<td>false</td>
+<td>否</td>
+<td>显示带有方向的当前定位点（模拟器获取的定位点不带方向）</td>
+</tr>
+<tr>
+<td>bindtap</td>
+<td>Eventhandle</td>
+<td></td>
+<td>否</td>
+<td>点击地图时触发，e.detail={longitude,latitude}</td>
+</tr>
+<tr>
+<td>bindmarkertap</td>
+<td>Eventhandle</td>
+<td></td>
+<td>否</td>
+<td>点击地图标记点触发，e.detail={markerId}</td>
+</tr>
+</tbody></table>
+<h4 id="marker">marker</h4>
+<p>标记点用于在地图上显示标记的位置</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>必填</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>标记点id</td>
+<td>Number</td>
+<td>否</td>
+<td>marker点击事件会返回此id</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>纬度</td>
+<td>Number</td>
+<td>是</td>
+<td>浮点数，范围-90~90</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>经度</td>
+<td>Number</td>
+<td>是</td>
+<td>浮点数，范围-180~180</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标注点名</td>
+<td>String</td>
+<td>否</td>
+<td>点击时显示</td>
+</tr>
+<tr>
+<td>iconPath</td>
+<td>显示的图标</td>
+<td>String</td>
+<td>否</td>
+<td>项目路径下的图片路径，仅支持本地路径</td>
+</tr>
+<tr>
+<td>width</td>
+<td>标记图标宽度</td>
+<td>Number</td>
+<td>否</td>
+<td>默认为图片实际宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>标记图标高度</td>
+<td>Number</td>
+<td>否</td>
+<td>默认为图片实际高度</td>
+</tr>
+<tr>
+<td>anchor</td>
+<td>经纬度在标注图标的锚点，默认底边中点</td>
+<td>Object</td>
+<td>否</td>
+<td>{x,y}， x表示横向（0-1），y表示竖向（0-1）。{x:0.5,y:1}表示底边中点（模拟器不支持该属性）</td>
+</tr>
+</tbody></table>
+<h4 id="polyline">polyline</h4>
+<p>指定一系列坐标点，从数组第一项连线至最后一项。绘制彩虹线时，需指定不同分段的颜色，如 points 包含 5 个点，则 colorList 应传入
+4 个颜色值；若 colorList 长度小于 points.length - 1，则剩下的分段颜色与最后一项保持一致。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>必填</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>points</td>
+<td>经纬度数组</td>
+<td>Array</td>
+<td>是</td>
+<td>[{latitude:0,longitude:0}]</td>
+</tr>
+<tr>
+<td>color</td>
+<td>线的颜色</td>
+<td>String</td>
+<td>否</td>
+<td>十六进制，如 #FFFFFF，默认值为&#39;#000000&#39;</td>
+</tr>
+<tr>
+<td>colorList</td>
+<td>彩虹线</td>
+<td>Array</td>
+<td>否</td>
+<td><strong>存在时忽略color</strong>，如[&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;, &#39;#112233&#39;, &#39;#223344&#39;]，默认值为[&#39;#000000&#39;]</td>
+</tr>
+<tr>
+<td>width</td>
+<td>线的宽度</td>
+<td>Number</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="circle">circle</h4>
+<p>在地图上显示圆</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>必填</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>latitude</td>
+<td>纬度</td>
+<td>Number</td>
+<td>是</td>
+<td>浮点数，范围-90~90</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>经度</td>
+<td>Number</td>
+<td>是</td>
+<td>浮点数，范围-180~180</td>
+</tr>
+<tr>
+<td>color</td>
+<td>描边的颜色</td>
+<td>String</td>
+<td>否</td>
+<td>十六进制，默认值为&#39;#000000&#39;</td>
+</tr>
+<tr>
+<td>fillColor</td>
+<td>填充颜色</td>
+<td>String</td>
+<td>否</td>
+<td>十六进制</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>半径</td>
+<td>Number</td>
+<td>是</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>示例代码</p>
+<pre><code class="language-html"><span class="language-xml">// index.maml
+
+<span class="hljs-tag">&lt;<span class="hljs-name">map</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myMap&quot;</span> <span class="hljs-attr">show-location</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">showLocation</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">scale</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">scale</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">markers</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">markers</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">polyline</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">polyline</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">longitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">longitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">latitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">latitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">include-points</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">includePoints</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">circles</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">circles</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bindmarkertap</span>=<span class="hljs-string">&quot;markerTap&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;mapTap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
+ </span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-string">//</span> <span class="hljs-string">index.js</span> 
+<span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {
+    <span class="hljs-attr">markers:</span> [],
+    <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+    <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+    <span class="hljs-attr">circles:</span> [
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+        <span class="hljs-attr">radius:</span> <span class="hljs-number">20</span>,
+        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#87CEEB&#x27;</span>,
+      },
+    ],
+    <span class="hljs-attr">includePoints:</span> [
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
+      },
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+      },
+      {
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+      },
+    ],
+    <span class="hljs-attr">polyline:</span> [
+      {
+        <span class="hljs-attr">points:</span> [
+          {
+            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
+            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
+          },
+          {
+            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
+            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
+          }
+        ],
+        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#FFFFFF&#x27;</span>
+      }
+    ],
+    <span class="hljs-attr">showLocation:</span> <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">scale:</span> <span class="hljs-number">18</span>,
+  }<span class="hljs-string">,</span>
+   <span class="hljs-string">markerTap(e)</span> {
+    <span class="hljs-string">ma.showModal(</span>{
+      <span class="hljs-attr">content:</span> <span class="hljs-string">`markerTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">mapTap(e)</span> {
+    <span class="hljs-string">ma.showModal(</span>{
+      <span class="hljs-attr">content:</span> <span class="hljs-string">`mapTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">})</span>
+  
+</code></pre>
+<h4 id="tips">Tips</h4>
+<ol>
+<li>地图中的color/fillColor/colorList等需使用6位十六进制表示，如：#87CEEB</li>
+<li>地图组件的经纬度不填默认是北京的经纬度</li>
+<li>模拟器需要自行导入谷歌的APIkey，配置APIKey要开发者自行申请，如下图所示：
+<img src="/openplatform/macledocs/data/doc/component/map/image/googleMap.png" alt="image" ></li>
+</ol>

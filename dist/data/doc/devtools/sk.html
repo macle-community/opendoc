@@ -1,0 +1,129 @@
+<h1 id="小程序框架骨架屏">小程序框架骨架屏</h1>
+<p>骨架屏是页面的一个空白版本，通常会在页面完全渲染之前，通过一些灰色的区块大致勾勒出轮廓，待数据加载完成后，再替换成真实的内容。</p>
+<p>通过小程序框架提供骨架屏机制，能比业务中创建的骨架屏加载时机更靠前，使用这一机制，可以减少用户的白屏等待时长，给用户带来更好的体验。</p>
+<p>为了开发的便利，开发者工具将提供自动生成骨架屏代码的能力，支持根据开发者的配置生成骨架屏。</p>
+<h3 id="骨架屏编写">骨架屏编写</h3>
+<p>骨架屏的编写有自动生成和手动开发两种方式。自动生成简单高效，手动开发更加灵活，自动生成后亦可手动修改，开发者可根据自身需要灵活选择。骨架屏编写依赖模板文件，下面将详细介绍下骨架屏模板<code>SK</code>文件。</p>
+<h4 id="sk-文件">SK 文件</h4>
+<p><code>SK</code> 文件是框架骨架屏的模板文件，文件命名为<code>*.sk</code>，由<code>template</code>和<code>style</code>两部分组成。</p>
+<p>其中<code>template</code>标签中为标准的 <code>HTML</code> 子集，仅支持<code>div</code>标签和 <code>id</code>、<code>class</code>、<code>style</code>三个属性；<code>style</code>为标准的 <code>CSS</code>。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-comment">&lt;!--  骨架屏HTML代码，标准的HTML子集；仅支持`div`标签和 `id`、`class`、`style`三个属性 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;sk-main&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sk-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sk_6_2_5_46&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 2.7287%; width: 6.8792%; top: 5.4575%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+  <span class="hljs-comment">/* 骨架屏样式代码，标准的CSS */</span>
+  <span class="hljs-selector-class">.sk_6_2_5_46</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(transparent <span class="hljs-number">0%</span>, <span class="hljs-number">#efefef</span> <span class="hljs-number">0%</span>, <span class="hljs-number">#efefef</span> <span class="hljs-number">100%</span>, transparent <span class="hljs-number">0%</span>) <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">1.6rem</span>;
+    <span class="hljs-attribute">background-repeat</span>: <span class="hljs-string">&#x27;repeat-y&#x27;</span> <span class="hljs-meta">!important</span>;
+    <span class="hljs-attribute">position</span>: fixed <span class="hljs-meta">!important</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<h4 id="自动生成">自动生成</h4>
+<ol>
+<li>开发者可通过开发者工具为当前正在预览的页面生成骨架屏代码。生成按钮入口位于模拟器面板左下角选择列表。</li>
+</ol>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/devAss/skeleton.png" alt="image" ></p>
+<p>2.点击“生成骨架屏,在 <code>app.json</code> 中生成 <code>skeleton</code> 配置。</p>
+<p>生成配置如下：</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;page/tabbar/component/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page/tabbar/component/index.sk&quot;</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">}</span>
+</code></pre>
+<p>3.点击后在当前页面同级目录下生成 <code>*.sk</code> 文件（ <code>*</code> 表示页面名称 ），文件内包括骨架屏的代码模板以及样式，开发者可以修改调整。</p>
+<h4 id="手动开发">手动开发</h4>
+<p>开发者可在小程序项目任意位置新建和编写<code>*.sk</code>文件， 需要依赖以上骨架屏模板。</p>
+<h3 id="生成配置">生成配置</h3>
+<p>开发者可在 <code>app.json</code> 和 <code>page.json</code> 的<code>[&quot;skeleton&quot;][&quot;config&quot;]</code>中进行骨架屏相关配置，<code>page.json</code> 的配置优先级高于 <code>app.json</code>。具体配置如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loading</td>
+<td>String</td>
+<td>spin</td>
+<td>否</td>
+<td>骨架屏显示时的动画，支持枚举值：<code>spin</code>, <code>chiaroscuro</code>, <code>shine</code></td>
+</tr>
+<tr>
+<td>image</td>
+<td>Object</td>
+<td>{shape:&#39;rect&#39;, color:&#39;#efefef&#39;}</td>
+<td>否</td>
+<td>该配置接受 2 个字段，<code>color</code>、<code>shape</code>。<code>color</code> 和 <code>shape</code> 用于确定骨架页面中图片块的颜色和形状，颜色值支持 16 进制，形状支持两个枚举值，<code>circle</code> （圆形）和 <code>rect</code>（矩形）</td>
+</tr>
+<tr>
+<td>button</td>
+<td>Object</td>
+<td>{color:&#39;#efefef&#39;}</td>
+<td>否</td>
+<td>该配置接收 1 个字段<code>color</code>。<code>color</code> 用来确定骨架页面中被视为按钮块的颜色</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>String</td>
+<td>&#39;#fff&#39;</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="显示控制">显示控制</h3>
+<p>骨架屏的显示，需要在<code>app.json</code>的<code>[&quot;skeleton&quot;][&quot;page&quot;]</code>中进行配置，示例同上文自动生成配置示例。</p>
+<p><code>skeleton</code> 在在小程序全局配置文件 app.json 提供骨架屏显示的配置，规则如下：</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;page/tabbar/component/index&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;page/tabbar/component/index.sk&quot;</span>
+  <span class="hljs-punctuation">}</span>
+ <span class="hljs-punctuation">}</span>
+</code></pre>
+<p>在骨架屏自动生成时，自动在配置文件中写入显示配置；手动生成时需手动写入配置。</p>
+<h3 id="移除控制">移除控制</h3>
+<p>骨架屏的移除，有超时隐藏和主动隐藏两种方式。超时隐藏通过配置控制，使用简单；主动隐藏通过调用<code>API</code>控制，能更准确的控制隐藏时机，同时支持局部隐藏来达到渐进式加载的效果。</p>
+<h4 id="超时隐藏">超时隐藏</h4>
+<p>在未进行任何配置的情况下，框架骨架屏将在加载后<code>2000ms</code>自动隐藏。</p>
+<p>开发者可在<code>app.json</code>的<code>[&quot;skeleton&quot;][&quot;config&quot;][&quot;timeout&quot;]</code>中配置全局超时时间，单位为<code>ms</code>。当<code>timeout</code>值为<code>0</code>时，表示关闭全局超时隐藏配置。</p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;skeleton&quot;:</span> {
+  <span class="hljs-attr">&quot;config&quot;:</span> {
+   <span class="hljs-attr">&quot;timeout&quot;:</span> <span class="hljs-number">1000</span>
+  }
+ }
+</code></pre>
+<p>另外，开发者可在<code>page.json</code>的<code>[&quot;skeleton&quot;][&quot;config&quot;][&quot;timeout&quot;]</code>中配置局部超时时间，配置方式同全局配置，优先级高于全局配置。</p>
+<h4 id="主动隐藏">主动隐藏</h4>
+<p>开发者将<code>timeout</code>值为<code>0</code>关闭骨架屏超时隐藏配置后，可使用 <code>this.removeSkeleton()</code> API 主动隐藏骨架屏。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">removeSkeleton</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeSkeleton</span>();
+  }
+});
+</code></pre>
+<h4 id="局部隐藏">局部隐藏</h4>
+<p>开发者可使用 <code>this.removeSkeleton({id: &#39;&#39;})</code> API 局部隐藏指定<code>ID</code>的骨架屏节点。</p>
+<p>示例代码如下：</p>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">removeSkeleton</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeSkeleton</span>({ <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;node-id&#x27;</span> });
+  }
+});
+</code></pre>
+<h2 id="bug--tip">Bug &amp; Tip</h2>
+<ul>
+<li>Tip：需要等当前页面全部加载完成才可点击生成骨架屏；</li>
+<li>Tip：骨架屏仅包括页面首屏中的可见区域，对于横向滚动的 <code>swiper</code> 等容器组件，超出屏幕的子元素将被忽略；</li>
+<li>Tip：当效果不理想时，建议调整相关配置重新自动生成，或者修改自动生成的骨架屏代码（每个元素都使用了绝对定位，开发者可以修改元素而不影响其他元素固定位置和大小）；</li>
+<li>Tip：骨架屏通常用于商品列表、新闻列表等页面，对于动画/原生/复杂组件较多的页面展示效果不佳；</li>
+<li>Tip：生成的骨架屏代码中会包含预览时的页面数据（比如文字等），将被用来填充页面；</li>
+<li>Tip：对于存在背景色（<code>backgroundColor</code>）的元素处理方式为直接删除该属性，生成的骨架屏可能并不符合预期，开发者可根据自身需求来改变骨架屏模块背景色；</li>
+<li>Tip：骨架屏配置并不支持 <code>remove</code> 等配置来单独处理操作选择的 <code>DOM</code> 元素。如需删除或者隐藏某些元素，可以更改 <code>*.sk</code> 文件。</li>
+</ul>

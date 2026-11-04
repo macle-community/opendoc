@@ -1,0 +1,40 @@
+<h2 id="导入离线模拟器">导入离线模拟器</h2>
+<blockquote>
+<p>模拟器快速安装入口（最低版本：23.3.0）</p>
+</blockquote>
+<p>通过导入离线模拟器功能，开发者可以高效完成模拟器的安装与使用。</p>
+<h3 id="打开导入界面">打开导入界面</h3>
+<p>点击插件侧边栏工具目录下的 <strong>导入离线模拟器</strong> 菜单</p>
+<p>   <img src="/openplatform/macledocs/data/doc/devtools/image/simulator/offlineSimulator.png" alt="image" ></p>
+<h3 id="使用流程">使用流程</h3>
+<ol>
+<li><p>根据操作系统准备对应的模拟器压缩包</p>
+<p>Windows用户请使用 <code>Macle_xx.x.x_DevSuite_Simulator_Win.zip</code>
+Mac OS用户请使用 <code>Macle_xx.x.x_DevSuite_Simulator_Mac.zip</code></p>
+</li>
+<li><p>导入界面选择压缩包目录</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/simulator/chooseZipDir.PNG" alt="image" ></p>
+</li>
+<li><p>点击 <strong>导入</strong> 完成安装</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/simulator/importSuccess.PNG" alt="image" ></p>
+</li>
+</ol>
+<h3 id="常见问题">常见问题</h3>
+<h4 id="macos机型安装模拟器时失败，无法打开macle-simulatorapp，报错显示无操作权限，如何处理？">macOS机型安装模拟器时失败，无法打开macle-simulator.app，报错显示无操作权限，如何处理？</h4>
+<p><strong>A:</strong> 部分版本的macOS在安装模拟器时会出现使用异常，显示无操作权限的情况，针对这一情况，我们建议您尝试检查文件是否无所需的操作权限：</p>
+<ol>
+<li><p>终端打开文件所在目录</p>
+</li>
+<li><p>输入命令：<code>sudo chmod -R 755 macle-simulator.app // -R 是指目录下所有文件都赋予755权限 *</code></p>
+</li>
+<li><p>给app的可执行文件增加权限，输入命令：</p>
+<pre><code>1. sudo chmod +x {<span class="hljs-keyword">app</span>.name}.<span class="hljs-keyword">app</span>/Contents/MacOS/{<span class="hljs-keyword">app</span>.name} <span class="hljs-comment">// app.name替换为真实app名 称,若打开app仍报错无法检查它是否存在恶意软件，采取右键单击该图标打开</span>
+</code></pre>
+</li>
+</ol>
+<p>倘若您采用上述措施仍然无法解决权限异常的问题，还可以尝试清除拓展属性</p>
+<ol>
+<li>打开终端，进入模拟器文件目录</li>
+<li>输入命令：<code>xattr -cr macle-simulator.app  //清除所有扩展属性</code></li>
+<li>再次尝试打开模拟器</li>
+</ol>

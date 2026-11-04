@@ -1,0 +1,52 @@
+<h2 id="selectorquery-nodesrefscrolloffsetfunction-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> NodesRef.scrollOffset(function callback)</h2>
+<blockquote>
+<p>Query request for the scrolling position of an added node. The unit is pixel. The node must be <code> scroll-view</code> or <code> viewport</code>, and the return value is <code>SelectorQuery</code> corresponding to <code>NodesRef</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function. Executing the SelectorQuery.exec method returns the node information in <code>callback</code>.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">Node ID.</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">Node dataset.</td>
+</tr>
+<tr>
+<td align="left">scrollLeft</td>
+<td align="left">Number</td>
+<td align="left">Horizontal scrolling position of the node.</td>
+</tr>
+<tr>
+<td align="left">scrollTop</td>
+<td align="left">Number</td>
+<td align="left">Vertical scrolling position of the node.</td>
+</tr>
+</tbody></table>
+<h3 id="return-value">Return Value</h3>
+<h4 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  getScrollOffset () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.selectViewport</span>()<span class="hljs-selector-class">.scrollOffset</span>(<span class="hljs-built_in">function</span>(res){
+     res<span class="hljs-selector-class">.id</span>      <span class="hljs-comment">// Node ID.</span>
+      res<span class="hljs-selector-class">.dataset</span>    <span class="hljs-comment">// Node dataset. </span>
+      res<span class="hljs-selector-class">.scrollLeft</span> <span class="hljs-comment">// Horizontal scrolling position of the node. </span>
+      res<span class="hljs-selector-class">.scrollTop</span>  <span class="hljs-comment">// Vertical scrolling position of the node. </span>
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

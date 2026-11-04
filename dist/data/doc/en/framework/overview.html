@@ -1,0 +1,152 @@
+<h2 id="file-structure">File Structure</h2>
+<blockquote>
+<p>Mini Programs are divided into app and page. The app describes the entire application, the page describes each page, and the configuration description of the entire project (optional).</p>
+</blockquote>
+<p>The app consists of three files that must be placed in the root directory of the project.</p>
+<table>
+<thead>
+<tr>
+<th align="left">File</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">app.js</td>
+<td align="left">Yes</td>
+<td align="left">Mini Program logic</td>
+</tr>
+<tr>
+<td align="left">app.json</td>
+<td align="left">Yes</td>
+<td align="left">Mini Program global settings</td>
+</tr>
+<tr>
+<td align="left">app.mass</td>
+<td align="left">No</td>
+<td align="left">Mini Program global stylesheet</td>
+</tr>
+</tbody></table>
+<p>The page consists of four files:</p>
+<table>
+<thead>
+<tr>
+<th align="left">File Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">js</td>
+<td align="left">Yes</td>
+<td align="left">Page Logic</td>
+</tr>
+<tr>
+<td align="left">maml</td>
+<td align="left">Yes</td>
+<td align="left">Page Structure</td>
+</tr>
+<tr>
+<td align="left">mass</td>
+<td align="left">No</td>
+<td align="left">Page Style Sheet</td>
+</tr>
+<tr>
+<td align="left">json</td>
+<td align="left">No</td>
+<td align="left">Page settings</td>
+</tr>
+</tbody></table>
+<p><strong>| Note</strong>: For the convenience of developers, the apple Mini Program specifies that the four files must have the same path and file name.</p>
+<h2 id="files-allowed-to-be-packaged">Files allowed to be packaged</h2>
+<p>In the project directory, the following files are compiled and cannot be directly accessed after being packaged: .js, app.json, _.maml, _.mass, *.sk, and *.sjs. In addition, only files with suffix names in the trustlist can be packaged into small packages. The trustlist is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>File Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>html</td>
+<td>html page</td>
+</tr>
+<tr>
+<td>js</td>
+<td>javascript resource file</td>
+</tr>
+<tr>
+<td>json</td>
+<td>json configuration file</td>
+</tr>
+<tr>
+<td>css</td>
+<td>page style file</td>
+</tr>
+<tr>
+<td>png</td>
+<td>Lossless compressed picture file</td>
+</tr>
+<tr>
+<td>jpg</td>
+<td>Lossy compressed picture file</td>
+</tr>
+<tr>
+<td>gif</td>
+<td>dynamic image file</td>
+</tr>
+<tr>
+<td>ttf</td>
+<td>Universal font file</td>
+</tr>
+<tr>
+<td>woff</td>
+<td>web font files</td>
+</tr>
+<tr>
+<td>eot</td>
+<td>Embedded font file</td>
+</tr>
+<tr>
+<td>ico</td>
+<td>icon file</td>
+</tr>
+<tr>
+<td>txt</td>
+<td>text</td>
+</tr>
+<tr>
+<td>mp3</td>
+<td>Universal compressed audio file</td>
+</tr>
+<tr>
+<td>ogg</td>
+<td>lossy compressed audio file</td>
+</tr>
+<tr>
+<td>wav</td>
+<td>lossless audio file</td>
+</tr>
+<tr>
+<td>md</td>
+<td>markdown file</td>
+</tr>
+<tr>
+<td>mp4</td>
+<td>video file</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>xml configuration file</td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>Macle data prefetch configuration file</td>
+</tr>
+</tbody></table>
+<h3 id="maml">MAML</h3>
+<p>The MAML is a set of tag language for framework design. It combines basic components and event systems to construct the page structure.</p>
+<h3 id="mass">MASS</h3>
+<p>The MAML style sheets are a set of style languages used to describe the MAML component styles.</p>
+<h3 id="sjs">SJS</h3>
+<p>SJS (safe/subset javascript) is a custom scripting language for Mini Program that you can use in MAML to build page structures.</p>

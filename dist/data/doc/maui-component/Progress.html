@@ -1,0 +1,100 @@
+<h2 id="progress-进度条">Progress 进度条</h2>
+<blockquote>
+<p>用于展示操作的当前进度（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<p>进度条默认为蓝色，可通过<code>percentage</code>属性来设置当前进度。</p>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
+</code></pre>
+<h4 id="线条粗细">线条粗细</h4>
+<p><code>stroke-width</code>可以设置进度条的粗细。</p>
+<pre><code class="language-html">
+&lt;maui-progress percentage=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-built_in">stroke</span>-<span class="hljs-built_in">width</span>=<span class="hljs-string">&#x27;8&#x27;</span> /&gt;
+</code></pre>
+<h4 id="置灰">置灰</h4>
+<p>通过设置<code>inactive</code>属性后进度条将置灰。</p>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">inactive</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
+</code></pre>
+<h4 id="样式定制">样式定制</h4>
+<p>使用<code>pivot-text</code>属性自定义文字，<code>color</code>属性自定义进度条颜色。</p>
+<pre><code class="language-html">
+&lt;maui-progress <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;橙色&#x27;</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;#f2826a&#x27;</span> <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;25&#x27;</span> /&gt;
+
+&lt;maui-progress <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;红色&#x27;</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;#ee0a24&#x27;</span> <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;
+
+&lt;maui-progress
+  <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;75&#x27;</span>
+  <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;紫色&#x27;</span>
+  <span class="hljs-attribute">pivot-color</span>=<span class="hljs-string">&#x27;#7232dd&#x27;</span>
+  <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;linear-gradient(to right, #be99ff, #7232dd)&#x27;</span>
+/&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">inactive</td>
+<td align="left">是否置灰</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">percentage</td>
+<td align="left">进度百分比</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code></td>
+</tr>
+<tr>
+<td align="left">stroke-width</td>
+<td align="left">进度条粗细，默认单位为<code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>4px</code></td>
+</tr>
+<tr>
+<td align="left">show-pivot</td>
+<td align="left">是否显示进度文字</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">进度条颜色</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">text-color</td>
+<td align="left">进度文字颜色</td>
+<td align="left">String</td>
+<td align="left"><code>#fff</code></td>
+</tr>
+<tr>
+<td align="left">track-color</td>
+<td align="left">轨道颜色</td>
+<td align="left">String</td>
+<td align="left"><code>#e5e5e5</code></td>
+</tr>
+<tr>
+<td align="left">pivot-text</td>
+<td align="left">文字显示</td>
+<td align="left">String</td>
+<td align="left">百分比文字</td>
+</tr>
+<tr>
+<td align="left">pivot-color</td>
+<td align="left">文字背景色</td>
+<td align="left">String</td>
+<td align="left">与进度条颜色一致</td>
+</tr>
+</tbody></table>

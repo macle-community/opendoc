@@ -1,0 +1,201 @@
+[
+  {
+    "name": "View Container",
+    "child": [
+      {
+        "name": "scroll-view",
+        "path": "/scroll-view",
+        "data": "/data/doc/component/view/scroll-view.md"
+      },
+      {
+        "name": "swiper",
+        "path": "/swiper",
+        "data": "/data/doc/component/view/swiper.md"
+      },
+      {
+        "name": "swiper-item",
+        "path": "/swiper-item",
+        "data": "/data/doc/component/view/swiper-item.md"
+      },
+      {
+        "name": "view",
+        "path": "/view",
+        "data": "/data/doc/component/view/view.md"
+      },
+      {
+        "name": "cover-view",
+        "path": "/cover-view",
+        "data": "/data/doc/component/view/cover-view.md"
+      },
+      {
+        "name": "cover-image",
+        "path": "/cover-image",
+        "data": "/data/doc/component/view/cover-image.md"
+      }
+    ]
+  },
+  {
+    "name": "Basic Content",
+    "child": [
+      {
+        "name": "icon",
+        "path": "/icon",
+        "data": "/data/doc/component/base/icon.md"
+      },
+      {
+        "name": "text",
+        "path": "/text",
+        "data": "/data/doc/component/base/text.md"
+      },
+      {
+        "name": "rich-text",
+        "path": "/rich-text",
+        "data": "/data/doc/component/base/rich-text.md"
+      },
+      {
+        "name": "progress",
+        "path": "/progress",
+        "data": "/data/doc/component/base/progress.md"
+      }
+    ]
+  },
+  {
+    "name": "Form Component",
+    "child": [
+      {
+        "name": "button",
+        "path": "/button",
+        "data": "/data/doc/component/form/button.md"
+      },
+      {
+        "name": "checkbox",
+        "path": "/checkbox",
+        "data": "/data/doc/component/form/checkbox.md"
+      },
+      {
+        "name": "checkbox-group",
+        "path": "/checkbox-group",
+        "data": "/data/doc/component/form/checkbox-group.md"
+      },
+      {
+        "name": "form",
+        "path": "/form",
+        "data": "/data/doc/component/form/form.md"
+      },
+      {
+        "name": "input",
+        "path": "/input",
+        "data": "/data/doc/component/form/input.md"
+      },
+      {
+        "name": "picker",
+        "path": "/picker",
+        "data": "/data/doc/component/form/picker.md"
+      },
+      {
+        "name": "picker-view",
+        "path": "/picker-view",
+        "data": "/data/doc/component/form/picker-view.md"
+      },
+      {
+        "name": "picker-view-column",
+        "path": "/picker-view-column",
+        "data": "/data/doc/component/form/picker-view-column.md"
+      },
+      {
+        "name": "label",
+        "path": "/label",
+        "data": "/data/doc/component/form/label.md"
+      },
+      {
+        "name": "switch",
+        "path": "/switch",
+        "data": "/data/doc/component/form/switch.md"
+      },
+      {
+        "name": "radio",
+        "path": "/radio",
+        "data": "/data/doc/component/form/radio.md"
+      },
+      {
+        "name": "radio-group",
+        "path": "/radio-group",
+        "data": "/data/doc/component/form/radio-group.md"
+      },
+      {
+        "name": "slider",
+        "path": "/slider",
+        "data": "/data/doc/component/form/slider.md"
+      },
+      {
+        "name": "textarea",
+        "path": "/textarea",
+        "data": "/data/doc/component/form/textarea.md"
+      }
+    ]
+  },
+  {
+    "name": "Navigating",
+    "child": [
+      {
+        "name": "navigator",
+        "path": "/navigator",
+        "data": "/data/doc/component/navigating/navigator.md"
+      }
+    ]
+  },
+  {
+    "name": "Media Component",
+    "child": [
+      {
+        "name": "image",
+        "path": "/image",
+        "data": "/data/doc/component/media/image.md"
+      },
+      {
+        "name": "video",
+        "path": "/video",
+        "data": "/data/doc/component/media/video.md"
+      },
+      {
+        "name": "audio",
+        "path": "/audio",
+        "data": "/data/doc/component/media/audio.md"
+      },
+      {
+        "name": "camera",
+        "path": "/camera",
+        "data": "/data/doc/component/media/camera.md"
+      }
+    ]
+  },
+  {
+    "name": "Open Capability",
+    "child": [
+      {
+        "name": "web-view",
+        "path": "/web-view",
+        "data": "/data/doc/component/openCapability/web-view.md"
+      }
+    ]
+  },
+  {
+    "name": "Page Attribute Configuration",
+    "child": [
+      {
+        "name": "page-meta",
+        "path": "/page-meta",
+        "data": "/data/doc/component/pageConfig/page-meta.md"
+      }
+    ]
+  },{
+  "name": "Map-related",
+  "child": [
+    {
+      "name": "Map",
+      "path": "/map",
+      "data": "/data/doc/component/map/map.md"
+    }
+  ]
+}
+]

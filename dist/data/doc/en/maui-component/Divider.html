@@ -1,0 +1,81 @@
+<h2 id="divider">Divider</h2>
+<blockquote>
+<p>Used to separate content into multiple areas (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html">
+<span class="hljs-section">&lt;maui-divider /&gt;</span>
+</code></pre>
+<h4 id="use-hairline">Use hairline</h4>
+<pre><code class="language-html">
+<span class="hljs-section">&lt;maui-divider hairline /&gt;</span>
+</code></pre>
+<h4 id="dotted-line">Dotted Line</h4>
+<pre><code class="language-html">
+<span class="hljs-section">&lt;maui-divider dashed /&gt;</span>
+</code></pre>
+<h4 id="text-position">Text Position</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-divider</span> <span class="hljs-attr">contentPosition</span>=<span class="hljs-string">&#x27;center&#x27;</span>&gt;</span>text<span class="hljs-tag">&lt;/<span class="hljs-name">maui-divider</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-divider</span> <span class="hljs-attr">contentPosition</span>=<span class="hljs-string">&#x27;left&#x27;</span>&gt;</span>text<span class="hljs-tag">&lt;/<span class="hljs-name">maui-divider</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-divider</span> <span class="hljs-attr">contentPosition</span>=<span class="hljs-string">&#x27;right&#x27;</span>&gt;</span>text<span class="hljs-tag">&lt;/<span class="hljs-name">maui-divider</span>&gt;</span>
+</code></pre>
+<h4 id="custom-color">Custom Color</h4>
+<pre><code class="language-html">
+&lt;maui-divider
+  contentPosition=&#x27;<span class="hljs-built_in">center</span>&#x27;
+  customStyle=&#x27;<span class="hljs-built_in">color</span>: #1989fa; <span class="hljs-built_in">border</span>-<span class="hljs-built_in">color</span>: #1989fa; <span class="hljs-built_in">font</span>-size: 18px;&#x27;
+&gt;
+  text
+&lt;/maui-divider&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dashed</td>
+<td align="left">dotted line</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">hairline</td>
+<td align="left">thin line</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">content-position</td>
+<td align="left">Text position, Default value<code>left</code>, <code>center</code>, <code>right</code></td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">Custom Style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="slot">Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom text content.</td>
+</tr>
+</tbody></table>

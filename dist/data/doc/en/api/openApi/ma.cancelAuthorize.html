@@ -1,0 +1,197 @@
+<h2 id="macancelauthorizeobject-object">ma.cancelAuthorize(Object object)</h2>
+<blockquote>
+<p>Cancel part of the authorization information of the current miniprogram <strong>(minimum version: 24.9.0)</strong></p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Cancel the authorization scope of the current miniprogram.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for interface invoking failure.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface invoking is complete (regardless of whether the invoking is successful)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + error cause (empty if no value is returned)</td>
+</tr>
+</tbody></table>
+<h4 id="permission-set-list-provided-by-the-miniprogram-externally">Permission set list provided by the miniprogram externally</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scope.location</td>
+<td>Precise geographical location</td>
+</tr>
+<tr>
+<td>scope.camera</td>
+<td>camera</td>
+</tr>
+<tr>
+<td>scope.photosAlbums</td>
+<td>Read and write albums</td>
+</tr>
+<tr>
+<td>scope.contacts</td>
+<td>Contacts</td>
+</tr>
+<tr>
+<td>scope.record</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td>scope.gotoBrowser</td>
+<td>Permission to Open Other Applications</td>
+</tr>
+<tr>
+<td>scope.bluetooth</td>
+<td>Bluetooth Permission</td>
+</tr>
+<tr>
+<td>scope.payment</td>
+<td>Payment Permission</td>
+</tr>
+<tr>
+<td>scope.video</td>
+<td>Recording permission</td>
+</tr>
+<tr>
+<td>scope.storage</td>
+<td>File Permissions</td>
+</tr>
+<tr>
+<td>scope.AUTH_BASE</td>
+<td>Silent Authorization</td>
+</tr>
+<tr>
+<td>scope.AUTH_USER</td>
+<td>User Information</td>
+</tr>
+<tr>
+<td>scope.SEND_MESSAGE</td>
+<td>Send information</td>
+</tr>
+<tr>
+<td>scope.USER_NICKNAME</td>
+<td>Nickname</td>
+</tr>
+<tr>
+<td>scope.USER_NAME</td>
+<td>User name</td>
+</tr>
+<tr>
+<td>scope.USER_LOGIN_ID</td>
+<td>User login ID</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_USER_LOGIN_ID</td>
+<td>Plaintext Login ID</td>
+</tr>
+<tr>
+<td>scope.HASH_LOGIN_ID</td>
+<td>Hash login ID</td>
+</tr>
+<tr>
+<td>scope.USER_AVATAR</td>
+<td>User avatar</td>
+</tr>
+<tr>
+<td>scope.USER_GEND</td>
+<td>User Gender</td>
+</tr>
+<tr>
+<td>scope.USER_BIRTHDAY</td>
+<td>Subscriber&#39;s birthday</td>
+</tr>
+<tr>
+<td>scope.USER_NATIONALITY</td>
+<td>Nationality</td>
+</tr>
+<tr>
+<td>scope.USER_CONTACTINFO</td>
+<td>User Contact</td>
+</tr>
+<tr>
+<td>scope.USER_ADDRESS</td>
+<td>User address</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_MOBILE_phone</td>
+<td>Plaintext mobile number of a user</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"> cancelAuthorize () {
+    ma.cancelAuthorize({
+        <span class="hljs-attr">scopes</span>: [<span class="hljs-string">&#x27;scope.location&#x27;</span>],
+        <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Authorization canceled successfully`</span>);
+        },
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+            <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Failed to cancel the authorization`</span>);
+        }
+    });
+}
+</code></pre>

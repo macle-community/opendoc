@@ -1,0 +1,66 @@
+<h2 id="maopensettingobject-object">ma.openSetting(Object object)</h2>
+<blockquote>
+<p>调起客户端小程序设置界面，并返回用户设置的操作结果。<strong>设置界面只会出现小程序已经向用户请求过的权限</strong>。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">authSetting</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/api/authority">AuthSetting</a></td>
+<td align="left">用户授权结果</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.openSetting({
+  success (res) {
+    console.log(res.authSetting)
+    <span class="hljs-regexp">//</span> res.authSetting = {
+    <span class="hljs-regexp">//</span>   <span class="hljs-string">&quot;scope.userInfo&quot;</span>: true,
+    <span class="hljs-regexp">//</span>   <span class="hljs-string">&quot;scope.userLocation&quot;</span>: true
+    <span class="hljs-regexp">//</span> }
+  }
+})
+</code></pre>

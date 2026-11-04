@@ -1,0 +1,193 @@
+<h2 id="manavigatetominiprogramobject-object">ma.navigateToMiniProgram(Object object)</h2>
+<blockquote>
+<p>小程序内跳转到其他小程序（最低版本：23.12.0）</p>
+</blockquote>
+<blockquote>
+<p>允许打开小程序时，携带参数，通过拼接成index.html?paramA=xxx&amp;paramB=xxxx的形式进行传参（25.12.0变更）
+仅支持H5小程序，不支持dsl小程序
+特殊符号不允许以下这些：
+点点：.. 点斜杠：./ 文件跨目录符： ..\ 和 %00</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">appId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要打开的小程序appId</td>
+</tr>
+<tr>
+<td align="left">capsuleShow</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">胶囊是否显示</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">打开的页面路径，如果为空则打开首页</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">跳转其他小程序时携带的参数,以paramA=xxx&amp;paramB=xxx的形式进行传参（仅支持 H5小程序，最低版本：25.12.0）</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">String</td>
+<td align="left">错误码</td>
+</tr>
+</tbody></table>
+<h3 id="错误码列表">错误码列表</h3>
+<table>
+<thead>
+<tr>
+<th>错误场景</th>
+<th>错误码</th>
+<th>安卓是否支持</th>
+<th>iOS是否支持</th>
+<th>模拟器是否支持</th>
+<th>开发建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求参数类型不合法</td>
+<td>1</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数类型是否合法</td>
+</tr>
+<tr>
+<td>请求参数数值不合法</td>
+<td>2</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数值是否合法</td>
+</tr>
+<tr>
+<td>请求参数缺少必填</td>
+<td>3</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中哪些必填参数未填写</td>
+</tr>
+<tr>
+<td>根据请求参数中appId查询小程序失败</td>
+<td>203000</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>根据入参appId排查将要跳转的小程序是否有可运行版本</td>
+</tr>
+<tr>
+<td>用户取消跳转到指定小程序弹窗</td>
+<td>203001</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户打开关联小程序时需要用户手动确认</td>
+</tr>
+<tr>
+<td>打开即将跳转的小程序失败</td>
+<td>203002</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>联系当前站点运营人员协调宿主APP开发者定位打开小程序失败原因</td>
+</tr>
+<tr>
+<td>请求参数含非法字符串</td>
+<td>203003</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>根据errorMsg排查接口调用参数中params是否合法</td>
+</tr>
+<tr>
+<td>跳转其他小程序无响应</td>
+<td>203004</td>
+<td>否</td>
+<td>是</td>
+<td>否</td>
+<td>联系当前站点运营人员协调宿主APP开发者定位跳转小程序无响应原因</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.navigateToMiniProgram({
+  appId: <span class="hljs-string">&#x27;&#x27;</span>,
+  capsuleShow: <span class="hljs-literal">false</span>,
+  path: <span class="hljs-string">&#x27;page/index/index&#x27;</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  },
+  complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  }
+});
+</code></pre>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+</ol>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>请注意，由于此API需要调用服务端接口查询和下载小程序，因此需要在调用API期间屏蔽用户操作，避免未知问题。</li>
+<li>在小程序内部通过navigateToMiniProgram跳转的场景中,默认会查询最新版本小程序,不会存在升级体验的场景，如出现提示升级的弹窗。</li>
+</ol>

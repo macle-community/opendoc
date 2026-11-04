@@ -1,0 +1,113 @@
+<h2 id="magetfileinfoobject-object">ma.getFileInfo(Object object)</h2>
+<blockquote>
+<p>获取文件信息</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">本地文件路径 (本地路径)</td>
+</tr>
+<tr>
+<td align="left">digestAlgorithm</td>
+<td align="left">String</td>
+<td align="left">&#39;sha256&#39;</td>
+<td align="left">否</td>
+<td align="left">计算文件摘要的算法</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectdigestalgorithm">object.digestAlgorithm</h5>
+<table>
+<thead>
+<tr>
+<th>合法值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sha256</td>
+<td>sha256 算法 (默认)</td>
+</tr>
+<tr>
+<td>md5</td>
+<td>md5 算法，该加密算法不安全，建议使用sha256</td>
+</tr>
+<tr>
+<td>sha1</td>
+<td>sha1 算法，该加密算法不安全，建议使用sha256</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-回调函数">object.success 回调函数</h5>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getFileInfo: ok</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Number</td>
+<td align="left">文件大小，以字节为单位</td>
+</tr>
+<tr>
+<td align="left">digest</td>
+<td align="left">String</td>
+<td align="left">按照传入的 digestAlgorithm 计算得出的的文件摘要</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.getFileInfo({
+  <span class="hljs-attr">filePath</span>: <span class="hljs-string">&#x27;filePath&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.size);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.digest);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>支持通过 <code>FileSystemManager</code> 调用</li>
+</ol>

@@ -1,0 +1,18 @@
+<h2 id="macreatemapcontextstring-mapid">ma.createMapContext(string mapId)</h2>
+<blockquote>
+<p>Create a MapContext object.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>string</strong> <strong>mapId</strong></p>
+<p>ID of the map component.</p>
+<h3 id="return-value">Return value</h3>
+<p>MapContext</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">//maml</span>
+&lt;map id=<span class="hljs-string">&quot;myMap&quot;</span>&gt;&lt;/map&gt;
+
+<span class="hljs-comment">//js</span>
+<span class="hljs-title function_">onReady</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">this</span>.<span class="hljs-property">mapContext</span> = ma.<span class="hljs-title function_">createMapContext</span>(<span class="hljs-string">&#x27;myMap&#x27;</span>);
+},
+</code></pre>

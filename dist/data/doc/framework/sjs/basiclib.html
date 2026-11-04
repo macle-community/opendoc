@@ -1,0 +1,113 @@
+<h2 id="基础类库">基础类库</h2>
+<h3 id="console">console</h3>
+<p>console.log 方法用于在 console 窗口输出信息。它可以接受多个参数，将它们的结果连接起来输出。</p>
+<h3 id="math">Math</h3>
+<h4 id="属性">属性</h4>
+<ul>
+<li>E</li>
+<li>LN10</li>
+<li>LN2</li>
+<li>LOG2E</li>
+<li>LOG10E</li>
+<li>PI</li>
+<li>SQRT1_2</li>
+<li>SQRT2</li>
+</ul>
+<blockquote>
+<p>以上属性的具体使用请参考 ES5 标准</p>
+</blockquote>
+<h4 id="方法">方法</h4>
+<ul>
+<li>abs</li>
+<li>acos</li>
+<li>asin</li>
+<li>atan</li>
+<li>atan2</li>
+<li>ceil</li>
+<li>cos</li>
+<li>exp</li>
+<li>floor</li>
+<li>log</li>
+<li>max</li>
+<li>min</li>
+<li>pow</li>
+<li>random</li>
+<li>round</li>
+<li>sin</li>
+<li>sqrt</li>
+<li>tan</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="json">JSON</h3>
+<h4 id="方法-1">方法</h4>
+<ul>
+<li>stringify(object): 将 object 对象转换为 JSON 字符串，并返回该字符串。</li>
+<li>parse(string): 将 JSON 字符串转化成对象，并返回该对象</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js">console.log(undefined === <span class="hljs-type">JSON</span>.stringify());
+console.log(undefined === <span class="hljs-type">JSON</span>.stringify(undefined));
+console.log(<span class="hljs-string">&#x27;null&#x27;</span> === <span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">null</span>));
+
+console.log(<span class="hljs-string">&#x27;111&#x27;</span> === <span class="hljs-type">JSON</span>.stringify(<span class="hljs-number">111</span>));
+console.log(<span class="hljs-string">&#x27;&quot;111&quot;&#x27;</span> === <span class="hljs-type">JSON</span>.stringify(<span class="hljs-string">&#x27;111&#x27;</span>));
+console.log(<span class="hljs-string">&#x27;true&#x27;</span> === <span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">true</span>));
+console.log(undefined === <span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">function</span> () {}));
+
+console.log(undefined === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify()));
+console.log(undefined === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(undefined)));
+console.log(<span class="hljs-keyword">null</span> === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">null</span>)));
+
+console.log(<span class="hljs-number">111</span> === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(<span class="hljs-number">111</span>)));
+console.log(<span class="hljs-string">&#x27;111&#x27;</span> === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(<span class="hljs-string">&#x27;111&#x27;</span>)));
+console.log(<span class="hljs-keyword">true</span> === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">true</span>)));
+
+console.log(undefined === <span class="hljs-type">JSON</span>.parse(<span class="hljs-type">JSON</span>.stringify(<span class="hljs-keyword">function</span> () {})));
+</code></pre>
+<h3 id="number">Number</h3>
+<h4 id="属性-1">属性</h4>
+<ul>
+<li>MAX_VALUE</li>
+<li>MIN_VALUE</li>
+<li>NEGATIVE_INFINITY</li>
+<li>POSITIVE_INFINITY</li>
+</ul>
+<blockquote>
+<p>以上属性的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="date">Date</h3>
+<h4 id="属性-2">属性</h4>
+<ul>
+<li>parse</li>
+<li>UTC</li>
+<li>now</li>
+</ul>
+<blockquote>
+<p>以上属性的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="global">Global</h3>
+<h4 id="属性-3">属性</h4>
+<ul>
+<li>NaN</li>
+<li>Infinity</li>
+<li>undefined</li>
+</ul>
+<blockquote>
+<p>以上属性的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h4 id="方法-2">方法</h4>
+<ul>
+<li>parseInt</li>
+<li>parseFloat</li>
+<li>isNaN</li>
+<li>isFinite</li>
+<li>decodeURI</li>
+<li>decodeURIComponent</li>
+<li>encodeURI</li>
+<li>encodeURIComponent</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>

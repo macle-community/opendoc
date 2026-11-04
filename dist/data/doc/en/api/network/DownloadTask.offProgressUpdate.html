@@ -1,0 +1,14 @@
+<h2 id="downloadtaskoffprogressupdatefunction-listener">DownloadTask.offProgressUpdate(function listener)</h2>
+<p>Removed the listening function for download progress change events (Minimum version: 23.6.0).</p>
+<h2 id="parameter">Parameter</h2>
+<h3 id="function-listener">function listener</h3>
+<p>Listening function transferred by onProgressUpdate. If this parameter is not transferred, all listening functions are removed.</p>
+<h2 id="sample-code">Sample Code</h2>
+<pre><code class="language-js">const listener = <span class="hljs-keyword">function</span> (res) {
+    console.log(res)
+}
+
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DownloadTask</span>.</span></span>on<span class="hljs-constructor">ProgressUpdate(<span class="hljs-params">listener</span>)</span>
+
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DownloadTask</span>.</span></span>off<span class="hljs-constructor">ProgressUpdate(<span class="hljs-params">listener</span>)</span> <span class="hljs-comment">// must pass in the same function object as that used during listening.</span>
+</code></pre>

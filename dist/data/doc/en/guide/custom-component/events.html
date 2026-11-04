@@ -1,0 +1,103 @@
+<h2 id="events-and-communication-between-components">Events and Communication Between Components</h2>
+<h3 id="communication-between-components">Communication Between Components</h3>
+<p>The basic communication modes between components are as follows:</p>
+<ul>
+<li>MAML data binding: used by a parent component to set data for a specified attribute of a child component. Only JSON-compatible data can be set. For details, see <a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component-maml-mass">Component Templates and Styles</a>.</li>
+<li>Event: used by a child component to transfer data to its parent component. Any data can be transferred.</li>
+<li>If the preceding methods cannot meet the requirements, the parent component can use the this.selectComponent method to obtain the instance object of the child component. In this way, the parent component can directly access any data and method of the component.</li>
+</ul>
+<h3 id="listening-for-events">Listening for Events</h3>
+<p>The event system is one of the main methods for communication between components. </p>
+<p>A custom component can trigger any event, and the page that references the component can listen for these events. For the basic concepts and usage of events, see <a onclick="_mdLinkClick(this.href)" href="#/framework/event">events</a>. </p>
+<p>The method of listening for custom component events is the same as that of listening for basic component events.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- When the custom component triggers the myevent event, the onMyEvent method is called. --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">bindmyevent</span>=<span class="hljs-string">&quot;onMyEvent&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- or --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">bind:myevent</span>=<span class="hljs-string">&quot;onMyEvent&quot;</span> /&gt;</span>
+
+Page(</span><span class="hljs-template-variable">{
+  onMyEvent: function(e){
+     e.detail // The detail object provided when the custom component triggers an event.
+  }</span><span class="language-xml">
+})</span>
+</code></pre>
+<h3 id="triggering-events">Triggering Events</h3>
+<p>When a custom component triggers an event, you need to use triggerEvent to specify the event name, detail object, and event options.</p>
+<h3 id="sample-code-1">Sample Code</h3>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- In the custom component --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;onTap&quot;</span>&gt;</span>Clicking this button triggers the myevent event.<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+Component(</span><span class="hljs-template-variable">{
+  properties: {}</span><span class="language-xml">,
+  methods: </span><span class="hljs-template-variable">{
+    onTap: function(){
+       const myEventDetail = {}</span><span class="language-xml"> // detail object, which is provided for the event listening function.
+       const myEventOption = </span><span class="hljs-template-variable">{}</span><span class="language-xml"> // Options of the triggered event.
+       this.triggerEvent(&#x27;myevent&#x27;, myEventDetail, myEventOption)
+    }
+  }
+})</span>
+</code></pre>
+<p>The options for triggering an event are as follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bubbles</td>
+<td align="left">Boolean</td>
+<td align="left">No</td>
+<td align="left">false</td>
+<td align="left">Whether an event pops up.</td>
+</tr>
+</tbody></table>
+<p>For the concept of pop-up messages, see <a onclick="_mdLinkClick(this.href)" href="#/framework/event">events</a>.</p>
+<h3 id="sample-code-2">Sample Code</h3>
+<pre><code>// Page page.maml
+<span class="hljs-tag">&lt;<span class="hljs-name">another-component</span> <span class="hljs-attr">bindcustomevent</span>=<span class="hljs-string">&quot;pageEventListener1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">my-component</span> <span class="hljs-attr">bindcustomevent</span>=<span class="hljs-string">&quot;pageEventListener2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-component</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">another-component</span>&gt;</span>
+</code></pre>
+<pre><code>// <span class="hljs-keyword">Component</span> my-<span class="hljs-keyword">component</span>.maml
+&lt;<span class="hljs-keyword">view</span> bindcustomevent=<span class="hljs-string">&quot;myEventListener&quot;</span>&gt;
+&lt;slot /&gt;
+&lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+<pre><code>
+<span class="hljs-comment">// Component my-component.js</span>
+Component({
+  methods: {
+    onTap: <span class="hljs-keyword">function</span><span class="hljs-params">()</span>{
+      <span class="hljs-keyword">this</span>.triggerEvent(<span class="hljs-string">&#x27;customevent&#x27;</span>, {}) <span class="hljs-comment">// Triggers only pageEventListener2.</span>
+      <span class="hljs-keyword">this</span>.triggerEvent(<span class="hljs-string">&#x27;customevent&#x27;</span>, {}, { bubbles: <span class="hljs-literal">true</span> }) <span class="hljs-comment">// Triggers pageEventListener2 and pageEventListener1 in sequence.</span>
+   }
+  }
+})
+</code></pre>
+<h3 id="obtaining-a-component-instance">Obtaining a Component Instance</h3>
+<p>You can call this.selectComponent in the parent component to obtain the instance object of the child component.</p>
+<p>A matching selector, for example, this.selectComponent(&quot;.my-component&quot;), needs to be transferred during calling.</p>
+<p>A selector, for example, a CSS selector, supports only the following syntax:</p>
+<ul>
+<li>ID selector: #the-id</li>
+<li>Class selector: .my-component</li>
+</ul>
+<h3 id="sample-code-3">Sample Code</h3>
+<pre><code><span class="hljs-comment">// Parent component</span>
+    <span class="hljs-title class_">Page</span>({
+      <span class="hljs-attr">data</span>: {},
+      <span class="hljs-attr">getChildComponent</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// The ID selector returns an object, and the class selector returns an array.</span>
+         <span class="hljs-keyword">const</span> child = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">selectComponent</span>(<span class="hljs-string">&#x27;.my-component&#x27;</span>);
+         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(child)
+      }
+    })
+</code></pre>
+<p>In the preceding example, the parent component obtains the child component instance object whose class is my-component, that is, this of the child component.</p>

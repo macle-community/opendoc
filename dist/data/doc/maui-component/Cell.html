@@ -1,0 +1,182 @@
+<h2 id="cell-单元格">Cell 单元格</h2>
+<blockquote>
+<p>单元格为列表中的单个展示项（最低版本： 24.6.0）</p>
+</blockquote>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<p><code>Cell</code>可以单独使用，也可以与<code>CellGroup</code>搭配使用。<code>CellGroup</code>可以为<code>Cell</code>提供上下外边框。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;内容&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;内容&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;描述信息&quot;</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="卡片风格">卡片风格</h4>
+<p>通过 <code>CellGroup</code> 的 <code>inset</code> 属性，可以将单元格转换为圆角卡片风格。</p>
+<pre><code class="language-html">&lt;maui-cell-group inset&gt;
+  &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> /&gt;
+  &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
+&lt;/maui-cell-group&gt;
+</code></pre>
+<h4 id="单元格大小">单元格大小</h4>
+<p>通过<code>size</code>属性可以控制单元格的大小。</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> /&gt;
+&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
+</code></pre>
+<h4 id="展示图标">展示图标</h4>
+<p>通过<code>icon</code>属性在标题左侧展示图标。</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> icon<span class="hljs-operator">=</span><span class="hljs-string">&quot;location-o&quot;</span> /&gt;
+</code></pre>
+<h4 id="分组标题">分组标题</h4>
+<p>通过<code>CellGroup</code>的<code>title</code>属性可以指定分组标题。</p>
+<pre><code class="language-html">&lt;maui-cell-<span class="hljs-keyword">group</span> <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;分组1&quot;</span>&gt;
+  &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> value=<span class="hljs-string">&quot;内容&quot;</span> /&gt;
+&lt;/maui-cell-<span class="hljs-keyword">group</span>&gt;
+&lt;maui-cell-<span class="hljs-keyword">group</span> <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;分组2&quot;</span>&gt;
+  &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> value=<span class="hljs-string">&quot;内容&quot;</span> /&gt;
+&lt;/maui-cell-<span class="hljs-keyword">group</span>&gt;
+</code></pre>
+<h4 id="使用插槽">使用插槽</h4>
+<p>如以上用法不能满足你的需求，可以使用插槽来自定义内容。</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span>&gt;
+  &lt;maui-icon name<span class="hljs-operator">=</span><span class="hljs-string">&quot;search&quot;</span> class<span class="hljs-operator">=</span><span class="hljs-string">&quot;custom-icon&quot;</span> /&gt;
+&lt;/maui-cell&gt;
+</code></pre>
+<h4 id="垂直居中">垂直居中</h4>
+<p>通过<code>center</code>属性可以让<code>Cell</code>的左右内容都垂直居中。</p>
+<pre><code class="language-html">&lt;maui-cell center title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="cellgroup-props">CellGroup Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">分组标题</td>
+<td align="left">String</td>
+<td align="left"><code>-</code></td>
+</tr>
+<tr>
+<td align="left">inset</td>
+<td align="left">是否展示为圆角卡片风格</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">border</td>
+<td align="left">是否显示外边框</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody></table>
+<h4 id="cell-props">Cell Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">icon</td>
+<td align="left">左侧图标名称或图片链接，可选值见 <a onclick="_mdLinkClick(this.href)" href="#/maui-component/Icon">Icon</a></td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">左侧标题</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title-width</td>
+<td align="left">标题宽度，须包含单位</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">右侧内容</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">label</td>
+<td align="left">标题下方的描述信息</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">单元格大小，可选值为 <code>large</code></td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">border</td>
+<td align="left">是否显示下边框</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left">是否使内容垂直居中</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">clickable</td>
+<td align="left">是否开启点击反馈</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">是否显示表单必填星号</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">title-style</td>
+<td align="left">标题样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="cell-event">Cell Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">点击单元格时触发</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="cell-slot">Cell Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">自定义<code>value</code>显示内容，如果设置了<code>value</code>属性则不生效</td>
+</tr>
+</tbody></table>

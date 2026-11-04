@@ -1,0 +1,86 @@
+<h2 id="selectorquerynodesreffieldsobject-fields-function-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a>NodesRef.fields(Object fields, function callback)</h2>
+<blockquote>
+<p>Obtain node information. The fields to be obtained are specified in <code>fields</code>. The return value is <code>SelectorQuery</code> corresponding to <code>NodesRef</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-fields">Object fields</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to return the node ID.</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to return the node dataset.</td>
+</tr>
+<tr>
+<td align="left">rect</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to return the node layout position (<code>left</code>, <code>right</code>, <code>top</code>, or <code>bottom</code>).</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to return the node size (<code>width</code> or <code>height</code>).</td>
+</tr>
+<tr>
+<td align="left">scrollOffset</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to return <code>scrollLeft</code> or <code>scrollTop</code> of the node. The node must be <code>scroll-view</code> or <code>viewport</code>.</td>
+</tr>
+<tr>
+<td align="left">properties</td>
+<td align="left">Array</td>
+<td align="left">[]</td>
+<td align="left">No</td>
+<td align="left">Attribute name list. The return value is the attribute values of the node. (Only the common attribute values marked in the component document can be obtained. <strong>id</strong>, <strong>class</strong>, <strong>style</strong> and attribute values bound to events cannot be obtained.)</td>
+</tr>
+</tbody></table>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<p>Node information.</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Page</span>({
+  getFields () {
+    ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.select</span>(<span class="hljs-string">&#x27;#the-id&#x27;</span>)<span class="hljs-selector-class">.fields</span>({
+      dataset: true,
+      size: true,
+      scrollOffset: true,
+      properties: <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scrollX&#x27;</span>, <span class="hljs-string">&#x27;scrollY&#x27;</span>]</span>
+    }, function (res) {
+      res<span class="hljs-selector-class">.dataset</span>    <span class="hljs-comment">// Node dataset.</span>
+      res<span class="hljs-selector-class">.dataset</span>    <span class="hljs-comment">//Width of the node.</span>
+      res<span class="hljs-selector-class">.height</span>     <span class="hljs-comment">//Height of the node.</span>
+      res<span class="hljs-selector-class">.scrollLeft</span> <span class="hljs-comment">// Horizontal scrolling position of the node.</span>
+      res<span class="hljs-selector-class">.scrollTop</span>  <span class="hljs-comment">// Vertical scrolling position of the node.</span>
+      res<span class="hljs-selector-class">.scrollX</span>    <span class="hljs-comment">// Value of the scroll-x attribute of the node.</span>
+      res<span class="hljs-selector-class">.scrollY</span>    <span class="hljs-comment">// Value of the scroll-y attribute of the node.</span>
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

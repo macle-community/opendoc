@@ -1,0 +1,14 @@
+<h2 id="object-exports">Object exports</h2>
+<p>module.exports 的引用</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// common.js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Hello <span class="hljs-subst">${name}</span> !`</span>);
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayGoodbye</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Goodbye <span class="hljs-subst">${name}</span> !`</span>);
+}
+
+module.exports.sayHello = sayHello;
+exports.sayGoodbye = sayGoodbye;
+</code></pre>

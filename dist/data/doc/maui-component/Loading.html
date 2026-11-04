@@ -1,0 +1,71 @@
+<h1 id="loading-加载">Loading 加载</h1>
+<h3 id="介绍">介绍</h3>
+<p>加载图标，用于表示加载中的过渡状态。</p>
+<h2 id="代码演示">代码演示</h2>
+<h3 id="加载类型">加载类型</h3>
+<pre><code class="language-maml">&lt;maui-loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> /&gt;
+</code></pre>
+<h3 id="自定义颜色">自定义颜色</h3>
+<pre><code class="language-maml">&lt;maui-loading color<span class="hljs-operator">=</span><span class="hljs-string">&quot;#1989fa&quot;</span> /&gt; &lt;maui-loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> color<span class="hljs-operator">=</span><span class="hljs-string">&quot;#1989fa&quot;</span> /&gt;
+</code></pre>
+<h3 id="加载文案">加载文案</h3>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-loading</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;24px&quot;</span>&gt;</span>加载中...<span class="hljs-tag">&lt;/<span class="hljs-name">maui-loading</span>&gt;</span>
+</code></pre>
+<h3 id="垂直排列">垂直排列</h3>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-loading</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;24px&quot;</span> <span class="hljs-attr">vertical</span> = <span class="hljs-string">true</span>&gt;</span>加载中...<span class="hljs-tag">&lt;/<span class="hljs-name">maui-loading</span>&gt;</span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">color</td>
+<td align="left">颜色</td>
+<td align="left">String</td>
+<td align="left"><code>#c9c9c9</code></td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">类型，可选值为 <code>spinner</code></td>
+<td align="left">String</td>
+<td align="left"><code>circular</code></td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">加载图标大小，默认单位为 <code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>30px</code></td>
+</tr>
+<tr>
+<td align="left">text-size</td>
+<td align="left">文字大小，默认单位为为 <code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>14px</code></td>
+</tr>
+<tr>
+<td align="left">vertical</td>
+<td align="left">是否垂直排列图标和文字内容</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h3 id="slots">Slots</h3>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">加载文案</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,85 @@
+<h2 id="manavigatetoobject-object">ma.navigateTo(Object object)</h2>
+<blockquote>
+<p>Retain the current page and jumps to a page in the app. However, the tabBar page cannot be displayed. You can use ma.navigateBack to return to the original page. The page stack in a Mini Program has a maximum of 10 layers.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Path (code package path) of the non-<strong>tabBar</strong> page to be redirected to in the app. The path can be followed by a parameter. Separate a parameter and a path with a question mark (?), separate a parameter key and a parameter value with an equal sign (=), and separate different parameters with ampersands (&amp;), for example, <strong>&#39;path?key=value&amp;key2=value2&#39;</strong>.</td>
+</tr>
+<tr>
+<td align="left">event</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Inter-page communication API, which is used to listen for the data sent from an opened page to the current page.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.navigateTo({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;example?id=1&#x27;</span>,
+  <span class="hljs-attr">events</span>: {
+    <span class="hljs-comment">//  Add a listener for a specified event to obtain the data transferred from the opened page to the current page.</span>
+    acceptDataFromOpenedPage: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data)
+    },
+    <span class="hljs-attr">someEvent</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data)
+    }
+    ...
+  },
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-comment">// Send data to the opened page through eventChannel.</span>
+    res.eventChannel.emit(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> })
+  }
+})
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-comment">//example.js</span>
+Page({
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">option</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(option.query);
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.emit(<span class="hljs-string">&#x27;acceptDataFromOpenedPage&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> });
+    eventChannel.emit(<span class="hljs-string">&#x27;someEvent&#x27;</span>, { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;example&#x27;</span> });
+    <span class="hljs-comment">//  Listen for the acceptDataFromOpenerPage event to obtain the data sent from the previous page to the current page through eventChannel.</span>
+    eventChannel.on(<span class="hljs-string">&#x27;acceptDataFromOpenerPage&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(data);
+    });
+  }
+});
+</code></pre>

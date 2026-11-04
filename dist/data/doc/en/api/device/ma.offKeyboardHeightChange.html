@@ -1,0 +1,19 @@
+<h2 id="maoffkeyboardheightchangefunction-listener">ma.offKeyboardHeightChange(function listener)</h2>
+<blockquote>
+<p>Removes the listening function for the keyboard height change event (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function transferred by onKeyboardHeightChange. If this parameter is not transferred, all listening functions are removed.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const listener = <span class="hljs-keyword">function</span> (res) {
+    console.log(res);
+};
+
+ma.on<span class="hljs-constructor">KeyboardHeightChange(<span class="hljs-params">listener</span>)</span>;
+<span class="hljs-comment">// The same function object as that used during listening must be transferred.</span>
+ma.off<span class="hljs-constructor">KeyboardHeightChange(<span class="hljs-params">listener</span>)</span>;
+
+<span class="hljs-comment">// Cancel all listening.</span>
+ma.off<span class="hljs-constructor">KeyboardHeightChange()</span>;
+</code></pre>

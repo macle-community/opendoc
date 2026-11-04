@@ -1,0 +1,103 @@
+<h2 id="magetbackgroundfetchdata">ma.getBackgroundFetchData</h2>
+<blockquote>
+<p>Obtain all data in the data pre-fetch cache. This API will wait for all pre-fetch requests to be completed (without using the last data), store all the pre-fetch data in a JsonArray and return it to the user (minimum version: 23.12.0)</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default value</th>
+<th align="left">Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td></td>
+<td align="left">Yes</td>
+<td>Cache data type, fixed value is <code>pre</code></td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td align="left">No</td>
+<td>callback function for successful interface call</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td align="left">No</td>
+<td>Callback function for interface call failure</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td align="left">No</td>
+<td>The callback function at the end of the interface call (will be executed whether the call is successful or failed)</td>
+</tr>
+</tbody></table>
+<h4 id="success-callback-function">success callback function</h4>
+<h5 id="return-value">Return Value</h5>
+<h5 id="object">object</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>Array</td>
+<td>Cache data collection</td>
+</tr>
+</tbody></table>
+<h5 id="data">data</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchedData</td>
+<td>String</td>
+<td>cached data</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>Number</td>
+<td>The timestamp when the client gets the cached data</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>Page path</td>
+</tr>
+<tr>
+<td>query</td>
+<td>String</td>
+<td>query parameters</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// ma.getBackgroundFetchData api</span>
+ma.getBackgroundFetchData({
+  <span class="hljs-attr">fetchType</span>: <span class="hljs-string">&#x27;pre&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].fetchedData); <span class="hljs-comment">// Cached data</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].<span class="hljs-built_in">timeStamp</span>); <span class="hljs-comment">// Timestamp when the client obtains cached data</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].path); <span class="hljs-comment">// Page Path</span>
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data[i].query); <span class="hljs-comment">// query Parameters</span>
+  }
+});
+</code></pre>

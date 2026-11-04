@@ -1,0 +1,64 @@
+<h1 id="自定义api">自定义API</h1>
+<blockquote>
+<p>快速自定义API生成工具（最低版本23.3.0）</p>
+</blockquote>
+<h2 id="简介">简介</h2>
+<p>为了方便开发者调试，macle开发插件在23.3.0上线了自定义API功能。通过此功能，开发者可以快速定义API，自定义命名、回调，一键生成、应用或删除，支持以JSON文件形式导入与导出API。</p>
+<h2 id="功能界面">功能界面</h2>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/customApiGUI.png" alt="image" ></p>
+<p>1：功能入口</p>
+<p>2：导入API</p>
+<p>3：导出API</p>
+<p>4：新增自定义API方案</p>
+<p>5：修改方案名称</p>
+<p>6：删除自定义API方案，删除操作实时生效</p>
+<p>7：编辑自定义API名称</p>
+<p>8：模拟回调类型，当前支持Success 与 Fail 两种类型</p>
+<p>9：设置回调信息，当前仅支持JSON格式</p>
+<p>10：API应用设置，点击后实时生效</p>
+<p>11：延时回调，单位为ms</p>
+<p>12: 模拟类型，支持本地及反向代理两种类型（最低版本：Macle 23.6.0）</p>
+<h2 id="简单示例">简单示例</h2>
+<p>下面将通过一个简单的示例来演示自定义API的用法</p>
+<ol>
+<li><p>导入/新建 API，确认API信息应用</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/customImport.gif" alt="image" ></p>
+</li>
+<li><p>新建一个函数调用该API，创建一个按钮用以触发该函数</p>
+</li>
+<li><p>打开模拟窗口并查看控制台</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/customCheckInfo.gif" alt="image" ></p>
+</li>
+<li><p>点击按钮，查看回调信息</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/customConsole.gif" alt="image" ></p>
+</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<h4 id="maml">maml</h4>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">motto</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;testAPI&quot;</span>&gt;</span>testAPI<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="javascript">JavaScript</h4>
+<pre><code>testAPI() {
+    ma.testAPI({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">failInfo</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(failInfo);
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {},
+    });
+  },
+</code></pre>
+<p>tips：</p>
+<ol>
+<li><p>自定义API的优先级高于小程序已有API，若自定义API与小程序已有API重名，将会覆盖并使得原有API失效</p>
+</li>
+<li><p>为了防止API的信息丢失，Macle会对<strong>应用中</strong>的自定义API在小程序缓存目录下进行实时备份，备份路径通常为：</p>
+<p>%当前用户目录%\.macle\mock\mockApi.json</p>
+</li>
+</ol>

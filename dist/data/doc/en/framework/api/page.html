@@ -1,0 +1,364 @@
+<h2 id="pageobject-object">Page(Object object)</h2>
+<p>Register a page in the Mini Program. Accepts an <code>Object</code> type parameter that specifies the initial data of the page, life cycle callback, event handling functions, and so on.</p>
+<h4 id="parameter">Parameter</h4>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Initial data of the page</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onLoad</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lifecycle Callback - Monitoring Page Loading</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onShow</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lifecycle Callback - Monitoring Page Display</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onReady</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lifecycle Callback - Initial Rendering Completed on the Listening Page</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onHide</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lifecycle Callback - Hiding the Listening Page</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onUnload</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Lifecycle Callback - Uninstalling the Listening Page</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onPullDownRefresh</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Monitor user pull-down action</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onReachBottom</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Processing function of the page pull-up and bottom-down event</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onPageScroll</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Function for processing page scrolling triggering events</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">onTabItemTap</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Switch the tabbar or trigger the switchTab API.</td>
+<td>The function takes effect only on the tab page.</td>
+</tr>
+<tr>
+<td align="left">Other</td>
+<td align="left">Any</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Developers can add any function or data to the <code>Object</code> parameter. You can use <code>this</code> to access the function on the page.</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">//index.js</span>
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;This is page data.&#x27;</span>
+  },
+  <span class="hljs-attr">onLoad</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) {
+    <span class="hljs-comment">// Do some initialize when page load.</span>
+  },
+  <span class="hljs-attr">onShow</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when page show.</span>
+  },
+  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when page ready.</span>
+  },
+  <span class="hljs-attr">onHide</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when page hide.</span>
+  },
+  <span class="hljs-attr">onUnload</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when page close.</span>
+  },
+  <span class="hljs-attr">onPullDownRefresh</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when pull down.</span>
+  },
+  <span class="hljs-attr">onPageScroll</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Do something when page scroll</span>
+  },
+
+  <span class="hljs-comment">// Event handler.</span>
+  <span class="hljs-attr">viewTap</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(
+      {
+        <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;Set some data for updating view.&#x27;</span>
+      },
+      <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// this is setData callback</span>
+      }
+    );
+  },
+  <span class="hljs-attr">customData</span>: {
+    <span class="hljs-attr">hi</span>: <span class="hljs-string">&#x27;MINA&#x27;</span>
+  }
+});
+</code></pre>
+<h4 id="data">data</h4>
+<p><code>data</code> indicates the initial data used for the first rendering of the page.</p>
+<p>During page loading,<code> data</code> is transferred from the logic layer to the rendering layer in the form of <code>JSON </code>strings. Therefore, data in <code>data </code>must be of the type that can be converted into <code>JSON</code>, including character strings, numbers, Boolean values, objects, and arrays.</p>
+<p>The rendering layer can bind data through MAML.</p>
+<p><strong>Sample Code</strong></p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[0].msg}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    text: <span class="hljs-string">&#x27;init data&#x27;</span>,
+    array: [{ msg: <span class="hljs-string">&#x27;1&#x27;</span> }, { msg: <span class="hljs-string">&#x27;2&#x27;</span> }]
+  }
+});
+</code></pre>
+<h3 id="life-cycle-callback-function"><strong>Life cycle callback function</strong></h3>
+<h4 id="onloadobject-query">onLoad(Object query)</h4>
+<p>Triggered when the page is loaded. A page can be invoked only once. You can obtain the parameters in the path for opening the current page from the onLoad parameter.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">query</td>
+<td align="left">Object</td>
+<td align="left">Open parameters in the path of the current page.</td>
+</tr>
+</tbody></table>
+<h4 id="onshow">onShow()</h4>
+<p>Triggered when the page is displayed or the foreground is switched.</p>
+<h4 id="onready">onReady()</h4>
+<p>Triggered when the page is initially rendered. A page is invoked only once, indicating that the page is ready and can interact with the view layer.</p>
+<p>Note: For example, the API used to set GUI content, ma.setNavigationBarTitle, must be performed after <code>onReady</code>.</p>
+<h4 id="onhide">onHide()</h4>
+<p>Triggered when the page is hidden or the background is switched. For example, ma.navigateTo or bottom <code>tab </code>switches to other pages, Mini Program switches to the background, etc.</p>
+<h4 id="onunload">onUnload()</h4>
+<p>Triggered when the page is unloaded. such as ma.redirectTo or ma.navigateBack to other pages.</p>
+<h4 id="page-event-processing-function"><strong>Page Event Processing Function</strong></h4>
+<h4 id="onpulldownrefresh">onPullDownRefresh()</h4>
+<p>Listens to the user pull-down refresh event.</p>
+<ul>
+<li>Enable the <code>enablePullDownRefresh </code>function in the <code>window </code>option of <code>app.json</code> or on the page configuration.</li>
+<li>You can call ma.startPullDownRefresh to trigger pull-down refresh. After the call is invoked, the pull-down refresh animation is triggered. The effect is the same as that of manually pull-down refresh.</li>
+<li>After data refresh is processed, the ma.stopPullDownRefresh command stops the refresh of the current page.</li>
+</ul>
+<h4 id="onreachbottom">onReachBottom()</h4>
+<p>Monitors the user pull-up and bottom-down event.</p>
+<ul>
+<li>You can set the trigger distance <code>onReachBottomDistance </code>in the <code>window</code> option of <code>app.json</code> or page configuration.</li>
+<li>This event will only be triggered once during sliding within the trigger distance.</li>
+<li>When <code>onReachBottomDistance </code> is 0, the default value is 50.</li>
+</ul>
+<h4 id="onpagescrollobject-object">onPageScroll(Object object)</h4>
+<p>Listens to the user slide page event.</p>
+<p><strong>Object object</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scrollTop</td>
+<td align="left">Number</td>
+<td align="left">Vertical scrolling distance of the page (unit: px)</td>
+</tr>
+</tbody></table>
+<p><strong>Note: Only define this method in the page when needed, and do not define an empty method. To reduce the impact of unnecessary event dispatches on the rendering layer-logic layer communication.</strong> </p>
+<p><strong>Note: Do not perform operations such as setData frequently in onPageScroll that may cause communication between the logic layer and the rendering layer. In particular, a large amount of data is transmitted each time, which affects communication time.</strong></p>
+<h4 id="ontabitemtapobject-object">onTabItemTap(Object object)</h4>
+<p>Switch the tabbar or trigger the switchTab API.</p>
+<p><strong>Parameter Object object</strong>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index</td>
+<td align="left">String</td>
+<td align="left">Serial number of the clicked tab item, starting from 0.</td>
+</tr>
+<tr>
+<td align="left">pagePath</td>
+<td align="left">String</td>
+<td align="left">Page path of the clicked tabItem</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left">Button text of the clicked tabItem</td>
+</tr>
+</tbody></table>
+<p><strong>Sample Code:</strong></p>
+<pre><code class="language-js">Page({
+    onTabItemTap(<span class="hljs-built_in">item</span>) {
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">item</span>.index)
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">item</span>.pagePath)
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">item</span>.<span class="hljs-built_in">text</span>)
+    }
+})
+</code></pre>
+<h4 id="component-event-processing-function"><strong>Component event processing function</strong></h4>
+<p>You can also define component event processing functions in <code>Page</code>. Add event binding to components of the rendering layer. When an event is triggered, the event processing function defined in the page is executed.</p>
+<p><strong>Sample Code</strong></p>
+<pre><code class="language-maml">&lt;<span class="hljs-keyword">view</span> bindtap=<span class="hljs-string">&quot;viewTap&quot;</span>&gt; click <span class="hljs-keyword">me</span> &lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">viewTap</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;view tap&#x27;</span>);
+  }
+});
+</code></pre>
+<h3 id="pageroute">Page.route</h3>
+<blockquote>
+<p>Path to the current page. The value is of the <code>String </code> type.</p>
+</blockquote>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">onShow</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(this.route);
+  }
+});
+</code></pre>
+<h3 id="pageprototypesetdataobject-data">Page.prototype.setData(Object data)</h3>
+<p>The <code>setData </code>function is used to send data from the logical layer to the view layer (asynchronously) while changing the value of the corresponding <code>this.data</code> (synchronously).</p>
+<h4 id="parameter-description"><strong>Parameter Description</strong></h4>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">Object</td>
+<td align="left">Yes</td>
+<td align="left">The data to be changed this time</td>
+</tr>
+</tbody></table>
+<p><code>Object </code>is represented in <code>key:value</code> format. The value corresponding to the <code>key </code> in this.data is changed to <code>value</code>.</p>
+<p>The <code>key </code> can be given in the form of a data path. An item in an array or an attribute of an object can be changed, for example, <code>array[2].message</code> and <code>a.b.c.d</code>. The key does not need to be predefined in this.data.</p>
+<p><strong>Note:</strong></p>
+<ol>
+<li>Modifying this.data without invoking this.setData cannot change the page status and result in data inconsistency.</li>
+<li>Only the data that can be JSON can be set.</li>
+<li>The amount of data set at a time cannot exceed 1024 KB. Avoid setting too many data at a time.</li>
+<li>Do not set the value of any item in data to <code>undefined</code>. Otherwise, this item will not be set and some potential problems may be left.</li>
+</ol>
+<p><strong>Sample code:</strong></p>
+<p>Sample code:</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;changeText&quot;</span>&gt;</span>Change normal data<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">num</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;changeNum&quot;</span>&gt;</span>Change normal num<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[0].text}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;changeItemInArray&quot;</span>&gt;</span>Change Array data<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">object.text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;changeItemInObject&quot;</span>&gt;</span>Change Object data<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">newField.text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;addNewField&quot;</span>&gt;</span>Add new data<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// index.js</span>
+Page({
+  <span class="hljs-keyword">data</span>: {
+    text: <span class="hljs-string">&#x27;init data&#x27;</span>,
+    num: <span class="hljs-number">0</span>,
+    array: [{ text: <span class="hljs-string">&#x27;init data&#x27;</span> }],
+    <span class="hljs-keyword">object</span>: {
+      text: <span class="hljs-string">&#x27;init data&#x27;</span>
+    }
+  },
+  changeText: function () {
+    <span class="hljs-comment">// this.data.text = &#x27;changed data&#x27; // Do not modify it directly. this.data</span>
+    <span class="hljs-comment">// Should be using setData</span>
+    <span class="hljs-keyword">this</span>.setData({
+      text: <span class="hljs-string">&#x27;changed data&#x27;</span>
+    });
+  },
+  changeNum: function () {
+    <span class="hljs-comment">// Alternatively, you can use setData to set the modified fields immediately after modifying this.data.</span>
+    <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.num = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">this</span>.setData({
+      num: <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.num
+    });
+  },
+  changeItemInArray: function () {
+    <span class="hljs-comment">// For an object or array field, you can directly modify a subfield below it, which is usually better than modifying the entire object or array.</span>
+    <span class="hljs-keyword">this</span>.setData({
+      <span class="hljs-string">&#x27;array[0].text&#x27;</span>: <span class="hljs-string">&#x27;changed data&#x27;</span>
+    });
+  },
+  changeItemInObject: function () {
+    <span class="hljs-keyword">this</span>.setData({
+      <span class="hljs-string">&#x27;object.text&#x27;</span>: <span class="hljs-string">&#x27;changed data&#x27;</span>
+    });
+  },
+  addNewField: function () {
+    <span class="hljs-keyword">this</span>.setData({
+      <span class="hljs-string">&#x27;newField.text&#x27;</span>: <span class="hljs-string">&#x27;new data&#x27;</span>
+    });
+  }
+});
+</code></pre>

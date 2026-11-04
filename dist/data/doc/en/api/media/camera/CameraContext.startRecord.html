@@ -1,0 +1,97 @@
+<h2 id="cameracontextstartrecordobject-object">CameraContext.startRecord(Object object)</h2>
+<blockquote>
+<p>Start recording(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">timeoutCallback</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">When the recording duration exceeds the upper limit, the recording ends and this callback is triggered.</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">30</td>
+<td align="left">No</td>
+<td align="left">Maximum recording duration, in seconds. Currently, a positive integer ranging from 1 to 180 is supported.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objecttimeoutcallback-callback-function">object.timeoutCallback Callback Function</h4>
+<h5 id="parameters">Parameters</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">startRecord: ok</td>
+</tr>
+<tr>
+<td align="left">tempThumbPath</td>
+<td align="left">String</td>
+<td align="left">Temporary path of the cover image file (local path)</td>
+</tr>
+<tr>
+<td align="left">tempVideoPath</td>
+<td align="left">String</td>
+<td align="left">Temporary path of the video file (local path)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">startRecord</span>(<span class="hljs-params"></span>){
+    <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
+    ctx.<span class="hljs-title function_">startRecord</span>({
+      <span class="hljs-attr">timeoutCallback</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempImagePath</span>
+        })
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+          <span class="hljs-attr">videoSrc</span>: res.<span class="hljs-property">tempVideoPath</span>
+        })
+      },
+      <span class="hljs-attr">success</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;startRecord&#x27;</span>);
+      }
+    })
+  }
+</code></pre>

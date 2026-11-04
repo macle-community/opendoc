@@ -1,0 +1,107 @@
+<h2 id="mapcontextmovetolocationobject-object">MapContext.moveToLocation(Object object)</h2>
+<blockquote>
+<p>If the longitude and latitude are not transferred, the map center is moved to the current anchor point by default. In this case, you need to set show-location to true (Android) for the map component so that the map center can be moved to a specified position,and will trigger a failure callback.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>longitude</td>
+<td>Number</td>
+<td></td>
+<td>No</td>
+<td>longitude</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td></td>
+<td>No</td>
+<td>latitude</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for interface invoking failure</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-string">//maml</span>
+<span class="hljs-string">&lt;button</span> <span class="hljs-string">bindtap=&quot;moveToLocation&quot;&gt;moveToLocation&lt;/button&gt;</span>
+
+<span class="hljs-string">//js</span>
+<span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {
+    <span class="hljs-attr">markers:</span> [
+      {
+        <span class="hljs-attr">id:</span> <span class="hljs-number">0</span>,
+        <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;marker0&#x27;</span>,
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.984686</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.574979</span>,
+        <span class="hljs-attr">width:</span> <span class="hljs-number">10</span>,
+        <span class="hljs-attr">height:</span> <span class="hljs-number">15</span>,
+        <span class="hljs-attr">anchor:</span> { <span class="hljs-attr">x:</span> <span class="hljs-number">0.5</span>, <span class="hljs-attr">y:</span> <span class="hljs-number">0.5</span> },
+      },
+    ],
+    <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+    <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+    <span class="hljs-attr">markersIndex:</span> <span class="hljs-number">1</span>,
+  }<span class="hljs-string">,</span>
+
+  <span class="hljs-string">moveToSpecialLocation()</span> {
+    <span class="hljs-string">this.mapContext.moveToLocation(</span>{
+      <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.79205</span>,
+      <span class="hljs-attr">latitude:</span> <span class="hljs-number">32.03237</span>,
+      <span class="hljs-string">success(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+      <span class="hljs-string">fail(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">moveToLocation()</span> {
+    <span class="hljs-string">this.mapContext.moveToLocation(</span>{
+      <span class="hljs-string">success(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+      <span class="hljs-string">fail(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+<span class="hljs-string">});</span>
+</code></pre>

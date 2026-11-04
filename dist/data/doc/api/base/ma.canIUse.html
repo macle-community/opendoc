@@ -1,0 +1,33 @@
+<h2 id="macaniusestring-schema">ma.canIUse(string schema)</h2>
+<blockquote>
+<p>判断小程序的 API，回调，参数，组件等是否在当前版本可用。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>string schema</strong></p>
+<p>使用 ${API}.${method}.${param}.${option} 或者 ${component}.${attribute}.${option} 方式来调用</p>
+<h3 id="返回值">返回值</h3>
+<p><strong>boolean</strong></p>
+<p>当前版本是否可用</p>
+<p><strong>参数说明</strong></p>
+<p>${API} 代表 API 名字</p>
+<p>${method} 代表调用方式，有效值为 return, success, object, callback</p>
+<p>${param} 代表参数或者返回值</p>
+<p>${option} 代表参数的可选值或者返回值的属性</p>
+<p>${component} 代表组件名字</p>
+<p>${attribute} 代表组件属性</p>
+<p>${option} 代表组件属性的可选值</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// 对象的属性或方法</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;Image.<span class="hljs-params">src</span>&#x27;)</span>;
+
+<span class="hljs-comment">// ma接口参数、回调或者返回值</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">openBluetoothAdapter</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">getSystemInfo</span>.<span class="hljs-params">success</span>.<span class="hljs-params">screenWidth</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">showToast</span>.<span class="hljs-params">object</span>.<span class="hljs-params">image</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">request</span>.<span class="hljs-params">object</span>.<span class="hljs-params">method</span>.GET&#x27;)</span>;
+
+<span class="hljs-comment">// 组件的属性</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">scroll</span>-<span class="hljs-params">view</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">button</span>.<span class="hljs-params">size</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">button</span>.<span class="hljs-params">type</span>.<span class="hljs-params">default</span>&#x27;)</span>;
+</code></pre>

@@ -1,0 +1,104 @@
+<h2 id="madownloadfileobject-object">ma.downloadFile(Object object)</h2>
+<blockquote>
+<p>Download file resources to a local path. The client directly initiates an HTTPS GET request and returns the local temporary path (local path) of the file. 
+Note: Specify a proper Content-Type field in the header of the response from the server to ensure that the client can correctly process the file type.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">URL of the resource to be downloaded.</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Header of an HTTP request. <strong>Referer</strong> cannot be set in the header.</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">No</td>
+<td align="left">Timeout duration, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">downloadFile: ok</td>
+</tr>
+<tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">Temporary file path (local path). This parameter is returned when the file storage path specified by <strong>filePath</strong> is not transferred. The downloaded files are stored in a temporary file path.</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">HTTP status code returned by the developer server.(The success callback is triggered only when the download is successful. The status code is 2XX. In other abnormal scenarios, such as 404 and 500 requests, the failure callback is triggered.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">downloadFile</span>({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/audio/123&#x27;</span>, <span class="hljs-comment">// Example resource.</span>
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-comment">// As long as the server has response data, the response content is written to the file and the success callback is called. The service needs to determine whether the required content is downloaded.</span>
+    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">statusCode</span> === <span class="hljs-number">200</span>) {
+      ma.<span class="hljs-title function_">playVoice</span>({
+        <span class="hljs-attr">filePath</span>: res.<span class="hljs-property">tempFilePath</span>
+      });
+    }
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: Currently, the security domain is not verified. You are advised to use HTTPS.</li>
+</ol>

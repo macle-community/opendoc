@@ -1,0 +1,49 @@
+<h2 id="downloadtaskonprogressupdatefunction-listener">DownloadTask.onProgressUpdate(function listener)</h2>
+<blockquote>
+<p>Listening to download progress change events (Minimum version: 23.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function for download progress change events</p>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">progress</td>
+<td align="left">Number</td>
+<td align="left">Download progress percentage</td>
+</tr>
+<tr>
+<td align="left">totalBytesWritten</td>
+<td align="left">Number</td>
+<td align="left">Length of the downloaded data, in byte</td>
+</tr>
+<tr>
+<td align="left">totalBytesExpectedToWrite</td>
+<td align="left">Number</td>
+<td align="left">Expected total length of data to be downloaded, in byte</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const downloadTask = <span class="hljs-keyword">ma</span>.downloadFile({
+    url: <span class="hljs-string">&#x27;http://example.com/audio/123&#x27;</span>, //This <span class="hljs-keyword">is</span> <span class="hljs-keyword">only</span> <span class="hljs-keyword">an</span> example <span class="hljs-built_in">and</span> <span class="hljs-keyword">is</span> not <span class="hljs-keyword">a</span> real resource.
+    success(<span class="hljs-keyword">res</span>) {
+        <span class="hljs-keyword">ma</span>.playVoice({
+            filePath: <span class="hljs-keyword">res</span>.tempFilePath
+        })
+    }
+})
+
+downloadTask.onProgressUpdate((<span class="hljs-keyword">res</span>) =&gt; {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Download Progress&#x27;</span>, <span class="hljs-keyword">res</span>.progress)
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Length of downloaded data&#x27;</span>, <span class="hljs-keyword">res</span>.totalBytesWritten)
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Expected total length of data to be downloaded&#x27;</span>, <span class="hljs-keyword">res</span>.totalBytesExpectedToWrite)
+})
+</code></pre>

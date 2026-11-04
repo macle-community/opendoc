@@ -1,0 +1,61 @@
+<h2 id="mashowloadingobject-object">ma.showLoading(Object object)</h2>
+<blockquote>
+<p>提示 loading 提示框。需主动调用 ma.hideLoading 才能关闭提示框</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>提示的内容</td>
+</tr>
+<tr>
+<td>mask</td>
+<td>Boolean</td>
+<td>false</td>
+<td>否</td>
+<td>是否显示透明蒙层，防止触摸穿透</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">showLoading</span>({
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;加载中&#x27;</span>
+});
+
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  ma.<span class="hljs-title function_">hideLoading</span>();
+}, <span class="hljs-number">2000</span>);
+</code></pre>

@@ -1,0 +1,92 @@
+<h2 id="icon-图标">Icon 图标</h2>
+<blockquote>
+<p>基于字体的图标集，可以通过 Icon 组件使用，也可以在其他组件中通过 icon 属性引用（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="图标预览">图标预览</h3>
+<p>当前组件库支持的图标与对应的图标名称如下</p>
+<p><img src="/openplatform/macledocs/data/doc/maui-component/image/icon_list.png" alt="image" ></p>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<p><code>Icon</code>的<code>name</code>属性支持传入图标名称或图片链接。</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;https://example/Icon.png&quot;</span> /&gt;
+</code></pre>
+<h4 id="提示信息">提示信息</h4>
+<p>设置<code>dot</code>属性后，会在图标右上角展示一个小红点。设置<code>info</code>属性后，会在图标右上角展示相应的内容。</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> dot /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> info=<span class="hljs-string">&quot;9&quot;</span> /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> info=<span class="hljs-string">&quot;99+&quot;</span> /&gt;
+</code></pre>
+<h4 id="图标大小">图标大小</h4>
+<p>设置<code>size</code>属性来控制图标大小。</p>
+<pre><code class="language-html">&lt;maui-icon name<span class="hljs-operator">=</span><span class="hljs-string">&quot;cross&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;50px&quot;</span> /&gt;
+</code></pre>
+<h2 id="api">API</h2>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">图标名称或图片链接</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">dot</td>
+<td align="left">是否显示图标右上角小红点</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">info</td>
+<td align="left">图标右上角文字提示</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">图标颜色</td>
+<td align="left">String</td>
+<td align="left">#2c2c2c</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">图标大小，如 <code>20px</code>，<code>2em</code>，默认单位为<code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>inherit</code></td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">自定义样式</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">class-prefix</td>
+<td align="left">类名前缀</td>
+<td align="left">String</td>
+<td align="left"><code>maui-icon</code></td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">点击图标时触发</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

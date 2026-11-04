@@ -1,0 +1,73 @@
+<h2 id="编译器-cli">编译器 cli</h2>
+<h3 id="简介">简介</h3>
+<p>为了便于小程序开发者能更灵活的进行 CI/CD，除 IDE 内部集成外，我们提供了独立的编译器 cli</p>
+<h3 id="获取方式">获取方式</h3>
+<p>前往<a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">下载页面</a>，下载编译器包 <code>Macle_xx.x.x_Engine_Compiler.zip</code> </p>
+<blockquote>
+<p>将 Macle_xx.x.x_Engine_Compiler.zip 解压后进入目录，执行：npm i -g</p>
+</blockquote>
+<h3 id="使用方式">使用方式</h3>
+<p><strong>参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-s</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">小程序源码目录</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">小程序编译后目标目录</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否为 debug 模式</td>
+</tr>
+<tr>
+<td align="left">-es5</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否转 ES5</td>
+</tr>
+<tr>
+<td align="left">-mss</td>
+<td align="left">Number</td>
+<td align="left">2</td>
+<td align="left">否</td>
+<td align="left">单个分包/主包大小最大值（单位 MB）</td>
+</tr>
+<tr>
+<td align="left">-mts</td>
+<td align="left">Number</td>
+<td align="left">20</td>
+<td align="left">否</td>
+<td align="left">总包大小最大值（单位 MB）</td>
+</tr>
+</tbody></table>
+<p><strong>示例</strong></p>
+<pre><code class="language-sh">macle-compiler-cli -s D:<span class="hljs-regexp">/workspace/</span>MiniProgram<span class="hljs-regexp">/Src/m</span>acle-web<span class="hljs-regexp">/demo/m</span>acle -t D:<span class="hljs-regexp">/workspace/</span>MiniProgram<span class="hljs-regexp">/Src/m</span>acle-web<span class="hljs-regexp">/simulator/</span>sdk<span class="hljs-regexp">/root/</span>app
+</code></pre>
+<p>编译日志</p>
+<p><img src="/openplatform/macledocs/data/doc/extended/image/compiler-cli-log.png" alt="image" ></p>
+<p>编译打包结果</p>
+<p><img src="/openplatform/macledocs/data/doc/extended/image/compiler-cli-result.png" alt="image" ></p>
+<h3 id="常见问题">常见问题</h3>
+<h4 id="使用macle提供的独立编译器运行小程序包，小程序中的console方法、debugger均未生效是为什么？">使用macle提供的独立编译器运行小程序包，小程序中的console方法、debugger均未生效是为什么？</h4>
+<p><strong>A:</strong> 为方便开发者以命令行形式编译小程序，macle提供了独立的编译器，编译器默认会对代码中的console及debugger进行过滤，当前该过滤策略<strong>暂不支持</strong>开发者配置。</p>

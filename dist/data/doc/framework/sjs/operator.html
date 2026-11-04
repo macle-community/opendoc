@@ -1,0 +1,131 @@
+<h2 id="运算符">运算符</h2>
+<h3 id="算术运算符">算术运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 加法运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">30</span> === a + b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 减法运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">-10</span> === a - b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 乘法运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">200</span> === a * b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 除法运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">0.5</span> === a / b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 取余运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">10</span> === a % b); <span class="hljs-comment">//true</span>
+</code></pre>
+<p>加法 + 运算符可用作字符串拼接。</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;hello&#x27;</span>,
+  b = <span class="hljs-string">&#x27; macle&#x27;</span>;
+<span class="hljs-comment">// 字符串拼接</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;hello macle&#x27;</span> === a + b); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="比较运算符">比较运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 小于</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a &lt; b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 大于</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === a &gt; b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 小于等于</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a &lt;= b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 大于等于</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === a &gt;= b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 等号</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === (a == b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 非等号</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === (a != b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 全等号</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === (a === b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 非全等号</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === (a !== b)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="二元逻辑运算符">二元逻辑运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 逻辑与</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a &amp;&amp; b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 逻辑或</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">10</span> === (a || b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 逻辑否，取反运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === !a); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="位运算符">位运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 左移运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">80</span> === a &lt;&lt; <span class="hljs-number">3</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 带符号右移运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === a &gt;&gt; <span class="hljs-number">2</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 无符号右移运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === a &gt;&gt;&gt; <span class="hljs-number">2</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 与运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === (a &amp; <span class="hljs-number">3</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 异或运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">9</span> === (a ^ <span class="hljs-number">3</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// 或运算</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">11</span> === (a | <span class="hljs-number">3</span>)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="赋值运算符">赋值运算符</h3>
+<pre><code class="language-js"><span class="hljs-attribute">var</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> *= <span class="hljs-number">10</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">100</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> /= <span class="hljs-number">5</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> %= <span class="hljs-number">7</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">3</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> += <span class="hljs-number">5</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">15</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> -= <span class="hljs-number">11</span>;
+<span class="hljs-attribute">console</span>.log(-<span class="hljs-number">1</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &lt;&lt;= <span class="hljs-number">10</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">10240</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &gt;&gt;= <span class="hljs-number">2</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &gt;&gt;&gt;= <span class="hljs-number">2</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &amp;= <span class="hljs-number">3</span>;
+</code></pre>
+<h3 id="一元运算符">一元运算符</h3>
+<pre><code class="language-js">var a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-regexp">//</span> 自增运算
+console.log(<span class="hljs-number">10</span> === a++); <span class="hljs-regexp">//</span>true
+console.log(<span class="hljs-number">12</span> === ++a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> 自减运算
+console.log(<span class="hljs-number">12</span> === a--); <span class="hljs-regexp">//</span>true
+console.log(<span class="hljs-number">10</span> === --a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> 正值运算
+console.log(<span class="hljs-number">10</span> === +a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> 负值运算
+console.log(<span class="hljs-number">0</span> - <span class="hljs-number">10</span> === -a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> 否运算
+console.log(-<span class="hljs-number">11</span> === ~a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> 取反运算
+console.log(false === !a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> <span class="hljs-keyword">delete</span> 运算
+console.log(true === <span class="hljs-keyword">delete</span> a.fake); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span> void 运算
+</code></pre>
+<h3 id="三元运算符">三元运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 条件运算符</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a &gt;= <span class="hljs-number">10</span> ? a + <span class="hljs-number">10</span> : b + <span class="hljs-number">10</span>)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="逗号运算符">逗号运算符</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// 逗号运算符</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a, b)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="运算符优先级">运算符优先级</h3>
+<p>SJS 运算符的优先级与 Javascript 一致。</p>

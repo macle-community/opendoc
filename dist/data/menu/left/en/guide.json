@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Start",
+    "child": [
+      {
+        "name": "Installing Developer Tools",
+        "path": "/installDevtool",
+        "data": "/data/doc/guide/installDevtool.md"
+      },
+      {
+        "name": "Your First Little Program",
+        "path": "/developMacle",
+        "data": "/data/doc/guide/developMacle.md"
+      },
+      {
+        "name": "Publish Mini Program",
+        "path": "/releaseMacle",
+        "data": "/data/doc/guide/releaseMacle.md"
+      }
+    ]
+  },
+  {
+    "name": "Mini Program Configuration",
+    "path": "/config",
+    "data": "/data/doc/guide/config.md"
+  },
+  {
+    "name": "Subpackage Loading",
+    "path": "/subPackages",
+    "data": "/data/doc/guide/subPackages.md"
+  },
+  {
+    "name": "Safety Menu",
+    "child": [
+      {
+        "name": "Security Guideline",
+        "path": "/safetyGuidelines",
+        "data": "/data/doc/guide/safetyGuidelines.md"
+      },
+      {
+        "name": "Compliance and Safety Requirements ",
+        "path": "/complianceIssue",
+        "data": "/data/doc/guide/complianceIssue.md"
+      }
+    ]
+  },
+  {
+    "name": "Custom Components",
+    "child": [
+      {
+        "name": "Overview",
+        "path": "/custom-component",
+        "data": "/data/doc/guide/custom-component/introductory.md"
+      },
+      {
+        "name": "Component Templates and Styles",
+        "path": "/custom-component-maml-mass",
+        "data": "/data/doc/guide/custom-component/mamlMass.md"
+      },
+      {
+        "name": "Component Lifecycle",
+        "path": "/lifetimes",
+        "data": "/data/doc/guide/custom-component/lifeTime.md"
+      },
+      {
+        "name": "Component Constructor",
+        "path": "/component",
+        "data": "/data/doc/guide/custom-component/component.md"
+      },
+      {
+        "name": "Events and Communication Between Components",
+        "path": "/events",
+        "data": "/data/doc/guide/custom-component/events.md"
+      },
+      {
+        "name": "Behaviors",
+        "path": "/behaviors",
+        "data": "/data/doc/guide/custom-component/behaviors.md"
+      },
+      {
+        "name": "Relations",
+        "path": "/relations",
+        "data": "/data/doc/guide/custom-component/relations.md"
+      }
+    ]
+  },
+  {
+    "name": "Connected Hardware Capability",
+    "child": [
+      {
+        "name": "BlueTooth",
+        "child": [
+          {
+            "name": "Introductory",
+            "path": "/link-hardware-capability",
+            "data": "/data/doc/guide/link-hardware-capability/introductory.md"
+          },
+          {
+            "name": "Bluetooth Low Energy(BLE)",
+            "path": "/bleDevice",
+            "data": "/data/doc/guide/link-hardware-capability/bleDevice.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mini Program Adapts to the RTL Framework",
+    "path": "/rtl",
+    "data": "/data/doc/guide/rtl.md"
+  },
+  {
+    "name": "Support for Landscape Mode in mini-programs",
+    "path": "/pageOrientation",
+    "data": "/data/doc/guide/pageOrientation.md"
+  }
+]

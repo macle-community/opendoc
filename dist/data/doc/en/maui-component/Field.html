@@ -1,0 +1,234 @@
+<h2 id="field">Field</h2>
+<h3 id="introduction">Introduction</h3>
+<p>You can enter or edit text in the text box.</p>
+<h2 id="sample-code">Sample Code</h2>
+<h3 id="basic-usage">Basic usage</h3>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter a username.&quot;</span>
+/&gt;</span>
+
+Page({
+  data: {
+    value: &#x27;&#x27;,
+  }
+});</span>
+</code></pre>
+<h3 id="custom-type">Custom type</h3>
+<p>Use the <code>type</code> attribute to define different types of text boxes.</p>
+<pre><code class="language-html"><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">username</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Username&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter a username.&quot;</span>
+  /&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">password</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Password&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter a password.&quot;</span>
+  /&gt;</span></span>
+</code></pre>
+<h3 id="disable-text-box">Disable text box</h3>
+<pre><code class="language-html">&lt;maui-field
+    value<span class="hljs-operator">=</span><span class="hljs-string">&quot;The text box is disabled.&quot;</span>
+    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Username&quot;</span>
+    disabled
+/&gt;
+</code></pre>
+<h3 id="error-message">Error message</h3>
+<p>Use the <code>error</code> or <code>error-message</code> attribute to add an error message.</p>
+<pre><code class="language-html">&lt;maui-field
+    <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;{{ username }}&quot;</span>
+    <span class="hljs-attribute">label</span>=<span class="hljs-string">&quot;Username&quot;</span>
+    <span class="hljs-attribute">placeholder</span>=<span class="hljs-string">&quot;Enter a username.&quot;</span>
+    <span class="hljs-built_in">error</span>
+/&gt;
+&lt;maui-field
+    <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;{{ phone }}&quot;</span>
+    <span class="hljs-attribute">label</span>=<span class="hljs-string">&quot;Mobile number&quot;</span>
+    <span class="hljs-attribute">placeholder</span>=<span class="hljs-string">&quot;Enter a mobile number.&quot;</span>
+    <span class="hljs-attribute">error-message</span>=<span class="hljs-string">&quot;Incorrect mobile number format.&quot;</span>
+/&gt;
+</code></pre>
+<h3 id="content-alignment-mode">Content alignment mode</h3>
+<p>Use the <code>input-align</code> attribute to set the content alignment mode.</p>
+<pre><code class="language-html">&lt;maui-field value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ username3 }}&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Username&quot;</span> placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;Enter a username.&quot;</span> input-align<span class="hljs-operator">=</span><span class="hljs-string">&quot;right&quot;</span> /&gt;
+</code></pre>
+<h3 id="auto-fit-height">Auto-fit height</h3>
+<p>For <code>textarea</code>, uses the <code>autosize</code> attribute to automatically fit the height.</p>
+<pre><code class="language-html">&lt;maui-field value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ message }}&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Message&quot;</span> type<span class="hljs-operator">=</span><span class="hljs-string">&quot;textarea&quot;</span> placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;Enter a message.&quot;</span> autosize /&gt;
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>label</td>
+<td>Text on the left side of the input box</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>value</td>
+<td>currently entered value</td>
+<td>String | Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Can be set to any native type, such as <code>number</code> <code>idcard</code> <code>textarea</code> <code>digit</code></td>
+<td>String</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>Get focus</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>Whether to disable the input box</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>Whether the password type</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>Maximum input length. When set to <code>-1</code>, there is no limit to the maximum length.</td>
+<td>Number</td>
+<td><code>140</code></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>Placeholder when input box is empty</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>placeholder-style</td>
+<td>Specify the placeholder style. Currently, only <code>color</code>, <code>font-size</code>, and <code>font-weight</code> are supported.</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>show-word-limit</td>
+<td>Whether to display word count statistics, you need to set the maxlength attribute</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>Whether to mark the input content in red</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>error-message</td>
+<td>The error message text at the bottom will not be displayed if it is empty.</td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td>error-message-align</td>
+<td>Bottom error message text alignment, optional value is <code>center</code> <code>right</code></td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td>input-align</td>
+<td>Input box content alignment, optional value is <code>center</code> <code>right</code></td>
+<td>String</td>
+<td><code>left</code></td>
+</tr>
+<tr>
+<td>autosize</td>
+<td>Whether to adapt the content height, only valid for <code>textarea</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>confirm-type</td>
+<td>Set the text of the button in the lower right corner of the keyboard, only effective when type=<code>text</code></td>
+<td>String</td>
+<td><code>done</code></td>
+</tr>
+<tr>
+<td>confirm-hold</td>
+<td>Whether to keep the keyboard from closing when clicking the button in the lower right corner of the keyboard. Invalid when type=<code>textarea</code></td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>adjust-position</td>
+<td>Whether to automatically push the page up when the keyboard pops up</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>selection-start</td>
+<td>The starting position of the cursor, valid during automatic gathering, needs to be used in conjunction with selection-end</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td>selection-end</td>
+<td>The end position of the cursor, valid during automatic gathering, needs to be used in conjunction with selection-start</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>Cursor position when specifying focus, defaults to end of line</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Callback Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:input</td>
+<td align="left">Triggered when text is entered. The return value of the bindinput function is not reflected in textarea.</td>
+<td align="left">event.detail={value, cursor}</td>
+</tr>
+<tr>
+<td align="left">bind:confirm</td>
+<td align="left">Triggered when clicking the Finish button. It is invalid when type is set to <code>textarea</code>.</td>
+<td align="left">event.detail.value: {input value}</td>
+</tr>
+<tr>
+<td align="left">bind:focus</td>
+<td align="left">Triggered when the text box is focused.</td>
+<td align="left">event.detail.value: {input value}</td>
+</tr>
+<tr>
+<td align="left">bind:blur</td>
+<td align="left">Triggered when the text box is focused.</td>
+<td align="left">event.detail.value: {input value}</td>
+</tr>
+<tr>
+<td align="left">bind:linechange</td>
+<td align="left">Called when the number of lines in the text box changes. It is valid only for textarea.</td>
+<td align="left">event.detail = { height: 0, lineHeight: 0, lineCount: 0 }</td>
+</tr>
+</tbody></table>

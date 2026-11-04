@@ -1,0 +1,143 @@
+<h2 id="textarea">textarea</h2>
+<blockquote>
+<p>Multi-line text box. It is a native component. Pay attention to related restrictions when using it.<strong>Note: Currently,
+this attribute is implemented on the web and is not native. Therefore, some attributes are not supported.</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Content in the input box.</td>
+</tr>
+<tr>
+<td align="left">placeholder</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Placeholder when the text box is empty.</td>
+</tr>
+<tr>
+<td align="left">placeholder-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Placeholder style. The options are <code>color</code>, <code>font-size</code>, and <code>font-weight</code>.</td>
+</tr>
+<tr>
+<td align="left">placeholder-class</td>
+<td align="left">String</td>
+<td align="left">textarea-placeholder</td>
+<td align="left">No</td>
+<td align="left">Style class of the placeholder.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">maxlength</td>
+<td align="left">Number</td>
+<td align="left">140</td>
+<td align="left">No</td>
+<td align="left">Maximum input length. The value <code>-1</code> indicates that the maximum length is not limited.</td>
+</tr>
+<tr>
+<td align="left">focus</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to obtain the focus.</td>
+</tr>
+<tr>
+<td align="left">auto-height</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to automatically increase the height. When <code>auto-height</code> is set, <code>style.height</code> does not take effect.</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">No</td>
+<td align="left">Cursor position of a focus. By default, it is at the end of a line.</td>
+</tr>
+<tr>
+<td align="left">selection-start</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">No</td>
+<td align="left">Start position of the cursor. It is valid for automatic focus and needs to be used with <code>selection-end</code>.</td>
+</tr>
+<tr>
+<td align="left">selection-end</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">No</td>
+<td align="left">End position of the cursor. It is valid for automatic focus and needs to be used with <code>selection-start</code>.</td>
+</tr>
+<tr>
+<td align="left">adjust-position</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">No</td>
+<td align="left">Whether to automatically push the page when the keyboard pops up.</td>
+</tr>
+<tr>
+<td align="left">bindfocus</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the text box is focused. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindblur</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the text box loses focus. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindlinechange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Used when the number of rows in the text box changes. The output is <strong>event.detail =</strong> <em>{height: 0, heightRpx: 0, lineCount: 0}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindinput</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Whether to trigger the input event during keyboard input. The output is <strong>event.detail =</strong> <em>{value, cursor}</em>. The return value of <strong>bindinput</strong> is not reflected in the textarea.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;textarea-wrp&#x27;</span>&gt;
+  &lt;textarea focus id=<span class="hljs-string">&#x27;textarea2&#x27;</span> selection-start=<span class="hljs-string">&#x27;1&#x27;</span> selection-end=<span class="hljs-string">&#x27;3&#x27;</span> style=<span class="hljs-string">&#x27;height: 3em&#x27;</span> <span class="hljs-keyword">value</span>=<span class="hljs-string">&#x27;自动聚焦&#x27;</span> maxlength=<span class="hljs-string">&#x27;10&#x27;</span> auto-height /&gt;
+&lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The blur event of the <code>textarea </code> is later than the tap event on the page. To obtain the <code>textarea </code> from
+the <code>button </code> click event, you need to use the <code>bindsubmit</code> attribute of the <code>form</code>.</li>
+<li>It is not recommended to modify user input on multiple lines of text, so the <code>bindinput</code> attribute of the <code>textarea </code>
+does not reflect the return value to the <code>textarea</code>.</li>
+<li>When <strong>cursor</strong>, <strong>selection-start</strong>, and <strong>selection-end</strong> coexist, <strong>selection-start</strong> and <strong>selection-end</strong> are
+used.</li>
+</ol>

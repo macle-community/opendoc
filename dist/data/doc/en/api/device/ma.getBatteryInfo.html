@@ -1,0 +1,73 @@
+<h2 id="magetbatteryinfoobject-object">ma.getBatteryInfo(Object object)</h2>
+<blockquote>
+<p>Obtain the device battery level.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getBatteryInfo:ok</td>
+</tr>
+<tr>
+<td align="left">level</td>
+<td align="left">Number</td>
+<td align="left">Device battery level. The value ranges from 1 to 100.</td>
+</tr>
+<tr>
+<td align="left">isCharging</td>
+<td align="left">Boolean</td>
+<td align="left">Whether the device is being charged.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getBatteryInfo({
+  <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.level);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.isCharging);
+  }
+});
+</code></pre>

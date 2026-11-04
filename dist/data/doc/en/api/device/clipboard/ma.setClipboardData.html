@@ -1,0 +1,61 @@
+<h2 id="masetclipboarddataobject-object">ma.setClipboardData(Object object)</h2>
+<blockquote>
+<p>Sets the contents of the system clipboard. After the interface is invoked successfully, a toast message is displayed, indicating that the content has been copied. The message lasts for 1.5 seconds (the earliest version is 24.12. 0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Content of the clipboard</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-title">ma</span>.setClipboardData({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: &#x27;<span class="hljs-keyword">data</span>&#x27;,</span>
+  success (res) {
+    ma.getClipboardData({
+      success (res) {
+        console.log(res.<span class="hljs-class"><span class="hljs-keyword">data</span>); </span>
+      }
+    });
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>This API sets the copied content to the system clipboard. Therefore, mini program developers must ensure that the copied content is reasonable and valid. If the content copied by the API is sensitive, the mini program developer shall independently bear the risk of information leakage.</li>
+</ol>

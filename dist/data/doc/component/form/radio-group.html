@@ -1,0 +1,62 @@
+<h2 id="radio-group">radio-group</h2>
+<blockquote>
+<p>单项选择器，内部由多个 radio 组成。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bindchange</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/component/radio-group">radio-group</a>中选中项发生改变时触发 change 事件，detail = {value:[选中的 radio 的 value 的数组]}</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;radioChange&#x27;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">items</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.checked</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;pink&#x27;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    <span class="hljs-built_in">items</span>: [
+      { value: <span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;美国&#x27;</span> },
+      { value: <span class="hljs-string">&#x27;CHN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;中国&#x27;</span>, checked: <span class="hljs-string">&#x27;true&#x27;</span> },
+      { value: <span class="hljs-string">&#x27;BRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;巴西&#x27;</span> },
+      { value: <span class="hljs-string">&#x27;JPN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;日本&#x27;</span> },
+      { value: <span class="hljs-string">&#x27;ENG&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;英国&#x27;</span> },
+      { value: <span class="hljs-string">&#x27;FRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;法国&#x27;</span> }
+    ]
+  },
+  radioChange: function(e) {
+    console.<span class="hljs-built_in">log</span>(e.detail.value);
+
+    var <span class="hljs-built_in">items</span> = this.data.<span class="hljs-built_in">items</span>;
+    <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>, len = <span class="hljs-built_in">items</span>.length; i &lt; len; ++i) {
+      <span class="hljs-built_in">items</span>[i].checked = <span class="hljs-built_in">items</span>[i].value == e.detail.value;
+    }
+
+    this.setData({
+      <span class="hljs-built_in">items</span>: <span class="hljs-built_in">items</span>
+    });
+  }
+});
+</code></pre>

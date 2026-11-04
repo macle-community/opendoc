@@ -1,0 +1,84 @@
+<h2 id="appobject-object">App(Object object)</h2>
+<p>Register Mini Program. Accepts an Object parameter that specifies the lifecycle callback of the Mini Program, etc.</p>
+<blockquote>
+<p>App() must be called in app.js and must be called only once. Otherwise, there will be unintended consequences.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">onLaunch</td>
+<td align="left">Function</td>
+<td align="left">No</td>
+<td align="left">Lifecycle Callback - Initializing the Listening Mini Program</td>
+</tr>
+<tr>
+<td align="left">onShow</td>
+<td align="left">Function</td>
+<td align="left">No</td>
+<td align="left">Lifecycle Callback - Monitor Mini Program start or switch foreground</td>
+</tr>
+<tr>
+<td align="left">onHide</td>
+<td align="left">Function</td>
+<td align="left">No</td>
+<td align="left">Lifecycle Callback - Monitoring Small Program Switching Backstage</td>
+</tr>
+<tr>
+<td align="left">onError</td>
+<td align="left">Function</td>
+<td align="left">No</td>
+<td align="left">Error listening function</td>
+</tr>
+<tr>
+<td align="left">Other</td>
+<td align="left">Any</td>
+<td align="left">No</td>
+<td align="left">Developers can add any function or data variable to the Object parameter, and use this to access the object parameter.</td>
+</tr>
+</tbody></table>
+<h4 id="onlaunchobject-object">onLaunch(Object object)</h4>
+<p>Triggered when Mini Program initialization is complete, globally triggered only once.</p>
+<h4 id="onshowobject-object">onShow(Object object)</h4>
+<p>Triggered when the Mini Program is started or when the foreground is displayed from the background.</p>
+<h4 id="onhide">onHide()</h4>
+<p>Triggered when the Mini Program is started or when the foreground is displayed from the background.</p>
+<h4 id="onerrorstring-error">onError(String error)</h4>
+<p>Triggered when a script error occurs in the Mini Program or an API invoking error occurs.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-built_in">App</span>({
+  onLaunch (options) {
+    <span class="hljs-comment">// Do something initial when launch.</span>
+  },
+  onShow (options) {
+    <span class="hljs-comment">// Do something when show.</span>
+  },
+  onHide () {
+    <span class="hljs-comment">// Do something when hide.</span>
+  },
+  onError (msg) {
+    console<span class="hljs-selector-class">.log</span>(msg)
+  },
+  globalData: <span class="hljs-string">&#x27;I am global data&#x27;</span>
+})
+</code></pre>
+<h2 id="appobject-getapp">AppObject getApp()</h2>
+<p>The app instance that is globally unique has been obtained.</p>
+<h3 id="sample-code-1">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// other.js</span>
+<span class="hljs-keyword">var</span> appInstance = getApp()
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(appInstance.globalData) <span class="hljs-comment">// I am global data</span>
+</code></pre>
+<h3 id="precautions">Precautions</h3>
+<ul>
+<li>Do not call getApp() in a function defined in App() or before calling App. You can use this to obtain an app instance.</li>
+<li>After obtaining an instance through getApp(), do not call the life cycle function.</li>
+</ul>

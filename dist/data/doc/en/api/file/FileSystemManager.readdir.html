@@ -1,0 +1,78 @@
+<h2 id="filesystemmanagerreaddirobject-object">FileSystemManager.readdir(Object object)</h2>
+<blockquote>
+<p>Read the list of files (including folders) in the directory(Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dirPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Directory path to read. (Local path, which can only be in the usr directory. It can be a relative directory. However, the final real path cannot be outside the usr directory. Temporary paths and cache paths cannot be read.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h5 id="success-callback-function">success Callback Function</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">files</td>
+<td align="left">Array</td>
+<td align="left">Array of file names (including files and folders) in a specified directory</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+
+fs.<span class="hljs-title function_">readdir</span>({
+  <span class="hljs-attr">dirPath</span>: <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/testDir`</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>){
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The value of dirPath must ensure that each level in the path is a folder. Otherwise, the interface returns the following error information: <strong>no such file or directory ${dirPath}</strong></li>
+</ol>

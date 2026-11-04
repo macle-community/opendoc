@@ -1,0 +1,28 @@
+<h2 id="maonkeyboardheightchangefunction-listener">ma.onKeyboardHeightChange(function listener)</h2>
+<blockquote>
+<p>监听键盘高度变化事件（最低版本： 24.12.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-listener">function listener</h4>
+<p>键盘高度变化事件的监听函数</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">height</td>
+<td align="left">number</td>
+<td align="left">键盘高度</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.onKeyboardHeightChange(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+});
+</code></pre>

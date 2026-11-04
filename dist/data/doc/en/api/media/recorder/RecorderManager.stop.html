@@ -1,0 +1,18 @@
+<h2 id="recordermanagerstop">RecorderManager.stop()</h2>
+<blockquote>
+<p>Stop recording. This interface can be invoked only after the user has granted the microphone permission to the current Mini Program(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The stop interface can be invoked only when the voice recorder is recording or is paused.</li>
+<li>The stop operation is performed on the recording manager. The operation result is obtained from the recording manager, which is different from the callback mode of common interfaces. The recorder stops recording. You can use RecorderManager.onStop (listener) to monitor the recording. (The stop caused by various exceptions is also monitored by the onStop.) You can use RecorderManager.onError(listener) to listen to errors.</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-maml">&lt;button <span class="hljs-attribute">bindtap</span>=<span class="hljs-string">&quot;recorderStop&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;recorderStop&lt;/button&gt;
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">Page</span>({
+    <span class="hljs-title">recorderStop</span>() {
+        <span class="hljs-variable">recorderManager.stop</span>();
+    }
+})</span>
+</code></pre>

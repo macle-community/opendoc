@@ -1,0 +1,106 @@
+<h2 id="mastartbluetoothdevicesdiscoveryobject-object">ma.startBluetoothDevicesDiscovery(Object object)</h2>
+<blockquote>
+<p>开始搜寻附近的蓝牙外围设备（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">services</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">要搜索的蓝牙设备主服务的 UUID 列表（支持 16/32/128 位 UUID）。某些蓝牙设备会广播自己的主 service 的 UUID。如果设置此参数，则只搜索广播包有对应 UUID 的主服务的蓝牙设备。建议通过该参数过滤掉周边不需要处理的其他蓝牙设备</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="array-services">Array services</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uuid</td>
+<td>String</td>
+<td>蓝牙设备服务的  UUID</td>
+</tr>
+<tr>
+<td>isPrimary</td>
+<td>Boolean</td>
+<td>该服务是否为主服务</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">startBluetoothDevicesDiscovery: ok</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">ma</span>.startBluetoothDevicesDiscovery({
+  success: (<span class="hljs-keyword">res</span>) =&gt; {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;startBluetoothDevicesDiscovery success&#x27;</span>, <span class="hljs-keyword">res</span>)
+    <span class="hljs-keyword">ma</span>.showModal({
+      title: <span class="hljs-string">&#x27;discovery success&#x27;</span>,
+      content: JSON.stringify(<span class="hljs-keyword">res</span>),
+      showCancel: false
+    })
+  },
+  fail: (<span class="hljs-keyword">res</span>) =&gt; {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;startBluetoothDevicesDiscovery fail&#x27;</span>, <span class="hljs-keyword">res</span>)
+    <span class="hljs-keyword">ma</span>.showModal({
+      title: <span class="hljs-string">&#x27;discovery fail&#x27;</span>,
+      content: JSON.stringify(<span class="hljs-keyword">res</span>),
+      showCancel: false
+    })
+  },
+})
+</code></pre>
+<h3 id="fqs">F&amp;Qs</h3>
+<p><strong>Q:</strong> 安卓机器上搜寻附近的蓝牙外围设备搜索不到设备，如何排查？</p>
+<p>A: 如果使用安卓手机长时间无法搜索到附近的蓝牙设备，您可以排查手机的定位服务是否开启，并在确认开启后尝试重新搜索设备</p>

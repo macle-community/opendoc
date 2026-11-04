@@ -1,0 +1,50 @@
+<h2 id="授权">授权</h2>
+<blockquote>
+<p>部分接口需要经过用户授权同意才能调用。我们把这些接口按使用范围分成多个 <code>scope</code> ，用户选择对 <code>scope</code> 来进行授权，当授权给一个 <code>scope</code> 之后，其对应的所有接口都可以直接使用。</p>
+</blockquote>
+<p>此类接口调用时：</p>
+<ul>
+<li>如果用户未接受或拒绝过此权限，会弹窗询问用户，用户点击同意后方可调用接口；</li>
+<li>如果用户已授权，可以直接调用接口；</li>
+<li>如果用户已拒绝授权，则不会出现弹窗，而是直接进入接口 fail 回调。<strong>请开发者兼容用户拒绝授权的场景。</strong></li>
+</ul>
+<h2 id="获取用户授权设置">获取用户授权设置</h2>
+<p>开发者可以使用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getSetting">ma.getSetting</a> 获取用户当前的授权状态。</p>
+<h2 id="打开设置界面">打开设置界面</h2>
+<p>用户可以在小程序设置界面（「右上角菜单」 - 「设置」）中控制对该小程序的授权状态。</p>
+<p>开发者可以调用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.openSetting">ma.openSetting</a> 打开设置界面，引导用户开启授权。</p>
+<h2 id="提前发起授权请求">提前发起授权请求</h2>
+<p>开发者可以使用 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.authorize">ma.authorize</a> 在调用需授权 API 之前，提前向用户发起授权请求。</p>
+<h2 id="scope-列表">scope 列表</h2>
+<table>
+<thead>
+<tr>
+<th align="left">scope</th>
+<th align="left">对应接口</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scope.location</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a></td>
+<td align="left">精确地理位置</td>
+</tr>
+<tr>
+<td align="left">scope.camera</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a> 组件, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></td>
+<td align="left">摄像头</td>
+</tr>
+<tr>
+<td align="left">scope.photosAlbums</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/api/ma.saveImageToPhotosAlbum">ma.saveImageToPhotosAlbum</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></td>
+<td align="left">读写相册</td>
+</tr>
+</tbody></table>
+<h2 id="authsetting">AuthSetting</h2>
+<h3 id="属性">属性</h3>
+<h3 id="boolean-scopelocation">boolean scope.location</h3>
+<p>是否授权地理位置，涉及接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a></p>
+<h3 id="boolean-scopecamera">boolean scope.camera</h3>
+<p>是否授权摄像头，涉及组件 <a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a>，接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></p>
+<h3 id="boolean-scopephotosalbums">boolean scope.photosAlbums</h3>
+<p>是否授权读写相册，涉及接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.saveImageToPhotosAlbum">ma.saveImageToPhotosAlbum</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></p>

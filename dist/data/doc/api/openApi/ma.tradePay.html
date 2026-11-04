@@ -1,0 +1,124 @@
+<h2 id="matradepayobject-object">ma.tradePay(Object object)</h2>
+<blockquote>
+<p>发起支付（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tradeNO</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">订单 ID，调用下单接口得到。</td>
+</tr>
+<tr>
+<td align="left">orderStr</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">订单详情。订单信息拼接成的字符串</td>
+</tr>
+<tr>
+<td align="left">sign</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">订单详情签名</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">tradePay: ok</td>
+</tr>
+<tr>
+<td align="left">resultCode</td>
+<td align="left">String</td>
+<td align="left">返回码</td>
+</tr>
+<tr>
+<td align="left">tradeNO</td>
+<td align="left">String</td>
+<td align="left">订单 ID</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-2">参数</h5>
+<h6 id="object-res-1">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">tradePay: fail, + 错误原因</td>
+</tr>
+<tr>
+<td align="left">resultCode</td>
+<td align="left">String</td>
+<td align="left">返回码</td>
+</tr>
+</tbody></table>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+<li>使用此接口需要宿主应用实现并注入获取宿主应用支付方法（请参考小程序SDK集成文档--集成三方支付指导章节）</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.tradePay({
+  <span class="hljs-attr">tradeNO</span>: <span class="hljs-string">&#x27;tradeNO&#x27;</span>,
+  <span class="hljs-attr">orderStr</span>: <span class="hljs-string">&#x27;orderStr&#x27;</span>,
+  <span class="hljs-attr">sign</span>: <span class="hljs-string">&#x27;sign&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.resultCode);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.tradeNO);
+  }
+});
+</code></pre>

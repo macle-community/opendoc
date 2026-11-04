@@ -1,0 +1,62 @@
+<h2 id="switch">switch</h2>
+<blockquote>
+<p>开关选择器。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">checked</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否选中</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否禁用</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">switch</td>
+<td align="left">否</td>
+<td align="left">样式，有效值：switch, checkbox</td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">String</td>
+<td align="left">#04BE02</td>
+<td align="left">否</td>
+<td align="left">switch 的颜色，同 css 的 color</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">checked 改变时触发 change 事件，event.detail={ value}</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;switchChange&#x27;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">switchChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
+  }
+})
+</code></pre>

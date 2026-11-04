@@ -1,0 +1,105 @@
+<h2 id="mashowtoastobject-object">ma.showToast(Object object)</h2>
+<blockquote>
+<p>显示消息提示框</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">提示的内容</td>
+</tr>
+<tr>
+<td align="left">icon</td>
+<td align="left">String</td>
+<td align="left">success</td>
+<td align="left">否</td>
+<td align="left">图标</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">1500</td>
+<td align="left">否</td>
+<td align="left">提示的持续时间(最大有效值为10000，超过10000按10000处理)</td>
+</tr>
+<tr>
+<td align="left">mask</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否显示透明蒙层，防止触摸穿透</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">自定义图标的本地路径，image 的优先级高于 icon</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<p><strong>object.icon 的合法值</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">显示成功图标，此时 title 文本最多显示 7 个汉字长度</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">显示失败图标，此时 title 文本最多显示 7 个汉字长度</td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">显示加载图标，此时 title 文本最多显示 7 个汉字长度</td>
+</tr>
+<tr>
+<td align="left">none</td>
+<td align="left">不显示图标，此时 title 文本最多显示两行</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma<span class="hljs-selector-class">.showToast</span>({
+  title: <span class="hljs-string">&#x27;成功&#x27;</span>,
+  <span class="hljs-attribute">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+  duration: <span class="hljs-number">2000</span>
+})
+</code></pre>

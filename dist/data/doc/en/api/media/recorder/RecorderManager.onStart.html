@@ -1,0 +1,20 @@
+<h2 id="recordermanageronstartfunction-listener">RecorderManager.onStart(function listener)</h2>
+<blockquote>
+<p>Listen to the recording start event. At this time, the recorder enters the recording state, which can be triggered only by RecorderManager.start()(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function of the recording start event</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onStart(() =&gt; {
+            ma.showToast({
+                title: &#x27;onStart&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

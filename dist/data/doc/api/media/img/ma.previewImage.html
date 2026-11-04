@@ -1,0 +1,58 @@
+<h2 id="mapreviewimageobject-object">ma.previewImage(Object object)</h2>
+<blockquote>
+<p>在新页面中全屏预览图片。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">urls</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要预览的图片链接列表 (模拟器仅支持代码包路径，网络路径，代码包路径注意区分大小写)，若使用本地链接请确保路径不超过项目根目录</td>
+</tr>
+<tr>
+<td align="left">current</td>
+<td align="left">String</td>
+<td align="left">urls 的第一张</td>
+<td align="left">否</td>
+<td align="left">当前显示图片的链接（代码包路径注意区分大小写）</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.previewImage({
+  current: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-regexp">//</span> 当前显示图片的http链接
+  urls: [] <span class="hljs-regexp">//</span> 需要预览的图片http链接列表
+});
+</code></pre>

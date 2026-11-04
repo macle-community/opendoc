@@ -1,0 +1,137 @@
+<h2 id="sjs-响应事件">SJS 响应事件</h2>
+<h3 id="背景">背景</h3>
+<p>有频繁用户交互的效果在小程序上表现是比较卡顿的，例如页面有 2 个元素 A 和 B，用户在 A 上做 touchmove 手势，要求 B 也跟随移动，一次 touchmove 事件的响应过程为：</p>
+<p>a、touchmove 事件从视图层（view）抛到逻辑层（service）</p>
+<p>b、逻辑层（service）处理 touchmove 事件，再通过 setData 来改变 B 的位置</p>
+<p>一次 touchmove 的响应需要经过 2 次的逻辑层和渲染层的通信以及一次渲染，通信的耗时比较大。此外 setData 渲染也会阻塞其它脚本执行，导致了整个用户交互的动画过程会有延迟。<br>因此，要支持此种富交互场景，必须减少通信次数，允许在 view 侧直接响应事件。SJS 函数支持响应基础组件的事件，无需数据更新，可直接驱动视图元素的样式、类名等的变更，也可查询元素的布局信息等。</p>
+<h3 id="使用方法">使用方法</h3>
+<h4 id="事件回调">事件回调</h4>
+<p><strong>入参</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">event</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/framework/event">事件对象</a></td>
+</tr>
+<tr>
+<td align="left">ownerInstance</td>
+<td align="left">表示的是触发事件的组件所在的组件的 ComponentDescriptor 实例，如果触发事件的组件是在页面内的，ownerInstance 表示的是页面实例。</td>
+</tr>
+</tbody></table>
+<p><strong>ownerInstance 定义如下</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">selectComponent</td>
+<td align="left">selector 对象</td>
+<td align="left">返回组件的 ComponentDescriptor 实例。</td>
+</tr>
+<tr>
+<td align="left">selectAllComponents</td>
+<td align="left">selector 对象数组</td>
+<td align="left">返回组件的 ComponentDescriptor 实例数组。</td>
+</tr>
+<tr>
+<td align="left">setStyle</td>
+<td align="left">Object/string</td>
+<td align="left">设置组件样式，支持 rpx。设置的样式优先级比组件 maml 里面定义的样式高。不能设置最顶层页面的样式。</td>
+</tr>
+<tr>
+<td align="left">addClass/removeClass/hasClass</td>
+<td align="left">String</td>
+<td align="left">设置组件的 class。设置的 class 优先级比组件 maml 里面定义的 class 高。不能设置最顶层页面的 class。</td>
+</tr>
+<tr>
+<td align="left">getDataset</td>
+<td align="left">无</td>
+<td align="left">返回当前组件/页面的 dataset 对象</td>
+</tr>
+<tr>
+<td align="left">callMethod</td>
+<td align="left">(funcName:string, args:object)</td>
+<td align="left">调用当前组件/页面在逻辑层（service）定义的函数。funcName 表示函数名称，args 表示函数的参数。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>SJS 运行在视图层（view），里面的逻辑毕竟能做的事件比较少，需要有一个机制和逻辑层（service）开发者的代码通信，上面的 <strong>callMethod</strong> 是 SJS 里面调用逻辑层（service）开发者的代码的方法。</p>
+</blockquote>
+<h3 id="使用限制">使用限制</h3>
+<ul>
+<li>只能响应内置组件的事件，不支持自定义组件和原生组件的事件。</li>
+</ul>
+<h3 id="示例">示例</h3>
+<pre><code class="language-js">// common.sjs
+<span class="hljs-comment">/**
+ * 滑块计算位置
+ */</span>
+<span class="hljs-keyword">var</span> <span class="hljs-variable">starLeft</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+<span class="hljs-keyword">var</span> <span class="hljs-variable">starTop</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+<span class="hljs-keyword">var</span> <span class="hljs-variable">starX</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+<span class="hljs-keyword">var</span> <span class="hljs-variable">starY</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">liveTouchmove</span>(event, ownerInstance) {
+  <span class="hljs-keyword">var</span> <span class="hljs-variable">left</span> = <span class="hljs-number">0</span>,
+    <span class="hljs-literal">top</span> = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+  <span class="hljs-keyword">var</span> <span class="hljs-variable">diffX</span> = <span class="hljs-number">0</span>,
+    diffY = <span class="hljs-number">0</span><span class="hljs-comment">;</span>
+  if (event.type === <span class="hljs-string">&#x27;touchstart&#x27;</span>) {
+    starLeft = event.currentTarget.offsetLeft<span class="hljs-comment">;</span>
+    starTop = event.currentTarget.offsetTop<span class="hljs-comment">;</span>
+    starX = event.changedTouches[<span class="hljs-number">0</span>].clientX<span class="hljs-comment">;</span>
+    starY = event.changedTouches[<span class="hljs-number">0</span>].clientY<span class="hljs-comment">;</span>
+    <span class="hljs-literal">left</span> = starLeft<span class="hljs-comment">;</span>
+    <span class="hljs-literal">top</span> = starTop<span class="hljs-comment">;</span>
+  } else {
+    diffX = event.changedTouches[<span class="hljs-number">0</span>].clientX - starX<span class="hljs-comment">;</span>
+    diffY = event.changedTouches[<span class="hljs-number">0</span>].clientY - starY<span class="hljs-comment">;</span>
+    <span class="hljs-literal">left</span> = starLeft + diffX<span class="hljs-comment">;</span>
+    <span class="hljs-literal">top</span> = starTop + diffY<span class="hljs-comment">;</span>
+  }
+  <span class="hljs-literal">left</span> = <span class="hljs-literal">left</span> + <span class="hljs-string">&#x27;px&#x27;</span><span class="hljs-comment">;</span>
+  <span class="hljs-keyword">var</span> <span class="hljs-variable">instance</span> = ownerInstance.selectComponent(<span class="hljs-string">&#x27;.liveMove&#x27;</span>)<span class="hljs-comment">; // 返回组件的实例</span>
+  instance.callMethod(<span class="hljs-string">&#x27;callMe&#x27;</span>, { <span class="hljs-literal">top</span>: { <span class="hljs-literal">top</span>: { <span class="hljs-literal">top</span>: <span class="hljs-literal">top</span>, aa: <span class="hljs-string">&#x27;1&#x27;</span> }, bb: <span class="hljs-string">&#x27;222&#x27;</span> }, <span class="hljs-keyword">call</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] })<span class="hljs-comment">;</span>
+  instance.setStyle({
+    <span class="hljs-literal">left</span>: <span class="hljs-literal">left</span>,
+    <span class="hljs-literal">top</span>: <span class="hljs-literal">top</span> + <span class="hljs-string">&#x27;px&#x27;</span>
+  })<span class="hljs-comment">;</span>
+}
+
+<span class="hljs-comment">/**
+ * 点击直播入口
+ * @param
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">clickLive</span>(event, ownerInstance) {
+  ownerInstance.callMethod(<span class="hljs-string">&#x27;bindEnter&#x27;</span>)<span class="hljs-comment">;</span>
+}
+module.exports = {
+  liveTouchmove: liveTouchmove,
+  clickLive: clickLive
+}<span class="hljs-comment">;</span>
+</code></pre>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">sjs</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;comm&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../../util/common.sjs&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">sjs</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;enterLive liveMove&quot;</span>
+  <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top:202px;left:100px&quot;</span>
+  <span class="hljs-attr">bind:touchstart</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">comm.liveTouchmove</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">bind:touchmove</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">comm.liveTouchmove</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">bind:touchend</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">comm.liveTouchmove</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;live-block&quot;</span> <span class="hljs-attr">bind:tap</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">comm.clickLive</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">image</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;liveEnter-img&quot;</span>
+      <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;aspectFit&quot;</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://img0.baidu.com/it/u=401284325,23907343&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg&quot;</span>
+    /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>

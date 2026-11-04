@@ -1,0 +1,134 @@
+<h2 id="masettabbarbadgeobject-object">ma.setTabBarBadge(Object object)</h2>
+<blockquote>
+<p>Add text to the upper right corner of a tabbar item (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">Indicates the item in the tabbar. The item starts from 0 from the left.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">is the displayed text. If the length exceeds four characters, the text is displayed as...</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking. (The function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.setTabBarBadge({
+  <span class="hljs-keyword">index</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;111&#x27;</span>
+})
+</code></pre>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setTabBarBadge: ok</td>
+</tr>
+</tbody></table>
+<h3 id="objectfail-callback-function">object.fail Callback Function</h3>
+<h4 id="parameter-2">Parameter</h4>
+<h4 id="object-res-1">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">Error information</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">Integer</td>
+<td align="left">Error code</td>
+</tr>
+</tbody></table>
+<h3 id="error-code-list">Error Code List</h3>
+<table>
+<thead>
+<tr>
+<th>Error Scenario</th>
+<th>Error Code</th>
+<th>Supported by Android</th>
+<th>Supported by iOS</th>
+<th>Supported by Simulator</th>
+<th>Development Suggestion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Invalid request parameter type.</td>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the index and text types in the interface invoking parameters are valid based on errorMsg.</td>
+</tr>
+<tr>
+<td>The value of the request parameter is invalid.</td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the value of the parameter in the interface invoking parameter is valid based on errorMsg and whether the value of index is within the appropriate range of the tabbar index configured for the current Mini Program. The proper value ranges from 0 to the configured number of tabbars minus 1.</td>
+</tr>
+<tr>
+<td>The request parameter is not mandatory.</td>
+<td>3</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the interface invoking parameter contains the index parameter and text parameter based on errorMsg.</td>
+</tr>
+</tbody></table>

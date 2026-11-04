@@ -1,0 +1,80 @@
+<h2 id="filesystemmanagerexistsobject-object">FileSystemManager.exists(Object object)</h2>
+<blockquote>
+<p>Check whether a file or folder exists(Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Path to be determined. (The local path can be a relative directory in the usr directory, but the final real path cannot be outside the usr directory. The temporary path and cache path files can be checked.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="success-callback-function">success callback function</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">exist</td>
+<td align="left">Boolean</td>
+<td align="left">Exists or not</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">File type (<strong>file</strong>) or folder type (<strong>directory</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+
+fs.<span class="hljs-title function_">readdir</span>({
+  <span class="hljs-attr">path</span>: <span class="hljs-string">`path`</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">exists</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">type</span>);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>

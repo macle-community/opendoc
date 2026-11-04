@@ -1,0 +1,14 @@
+<h2 id="maoffmemorywarningfunction-callback">ma.offMemoryWarning(function callback)</h2>
+<blockquote>
+<p>Cancel the listening for a memory insufficiency alarm event.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function of the memory insufficiency alarm event.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const listener = <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Not enough memory!&#x27;</span>);
+}
+ma.onMemoryWarning(listener);
+ma.offMemoryWarning(listener);
+</code></pre>

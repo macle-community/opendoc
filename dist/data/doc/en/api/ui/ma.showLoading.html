@@ -1,0 +1,61 @@
+<h2 id="mashowloadingobject-object">ma.showLoading(Object object)</h2>
+<blockquote>
+<p>Display the loading dialog box. The dialog box can be closed only after ma.hideLoading is called.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Prompt content.</td>
+</tr>
+<tr>
+<td>mask</td>
+<td>Boolean</td>
+<td>false</td>
+<td>No</td>
+<td>Whether to display a transparent mask to prevent a touch event.</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.showLoading({
+  title: <span class="hljs-symbol">&#x27;loading</span>&#x27;
+});
+
+setTimeout(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>() {
+  ma.hideLoading();
+}, <span class="hljs-number">2000</span>);
+</code></pre>

@@ -1,0 +1,41 @@
+<h2 id="js-sdk">JS SDK</h2>
+<h3 id="js-sdk-介绍">JS SDK 介绍</h3>
+<p>JS SDK 是 Macle 面向网页开发者提供的网页开发工具包。</p>
+<p>通过使用 JS SDK，网页开发者可借助 Macle 高效地使用拍照、扫码、位置等手机系统的能力，同时可以直接使用 Macle 小程序的特有能力，为用户提供更优质的网页体验。</p>
+<h3 id="如何使用">如何使用</h3>
+<p>根据应用场景的不同，使用方式可以分为两类</p>
+<h4 id="dsl小程序">DSL小程序</h4>
+<p>1、 网页开发者在开发页面时引入js-sdk.js，使用JS SDK提供的接口</p>
+<p>2、 新建一个小程序，在小程序中使用web-view容器</p>
+<p>3、 web-view容器链接指向页面开发者的h5页面</p>
+<h4 id="h5小程序">H5小程序</h4>
+<p>1、网页开发者直接在项目中引入js-sdk，在源码中引入相关api</p>
+<p>2、使用小程序转换器对H5工程进行转换</p>
+<h3 id="版本号标识（最低版本：2460）">版本号标识（最低版本：24.6.0）</h3>
+<p>为了方便开发者区分不同版本的JS-SDK，Macle在SDK文件首行添加了版本号标识，具体标识格式如下：</p>
+<pre><code class="language-js">/*Macle <span class="hljs-variable">${Macle_Version}</span> jssdk <span class="hljs-variable">${NPM_Version}</span> <span class="hljs-variable">${Date}</span>*/
+</code></pre>
+<h4 id="tips：">Tips：</h4>
+<ol>
+<li>JS SDK部分api仅支持在DSL小程序中应用，详情请见<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_sdk-interface">接口说明</a></li>
+<li>当前使用模拟器进行本地调试时，暂不支持webview组件在线引入JSSDK</li>
+</ol>
+<h3 id="web-view-组件属性"><a onclick="_mdLinkClick(this.href)" href="#/component/web-view">web-view</a> 组件属性</h3>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">webview 指向网页的链接。</td>
+</tr>
+</tbody></table>

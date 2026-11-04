@@ -1,0 +1,104 @@
+<h2 id="madownloadfileobject-object">ma.downloadFile(Object object)</h2>
+<blockquote>
+<p>下载文件资源到本地。客户端直接发起一个 HTTPS GET 请求，返回文件的本地临时路径 (本地路径)
+注意：请在服务端响应的 header 中指定合理的 <code>Content-Type</code> 字段，以保证客户端正确处理文件类型。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">下载资源的 url</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">HTTP 请求的 Header，Header 中不能设置 Referer</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">否</td>
+<td align="left">超时时间，单位为毫秒</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-回调函数">object.success 回调函数</h5>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">downloadFile: ok</td>
+</tr>
+<tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">临时文件路径 (本地路径)。没传入 filePath 指定文件存储路径时会返回，下载后的文件会存储到一个临时文件</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">开发者服务器返回的 HTTP 状态码（只有成功下载才会进入success回调，状态码为2XX，其余异常场景如404、500等非2XX请求都会进入fail回调）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.downloadFile({
+  <span class="hljs-attribute">url</span>: &#x27;https://example<span class="hljs-variable">.com</span>/audio/123&#x27;, //仅为示例，并非真实的资源
+  success(res) {
+    // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+    if (res<span class="hljs-variable">.statusCode</span> === 200) {
+      ma<span class="hljs-variable">.playVoice</span>({
+        filePath: res<span class="hljs-variable">.tempFilePath</span>
+      });
+    }
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip：目前不会进行安全域的校验，建议优先使用 https。</li>
+</ol>

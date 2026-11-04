@@ -1,0 +1,25 @@
+<h2 id="maoffnetworkstatuschangefunction-callback">ma.offNetworkStatusChange(function callback)</h2>
+<blockquote>
+<p>取消监听网络状态变化事件，参数为空，则取消所有的事件监听。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-callback">function callback</h4>
+<p>网络状态变化事件的回调函数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;onNetworkStatusChange&quot;</span>&gt;</span>开始监听网络状态变化<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;offNetworkStatusChange&quot;</span>&gt;</span>取消监听网络状态变化<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+    <span class="hljs-title function_">listener</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)
+    },
+    <span class="hljs-title function_">onNetworkStatusChange</span>(<span class="hljs-params"></span>){
+        ma.<span class="hljs-title function_">onNetworkStatusChange</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listener</span>)
+    },
+    <span class="hljs-title function_">offNetworkStatusChange</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">offNetworkStatusChange</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listener</span>)
+    },
+});
+</code></pre>

@@ -1,0 +1,128 @@
+<h2 id="image">image</h2>
+<blockquote>
+<p>Image. JPG, PNG, SVG, and GIF are supported.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Image resource address. The value can be a network path or a local path. (Ensure that the path does not exceed the root directory of the project.)</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">String</td>
+<td align="left">scaleToFill</td>
+<td align="left">No</td>
+<td align="left">Image cropping and scaling mode.</td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when an error occurs. The output is <strong>event.detail =</strong> <em>{errMsg}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindload</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggered when the image is loaded. The output is <strong>event.detail =</strong> <em>{height, width}</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-mode">Valid Values of mode</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scaleToFill</td>
+<td align="left">Zoom mode. The image is zoomed without retaining the aspect ratio so that the width and height of the image are stretched to fill the image element.</td>
+</tr>
+<tr>
+<td align="left">aspectFit</td>
+<td align="left">Zoom mode. The image is zoomed based on the aspect ratio to ensure that the long side of the image can be fully displayed. That is, the picture can be completely displayed.</td>
+</tr>
+<tr>
+<td align="left">aspectFill</td>
+<td align="left">Zoom mode. The image is zoomed based on the aspect ratio to ensure the short side of the image can be fully displayed. That is, the image is usually complete only in the horizontal or vertical direction, and the other direction is captured.</td>
+</tr>
+<tr>
+<td align="left">widthFix</td>
+<td align="left">Zoom mode. The width remains unchanged, the height automatically changes, and the aspect ratio of the original image remains unchanged.</td>
+</tr>
+<tr>
+<td align="left">heightFix</td>
+<td align="left">Zoom mode. The height remains unchanged, the width automatically changes, and the aspect ratio of the original image remains unchanged.</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">Crop mode. The image is not zoomed, and only the top area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">Crop mode. The image is not zoomed, and only the bottom area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left">Crop mode. The image is not zoomed, and only the middle area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">Crop mode. The image is not zoomed, and only the left area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">Crop mode. The image is not zoomed, and only the right area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">top left</td>
+<td align="left">Crop mode. The image is not zoomed, and only the upper left area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">top right</td>
+<td align="left">Crop mode. The image is not zoomed, and only the upper right area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">bottom left</td>
+<td align="left">Crop mode. The image is not zoomed, and only the lower left area of the image is displayed.</td>
+</tr>
+<tr>
+<td align="left">bottom right</td>
+<td align="left">Crop mode. The image is not zoomed, and only the lower right area of the image is displayed.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&#x27;scaleToFill&#x27;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindload</span>=<span class="hljs-string">&#x27;bindload&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;/image/example.jpg&#x27;</span>
+  },
+  <span class="hljs-attr">bindload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image load&#x27;</span>);
+  },
+  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image error:&#x27;</span> + e.detail.errMsg);
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The default width and height of the image component are 320 pixels and 240 pixels, respectively.</li>
+</ol>

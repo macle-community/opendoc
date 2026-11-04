@@ -1,0 +1,11 @@
+<h2 id="nodesref">NodesRef</h2>
+<blockquote>
+<p>用于获取 MAML 节点信息的对象</p>
+</blockquote>
+<h2 id="方法">方法</h2>
+<h3 id="selectorquery-nodesreffieldsobject-fields-nodesreffieldscallback-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> <a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef.fields">NodesRef.fields(Object fields, NodesRef.FieldsCallback callback)</a></h3>
+<p>获取节点的相关信息。需要获取的字段在 fields 中指定。返回值是 <code>nodesRef</code> 对应的 <code>selectorQuery</code></p>
+<h3 id="selectorquery-nodesrefboundingclientrectnodesrefboundingclientrectcallback-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> <a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef.boundingClientRect">NodesRef.boundingClientRect(NodesRef.boundingClientRectCallback callback)</a></h3>
+<p>添加节点的布局位置的查询请求。相对于显示区域，以像素为单位。其功能类似于 DOM 的 <code>getBoundingClientRect</code>。返回 <code>NodesRef</code> 对应的 <code>SelectorQuery</code>。</p>
+<h3 id="selectorquery-nodesrefscrolloffsetnodesrefscrolloffsetcallback-callback"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> <a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef.scrollOffset">NodesRef.scrollOffset(NodesRef.scrollOffsetCallback callback)</a></h3>
+<p>添加节点的滚动位置查询请求。以像素为单位。节点必须是 <code>scroll-view</code> 或者 <code>viewport</code>，返回 <code>NodesRef</code> 对应的 <code>SelectorQuery</code></p>

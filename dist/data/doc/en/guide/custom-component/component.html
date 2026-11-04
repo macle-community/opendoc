@@ -1,0 +1,37 @@
+<h2 id="component-constructor">Component Constructor</h2>
+<p><a onclick="_mdLinkClick(this.href)" href="#/framework/Component">Component constructor</a> is used to define components. When calling the Component constructor, you can specify the properties, data, and methods of the components.</p>
+<pre><code><span class="hljs-title class_">Component</span>({
+
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: { <span class="hljs-comment">// Property name.</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">myProperty2</span>: <span class="hljs-title class_">String</span> <span class="hljs-comment">// Simplified definition mode.</span>
+  },
+
+  <span class="hljs-attr">data</span>: {}, <span class="hljs-comment">// Private data, which can be used for template rendering.</span>
+
+  <span class="hljs-comment">// Lifecycle function, which can be a function or a method name defined in methods.</span>
+  <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { }, 
+  <span class="hljs-attr">ready</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { },
+
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">onBtnTap</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+       <span class="hljs-comment">// The method of updating properties and data is similar to that of updating page data.</span>
+      })
+    },
+    <span class="hljs-comment">// It is recommended that an internal method start with an underscore (_).</span>
+    <span class="hljs-attr">_myPrivateMethod</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-comment">// Set data.prop to &#x27;myPrivateData&#x27;.</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-attr">prop</span>: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    <span class="hljs-attr">_propertyChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">newVal, oldVal</span>) {
+
+    }
+  }
+})
+</code></pre>

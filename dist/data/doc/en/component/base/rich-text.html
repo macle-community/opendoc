@@ -1,0 +1,390 @@
+<h2 id="rich-text">rich-text</h2>
+<blockquote>
+<p>Rich text.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">nodes</td>
+<td align="left">Array/String</td>
+<td align="left">[]</td>
+<td align="left">No</td>
+<td align="left">Node list or HTML string.</td>
+</tr>
+<tr>
+<td align="left">space</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Consecutive spaces.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-space">Valid Values of space</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ensp</td>
+<td align="left">Half of the size of a Chinese character space.</td>
+</tr>
+<tr>
+<td align="left">emsp</td>
+<td align="left">Size of a Chinese character space.</td>
+</tr>
+<tr>
+<td align="left">nbsp</td>
+<td align="left">Space size based on the font.</td>
+</tr>
+</tbody></table>
+<h3 id="nodes">nodes</h3>
+<p>Currently, two types of nodes are supported, which are distinguished by <strong>type</strong>: element node and text node. The
+default type is element node, which is an HTML node displayed in the rich text area.</p>
+<h4 id="element-node-type--node">Element node: type = node</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Tag name.</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td align="left">Supports partially trusted HTML nodes.</td>
+</tr>
+<tr>
+<td align="left">attrs</td>
+<td align="left">Attribute.</td>
+<td align="left">Object</td>
+<td align="left">No</td>
+<td align="left">Supports partially trusted attributes and complies with the Pascal nomenclature.</td>
+</tr>
+<tr>
+<td align="left">children</td>
+<td align="left">Subnode list.</td>
+<td align="left">Array</td>
+<td align="left">No</td>
+<td align="left">The structure is the same as that of nodes.</td>
+</tr>
+</tbody></table>
+<h4 id="text-node-type--text">Text node: type = text</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">text</td>
+<td align="left">Text.</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td align="left">Supports entities.</td>
+</tr>
+</tbody></table>
+<h3 id="trusted-html-nodes-and-attributes">Trusted HTML Nodes and Attributes</h3>
+<p>The <strong>class</strong> and <strong>style</strong> attributes are supported globally, and the <strong>id</strong> attribute is not supported.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Node</th>
+<th align="left">Attribute</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">a</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">abbr</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">address</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">article</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">aside</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">bdi</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">bdo</td>
+<td align="left">dir</td>
+</tr>
+<tr>
+<td align="left">big</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">blockquote</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">br</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">caption</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cite</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">code</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">col</td>
+<td align="left">span，width</td>
+</tr>
+<tr>
+<td align="left">colgroup</td>
+<td align="left">span，width</td>
+</tr>
+<tr>
+<td align="left">dd</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">del</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">div</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">dl</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">dt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">em</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">fieldset</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">font</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">footer</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h2</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h4</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h5</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h6</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hr</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">i</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">img</td>
+<td align="left">alt，src，height，width</td>
+</tr>
+<tr>
+<td align="left">ins</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">label</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">legend</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">li</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mark</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">nav</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ol</td>
+<td align="left">start，type</td>
+</tr>
+<tr>
+<td align="left">p</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">pre</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">rt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ruby</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">s</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">section</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">small</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">span</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">strong</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sub</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sup</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">table</td>
+<td align="left">width</td>
+</tr>
+<tr>
+<td align="left">tbody</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">td</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">tfoot</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">th</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">thead</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">tr</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">tt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">u</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ul</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">rich-text</span> <span class="hljs-attr">nodes</span>=<span class="hljs-string">&#x27;&lt;button&gt;testButton&lt;/button&gt;&#x27;</span> <span class="hljs-attr">space</span>=<span class="hljs-string">&#x27;nbsp&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rich-text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>It is not recommended to use the string type for <code>nodes</code>, which may deteriorate performance.</li>
+<li>Events of all nodes are shielded in the <code>rich-text</code> component.</li>
+<li>The <code>attrs</code> attribute does not support <code>id</code> but supports <code>class</code>.</li>
+<li>The <code>name</code> attribute is case-insensitive.</li>
+<li>If an untrusted HTML node is used, the node and all its sub-nodes is removed.</li>
+<li>If the <code>rich-text</code> component is used in a customized component, only the MASS style is available for <code>class</code> in the <code>rich-text</code> component.</li>
+</ol>

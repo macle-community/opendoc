@@ -1,0 +1,51 @@
+<h2 id="authority">authority</h2>
+<blockquote>
+<p>Some APIs can be invoked only after user authorization and consent are obtained. These APIs are divided into multiple scopes based on the application <code>scope</code>. Users can authorize a <code>scope</code>. After a <code>scope</code> is authorized, all APIs corresponding to the scope can be directly used.</p>
+</blockquote>
+<p>When this type of API is invoked:</p>
+<ul>
+<li>If the user does not accept or reject the permission, a dialog box is displayed, asking the user to click Agree. The API can be invoked only after the user clicks Agree.</li>
+<li>If the user has been authorized, the API can be directly invoked.</li>
+<li>If the user has rejected the authorization, no dialog box is displayed. Instead, the API fails to be called back. Developers must be compatible with the scenario where users reject authorization.</li>
+</ul>
+<h2 id="obtaining-user-authorization-settings">Obtaining User Authorization Settings</h2>
+<p>A developer can use <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getSetting">ma.getSetting</a> to obtain the current authorization status of a user.
+The Settings page is displayed.</p>
+<h2 id="open-the-setting-page">Open the setting page</h2>
+<p>You can control the authorization status of the Mini Program on the Mini Program setting page (menu in the upper right corner &gt; Settings).</p>
+<p>Developers can call <a onclick="_mdLinkClick(this.href)" href="#/api/ma.openSetting">ma.openSetting</a> to open the settings page and instruct users to enable authorization.</p>
+<h2 id="initiate-an-authorization-request-in-advance">Initiate an authorization request in advance</h2>
+<p>You can use <a onclick="_mdLinkClick(this.href)" href="#/api/ma.authorize">ma.authorize</a> to send an authorization request to a user before invoking an API that requires authorization.</p>
+<h2 id="scope-list">Scope list</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Scope</th>
+<th align="left">API</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scope.location</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a></td>
+<td align="left">Precise geographical location</td>
+</tr>
+<tr>
+<td align="left">scope.camera</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a>component, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></td>
+<td align="left">Camera</td>
+</tr>
+<tr>
+<td align="left">scope.photosAlbums</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/api/ma.saveImageToPhotosAlbum">ma.saveImageToPhotosAlbum</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a></td>
+<td align="left">Reading and Writing Album</td>
+</tr>
+</tbody></table>
+<h2 id="authsetting">AuthSetting</h2>
+<h3 id="attribute">Attribute</h3>
+<h3 id="boolean-scopelocation">boolean scope.location</h3>
+<p>Indicates whether to authorize geographical locations. The <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a> API is involved.</p>
+<h3 id="boolean-scopecamera">boolean scope.camera</h3>
+<p>Indicates whether to authorize the camera. The involved component is <a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a>, and the APIs are <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a> and <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a>.</p>
+<h3 id="boolean-scopephotosalbums">boolean scope.photosAlbums</h3>
+<p>Indicates whether to authorize the user to read and write the album. The <a onclick="_mdLinkClick(this.href)" href="#/api/ma.saveImageToPhotosAlbum">ma.saveImageToPhotosAlbum</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.scanCode">ma.scanCode</a>, and <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseImage">ma.chooseImage</a> APIs are involved.</p>

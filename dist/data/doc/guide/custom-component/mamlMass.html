@@ -1,0 +1,61 @@
+<h2 id="组件模板和样式">组件模板和样式</h2>
+<p>类似于页面，自定义组件拥有自己的 maml 模板和 mass 样式。</p>
+<h2 id="组件模板">组件模板</h2>
+<p>组件模板的写法与页面模板相同。组件模板与组件数据结合后生成的节点树，将被插入到组件的引用位置上。</p>
+<p>在组件模板中可以提供一个 slot 节点，用于承载组件引用时提供的子节点。</p>
+<pre><code><span class="hljs-comment">&lt;!-- 组件模板 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>这里是组件的内部节点<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code><span class="hljs-comment">&lt;!-- 引用组件的页面模板 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot&gt; 的位置上 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>这里是插入到组件slot中的内容<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>注意，在模板中引用到的自定义组件及其对应的节点名需要在 json 文件中显式定义，否则会被当作一个无意义的节点</p>
+<h2 id="模板数据绑定">模板数据绑定</h2>
+<p>与普通的 MAML 模板类似，可以使用数据绑定，这样就可以向子组件的属性传递动态数据。</p>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- 引用组件的页面模板 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">prop-a</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">dataFieldA</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">prop-b</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">dataFieldB</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 这部分内容将被放置在组件 &lt;slot&gt; 的位置上 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>这里是插入到组件slot中的内容<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>在以上例子中，组件的属性 propA 和 propB 将收到页面传递的数据。页面可以通过 setData 来改变绑定的数据字段。</p>
+<h2 id="组件样式">组件样式</h2>
+<p>组件对应 mass 文件的样式，只对组件 maml 内的节点生效。编写组件样式时，需要注意以下几点：</p>
+<ul>
+<li>组件和引用组件的页面不能使用 id 选择器（#a）、属性选择器（[a]）和标签名选择器，请改用 class 选择器。</li>
+<li>组件和引用组件的页面中使用后代选择器（.a .b）在一些极端情况下会有非预期的表现，如遇，请避免使用。</li>
+<li>子元素选择器（.a&gt;.b）只能用于 view 组件与其子节点之间，用于其他组件可能导致非预期的情况。</li>
+<li>继承样式，如 font 、 color ，会从组件外继承到组件内。</li>
+<li>除继承样式外， app.mass 中的样式、组件所在页面的的样式对自定义组件无效（除非更改组件样式隔离选项）。</li>
+<li>自定义组件支持style、class及tap事件。</li>
+</ul>
+<pre><code class="language-css"><span class="hljs-comment">#a {</span>
+} <span class="hljs-regexp">/* 在组件中不能使用 */</span>
+[a] {
+} <span class="hljs-regexp">/* 在组件中不能使用 */</span>
+button {
+} <span class="hljs-regexp">/* 在组件中不能使用 */</span>
+.a &gt; .b {
+} <span class="hljs-regexp">/* 除非 .a 是 view 组件节点，否则不一定会生效 */</span>
+</code></pre>
+<h2 id="组件样式隔离">组件样式隔离</h2>
+<p>原则与支付宝保持一致：</p>
+<pre><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;styleIsolation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;apply-shared&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>该选项支持以下取值：</p>
+<ul>
+<li>apply-shared 表示 app.mass 样式以及其他（设置了 shared 的页面和其他自定义组件）的样式将影响到自定义组件，但自定义组件 mass 中指定的样式不会影响外部。</li>
+<li>shared（默认）表示 app.mass 样式以及其他（设置了 shared 的页面和其他自定义组件）的样式将影响到页面，自定义组件 mass 中指定的样式也会影响到外部。</li>
+</ul>

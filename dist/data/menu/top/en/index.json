@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Guide",
+    "path": "/guide",
+    "data": "/data/menu/left/en/guide.json"
+  },
+  {
+    "name": "Frame",
+    "path": "/framework",
+    "data": "/data/menu/left/en/framework.json"
+  },
+  {
+    "name": "Component",
+    "path": "/component",
+    "data": "/data/menu/left/en/component.json"
+  },
+  {
+    "name": "UI-Component Library",
+    "path": "/maui-component",
+    "data": "/data/menu/left/en/maui-component.json"
+  },
+  {
+    "name": "Mini Program API",
+    "path": "/api",
+    "data": "/data/menu/left/en/api.json"
+  },
+  {
+    "name": "Devtools",
+    "path": "/devtools",
+    "data": "/data/menu/left/en/devtools.json"
+  },
+  {
+    "name": "Expansion Capability",
+    "path": "/extended",
+    "data": "/data/menu/left/en/extended.json"
+  },
+  {
+    "name": "JS SDK",
+    "path": "/sdk",
+    "data": "/data/menu/left/en/sdk.json"
+  },
+  {
+    "name": "Changelog",
+    "path": "/changelog",
+    "data": "/data/menu/left/en/changelog.json"
+  }
+]

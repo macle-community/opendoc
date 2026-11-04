@@ -1,0 +1,182 @@
+<h2 id="cell">Cell</h2>
+<blockquote>
+<p>Cell is a single display item in the list (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p><code>Cell</code> can be used alone or in combination with <code>CellGroup</code>. <code>CellGroup</code> can provide upper and lower outer borders for <code>Cell</code>.</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;cell&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;content&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;cell&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;content&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;description information&quot;</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span></span>
+</code></pre>
+<h4 id="card-style">Card Style</h4>
+<p>Through the <code>inset</code> property of <code>CellGroup</code>, cells can be converted to rounded card style.</p>
+<pre><code class="language-html">&lt;maui-cell-group inset&gt;
+  &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;content&quot;</span> /&gt;
+  &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;content&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;description information&quot;</span> /&gt;
+&lt;/maui-cell-group&gt;
+</code></pre>
+<h4 id="cell-size">Cell Size</h4>
+<p>The size of the cell can be controlled through the <code>size</code> attribute.</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;content&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> /&gt;
+&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;content&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;description information&quot;</span> /&gt;
+</code></pre>
+<h4 id="display-icon">Display Icon</h4>
+<p>Display the icon to the left of the title through the <code>icon</code> attribute.</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> icon<span class="hljs-operator">=</span><span class="hljs-string">&quot;location-o&quot;</span> /&gt;
+</code></pre>
+<h4 id="group-title">Group Title</h4>
+<p>The group title can be specified through the <code>title</code> attribute of <code>CellGroup</code>.</p>
+<pre><code class="language-html">&lt;maui-cell-<span class="hljs-keyword">group</span> <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;Group 1&quot;</span>&gt;
+  &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;cell&quot;</span> value=<span class="hljs-string">&quot;content&quot;</span> /&gt;
+&lt;/maui-cell-<span class="hljs-keyword">group</span>&gt;
+&lt;maui-cell-<span class="hljs-keyword">group</span> <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;Group 2&quot;</span>&gt;
+  &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;cell&quot;</span> value=<span class="hljs-string">&quot;content&quot;</span> /&gt;
+&lt;/maui-cell-<span class="hljs-keyword">group</span>&gt;
+</code></pre>
+<h4 id="using-slots">Using Slots</h4>
+<p>If the above usage does not meet your needs, you can use slots to customize the content.</p>
+<pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span>&gt;
+  &lt;maui-icon name<span class="hljs-operator">=</span><span class="hljs-string">&quot;search&quot;</span> class<span class="hljs-operator">=</span><span class="hljs-string">&quot;custom-icon&quot;</span> /&gt;
+&lt;/maui-cell&gt;
+</code></pre>
+<h4 id="vertically-centered">Vertically Centered</h4>
+<p>Through the <code>center</code> attribute, the left and right contents of <code>Cell</code> can be vertically centered.</p>
+<pre><code class="language-html">&lt;maui-cell center title<span class="hljs-operator">=</span><span class="hljs-string">&quot;cell&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;content&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;description information&quot;</span> /&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="cellgroup-props">CellGroup Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">Group title</td>
+<td align="left">String</td>
+<td align="left"><code>-</code></td>
+</tr>
+<tr>
+<td align="left">inset</td>
+<td align="left">Whether to display in rounded corner card style</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">border</td>
+<td align="left">Whether to display outer borders</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody></table>
+<h4 id="cell-props">Cell Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">icon</td>
+<td align="left">Icon name or image link on the left. See <a onclick="_mdLinkClick(this.href)" href="#/maui-component/Icon">Icon</a> for optional values.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">Left title</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title-width</td>
+<td align="left">Title width, must include units</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Right content</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">label</td>
+<td align="left">Description below the title</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Cell size, optional value is <code>large</code></td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">border</td>
+<td align="left">Whether to display the bottom border</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left">Whether to center content vertically</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">clickable</td>
+<td align="left">Whether to enable click feedback</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">required</td>
+<td align="left">Whether to display required form asterisks</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">title-style</td>
+<td align="left">Title style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="cell-event">Cell Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Callback Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">Triggered when a cell is clicked</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="cell-slot">Cell Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Customize the <code>value</code> display content. If the <code>value</code> attribute is set, it will not take effect</td>
+</tr>
+</tbody></table>

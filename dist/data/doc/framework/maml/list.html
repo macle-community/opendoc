@@ -1,0 +1,75 @@
+<h2 id="列表渲染">列表渲染</h2>
+<h3 id="mafor">ma:for</h3>
+<p>在组件上使用 ma:for 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。
+默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    array: [
+      {
+        message: <span class="hljs-string">&#x27;foo&#x27;</span>,
+        id: <span class="hljs-number">1</span>,
+      },
+      {
+        message: <span class="hljs-string">&#x27;bar&#x27;</span>,
+        id: <span class="hljs-number">2</span>,
+      },
+    ],
+  }
+})
+</code></pre>
+<p>使用 ma:for-item 可以指定数组当前元素的变量名，
+使用 ma:for-index 可以指定数组当前下标的变量名:</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-index</span>=<span class="hljs-string">&quot;idx&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;itemName&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">idx</span>+<span class="hljs-number">1</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">itemName</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="block-mafor">block ma:for</h3>
+<p>类似 block ma:if，也可以将 ma:for 用在<block/>标签上，以渲染一个包含多节点的结构块。例如：</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[1, 2, 3]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+</code></pre>
+<h3 id="makey">ma:key</h3>
+<p>如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态（如 input 中的输入内容，switch 的选中状态），需要使用 ma:key 来指定列表中项目的唯一的标识符。</p>
+<p>ma:key 的值以两种形式提供：</p>
+<ul>
+<li>1.字符串，代表在 for 循环的 array 中 item 的某个 property，该 property 的值需要是列表中唯一的字符串或数字，且不能动态改变。</li>
+<li>2.保留关键字 *this 代表在 for 循环中的 item 本身，这种表示需要 item 本身是一个唯一的字符串或者数字。</li>
+</ul>
+<p>当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表渲染时的效率。</p>
+<blockquote>
+<p>如不提供 ma:key，会报一个 warning， 如果明确知道该列表是静态，或者不必关注其顺序，可以选择忽略。</p>
+</blockquote>
+<h3 id="注意">注意</h3>
+<p>当 ma:for 的值为字符串时，会将字符串解析成字符串数组</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;macle&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>等价于</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">[&#x27;m&#x27;,&#x27;a&#x27;,&#x27;c&#x27;,&#x27;l&#x27;,&#x27;e&#x27;]</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">item</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="fqs">F&amp;Qs</h3>
+<p><strong>Q:</strong> 列表渲染警告：should provide attr &#39;ma:key&#39; for a &#39;ma:for&#39; to improve performance.如何处理</p>
+<p><strong>A</strong>：maml支持<a onclick="_mdLinkClick(this.href)" href="#/framework/maml-list">列表循环</a>语法，可以高效简洁的批量渲染同一结构化的组件。但在使用过程中可能会出现<strong>should provide attr &#39;ma:key&#39; for a &#39;ma:for&#39; to improve performance</strong>的警告，这是因为如果列表中项目的位置会动态改变或者有新的项目添加到列表中，并且希望列表中的项目保持自己的特征和状态（如 input 中的输入内容，switch 的选中状态），需要使用 ma:key 来指定列表中项目的唯一的标识符。当编译器出现上述报警时，只需要在标签语内添加一个 ma：key即可。</p>
+<p>例如：</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>可以修改为：</p>
+<pre><code class="language-js"><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.id</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for-item</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">item.message</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p><strong>Q:</strong> <code>ma:if</code> 和 <code>ma:for</code> 可以放到同一标签上使用吗?</p>
+<p><strong>A:</strong> if判断和列表渲染同时进行是一种很容易造成性能浪费和逻辑错误的写法，建议您根据开发过程中的实际需要，将 <code>ma:if</code> 和 <code>ma:for</code> 放置在不同层级的标签上以达到更好的开发效果</p>

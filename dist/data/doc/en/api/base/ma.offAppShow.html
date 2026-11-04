@@ -1,0 +1,25 @@
+<h2 id="maoffappshowfunction-callback">ma.offAppShow(function callback)</h2>
+<blockquote>
+<p>Cancel the listening for the events of switching a Mini Program to the frontend.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>function callback</strong></p>
+<p>Callback function for switching a Mini Program to the frontend.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> <span class="hljs-number">_</span><span class="hljs-keyword">this</span>;
+<span class="hljs-keyword">let</span> test<span class="hljs-number">1</span> = <span class="hljs-keyword">function</span> () {
+    console.log(<span class="hljs-string">&#x27;aaa&#x27;</span>)
+    <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.setData({
+        detail: <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.data.detail + <span class="hljs-string">&#x27;\r\n&#x27;</span> + <span class="hljs-string">&#x27;offAppShow:ok&#x27;</span>,
+    })
+};
+
+Page({
+    offAppShow () {
+        <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.setData({
+            detail: <span class="hljs-number">_</span><span class="hljs-keyword">this</span>.data.detail + <span class="hljs-string">&#x27;\r\n&#x27;</span> + <span class="hljs-string">&#x27;offAppShow&#x27;</span>,
+        })
+        ma.offAppShow(test<span class="hljs-number">1</span>)
+    }
+})
+</code></pre>

@@ -1,0 +1,73 @@
+<h2 id="maonbluetoothdevicefoundfunction-listener">ma.onBluetoothDeviceFound(function listener)</h2>
+<blockquote>
+<p>监听搜索到新设备的事件（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-listener">function listener</h4>
+<p>搜索到新设备的事件的监听函数</p>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">devices</td>
+<td align="left">Array</td>
+<td align="left">新搜索到的设备列表</td>
+</tr>
+</tbody></table>
+<h4 id="array-devices">Array devices</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RSSI</td>
+<td>Number</td>
+<td>当前蓝牙设备的信号强度，单位 dBm</td>
+</tr>
+<tr>
+<td>advertisServiceUUIDs</td>
+<td>Array</td>
+<td>当前蓝牙设备的广播数据段中的 ServiceUUIDs 数据段</td>
+</tr>
+<tr>
+<td>connectable</td>
+<td>Boolean</td>
+<td>当前蓝牙设备是否可连接（ Android 8.0 以下不支持返回该值）</td>
+</tr>
+<tr>
+<td>deviceId</td>
+<td>String</td>
+<td>蓝牙设备 id</td>
+</tr>
+<tr>
+<td>localName</td>
+<td>String</td>
+<td>当前蓝牙设备的广播数据段中的 LocalName 数据段</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>蓝牙设备名称，某些设备可能没有</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.onBluetoothDeviceFound(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {  
+  ma.showModal({  
+     title: <span class="hljs-string">&#x27;onBluetoothDeviceFound&#x27;</span>,  
+     content:  <span class="hljs-built_in">JSON</span>.stringify(res),  
+     showCancel: <span class="hljs-literal">true</span>  
+  })  
+})
+</code></pre>

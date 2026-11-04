@@ -1,0 +1,28 @@
+<h2 id="eventchannelemitstring-eventnameany-args">EventChannel.emit(string eventName,any args)</h2>
+<blockquote>
+<p>触发一个事件</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-eventname">string eventName</h4>
+<p>事件名称</p>
+<h4 id="any-args">any args</h4>
+<p>事件参数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">navigateTo</span>({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;testUrl&#x27;</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    res.<span class="hljs-property">eventChannel</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, {
+      <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;hello Macle&#x27;</span>
+    });
+  }
+});
+
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>();
+    eventChannel.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+    });
+  }
+});
+</code></pre>

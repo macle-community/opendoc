@@ -1,0 +1,121 @@
+<h2 id="magetsysteminfoobject-object">ma.getSystemInfo(Object object)</h2>
+<blockquote>
+<p>获取系统信息</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">brand</td>
+<td align="left">String</td>
+<td align="left">设备品牌</td>
+</tr>
+<tr>
+<td align="left">model</td>
+<td align="left">String</td>
+<td align="left">设备型号。新机型刚推出一段时间会显示 unknown，会尽快进行适配。</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">设备id(24.3.0新增)</td>
+</tr>
+<tr>
+<td align="left">pixelRatio</td>
+<td align="left">Number</td>
+<td align="left">设备像素比</td>
+</tr>
+<tr>
+<td align="left">screenWidth</td>
+<td align="left">Number</td>
+<td align="left">屏幕宽度，单位 px</td>
+</tr>
+<tr>
+<td align="left">screenHeight</td>
+<td align="left">Number</td>
+<td align="left">屏幕高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">windowWidth</td>
+<td align="left">Number</td>
+<td align="left">可使用窗口宽度，单位 px</td>
+</tr>
+<tr>
+<td align="left">windowHeight</td>
+<td align="left">Number</td>
+<td align="left">可使用窗口高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">statusBarHeight</td>
+<td align="left">Number</td>
+<td align="left">状态栏的高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">language</td>
+<td align="left">String</td>
+<td align="left">系统语言</td>
+</tr>
+<tr>
+<td align="left">system</td>
+<td align="left">String</td>
+<td align="left">操作系统及版本</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.getSystemInfo({
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.model);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.pixelRatio);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.id);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.windowWidth);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.windowHeight);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.language);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>若无法查询到设备id，则返回体中不会有<code>id</code>字段</li>
+</ol>

@@ -1,0 +1,154 @@
+<h2 id="data-pre-pull">Data pre-pull</h2>
+<blockquote>
+<p>The Mini Program initiates a request in advance during cold startup <strong>and caches the request content</strong>. The cached data is used during the actual request, reducing the network request time.</p>
+</blockquote>
+<h3 id="introduction">Introduction</h3>
+<p>Generally speaking, the Mini Program obtains network data in the home page after loading using ma.request to achieve. At run time, the Mini Program developer can obtain data in advance of the next process that the user may trigger. The main function of Mini Program data prefetching is to initiate network requests and cache them according to the rules configured in the Mini Program before startup. After the Mini Program is started, the cached data is directly used to avoid loading or incomplete page display due to waiting for network data return.</p>
+<h3 id="usage-process">Usage Process</h3>
+<h3 id="configuring-a-prefetch-rule">Configuring a Prefetch Rule</h3>
+<p>Create preload.fetch in the root directory of the Mini Program project and fill in the preload configuration</p>
+<p><img src="/openplatform/macledocs/data/doc/en/api/storage/image/preload.png" alt="示例图" ></p>
+<h3 id="preloadfetch-configuration">preload.fetch Configuration</h3>
+<p><strong>Note:</strong> The actual configuration file does not support comments. The comments in the following file are used to better describe the function of each field. Delete the comments from the configuration file when copying the file.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th align="left">Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td>No</td>
+<td align="left">Cache data type. The value is fixed to <code>pre</code></td>
+<td>pre</td>
+</tr>
+<tr>
+<td>params</td>
+<td>Object</td>
+<td>Yes</td>
+<td align="left">Resolve the configuration request</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code class="language-json"><span class="hljs-regexp">//</span> preload.fetch
+[
+  {
+    <span class="hljs-string">&quot;fetchType&quot;</span>: <span class="hljs-string">&quot;pre&quot;</span>, <span class="hljs-regexp">//</span> Data pre-pull is fixed to pre
+    <span class="hljs-string">&quot;params&quot;</span>: {
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https:*****&quot;</span>, <span class="hljs-regexp">//</span> Requested URL
+      <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-regexp">//</span> http method,Supports GET/POST
+      <span class="hljs-string">&quot;data&quot;</span>: { <span class="hljs-string">&quot;foo&quot;</span>: <span class="hljs-string">&quot;bar&quot;</span> },
+      <span class="hljs-string">&quot;timeout&quot;</span>: <span class="hljs-number">60000</span>,
+      <span class="hljs-string">&quot;header&quot;</span>: {
+        <span class="hljs-regexp">//</span> Optional. Additional header information Additional header information
+        <span class="hljs-string">&quot;content-type&quot;</span>: <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span>
+      }
+    }
+  }
+]
+</code></pre>
+<p>（Currently, only <font color="red"><strong>the first 10 data records</strong></font> can be obtained in the preload.fetch file）</p>
+<h3 id="params-configuration-description">params configuration description</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>String</td>
+<td>Yes</td>
+<td align="left">Developer server interface address，The variable ${token} is supported, Obtaining the token Through storage</td>
+</tr>
+<tr>
+<td>header</td>
+<td>Object</td>
+<td>No</td>
+<td align="left">Specifies the request header. <strong>Referer</strong> cannot be set in the header. The default value of content-type is <strong>application/json</strong>. Variables are supported.</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>Number</td>
+<td>No</td>
+<td align="left">Timeout interval, in milliseconds</td>
+</tr>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>No</td>
+<td align="left">HTTP request method. The options are Get and Post.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>No</td>
+<td align="left">Request parameter. Variables are supported</td>
+</tr>
+</tbody></table>
+<h3 id="obtaining-prefetched-data">Obtaining Prefetched Data</h3>
+<h4 id="marequest-obtaining-prefetched-data">ma.request Obtaining Prefetched Data</h4>
+<p>When the <code>fetchType</code> in the preload.fetch file is set to <code>pre</code>, ma.request is invoked to return the prefetched data.</p>
+<p>The <code>preload</code> callback function is added to ma.request to return prefetched data</p>
+<p>If the prefetch request is not complete when a normal request arrives, the <code>preload</code> returns the data prefetched last time</p>
+<p>(The Mini Program is started for the first time. If the prefetch is not complete, the return value is null)</p>
+<h5 id="preload-return-value">preload return value</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td>Data returned by the developer server</td>
+</tr>
+<tr>
+<td>statusCode</td>
+<td>Number</td>
+<td>Prefetch Data Status Code</td>
+</tr>
+<tr>
+<td>errMsg</td>
+<td>String</td>
+<td>Prefetch success or failure details</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// Obtains prefetched data when fetchType in preload.fetch is set to pre</span>
+<span class="hljs-variable">ma</span>.<span class="hljs-property">request</span>({
+<span class="hljs-string">&quot;method&quot;</span>:<span class="hljs-string">&quot;GET&quot;</span>,
+ <span class="hljs-string">&quot;url&quot;</span>:<span class="hljs-string">&quot;https:*****&quot;</span>,
+ <span class="hljs-string">&quot;header&quot;</span>:{
+   <span class="hljs-string">&quot;content-type&quot;</span>:<span class="hljs-string">&quot;application/json&quot;</span>
+ },
+ <span class="hljs-string">&quot;data&quot;</span>:{
+   <span class="hljs-string">&quot;token&quot;</span>:<span class="hljs-string">&quot;xxxxxxx&quot;</span>,
+   },
+ <span class="hljs-variable">timeout</span>:<span class="hljs-string">&quot;60000&quot;</span>，
+ <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>){},
+ <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>){},
+ <span class="hljs-title function_">preload</span>(<span class="hljs-params">res</span>){ <span class="hljs-comment">// Return prefetched data</span>
+    <span class="hljs-variable">console</span>.<span class="hljs-property">log</span>(<span class="hljs-variable">res</span>.<span class="hljs-property">data</span>)
+ }
+})
+</code></pre>
+<h4 id="magetbackgroundfetchdata-obtaining-prefetched-data">ma.getBackgroundFetchData Obtaining Prefetched Data</h4>
+<p>Call  <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">ma.getBackgroundFetchData</a>  to obtain all data in the data pre-pull cache</p>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ul>
+<li>Each time the Mini Program is started, prefetching is performed again to update the cache</li>
+<li>The cache is cleared each time the Mini Program is updated to prevent the cache from being too large</li>
+<li>The maximum size of each cached data record is 1 MB</li>
+</ul>

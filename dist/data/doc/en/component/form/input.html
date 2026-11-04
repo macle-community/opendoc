@@ -1,0 +1,214 @@
+<h2 id="input">input</h2>
+<blockquote>
+<p>Input box. It is a native component. Pay attention to related restrictions when using it.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Initial content in the input box.</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">text</td>
+<td align="left">No</td>
+<td align="left">Input type.</td>
+</tr>
+<tr>
+<td align="left">password</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether the input is the password type.</td>
+</tr>
+<tr>
+<td align="left">placeholder</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Placeholder when the text box is empty.</td>
+</tr>
+<tr>
+<td align="left">placeholder-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Placeholder style. The options are as follows: <strong>color</strong>, <strong>font-size</strong>, and <strong>font-weight</strong>.</td>
+</tr>
+<tr>
+<td align="left">placeholder-class</td>
+<td align="left">String</td>
+<td align="left">input-placeholder</td>
+<td align="left">No</td>
+<td align="left">Placeholder style class. The options are as follows: <strong>color</strong>, <strong>font-size</strong>, and <strong>font-weight</strong>.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">maxlength</td>
+<td align="left">Number</td>
+<td align="left">140</td>
+<td align="left">No</td>
+<td align="left">Maximum input length. The value <strong>-1</strong> indicates that the maximum length is not limited.</td>
+</tr>
+<tr>
+<td align="left">focus</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to obtain the focus.</td>
+</tr>
+<tr>
+<td align="left">confirm-type</td>
+<td align="left">String</td>
+<td align="left">done</td>
+<td align="left">No</td>
+<td align="left">Text of the button in the lower right corner of the keyboard. It is available only when <strong>type</strong> is set to <strong>&#39;text&#39;</strong>.</td>
+</tr>
+<tr>
+<td align="left">confirm-hold</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to keep the keyboard unstuck when you tap the button in the lower right corner of the keyboard.</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">Yes</td>
+<td align="left">Pointer position when the focus is specified. The default value is the end of the line.</td>
+</tr>
+<tr>
+<td align="left">selection-start</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">No</td>
+<td align="left">Start position of the cursor. It is valid for automatic aggregation and needs to be used with <strong>selection-end</strong>.</td>
+</tr>
+<tr>
+<td align="left">selection-end</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">No</td>
+<td align="left">End position of the cursor. It is valid for automatic aggregation and needs to be used with <strong>selection-start</strong>.</td>
+</tr>
+<tr>
+<td align="left">adjust-position</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">No</td>
+<td align="left">Whether to automatically push the page when the keyboard pops up.</td>
+</tr>
+<tr>
+<td align="left">bindinput</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Triggered upon keyboard input. The output is <strong>event.detail =</strong> <em>{value, cursor}</em>. The processing function can directly return a character string to replace the content in the input box.</td>
+</tr>
+<tr>
+<td align="left">bindfocus</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Triggered when the input box is focused. The output is <strong>event.detail =</strong> <em>{ value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindblur</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Triggered when the input box loses the focus. The output is <strong>event.detail =</strong> <em>{ value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindconfirm</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Triggered when the <strong>Done</strong> button is tapped. The output is <strong>event.detail =</strong> <em>{ value }</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-type">Valid Values of type</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">text</td>
+<td align="left">Text input keyboard.</td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">Digital input keyboard.</td>
+</tr>
+<tr>
+<td align="left">digit</td>
+<td align="left">Numeric keypad with decimal point.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-confirm-type">Valid Values of confirm-type</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">send</td>
+<td align="left">The button in the lower right corner is <strong>Send</strong>.</td>
+</tr>
+<tr>
+<td align="left">search</td>
+<td align="left">The button in the lower right corner is <strong>Search</strong>.</td>
+</tr>
+<tr>
+<td align="left">next</td>
+<td align="left">The button in the lower right corner is <strong>Next</strong>.</td>
+</tr>
+<tr>
+<td align="left">go</td>
+<td align="left">The button in the lower right corner is <strong>Go</strong>.</td>
+</tr>
+<tr>
+<td align="left">done</td>
+<td align="left">The button in the lower right corner is <strong>Done</strong>.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;Hello World&#x27;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The display of <code>confirm-type</code> is related to the implementation of the phone input method. Some Android input methods and third-party input methods may not be supported or fully supported.</li>
+<li>The input component is a native component, and the font is the system font. Therefore, <code>font-family</code> cannot be set.</li>
+<li>Do not use CSS animation during input focus.</li>
+<li>If the input component is encapsulated in a customized component and the form component is outside the customized component, the form component cannot obtain the input value in the customized component.</li>
+<li>When <code>cursor</code>, <code>selection-start</code>, and <code>selection-end</code> coexist, <code>selection-start</code> and <code>selection-end</code> are used.</li>
+<li>The input component that contains the <code>focus</code> attribute cannot exceed the visible range of the screen, and the same page cannot contain two or more input components that contain the <code>focus</code> attribute.</li>
+<li>The height of the <code>input</code> component affects the font style setting of <code>placeholder-class</code>. The two must be considered together to ensure the user experience of the Mini Program.</li>
+</ol>

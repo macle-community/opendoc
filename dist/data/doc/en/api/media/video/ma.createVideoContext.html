@@ -1,0 +1,23 @@
+<h2 id="macreatevideocontextstring-id">ma.createVideoContext(string id)</h2>
+<blockquote>
+<p>Create the VideoContext object.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-id">string id</h4>
+<p>ID of the video component.</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="videocontext">VideoContext</h4>
+<p>A VideoContext object.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;video
+  <span class="hljs-attribute">id</span>=<span class="hljs-string">&#x27;myVideo&#x27;</span>
+  <span class="hljs-attribute">src</span>=<span class="hljs-string">&#x27;https://example.test.com/video&#x27;</span>
+/&gt;
+</code></pre>
+<pre><code class="language-js">Page ({
+  onLoad () {
+    this.videoContext = ma.createVideoContext (&#x27;myVideo&#x27;)<span class="hljs-comment">;</span>
+  },
+})<span class="hljs-comment">;</span>
+</code></pre>

@@ -1,0 +1,34 @@
+<h2 id="maonnetworkstatuschangefunction-callback">ma.onNetworkStatusChange(function callback)</h2>
+<blockquote>
+<p>Listen for network status change events.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function for listening for network status change events.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">isConnected</td>
+<td align="left">Boolean</td>
+<td align="left">Whether a network connection is available.</td>
+</tr>
+<tr>
+<td align="left">networkType</td>
+<td align="left">String</td>
+<td align="left">Network type.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.onNetworkStatusChange(<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.isConnected);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.networkType);
+});
+</code></pre>

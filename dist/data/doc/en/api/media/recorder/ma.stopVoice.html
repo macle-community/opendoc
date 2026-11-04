@@ -1,0 +1,58 @@
+<h2 id="mastopvoiceobject-object">ma.stopVoice(Object object)</h2>
+<blockquote>
+<p>End the audio playback(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>No</td>
+<td>Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript">page({
+    stopVoice() {
+        ma.stopVoice({
+            success: (<span class="hljs-name">res</span>) =&gt; {
+                console.log({res})<span class="hljs-comment">;</span>
+                this.setData({
+                    info: format(<span class="hljs-name">res</span>)
+                })<span class="hljs-comment">;</span>
+            },
+            fail: (<span class="hljs-name">err</span>) =&gt; {
+                console.log({err})<span class="hljs-comment">;</span>
+                this.setData({
+                    info: format(<span class="hljs-name">err</span>)
+                })<span class="hljs-comment">;</span>
+            }
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

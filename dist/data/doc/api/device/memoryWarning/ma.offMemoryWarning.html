@@ -1,0 +1,14 @@
+<h2 id="maoffmemorywarningfunction-callback">ma.offMemoryWarning(function callback)</h2>
+<blockquote>
+<p>取消监听内存不足告警事件。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-callback">function callback</h4>
+<p>内存不足告警事件的回调函数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const listener = <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;内存不足!&#x27;</span>);
+}
+ma.onMemoryWarning(listener);
+ma.offMemoryWarning(listener);
+</code></pre>

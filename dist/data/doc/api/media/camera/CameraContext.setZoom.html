@@ -1,0 +1,76 @@
+<h2 id="cameracontextsetzoomobject-object">CameraContext.setZoom(Object object)</h2>
+<blockquote>
+<p>设置缩放级别（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">zoom</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">缩放级别，范围[1, maxZoom]。zoom 取正整数。maxZoom 可在 bindinitdone 返回值中获取。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">zoom</td>
+<td align="left">Number</td>
+<td align="left">实际设置的缩放级别，如果设置的zoom值超过当前系统支持的最大值，将在[1, maxZoom]中选择最接近目标值的可设值</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span>  <span class="hljs-title function_">stopRecord</span>(<span class="hljs-params"></span>){
+    const ctx = ma.createCameraContext();
+    ctx.setZoom({
+      <span class="hljs-attr">zoom</span>:zoom,
+      <span class="hljs-attr">success</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;success&#x27;</span>,res.zoom);
+      },
+      <span class="hljs-attr">fail</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;fail&#x27;</span>);
+      }
+    })
+  }
+</code></pre>

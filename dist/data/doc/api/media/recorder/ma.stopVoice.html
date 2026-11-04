@@ -1,0 +1,58 @@
+<h2 id="mastopvoiceobject-object">ma.stopVoice(Object object)</h2>
+<blockquote>
+<p>结束播放音频（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript">page({
+    stopVoice() {
+        ma.stopVoice({
+            success: (<span class="hljs-name">res</span>) =&gt; {
+                console.log({res})<span class="hljs-comment">;</span>
+                this.setData({
+                    info: format(<span class="hljs-name">res</span>)
+                })<span class="hljs-comment">;</span>
+            },
+            fail: (<span class="hljs-name">err</span>) =&gt; {
+                console.log({err})<span class="hljs-comment">;</span>
+                this.setData({
+                    info: format(<span class="hljs-name">err</span>)
+                })<span class="hljs-comment">;</span>
+            }
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

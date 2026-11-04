@@ -1,0 +1,160 @@
+<h2 id="overview">Overview</h2>
+<blockquote>
+<p>The Macle Mini Program supports customized internationalization. Currently, the following languages are supported: Burmese, Urdu, English, Chinese, Amharic, Afan Oromo, and Tigirigna.</p>
+</blockquote>
+<p>The macle-i18n usage is divided into three parts. They are: i18n text definition, usage in MAML, and usage in JavaScript. The macle-i18n requires no installation or build.</p>
+<h2 id="use">Use</h2>
+<h3 id="i18n-text">i18n Text</h3>
+<p>The macle-i18n uses a JSON file to define the I18n text. Before the I18n text is used, the I18n directory needs to be created in the project source file.</p>
+<p>The directory structure is as follows:</p>
+<pre><code class="language-json">└── src                <span class="hljs-comment">// Directory of the source file of the Mini Program</span>
+<span class="hljs-string">|   ├── app.js</span>
+<span class="hljs-string">|   ├── app.json</span>
+<span class="hljs-string">|   ├── app.mass</span>
+<span class="hljs-string">|   ├── i18n           // Directory of the I18n text</span>
+<span class="hljs-string">|   |   ├── en-US.json</span>
+<span class="hljs-string">|   |   └── zh-CN.json</span>
+</code></pre>
+<blockquote>
+<p>The JSON file name is in the format of Languag-Country, for example, zh-CN.</p>
+</blockquote>
+<p>The I18n directory can be placed in any position in the source file directory. For example, the I18n directory can be placed together with the Page or Component directory. Files in multiple I18n directories are combined and packed during construction. Therefore, if the translated text has duplicate keys, the files may be overwritten. If multiple I18n directories are defined, ensure that the key is globally unique. For example, you can name a <code>key page.index.testKey</code>.</p>
+<p>Example:</p>
+<pre><code class="language-json">
+<span class="hljs-regexp">//</span> i18n/zh-CN.json
+{
+  <span class="hljs-string">&quot;plainText&quot;</span>: <span class="hljs-string">&quot;这是一段纯文本&quot;</span>,
+  <span class="hljs-string">&quot;withParams&quot;</span>: <span class="hljs-string">&quot;你传入的值是{value}&quot;</span>
+}
+
+<span class="hljs-regexp">//</span> i18n/en-US.json
+{
+  <span class="hljs-string">&quot;plainText&quot;</span>: <span class="hljs-string">&quot;This is a plain text&quot;</span>,
+  <span class="hljs-string">&quot;withParams&quot;</span>: <span class="hljs-string">&quot;{value} is what you pass in&quot;</span>
+}
+</code></pre>
+<h3 id="usage-in-maml">Usage in MAML</h3>
+<p>After the I18n text is defined, it can be used in the MAML file.</p>
+<pre><code class="language-xml"><span class="language-xml"><span class="hljs-comment">&lt;!-- pages/index/index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">i18n.t</span>(<span class="hljs-name">&#x27;plainText&#x27;</span>) }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">i18n.t</span>(<span class="hljs-name">&#x27;withParams&#x27;</span>, {value}) }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span></span>
+</code></pre>
+<p>Use the i18n.t function in MAML to obtain text. The signature of the t function is as follows:</p>
+<pre><code class="language-js">t(key: <span class="hljs-built_in">string</span>, <span class="hljs-keyword">params</span>: <span class="hljs-built_in">object</span>)
+</code></pre>
+<p>It contains two parameters: key, which is from the I18n text, and the interpolation object to be transferred, which can be transferred from the AppService.</p>
+<p>Use the i18n.getLocale function in MAML to obtain the current language.</p>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- pages/index/index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">i18n.getLocale</span>() }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<blockquote>
+<p>Note: The default module name of macle-i18n is i18n. You can customize the module name. For details, see the following description:</p>
+</blockquote>
+<p>Customize the macle-i18n module name, which can be implemented by importing SJS to the MAML file.</p>
+<pre><code>&lt;sjs module<span class="hljs-operator">=</span><span class="hljs-string">&quot;customi18nModule&quot;</span> src<span class="hljs-operator">=</span><span class="hljs-string">&quot;i18n.sjs&quot;</span> /&gt;
+</code></pre>
+<pre><code class="language-js">// i18n.sjs
+<span class="hljs-keyword">function</span> <span class="hljs-title">t</span>(str, arr) {
+  <span class="hljs-keyword">return</span> <span class="hljs-type">i18n.t(str,</span> arr);
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title">getLocale</span>(str, arr) {
+  <span class="hljs-keyword">return</span> <span class="hljs-type">i18n.getLocale(str,</span> arr);
+}
+module.exports = {
+  t: t,
+  getLocale: getLocale
+};
+</code></pre>
+<p>Use SJS in the MAML file with the custom module.</p>
+<pre><code class="language-xml"><span class="language-xml"><span class="hljs-comment">&lt;!-- pages/index/index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">customi18nModule.t</span>(<span class="hljs-name">&#x27;plainText&#x27;</span>) }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">customi18nModule.t</span>(<span class="hljs-name">&#x27;withParams&#x27;</span>, {value}) }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{ <span class="hljs-name">customi18nModule.getLocale</span>() }}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="usage-in-javascript">Usage in JavaScript</h3>
+<ol>
+<li>Access through the I18n instance in Page/Component.</li>
+</ol>
+<pre><code class="language-js">const i18n = getI18nInstance()<span class="hljs-comment">;</span>
+Page({
+  onLoad() {
+    const text = i18n.<span class="hljs-literal">t</span>(&#x27;withParams&#x27;, { value: &#x27;Test&#x27; })<span class="hljs-comment">;</span>
+    console.log(<span class="hljs-name">text</span>)<span class="hljs-comment">; // Test is what you pass in</span>
+    i18n.setLocale(&#x27;en-US&#x27;)<span class="hljs-comment">;</span>
+  }
+})<span class="hljs-comment">;</span>
+</code></pre>
+<p>Other APIs are available on the I18n instance, for example, the API for obtaining the current language and the API for dynamically setting the current language. For details, see <a onclick="_mdLinkClick(this.href)" href="#/framework/interface">Interface Document</a>.</p>
+<ol start="2">
+<li>If the I18n instance is unavailable, use I18nPage to replace the Page constructor and use this to invoke it.</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-title function_">I18nPage</span>({
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> text = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">t</span>(<span class="hljs-string">&#x27;withParams&#x27;</span>, { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;Test&#x27;</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(text); <span class="hljs-comment">// Test is what you pass in</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setLocale</span>(<span class="hljs-string">&#x27;en-US&#x27;</span>);
+  }
+});
+</code></pre>
+<h2 id="characteristic">Characteristic</h2>
+<p>Currently, macle-i18n supports only plain text and text interpolation.</p>
+<h4 id="text-interpolation">Text Interpolation</h4>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Inserted value: {value}&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<pre><code class="language-json">i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { value: <span class="hljs-string">&#x27;Hello!&#x27;</span> })  <span class="hljs-regexp">//</span> Inserted value: Hello!
+</code></pre>
+<p>To invoke deeply nested objects, the dot syntax can be used in JavaScript to access object attributes.</p>
+<pre><code class="language-json">{
+  &quot;dotted&quot;: <span class="hljs-string">&quot;Nested value is: { obj.nested.value }&quot;</span>
+}
+</code></pre>
+<pre><code class="language-json"><span class="hljs-keyword">const</span> value = {
+  obj: {
+    nested: {
+      value: <span class="hljs-string">&#x27;Catch you!&#x27;</span>
+    }
+  }
+}
+i18n.t(<span class="hljs-string">&#x27;dotted&#x27;</span>, value)  <span class="hljs-comment">// Nested value is: Catch you!</span>
+</code></pre>
+<h4 id="select-statement">select Statement</h4>
+<pre><code><span class="hljs-regexp">//</span> i18n/en-US.json
+{
+  <span class="hljs-string">&quot;key&quot;</span>: <span class="hljs-string">&quot;{gender, select, male {His inbox} female {Her inbox} other {Their inbox}}&quot;</span>
+}
+
+<span class="hljs-regexp">//</span> i18n/zh-CN.json
+{
+  <span class="hljs-string">&quot;key&quot;</span>: <span class="hljs-string">&quot;{gender, select, male {他} female {她} other {其他}}&quot;</span>
+}
+</code></pre>
+<pre><code><span class="hljs-regexp">//</span> en-US
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { gender: <span class="hljs-string">&#x27;male&#x27;</span> })    <span class="hljs-regexp">//</span> His inbox
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { gender: <span class="hljs-string">&#x27;female&#x27;</span> })  <span class="hljs-regexp">//</span> Her inbox
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>)                        <span class="hljs-regexp">//</span> Their inbox
+<span class="hljs-regexp">//</span> zh-CN
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { gender: <span class="hljs-string">&#x27;male&#x27;</span> })    <span class="hljs-regexp">//</span> 他
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { gender: <span class="hljs-string">&#x27;female&#x27;</span> })  <span class="hljs-regexp">//</span> 她
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>)                        <span class="hljs-regexp">//</span> 其他
+</code></pre>
+<p>The select statement supports substatement text interpolation.</p>
+<pre><code><span class="language-xml">// i18n/en-US.json
+{
+  &quot;key&quot;: &quot;{mood, select, good </span><span class="hljs-template-variable">{{<span class="hljs-name">how</span>} day!} sad {{how} day.} other {Whatever!}}</span><span class="language-xml">&quot;
+}
+// i18n/zh-CN.json
+{
+  &quot;key&quot;: &quot;{mood, select, good </span><span class="hljs-template-variable">{{<span class="hljs-name">how</span>}天气!} sad {{how}天气.} other {其他!}}</span><span class="language-xml">&quot;
+}</span>
+</code></pre>
+<pre><code><span class="hljs-regexp">//</span> en-US
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { mood: <span class="hljs-string">&#x27;good&#x27;</span>, how: <span class="hljs-string">&#x27;Awesome&#x27;</span>  })  <span class="hljs-regexp">//</span> Awesome day!
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { mood: <span class="hljs-string">&#x27;sad&#x27;</span>, how: <span class="hljs-string">&#x27;Unhappy&#x27;</span>  })   <span class="hljs-regexp">//</span> Unhappy day.
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>)                                     <span class="hljs-regexp">//</span> Whatever!
+<span class="hljs-regexp">//</span> zh-CN
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { mood: <span class="hljs-string">&#x27;good&#x27;</span>, how: <span class="hljs-string">&#x27;好&#x27;</span>  })  <span class="hljs-regexp">//</span> 好天气!
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>, { mood: <span class="hljs-string">&#x27;sad&#x27;</span>, how: <span class="hljs-string">&#x27;不好&#x27;</span>  })   <span class="hljs-regexp">//</span> 坏天气.
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>)                                     <span class="hljs-regexp">//</span> 其他!
+</code></pre>

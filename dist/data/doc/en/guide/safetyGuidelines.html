@@ -1,0 +1,254 @@
+<h2 id="safety-guidelines">Safety Guidelines</h2>
+<blockquote>
+<p>Security precautions during Mini Program development</p>
+</blockquote>
+<ul>
+<li><h3 id="development-principles">Development Principles</h3>
+Developers must adhere to the following principles during the development process:<ol>
+<li><strong>Principle of Mutual Distrust</strong>: Do not trust user-submitted data, including data from third-party systems. All
+necessary data validation must be performed on the backend to ensure the legality and security of the data.</li>
+<li><strong>Principle of Least Privilege</strong>: When requesting user authorization, the mini-program should follow the
+principle of least privilege, only requesting necessary permissions. Additionally, the access permissions granted
+to users should be minimized, limited to what is actually needed.</li>
+<li><strong>Data Protection Principle</strong>: User-sensitive data must not be stored in plain text. Security measures such as
+encryption must be implemented to protect it. If sensitive data needs to be displayed, data desensitization
+should be applied.</li>
+<li><strong>Protection of Code and Developer Information</strong>: Similar to traditional web applications, the front-end code of
+a mini-program can be accessed externally. Development process information (such as account information, request
+information, etc.) and key code logic (such as encryption/decryption capabilities, signing logic, model
+algorithms, etc.) should not be placed on the front-end. If it is necessary to implement related functions on the
+front-end, the code should be sufficiently obfuscated and hardened to enhance security and prevent easy reverse
+engineering or tampering.</li>
+<li><strong>Identity Authentication</strong>: All backend API calls must undergo effective identity verification and permission
+authorization to ensure that only legitimate users or systems can access the corresponding resources.<h3 id="front-end">Front-end</h3>
+<h4 id="protection-of-sensitive-information">Protection of Sensitive Information</h4>
+Improper handling of sensitive information (e.g., displaying private data in plain text, hardcoding keys in the code)
+can lead to data leaks and pose serious security risks. Below are security development recommendations:</li>
+</ol>
+<ul>
+<li><p>The code should not contain any sensitive information, such as keys, access keys (AK), test addresses and
+accounts, developer information, user data, order information, etc. All sensitive content should be managed
+through secure configuration files or environment variables to ensure the maintainability and security of the
+code.</p>
+</li>
+<li><p>Sensitive information must not appear in mini-program files in plain text, comments, reversible encoding or
+encryption methods (such as base64 encoding), or insecure hash functions (such as MD5, SHA1). Secure methods
+should be used for storage and transmission to ensure that sensitive data is invisible, irreversible, and not
+directly accessible in the code.</p>
+</li>
+<li><p>The logic for desensitizing sensitive information must be completed on the server side and should not be executed
+on the client side. The client can only display desensitized data, ensuring that sensitive content remains in a
+secure and controlled environment during transmission and processing.</p>
+</li>
+<li><p>Sensitive information involved in display scenarios, such as user ID numbers, bank card numbers, and phone
+numbers, must be desensitized, regardless of whether the page is viewed by the user themselves. The
+desensitization method should comply with security standards to ensure that the information meets business needs
+without leaking user privacy.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="common-desensitization-specifications">Common Desensitization Specifications</h5>
+<table><tr><th colspan="1">Type of Sensitive Information</th><th colspan="1">Desensitization Specification</th><th colspan="1">Display Example</th></tr><tr><th rowspan="4">Name</th></tr><tr><td>If a Chinese name has only two characters, replace the first character with ; spaces are retained; long names should be displayed with line breaks.</td><td> ● 三<br>● 四</td></tr><tr><td>If a Chinese name has more than two characters, only the first and last characters are retained, and the middle part is replaced with an asterisk .</td><td> ● 李四<br>● 王**五</td></tr><tr><td>English names are desensitized in segments. For names with 2 or more segments, the first segment is desensitized.</td><td> ● * Band<br>● J</td></tr><tr><th rowspan="2">ID Number</th></tr><tr><td> When processing ID numbers (such as ID card numbers, military officer's card numbers, passport numbers, Hong Kong and Macau pass numbers, driver's license numbers), to protect privacy, the middle part is usually replaced with , and only the first and last 1 digit or letter are displayed. </td><td> ● ID card number: 3***1 <br>● Passport number: C9 <br>● Hong Kong and Macau pass: A1</td></tr><tr><th rowspan="2">Mobile Phone Number</th></tr><tr><td> ● Mainland China mobile phone numbers: display the first 3 digits and last 2 digits, the rest are displayed as . <br>● Mobile phone numbers outside Mainland China: <br>● Hong Kong, Macau: first 2 digits + **** + last 2 digits <br>● Taiwan: first 2 digits + **** + last 3 digits <br>● Other overseas regions: display first 3 and last 2 digits + * according to the actual number of digits <br>● Country codes and area codes are not hidden.</td><td> ● 18686 <br> ● +851 8066 <br> ● +886 91*744</td></tr><tr><th rowspan="2">Bank Card Number</th></tr><tr><td> ● Only the last 4 digits are displayed, the rest are displayed as *. <br> ● Applicable to credit cards and debit cards.</td><td> ● ********6211 <br> ● **4351 </td></tr><tr><th rowspan="2">License Plate Number</th></tr><tr><td> Regional information + the last three digits of the license plate are displayed in plaintext, and others are displayed with *. </td><td> ● 苏A**5HL <br>● 苏A*19B </td></tr><tr><th rowspan="2">Address</th></tr><tr><td> ● Simplified and traditional Chinese characters: hide the part of the address below the district/county level <br> ● Alphabetic type: hide the part of the address below the city with 6 * </td><td> ● 江苏省南京市雨花台区* <br>● ****** , 80331 Munich, Germany </td></tr><tr><th rowspan="2">Email</th></tr><tr><td> ● The first three characters of the prefix are displayed, if there are less than three, all are displayed, followed by three *. <br>● The suffix part is displayed completely</td><td> ● wal@hotmail.com <br>● dgh@gmail.com </td></tr><tr><th rowspan="2">Default Desensitization Rule</th></tr><tr><td> For other fields, if desensitization is required in the scenario, the default rule can be used. <br>● Display the first 1/3 and last 1/3, and replace the rest with .<br>● When the content length is not divisible by 3, display the integer part of length/3.0 + 1 for the front and the integer part of length/3.0 for the back. </td><td> ● 111222 <br>● 222*.444</td></tr></table>
+
+<h4 id="code-protection">Code Protection</h4>
+<p>Code is an important asset of mini program developers. It not only carries core business logic but may also contain
+sensitive information such as interface keys, database connections, merchant configurations, etc. Once the code is
+leaked, it may lead to the following risks:</p>
+<ul>
+<li>Leakage of commercial information (such as pricing strategies, operation logic)</li>
+<li>Mini programs being copied or maliciously tampered with</li>
+<li>Unauthorized access or abuse of user data</li>
+<li>Damage to brand reputation</li>
+</ul>
+<p>The following are some key development suggestions to help protect the code security of mini programs:</p>
+<table>
+<thead>
+<tr>
+<th>Security Measure</th>
+<th>Function</th>
+<th>Implementation Method</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code Obfuscation and Encryption</td>
+<td>Prevent code from being easily read</td>
+<td>Use obfuscation tools</td>
+</tr>
+<tr>
+<td>Sensitive Information Isolation</td>
+<td>Prevent key leakage</td>
+<td>Backend dynamic acquisition</td>
+</tr>
+<tr>
+<td>Core Logic Migration to Backend</td>
+<td>Prevent logic from being copied</td>
+<td>Backend processing</td>
+</tr>
+<tr>
+<td>Code Signature Verification</td>
+<td>Prevent code from being tampered with</td>
+<td>Digital signature</td>
+</tr>
+<tr>
+<td>Permission Control</td>
+<td>Prevent unauthorized access to code</td>
+<td>Git permission management</td>
+</tr>
+<tr>
+<td>Reinforcement Tools</td>
+<td>Increase reverse engineering difficulty</td>
+<td>Use mini program reinforcement tools</td>
+</tr>
+<tr>
+<td>Security Audit</td>
+<td>Discover potential vulnerabilities</td>
+<td>Regular code review</td>
+</tr>
+</tbody></table>
+<h4 id="avoid-referencing-third-party-resources">Avoid Referencing Third-Party Resources</h4>
+<p>In the development of mini programs, avoiding the introduction of third-party resources is one of the important
+principles to ensure system security. Third-party resources (such as SDKs, libraries, plug-ins, fonts, images, scripts,
+etc.) from unreliable sources or with outdated versions may contain malicious backdoors, historical vulnerabilities, or
+malicious code, thereby bringing serious security risks.
+Please maintain the following principles to reduce security risks caused by introducing third-party resources into mini
+programs.</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Reliable Sources</td>
+<td>Only use resources from official or trusted channels</td>
+</tr>
+<tr>
+<td>Version Updates</td>
+<td>Regularly update dependencies to avoid using outdated versions</td>
+</tr>
+<tr>
+<td>Protocol Compliance</td>
+<td>Ensure open-source protocols meet project requirements</td>
+</tr>
+<tr>
+<td>Dependency Minimization</td>
+<td>Only introduce necessary third-party resources</td>
+</tr>
+<tr>
+<td>Security Scanning</td>
+<td>Use tools for vulnerability detection and code review</td>
+</tr>
+<tr>
+<td>Operation Isolation</td>
+<td>Isolate sensitive operations</td>
+</tr>
+</tbody></table>
+<h4 id="prohibition-of-http-plaintext-transmission">Prohibition of HTTP Plaintext Transmission</h4>
+<p>In the development of mini programs, it is a basic requirement to ensure data security by forcing the use of SSL (HTTPS)
+for data communication. Using unencrypted HTTP communication will expose data to the risk of Man-in-the-Middle (MITM)
+attacks during transmission, which may lead to serious security issues such as traffic hijacking, information leakage,
+and identity forgery.</p>
+<h3 id="backend">Backend</h3>
+<h4 id="system-framework-security">System Framework Security</h4>
+<p>The systems and frameworks used by the mini program server should be updated and patched in a timely manner to prevent
+business risks caused by framework-type vulnerability attacks. The following are some suggestions and best practices to
+help ensure server security:</p>
+<ol>
+<li>Timely updating of systems and frameworks is the basis for preventing framework-type vulnerability attacks.</li>
+<li>Reasonable use of security mechanisms (such as CSRF, XSS protection) can effectively reduce attack risks.</li>
+<li>Continuous monitoring and testing are key to ensuring long-term system security.</li>
+</ol>
+<h4 id="interface-authentication">Interface Authentication</h4>
+<p>Interface authentication means that when a backend interface is called, it needs to perform permission verification for
+this interface call; otherwise, unauthorized actions are likely to occur. For example, for the <code>item deletion</code>
+interface, the backend should verify the identity information of the caller (such as IP address, developer-defined login
+status information, etc.) when receiving the request, and only designated users can pass the verification to perform the
+deletion.</p>
+<p>Unauthorized access is usually divided into horizontal unauthorized access and vertical unauthorized access:</p>
+<h5 id="horizontal-unauthorized-access">Horizontal Unauthorized Access</h5>
+<p>Avoid horizontal unauthorized access attacks. For data interfaces interacting between the server and the mini program,
+sufficient authentication should be performed on the user&#39;s identity (such as cookies, authcode, accessToken,
+pre-operations, etc.), and not rely only on incoming parameters to prevent attackers from pretending to be others to
+initiate requests.</p>
+<h5 id="vertical-unauthorized-access">Vertical Unauthorized Access</h5>
+<p>Avoid vertical unauthorized access attacks. The data interfaces provided by the server to users should be separated from
+administrator permissions and data areas to prevent attackers from invading the system through administrator interfaces.</p>
+<h5 id="development-suggestions">Development Suggestions:</h5>
+<ol>
+<li>Interfaces related to sensitive data and capabilities need to be authenticated in the backend. Usually, information
+such as openid, IP address, and custom login status can be verified.</li>
+<li>The authentication logic should be placed in the backend and should not be replaced by hidden pages, hidden buttons,
+etc. in the mini program front-end.</li>
+</ol>
+<h4 id="prevention-of-batch-attacks">Prevention of Batch Attacks</h4>
+<p>In the development of merchant mini programs, limiting the access frequency and number of requests for important and
+time-consuming business interfaces is a key security measure to prevent malicious attacks (such as brute-force attacks,
+traversal input, replay attacks, etc.). These attack methods may cause serious consequences such as user account theft,
+data leakage, and abuse of system resources.</p>
+<h4 id="data-legality-verification">Data Legality Verification</h4>
+<p>Server interfaces should effectively filter request parameters and rich text to prevent common web attacks such as xss,
+sql, and command injection through illegal input of special characters and commands.</p>
+<h4 id="operation-legality-verification">Operation Legality Verification</h4>
+<p>In the development of mini programs, the server must strictly judge the legality of user requests to prevent security
+issues such as illegal operations, unauthorized access, and data tampering. The following are some common legality
+judgment items and implementation suggestions:</p>
+<ol>
+<li>The server must strictly verify the source of the request to ensure that the request comes from a legitimate domain
+name or cooperative service provider.</li>
+<li>The signature mechanism ensures the integrity and source legality of the request by encrypting request parameters and
+timestamps.</li>
+<li>In the development of mini programs, verifying user permissions and pre-operations is a key link to ensure system
+security and the correctness of business logic.</li>
+<li>In the development of mini programs, for requests that return important data or complete important operations (such
+as login, digital unlocking, payment, password modification, etc.), additional security measures must be taken to
+prevent attackers from obtaining permissions by hijacking user credentials or replay attacks.</li>
+</ol>
+<h4 id="file-upload-and-download">File Upload and Download</h4>
+<h5 id="file-upload">File Upload</h5>
+<p>In the development of merchant mini programs, the file upload function is one of the common functions, but it is also a
+vulnerability point often exploited by attackers. If the type of uploaded files is not restricted, attackers may upload
+malicious scripts (such as .php, .jsp, .exe, etc.), which may lead to serious consequences such as server intrusion,
+data leakage, and system control.</p>
+<h5 id="development-suggestions-1">Development Suggestions:</h5>
+<ol>
+<li>Restrict the types of files allowed to be uploaded
+The server must strictly verify the type of uploaded files and cannot rely on front-end verification, because the
+front-end can be bypassed.</li>
+<li>Limit file size
+Prevent attackers from uploading oversized files, occupying server resources or triggering memory overflow.</li>
+<li>Rename the uploaded file name
+Prevent attackers from performing path traversal or overwriting system files through file names.</li>
+<li>Set file storage permissions to read-only and non-executable
+Uploaded files should be stored in an independent directory outside the Web root directory and set to read-only
+permissions to prevent execution by the server.</li>
+<li>Isolate the upload directory and prohibit script execution
+The upload directory should be separated from the Web root directory, and script execution should be prohibited in
+the Web server configuration.</li>
+<li>Use an independent storage service
+For the production environment, it is recommended to use an object storage service to store uploaded files in an
+independent storage service to avoid direct exposure to the Web server.</li>
+</ol>
+<h5 id="file-download">File Download</h5>
+<p>In the development of mini programs, if the file download function is improperly designed, it may allow attackers to
+access files in other sensitive directories of the system, resulting in serious security issues such as data leakage and
+system intrusion. Therefore, it is necessary to strictly control user download permissions and isolate download file
+paths to ensure that users can only access files they have permission to download.</p>
+<h5 id="development-suggestions-2">Development Suggestions:</h5>
+<ol>
+<li>Restrict users to only access files within their permission range
+The server must judge whether the user has permission to download the file according to the user&#39;s identity and
+permissions.</li>
+<li>Isolate the download file path and prohibit access to system directories
+Uploaded or downloaded files should be stored in an independent folder outside the Web root directory, and system
+files cannot be directly accessed through URLs.</li>
+<li>Prohibit path traversal attacks
+Users cannot access system files by constructing paths (such as ../../etc/passwd).</li>
+<li>Use temporary links or Tokens to control download permissions (recommended)
+Generate a one-time Token or temporary link for each download request, and verify the validity of the Token on the
+server side.</li>
+<li>Set Web server access restrictions
+Configure access restrictions in the Web server (such as Nginx, Apache) to prohibit direct access to paths outside
+the upload directory.</li>
+</ol>

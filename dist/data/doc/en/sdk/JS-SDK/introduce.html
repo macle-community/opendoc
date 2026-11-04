@@ -1,0 +1,51 @@
+<h2 id="js-sdk">JS SDK</h2>
+<h3 id="js-sdk-introduction">JS SDK Introduction</h3>
+<p>JS SDK is a web development toolkit provided by Macle for web developers.</p>
+<p>By using JS SDK, web developers can use Macle&#39;s capabilities of taking photos, scanning codes, and location systems efficiently. In addition, web developers can directly use Macle&#39;s unique capabilities to provide users with better web page experience.</p>
+<p>Since web-view has not extended events, JS SDK supports only API invocation.</p>
+<h3 id="how-to-use">How to Use</h3>
+<p>According to different application scenarios, the usage can be classified into two types.</p>
+<h4 id="dsl-mini-program">DSL Mini Program</h4>
+<ol>
+<li><p>Web developers import the js-sdk.js file and use the interface provided by the JS SDK.</p>
+</li>
+<li><p>Create an Mini Program and use the web-view container in the Mini Program.</p>
+</li>
+<li><p>The web-view container link points to the H5 page of the page developer.</p>
+</li>
+</ol>
+<h4 id="h5-mini-program">H5 Mini Program</h4>
+<ol>
+<li><p>Web developers directly introduce js-sdk to the project and import related APIs to the source code.</p>
+</li>
+<li><p>Use the Mini Program converter to convert the H5 project.</p>
+</li>
+</ol>
+<h3 id="version-number-identification-minimum-version-2460">Version Number Identification (Minimum Version: 24.6.0)</h3>
+<p>In order to facilitate developers to distinguish different versions of JS-SDK, Macle adds a version number identification in the first line of the SDK file. The specific identification format is as follows:</p>
+<pre><code class="language-js">/*Macle <span class="hljs-variable">${Macle_Version}</span> jssdk <span class="hljs-variable">${NPM_Version}</span> <span class="hljs-variable">${Date}</span>*/
+</code></pre>
+<h3 id="tips">Tips:</h3>
+<ol>
+<li>Some JS SDK APIs can be used only in DSL Mini Programs. For details, see <a onclick="_mdLinkClick(this.href)" href="#/sdk/js_sdk-interface">Interface Description</a>.</li>
+<li>Currently, when using the simulator for local debugging, online introduction of JSSDK for webview components is not supported.</li>
+</ol>
+<h3 id="web-view-component-properties"><a onclick="_mdLinkClick(this.href)" href="#/component/web-view">web-view</a> <strong>Component Properties</strong></h3>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">webview A link to a web page.</td>
+</tr>
+</tbody></table>

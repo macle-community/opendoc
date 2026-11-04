@@ -1,0 +1,48 @@
+<h2 id="audiocontext">AudioContext</h2>
+<blockquote>
+<p>AudioContext 实例，可通过 <code>ma.createAudioContext()</code> 获取。
+AudioContext 通过 <code>id</code> 跟一个 audio 组件绑定，操作对应的 audio 组件。</p>
+</blockquote>
+<h3 id="方法">方法</h3>
+<h4 id="audiocontextsetsrcstring-src">AudioContext.setSrc(string src)</h4>
+<p>设置音频地址</p>
+<h4 id="audiocontextplay">AudioContext.play()</h4>
+<p>播放音频。</p>
+<h4 id="audiocontextpause">AudioContext.pause()</h4>
+<p>暂停音频。</p>
+<h4 id="audiocontextseeknumber-position">AudioContext.seek(number position)</h4>
+<p>跳转到的位置，单位 s。</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">audio</span>  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myAudio&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;audioPlay&quot;</span>&gt;</span>播放<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;audioPause&quot;</span>&gt;</span>暂停<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;audio15&quot;</span>&gt;</span>设置当前播放时间为15秒<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;audioStart&quot;</span>&gt;</span>回到开头<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onReady</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-comment">// 使用 ma.createAudioContext 获取 audio 上下文 context</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span> = ma.<span class="hljs-title function_">createAudioContext</span>(<span class="hljs-string">&#x27;myAudio&#x27;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">setSrc</span>(
+      <span class="hljs-string">&#x27;http://example/pkg/example.mp3&#x27;</span>
+    );
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">play</span>();
+  },
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;&#x27;</span>
+  },
+  <span class="hljs-title function_">audioPlay</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">play</span>();
+  },
+  <span class="hljs-title function_">audioPause</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">pause</span>();
+  },
+  <span class="hljs-title function_">audio15</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-number">15</span>);
+  },
+  <span class="hljs-title function_">audioStart</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioCtx</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-number">0</span>);
+  }
+});
+</code></pre>

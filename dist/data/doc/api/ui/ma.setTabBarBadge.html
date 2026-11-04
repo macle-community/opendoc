@@ -1,0 +1,134 @@
+<h2 id="masettabbarbadgeobject-object">ma.setTabBarBadge(Object object)</h2>
+<blockquote>
+<p>为 tabBar 某一项的右上角添加文本（最低版本： 24.12.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">tabBar 的哪一项，从左边算起，从0开始</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">显示的文本，超过 4 个字符则显示成...</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.setTabBarBadge({
+  <span class="hljs-keyword">index</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;111&#x27;</span>
+})
+</code></pre>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setTabBarBadge: ok</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-2">参数</h5>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">Integer</td>
+<td align="left">错误码</td>
+</tr>
+</tbody></table>
+<h4 id="错误码列表">错误码列表</h4>
+<table>
+<thead>
+<tr>
+<th>错误场景</th>
+<th>错误码</th>
+<th>安卓是否支持</th>
+<th>iOS是否支持</th>
+<th>模拟器是否支持</th>
+<th>开发建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求参数类型不合法</td>
+<td>1</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中index、text类型是否合法</td>
+</tr>
+<tr>
+<td>请求参数数值不合法</td>
+<td>2</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数数值是否合法，校验 index的值是否在当前小程序配置的tabbar index合理范围内，合理范围为0 到 配置的tabbar数量减1</td>
+</tr>
+<tr>
+<td>请求参数缺少必填</td>
+<td>3</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中是否含有index参数，是否含有text参数</td>
+</tr>
+</tbody></table>

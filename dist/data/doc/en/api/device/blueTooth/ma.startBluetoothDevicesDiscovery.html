@@ -1,0 +1,106 @@
+<h2 id="mastartbluetoothdevicesdiscoveryobject-object">ma.startBluetoothDevicesDiscovery(Object object)</h2>
+<blockquote>
+<p>Start searching for nearby Bluetooth peripherals (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">services</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">List of UUIDs for Bluetooth device master services to search for (supports 16/32/128-bit UUIDs). Some Bluetooth devices broadcast the UUID of their main service. If this parameter is set, only Bluetooth devices whose broadcast packets have the main service corresponding to the UUID will be searched. It is recommended to use this parameter to filter out other surrounding Bluetooth devices that do not need to be processed.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="array-services">Array services</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uuid</td>
+<td>String</td>
+<td>UUID of the Bluetooth device service</td>
+</tr>
+<tr>
+<td>isPrimary</td>
+<td>Boolean</td>
+<td>Whether the service is the main service</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">startBluetoothDevicesDiscovery: ok</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">ma</span>.startBluetoothDevicesDiscovery({
+  success: (<span class="hljs-keyword">res</span>) =&gt; {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;startBluetoothDevicesDiscovery success&#x27;</span>, <span class="hljs-keyword">res</span>)
+    <span class="hljs-keyword">ma</span>.showModal({
+      title: <span class="hljs-string">&#x27;discovery success&#x27;</span>,
+      content: JSON.stringify(<span class="hljs-keyword">res</span>),
+      showCancel: false
+    })
+  },
+  fail: (<span class="hljs-keyword">res</span>) =&gt; {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;startBluetoothDevicesDiscovery fail&#x27;</span>, <span class="hljs-keyword">res</span>)
+    <span class="hljs-keyword">ma</span>.showModal({
+      title: <span class="hljs-string">&#x27;discovery fail&#x27;</span>,
+      content: JSON.stringify(<span class="hljs-keyword">res</span>),
+      showCancel: false
+    })
+  },
+})
+</code></pre>
+<h3 id="fqs">F&amp;Qs</h3>
+<p><strong>Q:</strong> When searching for nearby Bluetooth peripherals on an Android machine, the device cannot be found. How to troubleshoot?</p>
+<p>A: If you are unable to search for nearby Bluetooth devices using an Android phone for a long time, you can check whether the phone&#39;s location service is turned on, and try to search for the device again after confirming that it is turned on.</p>

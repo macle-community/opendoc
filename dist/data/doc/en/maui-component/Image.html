@@ -1,0 +1,183 @@
+<h2 id="image">Image</h2>
+<blockquote>
+<p>Enhanced version of the img tag, providing multiple image fill modes, supporting loading prompts, and loading failure prompts. Width and height can be set through attributes.(Minimum version: 24.9.0)</p>
+</blockquote>
+<h3 id="import">Import</h3>
+<p>Currently, only manual import is supported, and the npm function is still in incubation.</p>
+<pre><code><span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-attr">&quot;maui-image&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../component/image/index&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>The basic usage is the same as the native image tag, you can set src, and optionally set width and height, with default values of 320px and 240px respectively.</p>
+<pre><code class="language-html">&lt;maui-image width<span class="hljs-operator">=</span><span class="hljs-string">&quot;100&quot;</span> height<span class="hljs-operator">=</span><span class="hljs-string">&quot;100&quot;</span> src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://img.yzcdn.cn/vant/cat.jpeg&quot;</span> /&gt;
+</code></pre>
+<h4 id="fill-mode">Fill Mode</h4>
+<p>The image fill mode can be set through the mode attribute, with the available values listed in the table below.</p>
+<pre><code class="language-html">&lt;maui-image
+  width<span class="hljs-operator">=</span><span class="hljs-string">&quot;200&quot;</span>
+  height<span class="hljs-operator">=</span><span class="hljs-string">&quot;150&quot;</span>
+  mode<span class="hljs-operator">=</span><span class="hljs-string">&quot;center&quot;</span>
+  src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://img.yzcdn.cn/vant/cat.jpeg&quot;</span>
+/&gt;
+</code></pre>
+<h4 id="circular-image">Circular Image</h4>
+<p>The round attribute can be set to make the image round. Note that when the width and height of the image are not equal and the mode is aspectFit, it will not fill a complete circle.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-built_in">image</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">width</span>=<span class="hljs-string">&quot;350&quot;</span> <span class="hljs-built_in">height</span>=<span class="hljs-string">&quot;150&quot;</span> mode=<span class="hljs-string">&quot;aspectFit&quot;</span> src=<span class="hljs-string">&quot; https://img.yzcdn.cn/vant/cat.jpeg&quot;</span>&gt;&lt;/maui-<span class="hljs-built_in">image</span>&gt;
+</code></pre>
+<h4 id="loading-prompt">Loading Prompt</h4>
+<p>The Image component provides default loading and loading failure prompts.</p>
+<img src="data:image/png;base64,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"/>
+
+<img src="data:image/png;base64,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">
+
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">Image link</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">Image fill mode</td>
+<td align="left">String</td>
+<td align="left">aspectFill</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">Width, default unit is px</td>
+<td align="left">String / Number</td>
+<td align="left">320</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Height, default unit is px</td>
+<td align="left">String / Number</td>
+<td align="left">240</td>
+</tr>
+<tr>
+<td align="left">radius</td>
+<td align="left">Border radius, default unit is px</td>
+<td align="left">String / Number</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left">Whether to display as a circle</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">show-error</td>
+<td align="left">Whether to display image loading failure prompt</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">show-loading</td>
+<td align="left">Whether to display image loading prompt</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+</tbody></table>
+<h4 id="tips">Tips</h4>
+<ol>
+<li>Either round or radius can be selected. When both attributes exist, the priority of <code>radius</code> is higher than that of <code>round</code>.</li>
+</ol>
+<h4 id="image-fill-modes">Image Fill Modes</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scaleToFill</td>
+<td align="left">Scaling mode, does not maintain the aspect ratio, stretches the image&#39;s width and height to completely fill the image element</td>
+</tr>
+<tr>
+<td align="left">aspectFit</td>
+<td align="left">Scaling mode, maintains the aspect ratio, ensuring that the long side of the image is fully displayed. In other words, the image can be completely displayed.</td>
+</tr>
+<tr>
+<td align="left">aspectFill</td>
+<td align="left">Scaling mode, maintains the aspect ratio, only ensuring that the short side of the image is fully displayed. In other words, the image is usually complete in the horizontal or vertical direction, and cropping occurs in the other direction.</td>
+</tr>
+<tr>
+<td align="left">widthFix</td>
+<td align="left">Scaling mode, width remains unchanged, height automatically changes, maintaining the original aspect ratio of the image</td>
+</tr>
+<tr>
+<td align="left">heightFix</td>
+<td align="left">Scaling mode, height remains unchanged, width automatically changes, maintaining the original aspect ratio of the image</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">Clipping mode, does not scale the image, only shows the top area of the image</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">Clipping mode, does not scale the image, only shows the bottom area of the image</td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left">Clipping mode, does not scale the image, only shows the center area of the image</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">Clipping mode, does not scale the image, only shows the left area of the image</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">Clipping mode, does not scale the image, only shows the right area of the image</td>
+</tr>
+<tr>
+<td align="left">top left</td>
+<td align="left">Clipping mode, does not scale the image, only shows the top-left area of the image</td>
+</tr>
+<tr>
+<td align="left">top right</td>
+<td align="left">Clipping mode, does not scale the image, only shows the top-right area of the image</td>
+</tr>
+<tr>
+<td align="left">bottom left</td>
+<td align="left">Clipping mode, does not scale the image, only shows the bottom-left area of the image</td>
+</tr>
+<tr>
+<td align="left">bottom right</td>
+<td align="left">Clipping mode, does not scale the image, only shows the bottom-right area of the image</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bindclick</td>
+<td align="left">Triggered when the image is clicked</td>
+</tr>
+<tr>
+<td align="left">bindload</td>
+<td align="left">Triggered when the image is loaded</td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">Triggered when the image fails to load</td>
+</tr>
+</tbody></table>

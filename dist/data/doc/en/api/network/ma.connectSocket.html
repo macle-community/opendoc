@@ -1,0 +1,94 @@
+<h2 id="maconnectsocketobject-object">ma.connectSocket(Object object)</h2>
+<blockquote>
+<p>Create a WebSocket connection.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">WSS API address of the developer server.</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">HTTP header. <strong>Referer</strong> cannot be set in the header.</td>
+</tr>
+<tr>
+<td align="left">protocols</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Sub-protocol array.</td>
+</tr>
+<tr>
+<td align="left">tcpNoDelay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">TCP_NODELAY setting during TCP connection setup, which is supported by Android but not iOS.</td>
+</tr>
+<tr>
+<td align="left">perMessageDeflate</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to enable compression extension, which is supported by Android but not iOS.</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Timeout duration, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    ma<span class="hljs-selector-class">.connectSocket</span>({
+      url: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>,
+      <span class="hljs-selector-tag">header</span>:{
+         <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>
+      },
+      protocols: <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;protocol1&#x27;</span>]</span>
+    })
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: Currently, the security domain is not verified. You are advised to use WSS.</li>
+<li>tip: Currently wss does not have certificate verification, and it is necessary to provide certificate verification capabilities in the <code>MacleEventHandler</code> interface implementation.</li>
+</ol>

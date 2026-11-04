@@ -1,0 +1,280 @@
+<h2 id="magetauthcodeobject-object">ma.getAuthCode(Object object)</h2>
+<blockquote>
+<p>调用接口获取登录凭证。通过凭证获取用户登录态信息(最低版本：24.3.0)</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">权限列表</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="scopes列表">scopes列表</h4>
+<table>
+<thead>
+<tr>
+<th>权限名称</th>
+<th>权限描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AUTH_BASE</td>
+<td>授权获取用户ID</td>
+</tr>
+<tr>
+<td>AUTH_USER</td>
+<td>授权获取用户ID及其他用户信息。</td>
+</tr>
+<tr>
+<td>SEND_MESSAGE</td>
+<td>授权通过 SMS、PUSH 或 INBOX 向用户发送通知。</td>
+</tr>
+<tr>
+<td>USER_NICKNAME</td>
+<td>授权获取用户昵称。</td>
+</tr>
+<tr>
+<td>USER_NAME</td>
+<td>授权获取用户名。</td>
+</tr>
+<tr>
+<td>USER_LOGIN_ID</td>
+<td>授权获取用户的登录ID。</td>
+</tr>
+<tr>
+<td>PLAINTEXT_USER_LOGIN_ID</td>
+<td>授权获取用户的明文登录ID。</td>
+</tr>
+<tr>
+<td>HASH_LOGIN_ID</td>
+<td>授权获取hash用户登录ID。</td>
+</tr>
+<tr>
+<td>USER_AVATAR</td>
+<td>授权获取用户头像。</td>
+</tr>
+<tr>
+<td>USER_GENDER</td>
+<td>授权获取用户的性别。</td>
+</tr>
+<tr>
+<td>USER_BIRTHDAY</td>
+<td>授权获取用户生日。</td>
+</tr>
+<tr>
+<td>USER_NATIONALITY</td>
+<td>授权获取用户的国籍。</td>
+</tr>
+<tr>
+<td>USER_CONTACTINFO</td>
+<td>授权获取用户的联系方式。</td>
+</tr>
+<tr>
+<td>USER_ADDRESS</td>
+<td>授权获取用户的地址。</td>
+</tr>
+<tr>
+<td>PLAINTEXT_MOBILE_PHONE</td>
+<td>授权获取用户的明文电话号码。</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getAuthCode: ok</td>
+</tr>
+<tr>
+<td align="left">authCode</td>
+<td align="left">String</td>
+<td align="left">用户登录凭证</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-2">参数</h5>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">String</td>
+<td align="left">错误码</td>
+</tr>
+</tbody></table>
+<h3 id="错误码列表">错误码列表</h3>
+<table>
+<thead>
+<tr>
+<th>错误场景</th>
+<th>错误码</th>
+<th>安卓是否支持</th>
+<th>iOS是否支持</th>
+<th>模拟器是否支持</th>
+<th>开发建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求参数类型不合法</td>
+<td>1</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数类型是否合法(scopes为Array)</td>
+</tr>
+<tr>
+<td>请求参数数值不合法</td>
+<td>2</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数值是否合法（比如无效权限）</td>
+</tr>
+<tr>
+<td>请求参数缺少必填</td>
+<td>3</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中哪些必填参数未填写</td>
+</tr>
+<tr>
+<td>使用权限在当前站点不可用</td>
+<td>1201000</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>根据errorMsg排查接口调用参数中的权限范围是否在当前站点可用（可用范围可通过Axis Platform运营获取）</td>
+</tr>
+<tr>
+<td>用户拒绝免登的授权</td>
+<td>1201001</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户需要授权相关权限</td>
+</tr>
+<tr>
+<td>用户未授权也未拒绝免登的授权</td>
+<td>1201002</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户需要授权相关权限，也可以不处理待下次调用getAuthCode API时小程序框架扔会弹窗</td>
+</tr>
+<tr>
+<td>查询管理台配置商户id和相关凭证失败</td>
+<td>1201003</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>请联系Axis Platform相关运营人员进行定位</td>
+</tr>
+<tr>
+<td>小程序开发者侧运营人员未在管理台配置商户id和相关凭证</td>
+<td>1201004</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>小程序开发者侧运营人员需在小程序管理台配置相关商户id和相关凭证，具体可咨询Axis Platform相关运营人员</td>
+</tr>
+<tr>
+<td>宿主应用开发者未实现小程序免登相关适配</td>
+<td>1201005</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+<td>需联系当前站点运营获取对应的可调测宿主APP版本</td>
+</tr>
+<tr>
+<td>宿主APP免登逻辑中处理成功回调返回信息为空或者未返回对应授权码“authCode”字段</td>
+<td>1201006</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>需联系当前站点运营人员协调宿主APP开发者定位</td>
+</tr>
+<tr>
+<td>宿主APP免登逻辑中处理失败回调</td>
+<td>1201007</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>需联系当前站点运营人员协调宿主APP开发者定位</td>
+</tr>
+<tr>
+<td>小程序管理台内部异常</td>
+<td>1201008</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>需联系当前站点运营人员协调定位</td>
+</tr>
+</tbody></table>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+<li>使用此接口需要宿主应用实现并注入获取授权码等相关功能（请参考小程序SDK集成文档--集成三方帐号免登指导章节）</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getAuthCode</span>({
+  <span class="hljs-attr">scopes</span>: [], <span class="hljs-comment">// 权限范围以当前站点运营定义为准，这里仅为示例</span>
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">authCode</span>);
+  }
+});
+</code></pre>

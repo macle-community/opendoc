@@ -1,0 +1,263 @@
+<h2 id="swiper">swiper</h2>
+<blockquote>
+<p>滑块视图容器。其中只可放置 swiper-item 组件，否则会导致未定义的行为。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">indicator-dots</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否显示面板指示点</td>
+</tr>
+<tr>
+<td align="left">indicator-color</td>
+<td align="left">String</td>
+<td align="left">rgba(0, 0, 0, .3)</td>
+<td align="left">否</td>
+<td align="left">指示点颜色</td>
+</tr>
+<tr>
+<td align="left">indicator-active-color</td>
+<td align="left">String</td>
+<td align="left">#000000</td>
+<td align="left">否</td>
+<td align="left">当前选中的指示点颜色</td>
+</tr>
+<tr>
+<td align="left">autoplay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否自动切换</td>
+</tr>
+<tr>
+<td align="left">current</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">否</td>
+<td align="left">当前所在滑块的 index</td>
+</tr>
+<tr>
+<td align="left">interval</td>
+<td align="left">Number</td>
+<td align="left">5000</td>
+<td align="left">否</td>
+<td align="left">自动切换时间间隔</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">500</td>
+<td align="left">否</td>
+<td align="left">滑动动画时长</td>
+</tr>
+<tr>
+<td align="left">circular</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否采用衔接滑动</td>
+</tr>
+<tr>
+<td align="left">vertical</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">滑动方向是否为纵向</td>
+</tr>
+<tr>
+<td align="left">easing-function</td>
+<td align="left">String</td>
+<td align="left">&quot;default&quot;</td>
+<td align="left">否</td>
+<td align="left">指定 swiper 切换缓动动画类型</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">current 改变时会触发 change 事件，event.detail = {current}</td>
+</tr>
+</tbody></table>
+<h3 id="easing-function-的合法值">easing-function 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">default</td>
+<td align="left">默认缓动函数</td>
+</tr>
+<tr>
+<td align="left">linear</td>
+<td align="left">线性动画</td>
+</tr>
+<tr>
+<td align="left">easeInCubic</td>
+<td align="left">缓入动画</td>
+</tr>
+<tr>
+<td align="left">easeOutCubic</td>
+<td align="left">缓出动画</td>
+</tr>
+<tr>
+<td align="left">easeInOutCubic</td>
+<td align="left">缓入缓出动画</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">
+Page({
+    <span class="hljs-keyword">data</span>: {
+        background: [
+            {color: <span class="hljs-string">&#x27;pink&#x27;</span>, text: <span class="hljs-string">&#x27;Macle&#x27;</span>},
+            {color: <span class="hljs-string">&#x27;peru&#x27;</span>, text: <span class="hljs-string">&#x27;小程序&#x27;</span>},
+            {color: <span class="hljs-string">&#x27;yellowgreen&#x27;</span>, text: <span class="hljs-string">&#x27;Swiper&#x27;</span>}
+        ],
+        indicatorDots: <span class="hljs-literal">true</span>,
+        autoplay: <span class="hljs-literal">true</span>,
+        vertical: <span class="hljs-literal">false</span>,
+        interval: <span class="hljs-number">2000</span>,
+        circular: <span class="hljs-literal">false</span>,
+        duration: <span class="hljs-number">1000</span>,
+    },
+    onLoad() {
+    },
+    whetherDisplayPanelIndicator(e) {
+        <span class="hljs-keyword">this</span>.setData({
+            indicatorDots: !<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.indicatorDots,
+        });
+    },
+    adoptDirectionVertical() {
+        <span class="hljs-keyword">this</span>.setData({
+            vertical: !<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.vertical,
+        });
+    },
+    adoptCircular(e) {
+        <span class="hljs-keyword">this</span>.setData({
+            circular: !<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.circular,
+        });
+    },
+    adoptAutoplayInterval(e) {
+        <span class="hljs-keyword">this</span>.setData({
+            autoplay: !<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.autoplay,
+        });
+    },
+    intervalAdopt(e) {
+        <span class="hljs-keyword">this</span>.setData({
+            interval: e.detail.value,
+        });
+    },
+    durationAdopt(e) {
+        console.log(e.detail.value);
+        <span class="hljs-keyword">this</span>.setData({
+            duration: e.detail.value,
+        });
+    }
+});
+</code></pre>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-description&quot;</span>&gt;</span>滑块视图容器<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section-demo&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">swiper</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height:150px&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo-swiper&quot;</span> <span class="hljs-attr">previousMargin</span>=<span class="hljs-string">&quot;10px&quot;</span> <span class="hljs-attr">nextMargin</span>=<span class="hljs-string">&quot;10px&quot;</span>
+                    <span class="hljs-attr">indicator-dots</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">indicatorDots</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">autoplay</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">autoplay</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">vertical</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">vertical</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+                    <span class="hljs-attr">interval</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">interval</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">circular</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">circular</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">duration</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">duration</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">swiper-item</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&quot;swiper-item-</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">background</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;swiper-item ma_</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.color</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">swiper-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">swiper</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination-section-control&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                是否显示面板展示点
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;whetherDisplayPanelIndicator&quot;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">indicatorDots</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                滑动方向是否为纵向
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;adoptDirectionVertical&quot;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">vertical</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                是否采用衔接滑动
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;adoptCircular&quot;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">circular</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                是否自动切换
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;adoptAutoplayInterval&quot;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">autoplay</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;intervalAdopt&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">interval</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">show-value</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;30000&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>自动切换时间间隔(ms)<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&quot;durationAdopt&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">duration</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">show-value</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;30000&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>滑动动画时长(ms)<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</span>
+</code></pre>
+<pre><code class="language-css">
+<span class="hljs-selector-class">.swiper-item</span> {
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.pagination-section-control</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+}
+
+<span class="hljs-selector-class">.pagination-section-control</span> view {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
+}
+
+
+<span class="hljs-selector-class">.margin-t</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.ma_pink</span> {
+    <span class="hljs-attribute">background-color</span>: pink;
+}
+
+<span class="hljs-selector-class">.ma_peru</span> {
+    <span class="hljs-attribute">background-color</span>: peru;
+}
+
+<span class="hljs-selector-class">.ma_yellowgreen</span> {
+    <span class="hljs-attribute">background-color</span>: yellowgreen;
+}
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>如果在 bindchange 的事件回调函数中使用 setData 改变 current 值，则有可能导致 setData 被不停地调用。</li>
+</ol>

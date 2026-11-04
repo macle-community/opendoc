@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Plugin Development Overview",
+    "path": "/overview",
+    "data": "/data/doc/devtools/overview.md"
+  },
+  {
+    "name": "GUI Functions",
+    "child": [
+      {
+        "name": "Main Page",
+        "path": "/mainWindow",
+        "data": "/data/doc/devtools/mainWindow.md"
+      },
+      {
+        "name": "Simulator",
+        "path": "/simulator",
+        "data": "/data/doc/devtools/simulator.md"
+      },
+      {
+        "name": "Importing the Offline Simulator",
+        "path": "/offlineSimulator",
+        "data": "/data/doc/devtools/offlineSimulator.md"
+      },
+      {
+        "name": "Converter",
+        "path": "/converter",
+        "data": "/data/doc/devtools/Converter.md"
+      },
+      {
+        "name": "Documentation",
+        "path": "/documentation",
+        "data": "/data/doc/devtools/Documentation.md"
+      },
+      {
+        "name": "Custom APIs",
+        "path": "/customAPI",
+        "data": "/data/doc/devtools/customAPI.md"
+      },
+      {
+        "name": "Exporting Offline Packages",
+        "path": "/exportPackage",
+        "data": "/data/doc/devtools/exportPackage.md"
+      },
+      {
+        "name": "Mini Program Management",
+        "path": "/appletManagement",
+        "data": "/data/doc/devtools/appletManagement.md"
+      },
+      {
+        "name": "About",
+        "path": "/appletDevtoolsAbout",
+        "data": "/data/doc/devtools/appletDevtoolsAbout.md"
+      }
+    ]
+  },
+  {
+    "name": "Coding",
+    "path": "/coding",
+    "data": "/data/doc/devtools/coding.md"
+  },
+  {
+    "name": "Log Printing",
+    "path": "/errLog",
+    "data": "/data/doc/devtools/errLog.md"
+  },
+  {
+    "name": "Mini Program Debugging",
+    "child": [
+      {
+        "name": "Local Debugging",
+        "path": "/debug",
+        "data": "/data/doc/devtools/debug.md"
+      },
+      {
+        "name": "Remote Debugging",
+        "path": "/remoteDebug",
+        "data": "/data/doc/devtools/remoteDebug.md"
+      }
+    ]
+  },
+  {
+    "name": "Development Assistance",
+    "child": [
+      {
+        "name": "Code Compilation",
+        "path": "/compile",
+        "data": "/data/doc/devtools/compile.md"
+      },
+      {
+        "name": "npm Support",
+        "path": "/npmBuild",
+        "data": "/data/doc/devtools/npmBuild.md"
+      },
+      {
+        "name": "Incremental Compilation",
+        "path": "/increment-compile",
+        "data": "/data/doc/devtools/inc-compile.md"
+      },
+      {
+        "name": "Skeleton Screen",
+        "path": "/sk",
+        "data": "/data/doc/devtools/sk.md"
+      }
+    ]
+  },
+  {
+    "name": "Packing",
+    "path": "/upload",
+    "data": "/data/doc/devtools/upload.md"
+  },
+  {
+    "name": "Plugin Update Logs",
+    "path": "/release",
+    "data": "/data/doc/devtools/release.md"
+  },
+  {
+    "name": "Downloading",
+    "path": "/download",
+    "data": "/data/doc/devtools/download.md"
+  },
+  {
+    "name": "FAQs on Plugin",
+    "path": "/faq",
+    "data": "/data/doc/devtools/faq.md"
+  }
+]

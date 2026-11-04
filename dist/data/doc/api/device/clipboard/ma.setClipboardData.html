@@ -1,0 +1,61 @@
+<h2 id="masetclipboarddataobject-object">ma.setClipboardData(Object object)</h2>
+<blockquote>
+<p>设置系统剪贴板的内容。调用成功后，会弹出 toast 提示&quot;内容已复制&quot;，持续 1.5s（最低版本： 24.12.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>剪贴板的内容</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-title">ma</span>.setClipboardData({
+  <span class="hljs-class"><span class="hljs-keyword">data</span>: &#x27;<span class="hljs-keyword">data</span>&#x27;,</span>
+  success (res) {
+    ma.getClipboardData({
+      success (res) {
+        console.log(res.<span class="hljs-class"><span class="hljs-keyword">data</span>); </span>
+      }
+    });
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>由于此API会将复制内容设置到系统剪切板,请小程序开发者务必保证复制内容的合理合法性。若出现此API复制内容为敏感信息导致的信息泄露等风险,由小程序开发者独立承担。</li>
+</ol>

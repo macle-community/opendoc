@@ -1,0 +1,25 @@
+<h2 id="conditional-rendering">Conditional Rendering</h2>
+<h3 id="maif">ma:if</h3>
+<p>In the framework, ma:if=&quot;&quot; is used to determine whether the code block needs to be rendered.</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">condition</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> True <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>You can also use ma:elif and ma:else to add an else block.</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">length</span> &gt; <span class="hljs-number">5</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> 1 <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:elif</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">length</span> &gt; <span class="hljs-number">2</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> 2 <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">ma:else</span>&gt;</span> 3 <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="block-maif">block ma:if</h3>
+<p>ma:if is a control attribute, which needs to be added to a tag. If you want to determine multiple component tags at a time, you can use one tag to wrap multiple components and use the ma:if attribute.</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">true</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> view1 <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> view2 <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+</code></pre>
+<blockquote>
+<p>Note: It is not a component. It is only a wrapper element and does not perform any rendering on the page. Only control attributes are supported.</p>
+</blockquote>
+<h3 id="maif-vs-hidden">ma:if vs hidden</h3>
+<p>Because templates in ma:if may also contain data bindings, the framework has a local rendering process when the condition value of ma:if switches, because it ensures that the condition block is destroyed or re-rendered when the condition value is switched.</p>
+<p>Ma:if is also lazy. If the initial rendering condition is false, the framework does nothing and starts local rendering only when the condition is true for the first time.</p>
+<p>In contrast, hidden is much simpler. Components are always rendered, but simply control display and hide.</p>
+<p>In general, ma:if has a higher switching consumption and hidden has a higher initial rendering consumption. Therefore, hidden is better if frequent switchovers are required, and ma:if is better if conditions are unlikely to change at run time.</p>

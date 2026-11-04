@@ -1,0 +1,48 @@
+<h2 id="geographical-location-pre-pull">Geographical Location pre-pull</h2>
+<blockquote>
+<p>It is usually time-consuming for an Mini Program to obtain a geographical location (<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLocation">ma.getLocation</a>) for the first time. The Mini Program framework provides a pre-pull (pre-call) mechanism to advance the process and help improve user experience</p>
+</blockquote>
+<h3 id="usage-process">Usage Process</h3>
+<h3 id="configuring-a-prefetch-rule">Configuring a Prefetch Rule</h3>
+<p>Create preload.fetch in the root directory of the Mini Program project and fill in the preload configuration</p>
+<p><img src="/openplatform/macledocs/data/doc/en/api/storage/image/preload.png" alt="示例图" ></p>
+<h3 id="preloadfetch-configuration">preload.fetch Configuration</h3>
+<p><strong>Note:</strong> The actual configuration file does not support comments. The comments in the following file are used to better describe the function of each field. Delete the comments from the configuration file when copying the file.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th align="left">Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fetchType</td>
+<td>String</td>
+<td>No</td>
+<td align="left">Cache data type. The value is fixed to <code>getLocation</code></td>
+<td>pre</td>
+</tr>
+</tbody></table>
+<pre><code class="language-json"><span class="hljs-comment">// preload.fetch</span>
+<span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;fetchType&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;getLocation&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// Geographical location pre-pull. The fixed value is getLocation</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span>
+</code></pre>
+<p>（Currently, only <font color="red"><strong>the first 10 data records</strong></font> can be obtained in the preload.fetch file）</p>
+<h3 id="obtaining-prefetched-data">Obtaining Prefetched Data</h3>
+<p>The <strong><code>useFetchData</code></strong> parameter is added to ma.getLocation to determine whether data is prefetched.</p>
+<p>Set <strong><code>useFetchData:true</code></strong>. If data is prefetched, <code>success</code> response is returned. If data is not prefetched, a normal geographical location request is sent</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// Obtains prefetched data when fetchType in preload.fetch is set to getLocation</span>
+ma.<span class="hljs-title function_">getLocation</span>({
+  <span class="hljs-attr">useFetchData</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+</code></pre>

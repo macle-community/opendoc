@@ -1,0 +1,144 @@
+<h2 id="machooseimageobject-object">ma.chooseImage(Object object)</h2>
+<blockquote>
+<p>Select an image from the local album or takes a photo using the camera.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">count</td>
+<td align="left">Number</td>
+<td align="left">9</td>
+<td align="left">No</td>
+<td align="left">Maximum number of images that can be selected.</td>
+</tr>
+<tr>
+<td align="left">sizeType</td>
+<td align="left">Array</td>
+<td align="left">[&#39;original&#39;, &#39;compressed&#39;]</td>
+<td align="left">No</td>
+<td align="left">Size of the selected image (supported only by iOS).</td>
+</tr>
+<tr>
+<td align="left">sourceType</td>
+<td align="left">Array</td>
+<td align="left">[&#39;album&#39;, &#39;camera&#39;]</td>
+<td align="left">No</td>
+<td align="left">Source of the selected image. (This function does not apply to the simulator does not take effect.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="valid-values-of-objectsourcetype">Valid Values of object.sourceType</h4>
+<h5 id="parameter-1">Parameter</h5>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>album</td>
+<td>Selects images from the album.</td>
+<td>The album is directly called for image selection if this parameter is set.</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>Uses the camera.</td>
+<td>The camera is directly called for photographing if this parameter is set.</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-2">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">chooseImage:ok</td>
+</tr>
+<tr>
+<td align="left">tempFilePaths</td>
+<td align="left">Array</td>
+<td align="left">List of local temporary file paths of images.</td>
+</tr>
+<tr>
+<td align="left">tempFileVirtualPaths</td>
+<td align="left">Array</td>
+<td align="left">Content URI corresponding to the real path.</td>
+</tr>
+<tr>
+<td align="left">tempFiles</td>
+<td align="left">Array</td>
+<td align="left">List of images stored in local paths temporarily.</td>
+</tr>
+</tbody></table>
+<h4 id="structure-of-restempfiles">Structure of res.tempFiles</h4>
+<h5 id="parameter-3">Parameter</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>path</td>
+<td>String</td>
+<td>Local temporary file path.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Number</td>
+<td>Size of a local temporary file, in byte.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-attr">count</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">sizeType</span>: [<span class="hljs-string">&#x27;original&#x27;</span>, <span class="hljs-string">&#x27;compressed&#x27;</span>],
+  <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-comment">// tempFilePath can be used as the src attribute of the img tag to display images.</span>
+    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+  }
+});
+</code></pre>

@@ -1,0 +1,65 @@
+<h1 id="custom-api">Custom API</h1>
+<blockquote>
+<p>Quick Custom API Generation Tool (Minimum Version 23.3.0)</p>
+</blockquote>
+<h2 id="overview">Overview</h2>
+<p>To facilitate debugging, the custom API function of the Macle development plug-in is available in 23.3.0. 
+With this function, developers can quickly define APIs, customize names and callbacks, generate, apply, or delete APIs by one click, and import and export APIs in JSON files.</p>
+<h2 id="gui">GUI</h2>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/customApiGUI.png" alt="image" ></p>
+<p>1: function entry</p>
+<p>2: Import APIs.</p>
+<p>3: API export</p>
+<p>4: Add a customized API scheme.</p>
+<p>5: Change the scheme name.</p>
+<p>6: Delete the customized API scheme. The deletion takes effect immediately.</p>
+<p>7: Edit the customized API name.</p>
+<p>8: simulated callback type. Currently, Success and Fail are supported.</p>
+<p>9: Set callback information. Currently, only the JSON format is supported.</p>
+<p>10: API application setting, which takes effect immediately after being clicked.</p>
+<p>11: delay callback, in ms.</p>
+<p>12: simulation type. Both local proxy and reverse proxy are supported. (Minimum Version: 23.6. 0)</p>
+<h2 id="example">Example</h2>
+<p>The following is a simple example of how to use a custom API.</p>
+<ol>
+<li><p>Import or create an API and confirm the application of the API information.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/customImport.gif" alt="image" ></p>
+</li>
+<li><p>Create a new function to call the API and create a button to trigger the function.</p>
+</li>
+<li><p>Open the simulation window and view the console</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/customCheckInfo.gif" alt="image" ></p>
+</li>
+<li><p>Click to view the callback information.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/mainWindow/customConsole.gif" alt="image" ></p>
+</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="maml">maml</h4>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!--index.maml--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">motto</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;testAPI&quot;</span>&gt;</span>testAPI<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h4 id="javascript">JavaScript</h4>
+<pre><code>testAPI() {
+    ma.testAPI({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">failInfo</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(failInfo);
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {},
+    });
+  },
+</code></pre>
+<p>tips:</p>
+<ol>
+<li><p>The priority of the customized API is higher than that of the existing API of the Mini Program. If the name of the customized API is the same as that of the existing API of the Mini Program, the original API will be overwritten and becomes invalid.</p>
+</li>
+<li><p>To prevent API information loss, Macle backs up <strong>the customized APIs in use</strong> in real time in the Mini Program cache directory. The backup path is as follows:</p>
+<p>%Current User Directory%\.macle\mock\mockApi.json</p>
+</li>
+</ol>

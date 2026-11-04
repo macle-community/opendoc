@@ -1,0 +1,60 @@
+<h2 id="magetlaunchoptionssyncobject-object">ma.getLaunchOptionsSync(Object object)</h2>
+<blockquote>
+<p>Get the startup parameters when starting the Mini Program (minimum version: 23.12.0)</p>
+</blockquote>
+<h3 id="return-value">Return Value</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">serviceConfig</td>
+<td align="left">Array</td>
+<td>Startup parameters issued by the server</td>
+</tr>
+</tbody></table>
+<h4 id="array-serviceconfig">Array serviceConfig</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">configName</td>
+<td align="left">String</td>
+<td>Configuration Item Name</td>
+</tr>
+<tr>
+<td align="left">configValue</td>
+<td align="left">String</td>
+<td>Configuration Item Value</td>
+</tr>
+</tbody></table>
+<h3 id="usage-restrictions">Usage Restrictions</h3>
+<ol>
+<li>To use this interface, you need to connect to the Mini Program SaaS platform</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const { serviceConfig } = ma.getLaunchOptionsSync();
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(serviceConfig[<span class="hljs-number">0</span>].configName);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(serviceConfig[<span class="hljs-number">0</span>].configValue);
+
+
+
+<span class="hljs-comment">// serviceConfig example</span>
+serviceConfig = [
+  {
+    <span class="hljs-attr">configName</span>: <span class="hljs-string">&quot;id&quot;</span>,
+    <span class="hljs-attr">configValue</span>: <span class="hljs-string">&quot;123456&quot;</span>
+  }
+]
+</code></pre>

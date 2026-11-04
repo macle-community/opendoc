@@ -1,0 +1,31 @@
+<h2 id="代码编译">代码编译</h2>
+<h3 id="将-js-代码编译成-es5">将 JS 代码编译成 ES5</h3>
+<p>开启此选项，开发者工具将使用 babel 将 JS 代码编译成 ES5 标准的代码，以满足运行在低版本手机系统的要求。</p>
+<p>功能说明：</p>
+<ul>
+<li>基于 babel7 实现，使用 preset-env，支持最新的 ECMAScript 语法，编译目标为 {android:4.4, ios:9}</li>
+<li>开启 use strict，即严格模式；</li>
+<li>可以通过 project.config.json 中的 setting.es5 开启或关闭转换<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;appid&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;wx64d368b8c5ad3f98&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;projectname&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;calendar&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;日历&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;setting&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;es5&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="样式补全">样式补全</h3>
+<p>开发工具会自动检测并补全缺失样式，保证在低版本系统上的正常显示。尽管可以规避大部分的问题 ，还是建议开发者需要在 iOS 和 Android 上分别检查小程序的真实表现。</p>
+<h3 id="代码压缩混淆">代码压缩混淆</h3>
+<p>开发者工具在编译代码时候将会帮助开发者压缩和混淆 javascript 和 css 代码，以减小代码包体积和保护代码。</p>
+<h3 id="启用多核心编译">启用多核心编译</h3>
+<p>启用此选项，会充分利用 CPU 资源来编译项目，提高编译的效率。默认关闭。开启方法：设置 -&gt; macle -&gt; 多核编译<br>限制：</p>
+<ol>
+<li>由于是按分包启用多线程编译的，故只在分包场景下有效</li>
+<li>仅在在四核及以上的机器上生效</li>
+<li>多核编译的性能提升仅在小程序分包数较多较复杂的场景较明显，否则由于线程启动和通讯的性能开销不建议开启</li>
+</ol>
+<h3 id="高阶css特性支持">高阶css特性支持</h3>
+<p>开发者工具将会对高阶CSS语法进行自动转义，使例如 嵌套、变量、inset等语法在低版本系统上有更好的兼容性，开发者仅需升级开发套件至 <code>24.12.0</code> 及以上的版本即可获取高阶css特性支持</p>

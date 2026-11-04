@@ -1,0 +1,79 @@
+<h2 id="magetstorageinfoobject-object">ma.getStorageInfo(Object object)</h2>
+<blockquote>
+<p>Asynchronously obtain information about the current storage.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getStorageInfo: ok</td>
+</tr>
+<tr>
+<td align="left">keys</td>
+<td align="left">Array</td>
+<td align="left">All keys in the current storage</td>
+</tr>
+<tr>
+<td align="left">currentSize</td>
+<td align="left">Number</td>
+<td align="left">Size of the occupied space, in KB.</td>
+</tr>
+<tr>
+<td align="left">limitSize</td>
+<td align="left">Number</td>
+<td align="left">Limited space size, in KB.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    <span class="hljs-keyword">ma</span>.getStorageInfo({
+      success (<span class="hljs-keyword">res</span>) {
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.<span class="hljs-built_in">keys</span>)
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.currentSize)
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.limitSize)
+      }
+    })
+</code></pre>

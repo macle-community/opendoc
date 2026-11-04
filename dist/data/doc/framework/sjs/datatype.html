@@ -1,0 +1,366 @@
+<h2 id="数据类型">数据类型</h2>
+<p>SJS 目前支持如下数据类型：</p>
+<ul>
+<li>string：字符串</li>
+<li>boolean：布尔值</li>
+<li>number：数值</li>
+<li>object：对象</li>
+<li>function：函数</li>
+<li>array：数组</li>
+<li>date：日期</li>
+<li>regexp：正则表达式</li>
+</ul>
+<h3 id="判断数据类型">判断数据类型</h3>
+<p>SJS 提供了 constructor 与 typeof 两种方式判断数据类型。</p>
+<ul>
+<li><strong>constructor</strong><pre><code class="language-js">const <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">number</span>.constructor); <span class="hljs-comment">// &quot;Number&quot;</span>
+const string = <span class="hljs-string">&#x27;str&#x27;</span>;
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(string.constructor); <span class="hljs-comment">// &quot;String&quot;</span>
+const <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">boolean</span>.constructor); <span class="hljs-comment">// &quot;Boolean&quot;</span>
+const object = {};
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(object.constructor); <span class="hljs-comment">// &quot;Object&quot;</span>
+const func = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {};
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(func.constructor); <span class="hljs-comment">// &quot;Function&quot;</span>
+const <span class="hljs-built_in">array</span> = [];
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">array</span>.constructor); <span class="hljs-comment">// &quot;Array&quot;</span>
+const <span class="hljs-built_in">date</span> = getDate();
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">date</span>.constructor); <span class="hljs-comment">// &quot;Date&quot;</span>
+const regexp = getRegExp();
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(regexp.constructor); <span class="hljs-comment">// &quot;RegExp&quot;</span>
+</code></pre>
+</li>
+<li><strong>typeof</strong><pre><code class="language-js">const num = <span class="hljs-number">100</span>;
+const bool = <span class="hljs-literal">false</span>;
+const obj = {};
+const func = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {};
+const <span class="hljs-built_in">array</span> = [];
+const <span class="hljs-built_in">date</span> = getDate();
+const regexp = getRegExp();
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> num); <span class="hljs-comment">// &#x27;number&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> bool); <span class="hljs-comment">// &#x27;boolean&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> obj); <span class="hljs-comment">// &#x27;object&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> func); <span class="hljs-comment">// &#x27;function&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> <span class="hljs-built_in">array</span>); <span class="hljs-comment">// &#x27;object&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> <span class="hljs-built_in">date</span>); <span class="hljs-comment">// &#x27;object&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> regexp); <span class="hljs-comment">// &#x27;object&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// &#x27;undefined&#x27;</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span> <span class="hljs-literal">null</span>); <span class="hljs-comment">// &#x27;object</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="number">number</h3>
+<h4 id="语法">语法</h4>
+<p>number 包括两种数值：整数，小数。</p>
+<pre><code class="language-js">var a <span class="hljs-operator">=</span> <span class="hljs-number">10</span><span class="hljs-comment">;</span>
+var PI <span class="hljs-operator">=</span> <span class="hljs-number">3.141592653589793</span><span class="hljs-comment">;</span>
+</code></pre>
+<h4 id="属性">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Number&quot;。</li>
+</ul>
+<h4 id="方法">方法</h4>
+<ul>
+<li>toString</li>
+<li>toLocaleString</li>
+<li>valueOf</li>
+<li>toFixed</li>
+<li>toExponential</li>
+<li>toPrecision</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="string">string</h3>
+<h4 id="语法-1">语法</h4>
+<pre><code class="language-js"><span class="hljs-symbol">&#x27;hello</span> world&#x27;;
+<span class="hljs-symbol">&#x27;hello</span> world&#x27;;
+</code></pre>
+<h4 id="属性-1">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;String&quot;。</li>
+<li>length</li>
+</ul>
+<h4 id="方法-1">方法</h4>
+<ul>
+<li>toString</li>
+<li>valueOf</li>
+<li>charAt</li>
+<li>charCodeAt</li>
+<li>concat</li>
+<li>indexOf</li>
+<li>lastIndexOf</li>
+<li>localeCompare</li>
+<li>match</li>
+<li>replace</li>
+<li>search</li>
+<li>slice</li>
+<li>split</li>
+<li>substring</li>
+<li>toLowerCase</li>
+<li>toLocaleLowerCase</li>
+<li>toUpperCase</li>
+<li>toLocaleUpperCase</li>
+<li>trim</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="boolean">boolean</h3>
+<h4 id="语法-2">语法</h4>
+<p>布尔值只有两个特定的值：true 和 false。</p>
+<h4 id="属性-2">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Boolean&quot;。</li>
+</ul>
+<h4 id="方法-2">方法</h4>
+<ul>
+<li>toString</li>
+<li>valueOf</li>
+</ul>
+<h3 id="object">object</h3>
+<h4 id="语法-3">语法</h4>
+<p>object 是一种无序的键值对。使用方法如下所示：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> o = {}; <span class="hljs-comment">//生成一个新的空对象</span>
+
+<span class="hljs-comment">//生成一个新的非空对象</span>
+o = {
+  <span class="hljs-attr">string</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//object 的 key 可以是字符串</span>
+  const_var: <span class="hljs-number">2</span>, <span class="hljs-comment">//object 的 key 也可以是符合变量定义规则的标识符</span>
+  func: {} <span class="hljs-comment">//object 的 value 可以是任何类型</span>
+};
+
+<span class="hljs-comment">//对象属性的读操作</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">1</span> === o[<span class="hljs-string">&#x27;string&#x27;</span>]);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === o.const_var);
+
+<span class="hljs-comment">//对象属性的写操作</span>
+o[<span class="hljs-string">&#x27;string&#x27;</span>]++;
+o[<span class="hljs-string">&#x27;string&#x27;</span>] += <span class="hljs-number">10</span>;
+o.const_var++;
+o.const_var += <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">//对象属性的读操作</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">12</span> === o[<span class="hljs-string">&#x27;string&#x27;</span>]);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">13</span> === o.const_var);
+</code></pre>
+<h4 id="属性-3">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Object&quot;。</li>
+</ul>
+<h4 id="方法-3">方法</h4>
+<ul>
+<li>toString：返回字符串 &quot;[object Object]&quot;。</li>
+</ul>
+<h3 id="function">function</h3>
+<h4 id="语法-4">语法</h4>
+<p>function 支持以下的定义方式：</p>
+<pre><code class="language-js">//方法 <span class="hljs-number">1</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(x) {
+  <span class="hljs-keyword">return</span> <span class="hljs-type">x</span>;
+}
+
+//方法 <span class="hljs-number">2</span>
+var b = <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(x) {
+  <span class="hljs-keyword">return</span> <span class="hljs-type">x</span>;
+};
+</code></pre>
+<p>function 同时也支持以下的语法（匿名函数，闭包等）：</p>
+<pre><code class="language-js">var a <span class="hljs-operator">=</span> function (x) {
+  return function () {
+    return x<span class="hljs-comment">;</span>
+  }<span class="hljs-comment">;</span>
+}<span class="hljs-comment">;</span>
+
+var b <span class="hljs-operator">=</span> a(<span class="hljs-number">100</span>)<span class="hljs-comment">;</span>
+console.log(<span class="hljs-number">100</span> <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span> b())<span class="hljs-comment">;</span>
+</code></pre>
+<h4 id="arguments">arguments</h4>
+<p>function 里面可以使用 arguments 关键词。该关键词目前只支持以下的属性：</p>
+<ul>
+<li>length: 传递给函数的参数个数。</li>
+<li>[index]: 通过 index 下标可以遍历传递给函数的每个参数。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">3</span> === arguments.<span class="hljs-built_in">length</span>);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">100</span> === arguments[<span class="hljs-number">0</span>]);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">200</span> === arguments[<span class="hljs-number">1</span>]);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">300</span> === arguments[<span class="hljs-number">2</span>]);
+};
+a(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>);
+</code></pre>
+<h4 id="属性-4">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Function&quot;。</li>
+<li>length：返回函数的形参个数。</li>
+</ul>
+<h4 id="方法-4">方法</h4>
+<ul>
+<li>toString：返回字符串 &quot;[function Function]&quot;。</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> func = <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, c</span>) {};
+
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Function&#x27;</span> === func.constructor);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">3</span> === func.<span class="hljs-built_in">length</span>);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[function Function]&#x27;</span> === func.toString());
+</code></pre>
+<h3 id="array">array</h3>
+<h4 id="语法-5">语法</h4>
+<p>array 支持以下的定义方式：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = []; <span class="hljs-comment">//生成一个新的空数组</span>
+
+a = [<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;2&#x27;</span>, {}, <span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {}]; <span class="hljs-comment">//生成一个新的非空数组，数组元素可以是任何类型</span>
+</code></pre>
+<h4 id="属性-5">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Array&quot;。</li>
+<li>length</li>
+</ul>
+<h4 id="方法-5">方法</h4>
+<ul>
+<li>toString</li>
+<li>concat</li>
+<li>join</li>
+<li>pop</li>
+<li>push</li>
+<li>reverse</li>
+<li>shift</li>
+<li>slice</li>
+<li>sort</li>
+<li>splice</li>
+<li>unshift</li>
+<li>indexOf</li>
+<li>lastIndexOf</li>
+<li>every</li>
+<li>some</li>
+<li>forEach</li>
+<li>map</li>
+<li>filter</li>
+<li>reduce</li>
+<li>reduceRight</li>
+</ul>
+<blockquote>
+<p>以上属性的具体使用请参考 ES5 标准</p>
+</blockquote>
+<h3 id="date">date</h3>
+<h4 id="语法-6">语法</h4>
+<p>生成 date 对象需要使用 getDate 函数, 返回一个当前时间的对象。</p>
+<pre><code class="language-js">get<span class="hljs-constructor">Date()</span>
+get<span class="hljs-constructor">Date(<span class="hljs-params">milliseconds</span>)</span>
+get<span class="hljs-constructor">Date(<span class="hljs-params">datestring</span>)</span>
+get<span class="hljs-constructor">Date(<span class="hljs-params">year</span>, <span class="hljs-params">month</span>[, <span class="hljs-params">date</span>[, <span class="hljs-params">hours</span>[, <span class="hljs-params">minutes</span>[, <span class="hljs-params">seconds</span>[, <span class="hljs-params">milliseconds</span>]]]]])</span>
+</code></pre>
+<p>参数：</p>
+<ul>
+<li>milliseconds: 从 1970 年 1 月 1 日 00:00:00 UTC 开始计算的毫秒数</li>
+<li>datestring: 日期字符串，其格式为：&quot;month day, year hours:minutes:seconds&quot;</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> <span class="hljs-built_in">date</span> = getDate(); <span class="hljs-comment">//返回当前时间对象</span>
+
+<span class="hljs-built_in">date</span> = getDate(<span class="hljs-number">1500000000000</span>);
+<span class="hljs-comment">// Fri Jul 14 2017 10:40:00 GMT+0800 (中国标准时间)</span>
+<span class="hljs-built_in">date</span> = getDate(<span class="hljs-string">&#x27;2017-7-14&#x27;</span>);
+<span class="hljs-comment">// Fri Jul 14 2017 00:00:00 GMT+0800 (中国标准时间)</span>
+<span class="hljs-built_in">date</span> = getDate(<span class="hljs-number">2017</span>, <span class="hljs-number">6</span>, <span class="hljs-number">14</span>, <span class="hljs-number">10</span>, <span class="hljs-number">40</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+<span class="hljs-comment">// Fri Jul 14 2017 10:40:00 GMT+0800 (中国标准时间)</span>
+</code></pre>
+<h4 id="属性-6">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;Date&quot;。</li>
+</ul>
+<h4 id="方法-6">方法</h4>
+<ul>
+<li>toString</li>
+<li>toDateString</li>
+<li>toTimeString</li>
+<li>toLocaleString</li>
+<li>toLocaleDateString</li>
+<li>toLocaleTimeString</li>
+<li>valueOf</li>
+<li>getTime</li>
+<li>getFullYear</li>
+<li>getUTCFullYear</li>
+<li>getMonth</li>
+<li>getUTCMonth</li>
+<li>getDate</li>
+<li>getUTCDate</li>
+<li>getDay</li>
+<li>getUTCDay</li>
+<li>getHours</li>
+<li>getUTCHours</li>
+<li>getMinutes</li>
+<li>getUTCMinutes</li>
+<li>getSeconds</li>
+<li>getUTCSeconds</li>
+<li>getMilliseconds</li>
+<li>getUTCMilliseconds</li>
+<li>getTimezoneOffset</li>
+<li>setTime</li>
+<li>setMilliseconds</li>
+<li>setUTCMilliseconds</li>
+<li>setSeconds</li>
+<li>setUTCSeconds</li>
+<li>setMinutes</li>
+<li>setUTCMinutes</li>
+<li>setHours</li>
+<li>setUTCHours</li>
+<li>setDate</li>
+<li>setUTCDate</li>
+<li>setMonth</li>
+<li>setUTCMonth</li>
+<li>setFullYear</li>
+<li>setUTCFullYear</li>
+<li>toUTCString</li>
+<li>toISOString</li>
+<li>toJSON</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>
+<h3 id="regexp">regexp</h3>
+<h4 id="语法-7">语法</h4>
+<p>生成 regexp 对象需要使用 getRegExp 函数。</p>
+<pre><code class="language-js">get<span class="hljs-constructor">RegExp(<span class="hljs-params">pattern</span>[, <span class="hljs-params">flags</span>])</span>
+</code></pre>
+<p>参数：</p>
+<ul>
+<li>pattern: 正则表达式的内容。</li>
+<li>flags：修饰符。该字段只能包含以下字符:<ul>
+<li>g: global</li>
+<li>i: ignoreCase</li>
+<li>m: multiline。</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = getRegExp(<span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;img&#x27;</span>);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;x&#x27;</span> === a.source);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a.global);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a.ignoreCase);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a.multiline);
+</code></pre>
+<h4 id="属性-7">属性</h4>
+<ul>
+<li>constructor：返回字符串 &quot;RegExp&quot;。</li>
+<li>source</li>
+<li>global</li>
+<li>ignoreCase</li>
+<li>multiline</li>
+<li>lastIndex</li>
+</ul>
+<blockquote>
+<p>除 constructor 外属性的具体含义请参考 ES5 标准。</p>
+</blockquote>
+<h4 id="方法-7">方法</h4>
+<ul>
+<li>exec</li>
+<li>test</li>
+<li>toString</li>
+</ul>
+<blockquote>
+<p>以上方法的具体使用请参考 ES5 标准。</p>
+</blockquote>

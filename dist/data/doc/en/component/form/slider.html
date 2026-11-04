@@ -1,0 +1,137 @@
+<h2 id="slider">slider</h2>
+<blockquote>
+<p>Slider.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">min</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">No</td>
+<td align="left">Minimum value.</td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">Number</td>
+<td align="left">100</td>
+<td align="left">No</td>
+<td align="left">Maximum value.</td>
+</tr>
+<tr>
+<td align="left">step</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+<td align="left">No</td>
+<td align="left">Length of a step. The value must be greater than 0 and can be exactly divided by the value of <strong>max</strong> minus <strong>min</strong>.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">No</td>
+<td align="left">Current value.</td>
+</tr>
+<tr>
+<td align="left">activeColor</td>
+<td align="left">String</td>
+<td align="left">#1aad19</td>
+<td align="left">No</td>
+<td align="left">Selected color.</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left">#e9e9e9</td>
+<td align="left">No</td>
+<td align="left">Background color.</td>
+</tr>
+<tr>
+<td align="left">block-size</td>
+<td align="left">Number</td>
+<td align="left">28</td>
+<td align="left">No</td>
+<td align="left">Size of the sliding block. The value ranges from 12 to 28.</td>
+</tr>
+<tr>
+<td align="left">block-color</td>
+<td align="left">String</td>
+<td align="left">#ffffff</td>
+<td align="left">No</td>
+<td align="left">Color of the sliding block.</td>
+</tr>
+<tr>
+<td align="left">show-value</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to display the current value.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Event triggered after a sliding. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+<tr>
+<td align="left">bindchanging</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Event triggered during sliding. The output is <strong>event.detail =</strong> <em>{value}</em>.</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Slider<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Setting step<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;5&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider1change&#x27;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&#x27;5&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Set minimum/maximum value range<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;33&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider2change&#x27;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&#x27;25&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">show-value</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Custom style<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;33&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;slider3change&#x27;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&#x27;25&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">show-value</span>
+              <span class="hljs-attr">backgroundColor</span>=<span class="hljs-string">&#x27;#FFAA00&#x27;</span> <span class="hljs-attr">activeColor</span>=<span class="hljs-string">&#x27;#00aaee&#x27;</span> <span class="hljs-attr">trackSize</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">handleSize</span>=<span class="hljs-string">&#x27;6&#x27;</span> <span class="hljs-attr">handleColor</span>=<span class="hljs-string">&#x27;blue&#x27;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> pageData = {};
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">3</span>; ++i) {
+  (<span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) {
+    pageData[<span class="hljs-string">&#x27;slider&#x27;</span> + index + <span class="hljs-string">&#x27;change&#x27;</span>] = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;slider&#x27;</span> + index + <span class="hljs-string">&#x27;A change event occurs, carrying the value:&#x27;</span>, e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>);
+    };
+  })(i);
+}
+<span class="hljs-title class_">Page</span>(pageData);
+</code></pre>

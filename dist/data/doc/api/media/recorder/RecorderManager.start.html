@@ -1,0 +1,127 @@
+<h2 id="recordermanagerstartobject-object">RecorderManager.start(Object object)</h2>
+<blockquote>
+<p>开始录音，必须要用户授予当前小程序麦克风权限，同时宿主 APP 被允许使用系统麦克风才可调用（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">否</td>
+<td align="left">录音的时长，单位 ms，最大值 180000（3 分钟），若指定 duration 后用户未主动停止录音，录音将自动停止</td>
+</tr>
+<tr>
+<td align="left">numberOfChannels</td>
+<td align="left">Number</td>
+<td align="left">2</td>
+<td align="left">否</td>
+<td align="left">录音通道数（限制有效值），通道数越多，录音质量越高，文件大小越大</td>
+</tr>
+<tr>
+<td align="left">sampleRate</td>
+<td align="left">Number</td>
+<td align="left">8000</td>
+<td align="left">否</td>
+<td align="left">采样率，单位 Hz（限制有效值），采样率越高，录音质量越高，文件大小越大，模拟器暂不支持设置采样率</td>
+</tr>
+<tr>
+<td align="left">encodeBitRate</td>
+<td align="left">Number</td>
+<td align="left">480000</td>
+<td align="left">否</td>
+<td align="left">编码码率，单位 bps（限制有效值），编码码率越高，录音质量越高，文件大小越大，模拟器暂不支持编码码率</td>
+</tr>
+</tbody></table>
+<h4 id="numberofchannels-合法值">numberOfChannels 合法值</h4>
+<table>
+<thead>
+<tr>
+<th align="left">合法值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">1 个通道</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">2 个通道</td>
+</tr>
+</tbody></table>
+<h3 id="采样率与编码码率限制">采样率与编码码率限制</h3>
+<p>每种采样率有对应的编码码率范围有效值，设置不合法的采样率或编码码率会导致录音失败，具体对应关系如下表。</p>
+<h4 id="samplerate--encodebitrate-合法值">sampleRate &amp; encodeBitRate 合法值</h4>
+<table>
+<thead>
+<tr>
+<th>采样率合法值</th>
+<th>编码码率对应的合法值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8000</td>
+<td>16000 ~ 48000</td>
+</tr>
+<tr>
+<td>11025</td>
+<td>16000 ~ 48000</td>
+</tr>
+<tr>
+<td>12000</td>
+<td>24000 ~ 64000</td>
+</tr>
+<tr>
+<td>16000</td>
+<td>24000 ~ 96000</td>
+</tr>
+<tr>
+<td>22050</td>
+<td>32000 ~ 128000</td>
+</tr>
+<tr>
+<td>24000</td>
+<td>32000 ~ 128000</td>
+</tr>
+<tr>
+<td>32000</td>
+<td>48000 ~ 192000</td>
+</tr>
+<tr>
+<td>44100</td>
+<td>64000 ~ 320000</td>
+</tr>
+<tr>
+<td>48000</td>
+<td>64000 ~ 320000</td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>录音文件格式固定为 AAC，以开始录音时刻的时间命名（yyyyMMddHHmmss.aac），保存在本地临时目录</li>
+<li>start 接口仅支持在录音空闲时调用，正在录音\录音暂停状态都无法调用 start 接口</li>
+<li>start 是对录音管理器的操作，操作结果还是通过录音管理器来获取，不同于通常接口的回调方式；录音机正常开始录音，可以通过 RecorderManager.onStart(listener) 监听到，发生错误可以通过 RecorderManager.onError(listener) 监听到</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">&lt;button <span class="hljs-attribute">bindtap</span>=<span class="hljs-string">&quot;recorderStart&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;recorderStart&lt;/button&gt;
+</code></pre>
+<pre><code class="language-javascript">Page({
+    recorderStart() {
+        const { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate } = this.<span class="hljs-built_in">data</span>;
+        const <span class="hljs-keyword">params</span> = { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate };
+        console.<span class="hljs-keyword">log</span>({ startParams: <span class="hljs-keyword">params</span> });
+        recorderManager.start(<span class="hljs-keyword">params</span>);
+    }
+})
+</code></pre>

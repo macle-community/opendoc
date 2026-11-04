@@ -1,0 +1,125 @@
+<h2 id="operator">Operator</h2>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+  b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Addition (+)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">30</span> === a + b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Subtraction (-)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">-10</span> === a - b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Multiplication (*)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">200</span> === a * b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Division (/)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">0.5</span> === a / b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">// Remaining (%)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">10</span> === a % b); <span class="hljs-comment">//true</span>
+</code></pre>
+<p>The addition operator (+) can be used for string concatenation.</p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Less than (&lt;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a &lt; b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Greater than (&gt;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === a &gt; b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Less than or equal (&lt;=)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === a &lt;= b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Greater than or equal (&gt;=)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === a &gt;= b); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Equality (==)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === (a == b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Inequality (!=)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === (a != b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Strict equality (===)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === (a === b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Strict inequality (!==)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">true</span> === (a !== b)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="binary-logical-operators">Binary Logical Operators</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Logical AND (&amp;&amp;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a &amp;&amp; b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Logical OR (||)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">10</span> === (a || b)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Logical NOT (!)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-literal">false</span> === !a); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Left shift (&lt;&lt;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">80</span> === a &lt;&lt; <span class="hljs-number">3</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Right shift (&gt;&gt;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === a &gt;&gt; <span class="hljs-number">2</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Unsigned right shift (&gt;&gt;&gt;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === a &gt;&gt;&gt; <span class="hljs-number">2</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Bitwise AND (&amp;)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span> === (a &amp; <span class="hljs-number">3</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Bitwise XOR (^)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">9</span> === (a ^ <span class="hljs-number">3</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-comment">//Bitwise OR (|)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">11</span> === (a | <span class="hljs-number">3</span>)); <span class="hljs-comment">//true </span>
+</code></pre>
+<h3 id="assignment-operators">Assignment Operators</h3>
+<pre><code class="language-js"><span class="hljs-attribute">var</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> *= <span class="hljs-number">10</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">100</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> /= <span class="hljs-number">5</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> %= <span class="hljs-number">7</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">3</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> += <span class="hljs-number">5</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">15</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> -= <span class="hljs-number">11</span>;
+<span class="hljs-attribute">console</span>.log(-<span class="hljs-number">1</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &lt;&lt;= <span class="hljs-number">10</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">10240</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &gt;&gt;= <span class="hljs-number">2</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &gt;&gt;&gt;= <span class="hljs-number">2</span>;
+<span class="hljs-attribute">console</span>.log(<span class="hljs-number">2</span> === a); //true
+<span class="hljs-attribute">a</span> = <span class="hljs-number">10</span>;
+<span class="hljs-attribute">a</span> &amp;= <span class="hljs-number">3</span>;
+</code></pre>
+<h3 id="unary-operators">Unary Operators</h3>
+<pre><code class="language-js">var a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-regexp">//</span>Increment (++)
+console.log(<span class="hljs-number">10</span> === a++); <span class="hljs-regexp">//</span>true
+console.log(<span class="hljs-number">12</span> === ++a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>Decrement (--)
+console.log(<span class="hljs-number">12</span> === a--); <span class="hljs-regexp">//</span>true
+console.log(<span class="hljs-number">10</span> === --a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>Unary plus (+)
+console.log(<span class="hljs-number">10</span> === +a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>Unary negation (-)
+console.log(<span class="hljs-number">0</span> - <span class="hljs-number">10</span> === -a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>Bitwise NOT (~)
+console.log(-<span class="hljs-number">11</span> === ~a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>Logical NOT (!)
+console.log(false === !a); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span><span class="hljs-keyword">delete</span>
+console.log(true === <span class="hljs-keyword">delete</span> a.fake); <span class="hljs-regexp">//</span>true
+<span class="hljs-regexp">//</span>void
+</code></pre>
+<h3 id="ternary-operator">Ternary Operator</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Conditional operator (?)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a &gt;= <span class="hljs-number">10</span> ? a + <span class="hljs-number">10</span> : b + <span class="hljs-number">10</span>)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="comma-operator">Comma Operator</h3>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>,
+    b = <span class="hljs-number">20</span>;
+<span class="hljs-comment">//Comma operator (,)</span>
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-number">20</span> === (a, b)); <span class="hljs-comment">//true</span>
+</code></pre>
+<h3 id="operators-precedence">Operators Precedence</h3>
+<p>The priority of the SJS operator is the same as that of Javascript.</p>

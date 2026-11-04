@@ -1,0 +1,78 @@
+<h1 id="empty">Empty</h1>
+<h3 id="introduction">Introduction</h3>
+<p>Placeholder message for an empty field.</p>
+<h2 id="sample-code">Sample Code</h2>
+<h3 id="basic-usage">Basic usage</h3>
+<pre><code class="language-maml">&lt;maui-empty description<span class="hljs-operator">=</span><span class="hljs-string">&quot;description&quot;</span> /&gt;
+</code></pre>
+<h3 id="image-type">Image type</h3>
+<p>The Empty component has multiple built-in placeholder images, which can be used in different service scenarios.</p>
+<pre><code class="language-maml"><span class="hljs-comment">&lt;!-- common error --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&quot;error&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;description&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- network error --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&quot;network&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;description&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- search message --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;description&quot;</span> /&gt;</span>
+</code></pre>
+<h3 id="custom-image">Custom image</h3>
+<p>If you need to customize an image, you can use the image attribute to transfer any image URL.</p>
+<pre><code class="language-maml">&lt;maui-empty class<span class="hljs-operator">=</span><span class="hljs-string">&quot;custom-image&quot;</span> image<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://example/custom-empty-image.png&quot;</span> description<span class="hljs-operator">=</span><span class="hljs-string">&quot;description&quot;</span> /&gt;
+</code></pre>
+<h3 id="bottom-content">Bottom content</h3>
+<p>You can insert content below the Empty component through the default slot.</p>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;description&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">round</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;danger&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bottom-button&quot;</span>&gt;</span>button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-empty</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+  <span class="hljs-selector-class">.bottom-button</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">160px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">image</td>
+<td align="left">Image type. The options are <code>error</code>, <code>network</code>, and <code>search</code>. An image URL is supported.</td>
+<td align="left">String</td>
+<td align="left"><code>default</code></td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">Description below the image.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h3 id="slots">Slots</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom bottom content.</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">Custom icon.</td>
+</tr>
+<tr>
+<td align="left">description</td>
+<td align="left">Custom description.</td>
+</tr>
+</tbody></table>

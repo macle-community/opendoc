@@ -1,0 +1,87 @@
+<h2 id="magetsysteminfosyncobject-object">ma.getSystemInfoSync(Object object)</h2>
+<blockquote>
+<p>同步获取系统信息</p>
+</blockquote>
+<h3 id="返回值">返回值</h3>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">brand</td>
+<td align="left">String</td>
+<td align="left">设备品牌</td>
+</tr>
+<tr>
+<td align="left">model</td>
+<td align="left">String</td>
+<td align="left">设备型号。新机型刚推出一段时间会显示 unknown，会尽快进行适配。</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">设备id(24.3.0新增)</td>
+</tr>
+<tr>
+<td align="left">pixelRatio</td>
+<td align="left">Number</td>
+<td align="left">设备像素比</td>
+</tr>
+<tr>
+<td align="left">screenWidth</td>
+<td align="left">Number</td>
+<td align="left">屏幕宽度，单位 px</td>
+</tr>
+<tr>
+<td align="left">screenHeight</td>
+<td align="left">Number</td>
+<td align="left">屏幕高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">windowWidth</td>
+<td align="left">Number</td>
+<td align="left">可使用窗口宽度，单位 px</td>
+</tr>
+<tr>
+<td align="left">windowHeight</td>
+<td align="left">Number</td>
+<td align="left">可使用窗口高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">statusBarHeight</td>
+<td align="left">Number</td>
+<td align="left">状态栏的高度，单位 px</td>
+</tr>
+<tr>
+<td align="left">language</td>
+<td align="left">String</td>
+<td align="left">系统语言</td>
+</tr>
+<tr>
+<td align="left">system</td>
+<td align="left">String</td>
+<td align="left">操作系统及版本</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">try {
+  const res = ma.getSystemInfoSync();
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.model);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.pixelRatio);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.id);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.windowWidth);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.windowHeight);
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.language);
+} catch (e) {
+  <span class="hljs-comment">// Do something when catch error</span>
+}
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>若无法查询到设备id，则返回体中不会有<code>id</code>字段</li>
+</ol>

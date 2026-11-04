@@ -1,0 +1,12 @@
+<h2 id="recordermanageroffstartfunction-listener">RecorderManager.offStart(function listener)</h2>
+<p>Remove the recording start event listening function(Minimum version: 23.9.0).</p>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Specifies the listening function to be removed. If you do not specify a listener to remove, all registered listeners will be removed.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">Page</span>({
+    <span class="hljs-title">clearListener</span>() {
+        <span class="hljs-variable">recorderManager.offStart</span>();
+    }
+})</span>
+</code></pre>

@@ -1,0 +1,61 @@
+<h2 id="manavigatebackobject-object">ma.navigateBack(Object object)</h2>
+<blockquote>
+<p>Close the current page and returns to the previous page or a page of the previous levels. getCurrentPages can be used to obtain the current page stack and determine the number of pages to be returned.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">delta</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+<td align="left">No</td>
+<td align="left">Number of returned pages. If the value of <strong>delta</strong> is greater than the number of existing pages, the home page is displayed.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">//Note: <span class="hljs-keyword">When</span> navigateTo <span class="hljs-keyword">is</span> <span class="hljs-keyword">called</span> <span class="hljs-keyword">for</span> redirection, the page that calls this <span class="hljs-keyword">method</span> <span class="hljs-keyword">is</span> added <span class="hljs-keyword">to</span> the stack, but the redirectTo <span class="hljs-keyword">method</span> does <span class="hljs-keyword">not</span> involve this issue. See the <span class="hljs-keyword">following</span> sample code.
+ma.navigateTo({
+  url: <span class="hljs-string">&#x27;B?id=1&#x27;</span>
+});
+
+// This <span class="hljs-keyword">is</span> page B.
+ma.navigateTo({
+  url: <span class="hljs-string">&#x27;C?id=1&#x27;</span>
+});
+
+// <span class="hljs-keyword">Call</span> navigateBack <span class="hljs-keyword">on</span> page C <span class="hljs-keyword">to</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">to</span> page A.
+ma.navigateBack({
+  delta: <span class="hljs-number">2</span>
+});
+</code></pre>

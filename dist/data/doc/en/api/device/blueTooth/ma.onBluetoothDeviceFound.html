@@ -1,0 +1,73 @@
+<h2 id="maonbluetoothdevicefoundfunction-listener">ma.onBluetoothDeviceFound(function listener)</h2>
+<blockquote>
+<p>Listen for events when new devices are found (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function for events when a new device is found</p>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">devices</td>
+<td align="left">Array</td>
+<td align="left">List of newly discovered devices</td>
+</tr>
+</tbody></table>
+<h4 id="array-devices">Array devices</h4>
+<h5 id="object-arrayitem">Object ArrayItem</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RSSI</td>
+<td>Number</td>
+<td>The signal strength of the current Bluetooth device, in dBm</td>
+</tr>
+<tr>
+<td>advertisServiceUUIDs</td>
+<td>Array</td>
+<td>ServiceUUIDs data segment in the broadcast data segment of the current Bluetooth device</td>
+</tr>
+<tr>
+<td>connectable</td>
+<td>Boolean</td>
+<td>Whether the current Bluetooth device can be connected (this value is not supported below Android 8.0)</td>
+</tr>
+<tr>
+<td>deviceId</td>
+<td>String</td>
+<td>Bluetooth device id</td>
+</tr>
+<tr>
+<td>localName</td>
+<td>String</td>
+<td>The LocalName data segment in the broadcast data segment of the current Bluetooth device</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Bluetooth device name, some devices may not have it</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.onBluetoothDeviceFound(<span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  ma.showModal({
+    title: <span class="hljs-string">&#x27;onBluetoothDeviceFound&#x27;</span>,
+    content: <span class="hljs-built_in">JSON</span>.stringify(res),
+    showCancel: <span class="hljs-literal">true</span>
+  })
+})
+</code></pre>

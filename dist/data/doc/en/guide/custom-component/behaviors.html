@@ -1,0 +1,93 @@
+<h1 id="behaviors">Behaviors</h1>
+<p>The <code>behaviors</code> feature is used to share code between components, similar to mixins or traits in certain programming languages.</p>
+<p>A <code>behavior</code> can contain a set of properties, data, lifecycle functions, and methods. When a behavior is referenced by a component, the attributes, data, and methods of the <code>behavior</code> are merged into the component, and the lifecycle functions are called at appropriate time. A component can reference multiple <code>behaviors</code>, and a <code>behavior</code> can reference other <code>behaviors</code>.</p>
+<p>For details about the parameters, see <a onclick="_mdLinkClick(this.href)" href="#/framework/Behavior">Behavior</a>.</p>
+<h2 id="use-in-components">Use in Components</h2>
+<p>When referenced by a component, <code>behaviors</code> are listed in the behaviors definition field.</p>
+<p><strong>Sample Code</strong></p>
+<pre><code><span class="hljs-comment">// my-component.js</span>
+<span class="hljs-keyword">var</span> myBehavior = require(<span class="hljs-string">&#x27;my-behavior&#x27;</span>)
+Component({
+  <span class="hljs-attr">behaviors</span>: [myBehavior],
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: {
+      <span class="hljs-attr">type</span>: String
+    }
+  },
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">myData</span>: <span class="hljs-string">&#x27;my-component-data&#x27;</span>
+  },
+  <span class="hljs-attr">created</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] created&#x27;</span>)
+  },
+  <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] attached&#x27;</span>)
+  },
+  <span class="hljs-attr">ready</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] ready&#x27;</span>)
+  },
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">myMethod</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] log by myMethod&#x27;</span>)
+    },
+  }})
+</code></pre>
+<p>In the preceding example, my-behavior is added to the <code>my-component</code> component definition.</p>
+<p>The structure of <code>my-behavior</code> is as follows:</p>
+<ul>
+<li>Property:<code>myBehaviorProperty</code></li>
+<li>Data field: <code>myBehaviorData</code></li>
+<li>Method:<code>myBehaviorMethod</code></li>
+<li>Lifecycle functions: <code>attached</code>、<code>created</code>、<code>ready</code></li>
+</ul>
+<p>As a result, the structure of <code>my-component</code> is as follows:</p>
+<ul>
+<li>Property:<code>myBehaviorProperty</code>、<code>myProperty</code></li>
+<li>Data field:<code>myBehaviorData</code>、<code>myData</code></li>
+<li>Method:<code>myBehaviorMethod</code>、<code>myMethod</code></li>
+<li>Lifecycle functions: <code>attached</code>、<code>created</code>、<code>ready</code></li>
+</ul>
+<p>When the component triggers lifecycle, the lifecycle functions in the preceding example are executed in the following sequence:</p>
+<ol>
+<li><code>[my-behavior] created</code></li>
+<li><code>[my-component] created</code></li>
+<li><code>[my-behavior] attached</code></li>
+<li><code>[my-component] attached</code></li>
+<li><code>[my-behavior] ready</code></li>
+<li><code>[my-component] ready</code></li>
+</ol>
+<p>For details about the specifications, see <strong>Field Overwriting and Merging Rules</strong>.</p>
+<h2 id="field-overwriting-and-merging-rules">Field Overwriting and Merging Rules</h2>
+<p>Components and the <code>behaviors</code> they reference can contain fields with the same names. Such fields are processed as follows:</p>
+<ul>
+<li>For properties or methods with the same name:</li>
+</ul>
+<ol>
+<li>If the component has the property or method, the property or method of the component overwrites that of the <code>behavior</code>.</li>
+<li>If the component does not have the property or method, the property or method of the latter behavior defined in the <code>behaviors</code> field overwrites that of the previous <code>behavior</code>.</li>
+<li>If nested reference occurs, the property or method of the referencing <code>behavior</code> overwrites that of the referenced <code>behavior</code>.</li>
+</ol>
+<ul>
+<li><p>For data fields with the same name:</p>
+<ul>
+<li>Fields with object data are merged.</li>
+<li>Fields with non-object data are overwritten as follows: 
+The data fields of the referencing <code>behavior</code> overwrite that of the referenced <code>behavior</code>, and the data fields of the latter <code>behavior</code> overwrite that of the previous <code>behavior</code>. (Those with higher priorities overwrite those with lower priorities.)</li>
+</ul>
+</li>
+<li><p>Lifecycle functions do not overwrite each other. Instead, they are called in a certain time order.</p>
+<ul>
+<li><p>For different life cycle functions, the execution sequence of component life cycle functions is followed.</p>
+</li>
+<li><p>For homogeneous life cycle functions, follow the following rules:</p>
+<ul>
+<li>The lifecycle function of a <code>behavior</code> takes precedence over that of a component.</li>
+<li>The lifecycle function of a referenced <code>behavior</code> takes precedence over that of a referencing <code>behavior</code>.</li>
+<li>The lifecycle function of a previous <code>behavior</code> takes precedence over that of a latter one.</li>
+</ul>
+</li>
+<li><p>If a <code>behavior</code> is referenced by a component for multiple times, the lifecycle function defined by the <code>behavior</code> is executed only once.</p>
+</li>
+</ul>
+</li>
+</ul>

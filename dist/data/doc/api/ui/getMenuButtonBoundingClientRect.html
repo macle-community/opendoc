@@ -1,0 +1,92 @@
+<h2 id="magetmenubuttonboundingclientrectobject-object">ma.getMenuButtonBoundingClientRect(Object object)</h2>
+<blockquote>
+<p>获取菜单按钮（右上角胶囊按钮）的布局位置信息。坐标信息以屏幕左上角为原点。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数说明</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="返回值">返回值</h4>
+<h4 id="object">Object</h4>
+<p>菜单按钮的布局位置信息</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">宽度，单位：px</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">高度，单位：px</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">Number</td>
+<td align="left">上边界坐标，单位：px</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">Number</td>
+<td align="left">右边界坐标，单位：px</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">Number</td>
+<td align="left">下边界坐标，单位：px</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">Number</td>
+<td align="left">左边界坐标，单位：px</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.getMenuButtonBoundingClientRect({
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.width);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">top</span>);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">right</span>);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.bottom);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.<span class="hljs-built_in">left</span>);
+  }
+});
+</code></pre>

@@ -1,0 +1,142 @@
+<h2 id="mashowmodalobject-object">ma.showModal(Object object)</h2>
+<blockquote>
+<p>显示模态对话框</p>
+</blockquote>
+<blockquote>
+<p>弹窗样式跟随系统默认弹窗样式，在不同系统版本下样式可能存在不同</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">提示的标题</td>
+</tr>
+<tr>
+<td align="left">content</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">提示的内容</td>
+</tr>
+<tr>
+<td align="left">showCancel</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">是否显示取消按钮</td>
+</tr>
+<tr>
+<td align="left">cancelText</td>
+<td align="left">String</td>
+<td align="left">取消</td>
+<td align="left">否</td>
+<td align="left">取消按钮的文字，最多 4 个字符</td>
+</tr>
+<tr>
+<td align="left">cancelColor</td>
+<td align="left">String</td>
+<td align="left">#000000</td>
+<td align="left">否</td>
+<td align="left">取消按钮的文字颜色，必须是 16 进制格式的颜色字符串</td>
+</tr>
+<tr>
+<td align="left">confirmText</td>
+<td align="left">String</td>
+<td align="left">确定</td>
+<td align="left">否</td>
+<td align="left">确认按钮的文字，最多 4 个字符</td>
+</tr>
+<tr>
+<td align="left">confirmColor</td>
+<td align="left">String</td>
+<td align="left">#576B95</td>
+<td align="left">否</td>
+<td align="left">确认按钮的文字颜色，必须是 16 进制格式的颜色字符串</td>
+</tr>
+<tr>
+<td align="left">editable</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否显示输入框</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<p><strong>参数</strong></p>
+<p><strong>Object res</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">showModal:ok</td>
+</tr>
+<tr>
+<td align="left">content</td>
+<td align="left">String</td>
+<td align="left">editable 为 true 时，用户输入的文本</td>
+</tr>
+<tr>
+<td align="left">confirm</td>
+<td align="left">Boolean</td>
+<td align="left">为 true 时，表示用户点击了确定按钮</td>
+</tr>
+<tr>
+<td align="left">cancel</td>
+<td align="left">Boolean</td>
+<td align="left">为 true 时，表示用户点击了取消</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">    <span class="hljs-keyword">ma</span>.showModal({
+      title: <span class="hljs-string">&#x27;提示&#x27;</span>,
+      content: <span class="hljs-string">&#x27;这是一个模态弹窗&#x27;</span>,
+      success (<span class="hljs-keyword">res</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">res</span>.<span class="hljs-keyword">confirm</span>) {
+          console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;用户点击确定&#x27;</span>)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">res</span>.cancel) {
+          console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;用户点击取消&#x27;</span>)
+        }
+      }
+    })
+</code></pre>

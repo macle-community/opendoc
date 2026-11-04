@@ -1,0 +1,177 @@
+[
+  {
+    "name": "框架概述",
+    "path": "/overview",
+    "data": "/data/doc/framework/overview.md"
+  },
+  {
+    "name": "小程序配置",
+    "child": [
+      {
+        "name": "全局配置",
+        "path": "/app-config",
+        "data": "/data/doc/framework/config/app.md"
+      },
+      {
+        "name": "页面配置",
+        "path": "/page-config",
+        "data": "/data/doc/framework/config/page.md"
+      }
+    ]
+  },
+  {
+    "name": "框架接口",
+    "child": [
+      {
+        "name": "小程序App",
+        "path": "/app-api",
+        "data": "/data/doc/framework/api/app.md"
+      },
+      {
+        "name": "页面",
+        "path": "/page-api",
+        "data": "/data/doc/framework/api/page.md"
+      },
+      {
+        "name": "自定义组件",
+        "child": [
+          {
+            "name": "Behavior",
+            "path": "/Behavior",
+            "data": "/data/doc/framework/api/Behavior.md"
+          },
+          {
+            "name": "Component",
+            "path": "/Component",
+            "data": "/data/doc/framework/api/Component.md"
+          }
+        ]
+      },
+      {
+        "name": "模块化",
+        "child": [
+          {
+            "name": "require",
+            "path": "/require",
+            "data": "/data/doc/framework/api/module/require.md"
+          },
+          {
+            "name": "module",
+            "path": "/module",
+            "data": "/data/doc/framework/api/module/module.md"
+          },
+          {
+            "name": "exports",
+            "path": "/exports",
+            "data": "/data/doc/framework/api/module/exports.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "事件",
+    "path": "/event",
+    "data": "/data/doc/framework/event/event.md"
+  },
+  {
+    "name": "JavaScript",
+    "path": "/js",
+    "data": "/data/doc/framework/js.md"
+  },
+  {
+    "name": "MAML语法参考",
+    "child": [
+      {
+        "name": "数据绑定",
+        "path": "/maml-data",
+        "data": "/data/doc/framework/maml/data.md"
+      },
+      {
+        "name": "列表渲染",
+        "path": "/maml-list",
+        "data": "/data/doc/framework/maml/list.md"
+      },
+      {
+        "name": "条件渲染",
+        "path": "/maml-condition",
+        "data": "/data/doc/framework/maml/condition.md"
+      },
+      {
+        "name": "模板",
+        "path": "/maml-template",
+        "data": "/data/doc/framework/maml/template.md"
+      },
+      {
+        "name": "引用",
+        "path": "/maml-import",
+        "data": "/data/doc/framework/maml/import.md"
+      }
+    ]
+  },
+  {
+    "name": "MASS语法参考",
+    "path": "/mass",
+    "data": "/data/doc/framework/mass.md"
+  },
+  {
+    "name": "SJS语法参考",
+    "child": [
+      {
+        "name": "介绍",
+        "path": "/sjs-overview",
+        "data": "/data/doc/framework/sjs/overview.md"
+      },
+      {
+        "name": "变量",
+        "path": "/sjs-variable",
+        "data": "/data/doc/framework/sjs/variable.md"
+      },
+      {
+        "name": "注释",
+        "path": "/sjs-comment",
+        "data": "/data/doc/framework/sjs/comment.md"
+      },
+      {
+        "name": "运算符",
+        "path": "/sjs-operator",
+        "data": "/data/doc/framework/sjs/operator.md"
+      },
+      {
+        "name": "语句",
+        "path": "/sjs-statement",
+        "data": "/data/doc/framework/sjs/statement.md"
+      },
+      {
+        "name": "数据类型",
+        "path": "/sjs-datatype",
+        "data": "/data/doc/framework/sjs/datatype.md"
+      },
+      {
+        "name": "基础类库",
+        "path": "/sjs-basiclib",
+        "data": "/data/doc/framework/sjs/basiclib.md"
+      },
+      {
+        "name": "响应事件",
+        "path": "/sjs-event",
+        "data": "/data/doc/framework/sjs/event.md"
+      }
+    ]
+  },
+  {
+    "name": "国际化",
+    "child": [
+      {
+        "name": "快速入门",
+        "path": "/quickView",
+        "data": "/data/doc/framework/i18n/quickView.md"
+      },
+      {
+        "name": "接口文档",
+        "path": "/interface",
+        "data": "/data/doc/framework/i18n/interface.md"
+      }
+    ]
+  }
+]

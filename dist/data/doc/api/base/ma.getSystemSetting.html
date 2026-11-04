@@ -1,0 +1,43 @@
+<h2 id="magetsystemsetting">ma.getSystemSetting()</h2>
+<blockquote>
+<p>获取设备设置（最低版本： 24.12.0）</p>
+</blockquote>
+<h3 id="返回值">返回值</h3>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bluetoothEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">蓝牙的系统开关</td>
+</tr>
+<tr>
+<td align="left">locationEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">地理位置的系统开关</td>
+</tr>
+<tr>
+<td align="left">wifiEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Wi-Fi 的系统开关</td>
+</tr>
+<tr>
+<td align="left">deviceOrientation</td>
+<td align="left">String</td>
+<td align="left">合法值为portrait或者landscape，表示设备方向（注意：IOS客户端横屏游戏获取deviceOrientation可能不准，建议以屏幕宽高为准）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const systemSetting = ma.getSystemSetting();
+
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.bluetoothEnabled);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.deviceOrientation);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.locationEnabled);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(systemSetting.wifiEnabled);
+</code></pre>

@@ -1,0 +1,96 @@
+<h2 id="cameracontexttakephotoobject-object">CameraContext.takePhoto(Object object)</h2>
+<blockquote>
+<p>拍摄照片</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">quality</td>
+<td align="left">String</td>
+<td align="left">normal</td>
+<td align="left">否</td>
+<td align="left">成像质量</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="quality-合法值">quality 合法值</h4>
+<table>
+<thead>
+<tr>
+<th align="left">合法值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">high</td>
+<td align="left">高质量</td>
+</tr>
+<tr>
+<td align="left">normal</td>
+<td align="left">普通质量</td>
+</tr>
+<tr>
+<td align="left">low</td>
+<td align="left">低质量</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tempImagePath</td>
+<td align="left">String</td>
+<td align="left">照片文件的临时路径 (本地路径)，安卓是 jpg 图片格式，ios 是 png</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const ctx = ma.createCameraContext(<span class="hljs-string">&#x27;camera&#x27;</span>);
+
+ctx.takePhoto({
+  <span class="hljs-attr">quality</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+  success (res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span> (res);
+  },
+  fail (err) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span> (err);
+  }
+});
+</code></pre>

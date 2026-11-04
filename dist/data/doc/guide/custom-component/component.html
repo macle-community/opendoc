@@ -1,0 +1,37 @@
+<h2 id="component-构造器">Component 构造器</h2>
+<p><a onclick="_mdLinkClick(this.href)" href="#/framework/Component">Component 构造器</a>可用于定义组件，调用 Component 构造器时可以指定组件的属性、数据、方法等。</p>
+<pre><code><span class="hljs-title class_">Component</span>({
+
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: { <span class="hljs-comment">// 属性名</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">myProperty2</span>: <span class="hljs-title class_">String</span> <span class="hljs-comment">// 简化的定义方式</span>
+  },
+
+  <span class="hljs-attr">data</span>: {}, <span class="hljs-comment">// 私有数据，可用于模板渲染</span>
+
+  <span class="hljs-comment">// 生命周期函数，可以为函数，或一个在methods段中定义的方法名</span>
+  <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { }, 
+  <span class="hljs-attr">ready</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) { },
+
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">onBtnTap</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-comment">// 更新属性和数据的方法与更新页面数据的方法类似</span>
+      })
+    },
+    <span class="hljs-comment">// 内部方法建议以下划线开头</span>
+    <span class="hljs-attr">_myPrivateMethod</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-comment">// 这里将 data.prop 设为 &#x27;myPrivateData&#x27;</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-attr">prop</span>: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    <span class="hljs-attr">_propertyChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">newVal, oldVal</span>) {
+
+    }
+  }
+})
+</code></pre>

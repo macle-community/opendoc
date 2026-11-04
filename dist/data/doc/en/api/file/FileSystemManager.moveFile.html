@@ -1,0 +1,70 @@
+<h2 id="filesystemmanagermovefileobject-object">FileSystemManager.moveFile(Object object)</h2>
+<blockquote>
+<p>Moving a file (The folder cannot be moved. The target path is a directory. If a file with the same name already exists in the target directory, the file cannot be moved,Minimum version: 23.6.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">srcPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Source file path. (Local path, which can only be in the usr directory. It can be a relative directory, but the final real path cannot be outside the usr directory.<strong>Temporary path and cache path files cannot be moved</strong>)</td>
+</tr>
+<tr>
+<td align="left">destPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Destination directory path. (Local path, which can only be in the usr directory. It can be a relative directory, but the final real path cannot be outside the usr directory. <strong>cannot be a temporary path or cache path.</strong>)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking. (This function is executed when the interface is successfully invoked or fails to be invoked.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+
+fs.<span class="hljs-title function_">moveFile</span>({
+  <span class="hljs-attr">srcPath</span>: <span class="hljs-string">`resourcePath`</span>,
+  <span class="hljs-attr">destPath</span>: <span class="hljs-string">`targetPath`</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>){
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>If a file with the same name already exists in the target path, the file cannot be moved.</li>
+</ol>

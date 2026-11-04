@@ -1,0 +1,152 @@
+<h2 id="maloadfontfaceobject-object">ma.loadFontFace(Object object)</h2>
+<blockquote>
+<p>Dynamically load network fonts. The file address must be of the download type (Minimum version: 23.6.0).</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">global</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Indicates whether to take effect globally.</td>
+</tr>
+<tr>
+<td align="left">family</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Defined font name</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Address of the font resource. The recommended formats are TTF and WOFF. WOFF2 is incompatible with earlier iOS versions.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that fails to be invoked</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function that ends the interface invoking (executed when the interface is successfully invoked or fails to be invoked)</td>
+</tr>
+</tbody></table>
+<h5 id="desc-attribute">desc attribute</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Structure Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">style</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">No</td>
+<td>Font style. The options are normal, italic, and oblique.</td>
+</tr>
+<tr>
+<td align="left">weight</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">No</td>
+<td>Font thickness. The options are normal / bold / 100 / 200.. / 900</td>
+</tr>
+<tr>
+<td align="left">variant</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">No</td>
+<td>Sets the font display text of small uppercase letters. The options are normal, small-caps, and inherit.</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success callback function</h5>
+<h6 id="parameter-1">Parameter</h6>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">Font loading result</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail-callback-function">object.fail callback function</h5>
+<h6 id="parameter-2">Parameter</h6>
+<h6 id="object-res-1">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">Font loading result</td>
+</tr>
+</tbody></table>
+<h5 id="objectcomplete-callback-function">object.complete callback function</h5>
+<h6 id="parameter-3">Parameter</h6>
+<h6 id="object-res-2">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">Font loading result</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">ma</span>.loadFontFace({
+    family: <span class="hljs-string">&#x27;Bitstream Vera Serif Bold&#x27;</span>,
+    <span class="hljs-keyword">source</span>: <span class="hljs-string">&#x27; url(&quot;https://testExample/fontName.ttf&quot;)&#x27;</span>, //This <span class="hljs-keyword">is</span> <span class="hljs-keyword">only</span> <span class="hljs-keyword">an</span> example <span class="hljs-built_in">and</span> <span class="hljs-keyword">is</span> not <span class="hljs-keyword">a</span> real resource link.
+    success: <span class="hljs-keyword">function</span> (<span class="hljs-keyword">res</span>) {
+        console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>)
+    }
+})
+</code></pre>

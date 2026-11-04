@@ -1,0 +1,221 @@
+# H5 Mini Program Development Guide
+
+## 1. Dependencies
+
+### 1.1 Macle JSSDK Dependency (Required)
+
+In an H5 project, you need to call the APIs provided by the Macle framework, so you must at least include the `js-sdk.min.js` dependency. The steps to include it are as follows:
+
+1. Download the `Macle_**.*.*_Engine_JSSDK.zip` archive from the Macle repository
+2. After extracting, copy `js-sdk.min.js` to the `src/js` directory in your project
+3. Include it in `index.html`:
+
+```html
+<script src="src/lib/js-sdk.min.js"></script>
+```
+
+### 1.2 vConsole Debugging Dependency (Optional)
+
+When developing mini programs, you generally need to use vConsole to debug the running mini program. If needed, include the `vconsole.min.js` dependency:
+
+```html
+<script src="src/lib/vconsole.min.js"></script>
+```
+
+> **Note**: vConsole is a lightweight debugging tool that provides Chrome DevTools-like debugging functionality on mobile web pages, making it convenient to view logs, network requests, and other information. Developers need to download it themselves and copy it into this project.
+
+---
+
+## 2. Architecture
+
+H5 mini programs are developed using H5 standards and by default use the front-end MVVM framework development pattern.
+
+**Technical characteristics**:
+- Developed using standard front-end web technologies (HTML, CSS, JavaScript)
+- Uses a single-page architecture (SPA) by default; index.html in the root directory is the entry point, and navigation is performed via app.js routing
+- Supports component-based development
+- Data-driven, view separation, two-way binding
+
+---
+
+## 3. Project Directory Structure
+
+The H5 project directory should reference the example below. The project root directory must be the directory currently opened in VS Code; do not generate another folder as the root directory.
+
+```
+/
+├── project.config.json     # Project configuration file (required)
+├── app-config.json         # Application configuration file (required)
+├── index.html              # HTML entry file (required)
+├── .macle.config.json      # Macle converter configuration file (required)
+└── src                     # Source directory (all pages and resources go here)
+    ├── pages/              # Page scripts directory
+    │   ├── page_A/          # Page A
+    │   │   ├── page_A.js
+    │   │   ├── page_A.html
+    │   │   └── page_A.css
+    │   └── page_B/          # Page B
+    │       ├── page_B.js
+    │       ├── page_B.html
+    │       └── page_B.css
+    ├── css/style.css           # Global styles
+    ├── js/
+    │   ├── common.js            # Common methods (storage, navigation, etc.)
+    │   ├── data.js              # Static room data
+    │   └──app.js
+    ├─── lib/                 # Third-party libraries directory (required)
+    │    ├── js-sdk.min.js    # JSSDK dependency (required)
+    │    └── vconsole.min.js  # vconsole dependency (optional)
+    ├── images/                 # Image resource directory
+    │   └── logo.png
+    └── config/                 # Configuration file directory (optional)
+        └── api.js              # API configuration
+```
+
+> **Important note**: index.html is the entry file; **you should not write the HTML structure of all business pages here**. Subpage content should be placed in the corresponding paths under the src directory. Try not to inline HTML code within JS code.
+
+---
+
+## 4. H5 Mini Program Configuration Files
+
+An H5 project must have three configuration files: `project.config.json`, `app-config.json`, and `.macle.config.json`, and must have an entry file `index.html`. Details of these files are as follows:
+
+### 4.1 project.config.json (Required)
+
+The required project configuration file in the project root directory, containing basic information such as project name, AppID, and compilation settings.
+
+> **For details, see**: [project-config-json-details](../common/project-config-json-details.md)
+
+**Minimal practical example**:
+```json
+{
+  "description": "project config file",
+  "appid": "300s00i1gea41p020105a1gd5n16",
+  "compileType": "miniprogram",
+  "projectname": "pctest",
+  "setting": {
+    "es5": true
+  }
+}
+```
+
+### 4.2 app-config.json (Required)
+
+The core configuration file of an H5 mini program, used to identify the project as H5 type and to contain the application's basic configuration information.
+
+> **For details, see**: [app-config-json-details](../common/app-config-json-details.md)
+
+**Minimal practical example**:
+```json
+{
+  "type": "legacy",
+  "entryPagePath": "index.html",
+  "pages": ["index.html"],
+  "page": {},
+  "global": {
+    "window": {
+      "navigationBarBackgroundColor": "#4e9023",
+      "navigationBarTitleText": "JSSDK Official Demo",
+      "backgroundTextStyle": "light",
+      "navigationBarTextStyle": "white",
+      "capsuleTheme": "light"
+    }
+  }
+}
+```
+
+### 4.3 .macle.config.json (Required)
+
+`.macle.config.json` is the Macle converter configuration file, used to define project build-related configuration. It is generated by the CLI tool or read and processed during the conversion process. **An H5 mini program project must have this configuration file; otherwise, compilation and packaging will fail**.
+
+**Parameter description**:
+
+All of the following parameters must have values
+| Parameter | Type | Description |
+|------|------|------|
+| `buildType` | number | Build type identifier, 0=unknown, 1=recognized |
+| `buildCmd` | string | Build command, e.g. `npm run build` |
+| `buildDist` | string | Absolute path to the current project's root directory; replace according to the actual project situation|
+| `entryPagePath` | string | Entry page path, e.g. `index.html` |
+| `appID` | number | Application ID, generated based on a timestamp |
+| `isCompile` | boolean | Whether it has been compiled; fixed to `false` in the CLI |
+
+**Usage scenarios**:
+This configuration is mainly used in the H5 Macle plugin conversion process to control core conversion parameters such as the entry page and build directory.
+
+**Example**:
+```json
+{
+    "buildType": 0,
+    "buildCmd": "",
+    "buildDist": "****", 
+    "entryPagePath": "index.html",
+    "appID": "jssdk_demo_20240204",
+    "isCompile": false
+}
+```
+---
+
+## 5 index.html
+
+**index.html is the entry file of an H5 mini program**. It is only responsible for application initialization, dependency loading, page routing, and other initialization work. **Do not write the content of other pages in this file**. Subpage content should be carried by independent HTML files.
+
+**Note**:
+The js-sdk.min.js and vconsole.min.js dependencies must be executed or take effect before page rendering, so they need to be placed in the `<head>`.
+
+**Example**:
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 Mini Program</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <script src="src/lib/js-sdk.min.js"></script>
+    <script src="src/lib/vconsole.min.js"></script>
+</head>
+<body>
+  <sl-tab-group class="full">
+    <!-- Tab item configuration -->
+    <sl-tab slot="nav" panel="route">Route</sl-tab>
+    <sl-tab slot="nav" panel="network">Network</sl-tab>
+</body>
+</html>
+```
+
+---
+
+## 6. API Interfaces
+
+In addition to the interfaces defined in H5 syntax, H5 mini program development can also call native services in the following ways:
+
+### 5.1 Mini Program Framework JSSDK API
+
+Through the JSSDK API, you can call native mobile services. JSSDK provides a rich set of native capability interfaces, including:
+- Page routing
+- Network requests
+- Device-related operations
+- User information retrieval
+- File operations
+- etc.
+
+> **For the detailed API list, see**: [JSSDK_API_LIST.md](./JSSDK_API_LIST.md)
+
+### 5.2 Super App Custom Interfaces
+
+Through `ma.native` in the JSSDK, you can call Super App custom interfaces to achieve deep integration with the host application.
+
+**Basic calling method**:
+```javascript
+ma.native.callNative({
+    action: 'xxx',
+    params: {},
+    success: function(res) {
+        console.log('Call succeeded', res);
+    },
+    fail: function(err) {
+        console.log('Call failed', err);
+    }
+});
+```

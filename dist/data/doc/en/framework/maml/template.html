@@ -1,0 +1,39 @@
+<h2 id="template">Template</h2>
+<p>MAML provides templates in which code snippets can be defined and then invoked in different places.</p>
+<h3 id="defining-a-template">Defining a Template</h3>
+<p>Use the name attribute to define the template name. Define the code snippet in <code>&lt;template&gt;</code>. Example:</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;msgItem&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml">: </span><span class="hljs-template-variable">{{<span class="hljs-name">msg</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span> Time: </span><span class="hljs-template-variable">{{<span class="hljs-name">time</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<h3 id="using-a-template">Using a Template</h3>
+<p>Use the is attribute to declare the template to be used and transfer the data required by the template. Example:</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;msgItem&quot;</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{..<span class="hljs-name">.item</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span>
+</code></pre>
+<pre><code>Page({
+  data: {
+    item: {
+      index: <span class="hljs-number">0</span>,
+      msg: <span class="hljs-string">&#x27;this is a template&#x27;</span>,
+      time: <span class="hljs-string">&#x27;2016-09-15&#x27;</span>
+    }
+  }
+})
+</code></pre>
+<p>The is attribute can use the Mustache syntax to dynamically determine the template to be rendered.</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;odd&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> odd <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;even&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> even <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">block</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{item % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> ? <span class="hljs-string">&#x27;even&#x27;</span> : <span class="hljs-string">&#x27;odd&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">block</span>&gt;</span></span>
+</code></pre>
+<h2 id="scope-of-the-template">Scope of the template</h2>
+<p>The template has its own scope and can only use data passed in.</p>

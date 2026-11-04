@@ -1,0 +1,77 @@
+<h2 id="mastartgyroscopeobject-object">ma.startGyroscope(Object object)</h2>
+<blockquote>
+<p>Start listening for the gyroscope data.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">interval</td>
+<td align="left">String</td>
+<td align="left">normal</td>
+<td align="left">No</td>
+<td align="left">Execution frequency of the callback function for listening to the gyroscope data</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="object-interval">object interval</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">game</td>
+<td align="left">Suitable callback frequency for updating games (about every 20 ms).</td>
+</tr>
+<tr>
+<td align="left">ui</td>
+<td align="left">Suitable callback frequency for updating UIs (about every 60 ms).</td>
+</tr>
+<tr>
+<td align="left">normal</td>
+<td align="left">Common callback frequency (about every 200 ms).</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.startGyroscope({
+  <span class="hljs-attr">interval</span>: <span class="hljs-string">&#x27;ui&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+  },
+  <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(err);
+  }
+});
+</code></pre>

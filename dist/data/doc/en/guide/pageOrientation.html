@@ -1,0 +1,22 @@
+<h2 id="support-for-landscape-mode-in-mini-programs">Support for Landscape Mode in mini-programs</h2>
+<blockquote>
+<p>This feature is effective for shell-based mini-programs (version 25.3.0 or later) and H5 mini-programs (version 25.6.0 or later).</p>
+</blockquote>
+<p>Enable screen rotation support on your phone
+Global configuration added:
+<code>&quot;pageOrientation&quot;: landscape</code>
+If the <code>landscape</code> Mini Program is configured to be displayed in landscape mode, the Mini Program is displayed in portrait mode. Otherwise, the Mini Program is displayed in portrait mode.
+If <code>pageOrientation</code> is configured, the screen is forcibly displayed in landscape mode.</p>
+<p>The following is an example of enabling screen rotation in a single page json file.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index/index&quot;</span>],
+  <span class="hljs-string">&quot;window&quot;</span>: {
+    <span class="hljs-string">&quot;pageOrientation&quot;</span>: <span class="hljs-string">&quot;landscape&quot;</span>
+  }
+}
+</code></pre>
+<h3 id="bug--tips">Bug &amp; Tips</h3>
+<ol>
+<li>To configure the Mini Program to display in landscape mode, the Mini Program resources must be adapted to display in landscape mode to load normally. Otherwise, it may display a blank screen.</li>
+</ol>

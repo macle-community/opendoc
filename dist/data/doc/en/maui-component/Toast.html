@@ -1,0 +1,107 @@
+<h1 id="toast">Toast</h1>
+<h3 id="introduction"><strong>Introduction</strong></h3>
+<p>Display a black translucent message is displayed in the middle of the page for notification, loading tips, and operation result display.</p>
+<h2 id="sample-code"><strong>Sample Code</strong></h2>
+<h3 id="text-message"><strong>Text message</strong></h3>
+<pre><code class="language-maml">&lt;maui-toast type<span class="hljs-operator">=</span><span class="hljs-string">&quot;text&quot;</span> message<span class="hljs-operator">=</span><span class="hljs-string">&quot; text message &quot;</span> /&gt;
+</code></pre>
+<h3 id="loading-message"><strong>Loading message</strong></h3>
+<p>Use the <code>Toast.loading</code> method to display a loading message, uses the <code>forbidClick</code> attribute to disable background clicking, and uses the <code>loadingType</code> attribute to customize the loading icon type.</p>
+<pre><code class="language-maml">&lt;maui-toast type<span class="hljs-operator">=</span><span class="hljs-string">&quot;loading&quot;</span> message<span class="hljs-operator">=</span><span class="hljs-string">&quot;loading message&quot;</span> /&gt;
+</code></pre>
+<h3 id="successfailure-message"><strong>Success/Failure message</strong></h3>
+<pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;success message&#x27;</span>/&gt;
+&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;fail&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;failure message&#x27;</span>/&gt;
+</code></pre>
+<h3 id="dynamic-update-message"><strong>Dynamic update message</strong></h3>
+<pre><code class="language-javascript"><span class="hljs-title function_">page</span>({
+    <span class="hljs-title function_">selectToast</span>(<span class="hljs-params">e</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">currentType</span>: e.<span class="hljs-property">currentTarget</span>.<span class="hljs-property">dataset</span>.<span class="hljs-property">type</span>
+        })
+        <span class="hljs-keyword">if</span> (e.<span class="hljs-property">currentTarget</span>.<span class="hljs-property">dataset</span>.<span class="hljs-property">type</span> == <span class="hljs-string">&quot;changing&quot;</span>) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+                <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+                    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                        <span class="hljs-attr">loadingTime</span>: <span class="hljs-number">3</span> - i
+                    })
+                }, i * <span class="hljs-number">1000</span>);
+            }
+        }
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+                <span class="hljs-attr">currentType</span>: <span class="hljs-string">&quot;&quot;</span>
+            })
+        }, <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">duration</span>);
+    }
+})
+</code></pre>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-toast</span> <span class="hljs-attr">ma:if</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">currentType</span> == <span class="hljs-string">&#x27;changing&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;loading&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;倒计时</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loadingTime</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">秒&quot;</span> <span class="hljs-attr">duration</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">duration</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">loadingType</span>=<span class="hljs-string">&quot;spinner&quot;</span> /&gt;</span></span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="options">Options</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">type</td>
+<td align="left">Message type. The options are <code>loading</code>, <code>success</code>, <code>fail</code>, and <code>html</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>text</code></td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">Content.</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">mask</td>
+<td align="left">Whether to display the mask layer.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">forbidClick</td>
+<td align="left">Whether to forbid background clicking.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">loadingType</td>
+<td align="left">Loading icon type. The value can be <code>spinner</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>circular</code></td>
+</tr>
+<tr>
+<td align="left">zIndex</td>
+<td align="left">z-index level.</td>
+<td align="left">Number</td>
+<td align="left"><code>1000</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Display duration, in milliseconds.</td>
+<td align="left">Number</td>
+<td align="left"><code>2000</code></td>
+</tr>
+</tbody></table>
+<h3 id="slot">Slot</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom contents.</td>
+</tr>
+</tbody></table>

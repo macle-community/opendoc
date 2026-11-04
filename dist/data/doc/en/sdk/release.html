@@ -1,0 +1,183 @@
+<h2 id="sdk-update-log">SDK Update Log</h2>
+<h3 id="2630">26.3.0</h3>
+<h4 id="new">New</h4>
+<ol>
+<li>Supports setting whether to disable iOS gesture control by configuring <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setSwipeBack">setSwipeBack</a>.</li>
+<li>Supports setting the background color of the IOS safe area.</li>
+</ol>
+<h3 id="25120">25.12.0</h3>
+<h4 id="new-1">New</h4>
+<ol>
+<li>Mini Programs support adjusting the navigation bar title position.</li>
+<li>The <code>webview</code> component adds a <code>loadingStyle</code> attribute, providing a new page loading effect.</li>
+<li>Mini Programs add custom event communication APIs: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeCustomEvent">removeCustomEvent</a> and <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setCustomEvent">setCustomEvent</a>.</li>
+<li>Mini Programs support configuring opening conditions and condition control.</li>
+<li>Mini Programs support configuring keywords.</li>
+<li>Supports multi-language support for Mini Program categories.</li>
+<li>Supports carrying parameters during H5 Mini Program navigation.</li>
+</ol>
+<h3 id="2590">25.9.0</h3>
+<h4 id="new-2">New</h4>
+<ol>
+<li>The Macle Android SDK has been adapted to meet the new requirements based on Android 15 version, ensuring compliance for the host application&#39;s APP release.</li>
+<li>Supports the host application to open Mini Programs, scan QR codes to open Mini Programs, and hide the capsule during the download process of opening experience Mini Programs.</li>
+<li>Supports data caching based on online service resource caching strategies when loading online resources in webview, to accelerate the startup performance of Mini Programs.</li>
+<li>Supports reporting the result of SDK initialization failure to the Mini Programs management console.</li>
+<li>The Jump Mini Program API now supports hiding the capsule during the download jump process. Developers can use the newly added <code>capsuleShow</code> parameter to configure this (Minimum version: 25.9.0).</li>
+<li>The successful callback of the <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getNetworkType">getNetworkType</a> API has been updated to include the <code>isConnectVPN</code> field, which indicates whether the current device is connected to a VPN (Minimum version: 25.9.0).</li>
+<li>iOS has introduced new APIs for <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createTimer">createTimer</a> and <a onclick="_mdLinkClick(this.href)" href="#/api/ma.cancelTimer">cancelTimer</a> (Minimum version: 25.9.0).</li>
+</ol>
+<h4 id="optimization">Optimization</h4>
+<ol>
+<li>For security reasons, the Macle iOS SDK no longer depends on ZipArchive. If the integrated host application uses the decompression and compression capabilities of ZipArchive through the Macle iOS SDK, please rely on open-source software for compression and decompression.</li>
+<li>Preloaded Mini Programs support updating the Mini Program version.</li>
+<li>The Macle SDK continues to optimize its architecture to reduce the number of backend interface calls.</li>
+<li>The frequency of prompt upgrades for Mini Programs supports joint configuration with the Mini Program management console.</li>
+</ol>
+<h3 id="2560">25.6.0</h3>
+<h4 id="new-3">New</h4>
+<ol>
+<li>The Macle iOS SDK adds the host-level configuration <code>enableLoadingWhenStart</code>, which supports controlling whether the loading of a locally deployed Mini Program is displayed when it restarts.</li>
+<li>The SDK provides an API to control the font in all interfaces within Mini Program, supporting a one-click skin change for the host application.</li>
+<li>Preloading of resources for shell Mini Program.</li>
+<li>Reporting of exceptions on the Mini Program cloud server.</li>
+<li>Support for configuring Mini Program upgrade strategies.</li>
+<li><a onclick="_mdLinkClick(this.href)" href="#/framework/app-config">global configuration</a>A new global configuration item <code>hideStatusBar</code> for hiding the status bar.</li>
+<li>Support for H5 Mini Program in landscape mode, with configuration for <a onclick="_mdLinkClick(this.href)" href="#/guide/pageOrientation">screen rotation</a> set to: <code>&quot;pageOrientation&quot;: landscape</code>.</li>
+</ol>
+<h4 id="optimization-1">Optimization</h4>
+<ol>
+<li>Distinguish the scenarios for reporting Mini Program downloads</li>
+</ol>
+<h3 id="2530">25.3.0</h3>
+<h4 id="new-4">New</h4>
+<ol>
+<li>Add a license control mechanism for Mini Programs.</li>
+<li>Unified OpenAPI mechanism</li>
+<li>The <a onclick="_mdLinkClick(this.href)" href="#/guide/pageOrientation">screen rotation</a> mode can be configured in the shell Mini Program.</li>
+<li>The SDK supports the interface for querying the latest Mini Program used by users.</li>
+<li>iossdk Xcode 16 compatibility</li>
+<li>Capsule Hide<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setCapsuleShow">setCapsuleShow</a></li>
+<li>The Mini Program preloading</li>
+<li>Android SDK Google permission rectification</li>
+<li>Resumable download and multi-thread download</li>
+<li>Independent Ad Container</li>
+</ol>
+<h3 id="24120">24.12.0</h3>
+<h4 id="new-5">New</h4>
+<ol>
+<li>Set the logo <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setTabBarBadge">setTabBarBadge</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeTabBarBadge">removeTabBarBadge</a> on the top right corner of the tabbar</li>
+<li>The Mini Program supports the keyboard height change monitoring <a onclick="_mdLinkClick(this.href)" href="#/api/ma.onKeyboardHeightChange">onKeyboardHeightChange</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.offKeyboardHeightChange">offKeyboardHeightChange</a>.</li>
+<li>The shell type can be configured in the shell Mini Program.</li>
+<li>Get System Settings <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getSystemSetting">getSystemSetting</a></li>
+<li>Allows Mini Programs to use the clipboard capability <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setClipboardData">setClipboardData</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getClipboardData">getClipboardData</a></li>
+<li>The Mini Program supports the conversion between ArrayBuffer objects and Base64 strings <a onclick="_mdLinkClick(this.href)" href="#/api/ma.base64ToArrayBuffer">base64ToArrayBuffer</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.arrayBufferToBase64">arrayBufferToBase64</a></li>
+<li>Multi-language translation of dsl Mini Programs</li>
+</ol>
+<h3 id="2490">24.9.0</h3>
+<h4 id="new-6">New</h4>
+<ol>
+<li><a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportEvent">Customized buried points</a> newly supports attribute reporting</li>
+<li>Added support for <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseVideo">chooseVideo</a> capability</li>
+<li>The SDK adds support for multi-language configuration of Mini Program names and descriptions.</li>
+<li>JS SDK newly supports synchronous data cache interface <code>ma.getStorageSync</code>, <code>ma.setStorageSync</code></li>
+<li>SDK newly supports permission management and control interfaces <a onclick="_mdLinkClick(this.href)" href="#/api/ma.deauthorize">ma.deauthorize</a> and <a onclick="_mdLinkClick(this.href)" href="#/api/ma.cancelAuthorize">ma.cancelAuthorize</a></li>
+<li>Added support for users to open the last visited page</li>
+<li>The Mini Program supports APIs forbidding screen recording, screen capture, screen sharing, download (video), and screen projection.</li>
+</ol>
+<h4 id="optimization-2">Optimization</h4>
+<ol>
+<li>Optimize the prompt message when downloading or opening the Mini Program fails</li>
+<li>Optimize the experience of JS SDK using custom APIs <code>ma.callNative</code> and <code>ma.native</code> to trigger callbacks, support triggering failure callbacks, and capture failure reasons.</li>
+</ol>
+<h3 id="2460">24.6.0</h3>
+<h4 id="new-7">New</h4>
+<ol>
+<li><a onclick="_mdLinkClick(this.href)" href="#/component/web-view">web-view</a> component newly supports <code>header</code> customization</li>
+<li>Added the ability to report logs of the Mini Program startup process</li>
+<li>Added new exit Mini Program interface <a onclick="_mdLinkClick(this.href)" href="#/api/ma.exitMiniProgram">ma.exitMiniProgram</a></li>
+<li>Added support for <a onclick="_mdLinkClick(this.href)" href="#/api/ma.openBluetoothAdapter">Bluetooth pairing</a> capability</li>
+<li>Added <a onclick="_mdLinkClick(this.href)" href="#/devtools/remoteDebug">real machine debugging</a> capability</li>
+<li>Added support for access source management and reporting capabilities</li>
+<li>Added support for <a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportEvent">custom buried points</a> operational data reporting</li>
+</ol>
+<h4 id="optimization-3">Optimization</h4>
+<ol>
+<li>Optimize the usage experience and style of the <a onclick="_mdLinkClick(this.href)" href="#/component/input">input</a> component</li>
+<li>Optimize operation and maintenance log reporting capabilities</li>
+<li>Optimize the JS SDK integration experience, developers can quickly identify the integrated version based on the version number</li>
+</ol>
+<h3 id="2430">24.3.0</h3>
+<h4 id="new-8">New</h4>
+<ol>
+<li>Added <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getAuthCode">Login</a> capability and supported[Get user public information] (GET_OPEN_USER_INFO)</li>
+<li>Added new Mini Program page parameters to support host applications sharing the current page of the Mini Program.</li>
+<li>Support classification and sorting of query Mini Program</li>
+<li>JS SDK new interfaces <code>saveFileToPhone</code>, <code>saveImage</code>, <code>gotoBrowser</code></li>
+<li>Support the QR code of the Mini Program</li>
+<li>Support grayscale whitelist control</li>
+</ol>
+<h4 id="optimization-4">Optimization</h4>
+<ol>
+<li>Support Mini Program page caching to optimize user experience and look and feel.</li>
+<li>IOS SDK supports removing the fixed white bar that appears at the bottom of the Mini Program.</li>
+<li>Optimize the Mini Program positioning capabilities of HarmonyOS models.</li>
+</ol>
+<h3 id="23120">23.12.0</h3>
+<h4 id="optimization-5">Optimization</h4>
+<ol>
+<li>The IOS SDK uses the <a onclick="_mdLinkClick(this.href)" href="#/component/map">map</a> component. When showLocation is false and the <a onclick="_mdLinkClick(this.href)" href="#/api/MapContext.moveToLocation">moveToLocation</a> api is called without passing the latitude and longitude, the anchor point will no longer be moved to the current location and a failure callback will be triggered.</li>
+<li>Added verification mechanism for key files of Mini Program.</li>
+</ol>
+<h4 id="new-9">New</h4>
+<ol>
+<li>Added support for data encryption storage</li>
+<li>Supports obtaining <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLaunchOptionsSync">Mini Program startup parameters</a></li>
+<li>Support the back button in the upper left corner of the Mini Program to be hidden</li>
+<li>Added <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">data prefetch</a> API</li>
+<li>The <a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportLog">log reporting</a> API is added to allow developers to report problem logs.</li>
+<li>The Mini Program supports obtaining parameters from the URL</li>
+<li>Added the ability to jump to other Mini Programs within a Mini Program</li>
+<li>Android now supports H5 video full-screen playback.</li>
+<li>Added the ability to query the Mini Program list and Mini Program experience version based on the host application.</li>
+</ol>
+<h3 id="2390">23.9.0</h3>
+<h4 id="new-10">New</h4>
+<ol>
+<li>New API: Added <a onclick="_mdLinkClick(this.href)" href="#/api/CameraContext.startRecord">CameraContext.startRecord</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/CameraContext.stopRecord">CameraContext.stopRecord</a> to support video recording function</li>
+<li>New framework: New basic operational data reporting</li>
+<li>Added new framework and added the ability to collect small programs (cooperated with the host App)</li>
+<li>Added new framework to support adding small programs to the desktop</li>
+<li>New API Added <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getRecorderManager">RecordManager</a> recording manager, as well as recording functions such as <a onclick="_mdLinkClick(this.href)" href="#/api/RecorderManager.start">starting recording</a> and <a onclick="_mdLinkClick(this.href)" href="#/api/RecorderManager.stop">stopping recording</a>, and event callback related APIs</li>
+</ol>
+<h4 id="fix">Fix</h4>
+<ol>
+<li>Repair the framework to adapt to the full-screen navigation mode of Xiaomi mobile phones</li>
+</ol>
+<h3 id="2360">23.6.0</h3>
+<h4 id="new-11">New</h4>
+<ol>
+<li>New API: New <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager">FileSystemManager</a> file manager, as well as <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.writeFile">writeFile</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.unlink">unlink</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.readFile">readFile</a> and other file management related APIs</li>
+<li>Added new API <a onclick="_mdLinkClick(this.href)" href="#/api/ma.loadFontFace">loadFontFace</a> to load user-defined font files</li>
+<li>New API Added <a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask">DownloadTask</a>, developers can check the progress of the download task and abort the download task</li>
+</ol>
+<h4 id="optimization-6">Optimization</h4>
+<ol>
+<li>Update API to add internationalization capabilities of <a onclick="_mdLinkClick(this.href)" href="#/api/ma.showModal">showModal</a> and <a onclick="_mdLinkClick(this.href)" href="#/component/picker">picker</a> components</li>
+<li>Mini Program framework optimization</li>
+</ol>
+<h4 id="fix-1">Fix</h4>
+<ol>
+<li>Fix the compatibility of the white bar at the bottom of Hongmeng 3.0 Mini Program</li>
+</ol>
+<h3 id="2330">23.3.0</h3>
+<h4 id="new-12">New</h4>
+<ol>
+<li>Added DSL Mini Program map component</li>
+<li>Added multi-language framework support</li>
+<li>Support Mini Program package signature verification</li>
+</ol>
+<h4 id="optimization-7">Optimization</h4>
+<ol>
+<li>Optimize SDK engine external interface</li>
+</ol>

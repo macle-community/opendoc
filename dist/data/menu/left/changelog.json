@@ -1,0 +1,17 @@
+[
+  {
+    "name": "版本更新介绍",
+    "child": [
+      {
+        "name": "开发工具",
+        "path": "/release_ide",
+        "data": "/data/doc/devtools/release.md"
+      },
+      {
+        "name": "SDK",
+        "path": "/release_sdk",
+        "data": "/data/doc/sdk/release.md"
+      }
+    ]
+  }
+]

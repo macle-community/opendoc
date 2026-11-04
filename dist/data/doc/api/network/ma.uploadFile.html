@@ -1,0 +1,160 @@
+<h2 id="mauploadfileobject-object">ma.uploadFile(Object object)</h2>
+<blockquote>
+<p>将本地资源上传到服务器。客户端发起一个 HTTPS POST 请求，其中 <code>content-type</code> 为 <code>multipart/form-data</code>。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">开发者服务器地址</td>
+</tr>
+<tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是（files和filePath二选一）</td>
+<td align="left">要上传文件资源的路径 (本地路径)</td>
+</tr>
+<tr>
+<td align="left">files</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">是（files和filePath二选一）</td>
+<td align="left">需要上传的文件列表，<strong>使用files时，filePath和name不生效</strong></td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">文件对应的 key，开发者在服务端可以通过这个 key 获取文件的二进制内容</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">HTTP 请求 Header，Header 中不能设置 Referer</td>
+</tr>
+<tr>
+<td align="left">formData</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">HTTP 请求中其他额外的 form data</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">否</td>
+<td align="left">超时时间，单位为毫秒</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="files参数说明">files参数说明</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>String</td>
+<td>否</td>
+<td>表单的项目名，默认为file</td>
+</tr>
+<tr>
+<td>file</td>
+<td>File</td>
+<td>否</td>
+<td>要上传的文件对象</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">uploadFile:ok</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left">开发者服务器返回的数据</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">开发者服务器返回的 HTTP 状态码</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+    ma.<span class="hljs-title function_">uploadFile</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.test.com/upload&#x27;</span>, <span class="hljs-comment">//仅为示例，非真实的接口地址</span>
+      <span class="hljs-attr">filePath</span>: tempFilePaths[<span class="hljs-number">0</span>],
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-comment">//do something</span>
+      }
+    });
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip：目前不会进行安全域的校验，建议优先使用 https。</li>
+<li>Files和files同时写的情况下，files的优先级更高</li>
+<li>files和filePath二选其一，如果没有files，filePath必填，反之files必填</li>
+<li>文件上传的大小和个数虽然没有限制，但是出于性能考虑不建议上传过多过大的文件</li>
+</ol>

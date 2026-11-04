@@ -1,0 +1,56 @@
+<h2 id="转换器">转换器</h2>
+<blockquote>
+<p>小程序跨平台转换工具（最低版本: 23.3.0）</p>
+</blockquote>
+<p>macle小程序开发插件为开发者提供了转换能力，使开发者跨平台开发变得更加方便。</p>
+<p>根据要转换的工程类型不同，目前转换器支持的转换场景大致可以分为两类 ： <strong>H5工程</strong> 与 <strong>其他平台小程序</strong></p>
+<h3 id="h5-转换-macle小程序">H5 转换 macle小程序</h3>
+<h4 id="功能界面">功能界面</h4>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/ConverterH5GUIPart1.png" alt="image" ></p>
+<ol>
+<li>功能入口</li>
+<li>当前项目类型为H5应用</li>
+<li>需要转换的项目目录，初始化时默认读取当前项目目录</li>
+<li>变更工程目录按钮</li>
+<li>转换功能按钮</li>
+</ol>
+<h4 id="配置功能界面">配置功能界面</h4>
+<p>原H5工程初次使用转换器，需要进行配置，配置界面如下：</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/ConverterH5GUIPart2.png" alt="image" ></p>
+<ol>
+<li>需要转换的文件夹</li>
+<li>快速选取文件夹功能按钮</li>
+<li>转换后小程序首页界面</li>
+<li>确认转换按钮，点击后开启转换</li>
+</ol>
+<h4 id="转换结果">转换结果</h4>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/ConverterH5Res.png" alt="image" ></p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li><p>仅支持前后端分离的H5工程，例如依赖服务端渲染生成页面的场景当前不支持</p>
+</li>
+<li><p>确认转换后，工程将自动开始转换，同时在原工程目录下生成.macle.config.json文件，可在输出界面查看编译信息</p>
+</li>
+<li><p>针对<strong>有构建情况下，如原项目存在引入静态资源现象，需调整资源路径为相对路径</strong>，可通过修改<strong>公共基础路径</strong>实现，请根据打包工具调整相应配置</p>
+<p>以vite为例：vite共享配置项中base默认值为 &#39;/&#39;，需调整为&#39;./&#39;。</p>
+</li>
+<li><p>针对<strong>有构建的工程，当前需要手动拉取依赖</strong>，即用户在当前工程目录下执行 <code>npm install</code>，请确保本地可以成功执行编译打包任务后再使用转换器进行转换任务</p>
+</li>
+<li><p>若使用转换器过程中，右下角出现乱码提示，是由于系统编码与node编码格式不一致导致的，尝试统一编码格式通常可以解决此问题</p>
+</li>
+</ol>
+<h3 id="其他平台小程序-转换-macle小程序">其他平台小程序 转换 macle小程序</h3>
+<h4 id="功能界面-1">功能界面</h4>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/ConverterGUI.png" alt="image" ></p>
+<p>1：功能入口</p>
+<p>2：选择需要转换的原工程类型</p>
+<p>3：选择原工程文件目录</p>
+<p>4：选择转换后工程文件存放路径</p>
+<p>5：转换功能入口</p>
+<h4 id="转换结果-1">转换结果</h4>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/mainWindow/ConverterRes.png" alt="image" ></p>
+<h3 id="常见问题">常见问题</h3>
+<h4 id="如何区分当前项目为有构建还是无构建？">如何区分当前项目为有构建还是无构建？</h4>
+<p><strong>A</strong>: 无构建指当前项目为原生HTML，而有构建指当前项目使用了前端框架，需要经过一层构建操作使其编译为HTML，最简单的方法可以通过识别当前项目是否存在package.json文件，若存在则当前项目为有构建项目，若不存在则为无构建项目。</p>
+<h4 id="执行有构建转换，出现报错-command-failed-npm-run-build-xxx不是内部或外部命令如何处理？">执行有构建转换，出现报错 “Command failed: npm run build &#39;xxx&#39;不是内部或外部命令”如何处理？</h4>
+<p><strong>A</strong>: 可以尝试删除.macle.config.json文件后在当前目录下执行 <code>npm install</code>完成依赖安装，重新执行转换操作</p>

@@ -1,0 +1,193 @@
+<h2 id="manavigatetominiprogramobject-object">ma.navigateToMiniProgram(Object object)</h2>
+<blockquote>
+<p>Jump to other Mini Programs within a Mini Program (minimum version: 23.12.0)</p>
+</blockquote>
+<blockquote>
+<p>When allowing the opening of Mini Programs, parameters can be carried and passed by concatenating them into a format like index.html?paramA=xxx&amp;paramB=xxxx (changed in version 25.12.0).
+Only H5 Mini Programs are supported; DSL Mini Programs are not supported.
+The following special characters are not allowed:
+Double dots:.. Dot-slash:./ Cross-directory file separator:..\ and %00</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">appId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">The appId of the Mini Program to be opened</td>
+</tr>
+<tr>
+<td align="left">capsuleShow</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">Yes</td>
+<td align="left">Whether the capsule is visible</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">The path of the page to open. If it is empty, the home page will be opened.</td>
+</tr>
+<tr>
+<td align="left">params</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">When navigating to other mini-programs, parameters should be passed in the form of paramA=xxx&amp;paramB=xxx (only supports H5 mini-programs, minimum version: 25.12.0)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectfail-callback-function">object.fail Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">error message</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">Integer</td>
+<td align="left">error code</td>
+</tr>
+</tbody></table>
+<h3 id="error-code-list">Error Code List</h3>
+<table>
+<thead>
+<tr>
+<th>Error Scenario</th>
+<th>Error Code</th>
+<th>Supported by Android</th>
+<th>Supported by iOS</th>
+<th>Supported by Simulator</th>
+<th>Development Suggestion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Invalid request parameter type.</td>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the parameter type in the interface invoking parameter is valid based on errorMsg.</td>
+</tr>
+<tr>
+<td>Invalid request parameter value.</td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the parameter value in the interface invoking parameter is valid based on errorMsg.</td>
+</tr>
+<tr>
+<td>The request parameter is not mandatory.</td>
+<td>3</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check which mandatory parameters are not specified in the interface invoking parameters based on errorMsg.</td>
+</tr>
+<tr>
+<td>Failed to query the Mini Program based on appId in the request.</td>
+<td>203000</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Check whether the Mini Program to be redirected has a running version based on the input parameter appId.</td>
+</tr>
+<tr>
+<td>The user cancels the redirection to the specified Mini Program pop-up window.</td>
+<td>203001</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation, prompting the user to manually confirm when opening the associated Mini Program.</td>
+</tr>
+<tr>
+<td>Failed to open the Mini Program to be redirected to.</td>
+<td>203002</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact the current site operation personnel to locate the cause of the failure to open the Mini Program.</td>
+</tr>
+<tr>
+<td>Request parameters contain invalid strings.</td>
+<td>203003</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Check whether the params in the interface call parameters are valid according to errorMsg.</td>
+</tr>
+<tr>
+<td>No response when redirecting to other mini-programs</td>
+<td>203004</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact the current site&#39;s operations staff to coordinate with the host app developer to determine the reason why the mini-program is not responding when redirected.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.navigateToMiniProgram({
+  appId: <span class="hljs-string">&#x27;&#x27;</span>, 
+    capsuleShow: <span class="hljs-literal">false</span>,
+  path: <span class="hljs-string">&#x27;page/index/index&#x27;</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  },
+  complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+  }
+});
+</code></pre>
+<h3 id="usage-restrictions">Usage Restrictions</h3>
+<ol>
+<li>To use this interface, you need to connect to the Mini Program SaaS platform</li>
+</ol>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Note that this API needs to invoke the server interface to query and download Mini Program. Therefore, user operations must be shielded during API invoking to avoid unknown problems. trustlist is configured on the Mini Program SaaS platform. After authorization, no pop-up window is displayed asking whether to jump to another Mini Program. Instead, other Mini Programs are directly opened.</li>
+<li>In the scenario where the Mini Program is redirected through navigateToMiniProgram, the latest version of the Mini Program is queried by default. There is no upgrade experience scenario, for example, a pop-up window prompting the upgrade is displayed.</li>
+</ol>

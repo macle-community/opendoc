@@ -1,0 +1,289 @@
+<h2 id="magetlocationobject-object">ma.getLocation(Object object)</h2>
+<blockquote>
+<p>User authorization: <strong>scope.location</strong> is required.
+Obtain the current location and speed. This API cannot be called after the user exits the Mini Program. When the high-precision positioning function is enabled, the API duration increases. You can set <strong>highAccuracyExpireTime</strong> to specify the timeout duration. High-frequency API calls cause power consumption. </p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">useFetchData</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Indicates whether to use prefetch data. (This parameter is added in <strong>23.12.0</strong>. For details, see <a onclick="_mdLinkClick(this.href)" href="#/api/locationPrePull">GeographicalLocationPrePull</a>.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">latitude</td>
+<td align="left">Number</td>
+<td align="left">Latitude. The value ranges from –90 to 90. A negative value indicates the southern hemisphere.</td>
+</tr>
+<tr>
+<td align="left">longitude</td>
+<td align="left">Number</td>
+<td align="left">Longitude. The value ranges from –180 to 180. A negative value indicates the western hemisphere.</td>
+</tr>
+<tr>
+<td align="left">speed</td>
+<td align="left">Number</td>
+<td align="left">Speed, in m/s.</td>
+</tr>
+<tr>
+<td align="left">accuracy</td>
+<td align="left">Number</td>
+<td align="left">Location accuracy.</td>
+</tr>
+<tr>
+<td align="left">altitude</td>
+<td align="left">Number</td>
+<td align="left">Height, in m.</td>
+</tr>
+<tr>
+<td align="left">verticalAccuracy</td>
+<td align="left">Number</td>
+<td align="left">Vertical precision, in m. The value <strong>0</strong> is returned for Android because it cannot be obtained.</td>
+</tr>
+<tr>
+<td align="left">horizontalAccuracy</td>
+<td align="left">Number</td>
+<td align="left">Horizontal precision, in m.</td>
+</tr>
+<tr>
+<td align="left">locationEndTime</td>
+<td align="left">String</td>
+<td align="left">Positioning end event, the string format is <code>YYYY-MM-DD HH:mm:ss</code>(This parameter is added in <strong>24.3.0</strong>)</td>
+</tr>
+<tr>
+<td align="left">locationOrigin</td>
+<td align="left">String</td>
+<td align="left">Locate the source of information. If it is pre-fetching, return <code>prefetch</code>, otherwise return <code>location</code>(This parameter is added in <strong>24.3.0</strong>)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getLocation</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+</code></pre>
+<h3 id="objectsuccess-callback-function-1">object.success Callback Function</h3>
+<h4 id="parameter-2">Parameter</h4>
+<h4 id="object-res-1">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getLocation: ok</td>
+</tr>
+</tbody></table>
+<h3 id="objectfail-callback-function">object.fail Callback Function</h3>
+<h4 id="parameter-3">Parameter</h4>
+<h4 id="object-res-2">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">error message</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">Integer</td>
+<td align="left">error code</td>
+</tr>
+</tbody></table>
+<h3 id="error-code-list">Error Code List</h3>
+<table>
+<thead>
+<tr>
+<th>Error Scenario</th>
+<th>Error Code</th>
+<th>Supported by Android</th>
+<th>Supported by iOS</th>
+<th>Supported by Simulator</th>
+<th>Development Suggestion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Invalid request parameter type.</td>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>The user rejects the permission to locate the Mini Program for the first time.</td>
+<td>701000</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Developers are prompted to enable the permission to locate the Mini Program.</td>
+</tr>
+<tr>
+<td>The user has rejected the permission to locate the Mini Program.</td>
+<td>701001</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Developers are prompted to enable the permission to locate the Mini Program.</td>
+</tr>
+<tr>
+<td>The user is not authorized or denied the permission to locate the Mini Program.</td>
+<td>701002</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation prompts the user to enable the Mini Program location permission. The Mini Program framework throws a pop-up window when the getLocation API is invoked next time.</td>
+</tr>
+<tr>
+<td>The system location service is disabled.</td>
+<td>701003</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation prompts users to enable the location service permission in system settings.</td>
+</tr>
+<tr>
+<td>The location service is disabled in the host app.</td>
+<td>701004</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation prompts users to enable the location service permission switch in the host app permission management in system permission management.</td>
+</tr>
+</tbody></table>
+<h3 id="faqs">FAQs</h3>
+<p><strong>What should I do if the mobile phone cannot obtain positioning and returns fail after calling the API normally?</strong></p>
+<p><strong>A:</strong> Go to mobile phone settings-privacy-location services and turn on the switch to access my location information.</p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>When the Mini Program developer fails to obtain the Mini Program permission(The user rejects the authorization location permission.), the Mini Program developer invokes the openSetting API.</li>
+</ol>
+<h3 id="sample-code-1">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+    <span class="hljs-attr">data</span>: {
+        <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">location</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">getLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">requestLocation</span>();
+    },
+    <span class="hljs-attr">clearLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">location</span>: <span class="hljs-string">&#x27;&#x27;</span>
+        });
+    },
+    <span class="hljs-attr">requestLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">getLocation</span>({
+            <span class="hljs-attr">success</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">successHandler</span>,
+            <span class="hljs-attr">fail</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">failHandler</span>
+        });
+    },
+    <span class="hljs-attr">successHandler</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">location</span>: <span class="hljs-title function_">formatLocation</span>(res.<span class="hljs-property">longitude</span>, res.<span class="hljs-property">latitude</span>)
+        });
+    },
+    <span class="hljs-attr">failHandler</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701003</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForSystemPermission</span>();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701004</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForDemoAppPermission</span>();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701000</span> || res.<span class="hljs-property">errno</span> === <span class="hljs-number">701001</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForAppPermission</span>();
+        }
+    },
+    <span class="hljs-attr">showModalForSystemPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Enable the system location permission.&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Go to Settings &gt; Privacy &gt; Location Services to enable location permissions.&#x27;</span>,
+        });
+    },
+    <span class="hljs-attr">showModalForDemoAppPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Enable the location permission of the demo app.&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Go to Settings and enable the demo app location permission.&#x27;</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">modalRes</span>) {
+                <span class="hljs-keyword">if</span> (modalRes.<span class="hljs-property">confirm</span>) {
+                    ma.<span class="hljs-title function_">gotoBrowser</span>({
+                        <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&quot;app-settings:&quot;</span> <span class="hljs-comment">// This URL scheme supports only iOS. Replace it with that for Android.</span>
+                    });
+                }
+            }
+        });
+    },
+    <span class="hljs-attr">showModalForAppPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Enable Mini Program location permission&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Please enable location permissions in Mini Program settings&#x27;</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">modalRes</span>) {
+                <span class="hljs-keyword">if</span> (modalRes.<span class="hljs-property">confirm</span>) {
+                    ma.<span class="hljs-title function_">openSetting</span>({
+                        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">settingRes</span>) {
+                            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(settingRes.<span class="hljs-property">authSetting</span>);
+                        }
+                    });
+                }
+            }
+        });
+    }
+})
+</code></pre>

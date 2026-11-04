@@ -1,0 +1,12 @@
+[
+  {
+    "name": "介绍",
+    "path": "/js_introduce",
+    "data": "/data/doc/sdk/JS-SDK/introduce.md"
+  },
+  {
+    "name": "接口说明",
+    "path": "/js_sdk-interface",
+    "data": "/data/doc/sdk/JS-SDK/sdk-interface.md"
+  }
+]

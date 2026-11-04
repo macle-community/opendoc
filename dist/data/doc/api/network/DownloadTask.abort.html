@@ -1,0 +1,16 @@
+<h2 id="downloadtaskabort">DownloadTask.abort()</h2>
+<blockquote>
+<p>中断下载任务（最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const downloadTask = ma<span class="hljs-selector-class">.downloadFile</span>({
+  url: <span class="hljs-string">&#x27;http://example.com/audio/123&#x27;</span>, <span class="hljs-comment">//仅为示例，并非真实的资源</span>
+  success (res) {
+    ma<span class="hljs-selector-class">.playVoice</span>({
+      filePath: res<span class="hljs-selector-class">.tempFilePath</span>
+    })
+  }
+})
+
+downloadTask<span class="hljs-selector-class">.abort</span>() <span class="hljs-comment">// 取消下载任务</span>
+</code></pre>

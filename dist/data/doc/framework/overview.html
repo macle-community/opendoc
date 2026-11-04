@@ -1,0 +1,152 @@
+<h2 id="文件结构">文件结构</h2>
+<blockquote>
+<p>小程序分为 app 和 page 两层。app 用来描述整个应用，page 用来描述各个页面，此外还有关于整个 project 的配置描述（可选）。</p>
+</blockquote>
+<p>app 由三个文件组成，必须放在项目的根目录</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件</th>
+<th align="left">必填</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">app.js</td>
+<td align="left">是</td>
+<td align="left">小程序逻辑</td>
+</tr>
+<tr>
+<td align="left">app.json</td>
+<td align="left">是</td>
+<td align="left">小程序全局设置</td>
+</tr>
+<tr>
+<td align="left">app.mass</td>
+<td align="left">否</td>
+<td align="left">小程序全局样式表</td>
+</tr>
+</tbody></table>
+<p>page 由四个文件组成，分别是：</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件类型</th>
+<th align="left">必填</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">js</td>
+<td align="left">是</td>
+<td align="left">页面逻辑</td>
+</tr>
+<tr>
+<td align="left">maml</td>
+<td align="left">是</td>
+<td align="left">页面结构</td>
+</tr>
+<tr>
+<td align="left">mass</td>
+<td align="left">否</td>
+<td align="left">页面样式表</td>
+</tr>
+<tr>
+<td align="left">json</td>
+<td align="left">否</td>
+<td align="left">页面配置</td>
+</tr>
+</tbody></table>
+<p><strong>| 注意</strong>： 为了方便开发者，macle 小程序规定这四个文件必须具有相同的路径与文件名。</p>
+<h2 id="允许打包的文件">允许打包的文件</h2>
+<p>在项目目录中，以下文件会经过编译，因此打包之后无法直接访问到：.js、app.json、_.maml、_.mass、*.sjs、*.sk。除此之外，只有后缀名在白名单内的文件可以打包到小程序包里。具体白名单列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>文件格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>html</td>
+<td>html页面</td>
+</tr>
+<tr>
+<td>js</td>
+<td>javascript资源文件</td>
+</tr>
+<tr>
+<td>json</td>
+<td>json配置文件</td>
+</tr>
+<tr>
+<td>css</td>
+<td>页面样式文件</td>
+</tr>
+<tr>
+<td>png</td>
+<td>无损压缩图片文件</td>
+</tr>
+<tr>
+<td>jpg</td>
+<td>有损压缩图片文件</td>
+</tr>
+<tr>
+<td>gif</td>
+<td>动态图文件</td>
+</tr>
+<tr>
+<td>ttf</td>
+<td>通用字体文件</td>
+</tr>
+<tr>
+<td>woff</td>
+<td>web字体文件</td>
+</tr>
+<tr>
+<td>eot</td>
+<td>嵌入式字体文件</td>
+</tr>
+<tr>
+<td>ico</td>
+<td>图标文件</td>
+</tr>
+<tr>
+<td>txt</td>
+<td>文本</td>
+</tr>
+<tr>
+<td>mp3</td>
+<td>通用压缩音频文件</td>
+</tr>
+<tr>
+<td>ogg</td>
+<td>有损压缩音频文件</td>
+</tr>
+<tr>
+<td>wav</td>
+<td>无损音频文件</td>
+</tr>
+<tr>
+<td>md</td>
+<td>markdown文件</td>
+</tr>
+<tr>
+<td>mp4</td>
+<td>视频文件</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>xml配置文件</td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>Macle数据预取配置文件</td>
+</tr>
+</tbody></table>
+<h3 id="maml">MAML</h3>
+<p>MAML（Macle Markup Language）是框架设计的一套标签语言，结合基础组件、事件系统，可以构建出页面的结构。</p>
+<h3 id="mass">MASS</h3>
+<p>MASS (Macle Style Sheets)是一套样式语言，用于描述 MAML 的组件样式。</p>
+<h3 id="sjs">SJS</h3>
+<p>SJS（safe/subset javascript）是小程序一套自定义脚本语言，可以在 MAML 中使用其构建页面结构。</p>

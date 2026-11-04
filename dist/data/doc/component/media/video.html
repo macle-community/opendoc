@@ -1,0 +1,328 @@
+<h2 id="video">video</h2>
+<blockquote>
+<p>视频（暂不支持同层渲染）。相关 api：<a onclick="_mdLinkClick(this.href)" href="#/api/ma.createVideoContext">ma.createVideoContext</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要播放视频的资源地址，支持网络路径、本地临时路径（确保路径不超过项目根目录）</td>
+</tr>
+<tr>
+<td align="left">controls</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">是否显示默认播放控件（播放/暂停按钮、播放进度、时间）</td>
+</tr>
+<tr>
+<td align="left">autoplay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否自动播放</td>
+</tr>
+<tr>
+<td align="left">loop</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否循环播放</td>
+</tr>
+<tr>
+<td align="left">muted</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否静音播放</td>
+</tr>
+<tr>
+<td align="left">direction</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置全屏时视频的方向，不指定则根据宽高比自动判断</td>
+</tr>
+<tr>
+<td align="left">Object-fit</td>
+<td align="left">String</td>
+<td align="left">contain</td>
+<td align="left">否</td>
+<td align="left">当视频大小与 video 容器大小不一致时，视频的表现形式</td>
+</tr>
+<tr>
+<td align="left">poster</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">视频封面的图片网络资源地址。若 controls 属性值为 false 则设置 poster 无效</td>
+</tr>
+<tr>
+<td align="left">bindplay</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当开始/继续播放时触发 play 事件</td>
+</tr>
+<tr>
+<td align="left">bindpause</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当暂停播放时触发 pause 事件</td>
+</tr>
+<tr>
+<td align="left">bindended</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当播放到末尾时触发 ended 事件</td>
+</tr>
+<tr>
+<td align="left">bindtimeupdate</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">播放进度变化时触发，event.detail = {currentTime, duration} 。触发频率 250ms 一次</td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">视频播放出错时触发</td>
+</tr>
+</tbody></table>
+<h3 id="direction-的合法值">direction 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0</td>
+<td align="left">正常竖向</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">90</td>
+<td align="left">屏幕逆时针 90 度</td>
+<td>Android 暂不支持</td>
+</tr>
+<tr>
+<td align="left">-90</td>
+<td align="left">屏幕顺时针 90 度</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="object-fit-的合法值">object-fit 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">contain</td>
+<td align="left">包含</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">fill</td>
+<td align="left">填充</td>
+<td>Android 暂不支持</td>
+</tr>
+<tr>
+<td align="left">cover</td>
+<td align="left">覆盖</td>
+<td>Android 暂不支持</td>
+</tr>
+</tbody></table>
+<h3 id="支持的格式">支持的格式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">mp4</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">mov</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">m4v</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">3gp</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">avi</td>
+<td align="left">√</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">m3u8</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">webm</td>
+<td align="left">x</td>
+<td align="left">√</td>
+</tr>
+</tbody></table>
+<h3 id="支持的编码格式">支持的编码格式</h3>
+<table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">H.264</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">HEVC</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">MPEG-4</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">VP9</td>
+<td align="left">x</td>
+<td align="left">√</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;myVideo&#x27;</span>
+         <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">autoplay</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">autoplay</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">loop</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loop</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">hidden</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">hidden</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">controls</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">controls</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">objectFit</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">objectFit</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">poster</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">poster</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">muted</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">muted</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+         <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>
+         <span class="hljs-attr">bindtimeupdate</span>=<span class="hljs-string">&#x27;bindtimeupdate&#x27;</span>
+         <span class="hljs-attr">bindplay</span>=<span class="hljs-string">&#x27;bindplay&#x27;</span>
+         <span class="hljs-attr">bindpause</span>=<span class="hljs-string">&#x27;bindpause&#x27;</span>
+         <span class="hljs-attr">bindended</span>=<span class="hljs-string">&#x27;bindended&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
+
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>跳转位置<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">bindinput</span>=<span class="hljs-string">&#x27;bindInput&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span>
+               <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&#x27;在此处输入指定位置&#x27;</span>
+               <span class="hljs-attr">adjustPosition</span>=<span class="hljs-string">&#x27;false&#x27;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;btn-area&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;play&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>播放<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;pause&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>暂停<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;seek&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>跳转到指定位置(单位：秒)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;stop&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-body-button stop&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>停止<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>      
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span> = ma.<span class="hljs-title function_">createVideoContext</span>(<span class="hljs-string">&#x27;myVideo&#x27;</span>)
+  },
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;http://example.mp4&#x27;</span>,
+    <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">inputValue</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+    <span class="hljs-attr">controls</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">hidden</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">objectFit</span>: <span class="hljs-string">&#x27;contain&#x27;</span>,
+    <span class="hljs-attr">muted</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">loop</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">poster</span>: <span class="hljs-string">&#x27;http://example.png&#x27;</span>,
+    <span class="hljs-attr">showFullscreenBtn</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">bindInput</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+      <span class="hljs-attr">position</span>: e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>
+    })
+  },
+  <span class="hljs-attr">play</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">play</span>()
+  },
+  <span class="hljs-attr">pause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">pause</span>()
+  },
+  <span class="hljs-attr">seek</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">position</span>)
+  },
+  <span class="hljs-attr">stop</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">stop</span>()
+  },
+
+  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video 视频错误信息:&#x27;</span>)
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>)
+  },
+  <span class="hljs-attr">bindplay</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video start&#x27;</span>)
+  },
+  <span class="hljs-attr">bindpause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video pause&#x27;</span>)
+  },
+  <span class="hljs-attr">bindended</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video end&#x27;</span>)
+  },
+  <span class="hljs-attr">bindtimeupdate</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">currentTime</span>)
+  }
+})
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>video 默认宽度 300px、高度 225px，可通过 mass 设置宽高。</li>
+</ol>

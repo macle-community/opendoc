@@ -1,0 +1,148 @@
+<h2 id="scroll-view">scroll-view</h2>
+<blockquote>
+<p>可滚动视图区域。使用竖向滚动时，需要给 scroll-view 一个固定高度，通过 MASS 设置 height。组件属性的长度单位默认为 px。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scroll-x</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">允许横向滚动</td>
+</tr>
+<tr>
+<td align="left">scroll-y</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">允许纵向滚动</td>
+</tr>
+<tr>
+<td align="left">upper-threshold</td>
+<td align="left">Number/String</td>
+<td align="left">50</td>
+<td align="left">否</td>
+<td align="left">距顶部/左边多远时，触发 scrolltoupper 事件</td>
+</tr>
+<tr>
+<td align="left">lower-threshold</td>
+<td align="left">Number/String</td>
+<td align="left">50</td>
+<td align="left">否</td>
+<td align="left">距底部/右边多远时，触发 scrolltolower 事件</td>
+</tr>
+<tr>
+<td align="left">scroll-top</td>
+<td align="left">Number/String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置竖向滚动条位置</td>
+</tr>
+<tr>
+<td align="left">scroll-left</td>
+<td align="left">Number/String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置横向滚动条位置</td>
+</tr>
+<tr>
+<td align="left">scroll-into-view</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">值应为某子元素 id（id 不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素</td>
+</tr>
+<tr>
+<td align="left">scroll-with-animation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">在设置滚动条位置时使用动画过渡</td>
+</tr>
+<tr>
+<td align="left">enhanced</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">启用 scroll-view 增强特性</td>
+</tr>
+<tr>
+<td align="left">show-scrollbar</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">滚动条显隐控制 (同时开启 enhanced 属性后生效)</td>
+</tr>
+<tr>
+<td align="left">bindscrolltoupper</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滚动到顶部/左边时触发</td>
+</tr>
+<tr>
+<td align="left">bindscrolltolower</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滚动到底部/右边时触发</td>
+</tr>
+<tr>
+<td align="left">bindscroll</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滚动时触发，event.detail = { scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY }</td>
+</tr>
+<tr>
+<td align="left">binddragstart</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滑动开始事件 (同时开启 enhanced 属性后生效) detail { scrollTop, scrollLef }</td>
+</tr>
+<tr>
+<td align="left">binddragging</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滑动事件 (同时开启 enhanced 属性后生效) detail { scrollTop, scrollLeft }</td>
+</tr>
+<tr>
+<td align="left">binddragend</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滑动结束事件 (同时开启 enhanced 属性后生效) detail { scrollTop, scrollLeft }</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+&lt;<span class="hljs-built_in">view</span>&gt;
+  &lt;scroll-<span class="hljs-built_in">view</span> scroll-y=&#x27;<span class="hljs-literal">true</span>&#x27; <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">height</span>: 200px;&#x27;&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: red; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: blue; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: green; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: yellow; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
+  &lt;/scroll-<span class="hljs-built_in">view</span>&gt;
+&lt;/<span class="hljs-built_in">view</span>&gt;
+
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li><p>scroll-into-view 的优先级高于 scroll-top，仅在初始状态有效。</p>
+</li>
+<li><p>在滚动 scroll-view 时会阻止页面回弹，所以在 scroll-view 中滚动，是无法触发 onPullDownRefresh</p>
+</li>
+<li><p>若要使用下拉刷新，请使用页面的滚动，而不是 scroll-view ，这样也能通过点击顶部状态栏回到页面顶部</p>
+</li>
+</ol>

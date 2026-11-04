@@ -1,0 +1,24 @@
+<h2 id="masetstoragesyncstring-keyany-data">ma.setStorageSync(string key,any data)</h2>
+<blockquote>
+<p>将数据存储在本地缓存中指定的 key 中。会覆盖原来该 key 对应的内容。除非用户主动删除或因存储空间原因被系统清理，否则数据都一直可用。单个 key 允许存储的最大数据长度，安卓为 10KB，ios为1MB，所有数据存储上限为 10MB。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-key">string key</h4>
+<p>本地缓存中指定的 key</p>
+<h4 id="any-data">any data</h4>
+<p>需要存储的内容，只支持原生类型、Date、及能够通过 JSON.stringify 序列化的对象。</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorage</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;key&#x27;</span>;
+    <span class="hljs-keyword">const</span> data = <span class="hljs-string">&#x27;data&#x27;</span>;
+    <span class="hljs-keyword">try</span> {
+        ma.setStorageSync(key, data)
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-comment">// Do something when catch error</span>
+    }
+}
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: 存储未作加密，涉及个人敏感数据请勿使用明文存储。</li>
+</ol>

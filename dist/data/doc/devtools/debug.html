@@ -1,0 +1,167 @@
+<h1 id="插件调试">插件调试</h1>
+<h2 id="模拟器--调试工具">模拟器 + 调试工具</h2>
+<p>模拟器中模拟了大部分的真机 API，并且配有调试工具，建议先在模拟器中完成基础功能、样式的调试，然后在真机上验证和调试，最终运行效果以真机为准。</p>
+<h2 id="模拟器">模拟器</h2>
+<p><a onclick="_mdLinkClick(this.href)" href="#/devtools/simulator">模拟器</a> 提供了如下功能：</p>
+<ul>
+<li>设备模拟（尺寸、显示比例等）</li>
+<li>操作模拟</li>
+<li>刷新</li>
+<li>Macle JsAPI 模拟</li>
+<li>手势模拟</li>
+</ul>
+<h2 id="调试工具">调试工具</h2>
+<p>配合模拟器，我们提供了定制化的 chrome devtool，在其基础上提供比如 maml 等扩展。默认展示的有：</p>
+<ul>
+<li><strong>MAML：</strong>基于小程序元素的 dom、css 调试(暂未实现)</li>
+<li><strong>Console：</strong>运行日志、错误查看</li>
+<li><strong>Sources：</strong>源码查看、断点调试</li>
+<li><strong>Network：</strong>网络资源、请求查看</li>
+</ul>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/debug/debug.PNG" alt="image" ></p>
+<h2 id="vscode-内调试">VSCode 内调试</h2>
+<p>除了在调试器内调试小程序代码，还支持在 VSCode 内调试源码。</p>
+<h3 id="先决条件">先决条件</h3>
+<p>请确保安装了下面清单中的软件</p>
+<ul>
+<li>VS Code</li>
+<li>Macle MiniProgram Tools VSCode 插件</li>
+<li>Chrome 浏览器</li>
+</ul>
+<h3 id="配置-launchjson-文件">配置 launch.json 文件</h3>
+<p>点击在 Activity Bar 里的 Debugger 图标来到 Debug 视图，然后点击<code>create a launch.json file</code>，选择 <strong>Chrome</strong> 环境。</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/debug/vscode-debugger-activity-bar.PNG" alt="image" ></p>
+<p>然后将生成的 <code>launch.json</code> 的内容替换成为相应的配置：</p>
+<pre><code class="language-json">{
+  <span class="hljs-comment">// Use IntelliSense to learn about possible attributes.</span>
+  <span class="hljs-comment">// Hover to view descriptions of existing attributes.</span>
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.2.0&quot;</span>,
+  <span class="hljs-string">&quot;configurations&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;pwa-chrome&quot;</span>,
+      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;attach&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Attach Chrome against localhost&quot;</span>,
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:[port]/[projectname][appid]/root/simulator/&quot;</span>,
+      <span class="hljs-string">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${workspaceFolder}</span>&quot;</span>,
+      <span class="hljs-string">&quot;port&quot;</span>: <span class="hljs-number">31000</span>,
+      <span class="hljs-string">&quot;sourceMapPathOverrides&quot;</span>: {
+        <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${webRoot}</span>/*&quot;</span>
+      }
+    },
+    {
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;pwa-chrome&quot;</span>,
+      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;launch&quot;</span>,
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Launch Chrome against localhost&quot;</span>,
+      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:[port]/[projectname][appid]/root/simulator/&quot;</span>,
+      <span class="hljs-string">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${workspaceFolder}</span>&quot;</span>,
+      <span class="hljs-string">&quot;sourceMapPathOverrides&quot;</span>: {
+        <span class="hljs-string">&quot;*&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">${webRoot}</span>/*&quot;</span>
+      }
+    }
+  ]
+}
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>其中<code>url</code>属性：</p>
+<ul>
+<li><p><code>port</code>替换成模拟器真实启动的端口（默认为 30000，如果 30000 被占用，会使用其他端口，以模拟器实际启动的端口为准）</p>
+</li>
+<li><p><code>projectname</code>替换成真实项目project.config.json中的<code>projectname</code></p>
+</li>
+<li><p><code>appid</code>替换成真实项目project.config.json中的<code>appid</code>，若appid未设置则可以手动设置</p>
+<p>例如：<code>http://localhost:30000/calculator300s00i1ggac5n020107z1abcdef/root/simulator/</code>。</p>
+<p>也可直接复制 chrome 中 url 地址替换。</p>
+</li>
+</ul>
+</li>
+<li><p>attach 模式中的<code>port</code>属性可在 Settings 中配置，默认为 31000。</p>
+</li>
+</ul>
+<h3 id="设置断点">设置断点</h3>
+<p>在小程序源码中选择需要断点的位置，在左侧 gutter 内点击设置断点。</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/debug/breakpoint.PNG" alt="image" ></p>
+<h3 id="启动-debugger">启动 Debugger</h3>
+<p>我们在 launch.json 中配置了Launch 模式</p>
+<ul>
+<li>Launch 模式：该模式会自己打开 Chrome，自动把 debugger 附加到程序中</li>
+</ul>
+<h4 id="launch-模式启动">Launch 模式启动</h4>
+<ol>
+<li><p>点击插件中的模拟器功能，启动模拟器</p>
+</li>
+<li><p>等模拟器启动后，在<code>Run And Debug</code> Activity Bar 中选择<code>Launch Chrome against localhost</code>，然后按 F5 或点击绿色的 play 按钮，此时便可针对小程序代码进行调试了（建议将 chrome 设置成移动端模式）</p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/debug/launch-mode.PNG" alt="image" ></p>
+<p><img src="/openplatform/macledocs/data/doc/devtools/image/debug/launch-mode-debug.PNG" alt="image" ></p>
+</li>
+</ol>
+<h2 id="模拟器--jssdk-调试">模拟器 + JSSDK 调试</h2>
+<p>Macle支持通过模拟器对 JSSDK进行模拟调试适配，<strong>当前暂不支持通过webview组件导向web调试页面进行调试</strong></p>
+<p>调试流程：</p>
+<ol>
+<li>h5引入Macle JSSDK</li>
+<li>通过<a onclick="_mdLinkClick(this.href)" href="#/devtools/converter">转换器</a>将h5小程序转换为可运行在macle引擎的小程序</li>
+<li>模拟器打开转换后的小程序</li>
+</ol>
+<p>当前模拟器支持的JSSDK API列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ma.miniProgram.close</td>
+<td>关闭小程序，没有回调</td>
+</tr>
+<tr>
+<td>ma.chooseImage</td>
+<td>拍照或上传</td>
+</tr>
+<tr>
+<td>ma.getLocation</td>
+<td>获取当前地理位置信息</td>
+</tr>
+<tr>
+<td>ma.previewImage</td>
+<td>预览图片</td>
+</tr>
+<tr>
+<td>ma.openDocument</td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td>ma.getStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.setStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.removeStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.clearStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.getNetworkType</td>
+<td>获取网络状态</td>
+</tr>
+<tr>
+<td>ma.scanCode</td>
+<td>拉起二维码扫一扫，也支持一维码</td>
+</tr>
+<tr>
+<td>ma.callNativeAPI</td>
+<td>h5调用原生能力</td>
+</tr>
+<tr>
+<td>ma.native</td>
+<td>h5调用原生能力</td>
+</tr>
+</tbody></table>
+<p>此功能支持<a onclick="_mdLinkClick(this.href)" href="#/devtools/customAPI">自定义API</a></p>

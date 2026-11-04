@@ -1,0 +1,120 @@
+<h2 id="mascancodeobject-object">ma.scanCode(Object object)</h2>
+<blockquote>
+<p>唤起扫一扫前后整个过程会先后执行 app 和 page 的 onHide 和 onShow 生命周期函数。即（唤起）app.onHide &gt; page.onHide &gt;（返回）app.onShow &gt; page.onShow。（模拟器仅为模拟实现）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">onlyFromCamera</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否只能从相机扫码，不允许从相册选择图片</td>
+</tr>
+<tr>
+<td align="left">scanType</td>
+<td align="left">Array</td>
+<td align="left">[&#39;barCode&#39;, &#39;qrCode&#39;]</td>
+<td align="left">否</td>
+<td align="left">扫码类型</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectscantype-的合法值">object.scanType 的合法值</h4>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">barCode</td>
+<td align="left">一维码</td>
+</tr>
+<tr>
+<td align="left">qrCode</td>
+<td align="left">二维码</td>
+</tr>
+<tr>
+<td align="left">datamatrix</td>
+<td align="left">Data Matrix 码</td>
+</tr>
+<tr>
+<td align="left">pdf417</td>
+<td align="left">PDF417 条码</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">扫码成功信息</td>
+</tr>
+<tr>
+<td align="left">result</td>
+<td align="left">String</td>
+<td align="left">所扫码的内容</td>
+</tr>
+<tr>
+<td align="left">scanType</td>
+<td align="left">String</td>
+<td align="left">所扫码的类型</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-comment">// 允许从相机和相册扫码</span>
+ma.<span class="hljs-title function_">scanCode</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+
+<span class="hljs-comment">// 只允许从相机扫码</span>
+ma.<span class="hljs-title function_">scanCode</span>({
+  <span class="hljs-attr">onlyFromCamera</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+</code></pre>

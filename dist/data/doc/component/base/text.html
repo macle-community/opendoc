@@ -1,0 +1,70 @@
+<h2 id="text">text</h2>
+<blockquote>
+<p>文本。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">user-select</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">文本是否可选，该属性会使文本节点显示为 inline-block</td>
+</tr>
+<tr>
+<td align="left">space</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">显示连续空格</td>
+</tr>
+<tr>
+<td align="left">decode</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否解码</td>
+</tr>
+</tbody></table>
+<h3 id="space-的合法值">space 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ensp</td>
+<td align="left">中文字符空格一半大小</td>
+</tr>
+<tr>
+<td align="left">emsp</td>
+<td align="left">中文字符空格大小</td>
+</tr>
+<tr>
+<td align="left">nbsp</td>
+<td align="left">根据字体设置的空格大小</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">userSelect</span>=<span class="hljs-string">false</span> <span class="hljs-attr">space</span>=<span class="hljs-string">&quot;nbsp&quot;</span>&gt;</span>中文字符 空格nbsp<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>decode 可以解析的有 <code>&amp;nbsp; &amp;lt; &amp;gt; &amp;amp; &amp;apos; &amp;ensp; &amp;emsp;</code></li>
+<li>各个操作系统的空格标准并不一致。</li>
+<li>text 组件内只支持 text 嵌套。</li>
+<li>除了文本节点以外的其他节点都无法长按选中。</li>
+</ol>

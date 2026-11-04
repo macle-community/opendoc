@@ -1,0 +1,155 @@
+<h2 id="button">button</h2>
+<blockquote>
+<p>Buttons are used to trigger an action.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">No</td>
+<td align="left">Button size.</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">No</td>
+<td align="left">Button type.</td>
+</tr>
+<tr>
+<td align="left">plain</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether the button is hollow with transparent background.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether the <strong>loading</strong> icon is displayed before the name.</td>
+</tr>
+<tr>
+<td align="left">form-type</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Used in the form component to trigger the submit/reset event.</td>
+</tr>
+<tr>
+<td align="left">hover-class</td>
+<td align="left">String</td>
+<td align="left">button-hover</td>
+<td align="left">No</td>
+<td align="left">Style class of the tapped state. When <strong>hover-class</strong> is set to <strong>none</strong>, no style is available.</td>
+</tr>
+<tr>
+<td align="left">hover-stop-propagation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to prevent the ancestor node from being tapped.</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">Number</td>
+<td align="left">20</td>
+<td align="left">No</td>
+<td align="left">Tapping duration before the tapped state is displayed, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">Number</td>
+<td align="left">70</td>
+<td align="left">No</td>
+<td align="left">Retention time of the tapped state after the button is released, in milliseconds.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-size">Valid Values of size</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">default</td>
+<td align="left">Default size.</td>
+</tr>
+<tr>
+<td align="left">mini</td>
+<td align="left">Small size.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-type">Valid Values of type</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">primary</td>
+<td align="left">Green.</td>
+</tr>
+<tr>
+<td align="left">default</td>
+<td align="left">White.</td>
+</tr>
+<tr>
+<td align="left">warn</td>
+<td align="left">Red.</td>
+</tr>
+</tbody></table>
+<h3 id="valid-values-of-form-type">Valid Values of form-type</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">submit</td>
+<td align="left">Submits the form.</td>
+</tr>
+<tr>
+<td align="left">reset</td>
+<td align="left">Resets the form.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span> <span class="hljs-attr">hover-start-time</span>=<span class="hljs-string">&#x27;2000&#x27;</span> <span class="hljs-attr">hover-stay-time</span>=<span class="hljs-string">&#x27;1000&#x27;</span>&gt;</span>
+  Normal
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;true&#x27;</span>&gt;</span>Normal Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;warn&#x27;</span> <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&#x27;none&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;false&#x27;</span>&gt;</span>Warn<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;warn&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;true&#x27;</span>&gt;</span>Warn Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>The default value of <code>button-hover</code> is <code>{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}</code>.</li>
+<li>Currently, the button with the <code>form-type</code>attribute is available only for the <code>form</code> in the current component. Therefore, if the <code>button</code> is encapsulated in the customized component and the <code>form</code> is outside the customized component, the <code>form-type</code> attribute of the <code>button</code> becomes invalid.</li>
+</ol>

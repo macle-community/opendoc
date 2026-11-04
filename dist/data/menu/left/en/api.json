@@ -1,0 +1,1279 @@
+[
+  {
+    "name": "Foundation",
+    "child": [
+      {
+        "name": "ma.canIUse",
+        "path": "/ma.canIUse",
+        "data": "/data/doc/api/base/ma.canIUse.md"
+      },
+      {
+        "name": "ma.base64ToArrayBuffer",
+        "path": "/ma.base64ToArrayBuffer",
+        "data": "/data/doc/api/base/ma.base64ToArrayBuffer.md"
+      },
+      {
+        "name": "ma.arrayBufferToBase64",
+        "path": "/ma.arrayBufferToBase64",
+        "data": "/data/doc/api/base/ma.arrayBufferToBase64.md"
+      },
+      {
+        "name": "System",
+        "child": [
+          {
+            "name": "ma.getSystemInfo",
+            "path": "/ma.getSystemInfo",
+            "data": "/data/doc/api/base/ma.getSystemInfo.md"
+          },
+          {
+            "name": "ma.getSystemInfoSync",
+            "path": "/ma.getSystemInfoSync",
+            "data": "/data/doc/api/base/ma.getSystemInfoSync.md"
+          },
+          {
+            "name": "ma.getUpdateManager",
+            "path": "/ma.getUpdateManager",
+            "data": "/data/doc/api/base/ma.getUpdateManager.md"
+          },
+          {
+            "name": "ma.getStatusBarHeight",
+            "path": "/ma.getStatusBarHeight",
+            "data": "/data/doc/api/base/ma.getStatusBarHeight.md"
+          },
+          {
+            "name": "ma.getSystemSetting",
+            "path": "/ma.getSystemSetting",
+            "data": "/data/doc/api/base/ma.getSystemSetting.md"
+          }
+        ]
+      },
+      {
+        "name": "MiniProgram",
+        "child": [
+          {
+            "name": "ma.getsmallappinfo",
+            "path": "/ma.getsmallappinfo",
+            "data": "/data/doc/api/base/ma.getsmallappinfo.md"
+          },
+          {
+            "name": "ma.getLaunchOptionsSync",
+            "path": "/ma.getLaunchOptionsSync",
+            "data": "/data/doc/api/base/ma.getLaunchOptionsSync.md"
+          }
+        ]
+      },
+      {
+        "name": "Application-level events",
+        "child": [
+          {
+            "name": "ma.onAppShow",
+            "path": "/ma.onAppShow",
+            "data": "/data/doc/api/base/ma.onAppShow.md"
+          },
+          {
+            "name": "ma.onAppHide",
+            "path": "/ma.onAppHide",
+            "data": "/data/doc/api/base/ma.onAppHide.md"
+          },
+          {
+            "name": "ma.onError",
+            "path": "/ma.onError",
+            "data": "/data/doc/api/base/ma.onError.md"
+          },
+          {
+            "name": "ma.offAppShow",
+            "path": "/ma.offAppShow",
+            "data": "/data/doc/api/base/ma.offAppShow.md"
+          },
+          {
+            "name": "ma.offAppHide",
+            "path": "/ma.offAppHide",
+            "data": "/data/doc/api/base/ma.offAppHide.md"
+          },
+          {
+            "name": "ma.offError",
+            "path": "/ma.offError",
+            "data": "/data/doc/api/base/ma.offError.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Route",
+    "child": [
+      {
+        "name": "ma.switchTab",
+        "path": "/ma.switchTab",
+        "data": "/data/doc/api/route/ma.switchTab.md"
+      },
+      {
+        "name": "ma.navigateTo",
+        "path": "/ma.navigateTo",
+        "data": "/data/doc/api/route/ma.navigateTo.md"
+      },
+      {
+        "name": "ma.exitMiniProgram",
+        "path": "/ma.exitMiniProgram",
+        "data": "/data/doc/api/route/ma.exitMiniProgram.md"
+      },
+      {
+        "name": "ma.navigateToMiniProgram",
+        "path": "/ma.navigateToMiniProgram",
+        "data": "/data/doc/api/route/ma.navigateToMiniProgram.md"
+      },
+      {
+        "name": "ma.navigateBack",
+        "path": "/ma.navigateBack",
+        "data": "/data/doc/api/route/ma.navigateBack.md"
+      },
+      {
+        "name": "ma.reLaunch",
+        "path": "/ma.reLaunch",
+        "data": "/data/doc/api/route/ma.reLaunch.md"
+      },
+      {
+        "name": "ma.redirectTo",
+        "path": "/ma.redirectTo",
+        "data": "/data/doc/api/route/ma.redirectTo.md"
+      },
+      {
+        "name": "EventChannel",
+        "child": [
+          {
+            "name": "EventChannel.on",
+            "path": "/EventChannel.on",
+            "data": "/data/doc/api/route/EventChannel.on.md"
+          },
+          {
+            "name": "EventChannel.off",
+            "path": "/EventChannel.off",
+            "data": "/data/doc/api/route/EventChannel.off.md"
+          },
+          {
+            "name": "EventChannel.once",
+            "path": "/EventChannel.once",
+            "data": "/data/doc/api/route/EventChannel.once.md"
+          },
+          {
+            "name": "EventChannel.emit",
+            "path": "/EventChannel.emit",
+            "data": "/data/doc/api/route/EventChannel.emit.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UI",
+    "child": [
+      {
+        "name": "Interaction",
+        "child": [
+          {
+            "name": "ma.showToast",
+            "path": "/ma.showToast",
+            "data": "/data/doc/api/ui/ma.showToast.md"
+          },
+          {
+            "name": "ma.showModal",
+            "path": "/ma.showModal",
+            "data": "/data/doc/api/ui/ma.showModal.md"
+          },
+          {
+            "name": "ma.showLoading",
+            "path": "/ma.showLoading",
+            "data": "/data/doc/api/ui/ma.showLoading.md"
+          },
+          {
+            "name": "ma.hideToast",
+            "path": "/ma.hideToast",
+            "data": "/data/doc/api/ui/ma.hideToast.md"
+          },
+          {
+            "name": "ma.hideLoading",
+            "path": "/ma.hideLoading",
+            "data": "/data/doc/api/ui/ma.hideLoading.md"
+          },
+          {
+            "name": "ma.showActionSheet",
+            "path": "/ma.showActionSheet",
+            "data": "/data/doc/api/ui/ma.showActionSheet.md"
+          },
+          {
+            "name": "ma.capsuleStyle",
+            "path": "/ma.capsuleStyle",
+            "data": "/data/doc/api/ui/ma.capsuleStyle.md"
+          },
+          {
+            "name": "ma.setCapsuleShow",
+            "path": "/ma.setCapsuleShow",
+            "data": "/data/doc/api/ui/ma.setCapsuleShow.md"
+          },
+          {
+            "name": "ma.setSwipeBack",
+            "path": "/ma.setSwipeBack",
+            "data": "/data/doc/api/ui/ma.setSwipeBack.md"
+          }
+        ]
+      },
+      {
+        "name": "Navigation Bar",
+        "child": [
+          {
+            "name": "ma.setNavigationBarTitle",
+            "path": "/ma.setNavigationBarTitle",
+            "data": "/data/doc/api/ui/ma.setNavigationBarTitle.md"
+          },
+          {
+            "name": "ma.setNavigationBarColor",
+            "path": "/ma.setNavigationBarColor",
+            "data": "/data/doc/api/ui/ma.setNavigationBarColor.md"
+          }
+        ]
+      },
+      {
+        "name": "Background",
+        "child": [
+          {
+            "name": "ma.setBackgroundTextStyle",
+            "path": "/ma.setBackgroundTextStyle",
+            "data": "/data/doc/api/ui/ma.setBackgroundTextStyle.md"
+          },
+          {
+            "name": "ma.setBackgroundColor",
+            "path": "/ma.setBackgroundColor",
+            "data": "/data/doc/api/ui/ma.setBackgroundColor.md"
+          }
+        ]
+      },
+      {
+        "name": "Tab Bar",
+        "child": [
+          {
+            "name": "ma.showTabBar",
+            "path": "/ma.showTabBar",
+            "data": "/data/doc/api/ui/ma.showTabBar.md"
+          },
+          {
+            "name": "ma.hideTabBar",
+            "path": "/ma.hideTabBar",
+            "data": "/data/doc/api/ui/ma.hideTabBar.md"
+          },
+          {
+            "name": "ma.showTabBarRedDot",
+            "path": "/ma.showTabBarRedDot",
+            "data": "/data/doc/api/ui/ma.showTabBarRedDot.md"
+          },
+          {
+            "name": "ma.hideTabBarRedDot",
+            "path": "/ma.hideTabBarRedDot",
+            "data": "/data/doc/api/ui/ma.hideTabBarRedDot.md"
+          },
+          {
+            "name": "ma.setTabBarStyle",
+            "path": "/ma.setTabBarStyle",
+            "data": "/data/doc/api/ui/ma.setTabBarStyle.md"
+          },
+          {
+            "name": "ma.setTabBarItem",
+            "path": "/ma.setTabBarItem",
+            "data": "/data/doc/api/ui/ma.setTabBarItem.md"
+          },
+          {
+            "name": "ma.setTabBarBadge",
+            "path": "/ma.setTabBarBadge",
+            "data": "/data/doc/api/ui/ma.setTabBarBadge.md"
+          },
+          {
+            "name": "ma.removeTabBarBadge",
+            "path": "/ma.removeTabBarBadge",
+            "data": "/data/doc/api/ui/ma.removeTabBarBadge.md"
+          }
+        ]
+      },
+      {
+        "name": "Font",
+        "child": [
+          {
+            "name": "ma.loadFontFace",
+            "path": "/ma.loadFontFace",
+            "data": "/data/doc/api/ui/ma.loadFontFace.md"
+          }
+        ]
+      },
+      {
+        "name": "Pull-down Refresh",
+        "child": [
+          {
+            "name": "ma.startPullDownRefresh",
+            "path": "/ma.startPullDownRefresh",
+            "data": "/data/doc/api/ui/refresh/ma.startPullDownRefresh.md"
+          },
+          {
+            "name": "ma.stopPullDownRefresh",
+            "path": "/ma.stopPullDownRefresh",
+            "data": "/data/doc/api/ui/refresh/ma.stopPullDownRefresh.md"
+          }
+        ]
+      },
+      {
+        "name": "Rolling",
+        "child": [
+          {
+            "name": "ma.pageScrollTo",
+            "path": "/ma.pageScrollTo",
+            "data": "/data/doc/api/scroll/ma.pageScrollTo.md"
+          }
+        ]
+      },
+      {
+        "name": "Custom Components",
+        "child": [
+          {
+            "name": "ma.nextTick",
+            "path": "/ma.nextTick",
+            "data": "/data/doc/api/ui/ma.nextTick(function callback).md"
+          }
+        ]
+      },
+      {
+        "name": "Menu",
+        "child": [
+          {
+            "name": "ma.getMenuButtonBoundingClientRect",
+            "path": "/ma.getMenuButtonBoundingClientRect",
+            "data": "/data/doc/api/ui/getMenuButtonBoundingClientRect.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Network",
+    "child": [
+      {
+        "name": "Initiate a request",
+        "child": [
+          {
+            "name": "ma.request",
+            "path": "/ma.request",
+            "data": "/data/doc/api/network/ma.request.md"
+          }
+        ]
+      },
+      {
+        "name": "Download",
+        "child": [
+          { "name": "ma.downloadFile", "path": "/ma.downloadFile", "data": "/data/doc/api/network/ma.downloadFile.md" },
+          {
+            "name": "DownloadTask",
+            "child": [
+              { "name": "DownloadTask", "path": "/DownloadTask", "data": "/data/doc/api/network/DownloadTask.md" },
+              {
+                "name": "DownloadTask.abort",
+                "path": "/DownloadTask.abort",
+                "data": "/data/doc/api/network/DownloadTask.abort.md"
+              },
+              {
+                "name": "DownloadTask.onProgressUpdate",
+                "path": "/DownloadTask.onProgressUpdate",
+                "data": "/data/doc/api/network/DownloadTask.onProgressUpdate.md"
+              },
+              {
+                "name": "DownloadTask.offProgressUpdate",
+                "path": "/DownloadTask.offProgressUpdate",
+                "data": "/data/doc/api/network/DownloadTask.offProgressUpdate.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Upload",
+        "child": [
+          {
+            "name": "ma.uploadFile",
+            "path": "/ma.uploadFile",
+            "data": "/data/doc/api/network/ma.uploadFile.md"
+          }
+        ]
+      },
+      {
+        "name": "WebSocket",
+        "child": [
+          {
+            "name": "ma.closeSocket",
+            "path": "/ma.closeSocket",
+            "data": "/data/doc/api/network/ma.closeSocket.md"
+          },
+          {
+            "name": "ma.sendSocketMessage",
+            "path": "/ma.sendSocketMessage",
+            "data": "/data/doc/api/network/ma.sendSocketMessage.md"
+          },
+          {
+            "name": "ma.onSocketOpen",
+            "path": "/ma.onSocketOpen",
+            "data": "/data/doc/api/network/ma.onSocketOpen.md"
+          },
+          {
+            "name": "ma.onSocketMessage",
+            "path": "/ma.onSocketMessage",
+            "data": "/data/doc/api/network/ma.onSocketMessage.md"
+          },
+          {
+            "name": "ma.onSocketError",
+            "path": "/ma.onSocketError",
+            "data": "/data/doc/api/network/ma.onSocketError.md"
+          },
+          {
+            "name": "ma.onSocketClose",
+            "path": "/ma.onSocketClose",
+            "data": "/data/doc/api/network/ma.onSocketClose.md"
+          },
+          {
+            "name": "ma.connectSocket",
+            "path": "/ma.connectSocket",
+            "data": "/data/doc/api/network/ma.connectSocket.md"
+          }
+        ]
+      },
+      {
+        "name": "ma.isOnline",
+        "path": "/ma.isOnline",
+        "data": "/data/doc/api/network/ma.isOnline.md"
+      }
+    ]
+  },
+  {
+    "name": "Data Cache",
+    "child": [
+      {
+        "name": "ma.setStorage",
+        "path": "/ma.setStorage",
+        "data": "/data/doc/api/storage/ma.setStorage.md"
+      },
+      {
+        "name": "ma.setStorageSync",
+        "path": "/ma.setStorageSync",
+        "data": "/data/doc/api/storage/ma.setStorageSync.md"
+      },
+      {
+        "name": "ma.getStorage",
+        "path": "/ma.getStorage",
+        "data": "/data/doc/api/storage/ma.getStorage.md"
+      },
+      {
+        "name": "ma.getStorageSync",
+        "path": "/ma.getStorageSync",
+        "data": "/data/doc/api/storage/ma.getStorageSync.md"
+      },
+      {
+        "name": "ma.getStorageInfo",
+        "path": "/ma.getStorageInfo",
+        "data": "/data/doc/api/storage/ma.getStorageInfo.md"
+      },
+      {
+        "name": "ma.removeStorage",
+        "path": "/ma.removeStorage",
+        "data": "/data/doc/api/storage/ma.removeStorage.md"
+      },
+      {
+        "name": "ma.clearStorage",
+        "path": "/ma.clearStorage",
+        "data": "/data/doc/api/storage/ma.clearStorage.md"
+      },
+      {
+        "name": "PrePull",
+        "child": [
+          {
+            "name": "DataPrePull",
+            "path": "/dataPrePull",
+            "data": "/data/doc/api/storage/dataPrePull.md"
+          },
+          {
+            "name": "GeographicalLocationPrePull",
+            "path": "/locationPrePull",
+            "data": "/data/doc/api/storage/locationPrePull.md"
+          },
+          {
+            "name": "ma.getBackgroundFetchData",
+            "path": "/ma.getBackgroundFetchData",
+            "data": "/data/doc/api/storage/backgroundFetchData.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Media",
+    "child": [
+      {
+        "name": "Video",
+        "child": [
+          {
+            "name": "ma.createVideoContext",
+            "path": "/ma.createVideoContext",
+            "data": "/data/doc/api/media/video/ma.createVideoContext.md"
+          },
+          {
+            "name": "VideoContext",
+            "path": "/VideoContext",
+            "data": "/data/doc/api/media/video/VideoContext.md"
+          },
+          {
+            "name": "ma.chooseVideo",
+            "path": "/ma.chooseVideo",
+            "data": "/data/doc/api/media/video/ma.chooseVideo.md"
+          }
+        ]
+      },
+      {
+        "name": "Audio",
+        "child": [
+          {
+            "name": "ma.createAudioContext",
+            "path": "/ma.createAudioContext",
+            "data": "/data/doc/api/media/audio/ma.createAudioContext.md"
+          },
+          {
+            "name": "AudioContext",
+            "path": "/AudioContext",
+            "data": "/data/doc/api/media/audio/AudioContext.md"
+          }
+        ]
+      },
+      {
+        "name": "Recorder",
+        "child": [
+          {
+            "name": "ma.getRecorderManager",
+            "path": "/ma.getRecorderManager",
+            "data": "/data/doc/api/media/recorder/ma.getRecorderManager.md"
+          },
+          {
+            "name": "RecorderManager",
+            "child": [
+              {
+                "name": "RecorderManager.start",
+                "path": "/RecorderManager.start",
+                "data": "/data/doc/api/media/recorder/RecorderManager.start.md"
+              },
+              {
+                "name": "RecorderManager.pause",
+                "path": "/RecorderManager.pause",
+                "data": "/data/doc/api/media/recorder/RecorderManager.pause.md"
+              },
+              {
+                "name": "RecorderManager.resume",
+                "path": "/RecorderManager.resume",
+                "data": "/data/doc/api/media/recorder/RecorderManager.resume.md"
+              },
+              {
+                "name": "RecorderManager.stop",
+                "path": "/RecorderManager.stop",
+                "data": "/data/doc/api/media/recorder/RecorderManager.stop.md"
+              },
+              {
+                "name": "RecorderManager.onStart",
+                "path": "/RecorderManager.onStart",
+                "data": "/data/doc/api/media/recorder/RecorderManager.onStart.md"
+              },
+              {
+                "name": "RecorderManager.offStart",
+                "path": "/RecorderManager.offStart",
+                "data": "/data/doc/api/media/recorder/RecorderManager.offStart.md"
+              },
+              {
+                "name": "RecorderManager.onPause",
+                "path": "/RecorderManager.onPause",
+                "data": "/data/doc/api/media/recorder/RecorderManager.onPause.md"
+              },
+              {
+                "name": "RecorderManager.offPause",
+                "path": "/RecorderManager.offPause",
+                "data": "/data/doc/api/media/recorder/RecorderManager.offPause.md"
+              },
+              {
+                "name": "RecorderManager.onResume",
+                "path": "/RecorderManager.onResume",
+                "data": "/data/doc/api/media/recorder/RecorderManager.onResume.md"
+              },
+              {
+                "name": "RecorderManager.offResume",
+                "path": "/RecorderManager.offResume",
+                "data": "/data/doc/api/media/recorder/RecorderManager.offResume.md"
+              },
+              {
+                "name": "RecorderManager.onStop",
+                "path": "/RecorderManager.onStop",
+                "data": "/data/doc/api/media/recorder/RecorderManager.onStop.md"
+              },
+              {
+                "name": "RecorderManager.offStop",
+                "path": "/RecorderManager.offStop",
+                "data": "/data/doc/api/media/recorder/RecorderManager.offStop.md"
+              },
+              {
+                "name": "RecorderManager.onError",
+                "path": "/RecorderManager.onError",
+                "data": "/data/doc/api/media/recorder/RecorderManager.onError.md"
+              },
+              {
+                "name": "RecorderManager.offError",
+                "path": "/RecorderManager.offError",
+                "data": "/data/doc/api/media/recorder/RecorderManager.offError.md"
+              },
+              {
+                "name": "ma.playVoice",
+                "path": "/ma.playVoice",
+                "data": "/data/doc/api/media/recorder/ma.playVoice.md"
+              },
+              {
+                "name": "ma.stopVoice",
+                "path": "/ma.stopVoice",
+                "data": "/data/doc/api/media/recorder/ma.stopVoice.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Camera",
+        "child": [
+          {
+            "name": "ma.createCameraContext",
+            "path": "/ma.createCameraContext",
+            "data": "/data/doc/api/media/camera/ma.createCameraContext.md"
+          },
+          {
+            "name": "CameraContext.takePhoto",
+            "path": "/CameraContext.takePhoto",
+            "data": "/data/doc/api/media/camera/CameraContext.takePhoto.md"
+          },
+          {
+            "name": "CameraContext.setZoom",
+            "path": "/CameraContext.setZoom",
+            "data": "/data/doc/api/media/camera/CameraContext.setZoom.md"
+          },
+          {
+            "name": "CameraContext.startRecord",
+            "path": "/CameraContext.startRecord",
+            "data": "/data/doc/api/media/camera/CameraContext.startRecord.md"
+          },
+          {
+            "name": "CameraContext.stopRecord",
+            "path": "/CameraContext.stopRecord",
+            "data": "/data/doc/api/media/camera/CameraContext.stopRecord.md"
+          }
+        ]
+      },
+      {
+        "name": "Picture",
+        "child": [
+          {
+            "name": "ma.saveImageToPhotosAlbum",
+            "path": "/ma.saveImageToPhotosAlbum",
+            "data": "/data/doc/api/media/img/ma.saveImage.md"
+          },
+          {
+            "name": "ma.chooseImage",
+            "path": "/ma.chooseImage",
+            "data": "/data/doc/api/media/img/ma.chooseImage.md"
+          },
+          {
+            "name": "ma.previewImage",
+            "path": "/ma.previewImage",
+            "data": "/data/doc/api/media/img/ma.previewImage.md"
+          },
+          {
+            "name": "ma.compressImage",
+            "path": "/ma.compressImage",
+            "data": "/data/doc/api/media/img/ma.compressImage.md"
+          },
+          {
+            "name": "ma.getImageInfo",
+            "path": "/ma.getImageInfo",
+            "data": "/data/doc/api/media/img/ma.getImageInfo.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Location",
+    "child": [
+      {
+        "name": "ma.getLocation",
+        "path": "/ma.getLocation",
+        "data": "/data/doc/api/location/ma.getLocation.md"
+      }
+    ]
+  },
+  {
+    "name": "File",
+    "child": [
+      {
+        "name": "ma.openDocument",
+        "path": "/ma.openDocument",
+        "data": "/data/doc/api/file/ma.openDocument.md"
+      },
+      {
+        "name": "ma.env.USER_DATA_PATH",
+        "path": "/ma.env.USER_DATA_PATH",
+        "data": "/data/doc/api/file/ma.env.USER_DATA_PATH.md"
+      },
+      {
+        "name": "ma.saveFile",
+        "path": "/ma.saveFile",
+        "data": "/data/doc/api/file/ma.saveFile.md"
+      },
+      {
+        "name": "ma.getFileInfo",
+        "path": "/ma.getFileInfo",
+        "data": "/data/doc/api/file/ma.getFileInfo.md"
+      },
+      {
+        "name": "ma.getSavedFileInfo",
+        "path": "/ma.getSavedFileInfo",
+        "data": "/data/doc/api/file/ma.getSavedFileInfo.md"
+      },
+      {
+        "name": "ma.removeSavedFile",
+        "path": "/ma.removeSavedFile",
+        "data": "/data/doc/api/file/ma.removeSavedFile.md"
+      },
+      {
+        "name": "ma.getSavedFileList",
+        "path": "/ma.getSavedFileList",
+        "data": "/data/doc/api/file/ma.getSavedFileList.md"
+      },
+      {
+        "name": "ma.getFileSystemManager",
+        "path": "/ma.getFileSystemManager",
+        "data": "/data/doc/api/file/ma.getFileSystemManager.md"
+      },
+      {
+        "name": "FileSystemManager",
+        "child": [
+          {
+            "name": "FileSystemManager",
+            "path": "/FileSystemManager",
+            "data": "/data/doc/api/file/FileSystemManager.md"
+          },
+          {
+            "name": "FileSystemManager.writeFile",
+            "path": "/FileSystemManager.writeFile",
+            "data": "/data/doc/api/file/FileSystemManager.writeFile.md"
+          },
+          {
+            "name": "FileSystemManager.unlink",
+            "path": "/FileSystemManager.unlink",
+            "data": "/data/doc/api/file/FileSystemManager.unlink.md"
+          },
+          {
+            "name": "FileSystemManager.readFile",
+            "path": "/FileSystemManager.readFile",
+            "data": "/data/doc/api/file/FileSystemManager.readFile.md"
+          },
+          {
+            "name": "FileSystemManager.readdir",
+            "path": "/FileSystemManager.readdir",
+            "data": "/data/doc/api/file/FileSystemManager.readdir.md"
+          },
+          {
+            "name": "FileSystemManager.moveFile",
+            "path": "/FileSystemManager.moveFile",
+            "data": "/data/doc/api/file/FileSystemManager.moveFile.md"
+          },
+          {
+            "name": "FileSystemManager.mkdir",
+            "path": "/FileSystemManager.mkdir",
+            "data": "/data/doc/api/file/FileSystemManager.mkdir.md"
+          },
+          {
+            "name": "FileSystemManager.exists",
+            "path": "/FileSystemManager.exists",
+            "data": "/data/doc/api/file/FileSystemManager.exists.md"
+          },
+          {
+            "name": "FileSystemManager.copyFile",
+            "path": "/FileSystemManager.copyFile",
+            "data": "/data/doc/api/file/FileSystemManager.copyFile.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Equipment",
+    "child": [
+      {
+        "name": "BlueTooth",
+        "child": [
+          {
+            "name": "ma.openBluetoothAdapter",
+            "path": "/ma.openBluetoothAdapter",
+            "data": "/data/doc/api/device/blueTooth/ma.openBluetoothAdapter.md"
+          },
+          {
+            "name": "ma.closeBluetoothAdapter",
+            "path": "/ma.closeBluetoothAdapter",
+            "data": "/data/doc/api/device/blueTooth/ma.closeBluetoothAdapter.md"
+          },
+          {
+            "name": "ma.startBluetoothDevicesDiscovery",
+            "path": "/ma.startBluetoothDevicesDiscovery",
+            "data": "/data/doc/api/device/blueTooth/ma.startBluetoothDevicesDiscovery.md"
+          },
+          {
+            "name": "ma.stopBluetoothDevicesDiscovery",
+            "path": "/ma.stopBluetoothDevicesDiscovery",
+            "data": "/data/doc/api/device/blueTooth/ma.stopBluetoothDevicesDiscovery.md"
+          },
+          {
+            "name": "ma.onBluetoothDeviceFound",
+            "path": "/ma.onBluetoothDeviceFound",
+            "data": "/data/doc/api/device/blueTooth/ma.onBluetoothDeviceFound.md"
+          },
+          {
+            "name": "ma.offBluetoothDeviceFound",
+            "path": "/ma.offBluetoothDeviceFound",
+            "data": "/data/doc/api/device/blueTooth/ma.offBluetoothDeviceFound.md"
+          },
+          {
+            "name": "ma.createBLEConnection",
+            "path": "/ma.createBLEConnection",
+            "data": "/data/doc/api/device/blueTooth/ma.createBLEConnection.md"
+          },
+          {
+            "name": "ma.closeBLEConnection",
+            "path": "/ma.closeBLEConnection",
+            "data": "/data/doc/api/device/blueTooth/ma.closeBLEConnection.md"
+          },
+          {
+            "name": "ma.getBLEDeviceServices",
+            "path": "/ma.getBLEDeviceServices",
+            "data": "/data/doc/api/device/blueTooth/ma.getBLEDeviceServices.md"
+          },
+          {
+            "name": "ma.getBLEDeviceCharacteristics",
+            "path": "/ma.getBLEDeviceCharacteristics",
+            "data": "/data/doc/api/device/blueTooth/ma.getBLEDeviceCharacteristics.md"
+          },
+          {
+            "name": "ma.writeBLECharacteristicValue",
+            "path": "/ma.writeBLECharacteristicValue",
+            "data": "/data/doc/api/device/blueTooth/ma.writeBLECharacteristicValue.md"
+          }
+        ]
+      },
+      {
+        "name": "Electricity",
+        "child": [
+          {
+            "name": "ma.getBatteryInfo",
+            "path": "/ma.getBatteryInfo",
+            "data": "/data/doc/api/device/ma.getBatteryInfo.md"
+          }
+        ]
+      },
+      {
+        "name": "Network",
+        "child": [
+          {
+            "name": "ma.onNetworkStatusChange",
+            "path": "/ma.onNetworkStatusChange",
+            "data": "/data/doc/api/device/netWork/ma.onNetworkStatusChange.md"
+          },
+          {
+            "name": "ma.offNetworkStatusChange",
+            "path": "/ma.offNetworkStatusChange",
+            "data": "/data/doc/api/device/netWork/ma.offNetworkStatusChange.md"
+          },
+          {
+            "name": "ma.getNetworkType",
+            "path": "/ma.getNetworkType",
+            "data": "/data/doc/api/device/netWork/ma.getNetworkType.md"
+          }
+        ]
+      },
+      {
+        "name": "Screen",
+        "child": [
+          {
+            "name": "ma.setScreenBrightness",
+            "path": "/ma.setScreenBrightness",
+            "data": "/data/doc/api/device/screen/ma.setScreenBrightness.md"
+          },
+          {
+            "name": "ma.getScreenBrightness",
+            "path": "/ma.getScreenBrightness",
+            "data": "/data/doc/api/device/screen/ma.getScreenBrightness.md"
+          },
+          {
+            "name": "ma.setKeepScreenOn",
+            "path": "/ma.setKeepScreenOn",
+            "data": "/data/doc/api/device/screen/ma.setKeepScreenOn.md"
+          }
+        ]
+      },
+      {
+        "name": "Telephone",
+        "child": [
+          {
+            "name": "ma.makePhoneCall",
+            "path": "/ma.makePhoneCall",
+            "data": "/data/doc/api/device/ma.makePhoneCall.md"
+          }
+        ]
+      },
+      {
+        "name": "Scan Code",
+        "child": [
+          {
+            "name": "ma.scanCode",
+            "path": "/ma.scanCode",
+            "data": "/data/doc/api/device/ma.scanCode.md"
+          }
+        ]
+      },
+      {
+        "name": "Vibrations",
+        "child": [
+          {
+            "name": "ma.vibrateLong",
+            "path": "/ma.vibrateLong",
+            "data": "/data/doc/api/device/vibrate/ma.vibrateLong.md"
+          },
+          {
+            "name": "ma.vibrateShort",
+            "path": "/ma.vibrateShort",
+            "data": "/data/doc/api/device/vibrate/ma.vibrateShort.md"
+          }
+        ]
+      },
+      {
+        "name": "Contacts",
+        "child": [
+          {
+            "name": "ma.chooseContact",
+            "path": "/ma.chooseContact",
+            "data": "/data/doc/api/device/ma.chooseContact.md"
+          }
+        ]
+      },
+      {
+        "name": "Memory",
+        "child": [
+          {
+            "name": "ma.onMemoryWarning",
+            "path": "/ma.onMemoryWarning",
+            "data": "/data/doc/api/device/memoryWarning/ma.onMemoryWarning.md"
+          },
+          {
+            "name": "ma.offMemoryWarning",
+            "path": "/ma.offMemoryWarning",
+            "data": "/data/doc/api/device/memoryWarning/ma.offMemoryWarning.md"
+          }
+        ]
+      },
+      {
+        "name": "Gyroscope",
+        "child": [
+          {
+            "name": "ma.startGyroscope",
+            "path": "/ma.startGyroscope",
+            "data": "/data/doc/api/device/gyroscope/ma.startGyroscope.md"
+          },
+          {
+            "name": "ma.stopGyroscope",
+            "path": "/ma.stopGyroscope",
+            "data": "/data/doc/api/device/gyroscope/ma.stopGyroscope.md"
+          },
+          {
+            "name": "ma.onGyroscopeChange",
+            "path": "/ma.onGyroscopeChange",
+            "data": "/data/doc/api/device/gyroscope/ma.onGyroscopeChange.md"
+          },
+          {
+            "name": "ma.offGyroscopeChange",
+            "path": "/ma.offGyroscopeChange",
+            "data": "/data/doc/api/device/gyroscope/ma.offGyroscopeChange.md"
+          }
+        ]
+      },
+      {
+        "name": "Keyboard",
+        "child": [
+          {
+            "name": "ma.hideKeyboard",
+            "path": "/ma.hideKeyboard",
+            "data": "/data/doc/api/device/ma.hideKeyboard.md"
+          },
+          {
+            "name": "ma.onKeyboardHeightChange",
+            "path": "/ma.onKeyboardHeightChange",
+            "data": "/data/doc/api/device/ma.onKeyboardHeightChange.md"
+          },
+          {
+            "name": "ma.offKeyboardHeightChange",
+            "path": "/ma.offKeyboardHeightChange",
+            "data": "/data/doc/api/device/ma.offKeyboardHeightChange.md"
+          }
+        ]
+      },
+      {
+        "name": "Clipboard",
+        "child": [
+          {
+            "name": "ma.setClipboardData",
+            "path": "/ma.setClipboardData",
+            "data": "/data/doc/api/device/clipboard/ma.setClipboardData.md"
+          },
+          {
+            "name": "ma.getClipboardData",
+            "path": "/ma.getClipboardData",
+            "data": "/data/doc/api/device/clipboard/ma.getClipboardData.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Data Analysis",
+    "child": [
+      {
+        "name": "ma.reportEvent",
+        "path": "/ma.reportEvent",
+        "data": "/data/doc/api/custom/report/ma.reportEvent.md"
+      }
+    ]
+  },
+  {
+    "name": "Log Reporting",
+    "child": [
+      {
+        "name": "ma.reportLog",
+        "path": "/ma.reportLog",
+        "data": "/data/doc/api/custom/report/ma.reportLog.md"
+      },
+      {
+        "name": "ma.submitReport",
+        "path": "/ma.submitReport",
+        "data": "/data/doc/api/custom/report/ma.submitReport.md"
+      }
+    ]
+  },
+  {
+    "name": "Open Interface",
+    "child": [
+      {
+        "name": "Login",
+        "child": [
+          {
+            "name": "ma.getAuthCode",
+            "path": "/ma.getAuthCode",
+            "data": "/data/doc/api/openApi/ma.getAuthCode.md"
+          }
+        ]
+      },
+      {
+        "name": "User Info",
+        "child": [
+          {
+            "name": "ma.getOpenUserInfo",
+            "path": "/ma.getOpenUserInfo",
+            "data": "/data/doc/api/openApi/ma.getOpenUserInfo.md"
+          }
+        ]
+      },
+      {
+        "name": "Setting",
+        "child": [
+          {
+            "name": "ma.getSetting",
+            "path": "/ma.getSetting",
+            "data": "/data/doc/api/openApi/ma.getSetting.md"
+          },
+          {
+            "name": "ma.openSetting",
+            "path": "/ma.openSetting",
+            "data": "/data/doc/api/openApi/ma.openSetting.md"
+          }
+        ]
+      },
+      {
+        "name": "Authority",
+        "child": [
+          {
+            "name": "authority",
+            "path": "/authority",
+            "data": "/data/doc/api/openApi/authority.md"
+          },
+          {
+            "name": "ma.authorize",
+            "path": "/ma.authorize",
+            "data": "/data/doc/api/openApi/ma.authorize.md"
+          },
+          {
+            "name": "ma.deauthorize",
+            "path": "/ma.deauthorize",
+            "data": "/data/doc/api/openApi/ma.deauthorize.md"
+          },
+          {
+            "name": "ma.cancelAuthorize",
+            "path": "/ma.cancelAuthorize",
+            "data": "/data/doc/api/openApi/ma.cancelAuthorize.md"
+          }
+        ]
+      },
+      {
+        "name": "Timer",
+        "child": [
+          {
+            "name": "ma.createTimer",
+            "path": "/ma.createTimer",
+            "data": "/data/doc/api/openApi/ma.createTimer.md"
+          },
+          {
+            "name": "ma.cancelTimer",
+            "path": "/ma.cancelTimer",
+            "data": "/data/doc/api/openApi/ma.cancelTimer.md"
+          }
+        ]
+      },
+      {
+        "name": "Custom Event",
+        "child": [
+          {
+            "name": "ma.setCustomEvent",
+            "path": "/ma.setCustomEvent",
+            "data": "/data/doc/api/openApi/ma.setCustomEvent.md"
+          },
+          {
+            "name": "ma.removeCustomEvent",
+            "path": "/ma.removeCustomEvent",
+            "data": "/data/doc/api/openApi/ma.removeCustomEvent.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "web-view Component Control",
+    "child": [
+      {
+        "name": "ma.createWebviewContext",
+        "path": "/ma.createWebviewContext",
+        "data": "/data/doc/api/web-view/ma.createWebviewContext.md"
+      }
+    ]
+  },
+  {
+    "name": "MAML",
+    "child": [
+      {
+        "name": "ma.createSelectorQuery",
+        "path": "/ma.createSelectorQuery",
+        "data": "/data/doc/api/MAML/ma.createSelectorQuery.md"
+      },
+      {
+        "name": "NodesRef",
+        "child": [
+          {
+            "name": "NodesRef",
+            "path": "/NodesRef",
+            "data": "/data/doc/api/MAML/NodesRef/NodesRef.md"
+          },
+          {
+            "name": "NodesRef.boundingClientRect",
+            "path": "/NodesRef.boundingClientRect",
+            "data": "/data/doc/api/MAML/NodesRef/NodesRef.boundingClientRect.md"
+          },
+          {
+            "name": "NodesRef.fields",
+            "path": "/NodesRef.fields",
+            "data": "/data/doc/api/MAML/NodesRef/NodesRef.fields.md"
+          },
+          {
+            "name": "NodesRef.scrollOffset",
+            "path": "/NodesRef.scrollOffset",
+            "data": "/data/doc/api/MAML/NodesRef/NodesRef.scrollOffset.md"
+          }
+        ]
+      },
+      {
+        "name": "SelectorQuery",
+        "child": [
+          {
+            "name": "SelectorQuery",
+            "path": "/SelectorQuery",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.md"
+          },
+          {
+            "name": "SelectorQuery.exec",
+            "path": "/SelectorQuery.exec",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.exec.md"
+          },
+          {
+            "name": "SelectorQuery.in",
+            "path": "/SelectorQuery.in",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.in.md"
+          },
+          {
+            "name": "SelectorQuery.select",
+            "path": "/SelectorQuery.select",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.select.md"
+          },
+          {
+            "name": "SelectorQuery.selectAll",
+            "path": "/SelectorQuery.selectAll",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.selectAll.md"
+          },
+          {
+            "name": "SelectorQuery.selectViewport",
+            "path": "/SelectorQuery.selectViewport",
+            "data": "/data/doc/api/MAML/SelectorQuery/SelectorQuery.selectViewport.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Map",
+    "child": [
+      {
+        "name": "ma.createMapContext",
+        "path": "/ma.createMapContext",
+        "data": "/data/doc/api/map/ma.createMapContext.md"
+      },
+      {
+        "name": "MapContext.addMarkers",
+        "path": "/MapContext.addMarkers",
+        "data": "/data/doc/api/map/MapContext.addMarkers.md"
+      },
+      {
+        "name": "MapContext.removeMarkers",
+        "path": "/MapContext.removeMarkers",
+        "data": "/data/doc/api/map/MapContext.removeMarkers.md"
+      },
+      {
+        "name": "MapContext.moveToLocation",
+        "path": "/MapContext.moveToLocation",
+        "data": "/data/doc/api/map/MapContext.moveToLocation.md"
+      }
+    ]
+  },
+  {
+    "name": "Third Party Related",
+    "child": [
+      {
+        "name": "ma.gotoBrowser",
+        "path": "/ma.gotoBrowser",
+        "data": "/data/doc/api/thirdPart/ma.gotoBrowser.md"
+      }
+    ]
+  }
+]

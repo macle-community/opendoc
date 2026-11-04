@@ -1,0 +1,32 @@
+<h2 id="引用">引用</h2>
+<p>MAML 提供两种文件引用方式 import 和 include，支持相对路径或绝对路径。</p>
+<h3 id="import">import</h3>
+<p>import 可以在该文件中使用目标文件定义的 template，如：
+在 item.maml 中定义了一个叫 item 的 template：</p>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- item.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">text</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+</code></pre>
+<p>在 index.maml 中引用了 item.maml，就可以使用 item 模板：</p>
+<pre><code><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;item.maml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">is</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">text:</span> <span class="hljs-string">&#x27;forbar&#x27;</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span>
+</code></pre>
+<h3 id="import-的作用域">import 的作用域</h3>
+<p>import 有作用域的概念，即只会 import 目标文件中定义的 template，而不会 import 目标文件 import 的 template。</p>
+<blockquote>
+<p>如：C import B，B import A，在 C 中可以使用 B 定义的 template，在 B 中可以使用 A 定义的 template，但是 C 不能使用 A 定义的 template。</p>
+</blockquote>
+<h3 id="include">include</h3>
+<p>include 可以将目标文件除了 <code>&lt;template&gt;</code> 外的整个代码引入，相当于是拷贝到 include 位置，如：</p>
+<pre><code><span class="hljs-comment">&lt;!-- index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;header.maml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> body <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;footer.maml&quot;</span>/&gt;</span>
+</code></pre>
+<pre><code><span class="hljs-comment">&lt;!-- header.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> header <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code><span class="hljs-comment">&lt;!-- footer.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> footer <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>

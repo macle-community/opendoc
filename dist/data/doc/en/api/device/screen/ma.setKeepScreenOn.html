@@ -1,0 +1,50 @@
+<h2 id="masetkeepscreenonobject-object">ma.setKeepScreenOn(Object object)</h2>
+<blockquote>
+<p>Set whether to keep the screen steady on. The setting takes effect only for the current Mini Program and becomes invalid after the user exits the Mini Program.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">keepScreenOn</td>
+<td align="left">Boolean</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Whether to keep the screen steady on.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-built_in">set</span>KeepScreenOn({
+  <span class="hljs-keyword">keep</span>ScreenOn: true
+});
+</code></pre>

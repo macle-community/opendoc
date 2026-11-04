@@ -1,0 +1,65 @@
+<h2 id="radio">radio</h2>
+<blockquote>
+<p>单选项目。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left"><a onclick="_mdLinkClick(this.href)" href="#/component/radio">radio</a> 标识。当该<a onclick="_mdLinkClick(this.href)" href="#/component/radio">radio</a> 选中时，<a onclick="_mdLinkClick(this.href)" href="#/component/radio-group">radio-group</a> 的 change 事件会携带<a onclick="_mdLinkClick(this.href)" href="#/component/radio">radio</a>的 value</td>
+</tr>
+<tr>
+<td align="left">checked</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">当前是否选中</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否禁用</td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">String</td>
+<td align="left">#09BB07</td>
+<td align="left">否</td>
+<td align="left">radio 的颜色，同 css 的 color</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;page-section page-section-gap&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;page-section-title&#x27;</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r1&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;true&#x27;</span> /&gt;</span>
+    选中
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r2&#x27;</span> /&gt;</span>
+    未选中
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio3&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r3&#x27;</span> <span class="hljs-attr">disabled</span> /&gt;</span>
+    被禁用
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio4&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r4&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;123&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;456&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;red123&#x27;</span> /&gt;</span>
+    非法属性
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>

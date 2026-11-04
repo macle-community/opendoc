@@ -1,0 +1,121 @@
+<h2 id="sjs-syntax-reference">SJS Syntax Reference</h2>
+<p>SJS (safe/subset javascript) is a custom scripting language for small programs that can be used to build page structures in MAML.</p>
+<p>SJS is a subset of JavaScript. It is different from JavaScript. Its syntax is different from JavaScript. Do not equate SJS with JavaScript.</p>
+<p>SJS functions can respond to events of basic components without data update. SJS functions can directly drive the changes of view element styles and class names, and query element layout information.</p>
+<h3 id="module">module</h3>
+<p>Each .sjs file and <sjs> tag is a separate module.</p>
+<p>Each module has its own independent scope. The variables and functions defined in a module are private by default and are invisible to other modules.</p>
+<p>A module can only use module.exports to expose its internal private variables and functions.</p>
+<h3 id="sjs-file">.sjs File</h3>
+<p>Example:</p>
+<pre><code class="language-sjs"><span class="hljs-comment">// /pages/comm.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello macle sjs&#x27; from comm.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  foo: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<p>In the preceding example, the SJS code is compiled in the /pages/comm.sjs file. This .sjs file can be referenced by other .sjs files or the tags in the MAML files.</p>
+<h3 id="module-object">Module Object</h3>
+<p>ach SJS module has a built-in module object. Through the exports attribute, the private variables and functions of the module can be shared externally. 
+Example:</p>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/tools.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello world&#x27; from tools.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  FOO: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-comment">&lt;!-- page/index/index.maml --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">sjs</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../tools.sjs&quot;</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;tools&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">tools.msg</span>}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span> </span><span class="hljs-template-variable">{{<span class="hljs-name">tools.bar</span>(<span class="hljs-name">tools.FOO</span>)}}</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<h3 id="require-function">Require Function</h3>
+<p>You can use the require function in the SJS module to reference other SJS modules. The restrictions are as follows:</p>
+<ul>
+<li>Only SJS modules can be referenced, and the relative path must be used.</li>
+<li>The SJS module is a singleton. When the SJS module is referenced for the first time, it is automatically initialized as a singleton object. The same SJS module object is used for multiple references on the same page.</li>
+<li>If an SJS module is not referenced after being defined, the module is not parsed or run.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/tools.sjs</span>
+
+<span class="hljs-type">var</span> <span class="hljs-variable">foo</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&#x27;hello world&#x27; from tools.sjs&quot;</span>;
+<span class="hljs-type">var</span> <span class="hljs-variable">bar</span> <span class="hljs-operator">=</span> function (d) {
+  <span class="hljs-keyword">return</span> d;
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = {
+  FOO: foo,
+  bar: bar
+};
+<span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span>.msg = <span class="hljs-string">&#x27;some msg&#x27;</span>;
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// /pages/logic.sjs</span>
+
+<span class="hljs-keyword">var</span> tools = require(<span class="hljs-string">&#x27;./tools.sjs&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.FOO);
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.bar(<span class="hljs-string">&#x27;logic.sjs&#x27;</span>));
+<span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(tools.msg);
+</code></pre>
+<pre><code class="language-maml"><span class="hljs-comment">&lt;!-- /page/index/index.maml --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sjs</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./../logic.sjs&quot;</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;logic&quot;</span> /&gt;</span>
+</code></pre>
+<p>Console output:</p>
+<pre><code><span class="hljs-string">&#x27;hello world&#x27;</span> <span class="hljs-keyword">from</span> tools.sjs
+logic.sjs
+<span class="hljs-keyword">some</span> msg
+</code></pre>
+<h3 id="sjs-tag">&lt;sjs&gt; Tag</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Property Name</th>
+<th align="left">Type</th>
+<th align="left">Explain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">module</td>
+<td align="left">String</td>
+<td align="left">Specifies the name of the sjs module.</td>
+</tr>
+<tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left">Relative path of the .sjs file. This parameter is valid only when the label is a closed label or the content of the label is empty.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>module property:<ul>
+<li>It is recommended that the value of this parameter be unique in a single .maml file. If there are duplicate module names, replace them in sequence (the latter overwrites the former). The sjs module names in different files do not overwrite each other.</li>
+<li>The name must comply with the following rules: a. The first character must be a letter (a-zA-Z) and underscore (<em>). b. The remaining characters can be letters (a-zA-Z), underscores (</em>), and digits (0-9).</li>
+</ul>
+</li>
+<li>src property:<ul>
+<li>Only .sjs file modules can be referenced and a relative path must be used.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="precautions">Precautions</h3>
+<ul>
+<li>The running environment of the SJS is isolated from other JavaScript codes. The SJS cannot invoke functions defined in other JavaScript files or APIs provided by Mini Programs.</li>
+<li>SJS functions cannot be called back as component events.</li>
+<li>The <sjs> module can be accessed only in the MAGL file that defines the module. When <include> or <import> is used, the <sjs> module is not introduced into the corresponding MAGL file.</li>
+<li>In the <template> tab, only the <sjs> modules defined in the MAGL file that defines the <template> can be used.</li>
+</ul>

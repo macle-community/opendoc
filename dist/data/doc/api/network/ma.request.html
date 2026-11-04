@@ -1,0 +1,238 @@
+<h2 id="marequestobject-object">ma.request(Object object)</h2>
+<blockquote>
+<p>发起 HTTPS 网络请求。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">开发者服务器接口地址</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String/Object/ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">请求的参数</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置请求的 header，header 中不能设置 Referer。content-type 默认为 application/json</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">否</td>
+<td align="left">超时时间，单位为毫秒。</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">String</td>
+<td align="left">GET</td>
+<td align="left">否</td>
+<td align="left">HTTP 请求方法</td>
+</tr>
+<tr>
+<td align="left">dataType</td>
+<td align="left">String</td>
+<td align="left">JSON</td>
+<td align="left">否</td>
+<td align="left">返回的数据格式</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+<tr>
+<td align="left">preload</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用预取数据回调函数(具体用法请参考<a onclick="_mdLinkClick(this.href)" href="#/api/dataPrePull">数据预拉取</a>)</td>
+</tr>
+</tbody></table>
+<h5 id="objectmethod-的合法值">object.method 的合法值</h5>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">HTTP 请求 GET</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">HTTP 请求 POST</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">HTTP 请求 PUT（仅 ios 支持）</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">HTTP 请求 DELETE（仅 ios 支持）</td>
+</tr>
+</tbody></table>
+<h5 id="objectdatatype的合法值">object.dataType的合法值</h5>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JSON</td>
+<td align="left">返回的数据为 JSON，返回后会对返回的数据进行一次 JSON.parse</td>
+</tr>
+<tr>
+<td align="left">其他</td>
+<td align="left">不对返回的内容进行 JSON.parse</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-回调函数">object.success 回调函数</h5>
+<h6 id="参数-1">参数</h6>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left">开发者服务器返回的数据</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">开发者服务器返回的 HTTP 状态码</td>
+</tr>
+</tbody></table>
+<h5 id="objectpreload-回调函数">object.preload 回调函数</h5>
+<h6 id="参数-2">参数</h6>
+<h6 id="object-res-1">Object res</h6>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td>开发者服务器返回的数据</td>
+</tr>
+<tr>
+<td>statusCode</td>
+<td>Number</td>
+<td>预取数据状态码</td>
+</tr>
+<tr>
+<td>errMsg</td>
+<td>String</td>
+<td>预取成功或失败的详细信息</td>
+</tr>
+</tbody></table>
+<h6 id="预取数据状态码对照表">预取数据状态码对照表</h6>
+<table>
+<thead>
+<tr>
+<th>statusCode</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>预取成功</td>
+</tr>
+<tr>
+<td>0607001</td>
+<td>url is Not exsit</td>
+</tr>
+<tr>
+<td>0607002</td>
+<td>parameter mismatch</td>
+</tr>
+<tr>
+<td>0607003</td>
+<td>request failed: ${errMsg}</td>
+</tr>
+<tr>
+<td>0607004</td>
+<td>fetchData is empty</td>
+</tr>
+<tr>
+<td>0607005</td>
+<td>invalid preload rule</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.request({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example/testUrl&#x27;</span>,
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span>,
+  <span class="hljs-attr">header</span>: {
+    <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+  },
+  <span class="hljs-attr">data</span>: {},
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;request success&#x27;</span>);
+  },
+
+  <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;request fail&#x27;</span>, res.errMsg);
+  },
+  <span class="hljs-attr">preload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data)
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip：目前不会进行安全域的校验，建议优先使用 https</li>
+<li>tip：https没有做证书校验，需要在MacleEventHandler接口实现里提供证书校验能力</li>
+</ol>

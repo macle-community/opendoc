@@ -1,0 +1,187 @@
+<h2 id="sdk更新日志">SDK更新日志</h2>
+<h3 id="2630">26.3.0</h3>
+<h4 id="新增">新增</h4>
+<ol>
+<li>支持设置是否禁用IOS手势滑动控制<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setSwipeBack">setSwipeBack</a></li>
+<li>支持设置底部安全区域背景色，仅支持ios</li>
+</ol>
+<h3 id="25120">25.12.0</h3>
+<h4 id="新增-1">新增</h4>
+<ol>
+<li>小程序支持 导航栏title 位置调整</li>
+<li><code>webview</code> 组件新增 <code>loadingStyle</code> 属性，新增页面加载效果</li>
+<li>小程序新增自定义事件通信 API <a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeCustomEvent">removeCustomEvent</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setCustomEvent">setCustomEvent</a></li>
+<li>小程序支持配置打开条件，支持条件管控</li>
+<li>小程序支持 配置小程序关键词</li>
+<li>支持小程序分类多语言支持</li>
+<li>支持H5小程序跳转过程中携带参数</li>
+</ol>
+<h4 id="修复">修复</h4>
+<ol>
+<li>修复webview 组件 非法值初始化后会阻塞后续页面更新src的问题</li>
+</ol>
+<h3 id="2590">25.9.0</h3>
+<h4 id="新增-2">新增</h4>
+<ol>
+<li>Macle Android sdk基于Android 15版本的新要求，做了相关的适配，以满足宿主应用APP合规发布要求</li>
+<li>支持<code>宿主应用打开小程序</code>、<code>扫码打开小程序</code>、<code>打开体验小程序下载过程</code>中支持隐藏胶囊</li>
+<li>支持webview中加载在线资源时基于在线服务资源缓存策略进行数据缓存，以加速小程序启动性能</li>
+<li>支持上报初始化SDK失败的结果到小程序管理台</li>
+<li>跳转小程序API支持下载跳转过程中隐藏胶囊，开发者可以使用新增capsuleShow参数进行设置（最低版本： 25.9.0） </li>
+<li><a onclick="_mdLinkClick(this.href)" href="#/api/ma.getNetworkType">获取当前网络API</a>成功回调新增isConnectVPN字段用于标志当前设备是否连接vpn（最低版本： 25.9.0）</li>
+<li>iOS新增创建定时器<a onclick="_mdLinkClick(this.href)" href="#/api/ma.createTimer">createTimer</a>、取消定时器<a onclick="_mdLinkClick(this.href)" href="#/api/ma.cancelTimer">cancelTimer</a>API（最低版本： 25.9.0）</li>
+</ol>
+<h4 id="优化">优化</h4>
+<ol>
+<li>Macle iOS sdk出于安全考虑，不再依赖ZipArchive，如果集成宿主应用通过Macle iOS sdk使用了ZipArchive的解压与压缩能力，请自行依赖压缩、解压缩开源软件</li>
+<li><code>预加载小程序</code>支持更新小程序版本</li>
+<li>Macle  sdk持续优化架构，降低后端接口调用量</li>
+<li>提示升级小程序频率支持联合小程序管理台配置</li>
+</ol>
+<h3 id="2560">25.6.0</h3>
+<h4 id="新增-3">新增</h4>
+<ol>
+<li>Macle iOS sdk新增宿主级别配置<code>enableLoadingWhenStart</code>，支持管控启动本地已经部署完成的小程序再次启动时是否显示小程序loading</li>
+<li>SDK提供API支持管控所有小程序内界面中的字体，支持宿主应用一键换肤</li>
+<li>套壳小程序资源预加载</li>
+<li>小程序云服务端异常上报</li>
+<li>支持配置小程序升级策略</li>
+<li><a onclick="_mdLinkClick(this.href)" href="#/framework/app-config">全局配置</a>配置项新增状态栏隐藏<code>hideStatusBar</code></li>
+<li>支持H5小程序横屏，配置<a onclick="_mdLinkClick(this.href)" href="#/guide/pageOrientation">屏幕旋转</a>方式，配置：<code>&quot;pageOrientation&quot;：landscape</code></li>
+</ol>
+<h4 id="优化-1">优化</h4>
+<ol>
+<li>小程序下载上报场景区分</li>
+</ol>
+<h3 id="2530">25.3.0</h3>
+<h4 id="新增-4">新增</h4>
+<ol>
+<li>小程序新增许可证管控机制</li>
+<li>OpenAPI统一机制</li>
+<li>支持套壳小程序配置<a onclick="_mdLinkClick(this.href)" href="#/guide/pageOrientation">屏幕旋转</a>方式</li>
+<li>SDK 支持查询用户最近使用小程序的接口</li>
+<li>iossdk Xcode 16 兼容</li>
+<li>支持隐藏胶囊<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setCapsuleShow">setCapsuleShow</a></li>
+<li>小程序预加载</li>
+<li>安卓sdk google权限整改</li>
+<li>断点续传及多线程下载</li>
+<li>独立广告容器</li>
+</ol>
+<h3 id="24120">24.12.0</h3>
+<h4 id="新增-5">新增</h4>
+<ol>
+<li>在tabbar右上角上设置徽标<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setTabBarBadge">setTabBarBadge</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeTabBarBadge">removeTabBarBadge</a></li>
+<li>小程序支持键盘高度变化监听<a onclick="_mdLinkClick(this.href)" href="#/api/ma.onKeyboardHeightChange">onKeyboardHeightChange</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.offKeyboardHeightChange">offKeyboardHeightChange</a></li>
+<li>支持套壳小程序配置套壳类型</li>
+<li>获取系统设置<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getSystemSetting">getSystemSetting</a></li>
+<li>支持小程序使用剪贴板能力<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setClipboardData">setClipboardData</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getClipboardData">getClipboardData</a></li>
+<li>小程序支持ArrayBuffer对象与Base64字符串互转<a onclick="_mdLinkClick(this.href)" href="#/api/ma.base64ToArrayBuffer">base64ToArrayBuffer</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.arrayBufferToBase64">arrayBufferToBase64</a></li>
+<li>支持dsl小程序多语言翻译</li>
+</ol>
+<h3 id="2490">24.9.0</h3>
+<h4 id="新增-6">新增</h4>
+<ol>
+<li><a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportEvent">自定义埋点</a>新增支持属性上报</li>
+<li>新增支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseVideo">chooseVideo</a>能力</li>
+<li>SDK新增支持小程序名称和描述的多语言配置</li>
+<li>JS SDK新增支持同步数据缓存接口 <code>ma.getStorageSync</code>、<code>ma.setStorageSync</code></li>
+<li>SDK新增支持权限管控接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.deauthorize">ma.deauthorize</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.cancelAuthorize">ma.cancelAuthorize</a></li>
+<li>新增支持用户打开上次访问的页面</li>
+<li>小程序支持禁止录屏、截屏、共享屏幕、下载(视频)、投屏API</li>
+</ol>
+<h4 id="优化-2">优化</h4>
+<ol>
+<li>优化 下载或打开小程序失败时的提示信息</li>
+<li>优化 JS SDK使用自定义API<code>ma.callNative</code>、<code>ma.native</code>触发回调的体验，支持触发失败回调，捕获失败原因</li>
+</ol>
+<h3 id="2460">24.6.0</h3>
+<h4 id="新增-7">新增</h4>
+<ol>
+<li><a onclick="_mdLinkClick(this.href)" href="#/component/web-view">web-view</a> 组件新增支持 <code>header</code> 自定义</li>
+<li>新增小程序启动过程日志上报能力</li>
+<li>新增退出小程序接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.exitMiniProgram">ma.exitMiniProgram</a></li>
+<li>新增支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.openBluetoothAdapter">蓝牙配对</a>能力</li>
+<li>新增<a onclick="_mdLinkClick(this.href)" href="#/devtools/remoteDebug">真机调试</a>能力</li>
+<li>新增支持访问来源打点上报能力</li>
+<li>新增支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportEvent">自定义埋点</a>运营数据上报</li>
+</ol>
+<h4 id="优化-3">优化</h4>
+<ol>
+<li>优化 <a onclick="_mdLinkClick(this.href)" href="#/component/input">input</a> 组件的使用体验及样式</li>
+<li>优化运维日志上报能力</li>
+<li>优化JS SDK集成体验，开发者可以凭借版本号快速识别集成版本</li>
+</ol>
+<h3 id="2430">24.3.0</h3>
+<h4 id="新增-8">新增</h4>
+<ol>
+<li>新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getAuthCode">登录</a>能力，支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getOpenUserInfo">获取用户公开信息</a></li>
+<li>新增小程序页面参数，支持宿主应用分享小程序当前页</li>
+<li>支持查询小程序的分类及排序</li>
+<li>JS SDK新增接口 <code>saveFileToPhone</code>、<code>saveImage</code>、<code>gotoBrowser</code></li>
+<li>支持小程序二维码</li>
+<li>支持灰度白名单控制</li>
+</ol>
+<h4 id="优化-4">优化</h4>
+<ol>
+<li>支持小程序页面缓存，优化用户体验与观感</li>
+<li>IOS SDK支持去除小程序底部出现的固定白条</li>
+<li>优化鸿蒙机型的小程序定位能力</li>
+</ol>
+<h3 id="23120">23.12.0</h3>
+<h4 id="优化-5">优化</h4>
+<ol>
+<li>IOS SDK使用<a onclick="_mdLinkClick(this.href)" href="#/component/map">地图</a>组件，showLocation为false时，调用<a onclick="_mdLinkClick(this.href)" href="#/api/MapContext.moveToLocation">moveToLocation</a>接口不传经纬度时，将不再移动定位点到当前位置，并触发失败回调</li>
+<li>新增小程序关键文件校验机制</li>
+</ol>
+<h4 id="新增-9">新增</h4>
+<ol>
+<li>新增支持数据加密存储</li>
+<li>支持获取<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getLaunchOptionsSync">小程序启动参数</a></li>
+<li>支持小程序左上角返回按钮可隐藏</li>
+<li>新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">数据预取</a>API</li>
+<li>新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportLog">日志上报</a>API，支持开发者上报问题日志</li>
+<li>小程序支持URL中获取参数</li>
+<li>新增小程序内跳转其他小程序能力</li>
+<li>安卓新增支持H5视频全屏播放</li>
+<li>新增根据宿主应用查询小程序列表及小程序体验版本能力</li>
+</ol>
+<h3 id="2390">23.9.0</h3>
+<h4 id="新增-10">新增</h4>
+<ol>
+<li>新增 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/CameraContext.startRecord">CameraContext.startRecord</a>，<a onclick="_mdLinkClick(this.href)" href="#/api/CameraContext.stopRecord">CameraContext.stopRecord</a>，支持录像功能</li>
+<li>新增 框架 新增基本运营数据上报</li>
+<li>新增 框架 新增小程序收藏能力(宿主App配合)</li>
+<li>新增 框架 支持小程序添加到桌面</li>
+<li>新增 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getRecorderManager">RecordManager录音管理器</a>，以及<a onclick="_mdLinkClick(this.href)" href="#/api/RecorderManager.start">开始录音</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/RecorderManager.stop">停止录音</a>等录音功能和事件回调相关API</li>
+</ol>
+<h4 id="修复-1">修复</h4>
+<ol>
+<li>修复 框架 小米手机全面屏导航模式适配</li>
+</ol>
+<h3 id="2360">23.6.0</h3>
+<h4 id="新增-11">新增</h4>
+<ol>
+<li>新增 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager">FileSystemManager</a>文件管理器，以及<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.writeFile">writeFile</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.unlink">unlink</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.readFile">readFile</a>等文件管理相关API</li>
+<li>新增 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.loadFontFace">loadFontFace</a>，加载用户自定义的字体文件</li>
+<li>新增 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/DownloadTask">DownloadTask</a>，开发者能够查看下载任务进度以及中止下载任务</li>
+</ol>
+<h4 id="优化-6">优化</h4>
+<ol>
+<li>更新 API 新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.showModal">showModal</a>、<a onclick="_mdLinkClick(this.href)" href="#/component/picker">picker</a>组件国际化能力</li>
+<li>小程序框架优化</li>
+</ol>
+<h4 id="修复-2">修复</h4>
+<ol>
+<li>修复鸿蒙3.0小程序底部白条兼容性</li>
+</ol>
+<h3 id="2330">23.3.0</h3>
+<h4 id="新增-12">新增</h4>
+<ol>
+<li>新增DSL小程序地图组件</li>
+<li>新增多语言框架支持</li>
+<li>支持小程序包验签</li>
+</ol>
+<h4 id="优化-7">优化</h4>
+<ol>
+<li>优化SDK引擎对外接口</li>
+</ol>

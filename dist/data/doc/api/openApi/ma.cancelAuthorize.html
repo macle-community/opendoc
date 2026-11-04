@@ -1,0 +1,197 @@
+<h2 id="macancelauthorizeobject-object">ma.cancelAuthorize(Object object)</h2>
+<blockquote>
+<p>取消当前小程序部分授权信息 <strong>（最低版本：24.9.0）</strong></p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">取消当前小程序授权范围</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + 错误原因（无返回则为空）</td>
+</tr>
+</tbody></table>
+<h4 id="小程序对外提供权限集合列表">小程序对外提供权限集合列表</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scope.location</td>
+<td>精确地理位置</td>
+</tr>
+<tr>
+<td>scope.camera</td>
+<td>摄像头</td>
+</tr>
+<tr>
+<td>scope.photosAlbums</td>
+<td>读写相册</td>
+</tr>
+<tr>
+<td>scope.contacts</td>
+<td>联系人</td>
+</tr>
+<tr>
+<td>scope.record</td>
+<td>录音</td>
+</tr>
+<tr>
+<td>scope.gotoBrowser</td>
+<td>打开其他应用程序权限</td>
+</tr>
+<tr>
+<td>scope.bluetooth</td>
+<td>蓝牙权限</td>
+</tr>
+<tr>
+<td>scope.payment</td>
+<td>支付权限</td>
+</tr>
+<tr>
+<td>scope.video</td>
+<td>录像权限</td>
+</tr>
+<tr>
+<td>scope.storage</td>
+<td>文件权限</td>
+</tr>
+<tr>
+<td>scope.AUTH_BASE</td>
+<td>静默授权</td>
+</tr>
+<tr>
+<td>scope.AUTH_USER</td>
+<td>用户信息</td>
+</tr>
+<tr>
+<td>scope.SEND_MESSAGE</td>
+<td>发送信息</td>
+</tr>
+<tr>
+<td>scope.USER_NICKNAME</td>
+<td>用户昵称</td>
+</tr>
+<tr>
+<td>scope.USER_NAME</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>scope.USER_LOGIN_ID</td>
+<td>用户登录ID</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_USER_LOGIN_ID</td>
+<td>明文登录ID</td>
+</tr>
+<tr>
+<td>scope.HASH_LOGIN_ID</td>
+<td>哈希登录ID</td>
+</tr>
+<tr>
+<td>scope.USER_AVATAR</td>
+<td>用户头像</td>
+</tr>
+<tr>
+<td>scope.USER_GENDER</td>
+<td>用户性别</td>
+</tr>
+<tr>
+<td>scope.USER_BIRTHDAY</td>
+<td>用户生日</td>
+</tr>
+<tr>
+<td>scope.USER_NATIONALITY</td>
+<td>用户国籍</td>
+</tr>
+<tr>
+<td>scope.USER_CONTACTINFO</td>
+<td>用户联系人</td>
+</tr>
+<tr>
+<td>scope.USER_ADDRESS</td>
+<td>用户地址</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_MOBILE_PHONE</td>
+<td>用户明文手机号码</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"> cancelAuthorize () {
+    ma.cancelAuthorize({
+        <span class="hljs-attr">scopes</span>: [<span class="hljs-string">&#x27;scope.location&#x27;</span>],
+        <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Authorization canceled successfully`</span>);
+        },
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+            <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Failed to cancel the authorization`</span>);
+        }
+    });
+}
+</code></pre>

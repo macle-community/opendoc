@@ -1,0 +1,37 @@
+<h2 id="maonsocketclosefunction-callback">ma.onSocketClose(function callback)</h2>
+<blockquote>
+<p>监听 WebSocket 连接关闭事件。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-callback">function callback</h4>
+<p>WebSocket 连接关闭事件的回调函数</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">code</td>
+<td align="left">Number</td>
+<td align="left">一个数字值表示关闭连接的状态号，表示连接被关闭的原因。</td>
+</tr>
+<tr>
+<td align="left">reason</td>
+<td align="left">String</td>
+<td align="left">一个可读的字符串，表示连接被关闭的原因。</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.connectSocket({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>
+});
+ma.closeSocket();
+ma.onSocketClose(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+});
+</code></pre>

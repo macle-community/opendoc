@@ -1,0 +1,76 @@
+<h2 id="接口">接口</h2>
+<p>macle-i18n API 是运行时在 JavaScript 侧操作 i18n 的接口。</p>
+<h2 id="接口列表">接口列表</h2>
+<ul>
+<li>initI18n(localesConfig: object): I18n</li>
+<li>getI18nInstance(): I18n</li>
+<li>t(key: string, params: object): string</li>
+<li>getLocale(): string</li>
+<li>setLocale(currentLocale: string): void</li>
+<li>getFallbackLocale(): string</li>
+<li>onLocaleChange(handler: (currentLocale: string) =&gt; void): object</li>
+<li>mergeLocaleMessage(locale,message)</li>
+</ul>
+<h3 id="初始化-i18n-运行时">初始化 I18n 运行时</h3>
+<h4 id="initi18nlocalesconfig-object-i18n">initI18n(localesConfig: object): I18n</h4>
+<p>在 <code>app.js</code> 调用 initI18n 来加载 i18n 文本并指定默认语言。若未进行指定，i18n 将根据用户提供 i18n 文本默认为用户生成，默认语言为英文 en-US。</p>
+<pre><code class="language-js"><span class="hljs-comment">// src/app.js</span>
+<span class="hljs-keyword">let</span> locales = {
+  defaultLocale: &#x27;zh-CN&#x27;
+};
+init<span class="hljs-constructor">I18n(<span class="hljs-params">locales</span>)</span>;
+<span class="hljs-constructor">App({})</span>;
+</code></pre>
+<h3 id="获取-i18n-运行时">获取 I18n 运行时</h3>
+<h4 id="geti18ninstance-i18n">getI18nInstance(): I18n</h4>
+<p>该接口会返回 I18n 运行时实例。</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> i18n = getI18nInstance();
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+</code></pre>
+<h3 id="i18n-接口">I18n 接口</h3>
+<p>以下五个接口用来获取或操作 I18n，均可在 I18n 实例或 I18nPage 上进行调用。</p>
+<p>在 I18nPage 中通过 this 直接访问成员函数：</p>
+<pre><code class="language-js">I18nPage({
+  onLoad() {
+    <span class="hljs-keyword">this</span>.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+    <span class="hljs-keyword">this</span>.getLocale(); <span class="hljs-comment">// en-US</span>
+    <span class="hljs-keyword">this</span>.setLocale(<span class="hljs-string">&#x27;zh-CN&#x27;</span>);
+    <span class="hljs-keyword">this</span>.getFallbackLocale(); <span class="hljs-comment">// zh-CN</span>
+    <span class="hljs-keyword">this</span>.onLocaleChange(currentLocale =&gt; {
+      console.log(<span class="hljs-string">&#x27;Locale changed to&#x27;</span>, currentLocale);
+    });
+    <span class="hljs-keyword">this</span>.mergeLocaleMessage(<span class="hljs-string">&#x27;en-US&#x27;</span>,{ui:<span class="hljs-string">&#x27;UI2&#x27;</span>});
+  }
+});
+</code></pre>
+<p>或从 I18n 实例调用:</p>
+<pre><code class="language-js">const i18n = getI18nInstance();
+i18n.t(<span class="hljs-string">&#x27;key&#x27;</span>);
+i18n.getLocale(); <span class="hljs-comment">// en-US</span>
+i18n.setLocale(<span class="hljs-string">&#x27;zh-CN&#x27;</span>);
+i18n.getFallbackLocale(); <span class="hljs-comment">// zh-CN</span>
+i18n.onLocaleChange(<span class="hljs-function"><span class="hljs-params">currentLocale</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Locale changed to&#x27;</span>, currentLocale);
+});
+i18n.mergeLocaleMessage(<span class="hljs-string">&#x27;en-US&#x27;</span>,{<span class="hljs-attr">ui</span>:<span class="hljs-string">&#x27;UI2&#x27;</span>});
+</code></pre>
+<h4 id="getfallbacklocale-string">getFallbackLocale(): string</h4>
+<p>小程序框架的默认语言，默认英文</p>
+<h4 id="tkey-string-params-object-string">t(key: string, params: object): string</h4>
+<p>最主要的翻译函数，通过该函数可以获得预先定义的 i18n 文本。</p>
+<h4 id="getlocale-string">getLocale(): string</h4>
+<p>获取当前设置的语言。默认语言为英文 en-US。</p>
+<h4 id="onlocalechangehandler-currentlocale-string--void-object">onLocaleChange(handler: (currentLocale: string) =&gt; void): object</h4>
+<p>当前语言被修改时触发的事件回调。返回值 object，可通过返回值对象取消事件监听。</p>
+<pre><code>const event = i18n.onLocaleChange(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {})
+event.<span class="hljs-literal">off</span>()
+</code></pre>
+<h4 id="mergelocalemessagelocalemessage（最低版本：-24120）">mergeLocaleMessage(locale,message)（最低版本： 24.12.0）</h4>
+<p>合并国际化资源，即若有相同语言的资源（键值对方式），相同key会被后者覆盖，反之则新增一个语言的国际化资源数据。</p>
+<h5 id="参数">参数</h5>
+<p>locale:语言，需遵从“语言-国家”命名规范，如“zh-CN”，“en-US”
+message:扁平化的json语言资源，如
+{ title:标题 name:名称 }</p>
+<pre><code>const i18n = get<span class="hljs-constructor">I18nInstance()</span>;
+i18n.merge<span class="hljs-constructor">LocaleMessage(&#x27;<span class="hljs-params">en</span>-US&#x27;,{<span class="hljs-params">ui</span>:&#x27;UI2&#x27;})</span>;
+</code></pre>

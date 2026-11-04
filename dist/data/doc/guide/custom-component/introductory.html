@@ -1,0 +1,88 @@
+<h2 id="自定义组件">自定义组件</h2>
+<p>开发者可以将页面内的功能模块抽象成自定义组件，以便在不同的页面中重复使用；也可以将复杂的页面拆分成多个低耦合的模块，有助于代码维护。自定义组件在使用时与基础组件非常相似。</p>
+<h3 id="创建自定义组件">创建自定义组件</h3>
+<p>类似于页面，一个自定义组件由 json maml mass js 4 个文件组成。要编写一个自定义组件，首先需要在 json 文件中进行自定义组件声明（将 component 字段设为 true 可将这一组文件设为自定义组件）:</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;component&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>同时，还要在 maml 文件中编写组件模板，在 mass 文件中加入组件样式，它们的写法与页面的写法类似。具体细节和注意事项参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component-maml-mass">组件模板和样式</a> 。</p>
+<h3 id="代码示例：">代码示例：</h3>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- 这是自定义组件的内部MAML结构 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inner&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">innerText</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span>
+</code></pre>
+<pre><code><span class="hljs-comment">/* 这里的样式只应用于这个自定义组件 */</span>
+<span class="hljs-selector-class">.inner</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+<p><strong>注意：为避免组件间样式冲突，在组件 mass 中不应使用 ID 选择器、属性选择器和标签名选择器。</strong></p>
+<p>在自定义组件的 js 文件中，需要使用 Component() 来注册组件，并提供组件的属性定义、内部数据和自定义方法。</p>
+<p>组件的属性值和内部数据将被用于组件 maml 的渲染，其中，属性值是可由组件外部传入的。更多细节参见 <a onclick="_mdLinkClick(this.href)" href="#/guide/component">Component 构造器</a> 。</p>
+<pre><code>Component({
+
+  properties: {
+    myProperty: { <span class="hljs-regexp">//</span> 属性名
+      type: String,
+      value: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    myProperty2: String <span class="hljs-regexp">//</span> 简化的定义方式
+  },
+
+  data: {}, <span class="hljs-regexp">//</span> 私有数据，可用于模板渲染
+
+  <span class="hljs-regexp">//</span> 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+  created: <span class="hljs-keyword">function</span> () { },
+
+  methods: {
+    onBtnTap: <span class="hljs-keyword">function</span>(){
+      this.setData({
+        <span class="hljs-regexp">//</span> 更新属性和数据的方法与更新页面数据的方法类似
+      })
+    },
+    <span class="hljs-regexp">//</span> 内部方法建议以下划线开头
+    _myPrivateMethod: <span class="hljs-keyword">function</span>(){
+      <span class="hljs-regexp">//</span> 这里将 data.prop 设为 <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      this.setData({
+        prop: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    _propertyChange: <span class="hljs-keyword">function</span>(newVal, oldVal) {
+
+    }
+  }
+})
+</code></pre>
+<h3 id="使用自定义组件">使用自定义组件</h3>
+<p>使用已注册的自定义组件前，首先要在页面的 json 文件中进行引用声明。此时需要提供每个自定义组件的标签名和对应的自定义组件文件路径：</p>
+<pre><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;component-tag-name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;path/to/the/custom/component&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>这样，在页面的 maml 中就可以像使用基础组件一样使用自定义组件。节点名即自定义组件的标签名，节点属性即传递给组件的属性值。</p>
+<h3 id="代码示例：-1">代码示例：</h3>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 以下是对一个自定义组件的引用 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">inner-text</span>=<span class="hljs-string">&quot;Some text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>自定义组件的 maml 节点结构在与数据结合之后，将被插入到引用位置内</p>
+<h3 id="注意事项">注意事项</h3>
+<p>一些需要注意的细节：</p>
+<ul>
+<li>因为 MAML 节点标签名只能是小写字母、中划线和下划线的组合，所以自定义组件的标签名也只能包含这些字符。</li>
+<li>自定义组件也是可以引用自定义组件的，引用方法类似于页面引用自定义组件的方式（使用 usingComponents 字段）。</li>
+<li>自定义组件和页面所在项目根目录名不能以“ma-”为前缀，否则会报错。</li>
+</ul>
+<p>注意，是否在页面文件中使用 usingComponents 会使得页面的 this 对象的原型稍有差异，包括：</p>
+<ul>
+<li>使用 usingComponents 页面的原型与不使用时不一致，即 Object.getPrototypeOf(this) 结果不同。</li>
+<li>使用 usingComponents 时会多一些方法，如 selectComponent 。</li>
+<li>出于性能考虑，使用 usingComponents 时， setData 内容不会被直接深复制，即 this.setData({ field: obj }) 后 this.data.field === obj 。（深复制会在这个值被组件间传递时发生。）</li>
+</ul>
+<p>如果页面比较复杂，新增或删除 usingComponents 定义段时建议重新测试一下。</p>

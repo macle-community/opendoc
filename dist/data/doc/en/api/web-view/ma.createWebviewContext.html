@@ -1,0 +1,51 @@
+<h2 id="macreatewebviewcontext">ma.createWebviewContext()</h2>
+<blockquote>
+<p>Create a WebviewContext object to send messages to the web-view component (minimum version: 25.12.0)</p>
+</blockquote>
+<h3 id="return-value">Return Value</h3>
+<h4 id="webviewcontext">WebviewContext</h4>
+<p>The WebviewContext object supports two-way communication with the H5 application within the Webview component.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th>parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">postMessage</td>
+<td align="left">Function</td>
+<td>Any</td>
+<td align="left">The mini-program can send messages to the H5 application within the <code>web-view</code> component. Combined with <code>ma.postMessage</code> provided by the <code>js-sdk</code>, this enables bidirectional communication between the mini-program and the <code>web-view</code> webpage.</td>
+</tr>
+<tr>
+<td align="left">onMessage</td>
+<td align="left">Function</td>
+<td>Function</td>
+<td align="left">The mini-program listens for events where the H5 application within the component sends messages to the mini-program. Only functions are supported; if an invalid value is passed, the message will not be received.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> webviewContext = ma.<span class="hljs-title function_">createWebviewContext</span>();
+
+<span class="hljs-comment">// The mini-program sends a message to the H5 within the container</span>
+webviewContext.<span class="hljs-title function_">postMessage</span>({
+  <span class="hljs-attr">testMsg</span>: <span class="hljs-string">&#x27;111&#x27;</span>,
+});
+<span class="hljs-comment">// Listen for communication between H5 and mini-program within the container</span>
+webviewContext.<span class="hljs-title function_">onMessage</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res, <span class="hljs-string">&#x27;DSL Get Message&#x27;</span>);
+  ma.<span class="hljs-title function_">showModal</span>({
+    <span class="hljs-attr">content</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res),
+    <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;DSL Get Message&#x27;</span>,
+    <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    },
+    <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    },
+    <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    },
+  });
+});
+</code></pre>

@@ -1,0 +1,65 @@
+<h2 id="maswitchtabobject-object">ma.switchTab(Object object)</h2>
+<blockquote>
+<p>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>Object object</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">需要跳转的 tabBar 页面的路径 (代码包路径)（需在 app.json 的 tabBar 字段定义的页面），路径后不能带参数。</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;tabBar&quot;</span>: {
+    <span class="hljs-string">&quot;list&quot;</span>: [
+      {
+        <span class="hljs-string">&quot;pagePath&quot;</span>: <span class="hljs-string">&quot;index&quot;</span>,
+        <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;首页&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;pagePath&quot;</span>: <span class="hljs-string">&quot;other&quot;</span>,
+        <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;其他&quot;</span>
+      }
+    ]
+  }
+}
+</code></pre>
+<pre><code class="language-js">ma<span class="hljs-selector-class">.switchTab</span>({
+  url: <span class="hljs-string">&#x27;/index&#x27;</span>
+});
+</code></pre>

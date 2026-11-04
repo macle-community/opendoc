@@ -1,0 +1,136 @@
+<h2 id="titlebar-navigation-bar">TitleBar Navigation Bar</h2>
+<blockquote>
+<p>Currently, only manual import is supported, and the npm function is still in incubation.</p>
+</blockquote>
+<pre><code class="language-html"><span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;maui-title-bar&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;../../components/title-bar/index&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html">&lt;maui-title-bar bind:<span class="hljs-attribute">clickLeft</span>=<span class="hljs-string">&quot;onClickLeft&quot;</span> bind:<span class="hljs-attribute">clickRight</span>=<span class="hljs-string">&quot;onClickRight&quot;</span> left-arrow <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;Malce&quot;</span> <span class="hljs-attribute">right-text</span>=<span class="hljs-string">&quot;Button&quot;</span> <span class="hljs-attribute">left-text</span>=<span class="hljs-string">&quot;Back&quot;</span> <span class="hljs-attribute">rightStyle</span>=<span class="hljs-string">&quot;color:purple;&quot;</span> <span class="hljs-attribute">leftStyle</span>=<span class="hljs-string">&quot;color:red&quot;</span> <span class="hljs-attribute">titleStyle</span>=<span class="hljs-string">&quot;color:orange&quot;</span> /&gt;
+
+Page({
+onClickLeft() {
+console.log(<span class="hljs-string">&quot;left&quot;</span>)
+},
+onClickRight() {
+console.log(<span class="hljs-string">&quot;right&quot;</span>)
+}
+});
+</code></pre>
+<h4 id="advanced-usage">Advanced Usage</h4>
+<p>Customize the left icon and use slot for the right side</p>
+<pre><code class="language-html">&lt;maui-title-bar  use-slot  <span class="hljs-literal">left</span>-arrow <span class="hljs-literal">left</span>-<span class="hljs-keyword">icon</span>=<span class="hljs-string">&quot;reduce&quot;</span> title=<span class="hljs-string">&quot;Malce&quot;</span>  &gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;reduce&quot;</span>&gt;&lt;/maui-<span class="hljs-keyword">icon</span>&gt;
+&lt;/maui-title-bar&gt;
+</code></pre>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">Title</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">title-style</td>
+<td align="left">Title style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">left-text</td>
+<td align="left">Left text</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">left-style</td>
+<td align="left">Left style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">right-text</td>
+<td align="left">Right text</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">right-style</td>
+<td align="left">Right style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">left-arrow</td>
+<td align="left">Whether to display the left icon</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">left-icon</td>
+<td align="left">Custom left icon, effective when left-arrow is true / fixed value</td>
+<td align="left">String</td>
+<td align="left">arrowleft</td>
+</tr>
+<tr>
+<td align="left">left-image</td>
+<td align="left">Custom left icon, effective when left-arrow is false / image src</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">fixed</td>
+<td align="left">Whether to fix at the top</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">safe-area-inset-top</td>
+<td align="left">Whether to leave a safe distance at the top (status bar height)</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">z-index</td>
+<td align="left">Element z-index</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">use-slot</td>
+<td align="left">Whether to use slot, effective when right-text does not exist</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+</tr>
+</tbody></table>
+<h4 id="left-icon-value-types">Left-icon Value Types</h4>
+<p><img src="/openplatform/macledocs/data/doc/en/maui-component/image/icon_list.png" alt="image" ></p>
+<p>Add arrowleft for left arrow</p>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:clickLeft</td>
+<td align="left">Triggered when clicking the left button</td>
+</tr>
+<tr>
+<td align="left">bind:clickRight</td>
+<td align="left">Triggered when clicking the right button</td>
+</tr>
+</tbody></table>

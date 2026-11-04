@@ -1,0 +1,13 @@
+<h2 id="downloadtaskoffprogressupdatefunction-listener">DownloadTask.offProgressUpdate(function listener)</h2>
+<blockquote>
+<p>移除下载进度变化事件的监听函数（最低版本：23.6.0）</p>
+</blockquote>
+<h2 id="参数">参数</h2>
+<h3 id="function-listener">function listener</h3>
+<p>onProgressUpdate 传入的监听函数。不传此参数则移除所有监听函数。</p>
+<h2 id="示例代码">示例代码</h2>
+<pre><code class="language-js">const listener = <span class="hljs-keyword">function</span> (res) { console.log(res) }
+
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DownloadTask</span>.</span></span>on<span class="hljs-constructor">ProgressUpdate(<span class="hljs-params">listener</span>)</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DownloadTask</span>.</span></span>off<span class="hljs-constructor">ProgressUpdate(<span class="hljs-params">listener</span>)</span> <span class="hljs-comment">// 需传入与监听时同一个的函数对象</span>
+</code></pre>

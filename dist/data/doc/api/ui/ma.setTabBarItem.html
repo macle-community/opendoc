@@ -1,0 +1,74 @@
+<h2 id="masettabbaritemobject-object">ma.setTabBarItem(Object object)</h2>
+<blockquote>
+<p>动态设置 tabBar 某一项的内容</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">tabBar 的哪一项，从左边算起，起始值为0</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">tab 上的按钮文字</td>
+</tr>
+<tr>
+<td align="left">iconPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px</td>
+</tr>
+<tr>
+<td align="left">selectedIconPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">选中时的图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.setTabBarItem({
+  <span class="hljs-keyword">index</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;text&#x27;</span>,
+  iconPath: <span class="hljs-string">&#x27;/path/to/iconPath&#x27;</span>,
+  selectedIconPath: <span class="hljs-string">&#x27;/path/to/selectedIconPath&#x27;</span>
+});
+</code></pre>

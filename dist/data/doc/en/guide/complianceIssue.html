@@ -1,0 +1,57 @@
+<h1 id="compliance-related-security-requirements">Compliance-Related Security Requirements</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Compliance requirements refer to the laws, regulations, and platform specifications that must be strictly followed
+during the development and operation of mini-programs and other businesses. These requirements stem not only from
+national-level laws and regulations (such as the <em>Cybersecurity Law</em>, <em>Personal Information Protection Law</em>, and <em>Data
+Security Law</em>) but also include access specifications of third-party platforms such as data platforms. These
+requirements are mandatory and must not be violated; otherwise, serious consequences such as legal risks, platform bans,
+and business removal may occur.</p>
+<h3 id="data-security">Data Security</h3>
+<p>Specifications based primarily on the data security laws and regulations of the business location. Details can be
+obtained through the public disclosure of cybersecurity information in the business location. For mini-program front-end
+developers, it is imperative to disable data desensitization, encrypted data transmission, etc.</p>
+<h3 id="privacy-compliance">Privacy Compliance</h3>
+<p>Based primarily on the personal data protection laws and regulations of the business location. Details can be obtained
+through the public disclosure of cybersecurity information in the business location. For mini-program developers, it is
+required to minimize the application for necessary personal information; display privacy agreements and policies on the
+page when releasing after passing the review; when using the mini-program, if user data collection is involved, an
+authorization pop-up must be displayed to obtain the user&#39;s authorization, and data collection can only be carried out
+after obtaining the user&#39;s explicit consent.</p>
+<h3 id="content-security-and-ecological-security">Content Security and Ecological Security</h3>
+<p>In the development and operation of mini-programs, the compliance of page content is a mandatory requirement of the
+platform and the laws and regulations of the country where the business is located. As a public-facing display platform,
+the content of mini-programs must strictly abide by national laws and regulations regarding politics, religion,
+terrorism, pornography, violence, prohibited and restricted products, etc. Mini-programs have a content inspection
+mechanism and violation penalty rules. Once non-compliant content is found, the mini-program may be removed, have its
+functions restricted, or have its account banned.</p>
+<h2 id="key-points-to-focus-on">Key Points to Focus On</h2>
+<p>For developers, it is recommended to pay attention to the following key points.</p>
+<h3 id="compliant-acquisition-of-information">Compliant Acquisition of Information</h3>
+<ul>
+<li>Privacy clauses must not be pre-checked by default.</li>
+<li>Package authorization is prohibited; authorization should be applied for on demand and minimized.</li>
+<li>Inducing users to provide information collection is prohibited, as is forcing/repeatedly pushing authorization pop-ups
+to users.</li>
+<li>If the user does not agree to the authorization, they must not be forced to exit; content and services that can be
+used without authorization should be provided.</li>
+<li>To obtain personal information of minors under the age of 14, the consent of the minor&#39;s parents or other guardians
+must be obtained.</li>
+</ul>
+<h3 id="proper-handling-of-authorized-data">Proper Handling of Authorized Data</h3>
+<ul>
+<li>Authorized data should be transmitted to the server using secure methods.</li>
+<li>The use of authorized data must not exceed the scope agreed upon by the user.</li>
+<li>When the service is terminated and the user explicitly requests data deletion, the data should be deleted in a timely
+and permanent manner. Except for data that is required to be retained in compliance with regulations within a fixed
+period.</li>
+<li>In the event of a data breach, emergency measures should be taken promptly to prevent the continuous leakage of user
+data or the expansion of the impact. At the same time, report the handling situation to the Mini-Program
+Platform, regulatory authorities, and notify users to prevent infringements and attacks caused by data leakage.</li>
+</ul>
+<h3 id="reasonable-domain-name-configuration">Reasonable Domain Name Configuration</h3>
+<ul>
+<li>There is a domain name configuration entry in the mini-program management console. The scope of domain names allowed
+to be loaded by the mini-program should be reasonably designed to protect the security of the mini-program itself.</li>
+<li>In the H5 domain name configuration of the web-view component, only configure trusted domain names to avoid illegal
+and non-compliant content placed by black and gray industries.</li>
+</ul>

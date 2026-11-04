@@ -1,0 +1,17 @@
+<h1 id="introduction-to-the-ui-component-library">Introduction to the UI Component Library</h1>
+<p>Macle develops its own component library to meet developers&#39; richer and personalized application scenarios.</p>
+<p>Before using this document, ensure that you have read and understood the <a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component">Introduction to Customized Components</a>.</p>
+<h2 id="code-download">Code Download</h2>
+<p>You can directly download the source code of the Macle component library and add it to the project.</p>
+<p>Click <a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">the download link</a> to download Macle UI component library source code, and copy the dist directory to your own project.</p>
+<h2 id="using-components">Using Components</h2>
+<p>Take the button component as an example. You only need to import the customized component corresponding to the button to the JSON file.</p>
+<pre><code>{
+  &quot;usingComponents&quot;: {
+    &quot;maui-<span class="hljs-selector-tag">button</span>&quot;: <span class="hljs-string">&quot;/path/to/maui-component/dist/button/index&quot;</span>
+  }
+}
+</code></pre>
+<p>Then, you can directly use the component in the MAML.</p>
+<pre><code>&lt;maui-<span class="hljs-keyword">button</span> type=<span class="hljs-string">&quot;primary&quot;</span>&gt;<span class="hljs-keyword">Button</span>&lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>

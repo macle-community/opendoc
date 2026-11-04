@@ -1,0 +1,270 @@
+<h2 id="events">Events</h2>
+<h4 id="what-is-an-event">What is an event?</h4>
+<ul>
+<li>Events are the communication mode from the view layer to the logical layer.</li>
+<li>Events can feed back user behavior to the logical layer for processing.</li>
+<li>An event can be bound to a component. When a trigger event is reached, the corresponding event processing function in the logic layer is executed.</li>
+<li>Event objects can carry additional information, such as id, dataset, and touches.</li>
+</ul>
+<h4 id="how-events-are-used">How events are used</h4>
+<ul>
+<li><p>Bind an event processing function to the component. For example, when a user clicks the bindtap component, the corresponding event processing function is found in the corresponding page.</p>
+<pre><code>&lt;<span class="hljs-keyword">view</span> id=<span class="hljs-string">&quot;tapTest&quot;</span> data-<span class="hljs-keyword">hi</span>=<span class="hljs-string">&quot;Macle&quot;</span> bindtap=<span class="hljs-string">&quot;tapName&quot;</span>&gt; Click me! &lt;/<span class="hljs-keyword">view</span>&gt;
+</code></pre>
+</li>
+<li><p>Write the corresponding event processing function in the corresponding page definition. The parameter is event.</p>
+<pre><code>Page({
+  <span class="hljs-attr">tapName</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e)
+  }
+})
+</code></pre>
+</li>
+<li><p>The log information is as follows:</p>
+</li>
+</ul>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;tap&quot;</span>,
+  <span class="hljs-string">&quot;timeStamp&quot;</span>: <span class="hljs-number">895</span>,
+  <span class="hljs-string">&quot;target&quot;</span>: {
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;tapTest&quot;</span>,
+    <span class="hljs-string">&quot;dataset&quot;</span>: {
+      <span class="hljs-string">&quot;hi&quot;</span>: <span class="hljs-string">&quot;macle&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;currentTarget&quot;</span>: {
+    <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;tapTest&quot;</span>,
+    <span class="hljs-string">&quot;dataset&quot;</span>: {
+      <span class="hljs-string">&quot;hi&quot;</span>: <span class="hljs-string">&quot;macle&quot;</span>
+    }
+  },
+  <span class="hljs-string">&quot;detail&quot;</span>: {
+    <span class="hljs-string">&quot;x&quot;</span>: <span class="hljs-number">53</span>,
+    <span class="hljs-string">&quot;y&quot;</span>: <span class="hljs-number">14</span>
+  },
+  <span class="hljs-string">&quot;touches&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;identifier&quot;</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-string">&quot;pageX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;pageY&quot;</span>: <span class="hljs-number">14</span>,
+      <span class="hljs-string">&quot;clientX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;clientY&quot;</span>: <span class="hljs-number">14</span>
+    }
+  ],
+  <span class="hljs-string">&quot;changedTouches&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;identifier&quot;</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-string">&quot;pageX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;pageY&quot;</span>: <span class="hljs-number">14</span>,
+      <span class="hljs-string">&quot;clientX&quot;</span>: <span class="hljs-number">53</span>,
+      <span class="hljs-string">&quot;clientY&quot;</span>: <span class="hljs-number">14</span>
+    }
+  ]
+}
+</code></pre>
+<h3 id="event-details">Event Details</h3>
+<h4 id="event-classification">Event Classification</h4>
+<p>Events are classified into bubbling events and non-bubbling events.</p>
+<ol>
+<li>Bubble event: When an event on a component is triggered, the event is passed to the parent node.</li>
+<li>Non-bubbling event: When an event on a component is triggered, the event is not passed to the parent node.</li>
+</ol>
+<p>List of bubble events in MAML:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Trigger Condition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">touchstart</td>
+<td align="left">Finger touch action begins</td>
+</tr>
+<tr>
+<td align="left">touchmove</td>
+<td align="left">Fingers move after touching</td>
+</tr>
+<tr>
+<td align="left">touchcancel</td>
+<td align="left">Finger touch actions are interrupted, for example, call notification or pop-up window.</td>
+</tr>
+<tr>
+<td align="left">touchend</td>
+<td align="left">End of finger touch action</td>
+</tr>
+<tr>
+<td align="left">tap</td>
+<td align="left">Fingers touch and leave immediately</td>
+</tr>
+<tr>
+<td align="left">longtap</td>
+<td align="left">After the finger is touched, the finger leaves for more than 350 ms. (The longpress event is recommended instead.)</td>
+</tr>
+</tbody></table>
+<p><strong>Note: The customized events of other components except the preceding table are non-bubbling events, such as the submit event of the form, input event of the input, and scroll event of the scroll-view. (For details, see each component.)</strong></p>
+<h4 id="common-event-binding">Common event binding</h4>
+<p>Event bindings are written in a similar way to component attributes, for example:</p>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handleTap&quot;</span>&gt;</span> Click here! <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>If the user clicks the view, the <code>handleTap </code> of the page is invoked.</p>
+<p>The event binding function can be a data binding, such as:</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">handlerName</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span> Click here! <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+</code></pre>
+<p>In this case, <code>this.data.handlerName</code> of the page must be a string specifying the event handler name. If it is an empty string, the binding becomes invalid (this feature can be used to temporarily disable some events).</p>
+<p>In most components and user-defined components, <code>bind </code> can be followed by a colon, which has the same meaning, for example, <code>bind:tap</code>.</p>
+<h4 id="bind-and-prevent-event-from-bubbling">Bind and prevent event from bubbling</h4>
+<p>In addition to <code>bind</code>, you can also use <code>catch </code> to bind events. Unlike <code>bind</code>, <code>catch </code> prevents events from bubbling up.</p>
+<p>For example, in the following example, when an inner view is clicked, <code>handleTap3 </code> and <code>handleTap2 </code> are invoked in sequence (because the tap event pops up to the middle view, and the middle view stops the tap event popping up and does not transfer the tap event to the parent node). When a middle view is clicked, <code>handleTap2 </code> is triggered, and <code>handleTap1 </code> is triggered.</p>
+<pre><code class="language-maml"><span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;outer&quot; bindtap<span class="hljs-operator">=</span>&quot;handleTap1&quot;<span class="hljs-operator">&gt;</span>
+  <span class="hljs-keyword">outer</span> <span class="hljs-keyword">view</span>
+  <span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;middle&quot; catchtap<span class="hljs-operator">=</span>&quot;handleTap2&quot;<span class="hljs-operator">&gt;</span>
+    middle <span class="hljs-keyword">view</span>
+    <span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span> id<span class="hljs-operator">=</span>&quot;inner&quot; bindtap<span class="hljs-operator">=</span>&quot;handleTap3&quot;<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">view</span> <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+</code></pre>
+<h4 id="event-object">Event Object</h4>
+<p>Unless otherwise specified, when a component triggers an event, the processing function bound to the event at the logic layer receives an event object.</p>
+<p><strong>BaseEvent basic event object attribute list:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">type</td>
+<td align="left">String</td>
+</tr>
+<tr>
+<td align="left">timeStamp</td>
+<td align="left">Integer</td>
+</tr>
+<tr>
+<td align="left">target</td>
+<td align="left">Object</td>
+</tr>
+<tr>
+<td align="left">currentTarget</td>
+<td align="left">Object</td>
+</tr>
+</tbody></table>
+<p><strong>TouchEvent touch event object attribute list (inheriting BaseEvent):</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">touches</td>
+<td align="left">Array</td>
+<td align="left">Touch event, an array of touch point information currently staying on the screen</td>
+</tr>
+<tr>
+<td align="left">changedTouches</td>
+<td align="left">Array</td>
+<td align="left">Touch event, array of touch point information of the current change</td>
+</tr>
+</tbody></table>
+<h4 id="type">type</h4>
+<p>Indicates the type of an event.</p>
+<h4 id="timestamp">timeStamp</h4>
+<p>The number of milliseconds from the time the page was opened to the time the event was triggered.</p>
+<h4 id="target">target</h4>
+<p>The source component that triggered the event.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">ID of the event source component.</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">A collection of custom attributes starting with data-on the event source component.</td>
+</tr>
+</tbody></table>
+<h4 id="currenttarget">currentTarget</h4>
+<p>The current component of the event binding.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">String</td>
+<td align="left">ID of the current component.</td>
+</tr>
+<tr>
+<td align="left">dataset</td>
+<td align="left">Object</td>
+<td align="left">Collection of custom attributes starting with data-on the current component</td>
+</tr>
+</tbody></table>
+<p><strong>Note: For details about target and currentTarget, see the preceding example. When inner view is clicked, the event objects target and currentTarget received by <code>handleTap3 </code> are inner, and the event objects target and currentTarget received by <code>handleTap2 </code> are inner, and middle.</strong></p>
+<h4 id="dataset">dataset</h4>
+<p>You can attach some custom data to the component node. In this way, the user-defined node data can be obtained from the event for logical processing of the event.</p>
+<p>In MAML, these custom data begin with <code>data-</code>, and multiple words are joined by the hyphen <code>-</code>. In this type of writing, hyphens are converted to hump, and uppercase characters are automatically converted to lowercase characters. For example:</p>
+<ul>
+<li><code>data-element-type</code> ，which is eventually rendered as <code>event.currentTarget.dataset.elementType</code> ；</li>
+<li><code>data-elementType</code> ，which is eventually rendered as <code>event.currentTarget.dataset.elementtype</code> 。</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-maml">&lt;<span class="hljs-keyword">view</span> data-<span class="hljs-keyword">alpha</span>-beta=<span class="hljs-string">&quot;1&quot;</span> data-alphaBeta=<span class="hljs-string">&quot;2&quot;</span> bindtap=<span class="hljs-string">&quot;bindViewTap&quot;</span>&gt; DataSet <span class="hljs-keyword">Test</span> &lt;/<span class="hljs-keyword">view</span>&gt; 
+
+Page({
+  bindViewTap:function(event){
+    event.currentTarget.dataset.alphaBeta === 1 <span class="hljs-comment">// -  will change to hump writing</span>
+    event.currentTarget.dataset.alphabeta === 2 <span class="hljs-comment">// will be changed to lowercase</span>
+  }
+})
+</code></pre>
+<h4 id="touches">touches</h4>
+<p>touches is an array, and each element is a touch object. (The touches carried in the canvas touch event is the CanvasTouch array.) Indicates the touch point currently on the screen.</p>
+<h4 id="touch-object">Touch object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">identifier</td>
+<td align="left">Number</td>
+<td align="left">Identifier of the touch point</td>
+</tr>
+<tr>
+<td align="left">pageX, pageY</td>
+<td align="left">Number</td>
+<td align="left">Distance from the upper left corner of the document. The upper left corner of the document is the origin, the horizontal axis is the X axis, and the vertical axis is the Y axis.</td>
+</tr>
+<tr>
+<td align="left">clientX, clientY</td>
+<td align="left">Number</td>
+<td align="left">Distance from the upper left corner of the displayable area on the page (the navigation bar is removed from the screen). The horizontal axis is the X axis and the vertical axis is the Y axis.</td>
+</tr>
+</tbody></table>
+<h4 id="changedtouches">changedTouches</h4>
+<p>The data format of changedTouches is the same as that of touches. Indicates a touch point with a change, for example, touchstart, touchmove, touchend, touchcancel.</p>
+<h4 id="detail">detail</h4>
+<p>Data carried by user-defined events. For example, the submission event of the form component carries user input, and the error event of the media carries error information. For details, see the definition of each event in the component definition.</p>
+<p>x and y in <code>detail </code> of the click event are the same as pageX and pageY indicate the distance from the upper left corner of the document.</p>
+<h4 id="sjs-response-event"><a onclick="_mdLinkClick(this.href)" href="#/framework/sjs-event">SJS response event</a></h4>

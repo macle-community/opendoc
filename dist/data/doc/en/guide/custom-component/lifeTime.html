@@ -1,0 +1,55 @@
+<h1 id="component-lifecycles">Component Lifecycles</h1>
+<p>Component lifecycles refer to the functions in a component. These functions are automatically triggered at certain time points or when certain framework events occur.</p>
+<p>The most important lifecycles are created, attached, and detached, which contain the main time points in the entire lifecycle process of a component instance.</p>
+<ul>
+<li>After the component is initialized and enters the page node tree, the attached lifecycle is triggered. At this point, this.data is initialized as the current value of the component. This lifecycle is useful, where most initialization work can be completed.</li>
+<li>After the component leaves the page node tree, the detached lifecycle is triggered. When you exit a page, if the component is still in the page node tree, detached is triggered.</li>
+</ul>
+<h2 id="defining-lifecycle-methods">Defining Lifecycle Methods</h2>
+<p>Lifecycle methods can be directly defined in level-1 parameters of the Component constructor.</p>
+<p><strong>Sample Code</strong></p>
+<pre><code>Component({
+    attached: function() {
+      // Executed when the component<span class="hljs-built_in"> instance </span>enters the page node tree.
+    },
+    detached: function() {
+      // Executed when the component<span class="hljs-built_in"> instance </span>is removed from the page node tree.
+    }
+})
+</code></pre>
+<p>You can also write lifecycle methods in behaviors, which will not be overwritten by lifecycles of the same name in other behaviors. Note that if a component directly or indirectly references the same behavior multiple times, the lifecycle function in this behavior is executed only once in an execution time.</p>
+<p>The following table lists all lifecycles available.</p>
+<table>
+<thead>
+<tr>
+<th>Lifecycle</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>created</td>
+<td>None</td>
+<td>Executed when the component instance is created.</td>
+</tr>
+<tr>
+<td>attached</td>
+<td>None</td>
+<td>Executed when the component instance enters the page node tree.</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>None</td>
+<td>Executed when the component layout at the view layer is completed.</td>
+</tr>
+<tr>
+<td>moved</td>
+<td>None</td>
+<td>Executed when the component instance is moved to another node in the node tree.</td>
+</tr>
+<tr>
+<td>detached</td>
+<td>None</td>
+<td>Executed when the component instance is removed from the page node tree.</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,80 @@
+<h2 id="macompressimageobject-object">ma.compressImage(Object object)</h2>
+<blockquote>
+<p>Compress images. The compression quality is optional.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Image path, which can be a local path or code package path. (The simulator supports only a code package path.The code package path is case sensitive.)</td>
+</tr>
+<tr>
+<td align="left">quality</td>
+<td align="left">Number</td>
+<td align="left">80</td>
+<td align="left">No</td>
+<td align="left">Compression quality. The value ranges from 0 to 100. A smaller value indicates lower quality and higher compression rate (valid only for JPG files).</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h6 id="parameter-1">Parameter</h6>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">compressImage:ok</td>
+</tr>
+<tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">Temporary path for storing compressed images (local path).</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.compressImage({
+  src: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-regexp">//</span> Image path.
+  quality: <span class="hljs-number">80</span> <span class="hljs-regexp">//</span> Compression quality.
+});
+</code></pre>

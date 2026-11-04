@@ -1,0 +1,175 @@
+<h2 id="slider">Slider</h2>
+<blockquote>
+<p>Sliding input bar for selecting a value within a given range (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html">
+&lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> bind:<span class="hljs-attribute">change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> /&gt;
+</code></pre>
+<pre><code class="language-js">Page({
+    onChange(<span class="hljs-name">event</span>) {
+        ma.showToast({
+            icon: &#x27;none&#x27;,
+            title: &#x27;Current Progress:&#x27;+event.detail,
+        })<span class="hljs-comment">;</span>
+    },
+})<span class="hljs-comment">;</span>
+</code></pre>
+<h4 id="specify-selection-range">Specify Selection Range</h4>
+<pre><code class="language-html">
+&lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-attribute">min</span>=<span class="hljs-string">&#x27;-50&#x27;</span> <span class="hljs-attribute">max</span>=<span class="hljs-string">&#x27;50&#x27;</span>&gt;&lt;/maui-slider&gt;
+</code></pre>
+<h4 id="disable">Disable</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">disabled</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-slider</span>&gt;</span>
+</code></pre>
+<h4 id="specify-step-size">Specify Step Size</h4>
+<pre><code class="language-html">
+&lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attribute">step</span>=<span class="hljs-string">&#x27;10&#x27;</span>&gt;&lt;/maui-slider&gt;
+</code></pre>
+<h4 id="custom-color">Custom Color</h4>
+<pre><code class="language-html">
+&lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attribute">activeColor</span>=<span class="hljs-string">&#x27;red&#x27;</span>&gt;&lt;/maui-slider&gt;
+</code></pre>
+<h4 id="custom-button">Custom Button</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">useButtonSlot</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>testButton<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-slider</span>&gt;</span>
+</code></pre>
+<h4 id="binding-events">Binding Events</h4>
+<pre><code class="language-html">
+&lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> bind:<span class="hljs-attribute">dragStart</span>=<span class="hljs-string">&#x27;testDragStart&#x27;</span> bind:<span class="hljs-attribute">dragEnd</span>=<span class="hljs-string">&#x27;testDragEnd&#x27;</span>&gt;&lt;/maui-slider&gt;
+</code></pre>
+<pre><code class="language-js"><span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {}<span class="hljs-string">,</span>
+  <span class="hljs-string">testDragEnd(e)</span> {
+    <span class="hljs-string">ma.showToast(</span>{
+      <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;End dragging&#x27;</span>,
+      <span class="hljs-attr">duration:</span> <span class="hljs-number">2000</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">testDrag(e)</span> {
+    <span class="hljs-string">ma.showToast(</span>{
+      <span class="hljs-attr">title:</span> <span class="hljs-string">e.detail.value</span>,
+      <span class="hljs-attr">duration:</span> <span class="hljs-number">2000</span>,
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">testDragStart(e)</span> {
+    <span class="hljs-string">ma.showToast(</span>{
+      <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;Start dragging&#x27;</span>,
+      <span class="hljs-attr">duration:</span> <span class="hljs-number">2000</span>,
+    }<span class="hljs-string">);</span>
+  }
+<span class="hljs-string">});</span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">Current progress percentage</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether to disable the slider</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">Maximum value</td>
+<td align="left">Number</td>
+<td align="left"><code>100</code></td>
+</tr>
+<tr>
+<td align="left">min</td>
+<td align="left">Minimum value</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code></td>
+</tr>
+<tr>
+<td align="left">step</td>
+<td align="left">step length</td>
+<td align="left">Number</td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr>
+<td align="left">bar-height</td>
+<td align="left">Progress bar height, default unit is <code>px</code></td>
+<td align="left">String</td>
+<td align="left"><code>2px</code></td>
+</tr>
+<tr>
+<td align="left">active-color</td>
+<td align="left">Progress bar activation color</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">inactive-color</td>
+<td align="left">Progress bar default color</td>
+<td align="left">String</td>
+<td align="left"><code>#e5e5e5</code></td>
+</tr>
+<tr>
+<td align="left">use-button-slot</td>
+<td align="left">Whether to use button slots</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event Name</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:drag</td>
+<td align="left">Triggered when dragging the progress bar</td>
+<td align="left">event.detail.value: current progress</td>
+</tr>
+<tr>
+<td align="left">bind:change</td>
+<td align="left">Triggered after the progress value changes</td>
+<td align="left">event.detail: current progress</td>
+</tr>
+<tr>
+<td align="left">bind:dragStart</td>
+<td align="left">Triggered when dragging starts</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:dragEnd</td>
+<td align="left">Triggered when dragging ends</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="slot">Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom slider button</td>
+</tr>
+</tbody></table>

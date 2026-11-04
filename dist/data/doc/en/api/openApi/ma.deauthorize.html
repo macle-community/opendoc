@@ -1,0 +1,80 @@
+<h2 id="madeauthorizeobject-object">ma.deauthorize(Object object)</h2>
+<blockquote>
+<p>Cancel all authorization information of the current miniprogram <strong>(minimum version: 24.9.0)</strong></p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface is successfully invoked.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for interface invoking failure.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function when the interface invoking is complete (regardless of whether the invoking is successful)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>deauthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + error cause (empty if no value is returned)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">   deauthorize () {
+    ma.deauthorize({
+        <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`All authorizations canceled successfully`</span>);
+        },
+        <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+            <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Failed to cancel all authorizations`</span>);
+        }
+    });
+}
+</code></pre>

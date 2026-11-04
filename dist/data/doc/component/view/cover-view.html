@@ -1,0 +1,25 @@
+<h2 id="cover-view">cover-view</h2>
+<blockquote>
+<p>覆盖在原生组件之上的文本视图。</p>
+</blockquote>
+<p>若原生组件均已支持同层渲染，建议使用 <a onclick="_mdLinkClick(this.href)" href="#/component/view">view</a>
+替代。可覆盖的原生组件包括<a onclick="_mdLinkClick(this.href)" href="#/component/video">video</a>、<a onclick="_mdLinkClick(this.href)" href="#/component/camera">camera</a>。</p>
+<p>只支持嵌套 cover-view。</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+&lt;camera device-position=<span class="hljs-symbol">&#x27;back</span>&#x27; flash=<span class="hljs-symbol">&#x27;off</span>&#x27; style=<span class="hljs-symbol">&#x27;width</span>: <span class="hljs-number">100</span>%; height: <span class="hljs-number">360</span>px;&#x27;&gt;
+  &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;cover</span>-<span class="hljs-keyword">view</span>&#x27;&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> red&#x27;&gt;red&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> green&#x27;&gt;green&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+    &lt;<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> class=<span class="hljs-symbol">&#x27;c</span>-<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span> yellow&#x27;&gt;yellow&lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+  &lt;/<span class="hljs-keyword">cover</span>-<span class="hljs-keyword">view</span>&gt;
+&lt;/camera&gt;
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>事件模型遵循冒泡模型，但不会冒泡到原生组件。</li>
+<li>文本建议都套上 cover-view 标签，避免排版错误。</li>
+<li>只支持基本的定位、布局、文本样式。不支持设置<code>单边的border</code>、<code>background-image</code>、<code>shadow</code>、<code>overflow: visible</code>等。</li>
+<li>建议子节点不要溢出父节点`。</li>
+<li>默认设置的样式有：<code>white-space: nowrap;line-height: 1.2;display: block</code>。</li>
+</ol>

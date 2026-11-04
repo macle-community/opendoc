@@ -1,0 +1,430 @@
+<h2 id="全局配置">全局配置</h2>
+<blockquote>
+<p>小程序根目录下的 app.json 文件用来对小程序进行全局配置。文件内容为一个 JSON 对象，有以下属性：</p>
+</blockquote>
+<h3 id="配置项">配置项</h3>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">当前支持小程序类型</th>
+<th align="left">必填</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">entryPagePath</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">如果不填，将默认为 pages 列表的第一项</td>
+<td align="left">小程序默认启动首页，<strong>在H5小程序中为必填项</strong></td>
+</tr>
+<tr>
+<td align="left">embeddingType</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left"></td>
+<td align="left">小程序嵌入类型，DSL小程序套壳值是DSLEmbed，H5是H5Embed（最低版本24.12.0）</td>
+</tr>
+<tr>
+<td align="left">videoAutoPlay</td>
+<td align="left">Boolean</td>
+<td align="left">H5</td>
+<td align="left">否</td>
+<td align="left">false</td>
+<td align="left">是否自动播放，默认值为<code>false</code>（当前仅支持H5，最低版本24.9.0）</td>
+</tr>
+<tr>
+<td align="left">pages</td>
+<td align="left">Array</td>
+<td align="left">DSL/H5</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left">页面路径列表</td>
+</tr>
+<tr>
+<td align="left">window</td>
+<td align="left">Object</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">具体见下方描述</td>
+<td align="left">全局的默认窗口表现</td>
+</tr>
+<tr>
+<td align="left">tabBar</td>
+<td align="left">Object</td>
+<td align="left">DSL</td>
+<td align="left">否</td>
+<td align="left">具体见下方描述</td>
+<td align="left">底部 tab 栏的表现</td>
+</tr>
+<tr>
+<td align="left">subPackages</td>
+<td align="left">Array</td>
+<td align="left">DSL</td>
+<td align="left">否</td>
+<td align="left">具体见下方描述</td>
+<td align="left">分包结构配置</td>
+</tr>
+<tr>
+<td align="left">usingComponents</td>
+<td align="left">Object</td>
+<td align="left">DSL</td>
+<td align="left">否</td>
+<td align="left">具体见下方描述</td>
+<td align="left">全局自定义组件配置，如有分包，引用的内容需要在主包内</td>
+</tr>
+<tr>
+<td align="left">restartStrategy</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">homePage</td>
+<td align="left">重新启动策略</td>
+</tr>
+<tr>
+<td align="left">ignoreSafeArea</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">false</td>
+<td align="left">是否忽略小程序的安全区域，默认值为<code>false</code>（当前仅支持IOS）</td>
+</tr>
+<tr>
+<td align="left">capsuleShow</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">true</td>
+<td align="left">是否显示胶囊，默认值为<code>true</code>（最低版本24.12.0）</td>
+</tr>
+<tr>
+<td align="left">exitMode</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">exitMiniProgram</td>
+<td align="left">小程序退出配置策略，默认值是<code>exitMiniProgram</code>（最低版本24.12.0）</td>
+</tr>
+<tr>
+<td align="left">hideStatusBar</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">false</td>
+<td align="left">全屏时是否隐藏顶部状态栏，默认值为<code>false</code>（最低版本25.6.0）</td>
+</tr>
+<tr>
+<td align="left">enablePerformance</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">否</td>
+<td align="left">false</td>
+<td align="left">是否显示性能面板，默认值为<code>false</code>（最低版本25.6.0）</td>
+</tr>
+</tbody></table>
+<h4 id="enableperformance（最低版本：-2560）">enablePerformance（最低版本： 25.6.0）</h4>
+<p>小程序级别开关配置，&quot;enablePerformance&quot;配置为true时显示性能面板。</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;enablePerformance&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span> 
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="hidestatusbar（最低版本：-2560）">hideStatusBar（最低版本： 25.6.0）</h4>
+<p>小程序级别开关配置，小程序全屏且&quot;hideStatusBar&quot;配置为true时隐藏顶部状态栏。</p>
+<blockquote>
+<p>注：</p>
+</blockquote>
+<ol>
+<li>导航栏设置为custom时, 状态栏隐藏配置才生效</li>
+<li>IOS刘海屏或者home键展示需由小程序开发者适配</li>
+<li>状态栏隐藏仅针对小程序页面，由SDK提供的胶囊菜单项，如设置页面、小程序详情页面不隐藏状态栏</li>
+</ol>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;hideStatusBar&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span> 
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="exitmode">exitMode</h4>
+<p>小程序退出配置策略，有效值范围<code>backGroundRunningMiniProgram</code>和<code>exitMiniProgram</code></p>
+<h4 id="entrypagepath">entryPagePath</h4>
+<p>指定小程序的默认启动路径（首页），在DSL小程序中，如果不填，将默认为 pages 列表的第一项。在H5小程序中为必填项</p>
+<blockquote>
+<p>注：不支持带页面路径参数。</p>
+</blockquote>
+<pre><code class="language-json">   <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index.html&quot;</span>
+   <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;entryPagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.html&quot;</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;videoAutoPlay&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+</code></pre>
+<h4 id="pages">pages</h4>
+<p>用于指定小程序由哪些页面组成，每一项都对应一个页面的 路径（含文件名） 信息。文件名不需要写文件后缀，框架会自动去寻找对应位置的
+.json, .js, .maml, .mass 四个文件进行处理。<br><strong>小程序中新增/减少页面，都需要对 pages 数组进行修改。</strong><br>如开发目录为：</p>
+<pre><code>├── app<span class="hljs-selector-class">.js</span>
+├── app<span class="hljs-selector-class">.json</span>
+├── app<span class="hljs-selector-class">.mass</span>
+├── pages
+│   │── index
+│   │   ├── index<span class="hljs-selector-class">.maml</span>
+│   │   ├── index<span class="hljs-selector-class">.js</span>
+│   │   ├── index<span class="hljs-selector-class">.json</span>
+│   │   └── index<span class="hljs-selector-class">.mass</span>
+│   └── logs
+│       ├── logs<span class="hljs-selector-class">.maml</span>
+│       └── logs<span class="hljs-selector-class">.js</span>
+└── utils
+</code></pre>
+<p>则需要在 app.json 中写</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [
+    <span class="hljs-string">&quot;pages/index/index&quot;</span>,
+    <span class="hljs-string">&quot;pages/logs/logs&quot;</span>
+  ]
+}
+</code></pre>
+<h4 id="window">window</h4>
+<p>用于设置小程序的状态栏、导航条、标题背景色。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">navigationBarBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#000000</td>
+<td align="left">导航栏背景颜色，如 #000000</td>
+</tr>
+<tr>
+<td align="left">navigationBarTextStyle</td>
+<td align="left">String</td>
+<td align="left">white</td>
+<td align="left">导航栏标题颜色，仅支持 black / white</td>
+</tr>
+<tr>
+<td align="left">navigationBarTitleText</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">导航栏标题文字内容</td>
+</tr>
+<tr>
+<td align="left">navigationStyle</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">导航栏样式，支持以下值：<code>default</code>、<code>left</code>、<code>center</code>、<code>custom</code>；custom 自定义导航栏，只保留右上角胶囊按钮。配置left时，小程序显示标题栏，且标题居左显示；配置center时，小程序显示标题栏，且标题居中显示，default选项，ios上显示标题栏，标题居中显示，android上显示标题栏，标题居左显示（**25.12.0变更，新增<code>left</code>、<code>center</code>**）</td>
+</tr>
+<tr>
+<td align="left">showHomeButton</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">是否展示 Home 图标</td>
+</tr>
+<tr>
+<td align="left">enablePullDownRefresh</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否开启全局的下拉刷新。</td>
+</tr>
+<tr>
+<td align="left">onReachBottomDistance</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">页面上拉触底事件触发时距页面底部距离，单位为px。</td>
+</tr>
+<tr>
+<td align="left">backgroundTextStyle</td>
+<td align="left">String</td>
+<td align="left">light</td>
+<td align="left">下拉背景字体样式,合法值有<code>light</code>、<code>dark</code>（当前仅支持IOS）</td>
+</tr>
+<tr>
+<td align="left">capsuleTheme</td>
+<td align="left">String</td>
+<td align="left">light</td>
+<td align="left">胶囊样式,合法值有<code>light</code>、<code>dark</code></td>
+</tr>
+<tr>
+<td align="left">disableScreenRecord</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否禁止录屏（仅对H5小程序生效），安卓可以禁止截屏</td>
+</tr>
+<tr>
+<td align="left">allowsInlineMediaPlayback</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">IOS上全屏播放字段，默认不全屏，配置为false自动全屏播放，仅H5生效（<strong>25.9.0变更，默认值由false变更为true</strong>）</td>
+</tr>
+<tr>
+<td align="left">pageOrientation</td>
+<td align="left">String</td>
+<td align="left">landscape</td>
+<td align="left">支持套壳横屏小游戏，默认值是<code>landscape</code>，默认都是竖屏，只有配置为landscape时，才会是横屏显示（最低版本25.3.0）</td>
+</tr>
+<tr>
+<td align="left">safeAreaBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#ffffff</td>
+<td align="left">底部安全区域背景颜色，如#ffffff（最低版本26.3.0，仅支持ios）</td>
+</tr>
+<tr>
+<td align="left">allowGestueNavigate</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">小程序是否允许通过手势左右滑动进入上一个页面或者下一个页面, 默认允许，可以配置为false，全局不允许（最低版本26.3.0，仅支持ios）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注 1：HexColor（十六进制颜色值），如&quot;#ff00ff&quot;</p>
+</blockquote>
+<p><strong>注意：</strong></p>
+<p> 1.navigationStyle设置成custom时，设置的标题navigationBarTitleText和showHomeButton都不生效。
+ 2.navigationStyle设置成default时，navigationBarTitleText生效，showHomeButton也生效：设置成true的时候显示小房子图标，设置成false的时候显示返回箭头（←）
+ 3.默认行为：showHomeButton控制的返回按钮/首页图标，不会在初始页面显示，只有发生页面跳转（进入二级页面）后才会在导航栏显示。</p>
+<h5 id="pageorientation（最低版本：-2530）">pageOrientation（最低版本： 25.3.0）</h5>
+<p>在手机上启用屏幕旋转支持，仅针对套壳小程序生效全局配置新增：
+<code>&quot;pageOrientation&quot;：landscape</code>如果配置为<code>landscape</code>小程序横屏，否则仍按竖屏展示。如果有<code>pageOrientation</code>配置则强制横屏。</p>
+<h6 id="示例代码">示例代码</h6>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index/index&quot;</span>],
+  <span class="hljs-string">&quot;window&quot;</span>: {
+    <span class="hljs-string">&quot;pageOrientation&quot;</span>: <span class="hljs-string">&quot;landscape&quot;</span>
+  }
+}
+</code></pre>
+<h4 id="tabbar">tabBar</h4>
+<p>如果小程序是一个多 tab 应用（客户端窗口的底部或顶部有 tab 栏可以切换页面），可以通过 tabBar 配置项指定 tab 栏的表现，以及
+tab 切换时显示的对应页面。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">color</td>
+<td align="left">HexColor</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left">tab 上的文字默认颜色，仅支持十六进制颜色</td>
+</tr>
+<tr>
+<td align="left">selectedColor</td>
+<td align="left">HexColor</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left">tab 上的文字选中时的颜色，仅支持十六进制颜色</td>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">Array</td>
+<td align="left">是</td>
+<td align="left"></td>
+<td align="left">tab 的列表，详见 list 属性说明，最少 2 个、最多 5 个 tab</td>
+</tr>
+</tbody></table>
+<p>其中 list 接受一个数组，只能配置最少 2 个、最多 5 个 tab。tab 按数组的顺序排序，每个项都是一个对象，其属性值如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pagePath</td>
+<td align="left">String</td>
+<td align="left">是</td>
+<td align="left">页面路径，必须在 pages 中先定义</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left">是</td>
+<td align="left">tab 上按钮文字</td>
+</tr>
+<tr>
+<td align="left">iconPath</td>
+<td align="left">String</td>
+<td align="left">否</td>
+<td align="left">图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片。</td>
+</tr>
+<tr>
+<td align="left">selectedIconPath</td>
+<td align="left">String</td>
+<td align="left">否</td>
+<td align="left">选中时的图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片。</td>
+</tr>
+</tbody></table>
+<h4 id="subpackages">subpackages</h4>
+<p>启用 <a onclick="_mdLinkClick(this.href)" href="#/guide/subPackages">分包加载</a> 时，声明项目分包结构。</p>
+<h4 id="usingcomponents">usingComponents</h4>
+<p>在 app.json 中声明的自定义组件视为全局自定义组件，在小程序内的页面或自定义组件中可以直接使用而无需再声明。</p>
+<p>**注意：全局声明的自定义组件会视为被所有页面依赖，会在所有页面启动时进行初始化，且会占用主包大小。只被个别页面或分包引用的自定义组件应尽量在页面配置中声明。
+**</p>
+<h4 id="小程序冷启动的页面（最低版本：2490）">小程序冷启动的页面（最低版本：24.9.0）</h4>
+<p>小程序冷启动时，打开的页面有以下情况：</p>
+<p>（A 类场景）若启动的场景中不带 path</p>
+<p>（B 类场景）若启动的场景中带有 path，则启动进入对应 path 的页面</p>
+<h5 id="重新启动策略">重新启动策略</h5>
+<p>小程序冷启动时，如果启动时不带 path（A 类场景），默认情况下将会进入小程序的首页。 在页面对应的 json 文件中（也可以全局配置在
+app.json 的 window 段中），指定 <code>restartStrategy</code> 配置项可以改变这个默认的行为，使得从某个页面退出后，下次 A
+类场景的冷启动可以回到这个页面。</p>
+<h6 id="示例代码-1">示例代码</h6>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;restartStrategy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;homePage&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>restartStrategy可选值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>homePage</td>
+<td>（默认值）如果从这个页面退出小程序，下次将从首页冷启动</td>
+</tr>
+<tr>
+<td>homePageAndLatestPage</td>
+<td>如果从这个页面退出小程序，下次冷启动后立刻加载这个页面，页面的参数保持不变（不可用于 tab 页）</td>
+</tr>
+</tbody></table>
+<p>注意：即使不配置为 <code>homePage</code> ，小程序如果退出过久（当前默认一天时间），下次冷启动时也将不再遵循 <code>restartStrategy</code>
+的配置，而是直接从首页冷启动。</p>
+<p>无论如何，页面中的状态并不会被保留，如输入框中的文本内容、 checkbox 的勾选状态等都不会还原。</p>
+<h4 id="ignoresafearea（最低版本：2430）">ignoreSafeArea（最低版本：24.3.0）</h4>
+<p>原始的小程序场景下，小程序的webview组件不会占用底部的安全区域，此时页面底部横条背景为系统颜色。</p>
+<p>启用该配置项后，小程序的webview将忽略底部的安全区域限制，底部横条将变为透明背景</p>
+<h5 id="tips">Tips</h5>
+<ol>
+<li><p>当前配置项仅在IOS机型生效，非必填项，默认值为<code>false</code></p>
+</li>
+<li><p>该配置项遵循 <code>粒度越小，优先级越高</code>原则，最低支持到<code>小程序全局配置</code>粒度，优先级为</p>
+<p>小程序全局配置 &gt; 宿主APP配置</p>
+</li>
+</ol>
+<h3 id="常见问题">常见问题</h3>
+<ol>
+<li><p><strong>Q:</strong><code>position: fixed</code>的可交互组件，在iphone X及之后的型号的安全区域外渲染时，容易误触 <code>Home Indicator</code>,导致误操作，如何解决？</p>
+<p><strong>A:</strong> 针对此类场景，可以尝试在mass中设置安全区域与边界的距离防止误触，具体可参考下列示例代码</p>
+</li>
+</ol>
+<pre><code><span class="hljs-attribute">padding-bottom</span>: <span class="hljs-built_in">constant</span>(safe-area-inset-bottom); <span class="hljs-comment">/* IOS &lt; 11.2 */</span>
+<span class="hljs-attribute">padding-bottom</span>: <span class="hljs-built_in">env</span>(safe-area-inset-bottom);      <span class="hljs-comment">/* IOS &gt;= 11.2 */</span>
+</code></pre>

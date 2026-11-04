@@ -1,0 +1,110 @@
+<h2 id="picker-view">picker-view</h2>
+<blockquote>
+<p>嵌入页面的滚动选择器。其中只可放置 picker-view-column 组件，其它节点不会显示。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">Array.&lt;number&gt;</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">数组中的数字依次表示 picker-view 内的 picker-view-column 选择的第几项（下标从 0 开始），数字大于 picker-view-column 可选项长度时，选择最后一项。</td>
+</tr>
+<tr>
+<td align="left">indicator-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置选择器中间选中框的样式</td>
+</tr>
+<tr>
+<td align="left">indicator-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置选择器中间选中框的类名</td>
+</tr>
+<tr>
+<td align="left">mask-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置蒙层的样式</td>
+</tr>
+<tr>
+<td align="left">mask-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">设置蒙层的类名</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">滚动选择时触发 change 事件，event.detail = {value}；value 为数组，表示 picker-view 内的 picker-view-column 当前选择的是第几项（下标从 0 开始）</td>
+</tr>
+<tr>
+<td align="left">bindpickstart</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当滚动选择开始时候触发事件</td>
+</tr>
+<tr>
+<td align="left">bindpickend</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当滚动选择结束时候触发事件</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>嵌入页面的滚动选择器<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">picker-view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 500px;width: 100%;text-align:center;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2013<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2014<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2015<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2016<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2017<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2018<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2020<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q1<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q2<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q3<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q4<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js">
+Page({
+  <span class="hljs-attribute">data</span>: {},
+  onChange(e) {
+    console<span class="hljs-variable">.log</span>(e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>);
+    <span class="hljs-attribute">this.setData({
+      value</span>: e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>,
+    });
+  },
+});
+</code></pre>

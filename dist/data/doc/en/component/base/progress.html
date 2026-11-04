@@ -1,0 +1,98 @@
+<h2 id="progress">progress</h2>
+<blockquote>
+<p>Progress bar.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">percent</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Percentage. The value ranges from 0 to 100.</td>
+</tr>
+<tr>
+<td align="left">show-info</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to display percentages on the right of the progress bar.</td>
+</tr>
+<tr>
+<td align="left">border-radius</td>
+<td align="left">Number/String</td>
+<td align="left">0</td>
+<td align="left">No</td>
+<td align="left">Fillet size.</td>
+</tr>
+<tr>
+<td align="left">font-size</td>
+<td align="left">Number/String</td>
+<td align="left">16</td>
+<td align="left">No</td>
+<td align="left">Percentage font size on the right.</td>
+</tr>
+<tr>
+<td align="left">stroke-width</td>
+<td align="left">Number/String</td>
+<td align="left">6</td>
+<td align="left">No</td>
+<td align="left">Width of the progress bar.</td>
+</tr>
+<tr>
+<td align="left">activeColor</td>
+<td align="left">String</td>
+<td align="left">#09BB07</td>
+<td align="left">No</td>
+<td align="left">Color of the selected progress bar.</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left">#EBEBEB</td>
+<td align="left">No</td>
+<td align="left">Color of the unselected progress bar.</td>
+</tr>
+<tr>
+<td align="left">active</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Animation of the progress bar from left to right.</td>
+</tr>
+<tr>
+<td align="left">active-mode</td>
+<td align="left">String</td>
+<td align="left">backwards</td>
+<td align="left">No</td>
+<td align="left"><strong>backwards</strong>: The animation is played from the beginning.<strong>forwards</strong>: The animation is played from the last end point.</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">30</td>
+<td align="left">No</td>
+<td align="left">Time required for a 1% increase in progress, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">bindactiveend</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Animation completion event.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;</span>progress fontSize<span class="hljs-operator">=</span><span class="hljs-string">&#x27;20&#x27;</span> <span class="hljs-keyword">percent</span><span class="hljs-operator">=</span><span class="hljs-string">&#x27;20&#x27;</span> <span class="hljs-keyword">show</span><span class="hljs-operator">-</span>info strokeWidth<span class="hljs-operator">=</span><span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+</code></pre>

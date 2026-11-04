@@ -1,0 +1,85 @@
+<h2 id="magetsavedfileinfoobject-object">ma.getSavedFileInfo(Object object)</h2>
+<blockquote>
+<p>Obtain the local file information. This API can only be used to obtain files that have been saved to the local PC. To obtain information about temporary files, use the ma.getFileInfo() API.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Local file path.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getSavedFileInfo: ok</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Number</td>
+<td align="left">File size, in byte.</td>
+</tr>
+<tr>
+<td align="left">createTime</td>
+<td align="left">Number</td>
+<td align="left">Timestamp when a file is saved, which is the number of seconds from 1970/01/01 08:00:00 to the time when the file is saved.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getSavedFileInfo({
+  <span class="hljs-attr">filePath</span>: <span class="hljs-string">&#x27;filePath&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.size);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.createTime);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Support calling through <code>FileSystemManager</code></li>
+</ol>

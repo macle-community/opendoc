@@ -1,0 +1,64 @@
+<h2 id="magetupdatemanager">ma.getUpdateManager()</h2>
+<blockquote>
+<p>The globally unique version UpdateManager is obtained for managing Mini Program updates. For details about the Mini Program update mechanism, see the operation mechanism documentation.</p>
+</blockquote>
+<h3 id="return-value">Return Value</h3>
+<h4 id="updatemanager">UpdateManager</h4>
+<p>Manage updates. The instance can be obtained through the ma.getUpdateManager API.</p>
+<h3 id="method">Method</h3>
+<h3 id="updatemanagerapplyupdate">UpdateManager.applyUpdate()</h3>
+<p>Forcibly restart a Mini Program and uses the new version. This API is called after the new Mini Program version is downloaded (that is, the onUpdateReady callback is received).</p>
+<h3 id="updatemanageroncheckforupdatefunction-callback">UpdateManager.onCheckForUpdate(function callback)</h3>
+<p>Listen for the event of requesting the Macle backend to check the update result. Macle automatically checks for updates during the cold startup of Macle, which does not need to be triggered by developers.</p>
+<h4 id="parameter">Parameter</h4>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function for requesting the Macle backend to check the update result.</p>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hasUpdate</td>
+<td align="left">Boolean</td>
+<td align="left">Whether a new version is available.</td>
+</tr>
+</tbody></table>
+<h3 id="updatemanageronupdatefailedfunction-callback">UpdateManager.onUpdateFailed(function callback)</h3>
+<p>Listen for Mini Program update failure events. When a new Mini Program version is available, the client automatically triggers the download (without the need to be triggered by the developer). If the download fails (possibly due to a network error), the callback function is called.</p>
+<h4 id="parameter-2">Parameter</h4>
+<h4 id="function-callback-1">function callback</h4>
+<p>Callback function for reporting Mini Program update failure events.</p>
+<h3 id="updatemanageronupdatereadyfunction-callback">UpdateManager.onUpdateReady(function callback)</h3>
+<p>Listen for Mini Program version update events. The client proactively triggers the download (without the need to be triggered by the developer). After the download is successful, the callback function is called.</p>
+<h4 id="parameter-3">Parameter</h4>
+<h4 id="function-callback-2">function callback</h4>
+<p>Callback function for reporting Mini Program version update events.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const updateManager = <span class="hljs-keyword">ma</span>.getUpdateManager()
+
+updateManager.onCheckForUpdate(<span class="hljs-keyword">function</span> (<span class="hljs-keyword">res</span>) {
+  console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>.hasUpdate)
+})
+
+updateManager.onUpdateReady(<span class="hljs-keyword">function</span> () {
+  <span class="hljs-keyword">ma</span>.showModal({
+    title: <span class="hljs-string">&#x27;Update Tips&#x27;</span>,
+    content: <span class="hljs-string">&#x27;content&#x27;</span>,
+    success: <span class="hljs-keyword">function</span> (<span class="hljs-keyword">res</span>) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">res</span>.<span class="hljs-keyword">confirm</span>) {
+        updateManager.applyUpdate()
+      }
+    }
+  })
+})
+
+updateManager.onUpdateFailed(<span class="hljs-keyword">function</span> () {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;updateFailed&#x27;</span>)
+})
+</code></pre>

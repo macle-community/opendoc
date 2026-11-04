@@ -1,0 +1,96 @@
+<h2 id="page-configuration">Page Configuration</h2>
+<p>Each Mini Program page can also use the .json file to configure the window appearance of the page. The configuration items on the current page will overwrite the same configuration items in the app.json window. The file content is a JSON object with the following attributes:</p>
+<h3 id="configuration-item">Configuration Item</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">navigationBarBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#000000</td>
+<td align="left">Background color of the navigation bar, for example, <strong>#000000</strong>.</td>
+</tr>
+<tr>
+<td align="left">navigationBarTextStyle</td>
+<td align="left">String</td>
+<td align="left">white</td>
+<td align="left">Title color of the navigation bar. The options are <strong>black</strong> and <strong>white</strong>.</td>
+</tr>
+<tr>
+<td align="left">navigationBarTitleText</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Title text of the navigation bar.</td>
+</tr>
+<tr>
+<td align="left">navigationStyle</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">Navigation bar style supports the following values: <strong>default</strong>, <strong>left</strong>, <strong>center</strong>,<strong>custom</strong>. For the custom navigation bar, only the capsule button at the top right corner is retained.When set to &quot;left&quot;, the mini-program displays the title bar with the title aligned to the left.When set to &quot;center&quot;, the mini-program displays the title bar with the title centered.For the &quot;default&quot; option, the title bar is displayed on both iOS and Android: the title is centered on iOS and aligned to the left on Android.（**25.12.0 change，add<code>left</code>、<code>center</code>**）</td>
+</tr>
+<tr>
+<td align="left">showHomeButton</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">Whether to display the Home icon</td>
+</tr>
+<tr>
+<td align="left">enablePullDownRefresh</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">Whether to enable pull-to-refresh on the current page.</td>
+</tr>
+<tr>
+<td align="left">usingComponents</td>
+<td align="left">Object</td>
+<td align="left">No</td>
+<td align="left">Page custom component configuration.</td>
+</tr>
+<tr>
+<td align="left">onReachBottomDistance</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">Distance from the bottom of the page when the pull-up event is triggered. The unit is pixel.</td>
+</tr>
+<tr>
+<td align="left">safeAreaBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#ffffff</td>
+<td align="left">Background color of the safe area, for example, <strong>#ffffff</strong> (the minimum version is 26.3.0, only supports IOS).</td>
+</tr>
+<tr>
+<td align="left">allowGestueNavigate</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">Allows users to swipe navigate to the previous or next page through gesture. This is enabled by default, but you can set it to false to disable this function globally(the minimum version is 26.3.0, only supports IOS).</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>In page configuration, the <strong>window</strong> configuration items are set in the <strong>app.json</strong> file to determine the window display of the page.</p>
+</blockquote>
+<h3 id="tips：">Tips：</h3>
+<ol>
+<li>Global configuration items apply to all pages of the Mini Program. Page configuration only applies to the page corresponding to the page configuration. Page configuration items have a higher priority than global configuration.</li>
+<li><code>showHomeButton</code> is optional. When the Mini Program is not configured, the configuration of the host APP shall prevail. If the host APP is not configured, the default <code>showHomeButton</code> is true.</li>
+<li>If the current page is configured with <code>showHomeButton</code> and the current page is opened as the specified page, whether the HomeIcon is displayed in the upper left corner will be affected by the <code>showHomeButton</code> configuration item</li>
+<li>For ios models, when the value of navigationStyle is <code>custom</code>, you can add the following style to the mass file of the corresponding page to ensure that the page is properly filled.<pre><code class="language-css"><span class="hljs-selector-pseudo">:root</span> {
+   <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100vh</span>;
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;navigationBarBackgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#ffffff</span>&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTextStyle&quot;</span>: <span class="hljs-string">&quot;black&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTitleText&quot;</span>: <span class="hljs-string">&quot;Demo Page&quot;</span>,
+  <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#eeeeee</span>&quot;</span>,
+  <span class="hljs-string">&quot;backgroundTextStyle&quot;</span>: <span class="hljs-string">&quot;light&quot;</span>
+}
+</code></pre>

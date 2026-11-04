@@ -1,0 +1,40 @@
+<h2 id="importing-offline-simulator">Importing Offline Simulator</h2>
+<blockquote>
+<p>Quick installation entry of the simulator (minimum version: 23.3.0)</p>
+</blockquote>
+<p>By importing an offline simulator, developers can efficiently install and use the simulator.</p>
+<h3 id="the-import-page-is-displayed">The import page is displayed.</h3>
+<p>Click the <strong>Import Offline Simulator</strong> menu in the Tools directory on the plug-in sidebar.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/simulator/offlineSimulator.png" alt="image" ></p>
+<h3 id="usage-process">Usage Process</h3>
+<ol>
+<li><p>Prepare the simulator package based on the operating system.</p>
+<p>For Windows users, use the <code>Macle_xx.x.x_DevSuite_Simulator_Win.zip</code></p>
+<p>For macOS users, use the <code>Macle_xx.x.x_DevSuite_Simulator_Mac.zip</code></p>
+</li>
+<li><p>Selecting a package directory on the import page</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/simulator/chooseZipDir.PNG" alt="image" ></p>
+</li>
+<li><p>Click <strong>Import</strong> to complete the installation.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/simulator/importSuccess.PNG" alt="image" ></p>
+</li>
+</ol>
+<h3 id="fqs">F&amp;Qs</h3>
+<h4 id="what-do-i-do-if-the-simulator-fails-to-be-installed-on-the-macos-the-macle-simulatorapp-file-cannot-be-opened-and-an-error-message-is-displayed-indicating-that-i-do-not-have-the-operation-permission">What do I do if the simulator fails to be installed on the macOS, the macle-simulator.app file cannot be opened, and an error message is displayed indicating that I do not have the operation permission?</h4>
+<p><strong>A:</strong> When the simulator is installed on the macOS of some versions, an exception occurs and the system displays a message indicating that you do not have the operation permission. In this case, you are advised to perform the following operations to check whether you have the required operation permission on the file:</p>
+<ol>
+<li><p>Open the directory of the file on the terminal.</p>
+</li>
+<li><p>Run the <code>sudo chmod -R 755 macle-simulator.app </code>  command. -R indicates that permission 755 is assigned to all files in the directory.</p>
+</li>
+<li><p>Assign permissions to the executable files of the app.</p>
+<pre><code>1. sudo chmod +x {<span class="hljs-keyword">app</span>.name}.<span class="hljs-keyword">app</span>/Contents/MacOS/{<span class="hljs-keyword">app</span>.name} <span class="hljs-comment">// Replace {app.name} with the actual app name. If the error indicating that the app cannot check whether it contains malware persists when you open the app, right-click the icon to open the app.</span>
+</code></pre>
+</li>
+</ol>
+<p>If you still cannot solve the permission exception problem by performing the preceding operations, you can perform the following operations to clear the extended attributes:</p>
+<ol>
+<li>Open the terminal and go to the simulator file directory.</li>
+<li>Run the<code>xattr -cr macle-simulator.app </code> command to clear all extended attributes.</li>
+<li>Start the simulator again.</li>
+</ol>

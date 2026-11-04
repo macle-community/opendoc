@@ -1,0 +1,128 @@
+<h2 id="image">image</h2>
+<blockquote>
+<p>图片。支持 JPG、PNG、SVG、GIF 等格式</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">图片资源地址，支持网络路径、本地路径（确保路径不超过项目根目录）</td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">String</td>
+<td align="left">scaleToFill</td>
+<td align="left">否</td>
+<td align="left">图片裁剪、缩放的模式</td>
+</tr>
+<tr>
+<td align="left">binderror</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当错误发生时触发，event.detail = {errMsg}</td>
+</tr>
+<tr>
+<td align="left">bindload</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">当图片载入完毕时触发，event.detail = {height, width}</td>
+</tr>
+</tbody></table>
+<h3 id="mode-的合法值">mode 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scaleToFill</td>
+<td align="left">缩放模式，不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素</td>
+</tr>
+<tr>
+<td align="left">aspectFit</td>
+<td align="left">缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。</td>
+</tr>
+<tr>
+<td align="left">aspectFill</td>
+<td align="left">缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。</td>
+</tr>
+<tr>
+<td align="left">widthFix</td>
+<td align="left">缩放模式，宽度不变，高度自动变化，保持原图宽高比不变</td>
+</tr>
+<tr>
+<td align="left">heightFix</td>
+<td align="left">缩放模式，高度不变，宽度自动变化，保持原图宽高比不变</td>
+</tr>
+<tr>
+<td align="left">top</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的顶部区域</td>
+</tr>
+<tr>
+<td align="left">bottom</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的底部区域</td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的中间区域</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的左边区域</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的右边区域</td>
+</tr>
+<tr>
+<td align="left">top left</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的左上边区域</td>
+</tr>
+<tr>
+<td align="left">top right</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的右上边区域</td>
+</tr>
+<tr>
+<td align="left">bottom left</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的左下边区域</td>
+</tr>
+<tr>
+<td align="left">bottom right</td>
+<td align="left">裁剪模式，不缩放图片，只显示图片的右下边区域</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&#x27;scaleToFill&#x27;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindload</span>=<span class="hljs-string">&#x27;bindload&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;/image/example.jpg&#x27;</span>
+  },
+  <span class="hljs-attr">bindload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image load&#x27;</span>);
+  },
+  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image error:&#x27;</span> + e.detail.errMsg);
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>image 组件默认宽度 320px、高度 240px</li>
+</ol>

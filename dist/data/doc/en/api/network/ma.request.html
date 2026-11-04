@@ -1,0 +1,239 @@
+<h2 id="marequestobject-object">ma.request(Object object)</h2>
+<blockquote>
+<p>Initiate an HTTPS network request.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Developer server API address.</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String/Object/ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Request parameter.</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Set the request header. <strong>Referer</strong> cannot be set in the header. The default value of <strong>content-type</strong> is <strong>application/json</strong>.</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">No</td>
+<td align="left">Timeout duration, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">method</td>
+<td align="left">String</td>
+<td align="left">GET</td>
+<td align="left">No</td>
+<td align="left">HTTP request method.</td>
+</tr>
+<tr>
+<td align="left">dataType</td>
+<td align="left">String</td>
+<td align="left">JSON</td>
+<td align="left">No</td>
+<td align="left">Returned data format</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+<tr>
+<td align="left">preload</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">The interface calls the prefetch data callback function (for specific usage, please refer to <a onclick="_mdLinkClick(this.href)" href="#/api/dataPrePull">Data Prefetch</a>)</td>
+</tr>
+</tbody></table>
+<h5 id="valid-values-of-objectmethod">Valid Values of object.method</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">HTTP GET method.</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">HTTP POST method.</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">HTTP PUT method (supported only by iOS).</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">HTTP DELETE method (supported only by iOS).</td>
+</tr>
+</tbody></table>
+<h5 id="valid-values-of-objectdatatype">Valid Values of object.dataType</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JSON</td>
+<td align="left">The returned data is JSON. After returning, JSON.parse will be performed on the returned data.</td>
+</tr>
+<tr>
+<td align="left">Other</td>
+<td align="left">The returned content will not be JSON.parse</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h6 id="parameter-1">Parameter</h6>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left">Data returned by the developer server.</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">HTTP status code returned by the developer server.</td>
+</tr>
+</tbody></table>
+<h5 id="objectpreload-callback-function">object.preload Callback Function</h5>
+<h6 id="参数">参数</h6>
+<h6 id="object-res-1">Object res</h6>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td>Data returned by the developer server</td>
+</tr>
+<tr>
+<td>statusCode</td>
+<td>Number</td>
+<td>Prefetch Data Status Code</td>
+</tr>
+<tr>
+<td>errMsg</td>
+<td>String</td>
+<td>Prefetch success or failure details</td>
+</tr>
+</tbody></table>
+<h5 id="prefetch-data-status-code-comparison-table">Prefetch data status code comparison table</h5>
+<table>
+<thead>
+<tr>
+<th>statusCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Prefetch succeeded.</td>
+</tr>
+<tr>
+<td>0607001</td>
+<td>url is Not exsit</td>
+</tr>
+<tr>
+<td>0607002</td>
+<td>parameter mismatch</td>
+</tr>
+<tr>
+<td>0607003</td>
+<td>request failed: ${errMsg}</td>
+</tr>
+<tr>
+<td>0607004</td>
+<td>fetchData is empty</td>
+</tr>
+<tr>
+<td>0607005</td>
+<td>invalid preload rule</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.request({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example/testUrl&#x27;</span>,
+  <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span>,
+  <span class="hljs-attr">header</span>: {
+    <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+  },
+  <span class="hljs-attr">data</span>: {},
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;request success&#x27;</span>);
+  },
+
+  <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;request fail&#x27;</span>, res.errMsg);
+  },
+  <span class="hljs-attr">preload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data)
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: Currently, the security domain is not verified. You are advised to use HTTPS.</li>
+<li>tip: The HTTPS certificate is not verified. The certificate verification capability needs to be provided in the
+MacleEventHandler interface implementation.</li>
+</ol>

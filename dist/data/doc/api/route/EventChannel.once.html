@@ -1,0 +1,22 @@
+<h2 id="eventchanneloncestring-eventnamefunction-fn">EventChannel.once(string eventName,function fn)</h2>
+<blockquote>
+<p>监听一个事件一次，触发后失效</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-eventname">string eventName</h4>
+<p>事件名称</p>
+<h3 id="function-fn">function fn</h3>
+<p>事件监听函数</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="any-args">any args</h5>
+<p>触发事件参数</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>();
+    eventChannel.<span class="hljs-title function_">once</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+    });
+  }
+});
+</code></pre>

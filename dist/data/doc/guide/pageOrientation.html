@@ -1,0 +1,22 @@
+<h2 id="支持小程序横屏">支持小程序横屏</h2>
+<blockquote>
+<p>本功能针对套壳小程序（最低25.3.0或以上版本）和H5小程序（最低25.6.0或以上版本）生效</p>
+</blockquote>
+<p>在手机上启用屏幕旋转支持
+全局配置新增：
+<code>&quot;pageOrientation&quot;：landscape</code>
+如果配置为<code>landscape</code>小程序横屏，否则仍按竖屏展示。
+如果有<code>pageOrientation</code>配置则强制横屏。</p>
+<p>以下是在单个页面 json 文件中启用屏幕旋转的示例。</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index/index&quot;</span>],
+  <span class="hljs-string">&quot;window&quot;</span>: {
+    <span class="hljs-string">&quot;pageOrientation&quot;</span>: <span class="hljs-string">&quot;landscape&quot;</span>
+  }
+}
+</code></pre>
+<h3 id="bug--tips">Bug &amp; Tips</h3>
+<ol>
+<li>配置小程序横屏需小程序资源适配横屏展示才能正常加载，否则可能会白屏展示</li>
+</ol>

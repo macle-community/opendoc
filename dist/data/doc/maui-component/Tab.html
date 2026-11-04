@@ -1,0 +1,373 @@
+<h2 id="tab-标签页">Tab 标签页</h2>
+<blockquote>
+<p>选项卡组件，用于在不同的内容区域之间进行切换（最低版本：24.9.0）</p>
+</blockquote>
+<h3 id="引入">引入</h3>
+<p>在<code>app.json</code>或<code>index.json</code>中引入组件。</p>
+<pre><code class="language-json"><span class="hljs-string">&quot;usingComponents&quot;</span>: {
+  <span class="hljs-string">&quot;maui-tab&quot;</span>: <span class="hljs-string">&quot;@macle/maui/tab/index&quot;</span>,
+  <span class="hljs-string">&quot;maui-tabs&quot;</span>: <span class="hljs-string">&quot;@macle/maui/tabs/index&quot;</span>
+}
+</code></pre>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基础用法">基础用法</h4>
+<p>通过<code>active</code>设定当前激活标签对应的索引值，默认情况下启用第一个标签。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tabs</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;</span>内容 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;</span>内容 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;</span>内容 3<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;</span>内容 4<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tabs</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    active: <span class="hljs-number">1</span>,
+  },
+
+  onChange(event) {
+    ma<span class="hljs-selector-class">.showToast</span>({
+      title: `切换到标签 ${event<span class="hljs-selector-class">.detail</span><span class="hljs-selector-class">.name</span>}`,
+      <span class="hljs-attribute">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    });
+  },
+});
+</code></pre>
+<h4 id="通过名称匹配">通过名称匹配</h4>
+<p>在标签指定<code>name</code>属性的情况下，<code>active</code>的值为当前标签的<code>name</code>（此时无法通过索引值来匹配标签）。</p>
+<pre><code class="language-html">&lt;maui-tabs active=<span class="hljs-string">&quot;a&quot;</span>&gt;
+  &lt;maui-<span class="hljs-literal">tab</span> title=<span class="hljs-string">&quot;标签 1&quot;</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;a&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-literal">tab</span>&gt;
+  &lt;maui-<span class="hljs-literal">tab</span> title=<span class="hljs-string">&quot;标签 2&quot;</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;b&quot;</span>&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-literal">tab</span>&gt;
+  &lt;maui-<span class="hljs-literal">tab</span> title=<span class="hljs-string">&quot;标签 3&quot;</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;c&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-literal">tab</span>&gt;
+&lt;/maui-tabs&gt;
+</code></pre>
+<h4 id="横向滚动">横向滚动</h4>
+<p>多于 5 个标签时，Tab 可以横向滚动。</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tabs</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;</span>内容 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;</span>内容 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;</span>内容 3<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;</span>内容 4<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 5&quot;</span>&gt;</span>内容 5<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 6&quot;</span>&gt;</span>内容 6<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tabs</span>&gt;</span></span>
+</code></pre>
+<h4 id="禁用标签">禁用标签</h4>
+<p>设置<code>disabled</code>属性即可禁用标签。如果需要监听禁用标签的点击事件，可以在<code>maui-tabs</code>上监听<code>disabled</code>事件。</p>
+<pre><code class="language-html">&lt;maui-tabs bind:disabled=<span class="hljs-string">&quot;onClickDisabled&quot;</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span> disabled&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+&lt;/maui-tabs&gt;
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onClickDisabled</span>(<span class="hljs-params">event</span>) {
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">`标签 <span class="hljs-subst">${event.detail.name}</span> 已被禁用`</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    });
+  },
+});
+</code></pre>
+<h4 id="样式风格">样式风格</h4>
+<p><code>Tab</code>支持两种样式风格：<code>line</code>和<code>card</code>，默认为<code>line</code>样式，可以通过<code>type</code>属性修改样式风格。</p>
+<pre><code class="language-html">&lt;maui-tabs type=<span class="hljs-string">&quot;card&quot;</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+&lt;/maui-tabs&gt;
+</code></pre>
+<h4 id="点击事件">点击事件</h4>
+<p>可以在<code>maui-tabs</code>上绑定<code>click</code>事件，在回调参数的<code>event.detail</code>中可以取得被点击标签的标题和标识符。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tabs</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;onClick&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;</span>内容 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;</span>内容 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tabs</span>&gt;</span>
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onClick</span>(<span class="hljs-params">event</span>) {
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">`点击标签 <span class="hljs-subst">${event.detail.name}</span>`</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    });
+  },
+});
+</code></pre>
+<h4 id="粘性布局">粘性布局</h4>
+<p>通过<code>sticky</code>属性可以开启粘性布局，粘性布局下，当 Tab 滚动到顶部时会自动吸顶。</p>
+<pre><code class="language-html">&lt;maui-tabs sticky&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;内容 <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+&lt;/maui-tabs&gt;
+</code></pre>
+<h4 id="切换动画">切换动画</h4>
+<p>可以通过<code>animated</code>来设置是否启用切换 tab 时的动画。</p>
+<pre><code class="language-html">&lt;maui-tabs animated&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;内容 <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+&lt;/maui-tabs&gt;
+</code></pre>
+<h4 id="滑动切换">滑动切换</h4>
+<p>通过<code>swipeable</code>属性可以开启滑动切换标签页。</p>
+<pre><code class="language-html">&lt;maui-tabs swipeable&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;内容 <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;内容 <span class="hljs-number">2</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;内容 <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+  &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;内容 <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
+&lt;/maui-tabs&gt; 
+</code></pre>
+<h4 id="异步切换">异步切换</h4>
+<p>通过 <code>before-change</code> 事件可以在切换标签前执行特定的逻辑，实现切换前校验、异步切换的目的</p>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tabs</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">use-before-change</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">true</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> <span class="hljs-attr">bind:before-change</span>=<span class="hljs-string">&quot;onBeforeChange&quot;</span> &gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 1&quot;</span>&gt;</span>内容 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 2&quot;</span>&gt;</span>内容 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 3&quot;</span>&gt;</span>内容 3<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;标签 4&quot;</span>&gt;</span>内容 4<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tabs</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">active</span>: <span class="hljs-number">1</span>,
+  },
+
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">event</span>) {
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">`切换到标签 <span class="hljs-subst">${event.detail.name}</span>`</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span>,
+    });
+  },
+  <span class="hljs-title function_">onBeforeChange</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-keyword">const</span> { callback, title } = event.<span class="hljs-property">detail</span>;
+
+    ma.<span class="hljs-title function_">showModal</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;异步切换&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-string">`确定要切换至 <span class="hljs-subst">${title}</span> tab吗？`</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">confirm</span>) {
+          <span class="hljs-title function_">callback</span>(<span class="hljs-literal">true</span>)
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.<span class="hljs-property">cancel</span>) {
+          <span class="hljs-title function_">callback</span>(<span class="hljs-literal">false</span>)
+        }
+      },
+    })
+  }
+});
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="tabs-props">Tabs Props</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>样式风格，可选值为<code>card</code></td>
+<td>String</td>
+<td><code>line</code></td>
+</tr>
+<tr>
+<td>color</td>
+<td>标签主题色</td>
+<td>String</td>
+<td><code>#ee0a24</code></td>
+</tr>
+<tr>
+<td>active</td>
+<td>当前选中标签的标识符</td>
+<td>String | Number</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>duration</td>
+<td>动画时间，单位秒</td>
+<td>Number</td>
+<td><code>0.3</code></td>
+</tr>
+<tr>
+<td>line-width</td>
+<td>底部条宽度，默认单位<code>px</code></td>
+<td>String | Number</td>
+<td><code>40px</code></td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>底部条高度，默认单位<code>px</code></td>
+<td>String | Number</td>
+<td><code>3px</code></td>
+</tr>
+<tr>
+<td>animated</td>
+<td>是否开启切换标签内容时的转场动画</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>border</td>
+<td>是否展示外边框，仅在 <code>line</code> 风格下生效</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>ellipsis</td>
+<td>是否省略过长的标题文字</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>是否使用粘性定位布局</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>swipeable</td>
+<td>是否开启手势滑动切换</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>lazy-render</td>
+<td>是否开启标签页内容延迟渲染</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>offset-top</td>
+<td>粘性定位布局下与顶部的最小距离，单位<code>px</code></td>
+<td>Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>swipe-threshold</td>
+<td>滚动阈值，标签数量超过阈值且总宽度超过标签栏宽度时开始横向滚动</td>
+<td>Number</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>title-active-color</td>
+<td>标题选中态颜色</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>title-inactive-color</td>
+<td>标题默认态颜色</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>z-index</td>
+<td>z-index 层级</td>
+<td>Number</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>use-before-change</td>
+<td>是否开启切换前校验</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="tab-props">Tab Props</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>标签名称，作为匹配的标识符</td>
+<td>String | Number</td>
+<td>标签的索引值</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用标签</td>
+<td>Boolean*</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>dot</td>
+<td>是否显示小红点</td>
+<td>Boolean</td>
+<td>-</td>
+</tr>
+<tr>
+<td>info</td>
+<td>图标右上角提示信息</td>
+<td>String | Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>title-style</td>
+<td>自定义标题样式</td>
+<td>String</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 id="tab-slot">Tab Slot</h4>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>标签页内容</td>
+</tr>
+</tbody></table>
+<h4 id="tabs-event">Tabs Event</h4>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bind:click</td>
+<td>点击标签时触发</td>
+<td>name：标签标识符，title：标题</td>
+</tr>
+<tr>
+<td>bind:beforechange</td>
+<td>tab 切换前会触发，在回调函数中返回 <code>false</code> 可终止 tab 切换，绑定事件的同时需要将<code>use-before-change</code>属性设置为<code>true</code></td>
+<td><code>event.detail.name</code>: 当前切换的 tab 标识符， <code>event.detail.title</code>: 当前切换的 tab 标题， <code>event.detail.index</code>: 当前切换的 tab 下标，<code>event.detail.callback</code>: 回调函数，调用<code>callback(false)</code>终止 tab 切换</td>
+</tr>
+<tr>
+<td>bind:change</td>
+<td>当前激活的标签改变时触发</td>
+<td>name：标签标识符，title：标题</td>
+</tr>
+<tr>
+<td>bind:disabled</td>
+<td>点击被禁用的标签时触发</td>
+<td>name：标签标识符，title：标题</td>
+</tr>
+<tr>
+<td>bind:scroll</td>
+<td>滚动时触发，需要开启粘性布局后才能获取到具体的值</td>
+<td>{ scrollTop: 距离顶部位置, isFixed: 是否吸顶 }</td>
+</tr>
+</tbody></table>

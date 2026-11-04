@@ -1,0 +1,43 @@
+<h2 id="mareporteventobject-object">ma.reportEvent(Object object)</h2>
+<blockquote>
+<p>Incident reporting (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventId</td>
+<td>String</td>
+<td></td>
+<td>Yes</td>
+<td>Monitoring ID, obtained after creating a new data indicator on the <code>Mini Program Management Platform</code></td>
+</tr>
+<tr>
+<td>eventData</td>
+<td>Object</td>
+<td></td>
+<td>No</td>
+<td>Objects that can be serialized. It will be reported to the system together(supported in 24.9.0)</td>
+</tr>
+</tbody></table>
+<h3 id="usage-restrictions">Usage Restrictions</h3>
+<ol>
+<li>To use this interface, you need to connect to the Mini Program SaaS platform</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.reportEvent({
+  eventId: <span class="hljs-string">&#x27;your eventId&#x27;</span>,
+  eventData: {
+    <span class="hljs-string">&#x27;miniAppStartFrom&#x27;</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>
+  }
+});
+</code></pre>

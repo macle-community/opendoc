@@ -1,0 +1,107 @@
+<h2 id="mapcontextmovetolocationobject-object">MapContext.moveToLocation(Object object)</h2>
+<blockquote>
+<p>若未传入经纬度时调用，将申请获取用户当前位置，并在用户授权后移动到用户当前位置；若未传入经纬度且无用户授权定位，不会改变位置,并会触发失败回调</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>longitude</td>
+<td>Number</td>
+<td></td>
+<td>否</td>
+<td>经度</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td></td>
+<td>否</td>
+<td>纬度</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-string">//maml</span>
+<span class="hljs-string">&lt;button</span> <span class="hljs-string">bindtap=&quot;moveToLocation&quot;&gt;moveToLocation&lt;/button&gt;</span>
+
+<span class="hljs-string">//js</span>
+<span class="hljs-string">Page({</span>
+  <span class="hljs-attr">data:</span> {
+    <span class="hljs-attr">markers:</span> [
+      {
+        <span class="hljs-attr">id:</span> <span class="hljs-number">0</span>,
+        <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;marker0&#x27;</span>,
+        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.984686</span>,
+        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.574979</span>,
+        <span class="hljs-attr">width:</span> <span class="hljs-number">10</span>,
+        <span class="hljs-attr">height:</span> <span class="hljs-number">15</span>,
+        <span class="hljs-attr">anchor:</span> { <span class="hljs-attr">x:</span> <span class="hljs-number">0.5</span>, <span class="hljs-attr">y:</span> <span class="hljs-number">0.5</span> },
+      },
+    ],
+    <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
+    <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
+    <span class="hljs-attr">markersIndex:</span> <span class="hljs-number">1</span>,
+  }<span class="hljs-string">,</span>
+
+  <span class="hljs-string">moveToSpecialLocation()</span> {
+    <span class="hljs-string">this.mapContext.moveToLocation(</span>{
+      <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.79205</span>,
+      <span class="hljs-attr">latitude:</span> <span class="hljs-number">32.03237</span>,
+      <span class="hljs-string">success(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+      <span class="hljs-string">fail(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+  <span class="hljs-string">moveToLocation()</span> {
+    <span class="hljs-string">this.mapContext.moveToLocation(</span>{
+      <span class="hljs-string">success(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+      <span class="hljs-string">fail(res)</span> {
+        <span class="hljs-string">ma.showModal(</span>{
+          <span class="hljs-attr">content:</span> <span class="hljs-string">res.errMsg</span>,
+        }<span class="hljs-string">);</span>
+      },
+    }<span class="hljs-string">);</span>
+  }<span class="hljs-string">,</span>
+<span class="hljs-string">});</span>
+</code></pre>

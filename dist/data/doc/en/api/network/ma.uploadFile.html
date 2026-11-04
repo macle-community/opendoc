@@ -1,0 +1,160 @@
+<h2 id="mauploadfileobject-object">ma.uploadFile(Object object)</h2>
+<blockquote>
+<p>Upload local resources to the server. The client initiates an HTTPS POST request, in which <code>content-type</code> is <code>multipart/form-data</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Developer server address.</td>
+</tr>
+<tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes (Specify either <strong>files</strong> or <strong>filePath</strong>.)</td>
+<td align="left">Path of the file resource to be uploaded (local path).</td>
+</tr>
+<tr>
+<td align="left">files</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes (Specify either <strong>files</strong> or <strong>filePath</strong>.)</td>
+<td align="left">Files to be uploaded. When <strong>files</strong> is specified, <strong>filePath</strong> and <strong>name</strong> do not take effect.</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Key corresponding to the file. Developers can use this key to obtain the binary content of the file on the server.</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Header of an HTTP request. <strong>Referer</strong> cannot be set in the header.</td>
+</tr>
+<tr>
+<td align="left">formData</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Additional form data in the HTTP request.</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">Number</td>
+<td align="left">60000</td>
+<td align="left">No</td>
+<td align="left">Timeout duration, in milliseconds.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used regardless of whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="files-parameter">files parameter</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>String</td>
+<td>No</td>
+<td>Item name of a form. The default value is <strong>file</strong>.</td>
+</tr>
+<tr>
+<td>file</td>
+<td>File</td>
+<td>No</td>
+<td>File to be uploaded.</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">uploadFile: ok</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left">Data returned by the developer server.</td>
+</tr>
+<tr>
+<td align="left">statusCode</td>
+<td align="left">Number</td>
+<td align="left">HTTP status code returned by the developer server.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+    ma.<span class="hljs-title function_">uploadFile</span>({
+       <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.test.com/upload&#x27;</span>, <span class="hljs-comment">// Example address.</span>
+      <span class="hljs-attr">filePath</span>: tempFilePaths[<span class="hljs-number">0</span>],
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-comment">//do something</span>
+      }
+    });
+  }
+});
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>tip: Currently, the security domain is not verified. You are advised to use HTTPS.</li>
+<li><code>Files</code> has a higher priority than <code>files</code>.</li>
+<li>Either <code>files</code> or <code>filePath</code> must be set.</li>
+<li>The file size and file quantity are not limited in the upload. To ensure performance, you are advised not to upload a large number of files with huge data volume.</li>
+</ol>

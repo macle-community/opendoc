@@ -1,0 +1,73 @@
+<h2 id="compiler-cli">Compiler cli</h2>
+<h3 id="introduction">Introduction</h3>
+<p>In order to facilitate the development of CI/CD more flexibly, we provide the independent compiler cli in addition to the IDE internal integration.</p>
+<h3 id="obtained-by">Obtained by</h3>
+<p>Heading for <a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">Plugin download pageDownload</a> the compiler package <code>Macle_xx.x.x_Engine_Compiler.zip</code>.</p>
+<blockquote>
+<p>Decompress the Macle_xx.x.x_Engine_Compiler.zip package and go to the directory. Run the npm i -g command.</p>
+</blockquote>
+<h3 id="usage-mode">Usage Mode</h3>
+<p><strong>Parameter</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-s</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes.</td>
+<td align="left">Directory of Mini Program source code</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes.</td>
+<td align="left">Target directory after Mini Program compilation</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Indicates whether the debug mode is used.</td>
+</tr>
+<tr>
+<td align="left">-es5</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Transfer to ES5</td>
+</tr>
+<tr>
+<td align="left">-mss</td>
+<td align="left">Number</td>
+<td align="left">2</td>
+<td align="left">No</td>
+<td align="left">Maximum size of a single package/primary package (unit: MB)</td>
+</tr>
+<tr>
+<td align="left">-mts</td>
+<td align="left">Number</td>
+<td align="left">20</td>
+<td align="left">No</td>
+<td align="left">Maximum package size (unit: MB)</td>
+</tr>
+</tbody></table>
+<p><strong>Example</strong></p>
+<pre><code class="language-sh">macle-compiler-cli -s D:<span class="hljs-regexp">/workspace/</span>MiniProgram<span class="hljs-regexp">/Src/m</span>acle-web<span class="hljs-regexp">/demo/m</span>acle -t D:<span class="hljs-regexp">/workspace/</span>MiniProgram<span class="hljs-regexp">/Src/m</span>acle-web<span class="hljs-regexp">/simulator/</span>sdk<span class="hljs-regexp">/root/</span>app
+</code></pre>
+<p>Compilation Log</p>
+<p><img src="/openplatform/macledocs/data/doc/en/extended/image/compiler-cli-log.png" alt="image" ></p>
+<p>Compiling and Packing Result</p>
+<p><img src="/openplatform/macledocs/data/doc/en/extended/image/compiler-cli-result.png" alt="image" ></p>
+<h3 id="fqs">F&amp;Qs</h3>
+<h4 id="why-the-console-method-and-debugger-in-the-mini-program-do-not-take-effect-when-the-independent-compiler-provided-by-macle-is-used-to-run-the-mini-program-packages">Why the console method and debugger in the Mini Program do not take effect when the independent compiler provided by Macle is used to run the Mini Program packages?</h4>
+<p><strong>A:</strong> To help developers compile Mini Programs in command line mode, Macle provides an independent compiler. By default, the compiler filters the console and debugger in the code. Currently, the filtering policy cannot be configured by developers.</p>

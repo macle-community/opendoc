@@ -1,0 +1,28 @@
+<h2 id="nodesref-selectorqueryselectstring-selector"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.select(string selector)</h2>
+<blockquote>
+<p>Select the first node that matches the <code>selector </code> on the current page. A <code>NodesRef </code> object instance is returned, which can be used to obtain node information.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-selector">string selector</h4>
+<p>Selector</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="nodesref">NodesRef</h4>
+<h3 id="selector-syntax">selector syntax</h3>
+<p>A selector, for example, a CSS selector, supports only the following syntax:</p>
+<ul>
+<li>IDselector:#the-id</li>
+<li>Class selector (selects multiple consecutive classes):.a-class.another-class</li>
+<li>Sub-element selector: .the-parent &gt; .the-child</li>
+<li>Descendant selector:.the-ancestor .the-descendant</li>
+<li>Union of multiple selectors: #a-node, .some-other-nodes</li>
+</ul>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">Page({
+  onCreateSelectorQuery() {
+    ma.createSelectorQuery()
+      .select(&#x27;test1&#x27;).boundingClientRect()
+      .select(&#x27;test2&#x27;).boundingClientRect()
+      .selectAll(&#x27;.all&#x27;).boundingClientRect()<span class="hljs-comment">;</span>
+  }
+})<span class="hljs-comment">;</span>
+</code></pre>

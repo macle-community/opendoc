@@ -1,0 +1,27 @@
+[
+  {
+    "name": "编译器cli",
+    "path": "/compiler-cli",
+    "data": "/data/doc/extended/compiler-cli.md"
+  },
+  {
+    "name": "转换工具",
+    "child": [
+      {
+        "name": "转换器",
+        "path": "/convertor-cli",
+        "data": "/data/doc/extended/convertor-cli.md"
+      }
+    ]
+  },
+  {
+    "name": "同构框架",
+    "child": [
+      {
+        "name": "介绍",
+        "path": "/overview",
+        "data": "/data/doc/extended/overview.md"
+      }
+    ]
+  }
+]

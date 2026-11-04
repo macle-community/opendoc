@@ -1,0 +1,144 @@
+<h2 id="magetimageinfoobject-object">ma.getImageInfo(Object object)</h2>
+<blockquote>
+<p>Obtain image information. Network images take effect only after the download domain name is configured.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Image path, which can be a network path, local path, or code package path. (The simulator does not support a local path.The code package path is case sensitive.)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">Original image width, in pixels. Rotation is not considered.</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">Original image height, in pixels. Rotation is not considered.</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left">Local path of an image.</td>
+</tr>
+<tr>
+<td align="left">orientation</td>
+<td align="left">String</td>
+<td align="left">Device direction during photographing (not supported by the simulator)</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">Image format.</td>
+</tr>
+</tbody></table>
+<h4 id="valid-values-of-resorientation">Valid Values of res.orientation</h4>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>up</td>
+<td>Default direction (the phone takes photos horizontally) corresponding to <code>1</code> in <code>Exif</code> or no orientation information.</td>
+</tr>
+<tr>
+<td>up-mirrored</td>
+<td>Mirror flipping. Similar to <code>up</code>. Corresponding to <code>2</code> in <code>Exif</code>.</td>
+</tr>
+<tr>
+<td>down</td>
+<td>Rotation by 180 degrees, corresponding to <code>3</code> in <code>Exif</code>.</td>
+</tr>
+<tr>
+<td>down-mirrored</td>
+<td>Mirror flipping. Similar to <code>down</code>. Corresponding to <code>4</code> in <code>getImageInfo</code>.</td>
+</tr>
+<tr>
+<td>left-mirrored</td>
+<td>Mirror flipping. Similar to <code>left</code>. Corresponding to <code>5</code> in <code>Exif</code>.</td>
+</tr>
+<tr>
+<td>right</td>
+<td>Clockwise rotation by 90 degrees, corresponding to <code>6</code> in <code>Exif</code>.</td>
+</tr>
+<tr>
+<td>right-mirrored</td>
+<td>Mirror flipping. Similar to <code>right</code>. Corresponding to <code>7</code> in <code>Exif</code>.</td>
+</tr>
+<tr>
+<td>left</td>
+<td>Counterclockwise rotation by 90 degrees, corresponding to <code>8</code> in <code>Exif</code>.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getImageInfo</span>({
+  <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;images/a.jpg&#x27;</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">width</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+  }
+});
+
+ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    ma.<span class="hljs-title function_">getImageInfo</span>({
+      <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempFilePaths</span>[<span class="hljs-number">0</span>],
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">width</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+      }
+    });
+  }
+});
+</code></pre>

@@ -1,0 +1,243 @@
+<h2 id="checkbox">Checkbox</h2>
+<blockquote>
+<p>Make multiple selections from a set of alternatives (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-variable">data</span>: {
+    <span class="hljs-variable">checked</span>: <span class="hljs-literal">true</span>,
+  },
+
+  <span class="hljs-title function_">onChange</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">setData</span>({
+      <span class="hljs-variable">checked</span>: <span class="hljs-variable">event</span>.<span class="hljs-property">detail</span>,
+    });
+  },
+});
+</code></pre>
+<h4 id="disabled-state">Disabled State</h4>
+<p>The checkbox can be disabled by setting the <code>disabled</code> attribute.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  checkbox
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-shape">Custom Shape</h4>
+<p>The <code>shape</code> attribute can control the shape of the checkbox. For example, when set to <code>square</code>, the checkbox shape will
+become a square.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  checkbox
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-color">Custom Color</h4>
+<p>The <code>checked-color</code> attribute can customize the color of the icon in the checked state.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
+  <span class="hljs-attr">checked-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>
+  <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>
+&gt;</span>
+  checkbox
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-size">Custom Size</h4>
+<p>The <code>icon-size</code> attribute can customize the size of the icon.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;25px&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="custom-icon">Custom Icon</h4>
+<p>The <code>custom-icon</code> attribute can customize the icon when selected</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/icon.png&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="disable-label-click">Disable Label Click</h4>
+<p>Set the <code>label-disabled</code> attribute to disable clicks on the checkbox text.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
+</code></pre>
+<h4 id="checkbox-group">Checkbox Group</h4>
+<p>Need to be used with <code>maui-checkbox-group</code>. The selected value is an array, bound to <code>maui-checkbox-group</code>
+through <code>value</code>
+above, the items in the array are the values set by the <code>name</code> attribute of the selected <code>Checkbox</code>.</p>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>checkbox a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;b&#x27;</span>&gt;</span>checkbox b<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;c&#x27;</span>&gt;</span>checkbox c<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox-group</span>&gt;</span></span>
+</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    result: [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>],
+  },
+
+  onChange(<span class="hljs-keyword">event</span>) {
+    <span class="hljs-keyword">this</span>.setData({
+      result: <span class="hljs-keyword">event</span>.detail,
+    });
+  },
+});
+</code></pre>
+<h4 id="限制最大可选数">限制最大可选数</h4>
+<pre><code class="language-html"><span class="language-xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">2</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>复选框 a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;b&#x27;</span>&gt;</span>复选框 b<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;c&#x27;</span>&gt;</span>复选框 c<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox-group</span>&gt;</span></span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="checkbox-props">Checkbox Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Identifies the Checkbox name</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">shape</td>
+<td align="left">Shape, optional values are <code>round</code> <code>square</code></td>
+<td align="left">String</td>
+<td align="left"><code>round</code></td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Whether it is selected</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether to disable the radio button</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-disabled</td>
+<td align="left">Whether to disable clicks on radio button content</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">label-position</td>
+<td align="left">Text position, optional value is <code>left</code></td>
+<td align="left">String</td>
+<td align="left"><code>right</code></td>
+</tr>
+<tr>
+<td align="left">custom-icon</td>
+<td align="left">Custom icon, support name and image link</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">checked-color</td>
+<td align="left">Selected state color</td>
+<td align="left">String</td>
+<td align="left"><code>#1989fa</code></td>
+</tr>
+<tr>
+<td align="left">icon-size</td>
+<td align="left">icon size</td>
+<td align="left">String | Number</td>
+<td align="left"><code>20px</code></td>
+</tr>
+</tbody></table>
+<h4 id="checkboxgroup-props">CheckboxGroup Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Identifier when submitting within the form</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">The names of all selected items</td>
+<td align="left">Array</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether to disable all radio buttons</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left">Set the maximum number of options</td>
+<td align="left">Number</td>
+<td align="left"><code>0</code>(no limit)</td>
+</tr>
+<tr>
+<td align="left">direction</td>
+<td align="left">Arrangement direction, optional value is <code>horizontal</code></td>
+<td align="left">String</td>
+<td align="left"><code>vertical</code></td>
+</tr>
+</tbody></table>
+<h4 id="checkbox-event">Checkbox Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">Event triggered when bound value changes</td>
+<td align="left">The value of the current component</td>
+</tr>
+</tbody></table>
+<h4 id="checkboxgroup-event">CheckboxGroup Event</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:change</td>
+<td align="left">Event triggered when bound value changes</td>
+<td align="left">The value of the current component</td>
+</tr>
+</tbody></table>
+<h4 id="checkbox-slot">Checkbox Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom text</td>
+</tr>
+</tbody></table>

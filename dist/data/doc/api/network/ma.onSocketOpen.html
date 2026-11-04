@@ -1,0 +1,31 @@
+<h2 id="maonsocketopenfunction-callback">ma.onSocketOpen(function callback)</h2>
+<blockquote>
+<p>监听 WebSocket 连接打开事件。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-callback">function callback</h4>
+<p>WebSocket 连接打开事件的回调函数</p>
+<h4 id="参数-1">参数</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">header</td>
+<td align="left">Object</td>
+<td align="left">连接成功的 HTTP 响应 Header</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.connectSocket({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>,
+});
+ma.onSocketOpen(<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res);
+});
+</code></pre>

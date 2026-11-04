@@ -1,0 +1,86 @@
+<h2 id="convertor-cli">Convertor cli</h2>
+<h3 id="introduction">Introduction</h3>
+<p>To facilitate cross-platform development of Mini Programs, we provide a converter based on Alipay/Wechat Mini Programs to macle
+Mini Programs.</p>
+<h3 id="obtained-by">Obtained by</h3>
+<p>Heading for <a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">Plugin download page</a>, Download the compiler
+package <code>Macle_xx.x.x_DevSuite_Converter.zip</code>.</p>
+<blockquote>
+<p>Unzip Macle_xx.x.x_DevSuite_Converter.zip, enter the directory and open package.json in the folder</p>
+</blockquote>
+<h3 id="usage-mode">Usage Mode</h3>
+<p>Add the converter&#39;s command line in the scripts object</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;@macle/convertor-embedding&quot;</span>,
+  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.0.1&quot;</span>,
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Macle convertor embedding&quot;</span>,
+  <span class="hljs-string">&quot;license&quot;</span>: <span class="hljs-string">&quot;ISC&quot;</span>,
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;node ../macle-convertor-cli/build/build.js ../macle-convertor-embedding/dist&quot;</span>,
+    <span class="hljs-string">&quot;exchange&quot;</span>: <span class="hljs-string">&quot;node ./exchange.js&quot;</span>,
+    <span class="hljs-string">&quot;convertor&quot;</span>: <span class="hljs-string">&quot;macle-convertor-cli -t h5-macle -i <span class="hljs-subst">${inputProject}</span> -o <span class="hljs-subst">${outputProject}</span>&quot;</span>
+  }
+}
+</code></pre>
+<p>The meanings of the parameters related to the converter command line are as follows:</p>
+<p><strong>Parameter</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-t</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">The type of Mini Program that needs to be converted, WeChat is wx-macle, Alipay is ali-macle, H5 is converted to h5-macle</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">String</td>
+<td align="left">The parent folder of the command line execution location</td>
+<td align="left">No</td>
+<td align="left">The converted Mini Program directory</td>
+</tr>
+<tr>
+<td align="left">-o</td>
+<td align="left">String</td>
+<td align="left">The parent folder of the command line execution location</td>
+<td align="left">No</td>
+<td align="left">The converted directory</td>
+</tr>
+<tr>
+<td align="left">-e</td>
+<td align="left">String</td>
+<td align="left">index.html</td>
+<td align="left">No</td>
+<td align="left">Convert H5 to the homepage entrance of the Mini Program (only effective when converting to H5)</td>
+</tr>
+<tr>
+<td align="left">-c</td>
+<td align="left">String</td>
+<td align="left">npm run build</td>
+<td align="left">No</td>
+<td align="left">The command line for H5 project to perform compilation operation (only valid during H5 conversion)</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">String</td>
+<td align="left">The dist folder at the same level as the command line execution location</td>
+<td align="left">No</td>
+<td align="left">The static resource folder generated after the H5 project is compiled (only valid during H5 conversion)</td>
+</tr>
+</tbody></table>
+<p>Switch to the converter directory and execute related commands. Taking the above json file as an example,
+execute <code>npm run convertor</code></p>
+<p><strong>Successful conversion page</strong></p>
+<p><img src="/openplatform/macledocs/data/doc/en/extended/image/succeedExample.png" alt="image" ></p>
+<p><strong>Conversion failure page</strong></p>
+<p><img src="/openplatform/macledocs/data/doc/en/extended/image/failedExample.png" alt="image" ></p>

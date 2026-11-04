@@ -1,0 +1,245 @@
+<h2 id="field-输入框">Field 输入框</h2>
+<h3 id="介绍">介绍</h3>
+<p>用户可以在文本框内输入或编辑文字。</p>
+<h2 id="代码演示">代码演示</h2>
+<h3 id="基础用法">基础用法</h3>
+<pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入用户名&quot;</span>
+/&gt;</span>
+
+Page({
+  data: {
+    value: &#x27;&#x27;,
+  }
+});</span>
+</code></pre>
+<h3 id="自定义类型">自定义类型</h3>
+<p>根据<code>type</code>属性定义不同类型的输入框。</p>
+<pre><code class="language-html"><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">username</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;用户名&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入用户名&quot;</span>
+  /&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">password</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>
+    <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;密码&quot;</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;请输入密码&quot;</span>
+  /&gt;</span></span>
+</code></pre>
+<h3 id="禁用输入框">禁用输入框</h3>
+<pre><code class="language-html">&lt;maui-field
+    value<span class="hljs-operator">=</span><span class="hljs-string">&quot;输入框已禁用&quot;</span>
+    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;用户名&quot;</span>
+    disabled
+/&gt;
+</code></pre>
+<h3 id="错误提示">错误提示</h3>
+<p>通过<code>error</code>或者<code>error-message</code>属性增加对应的错误提示。</p>
+<pre><code class="language-html">&lt;maui-field
+    <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;{{ username }}&quot;</span>
+    <span class="hljs-attribute">label</span>=<span class="hljs-string">&quot;用户名&quot;</span>
+    <span class="hljs-attribute">placeholder</span>=<span class="hljs-string">&quot;请输入用户名&quot;</span>
+    <span class="hljs-built_in">error</span>
+/&gt;
+&lt;maui-field
+    <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;{{ phone }}&quot;</span>
+    <span class="hljs-attribute">label</span>=<span class="hljs-string">&quot;手机号&quot;</span>
+    <span class="hljs-attribute">placeholder</span>=<span class="hljs-string">&quot;请输入手机号&quot;</span>
+    <span class="hljs-attribute">error-message</span>=<span class="hljs-string">&quot;手机号格式错误&quot;</span>
+/&gt;
+</code></pre>
+<h3 id="内容对齐方式">内容对齐方式</h3>
+<p>可以通过<code>input-align</code>属性设置内容的对齐方式。</p>
+<pre><code class="language-html">  &lt;maui-field
+    value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ username }}&quot;</span>
+    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;用户名&quot;</span>
+    placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;请输入用户名&quot;</span>
+    input-align<span class="hljs-operator">=</span><span class="hljs-string">&quot;right&quot;</span>
+  /&gt;
+</code></pre>
+<h3 id="高度自适应">高度自适应</h3>
+<p>对于 textarea，可以通过<code>autosize</code>属性设置高度自适应。</p>
+<pre><code class="language-html">&lt;maui-field
+    value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ message }}&quot;</span>
+    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;留言&quot;</span>
+    type<span class="hljs-operator">=</span><span class="hljs-string">&quot;textarea&quot;</span>
+    placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;请输入留言&quot;</span>
+    autosize
+/&gt;
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>label</td>
+<td>输入框左侧文本</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>value</td>
+<td>当前输入的值</td>
+<td>String | Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>type</td>
+<td>可设置为任意原生类型, 如 number idcard textarea digit</td>
+<td>String</td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td>focus</td>
+<td>获取焦点</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>是否禁用输入框</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>password</td>
+<td>是否是密码类型</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>最大输入长度，设置为 -1 的时候不限制最大长度</td>
+<td>Number</td>
+<td><code>140</code></td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>输入框为空时占位符</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>placeholder-style</td>
+<td>指定 placeholder 的样式，目前仅支持color、font-size、font-weight</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>show-word-limit</td>
+<td>是否显示字数统计，需要设置maxlength属性</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>error</td>
+<td>是否将输入内容标红</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>error-message</td>
+<td>底部错误提示文案，为空时不展示</td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td>error-message-align</td>
+<td>底部错误提示文案对齐方式，可选值为 center right</td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td>input-align</td>
+<td>输入框内容对齐方式，可选值为 center right</td>
+<td>String</td>
+<td><code>left</code></td>
+</tr>
+<tr>
+<td>autosize</td>
+<td>是否自适应内容高度，只对 textarea 有效</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>confirm-type</td>
+<td>设置键盘右下角按钮的文字，仅在 type=&#39;text&#39; 时生效</td>
+<td>String</td>
+<td><code>done</code></td>
+</tr>
+<tr>
+<td>confirm-hold</td>
+<td>点击键盘右下角按钮时是否保持键盘不收起，在 type=&#39;textarea&#39; 时无效</td>
+<td>Boolean</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>adjust-position</td>
+<td>键盘弹起时，是否自动上推页面</td>
+<td>Boolean</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>selection-start</td>
+<td>光标起始位置，自动聚集时有效，需与 selection-end 搭配使用</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td>selection-end</td>
+<td>光标结束位置，自动聚集时有效，需与 selection-start 搭配使用</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>指定 focus 时的光标位置，默认为行尾</td>
+<td>Number</td>
+<td><code>-1</code></td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">事件</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:input</td>
+<td align="left">输入内容时触发</td>
+<td align="left">event.detail={value, cursor}</td>
+</tr>
+<tr>
+<td align="left">bind:confirm</td>
+<td align="left">点击完成按钮时触发,type 设置为<code>textarea</code>时无效</td>
+<td align="left">event.detail.value: 当前输入值</td>
+</tr>
+<tr>
+<td align="left">bind:focus</td>
+<td align="left">输入框聚焦时触发</td>
+<td align="left">event.detail.value: 当前输入值</td>
+</tr>
+<tr>
+<td align="left">bind:blur</td>
+<td align="left">输入框失焦时触发</td>
+<td align="left">event.detail.value: 当前输入值</td>
+</tr>
+<tr>
+<td align="left">bind:linechange</td>
+<td align="left">输入框行数变化时调用，只对 textarea 有效</td>
+<td align="left">event.detail = { height: 0, lineHeight: 0, lineCount: 0 }</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,19 @@
+<h2 id="selectorquery-selectorqueryincomponent-component"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> SelectorQuery.in(Component component)</h2>
+<blockquote>
+<p>Change the selection scope of the selector to the <code>custom component</code>.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="component-component">Component component</h4>
+<p>Custom component instance.</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="selectorquery"><a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a></h4>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-built_in">Component</span>({
+  queryMultipleNodes (){
+    const query = ma<span class="hljs-selector-class">.createSelectorQuery</span>()<span class="hljs-selector-class">.in</span>(this)
+    query<span class="hljs-selector-class">.select</span>(<span class="hljs-string">&#x27;#the-id&#x27;</span>)<span class="hljs-selector-class">.boundingClientRect</span>(<span class="hljs-built_in">function</span>(res){
+      res<span class="hljs-selector-class">.top</span> <span class="hljs-comment">// Upper boundary coordinates of the #the-id node in the component.</span>
+    })<span class="hljs-selector-class">.exec</span>()
+  }
+})
+</code></pre>

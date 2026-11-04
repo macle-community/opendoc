@@ -1,0 +1,193 @@
+<h2 id="real-machine-debugging">Real Machine Debugging</h2>
+<blockquote>
+<p>Real machine debugging guide (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="overview">Overview</h3>
+<p>The real-device debugging function can use developer tools to directly debug small programs running on the mobile phone through a network connection, helping developers better locate and find problems that occur on the mobile phone. Real machine debugging can achieve the following operations:</p>
+<ul>
+<li><p>Debug remote miniProgram at break point in debugging panel</p>
+</li>
+<li><p>View the MAML structure and style of the remote interface in the debug panel</p>
+</li>
+<li><p>Check the Mini Program Network &amp; Storage and other information in the debugging panel</p>
+</li>
+</ul>
+<h3 id="debugging-function-overview">Debugging Function Overview</h3>
+<p>The models, operating system versions, and debugging methods of different types of miniPrograms supported by the real machine debugging function are as follows:</p>
+<h4 id="ios">IOS</h4>
+<table>
+<thead>
+<tr>
+<th>Mini Program Type</th>
+<th>System Version</th>
+<th>Debugging Mode</th>
+<th>Debugging Tools</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DSL</td>
+<td>≥9.0</td>
+<td>Wireless Debugging</td>
+<td>IDE</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>≥16.4</td>
+<td>Wired Debugging</td>
+<td>Safari</td>
+</tr>
+</tbody></table>
+<h4 id="安卓">安卓</h4>
+<table>
+<thead>
+<tr>
+<th>Mini Program Type</th>
+<th>System Version</th>
+<th>Debugging Mode</th>
+<th>Debugging Tools</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DSL</td>
+<td>≥4.4</td>
+<td>Wireless Debugging</td>
+<td>IDE</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>≥4.4</td>
+<td>Wired Debugging</td>
+<td>Chrome</td>
+</tr>
+</tbody></table>
+<h3 id="debugging-capabilities">Debugging Capabilities</h3>
+<p>The debugging panel for real machine debugging supports the following debugging content:</p>
+<ul>
+<li>Page Elements</li>
+<li>Console output Console</li>
+<li>Source code debugging Sources</li>
+<li>Network performance Network</li>
+<li>Cache Storage</li>
+</ul>
+<h3 id="preparation-before-debugging">Preparation Before Debugging</h3>
+<h4 id="debugging-instructions">Debugging Instructions</h4>
+<ol>
+<li>During the debugging process of the Mini Program, the debugging capabilities of the real machine will be enabled, and the debugging switch of the webview will be dynamically turned on.</li>
+</ol>
+<h4 id="environment-setup">Environment Setup</h4>
+<ol>
+<li>Please ensure that the versions of Macle components are <code>24.6.0</code> and above</li>
+<li>Confirm that the host APP has the code scanning capability to ensure the normal progress of the debugging process. The code scanning capabilities in this article require the scanning capabilities of the host APP.<h4 id="wireless-debugging">Wireless Debugging</h4>
+</li>
+</ol>
+<p>When using wireless debugging, please ensure that the development PC and mobile phone are in the same local area network and can communicate with each other. Otherwise, loading the small program package and connecting to the debugging service will fail. Note that the following two situations
+They are not the same LAN</p>
+<blockquote>
+<ol>
+<li>The development machine and mobile phone are connected to different network environments respectively.</li>
+<li>Connect the development machine to the network cable and the mobile phone to WiFi.</li>
+</ol>
+</blockquote>
+<h4 id="wired-debugging">Wired Debugging</h4>
+<p><strong>Note: If the Mini Program uses sub-packaging to load, pre-debugging is currently unavailable.The development PC and mobile phone must be in the same LAN.</strong></p>
+<h5 id="android">Android</h5>
+<ol>
+<li>Ensure the adb environment of the development PC</li>
+<li>Enter developer mode on your phone - turn on USB debugging</li>
+<li>Connect the phone to the computer via USB cable</li>
+</ol>
+<h5 id="ios-1">IOS</h5>
+<ol>
+<li>Turn on the developer mode of your phone: iPhone Settings —&gt; Safari —&gt; Advanced, turn on JavaScript and Web Inspector</li>
+<li>Turn on the developer mode of Safari on Mac: <code>Safari</code>-&gt;<code>Preferences</code>-&gt;<code>Advanced</code>-&gt;<code>Show &quot;Develop&quot; menu in menu bar</code> check</li>
+</ol>
+<h4 id="ide">IDE</h4>
+<h5 id="version-requirements">Version Requirements</h5>
+<p>The IDE and simulator version is required to be <code>24.6.0</code> or above, please go to the latest <a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">download address</a> to obtain it</p>
+<h5 id="import-offline-simulator">Import Offline Simulator</h5>
+<p>Click <code>Import offline simulator</code>, if prompted &quot;There is already a file in the current directory, do you want to decompress it and overwrite it?&quot;, select <code>Yes</code>.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/load-simulator.png" alt="image" ></p>
+<h5 id="download-debugging-resource-package">Download Debugging Resource Package</h5>
+<p>When using IDE wireless debugging for the first time, you need to manually confirm the download address of the debugging resource package. After the configuration is completed, using wireless debugging again will automatically download and install the remote debugging resource package:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/download-frontend.png" alt="image" ></p>
+<p>The download may fail due to network reasons. If the following prompt appears:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/download-frontend-failed.png" alt="image" ></p>
+<p>The download failed. You can choose to manually download the <a onclick="_mdLinkClick(this.href)" href="https://chromium.googlesource.com/devtools/devtools-frontend/+archive/refs/heads/chromium/4204/front_end.tar.gz">Real Machine Debugging Resource Package</a>, and then click Import to manually import.</p>
+<h5 id="start-debugging">Start Debugging</h5>
+<p>Please select wireless debugging or wired debugging according to the Mini Program type to start the debugging journey.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/qr-code.png" alt="image" ></p>
+<h3 id="real-machine-debugging-of-dsl-miniprogram">Real Machine Debugging of DSL MiniProgram</h3>
+<p>Click Wireless Debugging, and the IDE will prepare for debugging and generate a QR code. After scanning the code with the test machine, the Mini Program debugging package will be downloaded and the debugging service will be connected.</p>
+<h4 id="debugging-elements">Debugging Elements</h4>
+<p>In <code>Elements</code>, you can modify the DOM and style of the Mini Program and view the effect on the real device in real time.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/elements-debug.png" alt="image" ></p>
+<h4 id="debugging-javascript">Debugging JavaScript</h4>
+<p>Click the <code>Sources</code> tab, click to expand <code>Electron Isolated Context</code> in the left sidebar, and click <code>app</code> to see the JavaScript file of the Mini Program.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/sources.png" alt="image" ></p>
+<p>Add a breakpoint where you need to debug. After the breakpoint is successfully hit, the corresponding line of code will be highlighted:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/javascript-debug.png" alt="image" ></p>
+<h4 id="debugging-network">Debugging Network</h4>
+<p>Network can be used to measure network performance. When a network request is executed, the request details can be viewed on this tab. include:</p>
+<ul>
+<li>Request type, completion status</li>
+<li>retrieve data</li>
+<li>time consuming</li>
+</ul>
+<p>View the request list:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/request-list.png" alt="image" ></p>
+<p>Click on the corresponding request name to see further details of the request:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/request-info.png" alt="image" ></p>
+<p>Or view request information through <code>Protocol Monitor</code>:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/request-info-monitor.png" alt="image" ></p>
+<h4 id="debugging-storage">Debugging Storage</h4>
+<p>Click <code>Application</code>, select <code>Storage</code> on the left, and then click <code>Local Storage</code>-&gt;<code>macle://</code> in order to view the cache data of the current Mini Program in real time. The supported capabilities are as follows:</p>
+<ul>
+<li>Set cache data through the Mini Program API and it will be displayed in the data display area on the right in real time</li>
+<li>You can also operate (add/delete/modify) the cache of the Mini Program in the debugging panel, and view changes in cache data through the Mini Program API.</li>
+</ul>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/storage.png" alt="image" ></p>
+<h3 id="debugging-h5-miniprogram">Debugging H5 MiniProgram</h3>
+<p>The H5 miniProgram currently only supports wired debugging. Please complete the pre-debugging preparations before debugging. Taking into account various scenarios of small program development, IDE supports 3 ways to obtain H5 small program packages.</p>
+<ul>
+<li>Current project: The miniProgram source code project directory currently opened by the IDE</li>
+<li>Online address: Get the Mini Program compilation package address online</li>
+<li>Local path: Export from the small program low-code development platform to the local small program package</li>
+</ul>
+<p>Select the corresponding channel according to the actual situation and click debug. After the debugging service obtains the Mini Program package to be debugged, it will display the QR code. After using the test machine to scan the code to open the Mini Program, follow the steps below to start debugging.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/h5-debug.png" alt="image" ></p>
+<h4 id="ios-2">IOS</h4>
+<p>Connect to Mac via data cable for real machine debugging.</p>
+<p>If the iOS system version is below 16.4, the host App must be a debug package compiled by XCode, and the JavaScript debugging and Web inspector options need to be turned on on the iOS device:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/ios-safari-config.png" alt="image" ></p>
+<p>If the iOS system is 16.4 and above, there is no above requirement.</p>
+<p>Open the Safari browser on your Mac, select <code>Develop</code>, select the corresponding device, and then select <code>Direct browser reference</code> to start debugging.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/mac-safari.png" alt="image" ></p>
+<h4 id="android-1">Android</h4>
+<p>Connect to the development machine via a data cable and use Chrome to debug. After scanning the code to start the Mini Program, open the Chrome browser and enter <code>chrome://inspect</code> in the address bar. The SDK will automatically forward the debugging port. Select <code>Browser direct reference</code> and click <code>inspect</code> to start debugging the H5 Mini Program.</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/h5-chrome-inspect.png" alt="image" ></p>
+<blockquote>
+<p>If you do not see the debuggable page in the inspect interface, you can try the following steps to forward it manually.
+First execute the following command to find the domain socket port opened by the webview service</p>
+<pre><code>adb <span class="hljs-keyword">shell</span><span class="language-bash"> <span class="hljs-built_in">cat</span> /proc/net/unix | grep --text _devtools_remote</span>
+</code></pre>
+<p>You will get results similar to the following</p>
+<pre><code><span class="hljs-number">00000000</span>: <span class="hljs-number">00000002</span> <span class="hljs-number">00000000</span> <span class="hljs-number">00010000</span> <span class="hljs-number">0001</span> <span class="hljs-number">01</span> <span class="hljs-number">34141</span> @webview_devtools_<span class="hljs-comment">remote_5481</span>
+</code></pre>
+<p>Where webview_devtools_remote_5481 is the local abstract port number. We need to forward this port to the TCP port of the local PC through the adb command</p>
+<pre><code><span class="hljs-attribute">adb</span> forward tcp:<span class="hljs-number">9222</span> localabstract:webview_devtools_remote_5481
+</code></pre>
+</blockquote>
+<p>H5 MiniProgram debugging panel:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/devtools/image/remoteDebug/h5-chrome-devtools.png" alt="image" ></p>
+<h3 id="debugging-webview-components">Debugging Webview Components</h3>
+<p>The DSL miniProgram provides the webview component to load online URLs. If you want to debug the webview component, you need to refer to the wired debugging method. First prepare the debugging environment, then open the miniProgram by scanning the code, and use the Safari/Chrome inspect page to debug</p>
+<h3 id="exit">Exit</h3>
+<p>If you want to exit debugging, there are several ways:</p>
+<ul>
+<li>Click the &#39;Exit&#39; button on the right side of the status bar floating layer on the real machine, click &#39;Confirm&#39; to exit debugging</li>
+<li>Click to close the debug panel</li>
+<li>Click to close the <code>Real Device Debugging</code> tab on the IDE</li>
+</ul>
+<h3 id="fqs">F&amp;Qs</h3>
+<p><strong>Q:</strong> Why is there no <code>macle://</code> in <code>Storage</code> in the <code>application</code> tab in the debugging panel?</p>
+<p><strong>A:</strong> Please try to keep the Mini Program in the foreground when opening the real machine debugging panel. Artificially interrupting the panel startup process may cause your data cache content to initialize abnormally. You can solve this problem by restarting the panel.</p>

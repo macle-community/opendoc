@@ -1,0 +1,242 @@
+<h1 id="componentobject-object">Component(Object object)</h1>
+<ul>
+<li>Creates a custom component and accepts a parameter of the <code>Object</code> type.</li>
+</ul>
+<h2 id="parameter"><strong>Parameter</strong></h2>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>Definition Field</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>properties</td>
+<td>Object Map</td>
+<td>No</td>
+<td>External properties of the component, which form a map between property names and property settings.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>No</td>
+<td>Internal data of the component, which is used together with <code>properties</code> to render the template of the component.</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>Object</td>
+<td>No</td>
+<td>Component methods, including event response functions and any custom methods. For the use of event response functions, see <a onclick="_mdLinkClick(this.href)" href="#/guide/events">Events and Communication Between Components</a>.</td>
+</tr>
+<tr>
+<td>behaviors</td>
+<td>String Array</td>
+<td>No</td>
+<td>Inter-component code reuse mechanism similar to <code>mixins</code> and <code>traits</code>. For details, see <a onclick="_mdLinkClick(this.href)" href="#/guide/behaviors">behaviors</a>.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is created. Note that <code>setData</code> cannot be called in this function.</td>
+</tr>
+<tr>
+<td>attached</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance enters the page node tree.</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when the component layout is completed.</td>
+</tr>
+<tr>
+<td>moved</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is moved to another node in the node tree.</td>
+</tr>
+<tr>
+<td>detached</td>
+<td>Function</td>
+<td>No</td>
+<td>Component lifecycle function executed when a component instance is removed from the page node tree.</td>
+</tr>
+</tbody></table>
+<p>The generated component instance can be accessed through <code>this</code> in the component methods, lifecycle functions, and <code>observer</code> properties. A component contains common properties and methods.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>is</td>
+<td>String</td>
+<td>File path of the component.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Node ID.</td>
+</tr>
+<tr>
+<td>dataset</td>
+<td>String</td>
+<td>Node dataset.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Component data, including internal data and property values.</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>Object</td>
+<td>Component data, including internal data and property values (consistent with <code>data</code>).</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setData</td>
+<td>Object newData</td>
+<td>Sets <code>data</code> and performs view layer rendering.</td>
+</tr>
+<tr>
+<td>triggerEvent</td>
+<td>String <code>name</code>, Object <code>detail</code>, Object <code>options</code></td>
+<td>Triggers events. For details, see <a onclick="_mdLinkClick(this.href)" href="#/guide/events">Events and Communication Between Components</a> .</td>
+</tr>
+<tr>
+<td>createSelectorQuery</td>
+<td></td>
+<td>Creates a <a onclick="_mdLinkClick(this.href)" href="#/api/SelectorQuery">SelectorQuery</a> object. The range of the selector is within the component instance.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code><span class="hljs-title class_">Component</span>({
+
+  <span class="hljs-attr">behaviors</span>: [],
+
+  <span class="hljs-comment">// Property definition (described in the following).</span>
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: { <span class="hljs-comment">// Property name.</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">myProperty2</span>: <span class="hljs-title class_">String</span> <span class="hljs-comment">// Simplified definition mode.</span>
+  },
+
+  <span class="hljs-attr">data</span>: {}, <span class="hljs-comment">// Private data, which can be used for template rendering.</span>
+
+
+    <span class="hljs-comment">// Lifecycle function, which can be a function or a method name defined in methods.</span>
+    <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { },
+    <span class="hljs-attr">moved</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { },
+
+
+
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">onMyButtonTap</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-comment">// The method of updating properties and data is similar to that of updating page data.</span>
+      })
+    },
+    <span class="hljs-comment">// It is recommended that an internal method start with an underscore (_).</span>
+    <span class="hljs-attr">_myPrivateMethod</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-comment">// Set data.A[0].B to &#x27;myPrivateData&#x27;.</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-string">&#x27;A[0].B&#x27;</span>: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    <span class="hljs-attr">_propertyChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">newVal, oldVal</span>) {
+
+    }
+  }
+
+})
+</code></pre>
+<p>Note: In the <code>properties</code> definition field, the property name is in camel case (<code>propertyName</code>). In a <code>maml</code> file, the property name uses hyphens (<code>component-tag-name property-name=&quot;attr value&quot;</code>). When applied in data binding, the property name is in camel case.</p>
+<h3 id="definition-of-properties">Definition of properties</h3>
+<table>
+<thead>
+<tr>
+<th>Definition Field</th>
+<th>Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td></td>
+<td>Yes</td>
+<td>Type of the property.</td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td>No</td>
+<td>Initial value of the property.</td>
+</tr>
+<tr>
+<td>observer</td>
+<td>Function/String</td>
+<td>No</td>
+<td>Callback function at the change of the property value.</td>
+</tr>
+</tbody></table>
+<p>You can use <code>observer</code> to listen for property value changes. <code>observer</code> in function type binds code logic, and in <code>string</code> type binds method names.</p>
+<p><strong>Note: The <code>type</code> field is mandatory.</strong></p>
+<h3 id="sample-code-1">Sample Code</h3>
+<pre><code>Component(<span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">properties:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  min:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  type:</span> Number,
+<span class="hljs-symbol">    value:</span> <span class="hljs-number">0</span>
+<span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  min:</span> <span class="hljs-punctuation">{</span>
+<span class="hljs-symbol">  type:</span> Number,
+<span class="hljs-symbol">    value:</span> <span class="hljs-number">0</span>,
+<span class="hljs-symbol">  observer:</span> function(newVal, oldVal) <span class="hljs-punctuation">{</span>
+      <span class="hljs-comment">// Executed when the property value changes.</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>,
+<span class="hljs-symbol">  lastLeaf:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">//The property type can be Number, String, or Boolean.</span>
+<span class="hljs-symbol">    type:</span> Number,
+<span class="hljs-symbol">    value:</span> <span class="hljs-number">0</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>)
+</code></pre>
+<p>  The property type can be <code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Object</code>, or <code>Array</code>. The value <code>null</code> indicates that the property type is not limited.</p>
+<p> In most cases, specify a type for the property. When a property value is literally specified in MAML, the value can have an exact type, for example:</p>
+<pre><code>&lt;custom-<span class="hljs-built_in">comp</span> <span class="hljs-built_in">min</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-built_in">max</span>=<span class="hljs-string">&quot;5&quot;</span> /&gt;
+</code></pre>
+<p>Because the property type of the custom component is <code>Number</code>, the values of min and max are assigned as <code>1</code> and <code>5</code> instead of <code>&quot;1&quot;</code>and <code>&quot;5&quot;</code>.</p>
+<pre><code>  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.min === <span class="hljs-number">1</span> <span class="hljs-comment">// true</span>
+  <span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>.max === <span class="hljs-number">5</span> <span class="hljs-comment">// true</span>
+</code></pre>
+<h2 id="bug--tip">Bug &amp; Tip</h2>
+<ul>
+<li>You can use <code>this.data</code> to obtain internal data and property values, but directly changing the values does not apply the changes to the GUI. You can use <code>setData</code> to modify <code>this.data</code>.</li>
+<li>The lifecycle functions cannot be accessed through <code>this</code> in the component methods.<ul>
+<li>Do not start a property name with <code>data</code>, that is, do not name a property in the format of <code>dataXyz</code>, because in MAML, <code>data-xyz=&quot;&quot;</code> is processed as a node dataset instead of a component property.</li>
+</ul>
+</li>
+<li>In component definition and use, the property names and data fields of a component cannot conflict with each other (although they are in different definition fields).</li>
+</ul>

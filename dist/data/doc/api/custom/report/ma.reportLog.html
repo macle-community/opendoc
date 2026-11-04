@@ -1,0 +1,40 @@
+<h2 id="mareportlogobject-object">ma.reportLog(Object object)</h2>
+<blockquote>
+<p>开发者自定义日志上报接口（最低版本： 23.12.0）</p>
+</blockquote>
+<h3 id="object-object">Object object</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>level</td>
+<td>String</td>
+<td>info</td>
+<td>否</td>
+<td>日志类型，支持debug/info/error</td>
+</tr>
+<tr>
+<td>log</td>
+<td>Object / String</td>
+<td></td>
+<td>是</td>
+<td>若log为object，需json化</td>
+</tr>
+</tbody></table>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.reportLog({
+  <span class="hljs-keyword">level</span>: <span class="hljs-string">&#x27;info&#x27;</span>,
+  <span class="hljs-keyword">log</span>: <span class="hljs-string">&#x27;errMsg&#x27;</span>
+});
+</code></pre>

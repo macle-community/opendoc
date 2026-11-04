@@ -1,0 +1,92 @@
+<h2 id="icon">Icon</h2>
+<blockquote>
+<p>Font-based icon set that can be used through the Icon component or referenced through the icon attribute in other components (minimum version: 24.6.0)</p>
+</blockquote>
+<h3 id="icon-preview">Icon Preview</h3>
+<p>The icons supported by the current component library and the corresponding icon names are as follows:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/maui-component/image/icon_list.png" alt="image" ></p>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<p>The <code>name</code> attribute of <code>Icon</code> supports passing in the icon name or image link.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;https://example/Icon.png&quot;</span> /&gt;
+</code></pre>
+<h4 id="prompt-information">Prompt Information</h4>
+<p>After setting the <code>dot</code> attribute, a small red dot will be displayed in the upper right corner of the icon. After setting the <code>info</code> attribute, the corresponding content will be displayed in the upper right corner of the icon.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> dot /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> info=<span class="hljs-string">&quot;9&quot;</span> /&gt;
+&lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;cross&quot;</span> info=<span class="hljs-string">&quot;99+&quot;</span> /&gt;
+</code></pre>
+<h4 id="icon-size">Icon Size</h4>
+<p>Set the <code>size</code> property to control the icon size.</p>
+<pre><code class="language-html">&lt;maui-icon name<span class="hljs-operator">=</span><span class="hljs-string">&quot;cross&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;50px&quot;</span> /&gt;
+</code></pre>
+<h2 id="api">API</h2>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">Icon name or image link</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">dot</td>
+<td align="left">Whether to display the small red dot in the upper right corner of the icon</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">info</td>
+<td align="left">Text prompt in the upper right corner of the icon</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">Icon Color</td>
+<td align="left">String</td>
+<td align="left">#2c2c2c</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Icon size, such as <code>20px</code>, <code>2em</code>, the default unit is <code>px</code></td>
+<td align="left">String | Number</td>
+<td align="left"><code>inherit</code></td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">Custom style</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">class-prefix</td>
+<td align="left">class name prefix</td>
+<td align="left">String</td>
+<td align="left"><code>maui-icon</code></td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Callback Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">Triggered at a click.</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

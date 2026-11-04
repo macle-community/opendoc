@@ -1,0 +1,33 @@
+<h2 id="macaniusestring-schema">ma.canIUse(string schema)</h2>
+<blockquote>
+<p>Check whether Mini Programs&#39; APIs, callbacks, parameters, and components are available in the current version.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<p><strong>string schema</strong></p>
+<p>Use ${API}.${method}.${param}.${option} or ${component}.${attribute}.${option} to call.</p>
+<h3 id="return-value">Return Value</h3>
+<p><strong>boolean</strong></p>
+<p>Whether the current version is available.</p>
+<p><strong>Parameter Description</strong></p>
+<p>${API} indicates the API name.</p>
+<p>${method} indicates the call method. The valid values are return, success, object, and callback.</p>
+<p>${param} indicates a parameter or return value.</p>
+<p>${option} indicates the optional value or return value of a parameter.</p>
+<p>${component} indicates the component name.</p>
+<p>${attribute} indicates component attributes.</p>
+<p>${option} indicates the optional values of the component attributes.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// Attribute or method of an object.</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;Image.<span class="hljs-params">src</span>&#x27;)</span>;
+
+<span class="hljs-comment">// Macle API parameter, callback, or return value.</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">openBluetoothAdapter</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">getSystemInfo</span>.<span class="hljs-params">success</span>.<span class="hljs-params">screenWidth</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">showToast</span>.<span class="hljs-params">object</span>.<span class="hljs-params">image</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">request</span>.<span class="hljs-params">object</span>.<span class="hljs-params">method</span>.GET&#x27;)</span>;
+
+<span class="hljs-comment">// Component attributes.</span>
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">scroll</span>-<span class="hljs-params">view</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">button</span>.<span class="hljs-params">size</span>&#x27;)</span>;
+ma.can<span class="hljs-constructor">IUse(&#x27;<span class="hljs-params">button</span>.<span class="hljs-params">type</span>.<span class="hljs-params">default</span>&#x27;)</span>;
+</code></pre>

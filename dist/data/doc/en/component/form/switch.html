@@ -1,0 +1,62 @@
+<h2 id="switch">switch</h2>
+<blockquote>
+<p>Switch selector.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">checked</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Selected or not.</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Disabled or not.</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">switch</td>
+<td align="left">No</td>
+<td align="left">Style. The options are as follows: <strong>switch</strong> and <strong>checkbox</strong>.</td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">String</td>
+<td align="left">#04BE02</td>
+<td align="left">No</td>
+<td align="left">Color of the switch component, which is the same as that of the CCS.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Whether to trigger the change event when <strong>checked</strong> changes. The output is <strong>event.detail= <em>{value}</em></strong>.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;switchChange&#x27;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js">Page({
+  <span class="hljs-attr">switchChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
+  }
+})
+</code></pre>

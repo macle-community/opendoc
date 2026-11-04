@@ -1,0 +1,31 @@
+<h2 id="maonsocketmessagefunction-callback">ma.onSocketMessage(function callback)</h2>
+<blockquote>
+<p>Listen for events that messages are received through the WebSocket connection from the server.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function used when messages are received through the WebSocket connection from the server.</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">String</td>
+<td align="left">Message returned by the server.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.connectSocket({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;wss://example.com&#x27;</span>
+});
+ma.onSocketMessage(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.data);
+});
+</code></pre>

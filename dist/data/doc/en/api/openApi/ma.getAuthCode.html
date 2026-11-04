@@ -1,0 +1,280 @@
+<h2 id="magetauthcodeobject-object">ma.getAuthCode(Object object)</h2>
+<blockquote>
+<p>Call the interface to obtain login credentials. Obtain user login status information through credentials (minimum version: 24.3.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">scopes list</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="scopes-list">Scopes List</h4>
+<table>
+<thead>
+<tr>
+<th>Permission Name</th>
+<th>Permission Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AUTH_BASE</td>
+<td>Obtaining the user ID through authorization.</td>
+</tr>
+<tr>
+<td>AUTH_USER</td>
+<td>Authorized to obtain user ID and other user information.</td>
+</tr>
+<tr>
+<td>SEND_MESSAGE</td>
+<td>Authorized to send notifications to the user via SMS, PUSH, or INBOX.</td>
+</tr>
+<tr>
+<td>USER_NICKNAME</td>
+<td>Authorized to obtain the user nickname.</td>
+</tr>
+<tr>
+<td>USER_NAME</td>
+<td>Authorized to obtain the user name.</td>
+</tr>
+<tr>
+<td>USER_LOGIN_ID</td>
+<td>Authorized to obtain the user&#39;s login ID.</td>
+</tr>
+<tr>
+<td>PLAINTEXT_USER_LOGIN_ID</td>
+<td>Authorized to obtain the user&#39;s plaintext login ID.</td>
+</tr>
+<tr>
+<td>HASH_LOGIN_ID</td>
+<td>Authorized to obtain the hash user login ID.</td>
+</tr>
+<tr>
+<td>USER_AVATAR</td>
+<td>Authorized to obtain the user avatar.</td>
+</tr>
+<tr>
+<td>USER_GENDER</td>
+<td>Authorized to obtain the user&#39;s gender.</td>
+</tr>
+<tr>
+<td>USER_BIRTHDAY</td>
+<td>Authorized to obtain the user&#39;s birthday.</td>
+</tr>
+<tr>
+<td>USER_NATIONALITY</td>
+<td>Authorized to obtain the user&#39;s nationality.</td>
+</tr>
+<tr>
+<td>USER_CONTACTINFO</td>
+<td>Authorized to obtain the user&#39;s contact information.</td>
+</tr>
+<tr>
+<td>USER_ADDRESS</td>
+<td>Authorized to obtain the user&#39;s address.</td>
+</tr>
+<tr>
+<td>PLAINTEXT_MOBILE_PHONE</td>
+<td>Authorized to obtain the user&#39;s plaintext phone number.</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getAuthCode: ok</td>
+</tr>
+<tr>
+<td align="left">authCode</td>
+<td align="left">String</td>
+<td align="left">User login credentials</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-callback-function">object.fail Callback Function</h4>
+<h5 id="parameter-2">Parameter</h5>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">error message</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">String</td>
+<td align="left">error code</td>
+</tr>
+</tbody></table>
+<h3 id="error-code-list">Error Code List</h3>
+<table>
+<thead>
+<tr>
+<th>Error Scenario</th>
+<th>Error Code</th>
+<th>Supported by Android</th>
+<th>Supported by iOS</th>
+<th>Supported by Simulator</th>
+<th>Development Suggestion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Invalid request parameter type.</td>
+<td>1</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Invalid value of the request parameter.</td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Check whether the parameter value in the interface invoking parameter is valid (for example, invalid permission) based on errorMsg.</td>
+</tr>
+<tr>
+<td>The request parameter is not mandatory.</td>
+<td>3</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>The permission is unavailable at the current site.</td>
+<td>1201000</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Check whether the permission scope in the interface invoking parameter is available at the current site based on errorMsg. (The permission scope can be obtained from Axis Platform operation personnel.)</td>
+</tr>
+<tr>
+<td>The user rejects the login-free authorization.</td>
+<td>1201001</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation prompts the user to grant related permissions.</td>
+</tr>
+<tr>
+<td>The user is not authorized or rejected.</td>
+<td>1201002</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Developer-friendly implementation prompts the user to grant related permissions. The Mini Program framework throws a pop-up window when the getAuthCode API is invoked next time.</td>
+</tr>
+<tr>
+<td>Failed to query the merchant ID and related credentials configured on the management portal.</td>
+<td>1201003</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact Axis Platform operation personnel to locate the fault.</td>
+</tr>
+<tr>
+<td>The operation personnel on the Mini Program developer side do not configure the merchant ID and related credentials on the management console.</td>
+<td>1201004</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>The operation personnel on the Mini Program developer side need to configure the merchant ID and related credentials on the Mini Program management console. For details, contact the operation personnel of the Axis Platform.</td>
+</tr>
+<tr>
+<td>The host application developer does not implement adaptation related to free login of Mini Program.</td>
+<td>1201005</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Contact the current site operation personnel to obtain the corresponding commissionable host app version.</td>
+</tr>
+<tr>
+<td>The callback information is empty or the authorization code authCode field is not returned.</td>
+<td>1201006</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact the operation personnel of the current site to coordinate with the developer of the host app to locate the fault.</td>
+</tr>
+<tr>
+<td>Callback upon a processing failure in the logic of no-login of the host app</td>
+<td>1201007</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact the current site operation personnel to coordinate with the host app developer to locate the fault.</td>
+</tr>
+<tr>
+<td>An internal error occurred in the Mini Program management console.</td>
+<td>1201008</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Contact the current site operation personnel to locate the fault.</td>
+</tr>
+</tbody></table>
+<h3 id="usage-restrictions">Usage Restrictions</h3>
+<ol>
+<li>To use this interface, you need to connect to the Mini Program saas platform</li>
+<li>Using this interface requires the host application to implement and inject related functions such as obtaining authorization codes (please refer to the Mini Program SDK Integration Document--Integrating Third-Party Accounts without Login Guidance Chapter)</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getAuthCode</span>({
+  <span class="hljs-attr">scopes</span>: [], <span class="hljs-comment">// The scope of authority is subject to the current site operation definition; this is for illustration purposes only.</span>
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">authCode</span>);
+  }
+});
+</code></pre>

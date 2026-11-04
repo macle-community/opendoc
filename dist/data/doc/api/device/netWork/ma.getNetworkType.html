@@ -1,0 +1,140 @@
+<h2 id="magetnetworktypeobject-object">ma.getNetworkType(Object object)</h2>
+<blockquote>
+<p>获取网络类型</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getNetworkType:ok</td>
+</tr>
+<tr>
+<td align="left">networkType</td>
+<td align="left">String</td>
+<td align="left">网络类型</td>
+</tr>
+<tr>
+<td align="left">isConnectVPN</td>
+<td align="left">Boolean</td>
+<td align="left">是否连接VPN</td>
+</tr>
+<tr>
+<td align="left">signalStrength</td>
+<td align="left">Number</td>
+<td align="left">信号强弱，单位dbm（仅Android）</td>
+</tr>
+</tbody></table>
+<h3 id="networktype合法值">networkType合法值</h3>
+<table>
+<thead>
+<tr>
+<th>合法值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wifi</td>
+<td>Wi-Fi 网络</td>
+</tr>
+<tr>
+<td>2g</td>
+<td>2G 网络</td>
+</tr>
+<tr>
+<td>3g</td>
+<td>3G 网络</td>
+</tr>
+<tr>
+<td>4g</td>
+<td>4G 网络</td>
+</tr>
+<tr>
+<td>5g</td>
+<td>5G 网络</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>Android 下不常见的网络类型</td>
+</tr>
+<tr>
+<td>none</td>
+<td>设备当前没有网络连接</td>
+</tr>
+</tbody></table>
+<h3 id="isconnectvpn合法值最低版本为-2590">isConnectVPN合法值(<strong>最低版本为 25.9.0</strong>)</h3>
+<table>
+<thead>
+<tr>
+<th>合法值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>vpn开启</td>
+</tr>
+<tr>
+<td>false</td>
+<td>vpn关闭</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getNetworkType</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-keyword">const</span> networkType = res.<span class="hljs-property">networkType</span>;
+    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">isConnectVPN</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;当前设备正在使用 VPN&quot;</span>);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;当前设备未使用 VPN&quot;</span>);
+    }
+  }
+});
+</code></pre>
+<h3 id="bug--tips">Bug &amp; Tips</h3>
+<ol>
+<li>在连接vpn并连接wifi或者关闭所有网络情况下需要做网络通达性验证，需要请求所以会有一定的时间，推荐使用的时候加loading获取</li>
+</ol>

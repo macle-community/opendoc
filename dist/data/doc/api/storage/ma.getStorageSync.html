@@ -1,0 +1,27 @@
+<h2 id="magetstoragesyncstring-key">ma.getStorageSync(string key)</h2>
+<blockquote>
+<p>从本地缓存中同步获取指定 key 的内容。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-key">string key</h4>
+<p>本地缓存中指定的 key</p>
+<h3 id="返回值">返回值</h3>
+<h4 id="any">any</h4>
+<p>key 对应的内容</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getStorage</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;key&#x27;</span>;
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> val = ma.getStorageSync(key)
+        <span class="hljs-keyword">if</span> (val) {
+            <span class="hljs-comment">// Do something with return val</span>
+        }
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-comment">// Do something when catch error</span>
+    }
+}
+</code></pre>
+<h3 id="bug--tips">Bug &amp; Tips</h3>
+<ol>
+<li>tip：安卓<code>getStorageSync</code> 的传递数据最大10K，如果超过10K，请使用异步API   <code>getStorage</code></li>
+</ol>

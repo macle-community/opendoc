@@ -1,0 +1,71 @@
+<h1 id="loading">Loading</h1>
+<h3 id="introduction">Introduction</h3>
+<p>Use the loading icon to present a transition state during loading.</p>
+<h2 id="sample-code">Sample Code</h2>
+<h3 id="loading-type">Loading type</h3>
+<pre><code class="language-maml">&lt;maui-loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> /&gt;
+</code></pre>
+<h3 id="custom-color">Custom color</h3>
+<pre><code class="language-maml">&lt;maui-loading color<span class="hljs-operator">=</span><span class="hljs-string">&quot;#1989fa&quot;</span> /&gt; &lt;maui-loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> color<span class="hljs-operator">=</span><span class="hljs-string">&quot;#1989fa&quot;</span> /&gt;
+</code></pre>
+<h3 id="loading-copywriting">Loading copywriting</h3>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-loading</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;24px&quot;</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">maui-loading</span>&gt;</span>
+</code></pre>
+<h3 id="vertically-arranged">Vertically arranged</h3>
+<pre><code class="language-maml">&lt;maui-loading <span class="hljs-attribute">size</span>=<span class="hljs-string">&quot;24px&quot;</span> <span class="hljs-attribute">vertical</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;Loading...&lt;/maui-loading&gt;
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">color</td>
+<td align="left">Color</td>
+<td align="left">String</td>
+<td align="left"><code>#c9c9c9</code></td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">Type. The value can be <code>spinner</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>circular</code></td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Size of the loading icon, in <code>pixels</code>.</td>
+<td align="left">String | Number</td>
+<td align="left"><code>30px</code></td>
+</tr>
+<tr>
+<td align="left">text-size</td>
+<td align="left">Text size, in <code>pixels</code>.</td>
+<td align="left">String | Number</td>
+<td align="left"><code>14px</code></td>
+</tr>
+<tr>
+<td align="left">vertical</td>
+<td align="left">Whether to vertically arrange icons and text.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h3 id="slots">Slots</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Loading copywriting.</td>
+</tr>
+</tbody></table>

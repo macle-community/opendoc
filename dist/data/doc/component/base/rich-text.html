@@ -1,0 +1,389 @@
+<h2 id="rich-text">rich-text</h2>
+<blockquote>
+<p>富文本。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">nodes</td>
+<td align="left">Array/String</td>
+<td align="left">[]</td>
+<td align="left">否</td>
+<td align="left">节点列表/HTML String</td>
+</tr>
+<tr>
+<td align="left">space</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">显示连续空格</td>
+</tr>
+</tbody></table>
+<h3 id="space-的合法值">space 的合法值</h3>
+<table>
+<thead>
+<tr>
+<th align="left">合法值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ensp</td>
+<td align="left">中文字符空格一半大小</td>
+</tr>
+<tr>
+<td align="left">emsp</td>
+<td align="left">中文字符空格大小</td>
+</tr>
+<tr>
+<td align="left">nbsp</td>
+<td align="left">根据字体设置的空格大小</td>
+</tr>
+</tbody></table>
+<h3 id="nodes">nodes</h3>
+<p>现支持两种节点，通过 type 来区分，分别是元素节点和文本节点，默认是元素节点，在富文本区域里显示的 HTML 节点</p>
+<h4 id="元素节点：type--node">元素节点：type = node</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">标签名</td>
+<td align="left">String</td>
+<td align="left">是</td>
+<td align="left">支持部分受信任的 HTML 节点</td>
+</tr>
+<tr>
+<td align="left">attrs</td>
+<td align="left">属性</td>
+<td align="left">Object</td>
+<td align="left">否</td>
+<td align="left">支持部分受信任的属性，遵循 Pascal 命名法</td>
+</tr>
+<tr>
+<td align="left">children</td>
+<td align="left">子节点列表</td>
+<td align="left">Array</td>
+<td align="left">否</td>
+<td align="left">结构和 nodes 一致</td>
+</tr>
+</tbody></table>
+<h4 id="文本节点：type--text">文本节点：type = text</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">text</td>
+<td align="left">文本</td>
+<td align="left">String</td>
+<td align="left">是</td>
+<td align="left">支持 entities</td>
+</tr>
+</tbody></table>
+<h3 id="受信任的-html-节点及属性">受信任的 HTML 节点及属性</h3>
+<p>全局支持 class 和 style 属性，<strong>不支持 id 属性</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">节点</th>
+<th align="left">属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">a</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">abbr</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">address</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">article</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">aside</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">bdi</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">bdo</td>
+<td align="left">dir</td>
+</tr>
+<tr>
+<td align="left">big</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">blockquote</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">br</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">caption</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">center</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cite</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">code</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">col</td>
+<td align="left">span，width</td>
+</tr>
+<tr>
+<td align="left">colgroup</td>
+<td align="left">span，width</td>
+</tr>
+<tr>
+<td align="left">dd</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">del</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">div</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">dl</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">dt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">em</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">fieldset</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">font</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">footer</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h1</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h2</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h3</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h4</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h5</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">h6</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hr</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">i</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">img</td>
+<td align="left">alt，src，height，width</td>
+</tr>
+<tr>
+<td align="left">ins</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">label</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">legend</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">li</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mark</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">nav</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ol</td>
+<td align="left">start，type</td>
+</tr>
+<tr>
+<td align="left">p</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">pre</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">rt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ruby</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">s</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">section</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">small</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">span</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">strong</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sub</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sup</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">table</td>
+<td align="left">width</td>
+</tr>
+<tr>
+<td align="left">tbody</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">td</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">tfoot</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">th</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">thead</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">tr</td>
+<td align="left">colspan，height，rowspan，width</td>
+</tr>
+<tr>
+<td align="left">tt</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">u</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ul</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">rich-text</span> <span class="hljs-attr">nodes</span>=<span class="hljs-string">&#x27;&lt;button&gt;testButton&lt;/button&gt;&#x27;</span> <span class="hljs-attr">space</span>=<span class="hljs-string">&#x27;nbsp&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rich-text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip">Bug &amp; Tip</h3>
+<ol>
+<li>nodes 不推荐使用 String 类型，性能会有所下降。</li>
+<li><code>rich-text</code> 组件内屏蔽所有节点的事件。</li>
+<li>attrs 属性不支持 id ，支持 class 。</li>
+<li>name 属性大小写不敏感。</li>
+<li>如果使用了不受信任的 HTML 节点，该节点及其所有子节点将会被移除。</li>
+<li>如果在自定义组件中使用 <code>rich-text</code> 组件，那么仅自定义组件的 mass 样式对 <code>rich-text</code> 中的 class 生效。</li>
+</ol>

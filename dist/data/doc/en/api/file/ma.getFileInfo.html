@@ -1,0 +1,113 @@
+<h2 id="magetfileinfoobject-object">ma.getFileInfo(Object object)</h2>
+<blockquote>
+<p>Obtain file information.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Local file path.</td>
+</tr>
+<tr>
+<td align="left">digestAlgorithm</td>
+<td align="left">String</td>
+<td align="left">&#39;md5&#39;</td>
+<td align="left">No</td>
+<td align="left">Algorithm for calculating the file digest.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectdigestalgorithm">object.digestAlgorithm</h5>
+<table>
+<thead>
+<tr>
+<th>Valid Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sha256</td>
+<td>sha256 algorithm(default)</td>
+</tr>
+<tr>
+<td>md5</td>
+<td>MD5 algorithm.  The encryption algorithm is insecure. SHA256 is recommended.</td>
+</tr>
+<tr>
+<td>sha1</td>
+<td>SHA1 algorithm. The encryption algorithm is insecure. SHA256 is recommended.</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getFileInfo:ok</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Number</td>
+<td align="left">File size, in byte.</td>
+</tr>
+<tr>
+<td align="left">digest</td>
+<td align="left">String</td>
+<td align="left">File digest calculated based on the input <strong>digestAlgorithm</strong>.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.getFileInfo({
+  <span class="hljs-attr">filePath</span>: <span class="hljs-string">&#x27;filePath&#x27;</span>,
+  success(res) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.size);
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.digest);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Support calling through <code>FileSystemManager</code></li>
+</ol>

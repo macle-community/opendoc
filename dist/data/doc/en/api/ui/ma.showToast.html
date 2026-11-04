@@ -1,0 +1,105 @@
+<h2 id="mashowtoastobject-object">ma.showToast(Object object)</h2>
+<blockquote>
+<p>Display a toast.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">title</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Prompt content.</td>
+</tr>
+<tr>
+<td align="left">icon</td>
+<td align="left">String</td>
+<td align="left">success</td>
+<td align="left">No</td>
+<td align="left">Icon.</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">1500</td>
+<td align="left">No</td>
+<td align="left">Prompt duration.(The maximum valid value is 10000, if it exceeds 10000, it will be treated as 10000)</td>
+</tr>
+<tr>
+<td align="left">mask</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">No</td>
+<td align="left">Whether to display a transparent mask to prevent a touch event.</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Local path of a customized icon. The priority of <strong>image</strong> is higher than that of <strong>icon</strong>.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="valid-values-of-objecticon">Valid Values of object.icon</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Displays the success icon. The value of <strong>title</strong> can contain a maximum of seven Chinese characters.</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">Displays the failure icon. The value of <strong>title</strong> can contain a maximum of seven Chinese characters.</td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">Displays the loading icon. The value of <strong>title</strong> can contain a maximum of seven Chinese characters.</td>
+</tr>
+<tr>
+<td align="left">none</td>
+<td align="left">Displays no icon. In this case, the <strong>title</strong> text can be displayed in a maximum of two lines.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma<span class="hljs-selector-class">.showToast</span>({
+  title: <span class="hljs-string">&#x27;success&#x27;</span>,
+  <span class="hljs-attribute">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+  duration: <span class="hljs-number">2000</span>
+})
+</code></pre>

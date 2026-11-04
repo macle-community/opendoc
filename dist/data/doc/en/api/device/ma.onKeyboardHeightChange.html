@@ -1,0 +1,28 @@
+<h2 id="maonkeyboardheightchangefunction-listener">ma.onKeyboardHeightChange(function listener)</h2>
+<blockquote>
+<p>Listening for Keyboard Height Change Events (minimum version: 24.12.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-listener">function listener</h4>
+<p>Listening function for keyboard height change events</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">height</td>
+<td align="left">number</td>
+<td align="left">keyboard height</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.onKeyboardHeightChange(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+});
+</code></pre>

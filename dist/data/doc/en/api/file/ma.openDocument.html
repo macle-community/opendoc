@@ -1,0 +1,104 @@
+<h2 id="maopendocumentobject-object">ma.openDocument(Object object)</h2>
+<blockquote>
+<p>Open a document on a new page.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">File path (local path), which can be obtained by downloadFile.</td>
+</tr>
+<tr>
+<td align="left">fileType</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">File type. You can open a file of the specified type.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectfiletype">object.fileType</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Valid Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">doc</td>
+<td align="left">doc format.</td>
+</tr>
+<tr>
+<td align="left">docx</td>
+<td align="left">docx format.</td>
+</tr>
+<tr>
+<td align="left">xls</td>
+<td align="left">xls format.</td>
+</tr>
+<tr>
+<td align="left">xlsx</td>
+<td align="left">xlsx format.</td>
+</tr>
+<tr>
+<td align="left">ppt</td>
+<td align="left">ppt format.</td>
+</tr>
+<tr>
+<td align="left">pptx</td>
+<td align="left">pptx format.</td>
+</tr>
+<tr>
+<td align="left">pdf</td>
+<td align="left">pdf format.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.downloadFile({
+  <span class="hljs-comment">// Example URL.</span>
+  url: <span class="hljs-string">&#x27;http://example.com/somefile.pdf&#x27;</span>,
+  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+    const filePath = res.tempFilePath;
+    ma.openDocument({
+      <span class="hljs-attr">filePath</span>: filePath,
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span> (<span class="hljs-string">&#x27;The file is opened.&#x27;</span>);
+      }
+    });
+  }
+});
+</code></pre>

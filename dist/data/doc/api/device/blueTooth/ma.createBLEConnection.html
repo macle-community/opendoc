@@ -1,0 +1,108 @@
+<h2 id="macreatebleconnectionobject-object">ma.createBLEConnection(Object object)</h2>
+<blockquote>
+<p>连接蓝牙低功耗设备（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deviceId</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">蓝牙设备 id</td>
+</tr>
+<tr>
+<td align="left">timeout</td>
+<td align="left">number</td>
+<td align="left">30000</td>
+<td align="left">否</td>
+<td align="left">连接超时时间，单位 ms，不填表示默认30秒超时</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-object-1">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">createBLEConnection: ok</td>
+</tr>
+</tbody></table>
+<h3 id="objectfail-回调函数">object.fail 回调函数</h3>
+<h4 id="参数-2">参数</h4>
+<h4 id="object-object-2">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.createBLEConnection({
+  deviceId: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;createBLEConnection success&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    ma.showModal({
+      title: <span class="hljs-string">&#x27;createBLEConnection fail&#x27;</span>,
+      content: <span class="hljs-built_in">JSON</span>.stringify(res),
+      showCancel: <span class="hljs-literal">false</span>
+    })
+  }
+})
+</code></pre>
+<h3 id="tips">Tips</h3>
+<p>若小程序在之前已有搜索过某个蓝牙设备，并成功建立连接，可直接传入之前搜索获取的 deviceId 直接尝试连接该设备，无需再次进行搜索操作。如果在iOS设备上，关闭了蓝牙模块，则必须再次调用
+ma.startBluetoothDevicesDiscovery接口搜索到蓝牙设备以后，再调用连接蓝牙低功耗设备接口。</p>

@@ -1,0 +1,30 @@
+<h2 id="nodesref-selectorqueryselectallstring-selector"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.selectAll(string selector)</h2>
+<blockquote>
+<p>Select all nodes that match the selector on the current page.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-selector">string selector</h4>
+<p>Selector.</p>
+<h3 id="return-value">Return Value</h3>
+<h4 id="nodesref"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a></h4>
+<h3 id="selector-syntax">selector syntax</h3>
+<ul>
+<li><p>A selector, for example, a CSS selector, supports only the following syntax:</p>
+<ul>
+<li>IDselector:#the-id</li>
+<li>Class selector (selects multiple consecutive classes):.a-class.another-class</li>
+<li>Sub-element selector: .the-parent &gt; .the-child</li>
+<li>Descendant selector:.the-ancestor .the-descendant</li>
+<li>Union of multiple selectors: #a-node, .some-other-nodes</li>
+</ul>
+</li>
+</ul>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const selectorQuery <span class="hljs-operator">=</span> ma.createSelectorQuery()
+
+selectorQuery.selectAll(<span class="hljs-string">&quot;.one&quot;</span>)
+  .boundingClientRect()
+  .exec((res) <span class="hljs-operator">=</span>&gt; {
+    console.log(res)<span class="hljs-comment">;</span>
+  })<span class="hljs-comment">;</span>
+</code></pre>

@@ -1,0 +1,66 @@
+<h2 id="cover-image">cover-image</h2>
+<blockquote>
+<p>Image view that covers the native component. If native components support rendering at the same layer, you are advised to use <a onclick="_mdLinkClick(this.href)" href="#/component/image">image</a> instead. The native component that can be covered is <a onclick="_mdLinkClick(this.href)" href="#/component/cover-view">cover-view</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Icon path, which can be a temporary path, a network address, or a local path (ensure that the path does not exceed the root directory of the project).</td>
+</tr>
+</tbody></table>
+<h3 id="supported-formats">Supported Formats</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Format</th>
+<th align="left">iOS</th>
+<th align="left">Android</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">JPG</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">PNG</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">SVG</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td align="left">WEBP</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">GIF</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">BASE64</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+&lt;cover-image <span class="hljs-attribute">class</span>=<span class="hljs-string">&#x27;cover-image&#x27;</span> <span class="hljs-attribute">src</span>=<span class="hljs-string">&#x27;https://example.jpg&#x27;</span>&gt;&lt;/cover-image&gt;
+</code></pre>

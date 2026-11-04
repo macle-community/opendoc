@@ -1,0 +1,39 @@
+<h2 id="require">require</h2>
+<p>The module is introduced and the interface is returned through module.exports.</p>
+<h4 id="parameter">Parameter</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left">The relative path of the module file relative to the current file, or the name of the npm module, or the path of the npm module needs to be imported. Absolute paths are not supported.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-comment">// common.js</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHello</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Hello <span class="hljs-subst">${name}</span> !`</span>)
+}
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sayGoodbye</span>(<span class="hljs-params">name</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Goodbye <span class="hljs-subst">${name}</span> !`</span>)
+}
+
+module.exports.sayHello = sayHello
+module.exports.sayGoodbye = sayGoodbye
+</code></pre>
+<pre><code class="language-js"><span class="hljs-selector-tag">var</span> common = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;common.js&#x27;</span>)
+<span class="hljs-built_in">Page</span>({
+  helloMacle: <span class="hljs-built_in">function</span>() {
+    common<span class="hljs-selector-class">.sayHello</span>(<span class="hljs-string">&#x27;Macle&#x27;</span>)
+  },
+  goodbyeMacle: <span class="hljs-built_in">function</span>() {
+    common<span class="hljs-selector-class">.sayGoodbye</span>(<span class="hljs-string">&#x27;Macle&#x27;</span>)
+  }
+})
+</code></pre>

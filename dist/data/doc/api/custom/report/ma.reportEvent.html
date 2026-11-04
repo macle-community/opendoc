@@ -1,0 +1,43 @@
+<h2 id="mareporteventobject-object">ma.reportEvent(Object object)</h2>
+<blockquote>
+<p>事件上报（最低版本： 24.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eventId</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>监控ID，在<code>小程序管理平台</code>新建数据指标后获得</td>
+</tr>
+<tr>
+<td>eventData</td>
+<td>Object</td>
+<td></td>
+<td>否</td>
+<td>可被 JSON.stringify 的对象，将一起上报至系统(24.9.0支持）</td>
+</tr>
+</tbody></table>
+<h3 id="使用限制">使用限制</h3>
+<ol>
+<li>使用此接口需要对接小程序saas平台</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.reportEvent({
+  eventId: <span class="hljs-string">&#x27;your eventId&#x27;</span>,
+  eventData: {
+    <span class="hljs-string">&#x27;miniAppStartFrom&#x27;</span>: <span class="hljs-string">&#x27;aaa&#x27;</span>
+  }
+});
+</code></pre>

@@ -1,0 +1,61 @@
+<h2 id="recordermanageronstopfunction-listener">RecorderManager.onStop(function listener)</h2>
+<blockquote>
+<p>监听录音结束事件，此时录音机再次进入到录音空闲状态，可以由 RecorderManager.stop() 主动触发，也会在录音发生中断等异常时自动触发（最低版本：23.9.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="function-listener">function listener</h4>
+<p>录音结束事件的监听函数</p>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">录音文件的临时路径 (本地路径)</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">录音总时长，单位：ms</td>
+</tr>
+<tr>
+<td align="left">fileSize</td>
+<td align="left">Number</td>
+<td align="left">录音文件大小，单位：Byte</td>
+</tr>
+</tbody></table>
+<h4 id="参数详细说明">参数详细说明</h4>
+<ol>
+<li>录音文件的格式固定为 AAC，并且是以开始录音时刻的时间命名的，保存在本地临时目录下，因此得到的 tempFilePath 格式应为 mafile://tmp_yyyyMMddHHmmss.aac</li>
+<li>duration 时长可能和录音开始时指定的时长存在毫秒级别的误差</li>
+</ol>
+<h3 id="导致录音自动结束场景说明">导致录音自动结束场景说明</h3>
+<ol>
+<li>当前页面发生路由变化，如调用 navigateTo、navigateBack、redirectTo、reLaunch 等接口</li>
+<li>当前小程序不在宿主 APP 前台运行，如小程序最小化、关闭等</li>
+<li>当前小程序进行菜单操作</li>
+<li>宿主 APP 不在设备前台运行</li>
+<li>设备关闭屏幕</li>
+<li>其他应用占用了扬声器或麦克风</li>
+<li>正在录音时，使用的麦克风发生变化，如正在通过耳机麦克风录音，此时断开耳机与手机的连接</li>
+<li>其他系统异常</li>
+</ol>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-javascript">Page({
+    onload() {
+        recorderManager.onStop(() =&gt; {
+            ma.showToast({
+                title: &#x27;录音暂停&#x27;,
+                icon: &#x27;success&#x27;,
+                duration: <span class="hljs-number">500</span>
+            })<span class="hljs-comment">;</span>
+        })<span class="hljs-comment">;</span>
+    }
+})
+</code></pre>

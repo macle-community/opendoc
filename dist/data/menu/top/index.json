@@ -1,0 +1,47 @@
+[
+  {
+    "name": "指南",
+    "path": "/guide",
+    "data": "/data/menu/left/guide.json"
+  },
+  {
+    "name": "框架",
+    "path": "/framework",
+    "data": "/data/menu/left/framework.json"
+  },
+  {
+    "name": "基础组件",
+    "path": "/component",
+    "data": "/data/menu/left/component.json"
+  },
+  {
+    "name": "UI组件库",
+    "path": "/maui-component",
+    "data": "/data/menu/left/maui-component.json"
+  },
+  {
+    "name": "小程序API",
+    "path": "/api",
+    "data": "/data/menu/left/api.json"
+  },
+  {
+    "name": "开发工具",
+    "path": "/devtools",
+    "data": "/data/menu/left/devtools.json"
+  },
+  {
+    "name": "扩展能力",
+    "path": "/extended",
+    "data": "/data/menu/left/extended.json"
+  },
+  {
+    "name": "JS SDK",
+    "path": "/sdk",
+    "data": "/data/menu/left/sdk.json"
+  },
+  {
+    "name": "更新日志",
+    "path": "/changelog",
+    "data": "/data/menu/left/changelog.json"
+  }
+]

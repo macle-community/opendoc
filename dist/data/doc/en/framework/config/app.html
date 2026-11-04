@@ -1,0 +1,448 @@
+<h2 id="global-configuration">Global Configuration</h2>
+<blockquote>
+<p>The app.json file in the root directory of the Mini Program is used to configure the Mini Program globally. The file content is a
+JSON object with the following attributes:</p>
+</blockquote>
+<h3 id="configuration-item">Configuration Item</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Mini Program types are currently supported</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">entryPagePath</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">If this parameter is left blank, the first item in the pages list is used by default.</td>
+<td align="left">Homepage of the Mini Program by default.This is a required field in the H5 applet.</td>
+</tr>
+<tr>
+<td align="left">embeddingType</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left"></td>
+<td align="left">Mini Program embedding type. The shell value of the DSL Mini Program is DSLEmbed, and the shell value of H5 is H5Embed (the minimum version is 24.12.0).</td>
+</tr>
+<tr>
+<td align="left">videoAutoPlay</td>
+<td align="left">Boolean</td>
+<td align="left">H5</td>
+<td align="left">No</td>
+<td align="left">false</td>
+<td align="left">Indicates whether to play automatically,the default value is <code>false</code> (Currently, only H5 is supported.Minimum version 24.9.0)</td>
+</tr>
+<tr>
+<td align="left">pages</td>
+<td align="left">Array</td>
+<td align="left">DSL/H5</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Page Path List</td>
+</tr>
+<tr>
+<td align="left">window</td>
+<td align="left">Object</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">For details, see the following description.</td>
+<td align="left">Default Window Performance for Global</td>
+</tr>
+<tr>
+<td align="left">tabBar</td>
+<td align="left">Object</td>
+<td align="left">DSL</td>
+<td align="left">No</td>
+<td align="left">For details, see the following description.</td>
+<td align="left">Performance of the bottom tab</td>
+</tr>
+<tr>
+<td align="left">subPackages</td>
+<td align="left">Array</td>
+<td align="left">DSL</td>
+<td align="left">No</td>
+<td align="left">For details, see the following description.</td>
+<td align="left">Subcontracting structure configuration</td>
+</tr>
+<tr>
+<td align="left">usingComponents</td>
+<td align="left">Object</td>
+<td align="left">DSL</td>
+<td align="left">No</td>
+<td align="left">For details, see the following description.</td>
+<td align="left">Global Custom Component Configuration,if there is subcontracting, the referenced content must be in the main package.</td>
+</tr>
+<tr>
+<td align="left">restartStrategy</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">homePage</td>
+<td align="left">Restart Policy</td>
+</tr>
+<tr>
+<td align="left">ignoreSafeArea</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">false</td>
+<td align="left">Whether to ignore the safe area of the Mini Program, the default value is <code>false</code>(Currently only supports IOS)</td>
+</tr>
+<tr>
+<td align="left">capsuleShow</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">true</td>
+<td align="left">Indicates whether to display capsules. The default value is <code>true</code>(the minimum version is 24.12.0).</td>
+</tr>
+<tr>
+<td align="left">exitMode</td>
+<td align="left">String</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">exitMiniProgram</td>
+<td align="left">Mini Program exit configuration policy. The default value is <code>exitMiniProgram</code> (the minimum version is 24.12.0).</td>
+</tr>
+<tr>
+<td align="left">hideStatusBar</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">false</td>
+<td align="left">Whether to hide the top status bar in full screen mode. The default value is <code>false</code> (the minimum version is 25.6.0).</td>
+</tr>
+<tr>
+<td align="left">enablePerformance</td>
+<td align="left">Boolean</td>
+<td align="left">DSL/H5</td>
+<td align="left">No</td>
+<td align="left">false</td>
+<td align="left">Whether to display the performance panel. The default value is <code>false</code> (the minimum version is 25.6.0).</td>
+</tr>
+</tbody></table>
+<h4 id="enableperformance-minimum-version-2560">enablePerformance (minimum version: 25.6.0)</h4>
+<p>Mini Program-level switch configuration. When enablePerformance is set to true, the performance panel is displayed.</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;enablePerformance&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="hidestatusbar-minimum-version-2560">hideStatusBar (minimum version: 25.6.0)</h4>
+<p>Mini Program-level switch configuration. The status bar on the top is hidden when the Mini Program is in full screen and hideStatusBar is set to true.</p>
+<blockquote>
+<p>Note:</p>
+</blockquote>
+<ol>
+<li>The status bar hiding configuration takes effect only when the navigation bar is set to <code>custom</code>.</li>
+<li>The iOS bang screen or home button display needs to be adapted by the Mini Program developer.</li>
+<li>The status bar is hidden only for the Mini Program page. The status bar is not hidden for the capsule menu items provided by the SDK, such as the settings page and Mini Program details page.</li>
+</ol>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;hideStatusBar&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h4 id="exitmode">exitMode</h4>
+<p>Mini Program exit configuration policy. Valid values are <code>backGroundRunningMiniProgram</code> and <code>exitMiniProgram</code>.</p>
+<h4 id="entrypagepath">entryPagePath</h4>
+<p>Specifies the default startup path (homepage) of the mini-program. In DSL mini programs, if not filled in, it will default to the first item in the pages list. This is a required field in H5 mini programs.</p>
+<blockquote>
+<p>Note: The page path parameter is not supported.</p>
+</blockquote>
+<pre><code class="language-json">   <span class="hljs-attr">&quot;pages&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;index.html&quot;</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;entryPagePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.html&quot;</span><span class="hljs-punctuation">,</span> 
+    <span class="hljs-attr">&quot;videoAutoPlay&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;page&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+</code></pre>
+<h4 id="pages">pages</h4>
+<p>This parameter specifies the pages that the Mini Program consists of. Each item corresponds to the path (including the file
+name) of a page. The file name does not need to be suffixed. The framework automatically searches for the four .json,
+.js, .maml, .mass files in the corresponding position for processing.</p>
+<p><strong>The pages array needs to be modified when pages are added or reduced in the Mini Program.</strong><br>For example, the development directory is as follows:</p>
+<pre><code>├── app<span class="hljs-selector-class">.js</span>
+├── app<span class="hljs-selector-class">.json</span>
+├── app<span class="hljs-selector-class">.mass</span>
+├── pages
+│   │── index
+│   │   ├── index<span class="hljs-selector-class">.maml</span>
+│   │   ├── index<span class="hljs-selector-class">.js</span>
+│   │   ├── index<span class="hljs-selector-class">.json</span>
+│   │   └── index<span class="hljs-selector-class">.mass</span>
+│   └── logs
+│       ├── logs<span class="hljs-selector-class">.maml</span>
+│       └── logs<span class="hljs-selector-class">.js</span>
+└── utils
+</code></pre>
+<p>You need to write it in app.json.</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [
+    <span class="hljs-string">&quot;pages/index/index&quot;</span>,
+    <span class="hljs-string">&quot;pages/logs/logs&quot;</span>
+  ]
+}
+</code></pre>
+<h4 id="window">window</h4>
+<p>Used to set the status bar, navigation bar, and title background color of the Mini Program.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Properties</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">navigationBarBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#000000</td>
+<td align="left">Background color of the navigation bar, for example, #000000</td>
+</tr>
+<tr>
+<td align="left">navigationBarTextStyle</td>
+<td align="left">String</td>
+<td align="left">white</td>
+<td align="left">Title color of the navigation bar. Only black and white are supported.</td>
+</tr>
+<tr>
+<td align="left">navigationBarTitleText</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Text content of the navigation bar title</td>
+</tr>
+<tr>
+<td align="left">navigationStyle</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">Navigation bar style supports the following values: <strong>default</strong>, <strong>left</strong>, <strong>center</strong>,<strong>custom</strong>. For the custom navigation bar, only the capsule button at the top right corner is retained.When set to &quot;left&quot;, the mini-program displays the title bar with the title aligned to the left.When set to &quot;center&quot;, the mini-program displays the title bar with the title centered.For the &quot;default&quot; option, the title bar is displayed on both iOS and Android: the title is centered on iOS and aligned to the left on Android.（**25.12.0 change，add<code>left</code>、<code>center</code>**）</td>
+</tr>
+<tr>
+<td align="left">showHomeButton</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">Whether to display the Home icon</td>
+</tr>
+<tr>
+<td align="left">enablePullDownRefresh</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">Whether to enable global pull-to-refresh.</td>
+</tr>
+<tr>
+<td align="left">onReachBottomDistance</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">Distance from the bottom of the page when the pull-up event is triggered. The unit is pixel.</td>
+</tr>
+<tr>
+<td align="left">backgroundTextStyle</td>
+<td align="left">String</td>
+<td align="left">light</td>
+<td align="left">Drop-down background font style, legal values are <code>light</code>, <code>dark</code> (currently only supports IOS)</td>
+</tr>
+<tr>
+<td align="left">capsuleTheme</td>
+<td align="left">String</td>
+<td align="left">light</td>
+<td align="left">Capsule style, legal values are <code>light</code>, <code>dark</code></td>
+</tr>
+<tr>
+<td align="left">disableScreenRecord</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">Whether to forbid screen recording（This parameter is valid only for H5 Mini Program）,Android can disable screenshots</td>
+</tr>
+<tr>
+<td align="left">allowsInlineMediaPlayback</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">On IOS, the full-screen playback field is not enabled by default. Setting it to <code>false</code> will automatically enable full-screen playback, which only takes effect on H5.（**25.9.0 Change,The default value has been changed from <code>false</code> to <code>true</code>.**）</td>
+</tr>
+<tr>
+<td align="left">pageOrientation</td>
+<td align="left">String</td>
+<td align="left">landscape</td>
+<td align="left">Landscape games are supported. The default value is <code>landscape</code>.By default, the screen is displayed in portrait mode. The screen is displayed in landscape mode only when landscape is configured. (the minimum version is 25.3.0).</td>
+</tr>
+<tr>
+<td align="left">safeAreaBackgroundColor</td>
+<td align="left">HexColor</td>
+<td align="left">#ffffff</td>
+<td align="left">Background color of the safe area, for example, #ffffff (the minimum version is 26.3.0, only supports IOS)。</td>
+</tr>
+<tr>
+<td align="left">allowGestueNavigate</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">Allows users to swipe navigate to the previous or next page through gesture. This is enabled by default, but you can set it to false to disable this function globally(the minimum version is 26.3.0, only supports IOS).</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Note: <strong>HexColor</strong> specifies a hexadecimal color value, for example, <strong>#ff00ff</strong>.</p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<ol>
+<li>When the navigationStyle is set to custom, the settings for navigationBarTitleText and showHomeButton do not take effect.</li>
+<li>When the navigationStyle is set to default, both navigationBarTitleText and showHomeButton take effect: setting it to true displays the small house icon, and setting it to false displays the back arrow (←).</li>
+<li>Default behavior: The back button/home icon controlled by showHomeButton does not display on the initial page; it only appears in the navigation bar after a page transition (entering a secondary page).</li>
+</ol>
+<h5 id="pageorientation-minimum-version-2530">pageOrientation (minimum version: 25.3.0)</h5>
+<p>Enable the screen rotation support on your phone. The global configuration takes effect only for the cover Mini Program.
+<code>&quot;pageOrientation&quot;: landscape</code>If this parameter is set to <code>landscape</code>, the Mini Program is displayed in portrait mode. Otherwise, the Mini Program is displayed in portrait mode. If <code>pageOrientation</code> is configured, the screen is forcibly displayed in landscape mode.</p>
+<h6 id="sample-code">Sample Code</h6>
+<pre><code class="language-json">{
+<span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index/index&quot;</span>],
+<span class="hljs-string">&quot;window&quot;</span>: {
+<span class="hljs-string">&quot;pageOrientation&quot;</span>: <span class="hljs-string">&quot;landscape&quot;</span>
+}
+}
+</code></pre>
+<h4 id="tabbar">tabBar</h4>
+<p>If a Mini Program contains multiple tabs (a tab bar at the bottom or top of the client window can be used to switch
+between tabs), you can set the <strong>tabBar</strong> configuration items to specify the tab bar and the corresponding page to be
+displayed when the tab is switched.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Default Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">color</td>
+<td align="left">HexColor</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Default color of the text on the tab. Only the hexadecimal color code is supported.</td>
+</tr>
+<tr>
+<td align="left">selectedColor</td>
+<td align="left">HexColor</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">Color of the selected text on the tab. Only the hexadecimal color code is supported.</td>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">Array</td>
+<td align="left">Yes</td>
+<td align="left"></td>
+<td align="left">List of tabs. For details, see the list attribute description. Only two to five tabs are supported.</td>
+</tr>
+</tbody></table>
+<p>Only one array is supported in the list, that is, only two to five tabs can be configured. Tabs are sorted in the order
+of the array. Each item is an object. The attribute values are as follows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pagePath</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td align="left">Page path, which must be defined in <code>pages</code>.</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left">Yes</td>
+<td align="left">Button text on the tab.</td>
+</tr>
+<tr>
+<td align="left">iconPath</td>
+<td align="left">String</td>
+<td align="left">No</td>
+<td align="left">Icon path. The maximum size of an icon is 40 KB. The recommended size is 81 px x 81 px. Network images are not supported.</td>
+</tr>
+<tr>
+<td align="left">selectedIconPath</td>
+<td align="left">String</td>
+<td align="left">No</td>
+<td align="left">Selected icon path. The maximum size of an icon is 40 KB. The recommended size is 81 px x 81 px. Network images are not supported.</td>
+</tr>
+</tbody></table>
+<h4 id="subpackages">subpackages</h4>
+<p>Declares the project subcontracting structure when <a onclick="_mdLinkClick(this.href)" href="#/guide/subPackages">subcontracting loading</a> is enabled.</p>
+<h4 id="usingcomponents">usingComponents</h4>
+<p>Custom components declared in app.json are considered global custom components and can be directly used in pages or
+custom components in Mini Programs without being declared.</p>
+<p><strong>Note: Globally declared custom components are considered dependent on all pages, are initialized when all pages are
+started, and occupy the main package size. Customized components that are referenced only by individual pages or
+packages should be declared in the page configuration.</strong></p>
+<h4 id="mini-program-cold-start-pageminimum-version-2490">Mini Program Cold Start Page(Minimum version: 24.9.0)</h4>
+<p>During the cold startup of the Mini Program, the following pages are displayed:</p>
+<p>(Class-A scenario) If the path is not carried in the startup scenario</p>
+<p>(Class-B scenario) If the startup scenario contains a path, the page corresponding to the path is displayed.</p>
+<h5 id="restart-policy">Restart Policy</h5>
+<p>During cold startup of a Mini Program, if the startup does not contain path (class-A scenario), the home page of the
+Mini Program is displayed by default. In the JSON file corresponding to the page (or globally configured in the
+In the window section of app.json), specify the <code>restartStrategy</code> configuration item to change the default behavior so
+that after exiting from a page, the next time A
+You can return to this page for a cold start of a class scenario.</p>
+<h6 id="sample-code-1">Sample Code</h6>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;restartStrategy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;homePage&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>restartStrategy Optional Values</th>
+<th>Meanings</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>homePage</td>
+<td>(Default) If you exit the Mini Program from this page, next time it will cold boot from the home page</td>
+</tr>
+<tr>
+<td>homePageAndLatestPage</td>
+<td>If you exit the Mini Program from this page, the page is loaded immediately after the next cold start, and the page parameters remain unchanged (not applicable to tab pages).</td>
+</tr>
+</tbody></table>
+<p>Note: Even if it is not configured as&#39;homePage&#39;, if the Mini Program exits for too long , the next cold start will not follow
+the&#39;restartStrategy&#39;
+configuration, but directly from the home page cold start.</p>
+<p>In any case, the status on the page is not retained. For example, the text content in the input box and the check box
+status are not restored.</p>
+<h4 id="ignoresafearea-minimum-version-2430">ignoreSafeArea (minimum version: 24.3.0)</h4>
+<p>In the original Mini Program scenario, the webview component of the Mini Program does not occupy the safe area at the
+bottom. At this time, the background of the horizontal bar at the bottom of the page is the system color.</p>
+<p>After enabling this configuration item, the Mini Program&#39;s webview will ignore the safe area restrictions at the bottom,
+and the bottom horizontal bar will become a transparent background</p>
+<h5 id="tips">Tips</h5>
+<ol>
+<li><p>The current configuration item is only effective on IOS models, it is not required, and the default value is <code>false</code></p>
+</li>
+<li><p>This configuration item follows the principle of <code>the smaller the granularity, the higher the priority</code>. The minimum
+supported granularity is <code>Mini Program global configuration</code>, and the priority is</p>
+<p>Mini Program Global Configuration &gt; Host APP Configuration</p>
+</li>
+</ol>
+<h3 id="qa">Q&amp;A</h3>
+<ol>
+<li><p><strong>Q:</strong> The interactive component with <code>position: fixed</code> is rendered outside the safe area of iPhone X and later
+models. It is easy to accidentally touch the <code>Home Indicator</code>, resulting in misoperation. How to solve it?</p>
+<p><strong>A:</strong> For such scenarios, you can try to set the distance between the safe area and the boundary in mass to prevent
+accidental touches. For details, please refer to the following sample code：</p>
+</li>
+</ol>
+<pre><code><span class="hljs-attribute">padding-bottom</span>: <span class="hljs-built_in">constant</span>(safe-area-inset-bottom); <span class="hljs-comment">/* IOS &lt; 11.2 */</span>
+<span class="hljs-attribute">padding-bottom</span>: <span class="hljs-built_in">env</span>(safe-area-inset-bottom);      <span class="hljs-comment">/* IOS &gt;= 11.2 */</span>
+</code></pre>

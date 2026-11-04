@@ -1,0 +1,69 @@
+<h2 id="masetbackgroundcolorobject-object">ma.setBackgroundColor(Object object)</h2>
+<blockquote>
+<p>Dynamically set the background color of a window</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Background color of the window. The value must be a hexadecimal number.</td>
+</tr>
+<tr>
+<td align="left">backgroundColorTop</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Background color of the top of the window. The value must be a hexadecimal number. This parameter is supported only by iOS.</td>
+</tr>
+<tr>
+<td align="left">backgroundColorBottom</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Background color of the bottom of the window. The value must be a hexadecimal number. This parameter is supported only by iOS.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    ma<span class="hljs-selector-class">.setBackgroundColor</span>({
+      backgroundColor: <span class="hljs-string">&#x27;#ffffff&#x27;</span>, <span class="hljs-comment">// The background color of the window is white.</span>
+    })
+    
+    ma<span class="hljs-selector-class">.setBackgroundColor</span>({
+      backgroundColorTop: <span class="hljs-string">&#x27;#ffffff&#x27;</span>, <span class="hljs-comment">// The background color of the top of the window is white.</span>
+      backgroundColorBottom: <span class="hljs-string">&#x27;#ffffff&#x27;</span>, <span class="hljs-comment">// The background color of the bottom of the window is white.</span>
+    })
+</code></pre>

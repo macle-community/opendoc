@@ -1,0 +1,209 @@
+<h2 id="popup-弹出层">Popup 弹出层</h2>
+<h3 id="介绍">介绍</h3>
+<p>弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</p>
+<h2 id="代码演示">代码演示</h2>
+<h3 id="基础用法">基础用法</h3>
+<p>通过<code>show</code>属性控制弹出层是否展示。</p>
+<pre><code class="language-maml">&lt;button title=<span class="hljs-string">&quot;展示弹出层&quot;</span> is-link <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;showPopup&quot;</span> /&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;</span>内容<span class="hljs-tag">&lt;/<span class="hljs-name">maui-popup</span>&gt;</span></span>
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>,
+  },
+
+  <span class="hljs-title function_">showPopup</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> });
+  },
+
+  <span class="hljs-title function_">onClose</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span> });
+  },
+});
+</code></pre>
+<h3 id="弹出位置">弹出位置</h3>
+<p>通过<code>position</code>属性设置弹出位置，默认居中弹出，可以设置为<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>。</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%;&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span></span>
+</code></pre>
+<h3 id="关闭图标">关闭图标</h3>
+<p>设置<code>closeable</code>属性后，会在弹出层的右上角显示关闭图标，并且可以通过<code>close-icon</code>属性自定义图标，使用<code>close-icon-position</code>属性可以自定义图标位置。</p>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">closeable</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 自定义图标 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">closeable</span>
+  <span class="hljs-attr">close-icon</span>=<span class="hljs-string">&quot;close&quot;</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 图标位置 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
+  <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
+  <span class="hljs-attr">closeable</span>
+  <span class="hljs-attr">close-icon-position</span>=<span class="hljs-string">&quot;top-left&quot;</span>
+  <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;</span></span>
+</code></pre>
+<h3 id="圆角弹窗">圆角弹窗</h3>
+<p>设置<code>round</code>属性后，弹窗会根据弹出位置添加不同的圆角样式。</p>
+<pre><code class="language-maml">&lt;maui-popup
+  <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span>
+  <span class="hljs-built_in">round</span>
+  <span class="hljs-built_in">position</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+  custom-<span class="hljs-built_in">style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span>
+  bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
+/&gt;
+</code></pre>
+<h3 id="禁止滚动穿透">禁止滚动穿透</h3>
+<p>使用组件时，会发现内容部分滚动到底时，继续划动会导致底层页面的滚动，这就是滚动穿透。</p>
+<p>目前，组件可以通过 <code>lock-scroll</code> 属性处理部分滚动穿透问题。 <strong>但由于小程序自身原因，弹窗内容区域仍会出现滚动穿透。</strong> 不过，我们为开发者提供了一个推荐方案以完整解决滚动穿透：</p>
+<h4 id="page-meta"><a onclick="_mdLinkClick(this.href)" href="#/component/page-meta">page-meta</a></h4>
+<pre><code class="language-maml"><span class="language-xml"><span class="hljs-comment">&lt;!-- page-meta 只能是页面内的第一个节点 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">page-meta</span> <span class="hljs-attr">page-style</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> ? <span class="hljs-string">&#x27;overflow: hidden;&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">catch:touchstart</span> /&gt;</span></span>
+</code></pre>
+<h2 id="api">API</h2>
+<h3 id="props">Props</h3>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">show</td>
+<td align="left">是否显示弹出层</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">z-index</td>
+<td align="left">z-index 层级</td>
+<td align="left">Number</td>
+<td align="left"><code>100</code></td>
+</tr>
+<tr>
+<td align="left">overlay</td>
+<td align="left">是否显示遮罩层</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">弹出位置，可选值为 <code>top</code> <code>bottom</code> <code>right</code> <code>left</code></td>
+<td align="left">String</td>
+<td align="left"><code>center</code></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">动画时长，单位为毫秒</td>
+<td align="left">Number</td>
+<td align="left"><code>300</code></td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left">是否显示圆角</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">自定义弹出层样式</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">overlay-style</td>
+<td align="left">自定义遮罩层样式</td>
+<td align="left">String</td>
+<td align="left"><code>&#39;&#39;</code></td>
+</tr>
+<tr>
+<td align="left">close-on-click-overlay</td>
+<td align="left">是否在点击遮罩层后关闭</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">closeable</td>
+<td align="left">是否显示关闭图标</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">close-icon</td>
+<td align="left">关闭图标名称或图片链接</td>
+<td align="left">String</td>
+<td align="left"><code>cancel</code></td>
+</tr>
+</tbody></table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th align="left">事件名</th>
+<th align="left">说明</th>
+<th align="left">参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:close</td>
+<td align="left">关闭弹出层时触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:click-overlay</td>
+<td align="left">点击遮罩层时触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:before-enter</td>
+<td align="left">进入前触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:enter</td>
+<td align="left">进入中触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:after-enter</td>
+<td align="left">进入后触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:before-leave</td>
+<td align="left">离开前触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:leave</td>
+<td align="left">离开中触发</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">bind:after-leave</td>
+<td align="left">离开后触发</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

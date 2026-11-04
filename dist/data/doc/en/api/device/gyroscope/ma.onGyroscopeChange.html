@@ -1,0 +1,25 @@
+<h2 id="maongyroscopechangefunction-callback">ma.onGyroscopeChange(function callback)</h2>
+<blockquote>
+<p>Listen for gyroscope data change events.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function for gyroscope data change events.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;default&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;start&quot;</span>&gt;</span>Start Listening<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">listener</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  },
+  <span class="hljs-title function_">start</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">startGyroscope</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">() =&gt;</span> {
+        ma.<span class="hljs-title function_">onGyroscopeChange</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listener</span>);
+      }
+    });
+  }
+});
+</code></pre>

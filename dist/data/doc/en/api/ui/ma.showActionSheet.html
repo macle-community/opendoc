@@ -1,0 +1,92 @@
+<h2 id="mashowactionsheetobject-object">ma.showActionSheet(Object object)</h2>
+<blockquote>
+<p>Display action menus.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">alertText</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Warning text.</td>
+</tr>
+<tr>
+<td align="left">itemList</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Text array of a button. The maximum array length is 6.</td>
+</tr>
+<tr>
+<td align="left">itemColor</td>
+<td align="left">String</td>
+<td align="left">#000000</td>
+<td align="left">No</td>
+<td align="left">Text color of a button.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-callback-function">object.success Callback Function</h3>
+<h4 id="parameter-1">Parameter</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left"><strong>showActionSheet: ok</strong>.</td>
+</tr>
+<tr>
+<td align="left">tapIndex</td>
+<td align="left">Number</td>
+<td align="left">Sequence number of the button clicked by the user, starting from 0 from top to bottom.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">showActionSheet</span>({
+  <span class="hljs-attr">itemList</span>: [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>],
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">tapIndex</span>);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">errMsg</span>);
+  }
+});
+</code></pre>

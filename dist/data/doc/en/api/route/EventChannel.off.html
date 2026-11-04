@@ -1,0 +1,24 @@
+<h2 id="eventchanneloffstring-eventnamefunction-fn">EventChannel.off(string eventName,function fn)</h2>
+<blockquote>
+<p>Cancel listening for an event. If the second argument is provided, only the provided listening function is canceled. Otherwise, all listening functions are canceled.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-eventname">string eventName</h4>
+<p>Event name</p>
+<h3 id="function-fn">function fn</h3>
+<p>Event listening function</p>
+<h4 id="parameters">Parameters</h4>
+<h5 id="any-args">any args</h5>
+<p>Event triggering parameter</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>();
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">sampleEvent</span> = (<span class="hljs-params">data</span>) =&gt; {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+    }
+    eventChannel.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, sampleEvent);
+    eventChannel.<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, sampleEvent);
+  }
+});
+</code></pre>

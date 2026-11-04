@@ -1,0 +1,102 @@
+<h2 id="组件间通信与事件">组件间通信与事件</h2>
+<h3 id="组件间通信">组件间通信</h3>
+<p>组件间的基本通信方式有以下几种。</p>
+<ul>
+<li>MAML 数据绑定：用于父组件向子组件的指定属性设置数据，仅能设置 JSON 兼容数据。具体在 <a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component-maml-mass">组件模板和样式</a> 章节中介绍。</li>
+<li>事件：用于子组件向父组件传递数据，可以传递任意数据。</li>
+<li>如果以上两种方式不足以满足需要，父组件还可以通过 this.selectComponent 方法获取子组件实例对象，这样就可以直接访问组件的任意数据和方法。</li>
+</ul>
+<h3 id="监听事件">监听事件</h3>
+<p>事件系统是组件间通信的主要方式之一。自定义组件可以触发任意的事件，引用组件的页面可以监听这些事件。关于事件的基本概念和用法，参见<a onclick="_mdLinkClick(this.href)" href="#/framework/event">事件</a>。
+监听自定义组件事件的方法与监听基础组件事件的方法完全一致：</p>
+<h4 id="代码示例：">代码示例：</h4>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- 当自定义组件触发“myevent”事件时，调用“onMyEvent”方法 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">bindmyevent</span>=<span class="hljs-string">&quot;onMyEvent&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!-- 或者可以写成 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">bind:myevent</span>=<span class="hljs-string">&quot;onMyEvent&quot;</span> /&gt;</span>
+
+Page(</span><span class="hljs-template-variable">{
+  onMyEvent: function(e){
+     e.detail // 自定义组件触发事件时提供的detail对象
+  }</span><span class="language-xml">
+})</span>
+</code></pre>
+<h3 id="触发事件">触发事件</h3>
+<p>自定义组件触发事件时，需要使用 triggerEvent 方法，指定事件名、detail 对象和事件选项：</p>
+<h4 id="代码示例：-1">代码示例：</h4>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- 在自定义组件中 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;onTap&quot;</span>&gt;</span>点击这个按钮将触发“myevent”事件<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+Component(</span><span class="hljs-template-variable">{
+  properties: {}</span><span class="language-xml">,
+  methods: </span><span class="hljs-template-variable">{
+    onTap: function(){
+       const myEventDetail = {}</span><span class="language-xml"> // detail对象，提供给事件监听函数
+       const myEventOption = </span><span class="hljs-template-variable">{}</span><span class="language-xml"> // 触发事件的选项
+       this.triggerEvent(&#x27;myevent&#x27;, myEventDetail, myEventOption)
+    }
+  }
+})</span>
+</code></pre>
+<p>触发事件的选项包括：</p>
+<table>
+<thead>
+<tr>
+<th align="left">选项名</th>
+<th align="left">类型</th>
+<th align="left">是否必填</th>
+<th align="left">默认值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bubbles</td>
+<td align="left">Boolean</td>
+<td align="left">否</td>
+<td align="left">false</td>
+<td align="left">事件是否冒泡</td>
+</tr>
+</tbody></table>
+<p>关于冒泡的概念，请阅读 <a onclick="_mdLinkClick(this.href)" href="#/framework/event">事件</a> 章节中的相关说明。</p>
+<h4 id="代码示例：-2">代码示例：</h4>
+<pre><code>// 页面 page.maml
+<span class="hljs-tag">&lt;<span class="hljs-name">another-component</span> <span class="hljs-attr">bindcustomevent</span>=<span class="hljs-string">&quot;pageEventListener1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">my-component</span> <span class="hljs-attr">bindcustomevent</span>=<span class="hljs-string">&quot;pageEventListener2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">my-component</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">another-component</span>&gt;</span>
+</code></pre>
+<pre><code>// 组件 my-component.maml
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">bindcustomevent</span>=<span class="hljs-string">&quot;myEventListener&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">slot</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code>
+<span class="hljs-comment">// 组件 my-component.js</span>
+Component({
+  methods: {
+    onTap: <span class="hljs-keyword">function</span><span class="hljs-params">()</span>{
+      <span class="hljs-keyword">this</span>.triggerEvent(<span class="hljs-string">&#x27;customevent&#x27;</span>, {}) <span class="hljs-comment">// 只会触发 pageEventListener2</span>
+      <span class="hljs-keyword">this</span>.triggerEvent(<span class="hljs-string">&#x27;customevent&#x27;</span>, {}, { bubbles: <span class="hljs-literal">true</span> }) <span class="hljs-comment">// 会依次触发 pageEventListener2 、 pageEventListener1</span>
+   }
+  }
+})
+</code></pre>
+<h3 id="获取组件实例">获取组件实例</h3>
+<p>可在父组件里调用 this.selectComponent ，获取子组件的实例对象。</p>
+<p>调用时需要传入一个匹配选择器 selector，如：this.selectComponent(&quot;.my-component&quot;)。</p>
+<p>selector 类似于 CSS 的选择器，但仅支持下列语法。</p>
+<ul>
+<li>ID 选择器：#the-id</li>
+<li>class 选择器：.my-component</li>
+</ul>
+<h4 id="代码示例：-3">代码示例：</h4>
+<pre><code> <span class="hljs-comment">// 父组件</span>
+<span class="hljs-title class_">Page</span>({
+  <span class="hljs-attr">data</span>: {},
+  <span class="hljs-attr">getChildComponent</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// id选择器返回对象，class选择器返回数组</span>
+     <span class="hljs-keyword">const</span> child = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">selectComponent</span>(<span class="hljs-string">&#x27;.my-component&#x27;</span>);
+     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(child)
+  }
+})
+</code></pre>
+<p>在上例中，父组件将会获取 class 为 my-component 的子组件实例对象，即子组件的 this 。</p>

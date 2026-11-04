@@ -1,0 +1,2025 @@
+<h2 id="接口说明">接口说明</h2>
+<h3 id="相关接口">相关接口</h3>
+<p>web-view 组件加载的网页中可使用<code>JS SDK</code>提供的接口调用小程序相关能力</p>
+<p>支持的接口有：</p>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ma.miniProgram.navigateTo</td>
+<td>不支持 event,参数与小程序接口其他参数一致（仅DSL小程序，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">使用介绍</a>）</td>
+</tr>
+<tr>
+<td>ma.miniProgram.navigateBack</td>
+<td>需要 delta 参数，不传则为 1（仅DSL小程序，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">使用介绍</a>）</td>
+</tr>
+<tr>
+<td>ma.miniProgram.switchTab</td>
+<td>参数与小程序接口一致（仅DSL小程序，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">使用介绍</a>）</td>
+</tr>
+<tr>
+<td>ma.miniProgram.redirectTo</td>
+<td>参数与小程序接口一致（仅DSL小程序，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">使用介绍</a>）</td>
+</tr>
+<tr>
+<td>ma.miniProgram.reLaunch</td>
+<td>参数与小程序接口一致（仅DSL小程序，详情请参考<a onclick="_mdLinkClick(this.href)" href="#/sdk/js_introduce">使用介绍</a>）</td>
+</tr>
+<tr>
+<td>ma.miniProgram.getEnv</td>
+<td>获取当前环境,在网页内可通过 window.__majs_environment 变量判断是否在小程序环境</td>
+</tr>
+<tr>
+<td>ma.miniProgram.close</td>
+<td>关闭小程序，没有回调</td>
+</tr>
+<tr>
+<td>ma.chooseImage</td>
+<td>从本地相册选择图片或使用相机拍照</td>
+</tr>
+<tr>
+<td>ma.chooseVideo</td>
+<td>拍摄视频或从手机相册中选视频（<strong>该接口最低版本为 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getLocation</td>
+<td>获取当前地理位置信息</td>
+</tr>
+<tr>
+<td>ma.previewImage</td>
+<td>预览图片</td>
+</tr>
+<tr>
+<td>ma.getsmallappinfo</td>
+<td>获取小程序基本信息（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.openDocument</td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td>ma.getStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.setStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.removeStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.clearStorage</td>
+<td>参数与小程序接口一致</td>
+</tr>
+<tr>
+<td>ma.getNetworkType</td>
+<td>获取网络状态</td>
+</tr>
+<tr>
+<td>ma.scanCode</td>
+<td>拉起二维码扫一扫，也支持一维码</td>
+</tr>
+<tr>
+<td>ma.callNativeAPI</td>
+<td>H5 调用原生方法（<strong>该接口最低版本为 23.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.native</td>
+<td>调用原生能力（<strong>该接口最低版本为 23.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.request</td>
+<td>请求发送接口（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.uploadFile</td>
+<td>上传接口（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.downloadFile</td>
+<td>下载接口（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.reportLog</td>
+<td>开发者自定义日志上报接口（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.reportPerformance</td>
+<td>开发者自定义指标上报接口（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.submitReport</td>
+<td>开发者直接触发日志上报（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.isOnline</td>
+<td>判断小程序联网状态（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.playAudio</td>
+<td>播放音频（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.stopAudio</td>
+<td>停止播放音频（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.navigateToMiniProgram</td>
+<td>小程序内跳转到其他小程序（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getBackgroundFetchData</td>
+<td>获取数据预拉取缓存的所有数据（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getLaunchOptionsSync</td>
+<td>获取小程序启动时的启动参数（<strong>该接口最低版本为 23.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getStatusBarHeight</td>
+<td>获取状态栏高度（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.capsuleStyle</td>
+<td>设置胶囊样式（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.gotoBrowser</td>
+<td>跳转到第三方浏览（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.saveFileToPhone</td>
+<td>保存base64到手机（存储用户可访达）（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.saveImage</td>
+<td>保存图片到相册（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.saveBase64Image</td>
+<td>保存base64到相册（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.chooseContact</td>
+<td>获取手机通讯录，选择联系人（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.showToast</td>
+<td>显示消息提示框（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.showLoading</td>
+<td>显示loading提示框，需要主动调用ma.hideLoading才能关闭（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.hideLoading</td>
+<td>隐藏loading提示框（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getAuthCode</td>
+<td>调用接口获取登录凭证。通过凭证获取用户登录态信息（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getOpenUserInfo</td>
+<td>调用接口获取用户公开信息（<strong>该接口最低版本为 24.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.openBluetoothAdapter</td>
+<td>初始化蓝牙模块（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.closeBluetoothAdapter</td>
+<td>关闭蓝牙模块（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.startBluetoothDevicesDiscovery</td>
+<td>开始搜寻附近的蓝牙外围设备（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.stopBluetoothDevicesDiscovery</td>
+<td>停止搜寻附近的蓝牙外围设备（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.onBluetoothDeviceFound</td>
+<td>监听搜索到新设备的事件（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.offBluetoothDeviceFound</td>
+<td>移除搜索到新设备的事件的全局监听函数（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.createBLEConnection</td>
+<td>连接蓝牙低功耗设备（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.closeBLEConnection</td>
+<td>断开与蓝牙低功耗设备的连接（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getBLEDeviceServices</td>
+<td>获取蓝牙低功耗设备所有服务（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getBLEDeviceCharacteristics</td>
+<td>获取蓝牙低功耗设备某个服务中所有特征（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.writeBLECharacteristicValue</td>
+<td>向蓝牙低功耗设备特征值中写入二进制数据（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.exitMiniProgram</td>
+<td>退出当前小程序（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.reportEvent</td>
+<td>事件上报（<strong>该接口最低版本为 24.6.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setStorageSync</td>
+<td>将数据存储在本地缓存中指定的 key 中，会覆盖原来该 key 对应的内容（<strong>该接口最低版本为 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getStorageSync</td>
+<td>从本地缓存中同步获取指定 key 的内容（<strong>该接口最低版本为 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.onScreenRecordingStateChanged</td>
+<td>监听用户录屏事件（<strong>该接口最低版本为 24.9.0</strong>，支持范围：仅iOS）</td>
+</tr>
+<tr>
+<td>ma.offScreenRecordingStateChanged</td>
+<td>移除监听用户录屏事件（<strong>该接口最低版本为 24.9.0</strong>，支持范围：仅iOS）</td>
+</tr>
+<tr>
+<td>ma.deauthorize</td>
+<td>取消当前小程序全部授权信息（<strong>该接口最低版本为 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.cancelAuthorize</td>
+<td>取消当前小程序部分授权信息（<strong>该接口最低版本为 24.9.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.onKeyboardHeightChange</td>
+<td>监听键盘高度变化事件（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.offKeyboardHeightChange</td>
+<td>移除键盘高度变化事件的监听函数（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setClipboardData</td>
+<td>设置系统剪贴板的内容（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getClipboardData</td>
+<td>获取系统剪贴板的内容（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.arrayBufferToBase64</td>
+<td>将 ArrayBuffer 对象转成 Base64 字符串（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.base64ToArrayBuffer</td>
+<td>将 Base64 字符串转成 ArrayBuffer 对象（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.getSystemSetting</td>
+<td>获取设备设置（<strong>该接口最低版本为 24.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setCapsuleShow</td>
+<td>胶囊隐藏（<strong>该接口最低版本为 25.3.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setCustomEvent</td>
+<td>注册小程序自定义事件，指定场景下触发回调（<strong>该接口最低版本为 25.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.removeCustomEvent</td>
+<td>移除小程序自定义事件监听（<strong>该接口最低版本为 25.12.0</strong>）</td>
+</tr>
+<tr>
+<td>ma.setSwipeBack</td>
+<td>设置是否禁用IOS 手势滑动控制。注意：H5小程序调用此API控制全局是否支持滑动，DSL小程序调用此API控制当前页面是否支持滑动（<strong>该接口最低版本为 26.3.0，仅IOS侧生效</strong>）</td>
+</tr>
+</tbody></table>
+<h3 id="特有接口">特有接口</h3>
+<blockquote>
+<p>JS SDK相较于DSL基础API特有的接口及相关说明</p>
+</blockquote>
+<h4 id="mapostmessageany-message">ma.postMessage(Any message)</h4>
+<blockquote>
+<p>web-view组件内嵌的H5应用向小程序发送信息(最低版本：25.12.0)</p>
+</blockquote>
+<h5 id="any-message">Any message</h5>
+<p>需要发送的消息</p>
+<h4 id="maonmessagefunction-listener">ma.onMessage(Function listener)</h4>
+<blockquote>
+<p>监听小程序向H5应用发送消息(最低版本：25.12.0)</p>
+</blockquote>
+<h5 id="function-listener">Function listener</h5>
+<p>监听到小程序发送消息时执行的监听函数</p>
+<h4 id="masetcapsuleshowobject-object">ma.setCapsuleShow(Object object)</h4>
+<blockquote>
+<p>设置是否隐藏胶囊(最低版本：25.3.0)</p>
+</blockquote>
+<h5 id="object-object">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">isShow</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">是否显示胶囊（false不显示，true显示）</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="magetsystemsetting">ma.getSystemSetting()</h4>
+<blockquote>
+<p>获取设备设置（最低版本： 24.12.0）</p>
+</blockquote>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bluetoothEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">蓝牙的系统开关</td>
+</tr>
+<tr>
+<td align="left">locationEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">地理位置的系统开关</td>
+</tr>
+<tr>
+<td align="left">wifiEnabled</td>
+<td align="left">Boolean</td>
+<td align="left">Wi-Fi 的系统开关</td>
+</tr>
+<tr>
+<td align="left">deviceOrientation</td>
+<td align="left">String</td>
+<td align="left">合法值为portrait或者landscape，表示设备方向（注意：IOS客户端横屏游戏获取deviceOrientation可能不准，建议以屏幕宽高为准）</td>
+</tr>
+</tbody></table>
+<h4 id="mabase64toarraybufferstring-base64">ma.base64ToArrayBuffer(string base64)</h4>
+<blockquote>
+<p>将 Base64 字符串转成 ArrayBuffer 对象（最低版本：24.12.0）</p>
+</blockquote>
+<h5 id="返回值">返回值</h5>
+<p><strong>ArrayBuffer</strong></p>
+<p>ArrayBuffer 对象</p>
+<h4 id="arraybuffer-maarraybuffertobase64arraybuffer-arraybuffer">ArrayBuffer ma.arrayBufferToBase64(ArrayBuffer arrayBuffer)</h4>
+<blockquote>
+<p>将 ArrayBuffer 对象转成 Base64 字符串（最低版本：24.12.0）</p>
+</blockquote>
+<h5 id="返回值-1">返回值</h5>
+<p><strong>string</strong></p>
+<p>Base64 字符串</p>
+<h4 id="magetclipboarddataobject-object">ma.getClipboardData(Object object)</h4>
+<blockquote>
+<p>获取系统剪贴板的内容（最低版本： 24.12.0）</p>
+</blockquote>
+<h5 id="object-object-1">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="masetclipboarddataobject-object">ma.setClipboardData(Object object)</h4>
+<blockquote>
+<p>设置系统剪贴板的内容。调用成功后，会弹出 toast 提示&quot;内容已复制&quot;，持续 1.5s（最低版本： 24.12.0）</p>
+</blockquote>
+<h5 id="object-object-2">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>剪贴板的内容</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="maonkeyboardheightchangefunction-listener">ma.onKeyboardHeightChange(function listener)</h4>
+<blockquote>
+<p>监听键盘高度变化事件（最低版本： 24.12.0）</p>
+</blockquote>
+<h5 id="object-res-1">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">height</td>
+<td align="left">number</td>
+<td align="left">键盘高度</td>
+</tr>
+</tbody></table>
+<h4 id="maoffkeyboardheightchangefunction-listener">ma.offKeyboardHeightChange(function listener)</h4>
+<blockquote>
+<p>移除键盘高度变化事件的监听函数（最低版本： 24.12.0）</p>
+</blockquote>
+<h4 id="madeauthorizeobject-object">ma.deauthorize(Object object)</h4>
+<blockquote>
+<p>取消当前小程序全部授权信息 <strong>（该接口最低版本为 24.9.0）</strong></p>
+</blockquote>
+<h5 id="object-object-3">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>deauthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>deauthorize: fail, + 错误原因（无返回则为空）</td>
+</tr>
+</tbody></table>
+<h4 id="macancelauthorizeobject-object">ma.cancelAuthorize(Object object)</h4>
+<blockquote>
+<p>取消当前小程序部分授权信息 <strong>（该接口最低版本为 24.9.0）</strong></p>
+</blockquote>
+<h5 id="参数">参数</h5>
+<h5 id="object-object-4">Object object</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scopes</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">取消当前小程序授权范围</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-1">object.success</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: ok</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail-1">object.fail</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>cancelAuthorize: fail, + 错误原因（无返回则为空）</td>
+</tr>
+</tbody></table>
+<h5 id="小程序对外提供权限集合列表">小程序对外提供权限集合列表</h5>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scope.location</td>
+<td>精确地理位置</td>
+</tr>
+<tr>
+<td>scope.camera</td>
+<td>摄像头</td>
+</tr>
+<tr>
+<td>scope.photosAlbums</td>
+<td>读写相册</td>
+</tr>
+<tr>
+<td>scope.contacts</td>
+<td>联系人</td>
+</tr>
+<tr>
+<td>scope.record</td>
+<td>录音</td>
+</tr>
+<tr>
+<td>scope.gotoBrowser</td>
+<td>打开其他应用程序权限</td>
+</tr>
+<tr>
+<td>scope.bluetooth</td>
+<td>蓝牙权限</td>
+</tr>
+<tr>
+<td>scope.payment</td>
+<td>支付权限</td>
+</tr>
+<tr>
+<td>scope.video</td>
+<td>录像权限</td>
+</tr>
+<tr>
+<td>scope.AUTH_BASE</td>
+<td>静默授权</td>
+</tr>
+<tr>
+<td>scope.AUTH_USER</td>
+<td>用户信息</td>
+</tr>
+<tr>
+<td>scope.SEND_MESSAGE</td>
+<td>发送信息</td>
+</tr>
+<tr>
+<td>scope.USER_NICKNAME</td>
+<td>用户昵称</td>
+</tr>
+<tr>
+<td>scope.USER_NAME</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>scope.USER_LOGIN_ID</td>
+<td>用户登录ID</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_USER_LOGIN_ID</td>
+<td>明文登录ID</td>
+</tr>
+<tr>
+<td>scope.HASH_LOGIN_ID</td>
+<td>哈希登录ID</td>
+</tr>
+<tr>
+<td>scope.USER_AVATAR</td>
+<td>用户头像</td>
+</tr>
+<tr>
+<td>scope.USER_GENDER</td>
+<td>用户性别</td>
+</tr>
+<tr>
+<td>scope.USER_BIRTHDAY</td>
+<td>用户生日</td>
+</tr>
+<tr>
+<td>scope.USER_NATIONALITY</td>
+<td>用户国籍</td>
+</tr>
+<tr>
+<td>scope.USER_CONTACTINFO</td>
+<td>用户联系人</td>
+</tr>
+<tr>
+<td>scope.USER_ADDRESS</td>
+<td>用户地址</td>
+</tr>
+<tr>
+<td>scope.PLAINTEXT_MOBILE_PHONE</td>
+<td>用户明文手机号码</td>
+</tr>
+</tbody></table>
+<h4 id="maonscreenrecordingstatechangedfunction-listener">ma.onScreenRecordingStateChanged(function listener)</h4>
+<blockquote>
+<p>H5 调用原生方法。<strong>监听用户录屏事件（该接口最低版本为 24.9.0）</strong></p>
+</blockquote>
+<h5 id="参数-1">参数</h5>
+<p>function listener ：用户录屏事件的监听函数</p>
+<h5 id="object-res-2">Object res</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>数据含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>state</td>
+<td>string</td>
+<td>录屏状态</td>
+</tr>
+</tbody></table>
+<h5 id="state取值">state取值</h5>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>start</td>
+<td>开始录屏</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>结束录屏</td>
+</tr>
+</tbody></table>
+<h4 id="maoffscreenrecordingstatechangedfunction-listener">ma.offScreenRecordingStateChanged(function listener)</h4>
+<blockquote>
+<p>H5 调用原生方法。<strong>移除监听用户录屏事件（该接口最低版本为 24.9.0）</strong></p>
+</blockquote>
+<h5 id="参数-2">参数</h5>
+<p>function listener：onScreenRecordingStateChanged 传入的监听函数</p>
+<h4 id="manativeapinamestringparamobject">ma.native(apiName:string,param:object)</h4>
+<blockquote>
+<p>调用原生能力，callback 需要使用 promise 语法处理</p>
+</blockquote>
+<h5 id="参数-3">参数</h5>
+<h5 id="string-apiname">String apiName</h5>
+<p>调用的API名称</p>
+<h5 id="object-param">Object param</h5>
+<p>调用的API的入参</p>
+<h4 id="maplayaudioobject-object">ma.playAudio(Object object)</h4>
+<blockquote>
+<p>播放音频（<strong>该接口最低版本为 23.12.0</strong>）</p>
+</blockquote>
+<h5 id="参数-4">参数</h5>
+<h5 id="object-object-5">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>String</td>
+<td></td>
+<td>是</td>
+<td>在线音频网址</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td></td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="mastopaudioobject-object">ma.stopAudio(Object object)</h4>
+<blockquote>
+<p>结束播放音频（<strong>该接口最低版本为 23.12.0</strong>）</p>
+</blockquote>
+<h5 id="参数-5">参数</h5>
+<h5 id="object-object-6">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>success</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="magotobrowserobject-object">ma.gotoBrowser(Object object)</h4>
+<blockquote>
+<p>跳转到第三方浏览（<strong>该接口最低版本为 24.3.0</strong>）</p>
+</blockquote>
+<h5 id="参数-6">参数</h5>
+<h5 id="object-object-7">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>openUrl</td>
+<td>String</td>
+<td>是</td>
+<td>跳转URL</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="masavefiletophoneobject-object">ma.saveFileToPhone(Object object)</h4>
+<blockquote>
+<p>保存base64到手机（存储用户可访达）（<strong>该接口最低版本为 24.3.0</strong>）</p>
+</blockquote>
+<blockquote>
+<p>用于将 Base64 编码的文件数据保存到移动设备本地存储。
+Android，文件默认保存在设备的公共下载目录（Downloads/）下；
+iOS，文件保存在应用沙箱目录内，用户无法通过文件应用直接访问，必须配合 openDocument接口实现文件预览功能。</p>
+</blockquote>
+<blockquote>
+<p>如果是图片通过这个接口调用，为了方便客户最好配置openSharePanel（<strong>该配置低版本为 25.9.0</strong>）直接存相册，</p>
+</blockquote>
+<h5 id="参数-7">参数</h5>
+<h5 id="object-object-8">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>String</td>
+<td>是</td>
+<td>base64编码</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>String</td>
+<td>是</td>
+<td>文件名</td>
+</tr>
+<tr>
+<td>openSharePanel</td>
+<td>Boolean</td>
+<td>否</td>
+<td>默认为false，配置为true则在保存完文件后拉起系统分享面板（仅ios支持）</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="返回值-2">返回值</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>String</td>
+<td>保存的结果</td>
+</tr>
+<tr>
+<td>filePath</td>
+<td>String</td>
+<td>保存的文件路径</td>
+</tr>
+<tr>
+<td>path</td>
+<td>String</td>
+<td>保存的文件路径（调用ma.openDocument打开时使用该路径）</td>
+</tr>
+</tbody></table>
+<h4 id="masaveimageobject-object">ma.saveImage(Object object)</h4>
+<blockquote>
+<p>保存图片到相册（<strong>该接口最低版本为 24.3.0</strong>）</p>
+</blockquote>
+<h5 id="参数-8">参数</h5>
+<h5 id="object-object-9">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>String</td>
+<td>是</td>
+<td>base64编码</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="返回值-3">返回值</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>result</td>
+<td>String</td>
+<td>保存的结果</td>
+</tr>
+</tbody></table>
+<h4 id="masavebase64imageobject-object">ma.saveBase64Image(Object object)</h4>
+<blockquote>
+<p>保存图片的base64到相册（<strong>该接口最低版本为 24.3.0</strong>）</p>
+</blockquote>
+<h5 id="参数-9">参数</h5>
+<h5 id="object-object-10">Object object</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>base64</td>
+<td>String</td>
+<td>是</td>
+<td>base64编码</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>Function</td>
+<td>否</td>
+<td>接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="返回值-4">返回值</h5>
+<p>Object object</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>提示信息</td>
+</tr>
+</tbody></table>
+<h3 id="api-调用示例代码">API 调用示例代码</h3>
+<h4 id="maml-代码示例">maml 代码示例</h4>
+<pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">web-view</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://example/jssdk/calc/index.html&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">web-view</span>&gt;</span>
+</code></pre>
+<h4 id="h5-调用-api-代码示例">H5 调用 API 代码示例</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-keyword">var</span> vConsole = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VConsole</span>();
+  ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">getEnv</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(res));
+  });
+
+  ma.<span class="hljs-title function_">onMessage</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)
+  });
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">postMessage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">postMessage</span>({ <span class="hljs-string">&#x27;sendToMiniProgram&#x27;</span>: <span class="hljs-string">&#x27;0&#x27;</span> });
+  }
+  
+  ma.<span class="hljs-title function_">createTimer</span>({
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">10</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+  })
+  ma.<span class="hljs-title function_">cancelTimer</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+  })
+  <span class="hljs-comment">//ios配置是否禁用左右滑</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setSwipeBack</span> () {
+      ma.<span class="hljs-title function_">setSwipeBack</span>({
+          <span class="hljs-attr">enableSwipeBack</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">success</span>: <span class="hljs-function">() =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`setSwipeBack success`</span>);
+              <span class="hljs-title function_">resolve</span>();
+          },
+          <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`setSwipeBack fail`</span>);
+              <span class="hljs-title function_">reject</span>(err);
+          }
+      });
+  }
+  <span class="hljs-comment">//胶囊隐藏</span>
+  ma.<span class="hljs-title function_">setCapsuleShow</span>({
+      <span class="hljs-attr">isShow</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+  });
+  <span class="hljs-comment">//设置系统剪贴板的内容</span>
+  ma.<span class="hljs-title function_">setClipboardData</span>({
+      <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;data&#x27;</span>,
+      success (res) {
+          ma.<span class="hljs-title function_">getClipboardData</span>({
+              success (res) {
+                  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>);
+              }
+          });
+      }
+  });
+  <span class="hljs-comment">//获取系统剪贴板的内容</span>
+  ma.<span class="hljs-title function_">getClipboardData</span>({
+      success (res){
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>)
+      }
+  });
+  <span class="hljs-comment">//ArrayBuffer ma.base64ToArrayBuffer(string base64)</span>
+  <span class="hljs-keyword">const</span> base64 = <span class="hljs-string">&#x27;CxYh&#x27;</span>;
+  <span class="hljs-keyword">const</span> arrayBuffer = ma.<span class="hljs-title function_">base64ToArrayBuffer</span>(base64);
+  <span class="hljs-comment">//ArrayBuffer ma.arrayBufferToBase64(ArrayBuffer arrayBuffer)</span>
+  <span class="hljs-keyword">const</span> arrayBuffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>([<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>]);
+  <span class="hljs-keyword">const</span> base64 = ma.<span class="hljs-title function_">arrayBufferToBase64</span>(arrayBuffer);
+  <span class="hljs-comment">//获取设备设置</span>
+  <span class="hljs-keyword">const</span> systemSetting = ma.<span class="hljs-title function_">getSystemSetting</span>();
+
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">bluetoothEnabled</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">deviceOrientation</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">locationEnabled</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(systemSetting.<span class="hljs-property">wifiEnabled</span>);
+  <span class="hljs-comment">//监听键盘高度变化事件</span>
+  ma.<span class="hljs-title function_">onKeyboardHeightChange</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+  });
+  <span class="hljs-comment">//取消监听</span>
+  <span class="hljs-keyword">const</span> listener = <span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  };
+
+  ma.<span class="hljs-title function_">onKeyboardHeightChange</span>(listener);
+  <span class="hljs-comment">// 需传入与监听时同一个的函数对象</span>
+  ma.<span class="hljs-title function_">offKeyboardHeightChange</span>(listener); 
+  
+  <span class="hljs-comment">// 取消全部监听</span>
+  ma.<span class="hljs-title function_">offKeyboardHeightChange</span>();
+
+
+  <span class="hljs-comment">//从本地相册选择视频或使用相机拍摄</span>
+  ma.<span class="hljs-title function_">chooseVideo</span>({
+      <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">tempFilePath</span>);
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">tempFileVirtualPath</span>);
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">duration</span>);
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">size</span>);
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">width</span>);
+      }
+  });
+  <span class="hljs-comment">//取消当前小程序部分授权信息</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">cancelAuthorize</span> () {
+      ma.<span class="hljs-title function_">cancelAuthorize</span>({
+          <span class="hljs-attr">scopes</span>: [<span class="hljs-string">&#x27;scope.location&#x27;</span>],
+          <span class="hljs-attr">success</span>: <span class="hljs-function">() =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Authorization canceled successfully`</span>);
+              <span class="hljs-title function_">resolve</span>();
+          },
+          <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Failed to cancel the authorization`</span>);
+              <span class="hljs-title function_">reject</span>(err);
+          }
+      });
+  }
+  <span class="hljs-comment">//取消当前小程序全部授权信息</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">deauthorize</span> () {
+      ma.<span class="hljs-title function_">deauthorize</span>({
+          <span class="hljs-attr">success</span>: <span class="hljs-function">() =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`All authorizations canceled successfully`</span>);
+              <span class="hljs-title function_">resolve</span>();
+          },
+          <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Failed to cancel all authorizations`</span>);
+              <span class="hljs-title function_">reject</span>(err);
+          }
+      });
+  }
+  <span class="hljs-comment">// 监听用户录屏事件</span>
+  <span class="hljs-keyword">const</span> handlingEvent = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;开始监听&#x27;</span>);
+  }
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">onScreenRecordingStateChanged</span>(<span class="hljs-params"></span>) {
+      ma.<span class="hljs-title function_">onScreenRecordingStateChanged</span>(handlingEvent);
+  }
+
+  <span class="hljs-comment">// 取消监听用户录屏事件</span>
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">offScreenRecordingStateChanged</span>(<span class="hljs-params"></span>) {
+      ma.<span class="hljs-title function_">offScreenRecordingStateChanged</span>(handlingEvent);
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorageSync</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">try</span> {
+      ma.<span class="hljs-title function_">setStorageSync</span>(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;data&#x27;</span>);
+    } <span class="hljs-keyword">catch</span> (e) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e);
+    }
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStorageSync</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> val = ma.<span class="hljs-title function_">getStorageSync</span>(<span class="hljs-string">&#x27;key&#x27;</span>);
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;res&#x27;</span>, val.<span class="hljs-property">data</span>);
+    } <span class="hljs-keyword">catch</span> (e) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e);
+    }
+  }
+
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportEvent</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> eventId = <span class="hljs-string">&#x27;your eventId&#x27;</span>;
+    ma.<span class="hljs-title function_">reportEvent</span>(eventId);
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">exitMiniProgram</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">exitMiniProgram</span>({
+      <span class="hljs-attr">clearCache</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">writeBLECharacteristicValue</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> buffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBuffer</span>(<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">let</span> dataView = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DataView</span>(buffer)
+    dataView.<span class="hljs-title function_">setUint8</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+    ma.<span class="hljs-title function_">writeBLECharacteristicValue</span>({
+      deviceId,
+      serviceId,
+      characteristicId,
+      <span class="hljs-attr">value</span>: buffer,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;writeBLECharacteristicValue success&#x27;</span>, res.<span class="hljs-property">errMsg</span>)
+      }
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBLEDeviceCharacteristics</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getBLEDeviceCharacteristics</span>({
+      <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+      <span class="hljs-attr">serviceId</span>: <span class="hljs-string">&#x27;serviceId&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; res.<span class="hljs-property">characteristics</span>.<span class="hljs-property">length</span>; i++) {
+          <span class="hljs-keyword">const</span> item = res.<span class="hljs-property">characteristics</span>[i]
+          <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">read</span>) {
+            ma.<span class="hljs-title function_">readBLECharacteristicValue</span>({
+              deviceId,
+              serviceId,
+              <span class="hljs-attr">characteristicId</span>: item.<span class="hljs-property">uuid</span>,
+            })
+          }
+          <span class="hljs-keyword">if</span> (item.<span class="hljs-property">properties</span>.<span class="hljs-property">write</span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;write&#x27;</span>)
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">writeBLECharacteristicValue</span>()
+          }
+        }
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBLEDeviceServices</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getBLEDeviceServices</span>({
+      <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">closeBLEConnection</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">closeBLEConnection</span>({
+      <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">createBLEConnection</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">createBLEConnection</span>({
+      <span class="hljs-attr">deviceId</span>: <span class="hljs-string">&#x27;deviceId&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">offBluetoothDeviceFound</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">offBluetoothDeviceFound</span>();
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">onBluetoothDeviceFound</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">onBluetoothDeviceFound</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">stopBluetoothDevicesDiscovery</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">stopBluetoothDevicesDiscovery</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">startBluetoothDevicesDiscovery</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">startBluetoothDevicesDiscovery</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">closeBluetoothAdapter</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">closeBluetoothAdapter</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    })
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">openBluetoothAdapter</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">openBluetoothAdapter</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">state</span>);
+      }
+    })
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOpenUserInfo</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getOpenUserInfo</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">userInfo</span>.<span class="hljs-property">nickName</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">userInfo</span>.<span class="hljs-property">avatarUrl</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">userInfo</span>.<span class="hljs-property">country</span>);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAuthCode</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getAuthCode</span>({
+      <span class="hljs-attr">scopes</span>: [], <span class="hljs-comment">// 权限范围以当前站点运营定义为准，这里仅为示例</span>
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">hideLoading</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">hideLoading</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showLoading</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">showLoading</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;loading...&#x27;</span>
+    });
+
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      ma.<span class="hljs-title function_">hideLoading</span>();
+    }, <span class="hljs-number">2000</span>);
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">chooseContact</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">chooseContact</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">phoneNumber</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">displayName</span>);
+      }
+    })
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">showToast</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>
+    }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    });
+
+    <span class="hljs-comment">// 回调方式</span>
+    ma.<span class="hljs-title function_">showToast</span>({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+      <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-comment">//message属性效果与title相同，优先级 title更高</span>
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+      <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveBase64Image</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">saveBase64Image</span>({ <span class="hljs-attr">base64</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    });
+
+    <span class="hljs-comment">// 回调方式</span>
+    ma.<span class="hljs-title function_">saveBase64Image</span>({
+      <span class="hljs-attr">base64</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveImage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">saveImage</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">result</span>);
+    });
+
+    <span class="hljs-comment">// 回调方式</span>
+    ma.<span class="hljs-title function_">saveImage</span>({
+      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">result</span>);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">saveFileToPhone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">saveFileToPhone</span>({ <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>, <span class="hljs-attr">fileName</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>, <span class="hljs-attr">openSharePanel</span>:<span class="hljs-literal">true</span>}).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">filePath</span>);
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">path</span>);
+    });
+    <span class="hljs-comment">// 回调方式</span>
+    ma.<span class="hljs-title function_">saveFileToPhone</span>({
+      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;xxxx&#x27;</span>,
+      <span class="hljs-attr">fileName</span>: <span class="hljs-string">&#x27;xxxxxx&#x27;</span>, 
+        <span class="hljs-attr">openSharePanel</span>:<span class="hljs-literal">true</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">filePath</span>);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">gotoBrowser</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">gotoBrowser</span>({ <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    });
+    <span class="hljs-comment">// 回调方式</span>
+    ma.<span class="hljs-title function_">gotoBrowser</span>({
+      <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">capsuleStyle</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 支持promise</span>
+    ma.<span class="hljs-title function_">capsuleStyle</span>({ <span class="hljs-attr">style</span>: <span class="hljs-number">0</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    });
+    <span class="hljs-comment">// 支持回调</span>
+    ma.<span class="hljs-title function_">capsuleStyle</span>({
+      <span class="hljs-attr">style</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStatusBarHeight</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getStatusBarHeight</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">xm_string_callback_key</span>);<span class="hljs-comment">// 请注意与对应DSL接口出参差异</span>
+      }, 
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+      }, 
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      }
+    });
+  }
+    
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStatusBarHeightPromise</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getStatusBarHeight</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">xm_string_callback_key</span>)
+    })
+  }
+    
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getLaunchOptionsSync</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> { serviceConfig } = ma.<span class="hljs-title function_">getLaunchOptionsSync</span>();
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(serviceConfig)
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBackgroundFetchData</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getBackgroundFetchData</span>({
+      <span class="hljs-attr">fetchType</span>: <span class="hljs-string">&#x27;pre&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>[i].<span class="hljs-property">fetchedData</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>[i].<span class="hljs-property">timeStamp</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>[i].<span class="hljs-property">path</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>[i].<span class="hljs-property">query</span>);
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateToMiniProgram</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">navigateToMiniProgram</span>({
+      <span class="hljs-attr">appId</span>: appId, 
+        <span class="hljs-attr">capsuleShow</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">path</span>: appPath,
+      <span class="hljs-attr">params</span>: <span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-comment">//如果传入params，则必须传入path</span>
+      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+      },
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">downloadFile</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">downloadFile</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.com/audio/123&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">statusCode</span> === <span class="hljs-number">200</span>) {
+          ma.<span class="hljs-title function_">playVoice</span>({
+            <span class="hljs-attr">filePath</span>: res.<span class="hljs-property">tempFilePath</span>
+          });
+        }
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">uploadFile</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">uploadFile</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example.test.com/upload&#x27;</span>,
+      <span class="hljs-attr">filePath</span>: testPath,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-comment">//do something</span>
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">request</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">request</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://example/testUrl&#x27;</span>,
+      <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span>,
+      <span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;JSON&#x27;</span>,
+      <span class="hljs-attr">header</span>: {
+        <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      },
+      <span class="hljs-attr">data</span>: {},
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;request success&#x27;</span>);
+      },
+
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;request fail&#x27;</span>, err.<span class="hljs-property">errMsg</span>);
+      },
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getsmallappinfo</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getsmallappinfo</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">appId</span>);
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">isOnline</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> isOnline = ma.<span class="hljs-title function_">isOnline</span>()
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(isOnline ? <span class="hljs-string">&#x27;online&#x27;</span> : <span class="hljs-string">&#x27;offline&#x27;</span>)
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">playAudio</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">playAudio</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://example/test/audio&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">stopAudio</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">stopAudio</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportLog</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">reportLog</span>({
+      <span class="hljs-attr">level</span>: <span class="hljs-string">&#x27;info&#x27;</span>,
+      <span class="hljs-attr">log</span>: <span class="hljs-string">&#x27;errMsg&#x27;</span>
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">reportPerformance</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">reportPerformance</span>({
+      <span class="hljs-attr">reportEvent</span>: <span class="hljs-string">&#x27;testEvent&#x27;</span>,
+      <span class="hljs-attr">reportParams</span>: {
+        <span class="hljs-attr">customPerformance</span>: <span class="hljs-string">&#x27;error&#x27;</span>
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">submitReport</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">submitReport</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">redirectTo</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">redirectTo</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/logs/index&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">relauch</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">reLaunch</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/logs/index&#x27;</span>,
+      <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">close1</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">close</span>();
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getLocation</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getLocation</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">previewImage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> current = <span class="hljs-string">&#x27;https://example/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg&#x27;</span>;
+    <span class="hljs-keyword">const</span> list = [
+      <span class="hljs-string">&#x27;https://example/a1ec08fa513d2697e542494057fbb2fb4316d81e.jpg&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/img/bdlogo.png&#x27;</span>,
+      <span class="hljs-string">&#x27;https://example/docs_demo_rongcloud_logo.png&#x27;</span>
+    ];
+    ma.<span class="hljs-title function_">previewImage</span>({
+      current,
+      <span class="hljs-attr">urls</span>: list,
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">openDocument</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">openDocument</span>({
+      <span class="hljs-attr">filePath</span>: <span class="hljs-string">&#x27;mafile://tmp_Macle.doc&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStorage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getStorage</span>({
+      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+      <span class="hljs-attr">encrypt</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setStorage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">setStorage</span>({
+      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+      <span class="hljs-attr">encrypt</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;storageValue&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">removeStorage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">removeStorage</span>({
+      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;storageKey&#x27;</span>,
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">clearStorage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">clearStorage</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getNetworkType</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">getNetworkType</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+  
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">scanCode</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">scanCode</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      },
+      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-title function_">complete</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateBack</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">__ma_environment</span>);
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">navigateBack</span>({
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateTo1</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> data = { <span class="hljs-attr">motto</span>: <span class="hljs-string">&#x27;我在webview里绝对路径&#x27;</span> };
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">navigateTo</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/test1/index?data=&#x27;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">navigateTo2</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> data = { <span class="hljs-attr">motto</span>: <span class="hljs-string">&#x27;我在webview里相对路径&#x27;</span> };
+    ma.<span class="hljs-property">miniProgram</span>.<span class="hljs-title function_">navigateTo</span>({
+      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;../test1/index?data=&#x27;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),
+      <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      },
+      <span class="hljs-attr">fail</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) {
+      },
+      <span class="hljs-attr">complete</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">chooseImage</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">chooseImage</span>({
+      <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) {
+      }
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">callNativeAPI</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">ma</span>.<span class="hljs-title function_">callNativeAPI</span>(
+              <span class="hljs-string">&quot;setNavigationBarTitle&quot;</span>,
+              { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;NewTitle&#x27;</span> },
+              <span class="hljs-function">(<span class="hljs-params">success</span>) =&gt;</span> {
+                  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(success)
+              },
+              <span class="hljs-function">(<span class="hljs-params">fail</span>) =&gt;</span> {
+                  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fail)
+              }
+      );
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">native</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">native</span>(<span class="hljs-string">&#x27;setNavigationBarTitle&#x27;</span>, { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;TEST&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">setCustomEvent</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">setCustomEvent</span>({
+      <span class="hljs-attr">eventName</span>: <span class="hljs-string">&#x27;lockScreen&#x27;</span>,
+      <span class="hljs-attr">callback</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+      },
+    });
+  }
+
+  <span class="hljs-keyword">function</span> <span class="hljs-title function_">removeCustomEvent</span>(<span class="hljs-params"></span>) {
+    ma.<span class="hljs-title function_">removeCustomEvent</span>({
+      <span class="hljs-attr">eventName</span>: <span class="hljs-string">&#x27;lockScreen&#x27;</span>,
+    });
+  }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p><strong>tips</strong>:</p>
+<ol>
+<li>Native 已实现而当前 JSSDK 未实现的 API 仍可通过 ma.native 或 ma.callNativeAPI 调用</li>
+</ol>

@@ -1,0 +1,88 @@
+<h2 id="custom-components">Custom Components</h2>
+<p>Developers can abstract functional modules on a page as custom components for reuse on different pages. Developers can also split a complex page into multiple loosely coupled modules to facilitate code maintenance. The usage of custom components is very similar to that of basic components.</p>
+<h3 id="creating-custom-components">Creating Custom Components</h3>
+<p>The operation is similar to that on the page, a custom component consists of JSON, MAML, MASS, and JS files. To compile a custom component, you need to declare the custom component in the JSON file. (You can set the component field to true to set the group of files as a custom component.)</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;component&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>Compile the component template in the MAML file and add the component style to the MASS file. The writing method is similar to the method of writing a page. For details and precautions, see <a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component-maml-mass">Component Templates and Styles</a>.</p>
+<h3 id="sample-code">Sample Code:</h3>
+<pre><code><span class="language-xml"><span class="hljs-comment">&lt;!-- This is the internal MAML structure of the custom component. --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inner&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{<span class="hljs-name">innerText</span>}}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span></span>
+</code></pre>
+<pre><code><span class="hljs-comment">/* The style here applies only to this custom component. */</span>
+<span class="hljs-selector-class">.inner</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</code></pre>
+<p><strong>Note: To avoid style conflicts between components, ID selectors, attribute selectors and tag name selectors should not be used in component masses.</strong></p>
+<p>In the JS file of the custom component, you need to use Component() to register the component and provide the attribute definition, internal data, and custom method of the component.</p>
+<p>The attribute values and internal data of the component are used for rendering the MAML file of the component. The attribute values can be transferred from external components. For details, see <a onclick="_mdLinkClick(this.href)" href="#/guide/component">Component Constructor</a>.</p>
+<pre><code><span class="hljs-title class_">Component</span>({
+
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: { <span class="hljs-comment">// Property name.</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">myProperty2</span>: <span class="hljs-title class_">String</span> <span class="hljs-comment">// Simplified definition mode.</span>
+  },
+
+  <span class="hljs-attr">data</span>: {}, <span class="hljs-comment">// Private data, which can be used for template rendering.</span>
+
+  <span class="hljs-comment">// Lifecycle function, which can be a function or a method name defined in the methods section.</span>
+  <span class="hljs-attr">created</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { },
+
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">onBtnTap</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+       <span class="hljs-comment">// The method of updating properties and data is similar to that of updating page data.</span>
+      })
+    },
+    <span class="hljs-comment">// It is recommended that an internal method start with an underscore (_).</span>
+    <span class="hljs-attr">_myPrivateMethod</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
+      <span class="hljs-comment">// Set data.prop to &#x27;myPrivateData&#x27;.</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+        <span class="hljs-attr">prop</span>: <span class="hljs-string">&#x27;myPrivateData&#x27;</span>
+      })
+    },
+    <span class="hljs-attr">_propertyChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">newVal, oldVal</span>) {
+
+    }
+  }
+})
+</code></pre>
+<h3 id="using-custom-components">Using Custom Components</h3>
+<p>Before using a registered custom component, you need to declare the reference in the JSON file of the page. In this case, you need to provide the tag name and file path of each custom component.</p>
+<pre><code><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;usingComponents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;component-tag-name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;path/to/the/custom/component&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>In this case, you can use custom components in the MAML file of the page in the same way as using basic components. The node name is the tag name of the custom component, and the node attribute is the attribute value transferred to the component.</p>
+<h3 id="sample-code-1">Sample Code:</h3>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- The following is a reference of a custom component --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">component-tag-name</span> <span class="hljs-attr">inner-text</span>=<span class="hljs-string">&quot;Some text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-tag-name</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<p>The MAML node structure of the custom component is inserted into the reference position after being combined with the data.</p>
+<h3 id="precautions">Precautions</h3>
+<p>Pay attention to the following details:</p>
+<ul>
+<li>The tag name of the MAML node can contain only lowercase letters, hyphens (-), and underscores (_). Therefore, the tag name of a custom component can contain only these characters.</li>
+<li>A custom component can also reference another custom component. The reference method is similar to that of referencing a custom component on a page (using the usingComponents field).</li>
+<li>The root directory name of the project where the custom component and page are located cannot be prefixed with ma-. Otherwise, an error is reported.</li>
+</ul>
+<p>Note: Using the usingComponents field in the page file will make the prototype of the this object on the page slightly different, including:</p>
+<ul>
+<li>The prototype of the page using usingComponents is different from that of the page not using usingComponents. In this case, the result of Object.getPrototypeOf(this) is different.</li>
+<li>When usingComponents is used, there are more methods, for example, selectComponent.</li>
+<li>To ensure performance, when usingComponents is used, the content of setData is not deeply copied. In this case, set this.setData({field: obj}) and then set this.data.field === obj. A deep copy occurs when this value is passed between components.</li>
+</ul>
+<p>If the page is complex, you are advised to perform the test again when adding or deleting the usingComponents definition section.</p>

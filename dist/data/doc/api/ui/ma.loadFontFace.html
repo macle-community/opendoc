@@ -1,0 +1,159 @@
+<h2 id="maloadfontfaceobject-object">ma.loadFontFace(Object object)</h2>
+<blockquote>
+<p>动态加载网络字体，文件地址需为下载类型  （最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">global</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否全局生效</td>
+</tr>
+<tr>
+<td align="left">family</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">定义的字体名称</td>
+</tr>
+<tr>
+<td align="left">source</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">字体资源的地址。建议格式为 TTF 和 WOFF，WOFF2 在低版本的iOS上会不兼容。</td>
+</tr>
+<tr>
+<td align="left">desc</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">可选的字体描述符</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h5 id="desc-属性">desc 属性</h5>
+<table>
+<thead>
+<tr>
+<th align="left">结构属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">style</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">否</td>
+<td>字体样式，可选值为 normal / italic / oblique</td>
+</tr>
+<tr>
+<td align="left">weight</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">否</td>
+<td>字体粗细，可选值为 normal / bold / 100 / 200../ 900</td>
+</tr>
+<tr>
+<td align="left">variant</td>
+<td align="left">String</td>
+<td align="left">&#39;normal&#39;</td>
+<td align="left">否</td>
+<td>设置小型大写字母的字体显示文本，可选值为 normal / small-caps / inherit</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-回调函数">object.success 回调函数</h5>
+<h6 id="参数-1">参数</h6>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">加载字体结果</td>
+</tr>
+</tbody></table>
+<h5 id="objectfail-回调函数">object.fail 回调函数</h5>
+<h6 id="参数-2">参数</h6>
+<h6 id="object-res-1">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">加载字体结果</td>
+</tr>
+</tbody></table>
+<h5 id="objectcomplete-回调函数">object.complete 回调函数</h5>
+<h6 id="参数-3">参数</h6>
+<h6 id="object-res-2">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">status</td>
+<td align="left">String</td>
+<td align="left">加载字体结果</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">ma</span>.loadFontFace({
+  family: <span class="hljs-string">&#x27;Bitstream Vera Serif Bold&#x27;</span>,
+  <span class="hljs-keyword">source</span>: <span class="hljs-string">&#x27;url(&quot;https://testExample/fontName.ttf&quot;)&#x27;</span>, //仅为示例，非真实资源链接
+  success: <span class="hljs-keyword">function</span> (<span class="hljs-keyword">res</span>) {
+      console.<span class="hljs-built_in">log</span>(<span class="hljs-keyword">res</span>)
+  }
+})
+</code></pre>

@@ -1,0 +1,98 @@
+<h2 id="progress">progress</h2>
+<blockquote>
+<p>进度条</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">percent</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">百分比 0~100</td>
+</tr>
+<tr>
+<td align="left">show-info</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">在进度条右侧显示百分比</td>
+</tr>
+<tr>
+<td align="left">border-radius</td>
+<td align="left">Number/String</td>
+<td align="left">0</td>
+<td align="left">否</td>
+<td align="left">圆角大小</td>
+</tr>
+<tr>
+<td align="left">font-size</td>
+<td align="left">Number/String</td>
+<td align="left">16</td>
+<td align="left">否</td>
+<td align="left">右侧百分比字体大小</td>
+</tr>
+<tr>
+<td align="left">stroke-width</td>
+<td align="left">Number/String</td>
+<td align="left">6</td>
+<td align="left">否</td>
+<td align="left">进度条线的宽度</td>
+</tr>
+<tr>
+<td align="left">activeColor</td>
+<td align="left">String</td>
+<td align="left">#09BB07</td>
+<td align="left">否</td>
+<td align="left">已选择的进度条的颜色</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left">#EBEBEB</td>
+<td align="left">否</td>
+<td align="left">未选择的进度条的颜色</td>
+</tr>
+<tr>
+<td align="left">active</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">进度条从左往右的动画</td>
+</tr>
+<tr>
+<td align="left">active-mode</td>
+<td align="left">String</td>
+<td align="left">backwards</td>
+<td align="left">否</td>
+<td align="left">backwards: 动画从头播；forwards：动画从上次结束点接着播</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">30</td>
+<td align="left">否</td>
+<td align="left">进度增加 1%所需毫秒数</td>
+</tr>
+<tr>
+<td align="left">bindactiveend</td>
+<td align="left">Eventhandle</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">动画完成事件</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-html">
+<span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;</span>progress fontSize<span class="hljs-operator">=</span>&quot;20&quot; <span class="hljs-keyword">percent</span><span class="hljs-operator">=</span>&quot;20&quot; <span class="hljs-keyword">show</span><span class="hljs-operator">-</span>info strokeWidth<span class="hljs-operator">=</span>&quot;2&quot; <span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
+</code></pre>

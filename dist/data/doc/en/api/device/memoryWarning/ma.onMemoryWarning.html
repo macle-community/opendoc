@@ -1,0 +1,13 @@
+<h2 id="maonmemorywarningfunction-callback">ma.onMemoryWarning(function callback)</h2>
+<blockquote>
+<p>Listen for a memory insufficiency alarm event.</p>
+</blockquote>
+<p>This event is triggered when the iOS/Android sends a memory alarm to the Mini Program process. Triggering this event does not mean that the Mini Program is killed. In most cases, this event is only an alarm. After receiving the notification, developers can reclaim some unnecessary resources to prevent further memory insufficiency.</p>
+<h3 id="parameter">Parameter</h3>
+<h4 id="function-callback">function callback</h4>
+<p>Callback function of the memory insufficiency alarm event.</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.onMemoryWarning(<span class="hljs-keyword">function</span> (<span class="hljs-params">res</span>) {
+  <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Not enough memory!&#x27;</span>);
+})
+</code></pre>

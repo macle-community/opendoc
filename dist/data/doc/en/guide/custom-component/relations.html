@@ -1,0 +1,159 @@
+<h1 id="relationships-between-components">Relationships between components</h1>
+<h2 id="define-and-use-relationships-between-components">Define and use relationships between components</h2>
+<p>Sometimes it is necessary to implement a component like this:</p>
+<pre><code class="language-html"><span class="hljs-section">&lt;custom-ul&gt;</span>
+  <span class="hljs-section">&lt;custom-li&gt;</span> <span class="hljs-attribute">item</span> <span class="hljs-number">1</span> &lt;/custom-li&gt;
+  <span class="hljs-section">&lt;custom-li&gt;</span> <span class="hljs-attribute">item</span> <span class="hljs-number">2</span> &lt;/custom-li&gt;
+<span class="hljs-section">&lt;/custom-ul&gt;</span>
+</code></pre>
+<p>In this example, <code>custom-ul</code> and <code>custom-li</code> are both custom components. They have relationships with each other, and the communication between them is often complicated. At this time, adding the <code>relations</code> definition section when defining the component can solve this problem. Example:</p>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-ul.js</span>
+Component({
+  <span class="hljs-attr">relations</span>: {
+    <span class="hljs-string">&#x27;../custom-li/custom-li&#x27;</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;child&#x27;</span>, <span class="hljs-comment">// The associated target node should be a child node.</span>
+      linked: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// Executed every time a custom-li is inserted, the target is the node instance object, and is triggered after the attached life cycle of the node.</span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---linked---&quot;</span>)
+      },
+      <span class="hljs-attr">linkChanged</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// It is executed every time a custom-li is moved. The target is the node instance object and is triggered after the node&#x27;s moved life cycle.</span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---linkChanged---&quot;</span>)
+      },
+      <span class="hljs-attr">unlinked</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// Executed every time a custom-li is removed, the target is the node instance object, and is triggered after the detached life cycle of the node.</span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---unlinked---&quot;</span>)
+      }
+    }
+  },
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">_getAllLi</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-comment">// Use getRelationNodes to get the nodes array, which contains all associated custom-li and is ordered.</span>
+      <span class="hljs-keyword">var</span> nodes = this.getRelationNodes(<span class="hljs-string">&#x27;../custom-li/custom-li&#x27;</span>)
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(nodes)
+    }
+  },
+  <span class="hljs-attr">ready</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    this._getAllLi()
+  },
+})
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-li.js</span>
+Component({ 
+  <span class="hljs-attr">relations</span>: {
+    <span class="hljs-string">&#x27;../custom-ul/custom-ul&#x27;</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;parent&#x27;</span>, <span class="hljs-comment">// The associated target node should be the parent node.</span>
+      linked: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// Executed every time it is inserted into custom-ul. The target is the custom-ul node instance object, which is triggered after the attached life cycle.</span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---linked---&quot;</span>)
+      },
+      <span class="hljs-attr">linkChanged</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// Executed every time it is moved. The target is the custom-ul node instance object, which is triggered after the moved life cycle.        </span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---linkChanged---&quot;</span>)
+      },
+      <span class="hljs-attr">unlinked</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">target</span>) {
+        <span class="hljs-comment">// Executed every time it is removed, the target is the custom-ul node instance object, triggered after the detached life cycle.</span>
+        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;---unlinked---&quot;</span>)
+      }
+    }
+  }
+})
+</code></pre>
+<p><strong>Note: relations definitions must be added to both component definitions, otherwise they will not take effect.</strong></p>
+<h2 id="associate-a-series-of-components">Associate a series of components</h2>
+<p>Sometimes, what needs to be associated is a type of component, such as:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">custom-form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    input
+    <span class="hljs-tag">&lt;<span class="hljs-name">custom-input</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">custom-input</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">custom-submit</span>&gt;</span> submit <span class="hljs-tag">&lt;/<span class="hljs-name">custom-submit</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">custom-form</span>&gt;</span>
+</code></pre>
+<p>The <code>custom-form</code> component wants to associate the two components <code>custom-input</code> and <code>custom-submit</code>. At this point, if both components have the same behavior:</p>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-form-controls.js</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">Behavior</span>({
+  <span class="hljs-attribute">attached</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Behavior attached&quot;</span>);
+  },
+});
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-input.js</span>
+<span class="hljs-selector-tag">var</span> customFormControls = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./custom-form-controls&#x27;</span>)
+<span class="hljs-built_in">Component</span>({
+  behaviors: <span class="hljs-selector-attr">[customFormControls]</span>,
+  relations: {
+    <span class="hljs-string">&#x27;./custom-form&#x27;</span>: {
+      type: <span class="hljs-string">&#x27;ancestor&#x27;</span>, <span class="hljs-comment">// The associated target node should be an ancestor node.</span>
+    }
+  }
+})
+</code></pre>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-submit.js</span>
+<span class="hljs-selector-tag">var</span> customFormControls = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./custom-form-controls&#x27;</span>)
+<span class="hljs-built_in">Component</span>({
+  behaviors: <span class="hljs-selector-attr">[customFormControls]</span>,
+  relations: {
+    <span class="hljs-string">&#x27;./custom-form&#x27;</span>: {
+      type: <span class="hljs-string">&#x27;ancestor&#x27;</span>, <span class="hljs-comment">// The associated target node should be an ancestor node.</span>
+    }
+  }
+})
+</code></pre>
+<p>Then in the <code>relations</code> relationship definition, you can use this behavior instead of the component path as the associated target node:</p>
+<pre><code class="language-js"><span class="hljs-comment">// path/to/custom-form.js</span>
+<span class="hljs-keyword">var</span> customFormControls = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./custom-form-controls&#x27;</span>)
+<span class="hljs-title class_">Component</span>({
+  <span class="hljs-attr">relations</span>: {
+    <span class="hljs-string">&#x27;customFormControls&#x27;</span>: {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;descendant&#x27;</span>, <span class="hljs-comment">// The associated target node should be a descendant node</span>
+      <span class="hljs-attr">target</span>: customFormControls,
+      <span class="hljs-attr">linked</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">target</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">&#x27;Already linked to &#x27;</span> + target.<span class="hljs-property">is</span>)
+      }
+    }
+  }
+})
+</code></pre>
+<h2 id="relations-definition-section">relations definition section</h2>
+<p>The <code>relations</code> definition section contains the target component path and its corresponding options. The options that can be included are shown in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>type</td>
+<td>String</td>
+<td>YES</td>
+<td>The relative relationship of the target component, the optional values ​​are <code>parent</code> , <code>child</code> , <code>ancestor</code> , <code>descendant</code></td>
+</tr>
+<tr>
+<td>linked</td>
+<td>Function</td>
+<td>NO</td>
+<td>The relationship life cycle function is triggered when the relationship is established in the page node tree. The triggering time is after the component attached life cycle.</td>
+</tr>
+<tr>
+<td>linkChanged</td>
+<td>Function</td>
+<td>NO</td>
+<td>The relationship life cycle function is triggered when the relationship changes in the page node tree. The triggering time is after the component moved life cycle.</td>
+</tr>
+<tr>
+<td>unlinked</td>
+<td>Function</td>
+<td>NO</td>
+<td>The relationship life cycle function is triggered when the relationship leaves the page node tree. The triggering time is after the component&#39;s detached life cycle.</td>
+</tr>
+<tr>
+<td>target</td>
+<td>String</td>
+<td>NO</td>
+<td>If this item is set, it represents the behavior that the associated target node should have, and all component nodes with this behavior will be associated.</td>
+</tr>
+</tbody></table>

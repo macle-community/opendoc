@@ -1,0 +1,110 @@
+<h2 id="picker-view">picker-view</h2>
+<blockquote>
+<p>Picker embedded in the page. Only the picker-view-column component can be placed. Other nodes are not displayed.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">Array</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Sequence numbers of the picker-view-column components in the picker-view in sequence (the subscript starts from 0). If the number is greater than the length of the picker-view-column option, the last option is selected.</td>
+</tr>
+<tr>
+<td align="left">indicator-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Style of the check box in the middle of the picker.</td>
+</tr>
+<tr>
+<td align="left">indicator-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Style class of the check box in the middle of the picker.</td>
+</tr>
+<tr>
+<td align="left">mask-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Style of the mask layer.</td>
+</tr>
+<tr>
+<td align="left">mask-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Style class of the mask layer.</td>
+</tr>
+<tr>
+<td align="left">bindchange</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggers the change event during scrolling selection. The output is <strong>event.detail =</strong> <em>{value}</em>. <em>{value}</em> is an array, indicating the sequence number (the subscript starts from 0) of the picker-view-column in the picker-view.</td>
+</tr>
+<tr>
+<td align="left">bindpickstart</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggers an event when the scroll selection starts.</td>
+</tr>
+<tr>
+<td align="left">bindpickend</td>
+<td align="left">eventHandle</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Triggers an event when the scroll selection ends.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Embed page scroll selector<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">picker-view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 500px;width: 100%;text-align:center;&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2013<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2014<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2015<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2016<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2017<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2018<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2020<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q1<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q2<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q3<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q4<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+</code></pre>
+<pre><code class="language-js">
+Page({
+  <span class="hljs-attribute">data</span>: {},
+  onChange(e) {
+    console<span class="hljs-variable">.log</span>(e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>);
+    <span class="hljs-attribute">this.setData({
+      value</span>: e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>,
+    });
+  },
+});
+</code></pre>

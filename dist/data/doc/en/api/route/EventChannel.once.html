@@ -1,0 +1,22 @@
+<h2 id="eventchanneloncestring-eventnamefunction-fn">EventChannel.once(string eventName,function fn)</h2>
+<blockquote>
+<p>Listen to an event once, and it will expire after it is triggered.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="string-eventname">string eventName</h4>
+<p>Event name</p>
+<h3 id="function-fn">function fn</h3>
+<p>Event listening function</p>
+<h4 id="parameter-1">Parameter</h4>
+<h5 id="any-args">any args</h5>
+<p>Event triggering parameter</p>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> eventChannel = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOpenerEventChannel</span>();
+    eventChannel.<span class="hljs-title function_">once</span>(<span class="hljs-string">&#x27;MacleA&#x27;</span>, <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);
+    });
+  }
+});
+</code></pre>

@@ -1,0 +1,178 @@
+<h2 id="button">Button</h2>
+<blockquote>
+<p>Trigger an operation, for example, submits a form.</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="button-type">Button type</h4>
+<p>The button type can be <code>default</code>, <code>primary</code>, <code>info</code>, <code>warning</code>, and <code>danger</code>. The default type is <code>default</code>.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>default button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>primary button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>information button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;</span>warning button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;</span>danger button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+</code></pre>
+<h4 id="plain-button">Plain button</h4>
+<p>Use the <code>plain</code> attribute to set the button to a plain button, with the font color as the button color and the background as white.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> plain type=<span class="hljs-string">&quot;primary&quot;</span>&gt;plain <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt; &lt;maui-<span class="hljs-keyword">button</span> plain type=<span class="hljs-string">&quot;info&quot;</span>&gt;plain <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>
+<h4 id="hairline-border">Hairline border</h4>
+<p>Use the <code>hairline</code> attribute to enable a 0.5-pixel border, based on the pseudo class.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> plain hairline type=<span class="hljs-string">&quot;primary&quot;</span>&gt;hairline border <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt;
+&lt;maui-<span class="hljs-keyword">button</span> plain hairline type=<span class="hljs-string">&quot;info&quot;</span>&gt;hairline border <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>
+<h4 id="disabled">Disabled</h4>
+<p>Use the disabled attribute to <code>disable</code> a button. In this case, the <code>bind:click</code> event is not triggered for the button.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button </span><span class="hljs-keyword">disabled </span>type=<span class="hljs-string">&quot;primary&quot;</span>&gt;<span class="hljs-keyword">disabled&lt;/maui-button&gt; </span>&lt;maui-<span class="hljs-keyword">button </span><span class="hljs-keyword">disabled </span>type=<span class="hljs-string">&quot;info&quot;</span>&gt;<span class="hljs-keyword">disabled&lt;/maui-button&gt;</span>
+</code></pre>
+<h4 id="loading">Loading</h4>
+<pre><code class="language-html">&lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> /&gt;
+&lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> loading-type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> /&gt;
+&lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;info&quot;</span> loading-text<span class="hljs-operator">=</span><span class="hljs-string">&quot;Loading...&quot;</span> /&gt;
+</code></pre>
+<h4 id="button-shape">Button shape</h4>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> square type=<span class="hljs-string">&quot;primary&quot;</span>&gt;square <span class="hljs-keyword">button</span>&lt;/maui-<span class="hljs-keyword">button</span>&gt; &lt;maui-<span class="hljs-keyword">button</span> round type=<span class="hljs-string">&quot;info&quot;</span>&gt;round <span class="hljs-keyword">button</span>&lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>
+<h4 id="icon-button">Icon button</h4>
+<p>Use the <code>icon</code> attribute to set the button icon. The icon URL can be transferred.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> icon=<span class="hljs-string">&quot;https://example/logo.png&quot;</span> type=<span class="hljs-string">&quot;info&quot;</span>&gt; <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>
+<h4 id="button-size">Button size</h4>
+<p>The button size can be <code>large</code>, <code>normal</code>, <code>small</code>, or <code>mini</code>. The default size is <code>normal</code>.</p>
+<pre><code class="language-html">&lt;maui-button type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span>&gt;large button &lt;/maui-button&gt;
+&lt;maui-button type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;normal&quot;</span>&gt;normal button&lt;/maui-button&gt;
+&lt;maui-button type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;small&quot;</span>&gt;small button&lt;/maui-button&gt;
+&lt;maui-button type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;mini&quot;</span>&gt;mini button&lt;/maui-button&gt;
+</code></pre>
+<h4 id="block-level-element">Block-level element</h4>
+<p>Use the <code>block</code> attribute to set the button to a block-level element.</p>
+<pre><code class="language-html">&lt;maui-button <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-keyword">block</span>&gt;<span class="hljs-keyword">block</span>-level element &lt;/maui-button&gt;
+</code></pre>
+<h4 id="custom-color">Custom color</h4>
+<p>Use the <code>color</code> attribute to customize the button color.</p>
+<pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> <span class="hljs-keyword">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span>&gt;single-<span class="hljs-keyword">color</span> <span class="hljs-keyword">button</span>&lt;/maui-<span class="hljs-keyword">button</span>&gt;
+&lt;maui-<span class="hljs-keyword">button</span> <span class="hljs-keyword">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span> plain&gt;single-<span class="hljs-keyword">color</span> <span class="hljs-keyword">button</span>&lt;/maui-<span class="hljs-keyword">button</span>&gt;
+&lt;maui-<span class="hljs-keyword">button</span> <span class="hljs-keyword">color</span>=<span class="hljs-string">&quot;linear-gradient(to right, #4bb0ff, #6149f6)&quot;</span>&gt; Gradient <span class="hljs-keyword">color</span> <span class="hljs-keyword">button</span> &lt;/maui-<span class="hljs-keyword">button</span>&gt;
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="props">Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">Identifier.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">Button type. The options are <code>primary</code>, <code>info</code>, <code>warning</code>, and <code>danger</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>default</code></td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Button size. The options are <code>normal</code>, <code>large</code>, <code>small</code>, and <code>mini</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>normal</code></td>
+</tr>
+<tr>
+<td align="left">color</td>
+<td align="left">Button color. The <code>linear-gradient</code> color is allowed.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">icon</td>
+<td align="left">Icon link on the left.</td>
+<td align="left">String</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">plain</td>
+<td align="left">Whether the button is a plain button.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">block</td>
+<td align="left">Whether the button is a block-level element.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left">Whether the button is round.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">square</td>
+<td align="left">Whether the button is square.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether the button is disabled.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">hairline</td>
+<td align="left">Whether to use the 0.5-pixel border.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">Whether to display the loading state.</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">loading-text</td>
+<td align="left">Text indicating the loading state.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">loading-type</td>
+<td align="left">Type of the loading icon. The value can be <code>spinner</code>.</td>
+<td align="left">String</td>
+<td align="left"><code>circular</code></td>
+</tr>
+<tr>
+<td align="left">loading-size</td>
+<td align="left">Size of the loading icon.</td>
+<td align="left">String</td>
+<td align="left"><code>20px</code></td>
+</tr>
+<tr>
+<td align="left">custom-style</td>
+<td align="left">Custom style.</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="events">Events</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Event</th>
+<th align="left">Description</th>
+<th align="left">Parameter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bind:click</td>
+<td align="left">Triggered when a button is clicked and the button status is not loading or disabled.</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

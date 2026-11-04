@@ -1,0 +1,143 @@
+<h2 id="list">List</h2>
+<blockquote>
+<p>Universal lists can cleanly and efficiently hold elements such as text, lists, images, and paragraphs (minimum
+version: 25.12.0).</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="basic-usage">Basic Usage</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list</span> <span class="hljs-attr">header</span>=<span class="hljs-string">&#x27;Basic Usage&#x27;</span> <span class="hljs-attr">radius</span> <span class="hljs-attr">footer</span>=<span class="hljs-string">&#x27;Top Description&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list</span>&gt;</span>
+</code></pre>
+<h4 id="list-item-basic-properties">List Item Basic Properties</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">arrow</span>=<span class="hljs-string">&#x27;right&#x27;</span>&gt;</span>arrow right<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">arrow</span>=<span class="hljs-string">&#x27;up&#x27;</span>&gt;</span>arrow up<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">brief</span>=<span class="hljs-string">&#x27;second line of information&#x27;</span>&gt;</span>brief<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">disabled</span>&gt;</span>disabled<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+</code></pre>
+<h4 id="extended-attribute-usage">Extended Attribute Usage</h4>
+<pre><code class="language-html">
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-list</span> <span class="hljs-attr">header</span>=<span class="hljs-string">&#x27;list-item Additional Information&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">extra</span>=<span class="hljs-string">&#x27;Extra content on the right&#x27;</span> <span class="hljs-attr">extraBrief</span>=<span class="hljs-string">&#x27;Auxiliary information on the right&#x27;</span>&gt;</span>Information display
+    on the right
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">showDivider</span>=<span class="hljs-string">&#x27;false&#x27;</span>&gt;</span>No underscores<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&#x27;https://example/img/logo.png&#x27;</span>&gt;</span>Insert picture<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;I am the title&#x27;</span>&gt;</span>Title information<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-list-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;Slot&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span>&gt;</span>insert button<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">maui-list-item</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-list</span>&gt;</span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="list-1">List</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">footer</td>
+<td align="left">Bottom Description</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">Head Description</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">radius</td>
+<td align="left">Whether with rounded corners</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+</tbody></table>
+<h4 id="listitem">ListItem</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Description</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">arrow</td>
+<td align="left">The right arrow can be set to <code>right</code>, <code>up</code>, or <code>down</code>. Passing <code>true</code> will return <code>right</code>.</td>
+<td align="left">String | Boolean</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">brief</td>
+<td align="left">Second line of information</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Whether to disable</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">extra</td>
+<td align="left">Extra content on the right</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">extraBrief</td>
+<td align="left">Auxiliary information on the right</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">Picture on the left</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">radius</td>
+<td align="left">Whether with rounded corners</td>
+<td align="left">Boolean</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left">showDivider</td>
+<td align="left">Show underline or not</td>
+<td align="left">Boolean</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">Header Information</td>
+<td align="left">String</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="listitem-slot">ListItem Slot</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-</td>
+<td align="left">Custom form field content</td>
+</tr>
+</tbody></table>

@@ -1,0 +1,67 @@
+<h2 id="maclosesocketobject-object">ma.closeSocket(Object object)</h2>
+<blockquote>
+<p>Close a WebSocket connection.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">code</td>
+<td align="left">Number</td>
+<td align="left"><strong>1000</strong> (indicating that the connection is closed normally)</td>
+<td align="left">No</td>
+<td align="left">A numeric value representing the status number of the closed connection, indicating the reason why the connection is closed.</td>
+</tr>
+<tr>
+<td align="left">reason</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">A readable string, indicating the reason why the connection is closed. This string must be UTF-8 text (not characters) no longer than 123 bytes.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    <span class="hljs-keyword">ma</span>.connectSocket({
+       url: <span class="hljs-string">&#x27;wss://example.huawei.com&#x27;</span>,
+    })
+    // Pay attention <span class="hljs-keyword">to</span> the time sequence.
+    // If <span class="hljs-keyword">ma</span>.closeSocket <span class="hljs-keyword">is</span> called <span class="hljs-keyword">first</span> before <span class="hljs-keyword">ma</span>.connectSocket calls back <span class="hljs-keyword">ma</span>.onSocketOpen, the WebSocket connection cannot <span class="hljs-keyword">be</span> closed.
+    // The WebSocket connection can <span class="hljs-keyword">be</span> closed <span class="hljs-keyword">only</span> when <span class="hljs-keyword">ma</span>.closeSocket <span class="hljs-keyword">is</span> called when the WebSocket connection <span class="hljs-keyword">is</span> being opened.
+    <span class="hljs-keyword">ma</span>.onSocketOpen(funtion() {
+      <span class="hljs-keyword">ma</span>.closeSocket()
+    })
+    
+    <span class="hljs-keyword">ma</span>.onSocketClose(<span class="hljs-keyword">function</span>(<span class="hljs-keyword">res</span>) {
+      console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;WebSocket connection closed!&#x27;</span>)
+    })
+</code></pre>

@@ -1,0 +1,120 @@
+<h2 id="masetnavigationbarcolorobject-object">ma.setNavigationBarColor(Object object)</h2>
+<blockquote>
+<p>Set the navigation bar color.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">frontColor</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Foreground color value, including the color of the button, title, and status bar. Only <strong>#ffffff</strong> and <strong>#000000</strong> are supported.</td>
+</tr>
+<tr>
+<td align="left">backgroundColor</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Background color value. The valid value is a hexadecimal color code.</td>
+</tr>
+<tr>
+<td align="left">animation</td>
+<td align="left">Object</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Animation effect.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="structure-of-objectanimation">Structure of object.animation</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">No</td>
+<td align="left">Animation change time, in ms.</td>
+</tr>
+<tr>
+<td align="left">timingFunc</td>
+<td align="left">String</td>
+<td align="left">&#39;linear&#39;</td>
+<td align="left">No</td>
+<td align="left">Animation change mode.</td>
+</tr>
+</tbody></table>
+<h4 id="valid-values-of-objectanimationtimingfunc">Valid Values of object.animation.timingFunc</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&#39;linear&#39;</td>
+<td align="left">An animation changes at a constant speed.</td>
+</tr>
+<tr>
+<td align="left">&#39;easeIn&#39;</td>
+<td align="left">An animation starts at a low speed.</td>
+</tr>
+<tr>
+<td align="left">&#39;easeOut&#39;</td>
+<td align="left">An animation ends at a low speed.</td>
+</tr>
+<tr>
+<td align="left">&#39;easeInOut&#39;</td>
+<td align="left">An animation starts and ends at a low speed.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">    ma<span class="hljs-selector-class">.setNavigationBarColor</span>({
+      frontColor: <span class="hljs-string">&#x27;#ffffff&#x27;</span>,
+      backgroundColor: <span class="hljs-string">&#x27;#ff0000&#x27;</span>,
+      animation: {
+        duration: <span class="hljs-number">400</span>,
+        timingFunc: <span class="hljs-string">&#x27;easeIn&#x27;</span>
+      }
+    })
+</code></pre>

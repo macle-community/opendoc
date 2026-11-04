@@ -1,0 +1,74 @@
+<h2 id="masettabbaritemobject-object">ma.setTabBarItem(Object object)</h2>
+<blockquote>
+<p>Dynamically set the content of a tabBar item.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">tabBar item, counted from the left. The start value is 0.</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Button text on the tab.</td>
+</tr>
+<tr>
+<td align="left">iconPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Image path. The maximum size of an icon is 40 KB. The recommended size is 81 px x 81 px.</td>
+</tr>
+<tr>
+<td align="left">selectedIconPath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Image path of a selected item. The maximum size of an icon is 40 KB. The recommended size is 81 px x 81 px.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.setTabBarItem({
+  <span class="hljs-keyword">index</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-type">text</span>: <span class="hljs-string">&#x27;text&#x27;</span>,
+  iconPath: <span class="hljs-string">&#x27;/path/to/iconPath&#x27;</span>,
+  selectedIconPath: <span class="hljs-string">&#x27;/path/to/selectedIconPath&#x27;</span>
+});
+</code></pre>

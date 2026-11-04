@@ -1,0 +1,71 @@
+<h2 id="layout-布局">Layout 布局</h2>
+<blockquote>
+<p>Layout 提供了<code>maui-row</code>和<code>maui-col</code>两个组件来进行行列布局（最低版本：24.6.0）</p>
+</blockquote>
+<h3 id="代码演示">代码演示</h3>
+<h4 id="基本用法">基本用法</h4>
+<p>Layout 组件提供了<code>24列栅格</code>，通过在<code>Col</code>上添加<code>span</code>属性设置列所占的宽度百分比。此外，添加<code>offset</code>属性可以设置列的偏移宽度，计算方式与 span 相同。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>span: 4<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>offset: 4, span: 10<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>offset: 12, span: 12<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+</code></pre>
+<h4 id="设置列元素间距">设置列元素间距</h4>
+<p>通过<code>gutter</code>属性可以设置列元素之间的间距，默认间距为 0。</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-row</span> <span class="hljs-attr">gutter</span>=<span class="hljs-string">&quot;20&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">maui-col</span> <span class="hljs-attr">span</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>span: 8<span class="hljs-tag">&lt;/<span class="hljs-name">maui-col</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">maui-row</span>&gt;</span>
+</code></pre>
+<h3 id="api">API</h3>
+<h4 id="row-props">Row Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">gutter</td>
+<td align="left">列元素之间的间距（单位为 px）</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="col-props">Col Props</h4>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">span</td>
+<td align="left">列元素宽度</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">offset</td>
+<td align="left">列元素偏移距离</td>
+<td align="left">String | Number</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>

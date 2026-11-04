@@ -1,0 +1,122 @@
+<h2 id="filesystemmanagerwritefileobject-object">FileSystemManager.writeFile(Object object)</h2>
+<blockquote>
+<p>写文件，如果路径中有目录不存在则写文件失败；如果文件存在则会覆盖内容；如果文件不存在，会新建文件再写入内容（最低版本：23.6.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filePath</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要写入的文件路径 (本地用户路径，只允许在usr目录下，可以是相对目录，但最终的真实路径不能在usr之外，也<strong>不允许是临时路径和缓存路径</strong>)</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="left">String/ArrayBuffer</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">要写入的文本或二进制数据，可以为空</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">String</td>
+<td align="left">utf8</td>
+<td align="left">否</td>
+<td align="left">指定写入文件的字符编码</td>
+</tr>
+</tbody></table>
+<h5 id="encoding">encoding</h5>
+<table>
+<thead>
+<tr>
+<th>合法值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ascii</td>
+<td></td>
+</tr>
+<tr>
+<td>base64</td>
+<td>注意，选择 base64 编码，data 只需要传 base64 内容本身，不要传 Data URI 前缀，否则会报 fail base64 encode error 错误。例如，传 aGVsbG8= 而不是传 data:image/png;base64,aGVsbG8=</td>
+</tr>
+<tr>
+<td>ucs2</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>ucs-2</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf16le</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf-16le</td>
+<td>以小端序读取</td>
+</tr>
+<tr>
+<td>utf-8</td>
+<td></td>
+</tr>
+<tr>
+<td>utf8</td>
+<td>默认值</td>
+</tr>
+<tr>
+<td>latin1</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> fs = ma.<span class="hljs-title function_">getFileSystemManager</span>();
+fs.<span class="hljs-title function_">writeFile</span>({
+  <span class="hljs-attr">filePath</span>: <span class="hljs-string">`<span class="hljs-subst">${ma.env.USER_DATA_PATH}</span>/test.txt`</span>,
+  <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;data&#x27;</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  },
+  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>写入的文件名最大长度为255，过长的文件名称会导致API调用失败</li>
+<li>文件大小的上限为10MB</li>
+</ol>

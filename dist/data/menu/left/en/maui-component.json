@@ -1,0 +1,147 @@
+[
+  {
+    "name": "UI Component Library",
+    "child": [
+      {
+        "name": "Introduction",
+        "path": "/introduce",
+        "data": "/data/doc/maui-component/introduce.md"
+      },
+      {
+        "name": "Layout",
+        "path": "/Layout",
+        "data": "/data/doc/maui-component/Layout.md"
+      },
+      {
+        "name": "Button",
+        "path": "/Button",
+        "data": "/data/doc/maui-component/Button.md"
+      },
+      {
+        "name": "Field",
+        "path": "/Field",
+        "data": "/data/doc/maui-component/Field.md"
+      },
+      {
+        "name": "Empty",
+        "path": "/Empty",
+        "data": "/data/doc/maui-component/Empty.md"
+      },
+      {
+        "name": "Loading",
+        "path": "/Loading",
+        "data": "/data/doc/maui-component/Loading.md"
+      },
+      {
+        "name": "Overlay",
+        "path": "/Overlay",
+        "data": "/data/doc/maui-component/Overlay.md"
+      },
+      {
+        "name": "Popup",
+        "path": "/Popup",
+        "data": "/data/doc/maui-component/Popup.md"
+      },
+      {
+        "name": "Toast",
+        "path": "/Toast",
+        "data": "/data/doc/maui-component/Toast.md"
+      },
+      {
+        "name": "Image",
+        "path": "/Image",
+        "data": "/data/doc/maui-component/Image.md"
+      },
+      {
+        "name": "Dialog",
+        "path": "/Dialog",
+        "data": "/data/doc/maui-component/Dialog.md"
+      },
+      {
+        "name": "Icon",
+        "path": "/Icon",
+        "data": "/data/doc/maui-component/Icon.md"
+      },
+      {
+        "name": "Cell",
+        "path": "/Cell",
+        "data": "/data/doc/maui-component/Cell.md"
+      },
+      {
+        "name": "Progress",
+        "path": "/Progress",
+        "data": "/data/doc/maui-component/Progress.md"
+      },
+      {
+        "name": "Radio",
+        "path": "/Radio",
+        "data": "/data/doc/maui-component/Radio.md"
+      },
+      {
+        "name": "Checkbox",
+        "path": "/Checkbox",
+        "data": "/data/doc/maui-component/Checkbox.md"
+      },
+      {
+        "name": "Stepper",
+        "path": "/Stepper",
+        "data": "/data/doc/maui-component/Stepper.md"
+      },
+      {
+        "name": "titleBar",
+        "path": "/titleBar",
+        "data": "/data/doc/maui-component/titleBar.md"
+      },
+      {
+        "name": "Steps",
+        "path": "/Steps",
+        "data": "/data/doc/maui-component/Steps.md"
+      },
+      {
+        "name": "Sticky",
+        "path": "/Sticky",
+        "data": "/data/doc/maui-component/Sticky.md"
+      },
+      {
+        "name": "Tab",
+        "path": "/Tab",
+        "data": "/data/doc/maui-component/Tab.md"
+      },
+      {
+        "name": "Tag",
+        "path": "/Tag",
+        "data": "/data/doc/maui-component/Tag.md"
+      },
+      {
+        "name": "Switch",
+        "path": "/Switch",
+        "data": "/data/doc/maui-component/Switch.md"
+      },
+      {
+        "name": "Sidebar",
+        "path": "/Sidebar",
+        "data": "/data/doc/maui-component/Sidebar.md"
+      },
+      {
+        "name": "Divider",
+        "path": "/Divider",
+        "data": "/data/doc/maui-component/Divider.md"
+      },
+      {
+        "name": "Slider",
+        "path": "/Slider",
+        "data": "/data/doc/maui-component/Slider.md"
+      },
+      {
+        "name": "Modal",
+        "path": "/Modal",
+        "data": "/data/doc/maui-component/Modal.md"
+      },
+      {
+        "name": "List",
+        "path": "/List",
+        "data": "/data/doc/maui-component/List.md"
+      }
+    ]
+  }
+]

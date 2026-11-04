@@ -1,0 +1,51 @@
+<h2 id="mini-program-configuration">Mini Program Configuration</h2>
+<h3 id="global-configuration">Global Configuration</h3>
+<p>The app.json file in the root directory of the Mini Program is used to configure the Mini Program globally, and determine the path of the page file, window display, and setting multiple tabs.</p>
+<p>For details about the complete configuration items, see the <a onclick="_mdLinkClick(this.href)" href="#/framework/app-config">global configuration of the Mini Program</a>.</p>
+<p>The following is an app.json that contains some of the common configuration options:</p>
+<pre><code class="language-json">{
+  &quot;pages&quot;: [&quot;pages/<span class="hljs-keyword">index</span>/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;, &quot;</span>pages/logs/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;],
+  &quot;</span>window<span class="hljs-string">&quot;: {
+    &quot;</span>navigationBarTitleText<span class="hljs-string">&quot;: &quot;</span>Demo<span class="hljs-string">&quot;
+  },
+  &quot;</span>tabBar<span class="hljs-string">&quot;: {
+    &quot;</span>list<span class="hljs-string">&quot;: [
+      {
+        &quot;</span>pagePath<span class="hljs-string">&quot;: &quot;</span>pages/<span class="hljs-keyword">index</span>/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;,
+        &quot;</span>text<span class="hljs-string">&quot;: &quot;</span>Homepage<span class="hljs-string">&quot;
+      },
+      {
+        &quot;</span>pagePath<span class="hljs-string">&quot;: &quot;</span>pages/logs/<span class="hljs-keyword">index</span><span class="hljs-string">&quot;,
+        &quot;</span>text<span class="hljs-string">&quot;: &quot;</span><span class="hljs-built_in">Log</span><span class="hljs-string">&quot;
+      }
+    ]
+  }
+}</span>
+</code></pre>
+<h3 id="page-configuration">Page Configuration</h3>
+<p>Each Mini Program page can also use the .json file with the same name to configure the window performance of the page. The configuration items on the page will overwrite the same configuration items in the window of app.json.</p>
+<p>For details about the complete configuration items, see the <a onclick="_mdLinkClick(this.href)" href="#/framework/page-config">configuration page of the Mini Program</a>.</p>
+<p>For example:</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;navigationBarBackgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#ffffff</span>&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTextStyle&quot;</span>: <span class="hljs-string">&quot;black&quot;</span>,
+  <span class="hljs-string">&quot;navigationBarTitleText&quot;</span>: <span class="hljs-string">&quot;Macle Interface Function Demonstration&quot;</span>,
+  <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;<span class="hljs-subst">#eeeeee</span>&quot;</span>,
+  <span class="hljs-string">&quot;backgroundTextStyle&quot;</span>: <span class="hljs-string">&quot;light&quot;</span>
+}
+</code></pre>
+<h2 id="expansion-configuration">Expansion Configuration</h2>
+<p>After the plugin is installed, you can configure some extended parameters. The function entry is as follows:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/guide/image/start/extendedConfigPosition.png" alt="image" ></p>
+<p>The configuration interface is as follows:</p>
+<p><img src="/openplatform/macledocs/data/doc/en/guide/image/start/extendedConfig.png" alt="image" ></p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The <code>Auto Format After Save</code> function only takes effect for maml files. When turned on, the code in the maml file will be formatted.</li>
+<li><code>Enable Log</code> is a function enabled for problem location, which facilitates users to locate exceptions. For details, please refer to <a onclick="_mdLinkClick(this.href)" href="#/devtools/errLog">Log Print</a></li>
+</ol>
+<p>To facilitate developers to quickly browse open documents, the Macle development plug-in integrates the open document entry (the earliest version is 23.3.0). You can set the opening mode of open documents through extended configuration. Currently, the following two opening modes are supported:</p>
+<ul>
+<li>Open in VS Code: Open in the vscode editor (default)</li>
+<li>Open in Chrome: Create a new Google Chrome window and go to the open document page.</li>
+</ul>

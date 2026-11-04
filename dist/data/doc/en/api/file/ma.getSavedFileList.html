@@ -1,0 +1,96 @@
+<h2 id="magetsavedfilelistobject-object">ma.getSavedFileList(Object object)</h2>
+<blockquote>
+<p>Obtain the list of locally cached files of the Mini Program.</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h5 id="objectsuccess-callback-function">object.success Callback Function</h5>
+<h5 id="parameter-1">Parameter</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getSavedFileList: ok</td>
+</tr>
+<tr>
+<td align="left">fileList</td>
+<td align="left">Array</td>
+<td align="left">File array. Each item is an attribute of <strong>fileItem</strong>.</td>
+</tr>
+</tbody></table>
+<h6 id="fileitem">fileItem</h6>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>filePath</td>
+<td>String</td>
+<td>Local file path.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Number</td>
+<td>Size of the local file, in byte.</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>Number</td>
+<td>Timestamp when a file is saved, which is the number of seconds from 1970/01/01 08:00:00 to the current time.</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getSavedFileList</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">fileList</span>);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Support calling through <code>FileSystemManager</code></li>
+</ol>

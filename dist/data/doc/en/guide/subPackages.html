@@ -1,0 +1,73 @@
+<h2 id="loading-subpackages">Loading Subpackages</h2>
+<p>In some cases, developers need to divide a Mini Program into different packages and pack the packages into different subpackages during construction. 
+Users can load the subpackages as required.</p>
+<p>During constructing subpackages of a Mini Program, one or more subpackages are generated. Each Mini Program which uses the subpackages must contain a main package. The main package stores the default startup page or tabBar page and common resources or JavaScript scripts, required by all packages. Packages are divided based on the developer&#39;s configuration.</p>
+<p>When a Mini Program is started, the main package is downloaded and the page in the main package is displayed by default. When a user accesses a page in a subpackage, the client downloads the corresponding subpackage and displays the page after the download is complete.
+Dividing packages for a Mini Program can optimize the download time for the first startup of the Mini Program and facilitate decoupling and collaboration when multiple teams jointly develop a Mini Program.</p>
+<h3 id="use-subpackages">Use Subpackages</h3>
+<h4 id="configuration-method">Configuration Method</h4>
+<p>Assume that the directory structure of a Mini Program that supports package dividing is as follows:</p>
+<pre><code>├── <span class="hljs-keyword">app</span>.js
+├── <span class="hljs-keyword">app</span>.json
+├── <span class="hljs-keyword">app</span>.mass
+├── packageA
+│   └── pages
+│       ├── apple
+│       └── banana
+├── packageB
+│   └── pages
+│       ├── dog
+│       └── <span class="hljs-keyword">cat</span>
+├── pages
+│   ├── index
+│   └── logs
+└── utils
+</code></pre>
+<p>Developers declare the project subpackage structure using the subPackages field of the app.json file.</p>
+<pre><code class="language-json">{
+  <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/index&quot;</span>, <span class="hljs-string">&quot;pages/logs&quot;</span>],
+  <span class="hljs-string">&quot;subPackages&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;root&quot;</span>: <span class="hljs-string">&quot;packageA&quot;</span>,
+      <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/apple&quot;</span>, <span class="hljs-string">&quot;pages/banana&quot;</span>]
+    },
+    {
+      <span class="hljs-string">&quot;root&quot;</span>: <span class="hljs-string">&quot;packageB&quot;</span>,
+      <span class="hljs-string">&quot;pages&quot;</span>: [<span class="hljs-string">&quot;pages/cat&quot;</span>, <span class="hljs-string">&quot;pages/dog&quot;</span>]
+    }
+  ]
+}
+</code></pre>
+<p>In subPackages, the configuration attributes of each subpackage are as follows:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">root</td>
+<td align="left">String</td>
+<td align="left">Subpackage root directory.</td>
+</tr>
+<tr>
+<td align="left">pages</td>
+<td align="left">Array<String></td>
+<td align="left">Subpackage page directory.</td>
+</tr>
+</tbody></table>
+<h4 id="principles-of-packaging">Principles of Packaging</h4>
+<ul>
+<li>After <strong>subPackages</strong> is used to declare, packages are packed according to the directories specified by <strong>subPackages</strong>. The subpackages in other directories are packed into the main package.</li>
+<li>A main package can also have its own pages (that is, the outermost <strong>pages</strong> field).</li>
+<li>The root directory of <strong>subPackages</strong> cannot be a sub-directory of another <strong>subPackages</strong>.</li>
+<li>The <strong>tabBar</strong> page must be contained in the main package.</li>
+</ul>
+<h4 id="principles-of-referencing">Principles of Referencing</h4>
+<ul>
+<li>packageA cannot require the JavaScript files of packageB, but can require the JavaScript files in the main package and its own package.</li>
+<li>packageA cannot import the template of packageB, but can import the template of the main package and its own package.</li>
+<li>packageA cannot use the resources of packageB, but can use the resources of the main package and its own package.</li>
+</ul>

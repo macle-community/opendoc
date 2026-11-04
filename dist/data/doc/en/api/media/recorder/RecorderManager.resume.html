@@ -1,0 +1,19 @@
+<h2 id="recordermanagerresume">RecorderManager.resume()</h2>
+<blockquote>
+<p>Continue recording. Continue recording before the last pause. This interface can be invoked only after the user has granted the microphone permission of the current Mini Program(Minimum version: 23.9.0).</p>
+</blockquote>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>The resume interface can be invoked only when the recording is paused. The resume interface cannot be invoked when the recording is being performed or when the recording is idle.</li>
+<li>The resume operation is performed on the recording manager. The operation result is obtained from the recording manager, which is different from the callback mode of common interfaces. The recorder continues recording normally. You can use RecorderManager.onResume (listener) to monitor the recording. If an error occurs, you can use RecorderManager.onError(listener) to monitor the recording.</li>
+<li>If you continue recording, the recording duration is inherited. For example, if the duration specified in the start operation is 10s and the recording is paused after 4s, the remaining recording duration is 6s, and the recording automatically stops 6s after the recording continues.</li>
+</ol>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-maml">&lt;button <span class="hljs-attribute">bindtap</span>=<span class="hljs-string">&quot;recorderResume&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;recorderResume&lt;/button&gt;
+</code></pre>
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-title">Page</span>({
+    <span class="hljs-title">recorderResume</span>() {
+        <span class="hljs-variable">recorderManager.resume</span>();
+    }
+})</span>
+</code></pre>

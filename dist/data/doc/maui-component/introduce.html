@@ -1,0 +1,17 @@
+<h1 id="ui组件库介绍">UI组件库介绍</h1>
+<p>macle开发了自己的组件库以满足开发者更加丰富、个性化的应用场景。</p>
+<p>使用前，请确保阅读并理解了<a onclick="_mdLinkClick(this.href)" href="#/guide/custom-component">自定义组件介绍</a></p>
+<h2 id="下载代码">下载代码</h2>
+<p>macle的组件库当前可以通过直接下载源码并添加至工程使用。</p>
+<p><a target="_blank" href="http://support.huawei.com/carrier/navi?coltype=software&lang=en#allProduct=true&col=software&path=PBI1-7275736/PBI1-23084441/PBI1-8132344/PBI1-255682961" rel = "noopener noreferrer">下载</a>Macle UI组件库 源代码，并将 <code>dist</code> 目录拷贝到自己的项目中。</p>
+<h2 id="使用组件">使用组件</h2>
+<p>以按钮组件为例，只需要在 json 文件中引入按钮对应的自定义组件即可</p>
+<pre><code>{
+  &quot;usingComponents&quot;: {
+    &quot;maui-<span class="hljs-selector-tag">button</span>&quot;: <span class="hljs-string">&quot;/path/to/maui-component/dist/button/index&quot;</span>
+  }
+}
+</code></pre>
+<p>接着就可以在 maml 中直接使用组件</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
+</code></pre>

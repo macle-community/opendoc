@@ -1,0 +1,16 @@
+<h2 id="downloadtaskabort">DownloadTask.abort()</h2>
+<blockquote>
+<p>Stop downloading tasks (Minimum version: 23.6.0)</p>
+</blockquote>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">const downloadTask = ma<span class="hljs-selector-class">.downloadFile</span>({
+    url: <span class="hljs-string">&#x27;http://example.com/audio/123&#x27;</span>, <span class="hljs-comment">//This is only an example and is not a real resource.</span>
+    <span class="hljs-built_in">success</span>(res) {
+        ma<span class="hljs-selector-class">.playVoice</span>({
+            filePath: res<span class="hljs-selector-class">.tempFilePath</span>
+        })
+    }
+})
+
+downloadTask<span class="hljs-selector-class">.abort</span>() <span class="hljs-comment">// Cancel the download task.</span>
+</code></pre>

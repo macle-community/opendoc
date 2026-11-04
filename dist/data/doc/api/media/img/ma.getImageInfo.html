@@ -1,0 +1,144 @@
+<h2 id="magetimageinfoobject-object">ma.getImageInfo(Object object)</h2>
+<blockquote>
+<p>获取图片信息。网络图片需先配置 download 域名才能生效。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">是</td>
+<td align="left">图片的路径，支持网络路径、本地路径、代码包路径 (模拟器不支持本地路径，代码包路径注意区分大小写)</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-1">参数</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">图片原始宽度，单位 px。不考虑旋转。</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">图片原始高度，单位 px。不考虑旋转。</td>
+</tr>
+<tr>
+<td align="left">path</td>
+<td align="left">String</td>
+<td align="left">图片的本地路径</td>
+</tr>
+<tr>
+<td align="left">orientation</td>
+<td align="left">String</td>
+<td align="left">拍照时设备方向(模拟器不支持)</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">图片格式</td>
+</tr>
+</tbody></table>
+<h4 id="resorientation-的合法值">res.orientation 的合法值</h4>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>up</td>
+<td>默认方向（手机横持拍照），对应 Exif 中的 1。或无 orientation 信息。</td>
+</tr>
+<tr>
+<td>up-mirrored</td>
+<td>同 up，但镜像翻转，对应 Exif 中的 2</td>
+</tr>
+<tr>
+<td>down</td>
+<td>旋转 180 度，对应 Exif 中的 3</td>
+</tr>
+<tr>
+<td>down-mirrored</td>
+<td>同 down，但镜像翻转，对应 Exif 中的 4</td>
+</tr>
+<tr>
+<td>left-mirrored</td>
+<td>同 left，但镜像翻转，对应 Exif 中的 5</td>
+</tr>
+<tr>
+<td>right</td>
+<td>顺时针旋转 90 度，对应 Exif 中的 6</td>
+</tr>
+<tr>
+<td>right-mirrored</td>
+<td>同 right，但镜像翻转，对应 Exif 中的 7</td>
+</tr>
+<tr>
+<td>left</td>
+<td>逆时针旋转 90 度，对应 Exif 中的 8</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getImageInfo</span>({
+  <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;images/a.jpg&#x27;</span>,
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">width</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+  }
+});
+
+ma.<span class="hljs-title function_">chooseImage</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    ma.<span class="hljs-title function_">getImageInfo</span>({
+      <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempFilePaths</span>[<span class="hljs-number">0</span>],
+      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">width</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">height</span>);
+      }
+    });
+  }
+});
+</code></pre>

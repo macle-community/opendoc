@@ -1,0 +1,36 @@
+<h2 id="faqs-on-plugin">FAQs on Plugin</h2>
+<h3 id="how-do-i-update-the-simulator">How Do I Update the Simulator?</h3>
+<p>The current version does not support automatic simulator update. To update the simulator, perform the following steps manually:</p>
+<ol>
+<li><p>Obtain the plugin installation location. The default plugin installation directories vary according to OSs.</p>
+<ul>
+<li><strong>Windows</strong> <code>%USERPROFILE%\.vscode\extensions</code></li>
+<li><strong>macOS</strong> <code>~/.vscode/extensions</code></li>
+</ul>
+</li>
+<li><p>Select the <code>%USERPROFILE %\\.vscode\extensions\macleteam.macle-miniprogram-tools-[version-no]\src\utils\simulator</code> directory. version-no indicates the plugin version.</p>
+</li>
+<li><p>Replace the simulator. The simulator varies according to the OS. Currently, the Linux OS is not supported.</p>
+<ul>
+<li><strong>Windows</strong> :Decompress the simulator package to the <code>Windows</code> directory in Step 2.</li>
+<li><strong>macOS</strong> :Decompress the simulator package to the <code>macOS</code> directory in Step 2.</li>
+</ul>
+</li>
+<li><p>After the replacement is complete, click the clear cache function to clear the cache information of the original simulator.</p>
+</li>
+</ol>
+<h3 id="what-do-i-do-if-the-simulator-page-keeps-loading-and-mini-program-cannot-be-displayed-after-the-plugin-is-updated">What Do I Do If the Simulator Page Keeps Loading and Mini Program Cannot Be Displayed After the Plugin Is Updated?</h3>
+<ol>
+<li><p>Obtain the Mini Program directory. The Mini Program directories vary according to OSs.</p>
+<ul>
+<li><strong>Windows</strong> <code>%USERPROFILE%\.macle\</code></li>
+<li><strong>macOS</strong> <code>~/.macle/</code></li>
+</ul>
+</li>
+<li><p>Delete the .macle folders from the directories in Step 1.</p>
+</li>
+</ol>
+<h3 id="what-do-i-do-if-the-plugin-version-is-still-the-original-version-after-the-plugin-is-updated">What Do I Do If the Plugin Version Is Still the Original Version After the Plugin Is Updated?</h3>
+<p>After the plugin is updated, click the pop-up message in the lower right corner of the VS Code to reload the VS Code.</p>
+<h3 id="after-an-exception-occurs-in-the-simulator-the-simulator-debugging-function-always-shows-that-it-is-starting-how-to-solve-it">After an exception occurs in the simulator, the simulator debugging function always shows that it is starting. How to solve it?</h3>
+<p>After an unknown exception occurs when the simulator starts, the status will change to starting. You can reset the simulator status by closing the current window and restarting vscode.</p>

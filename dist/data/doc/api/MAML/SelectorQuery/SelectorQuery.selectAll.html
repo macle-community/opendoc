@@ -1,0 +1,27 @@
+<h2 id="nodesref-selectorqueryselectallstring-selector"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a> SelectorQuery.selectAll(string selector)</h2>
+<blockquote>
+<p>在当前页面下选择匹配选择器 selector 的所有节点。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="string-selector">string selector</h4>
+<p>选择器</p>
+<h3 id="返回值">返回值</h3>
+<h4 id="nodesref"><a onclick="_mdLinkClick(this.href)" href="#/api/NodesRef">NodesRef</a></h4>
+<h3 id="selector-语法">selector 语法</h3>
+<p>selector类似于 CSS 的选择器，但仅支持下列语法。</p>
+<ul>
+<li>ID选择器：#the-id</li>
+<li>class选择器（可以连续指定多个）：.a-class.another-class</li>
+<li>子元素选择器：.the-parent &gt; .the-child</li>
+<li>后代选择器：.the-ancestor .the-descendant</li>
+<li>多选择器的并集：#a-node, .some-other-nodes</li>
+</ul>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">const selectorQuery <span class="hljs-operator">=</span> ma.createSelectorQuery()
+
+selectorQuery.selectAll(<span class="hljs-string">&quot;.one&quot;</span>)
+  .boundingClientRect()
+  .exec((res) <span class="hljs-operator">=</span>&gt; {
+    console.log(res)<span class="hljs-comment">;</span>
+  })<span class="hljs-comment">;</span>
+</code></pre>

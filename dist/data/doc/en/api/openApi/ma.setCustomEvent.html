@@ -1,0 +1,102 @@
+<h2 id="masetcustomeventobject-object">ma.setCustomEvent(Object object)</h2>
+<blockquote>
+<p>Register a custom event for your mini-program to trigger callbacks in specified scenarios (minimum version: 25.12.0)</p>
+</blockquote>
+<h3 id="parameter">Parameter</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Default Value</th>
+<th align="left">Mandatory or Not</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">eventName</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Custom event name (the event name cannot be an empty string)</td>
+</tr>
+<tr>
+<td align="left">callback</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">Custom event callback functions can be used to meet the callback scenario and trigger multiple times.</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a successful API call.</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function for a failed API call.</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Callback function used when an API call is complete. (This callback function is used whether the API call succeeds or fails.)</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-callback-function">object.success Callback Function</h4>
+<h5 id="parameter-1">Parameter</h5>
+<h6 id="object-res">Object res</h6>
+<table>
+<thead>
+<tr>
+<th align="left">Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">setCustomEvent: ok</td>
+</tr>
+</tbody></table>
+<h3 id="sample-code">Sample Code</h3>
+<pre><code class="language-js">ma.setCustomEvent({
+  eventName: <span class="hljs-string">&#x27;lockScreen&#x27;</span>,
+  callback: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    ma.showModal({
+      content: <span class="hljs-string">&#x27;lockScreen&#x27;</span>,
+      title: <span class="hljs-string">&#x27;callback&#x27;</span>,
+      success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {},
+      fail: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {},
+      complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {},
+    });
+  },
+  success: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    console.log(res, <span class="hljs-string">&#x27;success&#x27;</span>);
+  },
+  fail: <span class="hljs-function"><span class="hljs-params">(err)</span> =&gt;</span> {
+    console.log(err, <span class="hljs-string">&#x27;fail&#x27;</span>);
+  },
+  complete: <span class="hljs-function"><span class="hljs-params">(res)</span> =&gt;</span> {
+    console.log(res, <span class="hljs-string">&#x27;complete&#x27;</span>);
+  },
+});
+</code></pre>
+<h3 id="usage-restrictions">Usage Restrictions</h3>
+<ol>
+<li>Custom events require the host side to design the event scenario and event name.</li>
+<li>Only one callback function can be registered for the same event name. Multiple duplicate callbacks will use the callback passed in during the last registration.</li>
+</ol>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>Please note that setting too many listener events will increase memory consumption. Please set the number of listener events reasonably.</li>
+<li>Custom events cannot override existing basic events in the mini-program, such as <code>onAppShow</code>.</li>
+</ol>

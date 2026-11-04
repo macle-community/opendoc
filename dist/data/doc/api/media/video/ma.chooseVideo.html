@@ -1,0 +1,165 @@
+<h2 id="machoosevideoobject-object">ma.chooseVideo(Object object)</h2>
+<blockquote>
+<p>从本地相册选择视频或使用相机拍摄</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sourceType</td>
+<td align="left">Array</td>
+<td align="left">[&#39;album&#39;, &#39;camera&#39;]</td>
+<td align="left">否</td>
+<td align="left">选择视频的来源</td>
+</tr>
+<tr>
+<td align="left">camera</td>
+<td align="left">String</td>
+<td align="left">&#39;back&#39;</td>
+<td align="left">否</td>
+<td align="left">默认拉起的是前置或者后置摄像头。Android 暂不支持</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h4 id="objectsourcetype-的取值范围">object.sourceType 的取值范围</h4>
+<h5 id="参数-1">参数</h5>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>album</td>
+<td>从相册选视频</td>
+<td>只配置它，直接调起相册选视频</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>使用相机拍摄视频</td>
+<td>只配置它，直接调起相机拍视频</td>
+</tr>
+</tbody></table>
+<h4 id="objectcamera-的取值范围">object.camera 的取值范围</h4>
+<h5 id="参数-2">参数</h5>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back</td>
+<td>默认拉起后置摄像头</td>
+</tr>
+<tr>
+<td>front</td>
+<td>默认拉起前置摄像头</td>
+</tr>
+</tbody></table>
+<h4 id="objectsuccess-回调函数">object.success 回调函数</h4>
+<h5 id="参数-3">参数</h5>
+<h5 id="object-res">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">参考：chooseVideo:ok</td>
+</tr>
+<tr>
+<td align="left">tempFilePath</td>
+<td align="left">String</td>
+<td align="left">选定视频的临时文件路径 (本地路径)</td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">选定视频的时间长度(精确到两位小数的秒)</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">Number</td>
+<td align="left">选定视频的数据量大小</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">Number</td>
+<td align="left">返回选定视频的高度</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">Number</td>
+<td align="left">返回选定视频的宽度</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-4">参数</h5>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>errMsg</td>
+<td>String</td>
+<td>参考：chooseVideo: fail, + 错误原因（无返回则为空）</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.chooseVideo({
+  <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  success(res) {
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.tempFilePath);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.duration);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.size);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.height);
+     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.width);
+  }
+});
+</code></pre>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>建议录制视频或者选择视频时长均不超过5分钟,如果超过5分钟可能会导致小程序卡顿</li>
+</ol>

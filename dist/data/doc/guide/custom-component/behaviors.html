@@ -1,0 +1,93 @@
+<h1 id="behaviors">behaviors</h1>
+<p><code>behaviors</code> 是用于组件间代码共享的特性，类似于一些编程语言中的 “mixins” 或 “traits”。</p>
+<p>每个 <code>behavior</code> 可以包含一组属性、数据、生命周期函数和方法。<strong>组件引用它时，它的属性、数据和方法会被合并到组件中，生命周期函数也会在对应时机被调用。</strong> 每个组件可以引用多个 <code>behavior</code> ，<code>behavior</code> 也可以引用其它 <code>behavior</code> 。</p>
+<p>详细的参数含义和使用请参考 <a onclick="_mdLinkClick(this.href)" href="#/framework/Behavior">Behavior</a> 。</p>
+<h2 id="组件中使用">组件中使用</h2>
+<p>组件引用时，在 <code>behaviors</code> 定义段中将它们逐个列出即可。</p>
+<p><strong>代码示例：</strong></p>
+<pre><code><span class="hljs-comment">// my-component.js</span>
+<span class="hljs-keyword">var</span> myBehavior = require(<span class="hljs-string">&#x27;my-behavior&#x27;</span>)
+Component({
+  <span class="hljs-attr">behaviors</span>: [myBehavior],
+  <span class="hljs-attr">properties</span>: {
+    <span class="hljs-attr">myProperty</span>: {
+      <span class="hljs-attr">type</span>: String
+    }
+  },
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">myData</span>: <span class="hljs-string">&#x27;my-component-data&#x27;</span>
+  },
+  <span class="hljs-attr">created</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] created&#x27;</span>)
+  },
+  <span class="hljs-attr">attached</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) { 
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] attached&#x27;</span>)
+  },
+  <span class="hljs-attr">ready</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] ready&#x27;</span>)
+  },
+  <span class="hljs-attr">methods</span>: {
+    <span class="hljs-attr">myMethod</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;[my-component] log by myMethod&#x27;</span>)
+    },
+  }
+})
+</code></pre>
+<p>在上例中， <code>my-component</code> 组件定义中加入了 <code>my-behavior</code>，</p>
+<p>而 <code>my-behavior</code> 结构为：</p>
+<ul>
+<li>属性：<code>myBehaviorProperty</code></li>
+<li>数据字段：<code>myBehaviorData</code></li>
+<li>方法：<code>myBehaviorMethod</code></li>
+<li>生命周期函数：<code>attached</code>、<code>created</code>、<code>ready</code></li>
+</ul>
+<p>这将使 <code>my-component</code> 最终结构为：</p>
+<ul>
+<li>属性：<code>myBehaviorProperty</code>、<code>myProperty</code></li>
+<li>数据字段：<code>myBehaviorData</code>、<code>myData</code></li>
+<li>方法：<code>myBehaviorMethod</code>、<code>myMethod</code></li>
+<li>生命周期函数：<code>attached</code>、<code>created</code>、<code>ready</code></li>
+</ul>
+<p>当组件触发生命周期时，上例生命周期函数执行顺序为：</p>
+<ol>
+<li><code>[my-behavior] created</code></li>
+<li><code>[my-component] created</code></li>
+<li><code>[my-behavior] attached</code></li>
+<li><code>[my-component] attached</code></li>
+<li><code>[my-behavior] ready</code></li>
+<li><code>[my-component] ready</code></li>
+</ol>
+<p>详细规则参考 <strong>同名字段的覆盖和组合规则</strong>。</p>
+<h2 id="同名字段的覆盖和组合规则">同名字段的覆盖和组合规则</h2>
+<p>组件和它引用的 <code>behavior</code> 中可以包含同名的字段，对这些字段的处理方法如下：</p>
+<ul>
+<li>如果有同名的属性 (properties) 或方法 (methods)：</li>
+</ul>
+<ol>
+<li>若组件本身有这个属性或方法，则组件的属性或方法会覆盖 <code>behavior</code> 中的同名属性或方法；</li>
+<li>若组件本身无这个属性或方法，则在组件的 <code>behaviors</code> 字段中定义靠后的 <code>behavior</code> 的属性或方法会覆盖靠前的同名属性或方法；</li>
+<li>在 2 的基础上，若存在嵌套引用 <code>behavior</code> 的情况，则规则为：<code>引用者 behavior</code> 覆盖 <code>被引用的 behavior</code> 中的同名属性或方法。</li>
+</ol>
+<ul>
+<li><p>如果有同名的数据字段 (data)： </p>
+<ul>
+<li>若同名的数据字段都是对象类型，会进行对象合并；</li>
+<li>其余情况会进行数据覆盖，覆盖规则为： <code>引用者 behavior</code> &gt; <code>被引用的 behavior</code> 、 <code>靠后的 behavior</code> &gt; <code>靠前的 behavior</code>。（优先级高的覆盖优先级低的，最大的为优先级最高）</li>
+</ul>
+</li>
+<li><p>生命周期函数不会相互覆盖，而是在对应触发时机被逐个调用：</p>
+<ul>
+<li><p>对于不同的生命周期函数之间，遵循组件生命周期函数的执行顺序；</p>
+</li>
+<li><p>对于同种生命周期函数，遵循如下规则：</p>
+<ul>
+<li><code>behavior</code> 优先于组件执行；</li>
+<li><code>被引用的 behavior</code> 优先于 <code>引用者 behavior</code> 执行；</li>
+<li><code>靠前的 behavior</code> 优先于 <code>靠后的 behavior</code> 执行；</li>
+</ul>
+</li>
+<li><p>如果同一个 <code>behavior</code> 被一个组件多次引用，它定义的生命周期函数不会重复执行。</p>
+</li>
+</ul>
+</li>
+</ul>

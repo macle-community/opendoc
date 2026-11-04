@@ -1,0 +1,289 @@
+<h2 id="magetlocationobject-object">ma.getLocation(Object object)</h2>
+<blockquote>
+<p>用户授权：需要 scope.location
+获取当前的地理位置、速度。当用户离开小程序后，此接口无法调用。开启高精度定位，接口耗时会增加，可指定 highAccuracyExpireTime 作为超时时间。高频率调用会导致耗电。</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<h4 id="object-object">Object object</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">useFetchData</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">是否使用预取数据（<strong>23.12.0</strong>版本新增参数，详情请见 <a onclick="_mdLinkClick(this.href)" href="#/api/locationPrePull">地理位置预拉取</a>）</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<h3 id="objectsuccess-回调函数">object.success 回调函数</h3>
+<h4 id="参数-1">参数</h4>
+<h4 id="object-res">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">latitude</td>
+<td align="left">Number</td>
+<td align="left">纬度，范围为 -90~90，负数表示南纬</td>
+</tr>
+<tr>
+<td align="left">longitude</td>
+<td align="left">Number</td>
+<td align="left">经度，范围为 -180~180，负数表示西经</td>
+</tr>
+<tr>
+<td align="left">speed</td>
+<td align="left">Number</td>
+<td align="left">速度，单位 m/s</td>
+</tr>
+<tr>
+<td align="left">accuracy</td>
+<td align="left">Number</td>
+<td align="left">位置的精确度</td>
+</tr>
+<tr>
+<td align="left">altitude</td>
+<td align="left">Number</td>
+<td align="left">高度，单位 m</td>
+</tr>
+<tr>
+<td align="left">verticalAccuracy</td>
+<td align="left">Number</td>
+<td align="left">垂直精度，单位 m（Android 无法获取，返回 0）</td>
+</tr>
+<tr>
+<td align="left">horizontalAccuracy</td>
+<td align="left">Number</td>
+<td align="left">水平精度，单位 m</td>
+</tr>
+<tr>
+<td align="left">locationEndTime</td>
+<td align="left">String</td>
+<td align="left">定位结束事件,字符串格式为<code>YYYY-MM-DD HH:mm:ss</code>(<strong>24.3.0</strong>版本新增参数)</td>
+</tr>
+<tr>
+<td align="left">locationOrigin</td>
+<td align="left">String</td>
+<td align="left">定位信息来源，若为预拉取返回<code>prefetch</code>，否则返回<code>location</code>(<strong>24.3.0</strong>版本新增参数)</td>
+</tr>
+</tbody></table>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js">ma.<span class="hljs-title function_">getLocation</span>({
+  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+  }
+});
+</code></pre>
+<h3 id="objectsuccess-回调函数-1">object.success 回调函数</h3>
+<h4 id="参数-2">参数</h4>
+<h4 id="object-res-1">Object res</h4>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">getLocation: ok</td>
+</tr>
+</tbody></table>
+<h4 id="objectfail-回调函数">object.fail 回调函数</h4>
+<h5 id="参数-3">参数</h5>
+<h5 id="object-res-2">Object res</h5>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">errMsg</td>
+<td align="left">String</td>
+<td align="left">错误信息</td>
+</tr>
+<tr>
+<td align="left">errno</td>
+<td align="left">Integer</td>
+<td align="left">错误码</td>
+</tr>
+</tbody></table>
+<h4 id="错误码列表">错误码列表</h4>
+<table>
+<thead>
+<tr>
+<th>错误场景</th>
+<th>错误码</th>
+<th>安卓是否支持</th>
+<th>iOS是否支持</th>
+<th>模拟器是否支持</th>
+<th>开发建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求参数类型不合法</td>
+<td>1</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>根据errorMsg排查接口调用参数中参数类型是否合法(useFetchData为Boolean)</td>
+</tr>
+<tr>
+<td>用户首次拒绝了小程序定位的权限授权</td>
+<td>701000</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>开发者自主友好实现提示用户打开小程序定位权限</td>
+</tr>
+<tr>
+<td>用户之前已经拒绝了小程序定位的权限授权</td>
+<td>701001</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>开发者自主友好实现提示用户打开小程序定位权限</td>
+</tr>
+<tr>
+<td>用户未授权也未拒绝小程序定位的权限授权</td>
+<td>701002</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户打开小程序定位置权限，也可以不处理待下次调用getLocation API时小程序框架扔会弹窗</td>
+</tr>
+<tr>
+<td>系统定位服务关闭</td>
+<td>701003</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户打开系统设置中定位服务权限开关</td>
+</tr>
+<tr>
+<td>宿主APP中定位服务关闭</td>
+<td>701004</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+<td>开发者友好实现提示用户打开系统权限管理中宿主APP权限管控中定位服务权限开关</td>
+</tr>
+</tbody></table>
+<h3 id="常见问题">常见问题</h3>
+<p><strong>手机无法获取定位，正常调用API后返回fail如何处理？</strong></p>
+<p><strong>A:</strong> 进入手机设置-隐私-定位服务，打开访问我的位置信息开关</p>
+<h3 id="tips">Tips</h3>
+<ol>
+<li>小程序开发者在获取小程序权限失败的场景下（用户拒绝了授权定位权限），调用openSetting API</li>
+</ol>
+<h3 id="示例代码-1">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
+    <span class="hljs-attr">data</span>: {
+        <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">location</span>: <span class="hljs-string">&#x27;&#x27;</span>
+    },
+    <span class="hljs-attr">getLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">requestLocation</span>();
+    },
+    <span class="hljs-attr">clearLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">location</span>: <span class="hljs-string">&#x27;&#x27;</span>
+        });
+    },
+    <span class="hljs-attr">requestLocation</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">getLocation</span>({
+            <span class="hljs-attr">success</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">successHandler</span>,
+            <span class="hljs-attr">fail</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">failHandler</span>
+        });
+    },
+    <span class="hljs-attr">successHandler</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
+            <span class="hljs-attr">hasLocation</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">location</span>: <span class="hljs-title function_">formatLocation</span>(res.<span class="hljs-property">longitude</span>, res.<span class="hljs-property">latitude</span>)
+        });
+    },
+    <span class="hljs-attr">failHandler</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
+        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701003</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForSystemPermission</span>();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701004</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForDemoAppPermission</span>();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (res.<span class="hljs-property">errno</span> === <span class="hljs-number">701000</span> || res.<span class="hljs-property">errno</span> === <span class="hljs-number">701001</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showModalForAppPermission</span>();
+        }
+    },
+    <span class="hljs-attr">showModalForSystemPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;请打开系统位置权限&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;请前往【设置】-&gt;【隐私】-&gt;【定位服务】中打开位置权限&#x27;</span>,
+        });
+    },
+    <span class="hljs-attr">showModalForDemoAppPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;请打开Demo app位置权限&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;请前往【设置】中打开Demo app位置权限&#x27;</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">modalRes</span>) {
+                <span class="hljs-keyword">if</span> (modalRes.<span class="hljs-property">confirm</span>) {
+                    ma.<span class="hljs-title function_">gotoBrowser</span>({
+                        <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&quot;app-settings:&quot;</span> <span class="hljs-comment">// 该URL Scheme仅支持IOS，安卓请做对应替换</span>
+                    });
+                }
+            }
+        });
+    },
+    <span class="hljs-attr">showModalForAppPermission</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        ma.<span class="hljs-title function_">showModal</span>({
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;开启小程序位置权限&#x27;</span>,
+            <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;请在小程序设置中打开位置权限&#x27;</span>,
+            <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">modalRes</span>) {
+                <span class="hljs-keyword">if</span> (modalRes.<span class="hljs-property">confirm</span>) {
+                    ma.<span class="hljs-title function_">openSetting</span>({
+                        <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">settingRes</span>) {
+                            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(settingRes.<span class="hljs-property">authSetting</span>);
+                        }
+                    });
+                }
+            }
+        });
+    }
+})
+</code></pre>

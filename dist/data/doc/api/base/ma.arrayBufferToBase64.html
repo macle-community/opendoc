@@ -1,0 +1,14 @@
+<h1 id="arraybuffer-maarraybuffertobase64arraybuffer-arraybuffer">ArrayBuffer ma.arrayBufferToBase64(ArrayBuffer arrayBuffer)</h1>
+<blockquote>
+<p>将 ArrayBuffer 对象转成 Base64 字符串（最低版本：24.12.0）</p>
+</blockquote>
+<h3 id="参数">参数</h3>
+<p><strong>ArrayBuffer arrayBuffer</strong></p>
+<p>要转换成 Base64 字符串的 ArrayBuffer 对象</p>
+<h3 id="返回值">返回值</h3>
+<p><strong>string</strong></p>
+<p>Base64 字符串</p>
+<h3 id="示例代码">示例代码</h3>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-built_in">array</span>Buffer = new Uint8Array([<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>]);
+<span class="hljs-keyword">const</span> base64 = ma.<span class="hljs-built_in">array</span>BufferToBase64(<span class="hljs-built_in">array</span>Buffer);
+</code></pre>
