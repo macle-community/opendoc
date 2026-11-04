@@ -19,8 +19,8 @@ node server.js --port 8080
 npm start
 ```
 
-Once started, open your browser at:
-- **English**: [http://localhost:3000/openplatform/macledocs/#/guide/installDevtool?locale=en_US](http://localhost:3000/openplatform/macledocs/#/guide/installDevtool?locale=en_US)
+Once started, open your browser (English is the default language):
+- **English (Default)**: [http://localhost:3000/openplatform/macledocs/#/guide/installDevtool](http://localhost:3000/openplatform/macledocs/#/guide/installDevtool)
 - **Chinese**: [http://localhost:3000/openplatform/macledocs/#/guide/installDevtool?locale=zh_CN](http://localhost:3000/openplatform/macledocs/#/guide/installDevtool?locale=zh_CN)
 
 ---

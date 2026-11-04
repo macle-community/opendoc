@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
 
   // Root redirect
   if (reqPath === '/' || reqPath === '') {
-    res.writeHead(302, { Location: `${BASE_ROUTE}/#/guide/installDevtool` });
+    res.writeHead(302, { Location: `${BASE_ROUTE}/#/guide/installDevtool?locale=en_US` });
     return res.end();
   }
 
@@ -98,6 +98,7 @@ server.listen(port, () => {
   console.log('='.repeat(60));
   console.log(`Macle OpenDoc Documentation Server`);
   console.log(`Version: 9.1.69 (from DevSuite 26.6.0)`);
-  console.log(`URL:     http://localhost:${port}${BASE_ROUTE}/#/guide/installDevtool`);
+  console.log(`URL:     http://localhost:${port}${BASE_ROUTE}/#/guide/installDevtool?locale=en_US`);
   console.log('='.repeat(60));
 });
+
