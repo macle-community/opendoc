@@ -25,6 +25,40 @@ Once started, open your browser (English is the default language):
 
 ---
 
+## Deploy to Vercel
+
+The project includes pre-configured [`vercel.json`](vercel.json) ready for instant deployment.
+
+### Option 1: Deploy using Vercel CLI
+
+```bash
+cd /home/f/nati/macle/opendoc
+
+# Deploy to preview
+npx vercel
+
+# Deploy directly to production
+npx vercel --prod
+```
+
+### Option 2: Deploy via Git Repository (GitHub / GitLab / Bitbucket)
+
+1. Push this repository to GitHub/GitLab:
+   ```bash
+   git remote add origin <your-git-remote-url>
+   git push -u origin main
+   ```
+2. Log in to [Vercel](https://vercel.com/) and click **"Add New..."** -> **"Project"**.
+3. Import your repository.
+4. The deployment settings will be detected automatically from `vercel.json`:
+   - **Framework Preset**: *Other*
+   - **Root Directory**: `./`
+   - **Build Command**: *None / Disabled* (pre-built assets in `dist/`)
+   - **Output Directory**: `dist`
+5. Click **Deploy**. Vercel will deploy the documentation and assign a public URL (e.g. `https://your-project.vercel.app`).
+
+---
+
 ## Directory Structure
 
 ```text

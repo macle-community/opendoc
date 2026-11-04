@@ -42,13 +42,24 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // Handle route under BASE_ROUTE
+  // Handle route under BASE_ROUTE or direct dist assets (/data, /css, /js, /img, /favicon.ico)
+  let subPath = null;
   if (reqPath.startsWith(BASE_ROUTE)) {
-    let subPath = reqPath.slice(BASE_ROUTE.length);
+    subPath = reqPath.slice(BASE_ROUTE.length);
     if (subPath === '' || subPath === '/') {
       subPath = '/index.html';
     }
+  } else if (
+    reqPath.startsWith('/data/') ||
+    reqPath.startsWith('/css/') ||
+    reqPath.startsWith('/js/') ||
+    reqPath.startsWith('/img/') ||
+    reqPath === '/favicon.ico'
+  ) {
+    subPath = reqPath;
+  }
 
+  if (subPath !== null) {
     const filePath = path.join(DIST_DIR, subPath);
 
     // Prevent directory traversal attacks

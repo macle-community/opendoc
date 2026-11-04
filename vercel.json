@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "outputDirectory": "dist",
+  "buildCommand": null,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/openplatform/macledocs/#/guide/installDevtool?locale=en_US",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/openplatform/macledocs/:match*",
+      "destination": "/:match*"
+    },
+    {
+      "source": "/openplatform/macledocs",
+      "destination": "/index.html"
+    }
+  ]
+}
