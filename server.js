@@ -43,10 +43,26 @@ const server = http.createServer((req, res) => {
   }
 
   // Reverse proxy to Macle Web Simulator (running on port 30003)
-  const isSimulatorProxy = reqPath.startsWith('/_simulator') || reqPath.startsWith(`${BASE_ROUTE}/_simulator`);
+  const isSimulatorProxy =
+    reqPath.startsWith('/_simulator') ||
+    reqPath.startsWith(`${BASE_ROUTE}/_simulator`) ||
+    reqPath.startsWith('/__web') ||
+    reqPath.startsWith('/api/') ||
+    reqPath.startsWith('/mcss/') ||
+    reqPath.startsWith('/dist/root/') ||
+    reqPath.startsWith('/store/') ||
+    reqPath.startsWith('/tmp/');
+
   if (isSimulatorProxy) {
-    const prefix = reqPath.startsWith(`${BASE_ROUTE}/_simulator`) ? `${BASE_ROUTE}/_simulator` : '/_simulator';
-    const targetPath = req.url.slice(prefix.length) || '/';
+    let targetPath;
+    if (reqPath.startsWith(`${BASE_ROUTE}/_simulator`)) {
+      targetPath = req.url.slice(`${BASE_ROUTE}/_simulator`.length) || '/';
+    } else if (reqPath.startsWith('/_simulator')) {
+      targetPath = req.url.slice('/_simulator'.length) || '/';
+    } else {
+      targetPath = req.url;
+    }
+
     const proxyHeaders = { ...req.headers, host: '127.0.0.1:30003' };
     delete proxyHeaders['accept-encoding']; // Avoid compressed streaming issues
 
@@ -59,15 +75,19 @@ const server = http.createServer((req, res) => {
     }, (proxyRes) => {
       const responseHeaders = { ...proxyRes.headers };
       if (responseHeaders.location && responseHeaders.location.startsWith('/')) {
-        responseHeaders.location = `${prefix}${responseHeaders.location}`;
+        responseHeaders.location = responseHeaders.location;
       }
       res.writeHead(proxyRes.statusCode, responseHeaders);
       proxyRes.pipe(res);
     });
 
     proxyReq.on('error', (err) => {
-      res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('Macle Web Simulator on port 30003 is currently offline: ' + err.message);
+      res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({
+        error: 'Macle Web Simulator on port 30003 is currently offline',
+        message: err.message,
+        port: 30003
+      }));
     });
 
     req.pipe(proxyReq);
@@ -135,6 +155,37 @@ const server = http.createServer((req, res) => {
   // 404 for other unhandled routes
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.end('Not Found');
+});
+
+// Proxy WebSocket / HTTP Upgrade requests to Macle Web Simulator
+server.on('upgrade', (req, socket, head) => {
+  const proxyReq = http.request({
+    hostname: '127.0.0.1',
+    port: 30003,
+    path: req.url,
+    method: req.method,
+    headers: req.headers
+  });
+
+  proxyReq.on('upgrade', (proxyRes, proxySocket, proxyHead) => {
+    let headerStr = `HTTP/1.1 101 Switching Protocols\r\n`;
+    for (const key of Object.keys(proxyRes.headers)) {
+      headerStr += `${key}: ${proxyRes.headers[key]}\r\n`;
+    }
+    headerStr += '\r\n';
+    socket.write(headerStr);
+    if (proxyHead && proxyHead.length) {
+      proxySocket.unshift(proxyHead);
+    }
+    proxySocket.pipe(socket);
+    socket.pipe(proxySocket);
+  });
+
+  proxyReq.on('error', () => {
+    socket.destroy();
+  });
+
+  proxyReq.end();
 });
 
 server.listen(port, () => {

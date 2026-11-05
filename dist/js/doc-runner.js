@@ -18,7 +18,38 @@
   let modalEl = null;
   let activeViewMode = 'split'; // 'split', 'code', 'sim'
   let activeSimMode = 'live';   // 'live', 'devsuite'
+  let currentDevSuitePage = 'pages/detail/index';
   const consoleLogs = [];
+
+  // Check DevSuite simulator health via proxy
+  async function checkDevSuiteSimulatorHealth() {
+    try {
+      const res = await fetch('/api/project-info');
+      if (res.ok) {
+        const info = await res.json();
+        return { online: true, info };
+      }
+      return { online: false };
+    } catch (e) {
+      return { online: false };
+    }
+  }
+
+  async function updateDevSuiteStatusPill() {
+    const pill = document.getElementById('macle-sim-status-pill');
+    if (!pill) return false;
+    const health = await checkDevSuiteSimulatorHealth();
+    if (health.online) {
+      pill.className = 'macle-sim-status-pill online';
+      pill.textContent = '● 30003 Online';
+      pill.title = `Connected to DevSuite Simulator (${health.info?.projectName || 'dist'})`;
+    } else {
+      pill.className = 'macle-sim-status-pill offline';
+      pill.textContent = '○ 30003 Offline';
+      pill.title = 'DevSuite simulator process is offline on port 30003';
+    }
+    return health.online;
+  }
 
   // Component Mapping to MiniProgram paths
   const MAUI_COMPONENT_MAP = {
@@ -340,6 +371,29 @@ Page({
   flex-direction: column;
   gap: 12px;
 }`;
+
+      if (trimmed.includes('maui-col') || trimmed.includes('maui-row')) {
+        massCode += `
+
+/* Layout Grid Column Visual Borders */
+.maui-row {
+  margin-bottom: 12px;
+}
+.maui-col {
+  border: 1.5px solid #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  text-align: center;
+  border-radius: 4px;
+  line-height: 38px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.maui-col:nth-child(even) {
+  background-color: #e0f2fe;
+}`;
+      }
     } else {
       // --- JavaScript API Example ---
       const apiNameMatch = trimmed.match(/ma\.([a-zA-Z0-9_.]+)/);
@@ -585,11 +639,20 @@ ${massCode}
                 <button class="macle-sim-mode-btn" data-sim="devsuite">🌐 DevSuite Simulator</button>
               </div>
 
+              <!-- DevSuite Page Controls (visible in devsuite mode) -->
+              <div class="macle-devsuite-page-controls" id="macle-devsuite-page-controls" style="display: none;">
+                <select class="macle-sim-page-select" id="macle-devsuite-page-select" title="Switch DevSuite Simulator Page">
+                  <option value="pages/detail/index">Detail (MAUI Components)</option>
+                  <option value="pages/index/index">Index (Taro React & APIs)</option>
+                </select>
+              </div>
+
               <div class="macle-sim-tools">
+                <span class="macle-sim-status-pill online" id="macle-sim-status-pill" title="DevSuite Simulator Status">● 30003 Online</span>
                 <button class="macle-sim-tool-btn" id="macle-reload-sim" title="Restart Simulator">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
                 </button>
-                <button class="macle-sim-tool-btn" id="macle-open-ext-sim" title="Open Standalone Simulator in New Tab">
+                <button class="macle-sim-tool-btn" id="macle-open-ext-sim" title="Open Full Standalone Workbench in New Tab">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </button>
               </div>
@@ -632,6 +695,15 @@ ${massCode}
 
                   <!-- DevSuite Iframe (DevSuite Mode) -->
                   <iframe class="macle-sim-iframe" id="macle-devsuite-iframe" src="about:blank"></iframe>
+
+                  <!-- DevSuite Offline State Overlay -->
+                  <div class="macle-devsuite-offline-overlay" id="macle-devsuite-offline" style="display: none;">
+                    <div class="macle-offline-icon">⚠️</div>
+                    <div class="macle-offline-title">DevSuite Simulator Offline</div>
+                    <div class="macle-offline-desc">The simulator server on port 30003 is not running.</div>
+                    <div class="macle-offline-cmd"><code>npm run simulate:web</code></div>
+                    <button class="macle-offline-retry-btn" id="macle-offline-retry">Retry Connection</button>
+                  </div>
 
                   <!-- Live Toast Overlay -->
                   <div class="macle-sim-toast" id="macle-sim-toast">
@@ -752,19 +824,40 @@ ${massCode}
     document.getElementById('macle-reload-sim').addEventListener('click', function() {
       if (activeSimMode === 'devsuite') {
         const iframe = document.getElementById('macle-devsuite-iframe');
-        iframe.src = iframe.src;
+        if (iframe) {
+          iframe.src = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+        }
+        updateDevSuiteStatusPill();
       } else {
         renderLiveSimulator();
       }
       addLog('info', 'Simulator reloaded');
     });
 
+    // DevSuite Page Selector
+    const devsuiteSelect = document.getElementById('macle-devsuite-page-select');
+    if (devsuiteSelect) {
+      devsuiteSelect.addEventListener('change', function(e) {
+        currentDevSuitePage = e.target.value;
+        const iframe = document.getElementById('macle-devsuite-iframe');
+        if (iframe && activeSimMode === 'devsuite') {
+          iframe.src = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+          addLog('info', `Navigated DevSuite Simulator to ${currentDevSuitePage}`);
+        }
+      });
+    }
+
+    // DevSuite Offline Retry
+    document.getElementById('macle-offline-retry')?.addEventListener('click', function() {
+      switchSimulatorMode('devsuite');
+    });
+
     // Open External Standalone Simulator
     document.getElementById('macle-open-ext-sim').addEventListener('click', function() {
-      const port = 30003;
-      const targetUrl = `http://localhost:${port}/__web/index.html?project=dist&port=${port}&page=pages/detail/index`;
+      const page = currentDevSuitePage || 'pages/detail/index';
+      const targetUrl = `/__web/index.html?project=dist&port=30003&page=${encodeURIComponent(page)}`;
       window.open(targetUrl, '_blank');
-      addLog('info', `Opened standalone simulator at: ${targetUrl}`);
+      addLog('info', `Opened standalone Macle Web Simulator workbench: ${targetUrl}`);
     });
 
     // Clear Console
@@ -793,10 +886,18 @@ ${massCode}
     activeSimMode = 'live';
     const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
     simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'live'));
+    const phoneFrame = document.getElementById('macle-phone-frame');
+    phoneFrame?.classList.remove('is-devsuite-mode');
     const viewport = document.getElementById('macle-phone-viewport');
     const iframe = document.getElementById('macle-devsuite-iframe');
+    const offlineOverlay = document.getElementById('macle-devsuite-offline');
+    const pageControls = document.getElementById('macle-devsuite-page-controls');
+    if (pageControls) pageControls.style.display = 'none';
+    if (offlineOverlay) offlineOverlay.style.display = 'none';
     if (iframe) iframe.style.display = 'none';
     if (viewport) viewport.style.display = 'block';
+
+    updateDevSuiteStatusPill();
 
     // Render code in active tab
     renderActiveCodeTab();
@@ -860,23 +961,41 @@ ${massCode}
   }
 
   // 10. Switch between Live Runner and DevSuite Simulator
-  function switchSimulatorMode(mode) {
+  async function switchSimulatorMode(mode) {
+    const phoneFrame = document.getElementById('macle-phone-frame');
     const viewport = document.getElementById('macle-phone-viewport');
     const iframe = document.getElementById('macle-devsuite-iframe');
+    const offlineOverlay = document.getElementById('macle-devsuite-offline');
+    const pageControls = document.getElementById('macle-devsuite-page-controls');
 
     if (mode === 'devsuite') {
+      phoneFrame?.classList.add('is-devsuite-mode');
       viewport.style.display = 'none';
+      if (pageControls) pageControls.style.display = 'block';
+
+      const isOnline = await updateDevSuiteStatusPill();
+      if (!isOnline) {
+        iframe.style.display = 'none';
+        if (offlineOverlay) offlineOverlay.style.display = 'flex';
+        addLog('warn', 'DevSuite Simulator is offline on port 30003');
+        return;
+      }
+
+      if (offlineOverlay) offlineOverlay.style.display = 'none';
       iframe.style.display = 'block';
-      const port = 30003;
-      // Use proxy route /_simulator/
-      const url = `/_simulator/__web/index.html?project=dist&port=${port}&page=pages/detail/index`;
-      if (iframe.src !== url && !iframe.src.includes('pages/detail/index')) {
-        iframe.src = url;
-        addLog('info', 'DevSuite Web Simulator attached (port 30003)');
+
+      const targetUrl = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+      if (iframe.src !== targetUrl && !iframe.src.endsWith(targetUrl)) {
+        iframe.src = targetUrl;
+        addLog('info', `DevSuite Simulator attached: ${currentDevSuitePage}`);
       }
     } else {
+      phoneFrame?.classList.remove('is-devsuite-mode');
+      if (pageControls) pageControls.style.display = 'none';
+      if (offlineOverlay) offlineOverlay.style.display = 'none';
       iframe.style.display = 'none';
       viewport.style.display = 'block';
+      updateDevSuiteStatusPill();
       renderLiveSimulator();
     }
   }
@@ -1017,6 +1136,29 @@ ${massCode}
 
     // Convert <maui-divider ... />
     html = html.replace(/<maui-divider([^>]*?)\/>/g, '<div class="maui-divider"></div>');
+
+    // Convert <maui-row ...>
+    html = html.replace(/<maui-row([^>]*)>/g, function(match, attrs) {
+      const gutterMatch = attrs.match(/gutter=["']?([0-9]+)["']?/);
+      let style = '';
+      if (gutterMatch) {
+        const halfGutter = parseInt(gutterMatch[1], 10) / 2;
+        style = ` style="margin-left: -${halfGutter}px; margin-right: -${halfGutter}px;"`;
+      }
+      return `<div class="maui-row"${style}>`;
+    });
+    html = html.replace(/<\/maui-row>/g, '</div>');
+
+    // Convert <maui-col ...>
+    html = html.replace(/<maui-col([^>]*)>(.*?)<\/maui-col>/gs, function(match, attrs, content) {
+      const spanMatch = attrs.match(/span=["']?([0-9]+)["']?/);
+      const offsetMatch = attrs.match(/offset=["']?([0-9]+)["']?/);
+      const span = spanMatch ? spanMatch[1] : '24';
+      const offset = offsetMatch ? offsetMatch[1] : '';
+      let classes = ['maui-col', 'maui-col--' + span];
+      if (offset) classes.push('maui-col--offset-' + offset);
+      return `<div class="${classes.join(' ')}" title="span: ${span}${offset ? ', offset: ' + offset : ''}">${content.trim()}</div>`;
+    });
 
     // Convert standard <button ...>
     html = html.replace(/<button([^>]*)>(.*?)<\/button>/gs, function(match, attrs, content) {
