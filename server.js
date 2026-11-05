@@ -42,6 +42,38 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
+  // Reverse proxy to Macle Web Simulator (running on port 30003)
+  const isSimulatorProxy = reqPath.startsWith('/_simulator') || reqPath.startsWith(`${BASE_ROUTE}/_simulator`);
+  if (isSimulatorProxy) {
+    const prefix = reqPath.startsWith(`${BASE_ROUTE}/_simulator`) ? `${BASE_ROUTE}/_simulator` : '/_simulator';
+    const targetPath = req.url.slice(prefix.length) || '/';
+    const proxyHeaders = { ...req.headers, host: '127.0.0.1:30003' };
+    delete proxyHeaders['accept-encoding']; // Avoid compressed streaming issues
+
+    const proxyReq = http.request({
+      hostname: '127.0.0.1',
+      port: 30003,
+      path: targetPath,
+      method: req.method,
+      headers: proxyHeaders
+    }, (proxyRes) => {
+      const responseHeaders = { ...proxyRes.headers };
+      if (responseHeaders.location && responseHeaders.location.startsWith('/')) {
+        responseHeaders.location = `${prefix}${responseHeaders.location}`;
+      }
+      res.writeHead(proxyRes.statusCode, responseHeaders);
+      proxyRes.pipe(res);
+    });
+
+    proxyReq.on('error', (err) => {
+      res.writeHead(502, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('Macle Web Simulator on port 30003 is currently offline: ' + err.message);
+    });
+
+    req.pipe(proxyReq);
+    return;
+  }
+
   // Handle route under BASE_ROUTE or direct dist assets (/data, /css, /js, /img, /favicon.ico)
   let subPath = null;
   if (reqPath.startsWith(BASE_ROUTE)) {
