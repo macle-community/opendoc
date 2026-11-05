@@ -1,0 +1,29 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Tag Types</text>
+    <view class="demo-row">
+      <maui-tag type="primary">Primary</maui-tag>
+      <maui-tag type="success">Success</maui-tag>
+      <maui-tag type="danger">Danger</maui-tag>
+      <maui-tag type="warning">Warning</maui-tag>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Plain & Shapes</text>
+    <view class="demo-row">
+      <maui-tag plain type="primary">Plain</maui-tag>
+      <maui-tag round type="primary">Round</maui-tag>
+      <maui-tag mark type="primary">Mark</maui-tag>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Custom Colors & Sizes</text>
+    <view class="demo-row">
+      <maui-tag color="#7232dd">Custom #7232dd</maui-tag>
+      <maui-tag size="large" type="primary">Large</maui-tag>
+      <maui-tag size="medium" type="primary">Medium</maui-tag>
+    </view>
+  </view>
+</view>

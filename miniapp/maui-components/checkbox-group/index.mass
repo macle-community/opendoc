@@ -1,0 +1,1 @@
+@import '../common/index.mass';.maui-checkbox-group--horizontal{display:flex;flex-wrap:wrap}

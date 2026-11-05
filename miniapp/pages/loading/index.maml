@@ -1,0 +1,17 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Loading Types</text>
+    <view class="demo-row">
+      <maui-loading />
+      <maui-loading type="spinner" />
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Custom Color & Vertical Text</text>
+    <view class="demo-row">
+      <maui-loading color="#1989fa" />
+      <maui-loading size="24px" vertical>Loading...</maui-loading>
+    </view>
+  </view>
+</view>

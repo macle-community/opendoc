@@ -1,0 +1,22 @@
+<sjs src="./index.sjs" module="status"></sjs>
+<sjs src="../sjs/utils.sjs" module="utils" />
+
+<view class="custom-class {{ utils.mbem('steps', [direction]) }}" style="{{ customStyle }}">
+    <view class="maui-step__wrapper">
+        <view ma:for="{{ steps }}" ma:for-index="index" ma:key="index" bindtap="onClick" data-index="{{ index }}" class="{{ utils.mbem('step', [direction, status.get(index, active)]) }} maui-hairline" style="{{ status.get(index, active) === 'inactive' ? 'color: ' + inactiveColor: '' }}">
+            <view class="maui-step__title" style="{{ index === active ? 'color: ' + activeColor : '' }}">
+                <view>{{ item.text }}</view>
+                <view class="desc-class" style="{{ descStyle }}">{{ item.desc }}</view>
+            </view>
+            <view class="maui-step__circle-container">
+                <block ma:if="{{ index !== active }}">
+                    <maui-icon ma:if="{{ item.inactiveIcon || inactiveIcon }}" color="{{ status.get(index, active) === 'inactive' ? inactiveColor: activeColor }}" name="{{ item.inactiveIcon || inactiveIcon }}" class="maui-step__icon" />
+                    <view ma:else class="maui-step__circle" style="{{ 'background-color: ' + (index < active ? activeColor : inactiveColor) }}" />
+                </block>
+                <maui-icon ma:else name="{{ item.activeIcon || activeIcon }}" color="{{ activeColor }}" class="maui-step__icon" />
+            </view>
+            <view ma:if="{{ index !== steps.length - 1 }}" class="maui-step__line" style="{{ 'background-color: ' + (index < active ? activeColor : inactiveColor) }}" />
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,6 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+
+<view class="custom-class {{ utils.mbem('tab__pane', { active, inactive: !active }) }}" style="{{ shouldShow ? '' : 'display: none;' }}">
+    <slot ma:if="{{ shouldRender }}" />
+</view>
+

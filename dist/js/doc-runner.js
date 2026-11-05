@@ -18,21 +18,34 @@
   let modalEl = null;
   let activeViewMode = 'split'; // 'split', 'code', 'sim'
   let activeSimMode = 'live';   // 'live', 'devsuite'
-  let currentDevSuitePage = 'pages/detail/index';
+  let currentDevSuitePage = 'pages/index/index';
+  let simulatorInfo = { online: false, port: 30002, projectName: 'miniapp' };
   const consoleLogs = [];
 
   // Check DevSuite simulator health via proxy
   async function checkDevSuiteSimulatorHealth() {
     try {
+      const res = await fetch('/api/simulator-info');
+      if (res.ok) {
+        simulatorInfo = await res.json();
+        return simulatorInfo;
+      }
+    } catch (e) {}
+
+    try {
       const res = await fetch('/api/project-info');
       if (res.ok) {
         const info = await res.json();
-        return { online: true, info };
+        simulatorInfo = {
+          online: true,
+          port: info.port || 30002,
+          projectName: info.projectName || 'miniapp'
+        };
+        return simulatorInfo;
       }
-      return { online: false };
-    } catch (e) {
-      return { online: false };
-    }
+    } catch (e) {}
+
+    return { online: false, port: 30002, projectName: 'miniapp' };
   }
 
   async function updateDevSuiteStatusPill() {
@@ -41,14 +54,46 @@
     const health = await checkDevSuiteSimulatorHealth();
     if (health.online) {
       pill.className = 'macle-sim-status-pill online';
-      pill.textContent = '● 30003 Online';
-      pill.title = `Connected to DevSuite Simulator (${health.info?.projectName || 'dist'})`;
+      pill.textContent = `● ${health.projectName || 'miniapp'} (${health.port || 30002})`;
+      pill.title = `DevSuite Simulator Connected (Port: ${health.port || 30002})`;
     } else {
       pill.className = 'macle-sim-status-pill offline';
-      pill.textContent = '○ 30003 Offline';
-      pill.title = 'DevSuite simulator process is offline on port 30003';
+      pill.textContent = '○ Simulator Offline';
+      pill.title = 'DevSuite simulator process is offline';
     }
     return health.online;
+  }
+
+  // Component to Miniapp Page mapping
+  function detectDocPage() {
+    const hash = (window.location.hash || '').toLowerCase();
+    const raw = (currentExample.rawCode || '').toLowerCase();
+    const title = (currentExample.title || '').toLowerCase();
+
+    if (hash.includes('button') || raw.includes('maui-button') || title.includes('button')) return 'pages/button/index';
+    if (hash.includes('layout') || raw.includes('maui-row') || raw.includes('maui-col') || title.includes('layout') || title.includes('col') || title.includes('row')) return 'pages/layout/index';
+    if (hash.includes('cell') || raw.includes('maui-cell') || title.includes('cell')) return 'pages/cell/index';
+    if (hash.includes('checkbox') || raw.includes('maui-checkbox') || title.includes('checkbox')) return 'pages/checkbox/index';
+    if (hash.includes('radio') || raw.includes('maui-radio') || title.includes('radio')) return 'pages/radio/index';
+    if (hash.includes('switch') || raw.includes('maui-switch') || title.includes('switch')) return 'pages/switch/index';
+    if (hash.includes('slider') || raw.includes('maui-slider') || title.includes('slider')) return 'pages/slider/index';
+    if (hash.includes('stepper') || raw.includes('maui-stepper') || title.includes('stepper')) return 'pages/stepper/index';
+    if (hash.includes('field') || raw.includes('maui-field') || title.includes('field') || title.includes('input')) return 'pages/field/index';
+    if (hash.includes('tag') || raw.includes('maui-tag') || title.includes('tag')) return 'pages/tag/index';
+    if (hash.includes('loading') || raw.includes('maui-loading') || title.includes('loading')) return 'pages/loading/index';
+    if (hash.includes('progress') || raw.includes('maui-progress') || title.includes('progress')) return 'pages/progress/index';
+    if (hash.includes('divider') || raw.includes('maui-divider') || title.includes('divider')) return 'pages/divider/index';
+    if (hash.includes('empty') || raw.includes('maui-empty') || title.includes('empty')) return 'pages/empty/index';
+    if (hash.includes('steps') || raw.includes('maui-steps') || title.includes('steps')) return 'pages/steps/index';
+    if (hash.includes('dialog') || raw.includes('maui-dialog') || title.includes('dialog')) return 'pages/dialog/index';
+    if (hash.includes('toast') || raw.includes('maui-toast') || title.includes('toast')) return 'pages/toast/index';
+
+    if (hash.includes('view') && !hash.includes('scroll-view') && !hash.includes('web-view')) return 'pages/view/index';
+    if (hash.includes('text') || raw.includes('<text')) return 'pages/text/index';
+    if (hash.includes('swiper') || raw.includes('<swiper')) return 'pages/swiper/index';
+    if (hash.includes('scroll-view') || raw.includes('<scroll-view')) return 'pages/scroll-view/index';
+
+    return 'pages/index/index';
   }
 
   // Component Mapping to MiniProgram paths
@@ -642,8 +687,29 @@ ${massCode}
               <!-- DevSuite Page Controls (visible in devsuite mode) -->
               <div class="macle-devsuite-page-controls" id="macle-devsuite-page-controls" style="display: none;">
                 <select class="macle-sim-page-select" id="macle-devsuite-page-select" title="Switch DevSuite Simulator Page">
-                  <option value="pages/detail/index">Detail (MAUI Components)</option>
-                  <option value="pages/index/index">Index (Taro React & APIs)</option>
+                  <option value="pages/button/index">Button 按钮</option>
+                  <option value="pages/layout/index">Layout 栅格</option>
+                  <option value="pages/cell/index">Cell 单元格</option>
+                  <option value="pages/checkbox/index">Checkbox 复选框</option>
+                  <option value="pages/radio/index">Radio 单选框</option>
+                  <option value="pages/switch/index">Switch 开关</option>
+                  <option value="pages/slider/index">Slider 滑块</option>
+                  <option value="pages/stepper/index">Stepper 步进器</option>
+                  <option value="pages/field/index">Field 输入框</option>
+                  <option value="pages/tag/index">Tag 标签</option>
+                  <option value="pages/loading/index">Loading 加载</option>
+                  <option value="pages/progress/index">Progress 进度条</option>
+                  <option value="pages/divider/index">Divider 分割线</option>
+                  <option value="pages/empty/index">Empty 空状态</option>
+                  <option value="pages/steps/index">Steps 步骤条</option>
+                  <option value="pages/dialog/index">Dialog 弹出框</option>
+                  <option value="pages/toast/index">Toast 轻提示</option>
+                  <option value="pages/view/index">View 视图</option>
+                  <option value="pages/text/index">Text 文本</option>
+                  <option value="pages/swiper/index">Swiper 轮播</option>
+                  <option value="pages/scroll-view/index">ScrollView 滚动</option>
+                  <option value="pages/index/index">Showcase Catalog 目录</option>
+                  <option value="pages/runner/index">Custom Snippet 实时运行</option>
                 </select>
               </div>
 
@@ -804,9 +870,38 @@ ${massCode}
     });
 
     // Apply / Re-run
-    document.getElementById('macle-apply-btn').addEventListener('click', function() {
+    document.getElementById('macle-apply-btn').addEventListener('click', async function() {
       renderLiveSimulator();
-      addLog('info', 'Code re-executed in Web Simulator');
+      addLog('info', 'Code re-executed in Live Runner');
+
+      // Also compile snippet into the miniapp runner page
+      try {
+        const payload = {
+          maml: currentExample.files['index.maml'] || currentExample.rawCode,
+          js: currentExample.files['index.js'] || 'Page({ data: {} });',
+          json: currentExample.files['index.json'] || '{}',
+          mass: currentExample.files['index.mass'] || '',
+          title: currentExample.title
+        };
+        const res = await fetch('/api/compile-snippet', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          addLog('info', 'Snippet compiled to DevSuite miniapp runner page');
+          if (activeSimMode === 'devsuite') {
+            currentDevSuitePage = 'pages/runner/index';
+            const pageSelect = document.getElementById('macle-devsuite-page-select');
+            if (pageSelect) pageSelect.value = currentDevSuitePage;
+            const iframe = document.getElementById('macle-devsuite-iframe');
+            const proj = simulatorInfo.projectName || 'miniapp';
+            if (iframe) iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=pages/runner/index`;
+          }
+        }
+      } catch (e) {
+        console.warn('Compile snippet failed:', e);
+      }
     });
 
     // Simulator Mode Switcher (Live vs DevSuite)
@@ -824,8 +919,9 @@ ${massCode}
     document.getElementById('macle-reload-sim').addEventListener('click', function() {
       if (activeSimMode === 'devsuite') {
         const iframe = document.getElementById('macle-devsuite-iframe');
+        const proj = simulatorInfo.projectName || 'miniapp';
         if (iframe) {
-          iframe.src = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+          iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
         }
         updateDevSuiteStatusPill();
       } else {
@@ -840,8 +936,9 @@ ${massCode}
       devsuiteSelect.addEventListener('change', function(e) {
         currentDevSuitePage = e.target.value;
         const iframe = document.getElementById('macle-devsuite-iframe');
+        const proj = simulatorInfo.projectName || 'miniapp';
         if (iframe && activeSimMode === 'devsuite') {
-          iframe.src = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+          iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
           addLog('info', `Navigated DevSuite Simulator to ${currentDevSuitePage}`);
         }
       });
@@ -854,8 +951,10 @@ ${massCode}
 
     // Open External Standalone Simulator
     document.getElementById('macle-open-ext-sim').addEventListener('click', function() {
-      const page = currentDevSuitePage || 'pages/detail/index';
-      const targetUrl = `/__web/index.html?project=dist&port=30003&page=${encodeURIComponent(page)}`;
+      const page = currentDevSuitePage || 'pages/index/index';
+      const proj = simulatorInfo.projectName || 'miniapp';
+      const port = simulatorInfo.port || 30002;
+      const targetUrl = `/__web/index.html?project=${proj}&port=${port}&page=${encodeURIComponent(page)}`;
       window.open(targetUrl, '_blank');
       addLog('info', `Opened standalone Macle Web Simulator workbench: ${targetUrl}`);
     });
@@ -868,7 +967,7 @@ ${massCode}
   }
 
   // 8. Open the Modal & populate content
-  function openRunnerModal() {
+  async function openRunnerModal() {
     createRunnerModal();
 
     // Populate Headers
@@ -882,28 +981,31 @@ ${massCode}
     const tabs = modalEl.querySelectorAll('.macle-tab');
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === currentExample.activeTab));
 
-    // Reset to live simulator mode by default
-    activeSimMode = 'live';
-    const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
-    simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'live'));
-    const phoneFrame = document.getElementById('macle-phone-frame');
-    phoneFrame?.classList.remove('is-devsuite-mode');
-    const viewport = document.getElementById('macle-phone-viewport');
-    const iframe = document.getElementById('macle-devsuite-iframe');
-    const offlineOverlay = document.getElementById('macle-devsuite-offline');
-    const pageControls = document.getElementById('macle-devsuite-page-controls');
-    if (pageControls) pageControls.style.display = 'none';
-    if (offlineOverlay) offlineOverlay.style.display = 'none';
-    if (iframe) iframe.style.display = 'none';
-    if (viewport) viewport.style.display = 'block';
+    // Automatically detect and match miniapp page to the current doc example
+    currentDevSuitePage = detectDocPage();
+    const pageSelect = document.getElementById('macle-devsuite-page-select');
+    if (pageSelect) {
+      pageSelect.value = currentDevSuitePage;
+    }
 
-    updateDevSuiteStatusPill();
+    // Check DevSuite simulator online status
+    const isOnline = await updateDevSuiteStatusPill();
+
+    // Default to DevSuite simulator mode if online so the miniapp page displays directly!
+    if (isOnline) {
+      activeSimMode = 'devsuite';
+      const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
+      simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'devsuite'));
+      await switchSimulatorMode('devsuite');
+    } else {
+      activeSimMode = 'live';
+      const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
+      simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'live'));
+      await switchSimulatorMode('live');
+    }
 
     // Render code in active tab
     renderActiveCodeTab();
-
-    // Render Live simulator
-    renderLiveSimulator();
 
     // Show modal
     modalEl.classList.add('active');
@@ -977,17 +1079,26 @@ ${massCode}
       if (!isOnline) {
         iframe.style.display = 'none';
         if (offlineOverlay) offlineOverlay.style.display = 'flex';
-        addLog('warn', 'DevSuite Simulator is offline on port 30003');
+        addLog('warn', `DevSuite Simulator is offline on port ${simulatorInfo.port || 30002}`);
         return;
       }
 
       if (offlineOverlay) offlineOverlay.style.display = 'none';
       iframe.style.display = 'block';
 
-      const targetUrl = `/dist/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+      if (!currentDevSuitePage) {
+        currentDevSuitePage = detectDocPage();
+      }
+      const pageSelect = document.getElementById('macle-devsuite-page-select');
+      if (pageSelect) {
+        pageSelect.value = currentDevSuitePage;
+      }
+
+      const proj = simulatorInfo.projectName || 'miniapp';
+      const targetUrl = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
       if (iframe.src !== targetUrl && !iframe.src.endsWith(targetUrl)) {
         iframe.src = targetUrl;
-        addLog('info', `DevSuite Simulator attached: ${currentDevSuitePage}`);
+        addLog('info', `DevSuite Simulator displayed page: ${currentDevSuitePage}`);
       }
     } else {
       phoneFrame?.classList.remove('is-devsuite-mode');

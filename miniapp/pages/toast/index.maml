@@ -1,0 +1,9 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Toast Notifications</text>
+    <view class="demo-row">
+      <maui-button type="primary" bind:click="showSuccess">Success Toast</maui-button>
+      <maui-button type="info" bind:click="showInfo">Info Toast</maui-button>
+    </view>
+  </view>
+</view>

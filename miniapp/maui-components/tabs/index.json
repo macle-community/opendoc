@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "maui-info": "../info/index",
+    "maui-sticky": "../sticky/index"
+  }
+}

@@ -1,0 +1,15 @@
+<view class="page-body">
+  <view class="demo-block" style="padding: 0; overflow: hidden;">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" style="height: 160px;">
+      <swiper-item>
+        <view class="swiper-slide slide-1"><text>Slide 1</text></view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-slide slide-2"><text>Slide 2</text></view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-slide slide-3"><text>Slide 3</text></view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

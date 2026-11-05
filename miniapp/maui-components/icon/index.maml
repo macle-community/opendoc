@@ -1,0 +1,9 @@
+<sjs src="./index.sjs" module="computed" />
+
+<view class="{{ computed.rootClass({ classPrefix, name }) }}" style="{{ computed.rootStyle({ customStyle, size }) }}" bindtap="onClick">
+    <maui-info ma:if="{{ info || dot }}" dot="{{ dot }}" info="{{ info }}" customStyle='top: -4px'/>
+    <view class=" maui-icon__container ">
+       <view style="{{ computed.changeColor({ color, name }) }}" mode="aspectFit" class="maui-icon__image" />
+    </view>
+</view>
+

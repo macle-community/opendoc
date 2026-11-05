@@ -1,0 +1,10 @@
+<view class="page-body">
+  <view class="demo-block" style="padding: 0; overflow: hidden;">
+    <maui-cell-group>
+      <maui-field value="{{ username }}" placeholder="Please enter username" label="Username" />
+      <maui-field type="password" label="Password" placeholder="Enter password" />
+      <maui-field clearable label="Clearable" placeholder="Clearable input" />
+      <maui-field disabled label="Disabled" value="Input disabled" />
+    </maui-cell-group>
+  </view>
+</view>

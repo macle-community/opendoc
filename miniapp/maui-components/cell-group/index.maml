@@ -1,0 +1,8 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+<view ma:if="{{ title }}" class="{{ utils.bem('cell-group__title', { inset }) }}">
+    {{ title }}
+</view>
+<view class="{{ utils.bem('cell-group', { inset }) }} {{ border ? 'maui-hairline--top-bottom' : '' }}">
+    <slot></slot>
+</view>
+

@@ -1,0 +1,9 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+<sjs src="./index.sjs" module="computed" />
+
+<view id="{{ _id }}" class="custom-class maui-sticky" style="{{ computed.containerStyle({ fixed, height, zIndex }) }}">
+    <view class="{{ utils.mbem('sticky-wrap', { fixed }) }}" style="{{ computed.wrapStyle({ fixed, offsetTop, transform, zIndex, container }) }}">
+        <slot />
+    </view>
+</view>
+

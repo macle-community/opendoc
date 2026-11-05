@@ -1,0 +1,19 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Divider</text>
+    <maui-divider />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Content Position</text>
+    <maui-divider content-position="center">Center Text</maui-divider>
+    <maui-divider content-position="left">Left Text</maui-divider>
+    <maui-divider content-position="right">Right Text</maui-divider>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Dashed & Custom Colors</text>
+    <maui-divider dashed />
+    <maui-divider text-color="#1989fa" custom-style="color: #1989fa;">Blue Divider</maui-divider>
+  </view>
+</view>

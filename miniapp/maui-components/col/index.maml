@@ -1,0 +1,7 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+<sjs src="./index.sjs" module="computed" />
+
+<view class="{{ utils.bem('col', [span]) }} {{ offset ? 'maui-col--offset-' + offset : '' }}" style="{{ computed.rootStyle({ gutter }) }}">
+    <slot />
+</view>
+

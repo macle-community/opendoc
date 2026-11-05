@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "maui-loading": "../loading/index",
+    "maui-overlay": "../overlay/index"
+  }
+}

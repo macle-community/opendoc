@@ -1,0 +1,3 @@
+<view class="maui-sidebar custom-class">
+  <slot />
+</view>

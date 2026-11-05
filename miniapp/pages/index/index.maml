@@ -1,0 +1,51 @@
+<view class="home-container">
+  <view class="home-banner">
+    <text class="banner-title">Macle OpenDoc</text>
+    <text class="banner-sub">MiniProgram Interactive Component Library</text>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">MAUI Basic Components</text>
+    <view class="nav-grid">
+      <navigator url="/pages/button/index" class="nav-item">Button 按钮</navigator>
+      <navigator url="/pages/layout/index" class="nav-item">Layout 栅格</navigator>
+      <navigator url="/pages/cell/index" class="nav-item">Cell 单元格</navigator>
+      <navigator url="/pages/tag/index" class="nav-item">Tag 标签</navigator>
+      <navigator url="/pages/loading/index" class="nav-item">Loading 加载</navigator>
+      <navigator url="/pages/progress/index" class="nav-item">Progress 进度条</navigator>
+      <navigator url="/pages/divider/index" class="nav-item">Divider 分割线</navigator>
+      <navigator url="/pages/empty/index" class="nav-item">Empty 空状态</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">MAUI Form Components</text>
+    <view class="nav-grid">
+      <navigator url="/pages/checkbox/index" class="nav-item">Checkbox 复选框</navigator>
+      <navigator url="/pages/radio/index" class="nav-item">Radio 单选框</navigator>
+      <navigator url="/pages/switch/index" class="nav-item">Switch 开关</navigator>
+      <navigator url="/pages/slider/index" class="nav-item">Slider 滑块</navigator>
+      <navigator url="/pages/stepper/index" class="nav-item">Stepper 步进器</navigator>
+      <navigator url="/pages/field/index" class="nav-item">Field 输入框</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">MAUI Feedback & Nav</text>
+    <view class="nav-grid">
+      <navigator url="/pages/dialog/index" class="nav-item">Dialog 弹出框</navigator>
+      <navigator url="/pages/toast/index" class="nav-item">Toast 轻提示</navigator>
+      <navigator url="/pages/steps/index" class="nav-item">Steps 步骤条</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">Standard DSL Components</text>
+    <view class="nav-grid">
+      <navigator url="/pages/view/index" class="nav-item">View 视图</navigator>
+      <navigator url="/pages/text/index" class="nav-item">Text 文本</navigator>
+      <navigator url="/pages/swiper/index" class="nav-item">Swiper 轮播</navigator>
+      <navigator url="/pages/scroll-view/index" class="nav-item">ScrollView 滚动</navigator>
+    </view>
+  </view>
+</view>

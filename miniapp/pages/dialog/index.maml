@@ -1,0 +1,6 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Native Dialog Trigger</text>
+    <maui-button type="primary" block bind:click="showAlert">Trigger Alert Dialog</maui-button>
+  </view>
+</view>

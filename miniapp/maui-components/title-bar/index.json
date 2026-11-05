@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "maui-icon": "../icon/index",
+    "maui-image": "../image/index"
+  }
+}

@@ -1,0 +1,19 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Flex Direction: Row</text>
+    <view class="flex-row">
+      <view class="box bg-red">A</view>
+      <view class="box bg-green">B</view>
+      <view class="box bg-blue">C</view>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Flex Direction: Column</text>
+    <view class="flex-col">
+      <view class="box bg-red">Row 1</view>
+      <view class="box bg-green">Row 2</view>
+      <view class="box bg-blue">Row 3</view>
+    </view>
+  </view>
+</view>

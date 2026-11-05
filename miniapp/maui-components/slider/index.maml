@@ -1,0 +1,30 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+<sjs src="../sjs/style.sjs" module="style" />
+
+<view
+  class="{{ utils.bem('slider', { disabled, vertical }) }}"
+  style="{{ wrapperStyle }}"
+  bind:tap="onClick"
+>
+  <view
+    class="{{ utils.bem('slider__bar') }}"
+    style="{{ barStyle }}; {{ style({ backgroundColor: activeColor }) }}"
+  >
+
+    <view
+      class="{{ utils.bem('slider__button-wrapper') }}"
+      bind:touchstart="onTouchStart"
+      bind:touchmove="onTouchMove"
+      bind:touchend="onTouchEnd"
+      bind:touchcancel="onTouchEnd"
+    >
+      <slot
+        ma:if="{{ useButtonSlot }}"
+      />
+      <view
+        ma:else
+        class="{{ utils.bem('slider__button') }}"
+      />
+    </view>
+  </view>
+</view>

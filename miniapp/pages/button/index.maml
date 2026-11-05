@@ -1,0 +1,57 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Button Types</text>
+    <view class="demo-row">
+      <maui-button type="default">default button</maui-button>
+      <maui-button type="primary">primary button</maui-button>
+      <maui-button type="info">information button</maui-button>
+      <maui-button type="warning">warning button</maui-button>
+      <maui-button type="danger">danger button</maui-button>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Plain & Hairline</text>
+    <view class="demo-row">
+      <maui-button plain type="primary">plain primary</maui-button>
+      <maui-button plain type="info">plain info</maui-button>
+      <maui-button plain hairline type="primary">hairline primary</maui-button>
+      <maui-button plain hairline type="info">hairline info</maui-button>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Disabled & Loading</text>
+    <view class="demo-row">
+      <maui-button disabled type="primary">disabled</maui-button>
+      <maui-button disabled type="info">disabled</maui-button>
+      <maui-button loading type="primary" />
+      <maui-button loading type="primary" loading-type="spinner" />
+      <maui-button loading type="info" loading-text="Loading..." />
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">4. Button Shapes & Sizes</text>
+    <view class="demo-row">
+      <maui-button square type="primary">square</maui-button>
+      <maui-button round type="info">round</maui-button>
+      <maui-button type="primary" size="large">large</maui-button>
+      <maui-button type="primary" size="normal">normal</maui-button>
+      <maui-button type="primary" size="small">small</maui-button>
+      <maui-button type="primary" size="mini">mini</maui-button>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">5. Block-Level & Custom Colors</text>
+    <view class="demo-col">
+      <maui-button type="primary" block>block-level element</maui-button>
+    </view>
+    <view class="demo-row" style="margin-top: 10px;">
+      <maui-button color="#7232dd">single-color</maui-button>
+      <maui-button color="#7232dd" plain>single-color plain</maui-button>
+      <maui-button color="linear-gradient(to right, #4bb0ff, #6149f6)">Gradient color</maui-button>
+    </view>
+  </view>
+</view>

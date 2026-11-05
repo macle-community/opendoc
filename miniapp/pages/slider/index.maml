@@ -1,0 +1,16 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage (Value: {{ value }})</text>
+    <maui-slider value="{{ value }}" bind:change="onChange" />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Custom Range (-50 to 50)</text>
+    <maui-slider min="-50" max="50" value="0" />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Step Size (step: 10)</text>
+    <maui-slider step="10" value="30" />
+  </view>
+</view>

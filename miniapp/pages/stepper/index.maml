@@ -1,0 +1,16 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage (Value: {{ count }})</text>
+    <maui-stepper value="{{ count }}" bind:change="onChange" />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Step Size & Limits (1 to 10, step 2)</text>
+    <maui-stepper min="1" max="10" step="2" value="{{ count }}" bind:change="onChange" />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Disabled</text>
+    <maui-stepper disabled value="1" />
+  </view>
+</view>

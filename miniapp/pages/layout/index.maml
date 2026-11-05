@@ -1,0 +1,47 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage (span: 8, 8, 8)</text>
+    <maui-row>
+      <maui-col span="8">span: 8</maui-col>
+      <maui-col span="8">span: 8</maui-col>
+      <maui-col span="8">span: 8</maui-col>
+    </maui-row>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Column Offset (span: 4 + offset: 4, span: 10)</text>
+    <maui-row>
+      <maui-col span="4">span: 4</maui-col>
+      <maui-col span="10" offset="4">offset: 4, span: 10</maui-col>
+    </maui-row>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Column Offset (offset: 12, span: 12)</text>
+    <maui-row>
+      <maui-col offset="12" span="12">offset: 12, span: 12</maui-col>
+    </maui-row>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">4. Column Gutter (gutter: 20)</text>
+    <maui-row gutter="20">
+      <maui-col span="8">span: 8</maui-col>
+      <maui-col span="8">span: 8</maui-col>
+      <maui-col span="8">span: 8</maui-col>
+    </maui-row>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">5. Flex Layout (justify: center / end)</text>
+    <maui-row type="flex" justify="center">
+      <maui-col span="6">span: 6</maui-col>
+      <maui-col span="6">span: 6</maui-col>
+    </maui-row>
+    <view style="height: 10px;"></view>
+    <maui-row type="flex" justify="end">
+      <maui-col span="6">span: 6</maui-col>
+      <maui-col span="6">span: 6</maui-col>
+    </maui-row>
+  </view>
+</view>

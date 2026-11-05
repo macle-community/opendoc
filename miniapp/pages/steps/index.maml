@@ -1,0 +1,9 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Horizontal Steps (Active: {{ active }})</text>
+    <maui-steps steps="{{ steps }}" active="{{ active }}" />
+    <view style="margin-top: 14px;">
+      <maui-button type="primary" size="small" bind:click="nextStep">Next Step</maui-button>
+    </view>
+  </view>
+</view>

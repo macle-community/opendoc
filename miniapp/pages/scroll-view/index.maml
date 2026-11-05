@@ -1,0 +1,12 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Horizontal Scroll View</text>
+    <scroll-view scroll-x="true" style="white-space: nowrap; width: 100%;">
+      <view class="scroll-item bg-1">Item 1</view>
+      <view class="scroll-item bg-2">Item 2</view>
+      <view class="scroll-item bg-3">Item 3</view>
+      <view class="scroll-item bg-4">Item 4</view>
+      <view class="scroll-item bg-5">Item 5</view>
+    </scroll-view>
+  </view>
+</view>
