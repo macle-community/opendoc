@@ -1,0 +1,24 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+<sjs src="./index.sjs" module="computed" />
+
+<view ma:if="{{ fixed && placeholder }}" style="height: {{ height }}px;" />
+
+<view class="{{ utils.bem('title-bar', { fixed }) }} custom-class {{ border ? 'maui-hairline--bottom' : '' }}" style="{{ computed.barStyle({ zIndex, statusBarHeight, safeAreaInsetTop }) }}; {{ customStyle }}">
+    <view class="maui-title-bar__content">
+        <view class="maui-title-bar__left" bind:tap="onClickLeft" style="max-width: 18%">
+            <block ma:if="{{ leftArrow || leftText||leftImage }}">
+                <maui-icon ma:if="{{ leftArrow }}" size="12px" name="{{leftIcon}}" class="maui-title-bar__arrow" />
+                <maui-image ma:elif="{{leftImage}}" showLoading="{{false}}" width="12px" height="12px" src="{{leftImage}}" />
+                <view ma:if="{{ leftText }}" style="{{leftStyle}}" class="maui-title-bar__text maui-ellipsis" hover-class="maui-title-bar__text--hover" hover-stay-time="70">{{ leftText }}</view>
+            </block>
+        </view>
+        <view class="maui-title-bar__title title-class maui-ellipsis" style="{{titleStyle}}">
+            <block ma:if="{{ title }}">{{ title }}</block>
+        </view>
+        <view class="maui-title-bar__right" bind:tap="onClickRight" style="max-width: 18%">
+            <view ma:if="{{ rightText }}" style={{rightStyle}} class="maui-title-bar__text maui-ellipsis" hover-class="maui-title-bar__text--hover" hover-stay-time="70">{{ rightText }}</view>
+            <slot ma:elif="{{useSlot}}" />
+        </view>
+    </view>
+</view>
+

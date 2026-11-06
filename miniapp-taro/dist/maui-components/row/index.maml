@@ -1,0 +1,6 @@
+<sjs src="./index.sjs" module="computed" />
+
+<view class="maui-row" style="{{ computed.rootStyle({ gutter }) }}">
+    <slot />
+</view>
+

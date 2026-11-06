@@ -1,0 +1,18 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+
+<view
+  class="{{ utils.bem('sidebar-item', { selected, disabled }) }} {{ selected ? 'active-class' : '' }} {{ disabled ? 'disabled-class' : '' }} custom-class"
+  hover-class="maui-sidebar-item--hover"
+  hover-stay-time="70"
+  bindtap="onClick"
+>
+  <view class="maui-sidebar-item__text">
+    <maui-info
+      ma:if="{{ badge || info || dot }}"
+      dot="{{ dot }}"
+      info="{{ badge || info }}"
+    />
+    <view ma:if="{{ title }}">{{ title }}</view>
+    <slot ma:else />
+  </view>
+</view>

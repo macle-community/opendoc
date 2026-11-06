@@ -1,0 +1,69 @@
+page {
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.taro-badge-banner {
+  background: #0f172a;
+  color: #38bdf8;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.demo-block {
+  margin: 14px 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.demo-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.demo-col {
+  margin-bottom: 12px;
+}
+
+.demo-layout-col {
+  background-color: #38bdf8;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 600;
+  box-sizing: border-box;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+}
+
+.demo-layout-col-alt {
+  background-color: #0284c7;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 600;
+  box-sizing: border-box;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+}

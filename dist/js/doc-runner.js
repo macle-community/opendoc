@@ -18,8 +18,15 @@
   let modalEl = null;
   let activeViewMode = 'split'; // 'split', 'code', 'sim'
   let activeSimMode = 'live';   // 'live', 'devsuite'
+  let activeMiniApp = 'native'; // 'native' (miniapp) or 'taro' (taro-miniapp)
   let currentDevSuitePage = 'pages/index/index';
-  let simulatorInfo = { online: false, port: 30002, projectName: 'miniapp' };
+  let simulatorInfo = {
+    online: false,
+    port: 30002,
+    projectName: 'miniapp',
+    native: { online: false, port: 30002, projectName: 'miniapp' },
+    taro: { online: false, port: 30003, projectName: 'taro-miniapp' }
+  };
   const consoleLogs = [];
 
   // Check DevSuite simulator health via proxy
@@ -32,36 +39,70 @@
       }
     } catch (e) {}
 
-    try {
-      const res = await fetch('/api/project-info');
-      if (res.ok) {
-        const info = await res.json();
-        simulatorInfo = {
-          online: true,
-          port: info.port || 30002,
-          projectName: info.projectName || 'miniapp'
-        };
-        return simulatorInfo;
-      }
-    } catch (e) {}
+    return {
+      online: false,
+      port: 30002,
+      projectName: 'miniapp',
+      native: { online: false, port: 30002, projectName: 'miniapp' },
+      taro: { online: false, port: 30003, projectName: 'taro-miniapp' }
+    };
+  }
 
-    return { online: false, port: 30002, projectName: 'miniapp' };
+  function getActiveSimulatorProject() {
+    if (activeMiniApp === 'taro') {
+      return (simulatorInfo.taro && simulatorInfo.taro.projectName) || 'taro-miniapp';
+    }
+    return (simulatorInfo.native && simulatorInfo.native.projectName) || 'miniapp';
+  }
+
+  function getActiveSimulatorPort() {
+    if (activeMiniApp === 'taro') {
+      return (simulatorInfo.taro && simulatorInfo.taro.port) || 30003;
+    }
+    return (simulatorInfo.native && simulatorInfo.native.port) || 30002;
   }
 
   async function updateDevSuiteStatusPill() {
     const pill = document.getElementById('macle-sim-status-pill');
     if (!pill) return false;
     const health = await checkDevSuiteSimulatorHealth();
-    if (health.online) {
+    const isTaro = activeMiniApp === 'taro';
+    const isCurrentOnline = isTaro ? health.taro?.online : health.native?.online;
+
+    if (isCurrentOnline) {
       pill.className = 'macle-sim-status-pill online';
-      pill.textContent = `● ${health.projectName || 'miniapp'} (${health.port || 30002})`;
-      pill.title = `DevSuite Simulator Connected (Port: ${health.port || 30002})`;
+      const proj = getActiveSimulatorProject();
+      const port = getActiveSimulatorPort();
+      pill.textContent = `● ${isTaro ? '⚛️ Taro' : '📱 Native'} (${port})`;
+      pill.title = `${isTaro ? 'Taro React MiniApp' : 'Native MiniApp'} connected on port ${port} (${proj})`;
+    } else if (health.online) {
+      pill.className = 'macle-sim-status-pill online';
+      pill.textContent = `● Simulator Online`;
+      pill.title = 'DevSuite simulator is online';
     } else {
       pill.className = 'macle-sim-status-pill offline';
       pill.textContent = '○ Simulator Offline';
       pill.title = 'DevSuite simulator process is offline';
     }
-    return health.online;
+    return isCurrentOnline || health.online;
+  }
+
+  function switchActiveMiniApp(appFramework) {
+    activeMiniApp = appFramework === 'taro' ? 'taro' : 'native';
+    const toggleBtns = modalEl?.querySelectorAll('.macle-miniapp-btn');
+    toggleBtns?.forEach(b => b.classList.toggle('active', b.dataset.app === activeMiniApp));
+
+    updateDevSuiteStatusPill();
+
+    if (activeSimMode === 'devsuite') {
+      const iframe = document.getElementById('macle-devsuite-iframe');
+      if (iframe) {
+        const proj = getActiveSimulatorProject();
+        const page = currentDevSuitePage || 'pages/button/index';
+        iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(page)}`;
+        addLog('info', `Switched simulator to ${activeMiniApp === 'taro' ? '⚛️ Taro MiniApp' : '📱 Native MiniApp'} (${proj})`);
+      }
+    }
   }
 
   // Component to Miniapp Page mapping
@@ -982,6 +1023,12 @@ ${taroCode}
 
               <!-- DevSuite Page Controls (visible in devsuite mode) -->
               <div class="macle-devsuite-page-controls" id="macle-devsuite-page-controls" style="display: none;">
+                <!-- MiniApp Switcher: Native vs Taro -->
+                <div class="macle-miniapp-toggle" title="Switch between Native MiniApp and Taro React MiniApp">
+                  <button class="macle-miniapp-btn active" data-app="native">📱 Native</button>
+                  <button class="macle-miniapp-btn" data-app="taro">⚛️ Taro</button>
+                </div>
+
                 <select class="macle-sim-page-select" id="macle-devsuite-page-select" title="Switch DevSuite Simulator Page">
                   <option value="pages/button/index">Button 按钮</option>
                   <option value="pages/layout/index">Layout 栅格</option>
@@ -1149,6 +1196,22 @@ ${taroCode}
         tab.classList.add('active');
         currentExample.activeTab = tab.dataset.tab;
         renderActiveCodeTab();
+
+        // Automatically synchronize the mini app framework in the simulator
+        if (tab.dataset.tab === 'taro') {
+          switchActiveMiniApp('taro');
+        } else if (tab.dataset.tab === 'maml' || tab.dataset.tab === 'js') {
+          switchActiveMiniApp('native');
+        }
+      });
+    });
+
+    // MiniApp framework toggle (Native vs Taro MiniApp)
+    const miniappBtns = modalEl.querySelectorAll('.macle-miniapp-btn');
+    miniappBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const app = btn.dataset.app;
+        switchActiveMiniApp(app);
       });
     });
 
@@ -1170,9 +1233,15 @@ ${taroCode}
       renderLiveSimulator();
       addLog('info', 'Code re-executed in Live Runner');
 
-      // Also compile snippet into the miniapp runner page
+      // Also compile snippet into the corresponding miniapp runner page
       try {
-        const payload = {
+        const isTaro = activeMiniApp === 'taro' || currentExample.activeTab === 'taro';
+        const payload = isTaro ? {
+          framework: 'taro',
+          tsx: currentExample.files['taro'],
+          title: currentExample.title
+        } : {
+          framework: 'native',
           maml: currentExample.files['index.maml'] || currentExample.rawCode,
           js: currentExample.files['index.js'] || 'Page({ data: {} });',
           json: currentExample.files['index.json'] || '{}',
@@ -1185,13 +1254,13 @@ ${taroCode}
           body: JSON.stringify(payload)
         });
         if (res.ok) {
-          addLog('info', 'Snippet compiled to DevSuite miniapp runner page');
+          addLog('info', `Snippet compiled to ${isTaro ? 'Taro' : 'Native'} miniapp runner page`);
           if (activeSimMode === 'devsuite') {
             currentDevSuitePage = 'pages/runner/index';
             const pageSelect = document.getElementById('macle-devsuite-page-select');
             if (pageSelect) pageSelect.value = currentDevSuitePage;
             const iframe = document.getElementById('macle-devsuite-iframe');
-            const proj = simulatorInfo.projectName || 'miniapp';
+            const proj = getActiveSimulatorProject();
             if (iframe) iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=pages/runner/index`;
           }
         }
@@ -1215,7 +1284,7 @@ ${taroCode}
     document.getElementById('macle-reload-sim').addEventListener('click', function() {
       if (activeSimMode === 'devsuite') {
         const iframe = document.getElementById('macle-devsuite-iframe');
-        const proj = simulatorInfo.projectName || 'miniapp';
+        const proj = getActiveSimulatorProject();
         if (iframe) {
           iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
         }
@@ -1223,7 +1292,7 @@ ${taroCode}
       } else {
         renderLiveSimulator();
       }
-      addLog('info', 'Simulator reloaded');
+      addLog('info', `Simulator reloaded (${getActiveSimulatorProject()})`);
     });
 
     // DevSuite Page Selector
@@ -1232,10 +1301,10 @@ ${taroCode}
       devsuiteSelect.addEventListener('change', function(e) {
         currentDevSuitePage = e.target.value;
         const iframe = document.getElementById('macle-devsuite-iframe');
-        const proj = simulatorInfo.projectName || 'miniapp';
+        const proj = getActiveSimulatorProject();
         if (iframe && activeSimMode === 'devsuite') {
           iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
-          addLog('info', `Navigated DevSuite Simulator to ${currentDevSuitePage}`);
+          addLog('info', `Navigated DevSuite Simulator to ${currentDevSuitePage} (${proj})`);
         }
       });
     }
@@ -1248,8 +1317,8 @@ ${taroCode}
     // Open External Standalone Simulator
     document.getElementById('macle-open-ext-sim').addEventListener('click', function() {
       const page = currentDevSuitePage || 'pages/index/index';
-      const proj = simulatorInfo.projectName || 'miniapp';
-      const port = simulatorInfo.port || 30002;
+      const proj = getActiveSimulatorProject();
+      const port = getActiveSimulatorPort();
       const targetUrl = `/__web/index.html?project=${proj}&port=${port}&page=${encodeURIComponent(page)}`;
       window.open(targetUrl, '_blank');
       addLog('info', `Opened standalone Macle Web Simulator workbench: ${targetUrl}`);
@@ -1276,6 +1345,15 @@ ${taroCode}
     // Set first tab
     const tabs = modalEl.querySelectorAll('.macle-tab');
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === currentExample.activeTab));
+
+    // Sync activeMiniApp with the requested framework
+    if (currentExample.activeTab === 'taro') {
+      activeMiniApp = 'taro';
+    } else {
+      activeMiniApp = 'native';
+    }
+    const miniappBtns = modalEl.querySelectorAll('.macle-miniapp-btn');
+    miniappBtns.forEach(b => b.classList.toggle('active', b.dataset.app === activeMiniApp));
 
     // Automatically detect and match miniapp page to the current doc example
     currentDevSuitePage = detectDocPage();
@@ -1417,11 +1495,11 @@ ${taroCode}
         pageSelect.value = currentDevSuitePage;
       }
 
-      const proj = simulatorInfo.projectName || 'miniapp';
+      const proj = getActiveSimulatorProject();
       const targetUrl = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
       if (iframe.src !== targetUrl && !iframe.src.endsWith(targetUrl)) {
         iframe.src = targetUrl;
-        addLog('info', `DevSuite Simulator displayed page: ${currentDevSuitePage}`);
+        addLog('info', `DevSuite Simulator displayed page: ${currentDevSuitePage} (${proj})`);
       }
     } else {
       phoneFrame?.classList.remove('is-devsuite-mode');

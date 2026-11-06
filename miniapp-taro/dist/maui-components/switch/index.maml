@@ -1,0 +1,16 @@
+<sjs src="./index.sjs" module="computed" />
+
+<view
+  class="{{ checked ? 'maui-switch--on maui-switch' : 'maui-switch' }}"
+  style="{{ computed.rootStyle({ size, checked, activeColor, inactiveColor, activeValue }) }}"
+  bindtap="onClick"
+>
+  <view class="maui-switch__node">
+    <maui-loading
+      ma:if="{{ loading }}"
+      color="{{ computed.loadingColor({ checked, activeColor, inactiveColor, activeValue }) }}"
+      class="maui-switch__loading"
+      customStyle="display: block;height: 100%"
+    />
+  </view>
+</view>

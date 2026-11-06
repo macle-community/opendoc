@@ -1,0 +1,10 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "miniapp-taro",
+  "description": "Macle Taro React Mini App for OpenDoc",
+  "appid": "macle-opendoc-taro",
+  "setting": {
+    "es6": true,
+    "es5": false
+  }
+}

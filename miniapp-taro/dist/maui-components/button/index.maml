@@ -1,0 +1,21 @@
+<sjs src="./index.sjs" module="commonSjs"></sjs>
+
+<button id="{{ id }}" class="{{ commonSjs.rootClass('button', [ type, size ], { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }) }}" hover-class="maui-button--active" style="{{ commonSjs.rootStyle(plain, color, customStyle) }}" bindtap="{{ disabled || loading ? '' : 'onClick' }}">
+    <block ma:if="{{ loading }}">
+        <view class="maui-button__loading maui-button__loading--{{ loadingType }}" style="{{ commonSjs.loadingStyle(type, color, plain, loadingSize) }}">
+            <view ma:if="{{ loadingType === 'spinner' }}" ma:for="{{ array12 }}" ma:key="*this" class="maui-button__loading__dot" />
+        </view>
+        <view ma:if="{{ loadingText }}" class="maui-button__loading-text">
+            {{ loadingText }}
+        </view>
+    </block>
+    <block ma:else>
+        <view ma:if="{{ icon }}" class="maui-button__icon">
+            <image ma:if="{{ commonSjs.isImage(icon) }}" src="{{ icon }}" mode="aspectFit" class="maui-button__icon-image"></image>
+        </view>
+        <view class="maui-button__icon-text">
+            <slot></slot>
+        </view>
+    </block>
+</button>
+

@@ -1,0 +1,17 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+<sjs src="./index.sjs" module="computed"></sjs>
+
+<view class=" {{ utils.bem('cell', [size, { center, required, borderless: !border, clickable}]) }}" hover-class="maui-cell--hover hover-class" hover-stay-time="70" style="{{ customStyle }}" bindtap="onClick">
+    <maui-icon ma:if="{{ icon }}" name="{{ icon }}" class="maui-cell__left-icon maui-cell__left-icon-wrap" />
+    <view style="{{ computed.titleStyle({ titleWidth, titleStyle }) }}" class="maui-cell__title">
+        <block ma:if="{{ title }}">{{ title }}</block>
+        <view ma:if="{{ label }}" class="maui-cell__label">
+            <block>{{ label }}</block>
+        </view>
+    </view>
+    <view class="maui-cell__value">
+        <block ma:if="{{ value || value === 0 }}">{{ value }}</block>
+        <slot ma:else></slot>
+    </view>
+</view>
+

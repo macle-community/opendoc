@@ -15,6 +15,7 @@ if (portIndex !== -1 && args[portIndex + 1]) {
 
 const DIST_DIR = path.join(__dirname, 'dist');
 const MINIAPP_DIR = path.join(__dirname, 'miniapp');
+const TARO_MINIAPP_DIR = path.join(__dirname, 'miniapp-taro');
 const BASE_ROUTE = '/openplatform/macledocs';
 
 let macleCompiler = null;
@@ -24,20 +25,24 @@ try {
   console.warn('Notice: @macle/compiler not loaded:', e.message);
 }
 
-// Active simulator daemon port & project discovery
+// Active simulator daemons (Native MAML and Taro React)
+const simulatorDaemons = {
+  native: { port: 30002, projectName: 'miniapp', online: false },
+  taro: { port: 30003, projectName: 'taro-miniapp', online: false }
+};
+
 let activeSimulatorPort = 30002;
 let simulatorProjectName = 'miniapp';
 let simulatorIsOnline = false;
 
 function detectSimulatorPort() {
   const candidatePorts = [30002, 30003, 30001, 30004, 30000];
-  let found = false;
   for (const p of candidatePorts) {
     const probeReq = http.get({
       hostname: '127.0.0.1',
       port: p,
       path: '/api/project-info',
-      timeout: 600
+      timeout: 800
     }, (res) => {
       if (res.statusCode === 200) {
         let body = '';
@@ -45,15 +50,51 @@ function detectSimulatorPort() {
         res.on('end', () => {
           try {
             const info = JSON.parse(body);
-            activeSimulatorPort = p;
-            simulatorIsOnline = true;
-            if (info.projectName) simulatorProjectName = info.projectName;
+            if (info.projectName === 'taro-miniapp' || info.projectName === 'dist' || (info.composeDir && info.composeDir.includes('taro'))) {
+              simulatorDaemons.taro.port = p;
+              simulatorDaemons.taro.projectName = info.projectName;
+              simulatorDaemons.taro.online = true;
+            } else if (info.projectName === 'miniapp') {
+              simulatorDaemons.native.port = p;
+              simulatorDaemons.native.projectName = info.projectName;
+              simulatorDaemons.native.online = true;
+            }
+            simulatorIsOnline = simulatorDaemons.native.online || simulatorDaemons.taro.online;
+            activeSimulatorPort = simulatorDaemons.native.online ? simulatorDaemons.native.port : simulatorDaemons.taro.port;
+            simulatorProjectName = simulatorDaemons.native.online ? simulatorDaemons.native.projectName : simulatorDaemons.taro.projectName;
           } catch (e) {}
         });
       }
     });
-    probeReq.on('error', () => {});
+    probeReq.on('error', () => {
+      if (simulatorDaemons.native.port === p) simulatorDaemons.native.online = false;
+      if (simulatorDaemons.taro.port === p) simulatorDaemons.taro.online = false;
+      simulatorIsOnline = simulatorDaemons.native.online || simulatorDaemons.taro.online;
+    });
   }
+}
+
+function getProxyTargetPort(req, reqPath) {
+  const referer = req.headers['referer'] || '';
+  if (
+    reqPath.startsWith('/taro-miniapp/') ||
+    reqPath.includes('taro-miniapp') ||
+    referer.includes('/taro-miniapp/') ||
+    req.url.includes('taro-miniapp')
+  ) {
+    return simulatorDaemons.taro.port || 30003;
+  }
+  if (
+    reqPath.startsWith('/miniapp/') ||
+    referer.includes('/miniapp/') ||
+    req.url.includes('/miniapp/')
+  ) {
+    return simulatorDaemons.native.port || 30002;
+  }
+  if (req.url.includes('fw=taro')) return simulatorDaemons.taro.port || 30003;
+  if (req.url.includes('fw=native')) return simulatorDaemons.native.port || 30002;
+
+  return simulatorDaemons.native.online ? simulatorDaemons.native.port : (simulatorDaemons.taro.port || 30002);
 }
 
 setInterval(detectSimulatorPort, 2500);
@@ -90,9 +131,11 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/api/simulator-info') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     return res.end(JSON.stringify({
-      online: simulatorIsOnline,
+      online: simulatorDaemons.native.online || simulatorDaemons.taro.online,
       port: activeSimulatorPort,
-      projectName: simulatorProjectName
+      projectName: simulatorProjectName,
+      native: simulatorDaemons.native,
+      taro: simulatorDaemons.taro
     }));
   }
 
@@ -103,30 +146,54 @@ const server = http.createServer((req, res) => {
     req.on('end', async () => {
       try {
         const payload = JSON.parse(body);
-        const { maml, js, json, mass, title } = payload;
+        const { framework, tsx, maml, js, json, mass, title } = payload;
+        const isTaro = framework === 'taro' || !!tsx;
 
-        const runnerPageDir = path.join(MINIAPP_DIR, 'pages/runner');
-        fs.mkdirSync(runnerPageDir, { recursive: true });
+        if (isTaro) {
+          const taroRunnerDir = path.join(TARO_MINIAPP_DIR, 'src/pages/runner');
+          fs.mkdirSync(taroRunnerDir, { recursive: true });
+          if (tsx) {
+            fs.writeFileSync(path.join(taroRunnerDir, 'index.tsx'), tsx);
+          }
+          const { execSync } = require('child_process');
+          execSync('./node_modules/.bin/taro build --type macle', { cwd: TARO_MINIAPP_DIR, stdio: 'pipe' });
+          if (macleCompiler) {
+            const outApp = path.join(os.homedir(), '.macle/target/compose', simulatorDaemons.taro.projectName, 'root/debug/app');
+            fs.mkdirSync(outApp, { recursive: true });
+            await macleCompiler.compile(path.join(TARO_MINIAPP_DIR, 'dist'), outApp, { debug: true, es5: false });
+          }
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          return res.end(JSON.stringify({
+            ok: true,
+            page: 'pages/runner/index',
+            projectName: simulatorDaemons.taro.projectName,
+            framework: 'taro'
+          }));
+        } else {
+          const runnerPageDir = path.join(MINIAPP_DIR, 'pages/runner');
+          fs.mkdirSync(runnerPageDir, { recursive: true });
 
-        if (maml) fs.writeFileSync(path.join(runnerPageDir, 'index.maml'), maml);
-        if (js) fs.writeFileSync(path.join(runnerPageDir, 'index.js'), js);
-        if (mass) fs.writeFileSync(path.join(runnerPageDir, 'index.mass'), mass);
-        fs.writeFileSync(path.join(runnerPageDir, 'index.json'), JSON.stringify({
-          navigationBarTitleText: title || 'Live Code Example'
-        }, null, 2));
+          if (maml) fs.writeFileSync(path.join(runnerPageDir, 'index.maml'), maml);
+          if (js) fs.writeFileSync(path.join(runnerPageDir, 'index.js'), js);
+          if (mass) fs.writeFileSync(path.join(runnerPageDir, 'index.mass'), mass);
+          fs.writeFileSync(path.join(runnerPageDir, 'index.json'), JSON.stringify({
+            navigationBarTitleText: title || 'Live Code Example'
+          }, null, 2));
 
-        if (macleCompiler) {
-          const outApp = path.join(os.homedir(), '.macle/target/compose', simulatorProjectName, 'root/debug/app');
-          fs.mkdirSync(outApp, { recursive: true });
-          await macleCompiler.compile(MINIAPP_DIR, outApp, { debug: true, es5: false });
+          if (macleCompiler) {
+            const outApp = path.join(os.homedir(), '.macle/target/compose', simulatorDaemons.native.projectName, 'root/debug/app');
+            fs.mkdirSync(outApp, { recursive: true });
+            await macleCompiler.compile(MINIAPP_DIR, outApp, { debug: true, es5: false });
+          }
+
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          return res.end(JSON.stringify({
+            ok: true,
+            page: 'pages/runner/index',
+            projectName: simulatorDaemons.native.projectName,
+            framework: 'native'
+          }));
         }
-
-        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({
-          ok: true,
-          page: 'pages/runner/index',
-          projectName: simulatorProjectName
-        }));
       } catch (err) {
         res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ ok: false, error: err.message }));
@@ -144,6 +211,7 @@ const server = http.createServer((req, res) => {
     reqPath.startsWith('/mcss/') ||
     reqPath.includes('/root/debug/') ||
     reqPath.startsWith('/miniapp/root/') ||
+    reqPath.startsWith('/taro-miniapp/root/') ||
     reqPath.startsWith('/dist/root/') ||
     reqPath.startsWith('/store/') ||
     reqPath.startsWith('/tmp/');
@@ -158,12 +226,13 @@ const server = http.createServer((req, res) => {
       targetPath = req.url;
     }
 
-    const proxyHeaders = { ...req.headers, host: `127.0.0.1:${activeSimulatorPort}` };
+    const targetPort = getProxyTargetPort(req, reqPath);
+    const proxyHeaders = { ...req.headers, host: `127.0.0.1:${targetPort}` };
     delete proxyHeaders['accept-encoding']; // Avoid compressed streaming issues
 
     const proxyReq = http.request({
       hostname: '127.0.0.1',
-      port: activeSimulatorPort,
+      port: targetPort,
       path: targetPath,
       method: req.method,
       headers: proxyHeaders
@@ -177,12 +246,11 @@ const server = http.createServer((req, res) => {
     });
 
     proxyReq.on('error', (err) => {
-      simulatorIsOnline = false;
       res.writeHead(502, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({
         error: 'Macle Web Simulator is currently offline',
         message: err.message,
-        port: activeSimulatorPort
+        port: targetPort
       }));
     });
 
@@ -255,9 +323,10 @@ const server = http.createServer((req, res) => {
 
 // Proxy WebSocket / HTTP Upgrade requests to Macle Web Simulator
 server.on('upgrade', (req, socket, head) => {
+  const targetPort = getProxyTargetPort(req, req.url);
   const proxyReq = http.request({
     hostname: '127.0.0.1',
-    port: activeSimulatorPort,
+    port: targetPort,
     path: req.url,
     method: req.method,
     headers: req.headers

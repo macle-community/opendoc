@@ -1,0 +1,13 @@
+<sjs src="./empty.sjs" module="computed" />
+
+<view class="maui-empty">
+    <image ma:if="{{ image }}" class="maui-empty__image" src="{{ computed.imageUrl(image) }}" />
+    <view class="maui-empty__description">
+        {{ description }}
+    </view>
+
+    <view class="maui-empty__bottom">
+        <slot></slot>
+    </view>
+</view>
+

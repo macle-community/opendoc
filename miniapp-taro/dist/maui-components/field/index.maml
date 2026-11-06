@@ -1,0 +1,19 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+<view class="maui-field">
+    <view ma:if="{{ label }}" class="{{utils.bem('field__label',{disabled})}}">
+        {{ label }}
+    </view>
+    <view class="maui-field__value">
+        <view class="{{utils.bem('field__body',[type])}}">
+            <include ma:if="{{ type === 'textarea' }}" src="./textarea.maml" />
+            <include ma:else src="./input.maml" />
+        </view>
+        <view ma:if="{{ showWordLimit && maxlength > 0 }}" class="maui-field__word-limit">
+            <view class="maui-field__word-num {{ value.length >= maxlength ? 'maui-field__word-num--full' : ''}}">{{ value.length >= maxlength ? maxlength : value.length }}</view>/{{ maxlength }}
+        </view>
+        <view ma:if="{{ errorMessage }}" class="{{utils.bem('field__error-message',[errorMessageAlign,{disabled,error}])}}">
+            {{ errorMessage }}
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,13 @@
+<view ma:if="{{ showToast }}">
+    <maui-overlay ma:if="{{ mask || forbidClick }}" show z-index="{{ zIndex }}" custom-style="{{ mask ? '' : 'background-color: transparent;' }}" />
+    <view class="{{type ==='text'?'maui-noIcon-content':'maui-withIcon-content'}}" style="z-index:{{zIndex}};--duration:{{duration}}ms;{{duration <= 0?'animation: maui-toast-no-timeout 300ms;background-color: #000000;opacity: 0.7;':''}}">
+        <text ma:if="{{type === 'text'}}">{{message}}</text>
+        <rich-text ma:elif="{{type === 'html'}}" nodes="{{message}}"></rich-text>
+        <view ma:else class='maui-icon-area'>
+            <maui-loading class="maui-toast__svg" ma:if="{{ type === 'loading' }}" color="white" type="{{ loadingType }}" />
+            <image class="maui-toast__svg" src="{{type == 'success'?successUrl:failUrl}}" ma:else />
+            <text class="maui-toast__text">{{message}}</text>
+        </view>
+    </view>
+</view>
+

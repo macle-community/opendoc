@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "maui-loading": "../loading/index"
+  }
+}

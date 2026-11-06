@@ -1,0 +1,12 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+<sjs src="./index.sjs" module="computed"></sjs>
+
+
+<view class="maui-progress" style="{{ computed.rootStyle({ strokeWidth, trackColor }) }}">
+    <view class="maui-progress__portion" style="{{ computed.portionStyle({ percentage, inactive, color }) }}">
+        <view ma:if="{{ showPivot && computed.pivotText(pivotText, percentage) }}" style="{{ computed.pivotStyle({ textColor, pivotColor, inactive, color, right }) }}" class="maui-progress__pivot">
+            {{ computed.pivotText(pivotText, percentage) }}
+        </view>
+    </view>
+</view>
+

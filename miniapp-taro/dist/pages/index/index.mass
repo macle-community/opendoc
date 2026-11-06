@@ -1,0 +1,31 @@
+.home-container { padding: 12rpx; }
+.taro-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 18rpx 16rpx;
+  border-radius: 12rpx;
+  margin-bottom: 14rpx;
+  border-left: 4rpx solid #38bdf8;
+}
+.banner-badge {
+  font-size: 11rpx;
+  font-weight: 700;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 6rpx;
+}
+.banner-title { font-size: 20rpx; font-weight: 800; display: block; margin-bottom: 4rpx; }
+.banner-sub { font-size: 12rpx; opacity: 0.8; display: block; }
+.nav-grid { display: flex; flex-wrap: wrap; gap: 8rpx; }
+.nav-item {
+  background: #f1f5f9;
+  border-radius: 8rpx;
+  padding: 10rpx 14rpx;
+  font-size: 13rpx;
+  font-weight: 600;
+  color: #334155;
+  width: calc(50% - 4rpx);
+  box-sizing: border-box;
+  text-align: center;
+}
+

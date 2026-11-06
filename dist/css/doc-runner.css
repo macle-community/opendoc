@@ -724,6 +724,49 @@
   gap: 6px;
 }
 
+/* MiniApp Framework Switcher in Simulator (Native vs Taro) */
+.macle-miniapp-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.macle-miniapp-btn {
+  border: none;
+  background: transparent;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.macle-miniapp-btn:hover {
+  color: #0f172a;
+}
+
+.macle-miniapp-btn.active[data-app="native"] {
+  background: #ffffff;
+  color: #0284c7;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.macle-miniapp-btn.active[data-app="taro"] {
+  background: #0f172a;
+  color: #38bdf8;
+  box-shadow: 0 1px 2px rgba(14, 165, 233, 0.25);
+}
+
 .macle-sim-page-select {
   font-size: 11px;
   font-weight: 600;

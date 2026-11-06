@@ -1,0 +1,6 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+
+<view class="{{ utils.bem('checkbox-group', [direction]) }}">
+    <slot></slot>
+</view>
+

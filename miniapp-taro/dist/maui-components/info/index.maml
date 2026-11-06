@@ -1,0 +1,4 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+
+<view ma:if="{{ info !== null && info !== '' || dot }}" class="maui-info {{ utils.bem('info', { dot }) }}" style="{{ customStyle }}">{{ dot ? '' : info }}</view>
+

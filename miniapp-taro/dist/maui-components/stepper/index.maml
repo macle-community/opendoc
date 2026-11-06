@@ -1,0 +1,11 @@
+<sjs src="../sjs/utils.sjs" module="utils" />
+<sjs src="./index.sjs" module="computed" />
+
+<view class="{{ utils.mbem('stepper', [theme]) }} custom-class" style="{{ customStyle }}">
+    <view ma:if="{{ showMinus }}" data-type="minus" style="{{ computed.buttonStyle({ buttonSize }) }} ; {{ minusStyle }}" class="minus-class {{ utils.mbem('stepper__minus', { disabled: disabled || disableMinus || currentValue <= min }) }}" bind:tap="onTap" bind:touchstart="onTouchStart" bind:touchend="onTouchEnd">
+    </view>
+    <input type="{{ integer ? 'number' : 'digit' }}" class="input-class {{ utils.mbem('stepper__input', { disabled: disabled || disableInput }) }}" style="{{ computed.inputStyle({ buttonSize, inputWidth }) }} ; {{ inputStyle }}" value="{{ currentValue }}" focus="{{ focus }}" disabled="{{ disabled || disableInput }}" always-embed="{{ alwaysEmbed }}" bindinput="onInput" bind:focus="onFocus" bind:blur="onBlur" />
+    <view ma:if="{{ showPlus }}" data-type="plus" style="{{ computed.buttonStyle({ buttonSize }) }} ; {{ plusStyle }}" class="plus-class {{ utils.mbem('stepper__plus', { disabled: disabled || disablePlus || currentValue >= max }) }}" bind:tap="onTap" bind:touchstart="onTouchStart" bind:touchend="onTouchEnd">
+    </view>
+</view>
+

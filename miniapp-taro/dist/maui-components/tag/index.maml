@@ -1,0 +1,8 @@
+<sjs src="../sjs/utils.sjs" module="utils"></sjs>
+<sjs src="./index.sjs" module="computed"></sjs>
+
+<view class=" {{ utils.bem('tag', [type, size, { mark, plain, round }]) }}" style="{{ computed.rootStyle({ plain, color, textColor }) }}">
+    <slot></slot>
+     <maui-icon ma:if="{{ closeable }}" name="cross" color="{{computed.setIconColor({textColor, plain, color})}}" bindclick="onClose" class="maui-tag__close" />
+</view>
+
