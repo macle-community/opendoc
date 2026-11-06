@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiSlider } from '@tarojs/plugin-platform-macle/dist/components-react';
+import { MauiSlider } from '@macle-community/taro-plugin-macle/dist/components-react';
 import './index.css';
 
 export default function SliderPage() {

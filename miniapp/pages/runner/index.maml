@@ -1,1 +1,1 @@
-<view class="p-4"><text>Live Native Snippet Working!</text></view>
+<view class="p-4"><maui-button type="primary">Native MAML @macle-community Live</maui-button></view>

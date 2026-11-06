@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiDivider } from '@tarojs/plugin-platform-macle/dist/components-react';
+import { MauiDivider } from '@macle-community/taro-plugin-macle/dist/components-react';
 import './index.css';
 
 export default function DividerPage() {

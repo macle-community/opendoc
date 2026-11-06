@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiTag } from '@tarojs/plugin-platform-macle/dist/components-react';
+import { MauiTag } from '@macle-community/taro-plugin-macle/dist/components-react';
 import './index.css';
 
 export default function TagPage() {

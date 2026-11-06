@@ -32,10 +32,10 @@ for (const cand of compilerCandidates) {
 
 let MacleWebSimulatorServer = null;
 try {
-  MacleWebSimulatorServer = require('../macle-web-simulator/src/server').MacleWebSimulatorServer;
+  MacleWebSimulatorServer = require('@macle-community/simulator-web').MacleWebSimulatorServer;
 } catch (e) {
   try {
-    MacleWebSimulatorServer = require('@macle-community/simulator-web/src/server').MacleWebSimulatorServer;
+    MacleWebSimulatorServer = require('../macle-web-simulator/src/server').MacleWebSimulatorServer;
   } catch (_) {
     try {
       MacleWebSimulatorServer = require('macle-web-simulator/src/server').MacleWebSimulatorServer;

@@ -118,4 +118,4 @@ opendoc/
    - Digital signature & RSA release signing (`signSetting.html`).
 6. **Interactive MiniApp Showcases**:
    - **Native DSL MiniApp (`miniapp/`)**: 25 interactive pages showcasing all native components and 34 MAUI 26.6.0 components including List, ListItem, and Modal.
-   - **Taro React MiniApp (`miniapp-taro/`)**: 25 pages built with Taro 4 and React 18, utilizing `@tarojs/plugin-platform-macle`.
+   - **Taro React MiniApp (`miniapp-taro/`)**: 25 pages built with Taro 4 and React 18, utilizing `@macle-community/taro-plugin-macle`.
