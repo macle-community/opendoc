@@ -280,205 +280,205 @@
 </template>
 
 <template name="tmpl_0_maui-button">
-  <maui-button  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" type="{{i.type}}" size="{{i.size}}" plain="{{i.plain}}" block="{{i.block}}" round="{{i.round}}" square="{{i.square}}" loading="{{i.loading}}" hairline="{{i.hairline}}" disabled="{{i.disabled}}" loading-text="{{i.loadingText}}" custom-style="{{i.customStyle}}" loading-type="{{i.loadingType}}" loading-size="{{i.loadingSize}}" color="{{i.color}}" icon="{{i.icon}}" form-type="{{i.formType}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-button  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" type="{{xs.b(i.type,'default')}}" size="{{xs.b(i.size,'normal')}}" plain="{{xs.b(i.plain,false)}}" block="{{xs.b(i.block,false)}}" round="{{xs.b(i.round,false)}}" square="{{xs.b(i.square,false)}}" loading="{{xs.b(i.loading,false)}}" hairline="{{xs.b(i.hairline,false)}}" disabled="{{xs.b(i.disabled,false)}}" loading-text="{{i.loadingText}}" custom-style="{{i.customStyle}}" loading-type="{{xs.b(i.loadingType,'circular')}}" loading-size="{{xs.b(i.loadingSize,'20px')}}" color="{{i.color}}" icon="{{i.icon}}" form-type="{{i.formType}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-button>
 </template>
   
 <template name="tmpl_0_maui-cell">
-  <maui-cell  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" value="{{i.value}}" size="{{i.size}}" label="{{i.label}}" center="{{i.center}}" required="{{i.required}}" clickable="{{i.clickable}}" title-width="{{i.titleWidth}}" custom-style="{{i.customStyle}}" icon="{{i.icon}}" border="{{i.border}}" title-style="{{i.titleStyle}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-cell  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" value="{{i.value}}" size="{{i.size}}" label="{{i.label}}" center="{{xs.b(i.center,false)}}" required="{{xs.b(i.required,false)}}" clickable="{{xs.b(i.clickable,false)}}" title-width="{{i.titleWidth}}" custom-style="{{i.customStyle}}" icon="{{i.icon}}" border="{{xs.b(i.border,true)}}" title-style="{{i.titleStyle}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-cell>
 </template>
   
 <template name="tmpl_0_maui-cell-group">
-  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{i.border}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{xs.b(i.border,true)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-cell-group>
 </template>
   
 <template name="tmpl_0_maui-checkbox">
-  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{i.disabled}}" checked-color="{{i.checkedColor}}" label-position="{{i.labelPosition}}" label-disabled="{{i.labelDisabled}}" shape="{{i.shape}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox>
 </template>
   
 <template name="tmpl_0_maui-checkbox-group">
-  <maui-checkbox-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" max="{{i.max}}" direction="{{i.direction}}" disabled="{{i.disabled}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,[])}}" max="{{xs.b(i.max,0)}}" direction="{{xs.b(i.direction,'vertical')}}" disabled="{{xs.b(i.disabled,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox-group>
 </template>
   
 <template name="tmpl_0_maui-col">
-  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{i.span}}" offset="{{i.offset}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{xs.b(i.span,24)}}" offset="{{xs.b(i.offset,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-col>
 </template>
   
 <template name="tmpl_0_maui-row">
-  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{i.gutter}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{xs.b(i.gutter,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-row>
 </template>
   
 <template name="tmpl_0_maui-dialog">
-  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{i.theme}}" custom-style="{{i.customStyle}}" message-align="{{i.messageAlign}}" overlay-style="{{i.overlayStyle}}" use-slot="{{i.useSlot}}" show-cancel-button="{{i.showCancelButton}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" width="{{i.width}}" z-index="{{i.zIndex}}" confirm-button-text="{{i.confirmButtonText}}" cancel-button-text="{{i.cancelButtonText}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{i.showConfirmButton}}" overlay="{{i.overlay}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{xs.b(i.theme,'default')}}" custom-style="{{i.customStyle}}" message-align="{{xs.b(i.messageAlign,'center')}}" overlay-style="{{i.overlayStyle}}" use-slot="{{xs.b(i.useSlot,false)}}" show-cancel-button="{{xs.b(i.showCancelButton,false)}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,false)}}" width="{{i.width}}" z-index="{{xs.b(i.zIndex,100)}}" confirm-button-text="{{xs.b(i.confirmButtonText,'Confirm')}}" cancel-button-text="{{xs.b(i.cancelButtonText,'Cancel')}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{xs.b(i.showConfirmButton,true)}}" overlay="{{xs.b(i.overlay,true)}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-dialog>
 </template>
   
 <template name="tmpl_0_maui-divider">
-  <maui-divider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dashed="{{i.dashed}}" hairline="{{i.hairline}}" content-position="{{i.contentPosition}}" font-size="{{i.fontSize}}" border-color="{{i.borderColor}}" text-color="{{i.textColor}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-divider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dashed="{{xs.b(i.dashed,false)}}" hairline="{{xs.b(i.hairline,true)}}" content-position="{{xs.b(i.contentPosition,'center')}}" font-size="{{i.fontSize}}" border-color="{{i.borderColor}}" text-color="{{i.textColor}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-divider>
 </template>
   
 <template name="tmpl_0_maui-empty">
-  <maui-empty  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" description="{{i.description}}" image="{{i.image}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-empty  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" description="{{i.description}}" image="{{xs.b(i.image,'default')}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-empty>
 </template>
   
 <template name="tmpl_0_maui-field">
-  <maui-field  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" label="{{i.label}}" error="{{i.error}}" disabled="{{i.disabled}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" focus="{{i.focus}}" adjust-position="{{i.adjustPosition}}" password="{{i.password}}" confirm-hold="{{i.confirmHold}}" type="{{i.type}}" confirm-type="{{i.confirmType}}" cursor-spacing="{{i.cursorSpacing}}" input-align="{{i.inputAlign}}" error-message="{{i.errorMessage}}" show-word-limit="{{i.showWordLimit}}" error-message-align="{{i.errorMessageAlign}}" autosize="{{i.autosize}}" maxlength="{{i.maxlength}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" bindlinechange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-field  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" label="{{i.label}}" error="{{xs.b(i.error,false)}}" disabled="{{xs.b(i.disabled,false)}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" focus="{{xs.b(i.focus,false)}}" adjust-position="{{xs.b(i.adjustPosition,true)}}" password="{{xs.b(i.password,false)}}" confirm-hold="{{xs.b(i.confirmHold,false)}}" type="{{xs.b(i.type,'text')}}" confirm-type="{{xs.b(i.confirmType,'done')}}" cursor-spacing="{{xs.b(i.cursorSpacing,0)}}" input-align="{{xs.b(i.inputAlign,'left')}}" error-message="{{i.errorMessage}}" show-word-limit="{{xs.b(i.showWordLimit,false)}}" error-message-align="{{xs.b(i.errorMessageAlign,'left')}}" autosize="{{xs.b(i.autosize,false)}}" maxlength="{{xs.b(i.maxlength,140)}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" bindlinechange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-field>
 </template>
   
 <template name="tmpl_0_maui-icon">
-  <maui-icon  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" info="{{i.info}}" size="{{i.size}}" color="{{i.color}}" custom-style="{{i.customStyle}}" class-prefix="{{i.classPrefix}}" name="{{i.name}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-icon  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" info="{{i.info}}" size="{{xs.b(i.size,'16px')}}" color="{{i.color}}" custom-style="{{i.customStyle}}" class-prefix="{{xs.b(i.classPrefix,'maui-icon')}}" name="{{i.name}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-icon>
 </template>
   
 <template name="tmpl_0_maui-image">
-  <maui-image  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" src="{{i.src}}" round="{{i.round}}" width="{{i.width}}" height="{{i.height}}" radius="{{i.radius}}" mode="{{i.mode}}" show-error="{{i.showError}}" show-loading="{{i.showLoading}}" bindload="eh" binderror="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-image  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" src="{{i.src}}" round="{{xs.b(i.round,false)}}" width="{{i.width}}" height="{{i.height}}" radius="{{i.radius}}" mode="{{xs.b(i.mode,'scaleToFill')}}" show-error="{{xs.b(i.showError,true)}}" show-loading="{{xs.b(i.showLoading,true)}}" bindload="eh" binderror="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-image>
 </template>
   
 <template name="tmpl_0_maui-loading">
-  <maui-loading  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" type="{{i.type}}" size="{{i.size}}" text-size="{{i.textSize}}" vertical="{{i.vertical}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-loading  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{xs.b(i.color,'#c9c9c9')}}" type="{{xs.b(i.type,'circular')}}" size="{{xs.b(i.size,'30px')}}" text-size="{{xs.b(i.textSize,'14px')}}" vertical="{{xs.b(i.vertical,false)}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-loading>
 </template>
   
 <template name="tmpl_0_maui-overlay">
-  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" z-index="{{i.zIndex}}" duration="{{i.duration}}" custom-style="{{i.customStyle}}" lock-scroll="{{i.lockScroll}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" z-index="{{xs.b(i.zIndex,1)}}" duration="{{xs.b(i.duration,300)}}" custom-style="{{i.customStyle}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-overlay>
 </template>
   
 <template name="tmpl_0_maui-popup">
-  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" duration="{{i.duration}}" closeable="{{i.closeable}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{i.round}}" transition="{{i.transition}}" z-index="{{i.zIndex}}" overlay="{{i.overlay}}" position="{{i.position}}" close-icon="{{i.closeIcon}}" close-icon-position="{{i.closeIconPosition}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" safe-area-inset-bottom="{{i.safeAreaInsetBottom}}" safe-area-inset-top="{{i.safeAreaInsetTop}}" lock-scroll="{{i.lockScroll}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" duration="{{xs.b(i.duration,300)}}" closeable="{{xs.b(i.closeable,false)}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{xs.b(i.round,false)}}" transition="{{i.transition}}" z-index="{{xs.b(i.zIndex,100)}}" overlay="{{xs.b(i.overlay,true)}}" position="{{xs.b(i.position,'center')}}" close-icon="{{xs.b(i.closeIcon,'cancel')}}" close-icon-position="{{xs.b(i.closeIconPosition,'top-right')}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,true)}}" safe-area-inset-bottom="{{xs.b(i.safeAreaInsetBottom,true)}}" safe-area-inset-top="{{xs.b(i.safeAreaInsetTop,false)}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-popup>
 </template>
   
 <template name="tmpl_0_maui-progress">
-  <maui-progress  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" inactive="{{i.inactive}}" percentage="{{i.percentage}}" pivot-text="{{i.pivotText}}" pivot-color="{{i.pivotColor}}" track-color="{{i.trackColor}}" show-pivot="{{i.showPivot}}" color="{{i.color}}" text-color="{{i.textColor}}" stroke-width="{{i.strokeWidth}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-progress  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" inactive="{{xs.b(i.inactive,false)}}" percentage="{{xs.b(i.percentage,0)}}" pivot-text="{{i.pivotText}}" pivot-color="{{i.pivotColor}}" track-color="{{i.trackColor}}" show-pivot="{{xs.b(i.showPivot,true)}}" color="{{xs.b(i.color,'#1989fa')}}" text-color="{{xs.b(i.textColor,'#ffffff')}}" stroke-width="{{xs.b(i.strokeWidth,'4px')}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-progress>
 </template>
   
 <template name="tmpl_0_maui-radio">
-  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{i.disabled}}" checked-color="{{i.checkedColor}}" label-position="{{i.labelPosition}}" label-disabled="{{i.labelDisabled}}" shape="{{i.shape}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio>
 </template>
   
 <template name="tmpl_0_maui-radio-group">
-  <maui-radio-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" direction="{{i.direction}}" disabled="{{i.disabled}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" direction="{{xs.b(i.direction,'vertical')}}" disabled="{{xs.b(i.disabled,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio-group>
 </template>
   
 <template name="tmpl_0_maui-sidebar">
-  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{i.activeKey}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{xs.b(i.activeKey,0)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sidebar>
 </template>
   
 <template name="tmpl_0_maui-sidebar-item">
-  <maui-sidebar-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" badge="{{i.badge}}" info="{{i.info}}" title="{{i.title}}" disabled="{{i.disabled}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sidebar-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" badge="{{i.badge}}" info="{{i.info}}" title="{{i.title}}" disabled="{{xs.b(i.disabled,false)}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sidebar-item>
 </template>
   
 <template name="tmpl_0_maui-slider">
-  <maui-slider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" disabled="{{i.disabled}}" use-button-slot="{{i.useButtonSlot}}" max="{{i.max}}" min="{{i.min}}" inactive-color="{{i.inactiveColor}}" step="{{i.step}}" vertical="{{i.vertical}}" bar-height="{{i.barHeight}}" active-color="{{i.activeColor}}" binddragstart="eh" binddragend="eh" binddrag="eh" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-slider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,0)}}" disabled="{{xs.b(i.disabled,false)}}" use-button-slot="{{xs.b(i.useButtonSlot,false)}}" max="{{xs.b(i.max,100)}}" min="{{xs.b(i.min,0)}}" inactive-color="{{i.inactiveColor}}" step="{{xs.b(i.step,1)}}" vertical="{{xs.b(i.vertical,false)}}" bar-height="{{xs.b(i.barHeight,'2px')}}" active-color="{{i.activeColor}}" binddragstart="eh" binddragend="eh" binddrag="eh" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-slider>
 </template>
   
 <template name="tmpl_0_maui-stepper">
-  <maui-stepper  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" min="{{i.min}}" max="{{i.max}}" step="{{i.step}}" integer="{{i.integer}}" disabled="{{i.disabled}}" disable-input="{{i.disableInput}}" async-change="{{i.asyncChange}}" input-width="{{i.inputWidth}}" button-size="{{i.buttonSize}}" show-plus="{{i.showPlus}}" show-minus="{{i.showMinus}}" decimal-length="{{i.decimalLength}}" theme="{{i.theme}}" long-press="{{i.longPress}}" bindchange="eh" bindoverlimit="eh" bindplus="eh" bindminus="eh" bindfocus="eh" bindblur="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-stepper  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,1)}}" min="{{xs.b(i.min,1)}}" max="{{i.max}}" step="{{xs.b(i.step,1)}}" integer="{{xs.b(i.integer,false)}}" disabled="{{xs.b(i.disabled,false)}}" disable-input="{{xs.b(i.disableInput,false)}}" async-change="{{xs.b(i.asyncChange,false)}}" input-width="{{i.inputWidth}}" button-size="{{i.buttonSize}}" show-plus="{{xs.b(i.showPlus,true)}}" show-minus="{{xs.b(i.showMinus,true)}}" decimal-length="{{i.decimalLength}}" theme="{{i.theme}}" long-press="{{xs.b(i.longPress,true)}}" bindchange="eh" bindoverlimit="eh" bindplus="eh" bindminus="eh" bindfocus="eh" bindblur="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-stepper>
 </template>
   
 <template name="tmpl_0_maui-steps">
-  <maui-steps  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" steps="{{i.steps}}" active="{{i.active}}" direction="{{i.direction}}" active-color="{{i.activeColor}}" inactive-color="{{i.inactiveColor}}" active-icon="{{i.activeIcon}}" inactive-icon="{{i.inactiveIcon}}" bindclickstep="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-steps  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" steps="{{xs.b(i.steps,[])}}" active="{{xs.b(i.active,0)}}" direction="{{xs.b(i.direction,'horizontal')}}" active-color="{{xs.b(i.activeColor,'#07c160')}}" inactive-color="{{xs.b(i.inactiveColor,'#969799')}}" active-icon="{{xs.b(i.activeIcon,'success-black')}}" inactive-icon="{{i.inactiveIcon}}" bindclickstep="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-steps>
 </template>
   
 <template name="tmpl_0_maui-sticky">
-  <maui-sticky  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" z-index="{{i.zIndex}}" offset-top="{{i.offsetTop}}" disabled="{{i.disabled}}" container="{{i.container}}" scroll-top="{{i.scrollTop}}" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sticky  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" z-index="{{xs.b(i.zIndex,99)}}" offset-top="{{xs.b(i.offsetTop,0)}}" disabled="{{xs.b(i.disabled,false)}}" container="{{i.container}}" scroll-top="{{xs.b(i.scrollTop,0)}}" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sticky>
 </template>
   
 <template name="tmpl_0_maui-switch">
-  <maui-switch  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" checked="{{i.checked}}" loading="{{i.loading}}" disabled="{{i.disabled}}" size="{{i.size}}" active-color="{{i.activeColor}}" inactive-color="{{i.inactiveColor}}" active-value="{{i.activeValue}}" inactive-value="{{i.inactiveValue}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-switch  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" checked="{{xs.b(i.checked,false)}}" loading="{{xs.b(i.loading,false)}}" disabled="{{xs.b(i.disabled,false)}}" size="{{xs.b(i.size,'30px')}}" active-color="{{xs.b(i.activeColor,'#1989fa')}}" inactive-color="{{xs.b(i.inactiveColor,'#ffffff')}}" active-value="{{xs.b(i.activeValue,true)}}" inactive-value="{{xs.b(i.inactiveValue,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-switch>
 </template>
   
 <template name="tmpl_0_maui-tab">
-  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" info="{{i.info}}" title="{{i.title}}" disabled="{{i.disabled}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" info="{{i.info}}" title="{{i.title}}" disabled="{{xs.b(i.disabled,false)}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tab>
 </template>
   
 <template name="tmpl_0_maui-tabs">
-  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{i.sticky}}" border="{{i.border}}" swipeable="{{i.swipeable}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{i.type}}" active="{{i.active}}" z-index="{{i.zIndex}}" animated="{{i.animated}}" ellipsis="{{i.ellipsis}}" duration="{{i.duration}}" offset-top="{{i.offsetTop}}" line-width="{{i.lineWidth}}" line-height="{{i.lineHeight}}" lazy-render="{{i.lazyRender}}" swipe-threshold="{{i.swipeThreshold}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{xs.b(i.sticky,false)}}" border="{{xs.b(i.border,true)}}" swipeable="{{xs.b(i.swipeable,false)}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{xs.b(i.type,'line')}}" active="{{xs.b(i.active,0)}}" z-index="{{xs.b(i.zIndex,99)}}" animated="{{xs.b(i.animated,false)}}" ellipsis="{{xs.b(i.ellipsis,true)}}" duration="{{xs.b(i.duration,0.3)}}" offset-top="{{xs.b(i.offsetTop,0)}}" line-width="{{xs.b(i.lineWidth,'40px')}}" line-height="{{xs.b(i.lineHeight,'3px')}}" lazy-render="{{xs.b(i.lazyRender,true)}}" swipe-threshold="{{xs.b(i.swipeThreshold,5)}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tabs>
 </template>
   
 <template name="tmpl_0_maui-tag">
-  <maui-tag  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" size="{{i.size}}" mark="{{i.mark}}" color="{{i.color}}" plain="{{i.plain}}" round="{{i.round}}" text-color="{{i.textColor}}" type="{{i.type}}" closeable="{{i.closeable}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tag  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" size="{{i.size}}" mark="{{xs.b(i.mark,false)}}" color="{{i.color}}" plain="{{xs.b(i.plain,false)}}" round="{{xs.b(i.round,false)}}" text-color="{{i.textColor}}" type="{{xs.b(i.type,'default')}}" closeable="{{xs.b(i.closeable,false)}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tag>
 </template>
   
 <template name="tmpl_0_maui-title-bar">
-  <maui-title-bar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" title-style="{{i.titleStyle}}" fixed="{{i.fixed}}" placeholder="{{i.placeholder}}" left-text="{{i.leftText}}" right-text="{{i.rightText}}" custom-style="{{i.customStyle}}" left-arrow="{{i.leftArrow}}" left-icon="{{i.leftIcon}}" left-image="{{i.leftImage}}" border="{{i.border}}" z-index="{{i.zIndex}}" safe-area-inset-top="{{i.safeAreaInsetTop}}" use-slot="{{i.useSlot}}" bindclickleft="eh" bindclickright="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-title-bar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" title-style="{{i.titleStyle}}" fixed="{{xs.b(i.fixed,false)}}" placeholder="{{xs.b(i.placeholder,false)}}" left-text="{{i.leftText}}" right-text="{{i.rightText}}" custom-style="{{i.customStyle}}" left-arrow="{{xs.b(i.leftArrow,false)}}" left-icon="{{i.leftIcon}}" left-image="{{i.leftImage}}" border="{{xs.b(i.border,true)}}" z-index="{{xs.b(i.zIndex,99)}}" safe-area-inset-top="{{xs.b(i.safeAreaInsetTop,true)}}" use-slot="{{xs.b(i.useSlot,false)}}" bindclickleft="eh" bindclickright="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-title-bar>
 </template>
   
 <template name="tmpl_0_maui-toast">
-  <maui-toast  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" type="{{i.type}}" mask="{{i.mask}}" z-index="{{i.zIndex}}" duration="{{i.duration}}" position="{{i.position}}" forbid-click="{{i.forbidClick}}" loading-type="{{i.loadingType}}" message="{{i.message}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-toast  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" type="{{xs.b(i.type,'text')}}" mask="{{xs.b(i.mask,false)}}" z-index="{{xs.b(i.zIndex,1000)}}" duration="{{xs.b(i.duration,2000)}}" position="{{xs.b(i.position,'middle')}}" forbid-click="{{xs.b(i.forbidClick,false)}}" loading-type="{{xs.b(i.loadingType,'circular')}}" message="{{i.message}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-toast>
 </template>
   
 <template name="tmpl_0_maui-modal">
-  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{i.visible}}" title="{{i.title}}" content="{{i.content}}" type="{{i.type}}" closable="{{i.closable}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-modal>
 </template>
   
 <template name="tmpl_0_maui-list">
-  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{i.radius}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{xs.b(i.radius,false)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list>
 </template>
   
 <template name="tmpl_0_maui-list-item">
-  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{i.disabled}}" show-divider="{{i.showDivider}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list-item>
 </template>
@@ -580,205 +580,205 @@
 </template>
 
 <template name="tmpl_1_maui-button">
-  <maui-button  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" type="{{i.type}}" size="{{i.size}}" plain="{{i.plain}}" block="{{i.block}}" round="{{i.round}}" square="{{i.square}}" loading="{{i.loading}}" hairline="{{i.hairline}}" disabled="{{i.disabled}}" loading-text="{{i.loadingText}}" custom-style="{{i.customStyle}}" loading-type="{{i.loadingType}}" loading-size="{{i.loadingSize}}" color="{{i.color}}" icon="{{i.icon}}" form-type="{{i.formType}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-button  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" type="{{xs.b(i.type,'default')}}" size="{{xs.b(i.size,'normal')}}" plain="{{xs.b(i.plain,false)}}" block="{{xs.b(i.block,false)}}" round="{{xs.b(i.round,false)}}" square="{{xs.b(i.square,false)}}" loading="{{xs.b(i.loading,false)}}" hairline="{{xs.b(i.hairline,false)}}" disabled="{{xs.b(i.disabled,false)}}" loading-text="{{i.loadingText}}" custom-style="{{i.customStyle}}" loading-type="{{xs.b(i.loadingType,'circular')}}" loading-size="{{xs.b(i.loadingSize,'20px')}}" color="{{i.color}}" icon="{{i.icon}}" form-type="{{i.formType}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-button>
 </template>
   
 <template name="tmpl_1_maui-cell">
-  <maui-cell  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" value="{{i.value}}" size="{{i.size}}" label="{{i.label}}" center="{{i.center}}" required="{{i.required}}" clickable="{{i.clickable}}" title-width="{{i.titleWidth}}" custom-style="{{i.customStyle}}" icon="{{i.icon}}" border="{{i.border}}" title-style="{{i.titleStyle}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-cell  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" value="{{i.value}}" size="{{i.size}}" label="{{i.label}}" center="{{xs.b(i.center,false)}}" required="{{xs.b(i.required,false)}}" clickable="{{xs.b(i.clickable,false)}}" title-width="{{i.titleWidth}}" custom-style="{{i.customStyle}}" icon="{{i.icon}}" border="{{xs.b(i.border,true)}}" title-style="{{i.titleStyle}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-cell>
 </template>
   
 <template name="tmpl_1_maui-cell-group">
-  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{i.border}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{xs.b(i.border,true)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-cell-group>
 </template>
   
 <template name="tmpl_1_maui-checkbox">
-  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{i.disabled}}" checked-color="{{i.checkedColor}}" label-position="{{i.labelPosition}}" label-disabled="{{i.labelDisabled}}" shape="{{i.shape}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox>
 </template>
   
 <template name="tmpl_1_maui-checkbox-group">
-  <maui-checkbox-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" max="{{i.max}}" direction="{{i.direction}}" disabled="{{i.disabled}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,[])}}" max="{{xs.b(i.max,0)}}" direction="{{xs.b(i.direction,'vertical')}}" disabled="{{xs.b(i.disabled,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox-group>
 </template>
   
 <template name="tmpl_1_maui-col">
-  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{i.span}}" offset="{{i.offset}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{xs.b(i.span,24)}}" offset="{{xs.b(i.offset,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-col>
 </template>
   
 <template name="tmpl_1_maui-row">
-  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{i.gutter}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{xs.b(i.gutter,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-row>
 </template>
   
 <template name="tmpl_1_maui-dialog">
-  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{i.theme}}" custom-style="{{i.customStyle}}" message-align="{{i.messageAlign}}" overlay-style="{{i.overlayStyle}}" use-slot="{{i.useSlot}}" show-cancel-button="{{i.showCancelButton}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" width="{{i.width}}" z-index="{{i.zIndex}}" confirm-button-text="{{i.confirmButtonText}}" cancel-button-text="{{i.cancelButtonText}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{i.showConfirmButton}}" overlay="{{i.overlay}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{xs.b(i.theme,'default')}}" custom-style="{{i.customStyle}}" message-align="{{xs.b(i.messageAlign,'center')}}" overlay-style="{{i.overlayStyle}}" use-slot="{{xs.b(i.useSlot,false)}}" show-cancel-button="{{xs.b(i.showCancelButton,false)}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,false)}}" width="{{i.width}}" z-index="{{xs.b(i.zIndex,100)}}" confirm-button-text="{{xs.b(i.confirmButtonText,'Confirm')}}" cancel-button-text="{{xs.b(i.cancelButtonText,'Cancel')}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{xs.b(i.showConfirmButton,true)}}" overlay="{{xs.b(i.overlay,true)}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-dialog>
 </template>
   
 <template name="tmpl_1_maui-divider">
-  <maui-divider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dashed="{{i.dashed}}" hairline="{{i.hairline}}" content-position="{{i.contentPosition}}" font-size="{{i.fontSize}}" border-color="{{i.borderColor}}" text-color="{{i.textColor}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-divider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dashed="{{xs.b(i.dashed,false)}}" hairline="{{xs.b(i.hairline,true)}}" content-position="{{xs.b(i.contentPosition,'center')}}" font-size="{{i.fontSize}}" border-color="{{i.borderColor}}" text-color="{{i.textColor}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-divider>
 </template>
   
 <template name="tmpl_1_maui-empty">
-  <maui-empty  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" description="{{i.description}}" image="{{i.image}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-empty  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" description="{{i.description}}" image="{{xs.b(i.image,'default')}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-empty>
 </template>
   
 <template name="tmpl_1_maui-field">
-  <maui-field  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" label="{{i.label}}" error="{{i.error}}" disabled="{{i.disabled}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" focus="{{i.focus}}" adjust-position="{{i.adjustPosition}}" password="{{i.password}}" confirm-hold="{{i.confirmHold}}" type="{{i.type}}" confirm-type="{{i.confirmType}}" cursor-spacing="{{i.cursorSpacing}}" input-align="{{i.inputAlign}}" error-message="{{i.errorMessage}}" show-word-limit="{{i.showWordLimit}}" error-message-align="{{i.errorMessageAlign}}" autosize="{{i.autosize}}" maxlength="{{i.maxlength}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" bindlinechange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-field  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" label="{{i.label}}" error="{{xs.b(i.error,false)}}" disabled="{{xs.b(i.disabled,false)}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" focus="{{xs.b(i.focus,false)}}" adjust-position="{{xs.b(i.adjustPosition,true)}}" password="{{xs.b(i.password,false)}}" confirm-hold="{{xs.b(i.confirmHold,false)}}" type="{{xs.b(i.type,'text')}}" confirm-type="{{xs.b(i.confirmType,'done')}}" cursor-spacing="{{xs.b(i.cursorSpacing,0)}}" input-align="{{xs.b(i.inputAlign,'left')}}" error-message="{{i.errorMessage}}" show-word-limit="{{xs.b(i.showWordLimit,false)}}" error-message-align="{{xs.b(i.errorMessageAlign,'left')}}" autosize="{{xs.b(i.autosize,false)}}" maxlength="{{xs.b(i.maxlength,140)}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" bindlinechange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-field>
 </template>
   
 <template name="tmpl_1_maui-icon">
-  <maui-icon  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" info="{{i.info}}" size="{{i.size}}" color="{{i.color}}" custom-style="{{i.customStyle}}" class-prefix="{{i.classPrefix}}" name="{{i.name}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-icon  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" info="{{i.info}}" size="{{xs.b(i.size,'16px')}}" color="{{i.color}}" custom-style="{{i.customStyle}}" class-prefix="{{xs.b(i.classPrefix,'maui-icon')}}" name="{{i.name}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-icon>
 </template>
   
 <template name="tmpl_1_maui-image">
-  <maui-image  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" src="{{i.src}}" round="{{i.round}}" width="{{i.width}}" height="{{i.height}}" radius="{{i.radius}}" mode="{{i.mode}}" show-error="{{i.showError}}" show-loading="{{i.showLoading}}" bindload="eh" binderror="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-image  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" src="{{i.src}}" round="{{xs.b(i.round,false)}}" width="{{i.width}}" height="{{i.height}}" radius="{{i.radius}}" mode="{{xs.b(i.mode,'scaleToFill')}}" show-error="{{xs.b(i.showError,true)}}" show-loading="{{xs.b(i.showLoading,true)}}" bindload="eh" binderror="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-image>
 </template>
   
 <template name="tmpl_1_maui-loading">
-  <maui-loading  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" type="{{i.type}}" size="{{i.size}}" text-size="{{i.textSize}}" vertical="{{i.vertical}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-loading  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{xs.b(i.color,'#c9c9c9')}}" type="{{xs.b(i.type,'circular')}}" size="{{xs.b(i.size,'30px')}}" text-size="{{xs.b(i.textSize,'14px')}}" vertical="{{xs.b(i.vertical,false)}}" custom-style="{{i.customStyle}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-loading>
 </template>
   
 <template name="tmpl_1_maui-overlay">
-  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" z-index="{{i.zIndex}}" duration="{{i.duration}}" custom-style="{{i.customStyle}}" lock-scroll="{{i.lockScroll}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" z-index="{{xs.b(i.zIndex,1)}}" duration="{{xs.b(i.duration,300)}}" custom-style="{{i.customStyle}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-overlay>
 </template>
   
 <template name="tmpl_1_maui-popup">
-  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" duration="{{i.duration}}" closeable="{{i.closeable}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{i.round}}" transition="{{i.transition}}" z-index="{{i.zIndex}}" overlay="{{i.overlay}}" position="{{i.position}}" close-icon="{{i.closeIcon}}" close-icon-position="{{i.closeIconPosition}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" safe-area-inset-bottom="{{i.safeAreaInsetBottom}}" safe-area-inset-top="{{i.safeAreaInsetTop}}" lock-scroll="{{i.lockScroll}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" duration="{{xs.b(i.duration,300)}}" closeable="{{xs.b(i.closeable,false)}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{xs.b(i.round,false)}}" transition="{{i.transition}}" z-index="{{xs.b(i.zIndex,100)}}" overlay="{{xs.b(i.overlay,true)}}" position="{{xs.b(i.position,'center')}}" close-icon="{{xs.b(i.closeIcon,'cancel')}}" close-icon-position="{{xs.b(i.closeIconPosition,'top-right')}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,true)}}" safe-area-inset-bottom="{{xs.b(i.safeAreaInsetBottom,true)}}" safe-area-inset-top="{{xs.b(i.safeAreaInsetTop,false)}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-popup>
 </template>
   
 <template name="tmpl_1_maui-progress">
-  <maui-progress  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" inactive="{{i.inactive}}" percentage="{{i.percentage}}" pivot-text="{{i.pivotText}}" pivot-color="{{i.pivotColor}}" track-color="{{i.trackColor}}" show-pivot="{{i.showPivot}}" color="{{i.color}}" text-color="{{i.textColor}}" stroke-width="{{i.strokeWidth}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-progress  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" inactive="{{xs.b(i.inactive,false)}}" percentage="{{xs.b(i.percentage,0)}}" pivot-text="{{i.pivotText}}" pivot-color="{{i.pivotColor}}" track-color="{{i.trackColor}}" show-pivot="{{xs.b(i.showPivot,true)}}" color="{{xs.b(i.color,'#1989fa')}}" text-color="{{xs.b(i.textColor,'#ffffff')}}" stroke-width="{{xs.b(i.strokeWidth,'4px')}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-progress>
 </template>
   
 <template name="tmpl_1_maui-radio">
-  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{i.disabled}}" checked-color="{{i.checkedColor}}" label-position="{{i.labelPosition}}" label-disabled="{{i.labelDisabled}}" shape="{{i.shape}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio>
 </template>
   
 <template name="tmpl_1_maui-radio-group">
-  <maui-radio-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" direction="{{i.direction}}" disabled="{{i.disabled}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" direction="{{xs.b(i.direction,'vertical')}}" disabled="{{xs.b(i.disabled,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio-group>
 </template>
   
 <template name="tmpl_1_maui-sidebar">
-  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{i.activeKey}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{xs.b(i.activeKey,0)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sidebar>
 </template>
   
 <template name="tmpl_1_maui-sidebar-item">
-  <maui-sidebar-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" badge="{{i.badge}}" info="{{i.info}}" title="{{i.title}}" disabled="{{i.disabled}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sidebar-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" badge="{{i.badge}}" info="{{i.info}}" title="{{i.title}}" disabled="{{xs.b(i.disabled,false)}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sidebar-item>
 </template>
   
 <template name="tmpl_1_maui-slider">
-  <maui-slider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" disabled="{{i.disabled}}" use-button-slot="{{i.useButtonSlot}}" max="{{i.max}}" min="{{i.min}}" inactive-color="{{i.inactiveColor}}" step="{{i.step}}" vertical="{{i.vertical}}" bar-height="{{i.barHeight}}" active-color="{{i.activeColor}}" binddragstart="eh" binddragend="eh" binddrag="eh" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-slider  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,0)}}" disabled="{{xs.b(i.disabled,false)}}" use-button-slot="{{xs.b(i.useButtonSlot,false)}}" max="{{xs.b(i.max,100)}}" min="{{xs.b(i.min,0)}}" inactive-color="{{i.inactiveColor}}" step="{{xs.b(i.step,1)}}" vertical="{{xs.b(i.vertical,false)}}" bar-height="{{xs.b(i.barHeight,'2px')}}" active-color="{{i.activeColor}}" binddragstart="eh" binddragend="eh" binddrag="eh" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-slider>
 </template>
   
 <template name="tmpl_1_maui-stepper">
-  <maui-stepper  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{i.value}}" min="{{i.min}}" max="{{i.max}}" step="{{i.step}}" integer="{{i.integer}}" disabled="{{i.disabled}}" disable-input="{{i.disableInput}}" async-change="{{i.asyncChange}}" input-width="{{i.inputWidth}}" button-size="{{i.buttonSize}}" show-plus="{{i.showPlus}}" show-minus="{{i.showMinus}}" decimal-length="{{i.decimalLength}}" theme="{{i.theme}}" long-press="{{i.longPress}}" bindchange="eh" bindoverlimit="eh" bindplus="eh" bindminus="eh" bindfocus="eh" bindblur="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-stepper  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" value="{{xs.b(i.value,1)}}" min="{{xs.b(i.min,1)}}" max="{{i.max}}" step="{{xs.b(i.step,1)}}" integer="{{xs.b(i.integer,false)}}" disabled="{{xs.b(i.disabled,false)}}" disable-input="{{xs.b(i.disableInput,false)}}" async-change="{{xs.b(i.asyncChange,false)}}" input-width="{{i.inputWidth}}" button-size="{{i.buttonSize}}" show-plus="{{xs.b(i.showPlus,true)}}" show-minus="{{xs.b(i.showMinus,true)}}" decimal-length="{{i.decimalLength}}" theme="{{i.theme}}" long-press="{{xs.b(i.longPress,true)}}" bindchange="eh" bindoverlimit="eh" bindplus="eh" bindminus="eh" bindfocus="eh" bindblur="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-stepper>
 </template>
   
 <template name="tmpl_1_maui-steps">
-  <maui-steps  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" steps="{{i.steps}}" active="{{i.active}}" direction="{{i.direction}}" active-color="{{i.activeColor}}" inactive-color="{{i.inactiveColor}}" active-icon="{{i.activeIcon}}" inactive-icon="{{i.inactiveIcon}}" bindclickstep="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-steps  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" steps="{{xs.b(i.steps,[])}}" active="{{xs.b(i.active,0)}}" direction="{{xs.b(i.direction,'horizontal')}}" active-color="{{xs.b(i.activeColor,'#07c160')}}" inactive-color="{{xs.b(i.inactiveColor,'#969799')}}" active-icon="{{xs.b(i.activeIcon,'success-black')}}" inactive-icon="{{i.inactiveIcon}}" bindclickstep="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-steps>
 </template>
   
 <template name="tmpl_1_maui-sticky">
-  <maui-sticky  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" z-index="{{i.zIndex}}" offset-top="{{i.offsetTop}}" disabled="{{i.disabled}}" container="{{i.container}}" scroll-top="{{i.scrollTop}}" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sticky  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" z-index="{{xs.b(i.zIndex,99)}}" offset-top="{{xs.b(i.offsetTop,0)}}" disabled="{{xs.b(i.disabled,false)}}" container="{{i.container}}" scroll-top="{{xs.b(i.scrollTop,0)}}" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sticky>
 </template>
   
 <template name="tmpl_1_maui-switch">
-  <maui-switch  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" checked="{{i.checked}}" loading="{{i.loading}}" disabled="{{i.disabled}}" size="{{i.size}}" active-color="{{i.activeColor}}" inactive-color="{{i.inactiveColor}}" active-value="{{i.activeValue}}" inactive-value="{{i.inactiveValue}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-switch  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" checked="{{xs.b(i.checked,false)}}" loading="{{xs.b(i.loading,false)}}" disabled="{{xs.b(i.disabled,false)}}" size="{{xs.b(i.size,'30px')}}" active-color="{{xs.b(i.activeColor,'#1989fa')}}" inactive-color="{{xs.b(i.inactiveColor,'#ffffff')}}" active-value="{{xs.b(i.activeValue,true)}}" inactive-value="{{xs.b(i.inactiveValue,false)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-switch>
 </template>
   
 <template name="tmpl_1_maui-tab">
-  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" info="{{i.info}}" title="{{i.title}}" disabled="{{i.disabled}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" info="{{i.info}}" title="{{i.title}}" disabled="{{xs.b(i.disabled,false)}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tab>
 </template>
   
 <template name="tmpl_1_maui-tabs">
-  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{i.sticky}}" border="{{i.border}}" swipeable="{{i.swipeable}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{i.type}}" active="{{i.active}}" z-index="{{i.zIndex}}" animated="{{i.animated}}" ellipsis="{{i.ellipsis}}" duration="{{i.duration}}" offset-top="{{i.offsetTop}}" line-width="{{i.lineWidth}}" line-height="{{i.lineHeight}}" lazy-render="{{i.lazyRender}}" swipe-threshold="{{i.swipeThreshold}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{xs.b(i.sticky,false)}}" border="{{xs.b(i.border,true)}}" swipeable="{{xs.b(i.swipeable,false)}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{xs.b(i.type,'line')}}" active="{{xs.b(i.active,0)}}" z-index="{{xs.b(i.zIndex,99)}}" animated="{{xs.b(i.animated,false)}}" ellipsis="{{xs.b(i.ellipsis,true)}}" duration="{{xs.b(i.duration,0.3)}}" offset-top="{{xs.b(i.offsetTop,0)}}" line-width="{{xs.b(i.lineWidth,'40px')}}" line-height="{{xs.b(i.lineHeight,'3px')}}" lazy-render="{{xs.b(i.lazyRender,true)}}" swipe-threshold="{{xs.b(i.swipeThreshold,5)}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tabs>
 </template>
   
 <template name="tmpl_1_maui-tag">
-  <maui-tag  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" size="{{i.size}}" mark="{{i.mark}}" color="{{i.color}}" plain="{{i.plain}}" round="{{i.round}}" text-color="{{i.textColor}}" type="{{i.type}}" closeable="{{i.closeable}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tag  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" size="{{i.size}}" mark="{{xs.b(i.mark,false)}}" color="{{i.color}}" plain="{{xs.b(i.plain,false)}}" round="{{xs.b(i.round,false)}}" text-color="{{i.textColor}}" type="{{xs.b(i.type,'default')}}" closeable="{{xs.b(i.closeable,false)}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tag>
 </template>
   
 <template name="tmpl_1_maui-title-bar">
-  <maui-title-bar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" title-style="{{i.titleStyle}}" fixed="{{i.fixed}}" placeholder="{{i.placeholder}}" left-text="{{i.leftText}}" right-text="{{i.rightText}}" custom-style="{{i.customStyle}}" left-arrow="{{i.leftArrow}}" left-icon="{{i.leftIcon}}" left-image="{{i.leftImage}}" border="{{i.border}}" z-index="{{i.zIndex}}" safe-area-inset-top="{{i.safeAreaInsetTop}}" use-slot="{{i.useSlot}}" bindclickleft="eh" bindclickright="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-title-bar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" title-style="{{i.titleStyle}}" fixed="{{xs.b(i.fixed,false)}}" placeholder="{{xs.b(i.placeholder,false)}}" left-text="{{i.leftText}}" right-text="{{i.rightText}}" custom-style="{{i.customStyle}}" left-arrow="{{xs.b(i.leftArrow,false)}}" left-icon="{{i.leftIcon}}" left-image="{{i.leftImage}}" border="{{xs.b(i.border,true)}}" z-index="{{xs.b(i.zIndex,99)}}" safe-area-inset-top="{{xs.b(i.safeAreaInsetTop,true)}}" use-slot="{{xs.b(i.useSlot,false)}}" bindclickleft="eh" bindclickright="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-title-bar>
 </template>
   
 <template name="tmpl_1_maui-toast">
-  <maui-toast  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" type="{{i.type}}" mask="{{i.mask}}" z-index="{{i.zIndex}}" duration="{{i.duration}}" position="{{i.position}}" forbid-click="{{i.forbidClick}}" loading-type="{{i.loadingType}}" message="{{i.message}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-toast  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" type="{{xs.b(i.type,'text')}}" mask="{{xs.b(i.mask,false)}}" z-index="{{xs.b(i.zIndex,1000)}}" duration="{{xs.b(i.duration,2000)}}" position="{{xs.b(i.position,'middle')}}" forbid-click="{{xs.b(i.forbidClick,false)}}" loading-type="{{xs.b(i.loadingType,'circular')}}" message="{{i.message}}" bindclose="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-toast>
 </template>
   
 <template name="tmpl_1_maui-modal">
-  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{i.visible}}" title="{{i.title}}" content="{{i.content}}" type="{{i.type}}" closable="{{i.closable}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-modal>
 </template>
   
 <template name="tmpl_1_maui-list">
-  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{i.radius}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{xs.b(i.radius,false)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list>
 </template>
   
 <template name="tmpl_1_maui-list-item">
-  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{i.disabled}}" show-divider="{{i.showDivider}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list-item>
 </template>
@@ -880,61 +880,61 @@
 </template>
 
 <template name="tmpl_2_maui-cell-group">
-  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{i.border}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-cell-group  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" border="{{xs.b(i.border,true)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-cell-group>
 </template>
   
 <template name="tmpl_2_maui-col">
-  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{i.span}}" offset="{{i.offset}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-col  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" span="{{xs.b(i.span,24)}}" offset="{{xs.b(i.offset,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-col>
 </template>
   
 <template name="tmpl_2_maui-row">
-  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{i.gutter}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-row  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" gutter="{{xs.b(i.gutter,0)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-row>
 </template>
   
 <template name="tmpl_2_maui-dialog">
-  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{i.theme}}" custom-style="{{i.customStyle}}" message-align="{{i.messageAlign}}" overlay-style="{{i.overlayStyle}}" use-slot="{{i.useSlot}}" show-cancel-button="{{i.showCancelButton}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" width="{{i.width}}" z-index="{{i.zIndex}}" confirm-button-text="{{i.confirmButtonText}}" cancel-button-text="{{i.cancelButtonText}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{i.showConfirmButton}}" overlay="{{i.overlay}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-dialog  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" title="{{i.title}}" title-style="{{i.titleStyle}}" message="{{i.message}}" message-style="{{i.messageStyle}}" theme="{{xs.b(i.theme,'default')}}" custom-style="{{i.customStyle}}" message-align="{{xs.b(i.messageAlign,'center')}}" overlay-style="{{i.overlayStyle}}" use-slot="{{xs.b(i.useSlot,false)}}" show-cancel-button="{{xs.b(i.showCancelButton,false)}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,false)}}" width="{{i.width}}" z-index="{{xs.b(i.zIndex,100)}}" confirm-button-text="{{xs.b(i.confirmButtonText,'Confirm')}}" cancel-button-text="{{xs.b(i.cancelButtonText,'Cancel')}}" confirm-button-color="{{i.confirmButtonColor}}" cancel-button-color="{{i.cancelButtonColor}}" show-confirm-button="{{xs.b(i.showConfirmButton,true)}}" overlay="{{xs.b(i.overlay,true)}}" bindclose="eh" bindconfirm="eh" bindcancel="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-dialog>
 </template>
   
 <template name="tmpl_2_maui-overlay">
-  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" z-index="{{i.zIndex}}" duration="{{i.duration}}" custom-style="{{i.customStyle}}" lock-scroll="{{i.lockScroll}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-overlay  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" z-index="{{xs.b(i.zIndex,1)}}" duration="{{xs.b(i.duration,300)}}" custom-style="{{i.customStyle}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-overlay>
 </template>
   
 <template name="tmpl_2_maui-popup">
-  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{i.show}}" duration="{{i.duration}}" closeable="{{i.closeable}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{i.round}}" transition="{{i.transition}}" z-index="{{i.zIndex}}" overlay="{{i.overlay}}" position="{{i.position}}" close-icon="{{i.closeIcon}}" close-icon-position="{{i.closeIconPosition}}" close-on-click-overlay="{{i.closeOnClickOverlay}}" safe-area-inset-bottom="{{i.safeAreaInsetBottom}}" safe-area-inset-top="{{i.safeAreaInsetTop}}" lock-scroll="{{i.lockScroll}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-popup  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" show="{{xs.b(i.show,false)}}" duration="{{xs.b(i.duration,300)}}" closeable="{{xs.b(i.closeable,false)}}" overlay-style="{{i.overlayStyle}}" custom-style="{{i.customStyle}}" round="{{xs.b(i.round,false)}}" transition="{{i.transition}}" z-index="{{xs.b(i.zIndex,100)}}" overlay="{{xs.b(i.overlay,true)}}" position="{{xs.b(i.position,'center')}}" close-icon="{{xs.b(i.closeIcon,'cancel')}}" close-icon-position="{{xs.b(i.closeIconPosition,'top-right')}}" close-on-click-overlay="{{xs.b(i.closeOnClickOverlay,true)}}" safe-area-inset-bottom="{{xs.b(i.safeAreaInsetBottom,true)}}" safe-area-inset-top="{{xs.b(i.safeAreaInsetTop,false)}}" lock-scroll="{{xs.b(i.lockScroll,true)}}" bindclose="eh" bindclickoverlay="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-popup>
 </template>
   
 <template name="tmpl_2_maui-sidebar">
-  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{i.activeKey}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-sidebar  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" active-key="{{xs.b(i.activeKey,0)}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-sidebar>
 </template>
   
 <template name="tmpl_2_maui-tab">
-  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{i.dot}}" info="{{i.info}}" title="{{i.title}}" disabled="{{i.disabled}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tab  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" dot="{{xs.b(i.dot,false)}}" info="{{i.info}}" title="{{i.title}}" disabled="{{xs.b(i.disabled,false)}}" title-style="{{i.titleStyle}}" name="{{i.name}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tab>
 </template>
   
 <template name="tmpl_2_maui-tabs">
-  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{i.sticky}}" border="{{i.border}}" swipeable="{{i.swipeable}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{i.type}}" active="{{i.active}}" z-index="{{i.zIndex}}" animated="{{i.animated}}" ellipsis="{{i.ellipsis}}" duration="{{i.duration}}" offset-top="{{i.offsetTop}}" line-width="{{i.lineWidth}}" line-height="{{i.lineHeight}}" lazy-render="{{i.lazyRender}}" swipe-threshold="{{i.swipeThreshold}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-tabs  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" color="{{i.color}}" sticky="{{xs.b(i.sticky,false)}}" border="{{xs.b(i.border,true)}}" swipeable="{{xs.b(i.swipeable,false)}}" custom-style="{{i.customStyle}}" title-active-color="{{i.titleActiveColor}}" title-inactive-color="{{i.titleInactiveColor}}" type="{{xs.b(i.type,'line')}}" active="{{xs.b(i.active,0)}}" z-index="{{xs.b(i.zIndex,99)}}" animated="{{xs.b(i.animated,false)}}" ellipsis="{{xs.b(i.ellipsis,true)}}" duration="{{xs.b(i.duration,0.3)}}" offset-top="{{xs.b(i.offsetTop,0)}}" line-width="{{xs.b(i.lineWidth,'40px')}}" line-height="{{xs.b(i.lineHeight,'3px')}}" lazy-render="{{xs.b(i.lazyRender,true)}}" swipe-threshold="{{xs.b(i.swipeThreshold,5)}}" bindclick="eh" bindchange="eh" binddisabled="eh" bindscroll="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-tabs>
 </template>
   
 <template name="tmpl_2_maui-list">
-  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{i.radius}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{xs.b(i.radius,false)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list>
 </template>
