@@ -102,21 +102,23 @@ fs.writeFileSync(path.join(TARO_DIR, 'tsconfig.json'), `{
 `);
 
 // 5. types/global.d.ts
-fs.writeFileSync(path.join(TARO_DIR, 'types/global.d.ts'), `/// <reference types="@tarojs/taro" />
-declare const ma: any;
-declare namespace Taro {
-  interface TaroStatic {
-    tradePay?: (options: any) => Promise<any>;
-    startPay?: (options: any) => Promise<any>;
-  }
-}
+fs.writeFileSync(path.join(TARO_DIR, 'types/global.d.ts'), `/// <reference types="@tarojs/extend" />
+declare module '*.png';
+declare module '*.gif';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.svg';
+declare module '*.css';
+declare module '*.less';
+declare module '*.scss';
+declare module '*.sass';
 `);
 
 // 6. project.config.json
 fs.writeFileSync(path.join(TARO_DIR, 'project.config.json'), JSON.stringify({
   miniprogramRoot: "dist/",
-  projectname: "miniapp-taro",
-  description: "Macle Taro React Mini App for OpenDoc",
+  projectname: "opendoc-miniapp-taro",
+  description: "OpenDoc Taro React Mini App Showcase for Macle",
   appid: "macle-opendoc-taro",
   setting: {
     es6: true,
@@ -214,10 +216,11 @@ const pageNames = [
 const appConfig = {
   pages: pageNames.map(name => `pages/${name}/index`),
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#0f172a',
-    navigationBarTitleText: '⚛️ Taro React Showcase',
-    navigationBarTextStyle: 'white'
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#ffffff",
+    navigationBarTitleText: "Macle OpenDoc Showcase",
+    navigationBarTextStyle: "black",
+    capsuleTheme: "light"
   }
 };
 fs.writeFileSync(path.join(TARO_DIR, 'src/app.config.ts'), `export default defineAppConfig(${JSON.stringify(appConfig, null, 2)});
@@ -238,28 +241,16 @@ function App({ children }: PropsWithChildren) {
 export default App;
 `);
 
-// src/app.css
+// src/app.css - Identical to opendoc/miniapp/app.mass
 fs.writeFileSync(path.join(TARO_DIR, 'src/app.css'), `page {
-  background-color: #f8fafc;
+  background-color: #f7f8fa;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #1e293b;
+  color: #323233;
   box-sizing: border-box;
 }
 
-.taro-badge-banner {
-  background: #0f172a;
-  color: #38bdf8;
-  padding: 8px 14px;
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid #1e293b;
-}
-
 .demo-block {
-  margin: 14px 12px;
+  margin: 16px 12px;
   background: #ffffff;
   border-radius: 12px;
   padding: 16px;
@@ -269,7 +260,7 @@ fs.writeFileSync(path.join(TARO_DIR, 'src/app.css'), `page {
 .demo-title {
   font-size: 14px;
   font-weight: 700;
-  color: #0f172a;
+  color: #1e293b;
   margin-bottom: 12px;
   display: block;
 }
@@ -285,38 +276,32 @@ fs.writeFileSync(path.join(TARO_DIR, 'src/app.css'), `page {
   margin-bottom: 12px;
 }
 
-.demo-layout-col {
-  background-color: #38bdf8;
-  color: #ffffff;
-  text-align: center;
-  border-radius: 4px;
-  padding: 10px 0;
-  font-size: 12px;
-  font-weight: 600;
-  box-sizing: border-box;
-  border: 1px dashed rgba(255, 255, 255, 0.7);
+/* Layout Grid Column Visual Borders */
+.maui-row {
+  margin-bottom: 12px;
 }
-
-.demo-layout-col-alt {
-  background-color: #0284c7;
-  color: #ffffff;
+.maui-col {
+  border: 1.5px solid #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
   text-align: center;
   border-radius: 4px;
-  padding: 10px 0;
-  font-size: 12px;
+  line-height: 38px;
+  margin-bottom: 6px;
   font-weight: 600;
-  box-sizing: border-box;
-  border: 1px dashed rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+.maui-col:nth-child(even) {
+  background-color: #e0f2fe;
 }
 `);
 
-// 9. Generate each Taro React page
+// 9. All 23 Page Definitions - 100% Identical to opendoc/miniapp/pages/
 const pagesDir = path.join(TARO_DIR, 'src/pages');
-fs.mkdirSync(pagesDir, { recursive: true });
 
 const pageDefinitions = {
   'index': {
-    title: '⚛️ Taro Component Showcase',
+    title: 'Component Showcase',
     code: `import React from 'react';
 import { View, Text, Navigator } from '@tarojs/components';
 import './index.css';
@@ -324,10 +309,9 @@ import './index.css';
 export default function IndexPage() {
   return (
     <View className="home-container">
-      <View className="taro-banner">
-        <Text className="banner-badge">⚛️ Taro 4.3 + @tarojs/plugin-platform-macle</Text>
-        <Text className="banner-title">Macle Taro Showcase</Text>
-        <Text className="banner-sub">React-Powered MiniProgram Components</Text>
+      <View className="home-banner">
+        <Text className="banner-title">Macle OpenDoc</Text>
+        <Text className="banner-sub">MiniProgram Interactive Component Library</Text>
       </View>
 
       <View className="demo-block">
@@ -379,23 +363,15 @@ export default function IndexPage() {
 }
 `,
     css: `.home-container { padding: 12px; }
-.taro-banner {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+.home-banner {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
-  padding: 18px 16px;
+  padding: 20px 16px;
   border-radius: 12px;
   margin-bottom: 14px;
-  border-left: 4px solid #38bdf8;
-}
-.banner-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: #38bdf8;
-  display: block;
-  margin-bottom: 6px;
 }
 .banner-title { font-size: 20px; font-weight: 800; display: block; margin-bottom: 4px; }
-.banner-sub { font-size: 12px; opacity: 0.8; display: block; }
+.banner-sub { font-size: 12px; opacity: 0.9; display: block; }
 .nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .nav-item {
   background: #f1f5f9;
@@ -412,69 +388,59 @@ export default function IndexPage() {
   },
 
   'runner': {
-    title: 'Dynamic Taro Runner',
+    title: 'Dynamic Snippet Runner',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
+import { useRouter } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro, { useRouter } from '@tarojs/taro';
+import './index.css';
 
 export default function RunnerPage() {
   const router = useRouter();
-  const title = router.params.title ? decodeURIComponent(router.params.title) : 'Taro React Live Execution';
-  const [clickCount, setClickCount] = useState(0);
+  const [snippetTitle] = useState(router.params.title ? decodeURIComponent(router.params.title) : 'Macle MiniProgram Live Execution');
 
-  const handleAction = () => {
-    setClickCount(prev => prev + 1);
-    Taro.showToast({
-      title: \`Taro React clicked \${clickCount + 1} times!\`,
-      icon: 'success'
-    });
+  const handleRunClick = () => {
+    Taro.showToast({ title: 'Code executed in DevSuite!', icon: 'success' });
   };
 
   return (
-    <View style={{ padding: '12px' }}>
+    <View className="runner-page">
       <View className="demo-block">
-        <Text className="demo-title">⚛️ Dynamic Taro React Execution</Text>
-        <View style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <Text style={{ fontSize: '13px', color: '#64748b' }}>{title}</Text>
-          <MauiButton type="primary" block onClick={handleAction}>
-            Execute Taro React Action ({clickCount})
-          </MauiButton>
+        <Text className="demo-title">Dynamic MAML Snippet Execution</Text>
+        <View className="runner-content">
+          <Text className="snippet-desc">{snippetTitle}</Text>
+          <MauiButton type="primary" block onClick={handleRunClick}>Run Live Interactive Action</MauiButton>
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.runner-page { padding: 12px; }
+.runner-content { display: flex; flex-direction: column; gap: 12px; }
+.snippet-desc { font-size: 13px; color: #64748b; }
+`
   },
 
   'button': {
-    title: 'Button 按钮 (Taro)',
+    title: 'Button 按钮',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import './index.css';
 
 export default function ButtonPage() {
-  const handleClick = (type: string) => {
-    Taro.showToast({ title: \`Clicked \${type} button!\`, icon: 'none' });
-  };
-
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="taro-badge-banner">
-        <Text>⚛️ Taro React: MauiButton</Text>
-      </View>
-
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Button Types</Text>
         <View className="demo-row">
-          <MauiButton type="default" onClick={() => handleClick('default')}>default</MauiButton>
-          <MauiButton type="primary" onClick={() => handleClick('primary')}>primary</MauiButton>
-          <MauiButton type="info" onClick={() => handleClick('info')}>info</MauiButton>
-          <MauiButton type="warning" onClick={() => handleClick('warning')}>warning</MauiButton>
-          <MauiButton type="danger" onClick={() => handleClick('danger')}>danger</MauiButton>
+          <MauiButton type="default">default button</MauiButton>
+          <MauiButton type="primary">primary button</MauiButton>
+          <MauiButton type="info">information button</MauiButton>
+          <MauiButton type="warning">warning button</MauiButton>
+          <MauiButton type="danger">danger button</MauiButton>
         </View>
       </View>
 
@@ -526,389 +492,551 @@ export default function ButtonPage() {
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'layout': {
-    title: 'Layout 栅格 (Taro)',
+    title: 'Layout 栅格',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiRow, MauiCol } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function LayoutPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="taro-badge-banner">
-        <Text>⚛️ Taro React: MauiRow & MauiCol</Text>
-      </View>
-
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Basic Usage (span: 8, 8, 8)</Text>
         <MauiRow>
-          <MauiCol span={8}><View className="demo-layout-col">span: 8</View></MauiCol>
-          <MauiCol span={8}><View className="demo-layout-col-alt">span: 8</View></MauiCol>
-          <MauiCol span={8}><View className="demo-layout-col">span: 8</View></MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
         </MauiRow>
       </View>
 
       <View className="demo-block">
         <Text className="demo-title">2. Column Offset (span: 4 + offset: 4, span: 10)</Text>
         <MauiRow>
-          <MauiCol span={4}><View className="demo-layout-col">span: 4</View></MauiCol>
-          <MauiCol span={10} offset={4}><View className="demo-layout-col-alt">offset: 4, span: 10</View></MauiCol>
+          <MauiCol span="4">span: 4</MauiCol>
+          <MauiCol span="10" offset="4">offset: 4, span: 10</MauiCol>
         </MauiRow>
       </View>
 
       <View className="demo-block">
         <Text className="demo-title">3. Column Offset (offset: 12, span: 12)</Text>
         <MauiRow>
-          <MauiCol offset={12} span={12}><View className="demo-layout-col">offset: 12, span: 12</View></MauiCol>
+          <MauiCol offset="12" span="12">offset: 12, span: 12</MauiCol>
         </MauiRow>
       </View>
 
       <View className="demo-block">
         <Text className="demo-title">4. Column Gutter (gutter: 20)</Text>
         <MauiRow gutter="20">
-          <MauiCol span={8}><View className="demo-layout-col">span: 8</View></MauiCol>
-          <MauiCol span={8}><View className="demo-layout-col-alt">span: 8</View></MauiCol>
-          <MauiCol span={8}><View className="demo-layout-col">span: 8</View></MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
+          <MauiCol span="8">span: 8</MauiCol>
         </MauiRow>
       </View>
 
       <View className="demo-block">
         <Text className="demo-title">5. Flex Layout (justify: center / end)</Text>
         <MauiRow type="flex" justify="center">
-          <MauiCol span={6}><View className="demo-layout-col">span: 6</View></MauiCol>
-          <MauiCol span={6}><View className="demo-layout-col-alt">span: 6</View></MauiCol>
+          <MauiCol span="6">span: 6</MauiCol>
+          <MauiCol span="6">span: 6</MauiCol>
         </MauiRow>
         <View style={{ height: '10px' }} />
         <MauiRow type="flex" justify="end">
-          <MauiCol span={6}><View className="demo-layout-col">span: 6</View></MauiCol>
-          <MauiCol span={6}><View className="demo-layout-col-alt">span: 6</View></MauiCol>
+          <MauiCol span="6">span: 6</MauiCol>
+          <MauiCol span="6">span: 6</MauiCol>
         </MauiRow>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }
+.maui-col {
+  border: 1.5px solid #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  text-align: center;
+  border-radius: 4px;
+  line-height: 38px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.maui-col:nth-child(even) {
+  background-color: #e0f2fe;
+}
+`
   },
 
   'cell': {
-    title: 'Cell 单元格 (Taro)',
+    title: 'Cell 单元格',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiCell, MauiCellGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import './index.css';
 
 export default function CellPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage</Text>
+    <View className="page-body">
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>1. Basic Usage</Text>
         <MauiCellGroup>
-          <MauiCell title="Cell Title" value="Content" />
-          <MauiCell title="Cell Title" value="Content" label="Description information" />
+          <MauiCell title="Cell title" value="Content" />
+          <MauiCell title="Cell title" value="Content" label="Description" />
         </MauiCellGroup>
       </View>
 
-      <View className="demo-block">
-        <Text className="demo-title">2. Navigation & Arrow</Text>
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>2. Cell Size & Links</Text>
         <MauiCellGroup>
-          <MauiCell title="URL Navigation" is-link onClick={() => Taro.showToast({ title: 'Navigated!', icon: 'none' })} />
-          <MauiCell title="Arrow Direction" is-link arrow-direction="down" value="Detail" />
+          <MauiCell title="Large Cell" value="Content" size="large" label="Description" />
+          <MauiCell title="Navigation Link" is-link />
+          <MauiCell title="Value Link" is-link value="Detail" />
         </MauiCellGroup>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'checkbox': {
-    title: 'Checkbox 复选框 (Taro)',
+    title: 'Checkbox 复选框',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiCheckbox, MauiCheckboxGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function CheckboxPage() {
-  const [checked1, setChecked1] = useState(true);
-  const [checked2, setChecked2] = useState(false);
+  const [checked, setChecked] = useState(true);
+  const [checkedSquare, setCheckedSquare] = useState(true);
+  const [groupVal, setGroupVal] = useState<string[]>(['a', 'b']);
+
+  const toggleGroup = (name: string) => {
+    setGroupVal(prev => prev.includes(name) ? prev.filter(x => x !== name) : [...prev, name]);
+  };
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Basic Usage</Text>
-        <MauiCheckbox value={checked1} onChange={() => setChecked1(!checked1)}>
-          Checkbox: {checked1 ? 'Checked' : 'Unchecked'}
+        <MauiCheckbox
+          value={checked}
+          onChange={(e: any) => {
+            const nextVal = typeof e.detail === 'boolean' ? e.detail : !checked;
+            setChecked(nextVal);
+          }}
+        >
+          Checkbox: {checked ? 'Checked' : 'Unchecked'}
         </MauiCheckbox>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">2. Custom Shape & Color</Text>
-        <MauiCheckbox value={checked2} shape="square" checked-color="#07c160" onChange={() => setChecked2(!checked2)}>
-          Square Custom Color
-        </MauiCheckbox>
+        <Text className="demo-title">2. Disabled & Shapes</Text>
+        <View className="demo-row">
+          <MauiCheckbox disabled value={true}>Disabled Checked</MauiCheckbox>
+          <MauiCheckbox
+            shape="square"
+            value={checkedSquare}
+            onChange={(e: any) => {
+              const nextVal = typeof e.detail === 'boolean' ? e.detail : !checkedSquare;
+              setCheckedSquare(nextVal);
+            }}
+          >
+            Square Checkbox
+          </MauiCheckbox>
+          <MauiCheckbox checked-color="#07c160" value={true}>Custom Color</MauiCheckbox>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Checkbox Group</Text>
+        <MauiCheckboxGroup
+          value={groupVal}
+          onChange={(e: any) => {
+            const val = Array.isArray(e.detail) ? e.detail : (e.detail?.value || []);
+            setGroupVal(val);
+          }}
+        >
+          <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <MauiCheckbox name="a" value={groupVal.includes('a')} onChange={() => toggleGroup('a')}>Option A</MauiCheckbox>
+            <MauiCheckbox name="b" value={groupVal.includes('b')} onChange={() => toggleGroup('b')}>Option B</MauiCheckbox>
+            <MauiCheckbox name="c" value={groupVal.includes('c')} onChange={() => toggleGroup('c')}>Option C</MauiCheckbox>
+          </View>
+        </MauiCheckboxGroup>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'radio': {
-    title: 'Radio 单选框 (Taro)',
+    title: 'Radio 单选框',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiRadio, MauiRadioGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function RadioPage() {
-  const [radioValue, setRadioValue] = useState('1');
+  const [currentRadio, setCurrentRadio] = useState('1');
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Radio Group (Selected: {radioValue})</Text>
-        <MauiRadioGroup value={radioValue} onChange={(e: any) => setRadioValue(e.detail || e.target?.value || '1')}>
-          <MauiRadio name="1">Option 1</MauiRadio>
-          <View style={{ height: '8px' }} />
-          <MauiRadio name="2">Option 2</MauiRadio>
+        <Text className="demo-title">1. Radio Group (Selected: {currentRadio})</Text>
+        <MauiRadioGroup
+          value={currentRadio}
+          onChange={(e: any) => {
+            const val = typeof e.detail === 'string' ? e.detail : (e.detail?.value || e.target?.value || '1');
+            setCurrentRadio(val);
+          }}
+        >
+          <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <MauiRadio name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>Option 1</MauiRadio>
+            <MauiRadio name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Option 2</MauiRadio>
+            <MauiRadio name="3" value={currentRadio} onChange={() => setCurrentRadio('3')} disabled>Option 3 (Disabled)</MauiRadio>
+          </View>
+        </MauiRadioGroup>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Horizontal Direction</Text>
+        <MauiRadioGroup
+          direction="horizontal"
+          value={currentRadio}
+          onChange={(e: any) => {
+            const val = typeof e.detail === 'string' ? e.detail : (e.detail?.value || e.target?.value || '1');
+            setCurrentRadio(val);
+          }}
+        >
+          <View style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+            <MauiRadio name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>One</MauiRadio>
+            <MauiRadio name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Two</MauiRadio>
+          </View>
         </MauiRadioGroup>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'switch': {
-    title: 'Switch 开关 (Taro)',
+    title: 'Switch 开关',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiSwitch } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function SwitchPage() {
   const [checked, setChecked] = useState(true);
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Basic Switch</Text>
+        <Text className="demo-title">1. Basic Usage (State: {checked ? 'ON' : 'OFF'})</Text>
+        <MauiSwitch checked={checked} onChange={(e: any) => setChecked(e.detail)} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Disabled & Loading</Text>
         <View className="demo-row">
-          <MauiSwitch checked={checked} onChange={() => setChecked(!checked)} />
-          <Text style={{ fontSize: '13px' }}>State: {checked ? 'ON' : 'OFF'}</Text>
+          <MauiSwitch disabled checked={true} />
+          <MauiSwitch disabled checked={false} />
+          <MauiSwitch loading checked={true} />
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Custom Size & Colors</Text>
+        <View className="demo-row">
+          <MauiSwitch size="24px" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
+          <MauiSwitch active-color="#07c160" inactive-color="#ee0a24" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'slider': {
-    title: 'Slider 滑块 (Taro)',
+    title: 'Slider 滑块',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiSlider } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function SliderPage() {
-  const [val, setVal] = useState(50);
+  const [value, setValue] = useState(50);
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Basic Slider (Value: {val})</Text>
-        <MauiSlider value={val} onChange={(e: any) => setVal(e.detail || 50)} />
+        <Text className="demo-title">1. Basic Usage (Value: {value})</Text>
+        <MauiSlider value={value} onChange={(e: any) => setValue(e.detail)} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Custom Range (-50 to 50)</Text>
+        <MauiSlider min={-50} max={50} value={0} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Step Size (step: 10)</Text>
+        <MauiSlider step={10} value={30} />
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'stepper': {
-    title: 'Stepper 步进器 (Taro)',
+    title: 'Stepper 步进器',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiStepper } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function StepperPage() {
-  const [val, setVal] = useState(1);
+  const [count, setCount] = useState(3);
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Basic Stepper (Value: {val})</Text>
-        <MauiStepper value={val} min={1} max={10} step={1} onChange={(e: any) => setVal(e.detail || 1)} />
+        <Text className="demo-title">1. Basic Usage (Value: {count})</Text>
+        <MauiStepper value={count} onChange={(e: any) => setCount(e.detail)} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Step Size & Limits (1 to 10, step 2)</Text>
+        <MauiStepper min={1} max={10} step={2} value={count} onChange={(e: any) => setCount(e.detail)} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Disabled</Text>
+        <MauiStepper disabled value={1} />
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'field': {
-    title: 'Field 输入框 (Taro)',
+    title: 'Field 输入框',
     code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiField } from '@tarojs/plugin-platform-macle/dist/components-react';
+import { View } from '@tarojs/components';
+import { MauiField, MauiCellGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function FieldPage() {
-  const [text, setText] = useState('');
+  const [username, setUsername] = useState('macle_user');
 
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Field</Text>
-        <MauiField
-          value={text}
-          label="Username"
-          placeholder="Please enter username"
-          onChange={(e: any) => setText(e.detail || '')}
-        />
-        <Text style={{ fontSize: '12px', color: '#64748b', marginTop: '8px', display: 'block' }}>
-          Current input: {text}
-        </Text>
+    <View className="page-body">
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <MauiCellGroup>
+          <MauiField
+            value={username}
+            placeholder="Please enter username"
+            label="Username"
+            onChange={(e: any) => setUsername(e.detail)}
+          />
+          <MauiField type="password" label="Password" placeholder="Enter password" />
+          <MauiField clearable label="Clearable" placeholder="Clearable input" />
+          <MauiField disabled label="Disabled" value="Input disabled" />
+        </MauiCellGroup>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'tag': {
-    title: 'Tag 标签 (Taro)',
+    title: 'Tag 标签',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiTag } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function TagPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Tag Types</Text>
         <View className="demo-row">
-          <MauiTag type="default">Default</MauiTag>
           <MauiTag type="primary">Primary</MauiTag>
           <MauiTag type="success">Success</MauiTag>
           <MauiTag type="danger">Danger</MauiTag>
           <MauiTag type="warning">Warning</MauiTag>
         </View>
       </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Plain & Shapes</Text>
+        <View className="demo-row">
+          <MauiTag plain type="primary">Plain</MauiTag>
+          <MauiTag round type="primary">Round</MauiTag>
+          <MauiTag mark type="primary">Mark</MauiTag>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Custom Colors & Sizes</Text>
+        <View className="demo-row">
+          <MauiTag color="#7232dd">Custom #7232dd</MauiTag>
+          <MauiTag size="large" type="primary">Large</MauiTag>
+          <MauiTag size="medium" type="primary">Medium</MauiTag>
+        </View>
+      </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'loading': {
-    title: 'Loading 加载 (Taro)',
+    title: 'Loading 加载',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiLoading } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function LoadingPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Loading Types</Text>
         <View className="demo-row">
           <MauiLoading />
           <MauiLoading type="spinner" />
-          <MauiLoading color="#1989fa">Loading...</MauiLoading>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Custom Color & Vertical Text</Text>
+        <View className="demo-row">
+          <MauiLoading color="#1989fa" />
+          <MauiLoading size="24px" vertical>Loading...</MauiLoading>
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'progress': {
-    title: 'Progress 进度条 (Taro)',
+    title: 'Progress 进度条',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiProgress } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function ProgressPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Progress Bars</Text>
-        <View style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-          <MauiProgress percentage={50} />
-          <MauiProgress percentage={75} stroke-width="8" />
-          <MauiProgress percentage={100} color="#07c160" />
-        </View>
+        <Text className="demo-title">1. Basic Usage (50%)</Text>
+        <MauiProgress percentage={50} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Stroke Width & Inactive</Text>
+        <MauiProgress stroke-width="8" percentage={75} />
+        <View style={{ height: '12px' }} />
+        <MauiProgress inactive percentage={40} />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Custom Color</Text>
+        <MauiProgress color="#ee0a24" percentage={65} />
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'divider': {
-    title: 'Divider 分割线 (Taro)',
+    title: 'Divider 分割线',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiDivider } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function DividerPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Dividers</Text>
-        <MauiDivider contentPosition="center">Text Center</MauiDivider>
-        <MauiDivider contentPosition="left">Text Left</MauiDivider>
-        <MauiDivider dashed>Dashed Divider</MauiDivider>
+        <Text className="demo-title">1. Basic Divider</Text>
+        <MauiDivider />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Content Position</Text>
+        <MauiDivider content-position="center">Center Text</MauiDivider>
+        <MauiDivider content-position="left">Left Text</MauiDivider>
+        <MauiDivider content-position="right">Right Text</MauiDivider>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Dashed & Custom Colors</Text>
+        <MauiDivider dashed />
+        <MauiDivider text-color="#1989fa" custom-style="color: #1989fa;">Blue Divider</MauiDivider>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'empty': {
-    title: 'Empty 空状态 (Taro)',
+    title: 'Empty 空状态',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiEmpty, MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import { MauiEmpty } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function EmptyPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Empty State</Text>
-        <MauiEmpty description="No Data Available">
-          <MauiButton round type="danger" size="small" onClick={() => Taro.showToast({ title: 'Refreshing...', icon: 'loading' })}>
-            Refresh
-          </MauiButton>
-        </MauiEmpty>
+        <Text className="demo-title">1. Basic Usage</Text>
+        <MauiEmpty description="No Data" />
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'steps': {
-    title: 'Steps 步骤条 (Taro)',
+    title: 'Steps 步骤条',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiSteps, MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function StepsPage() {
   const [active, setActive] = useState(1);
@@ -918,150 +1046,168 @@ export default function StepsPage() {
     { text: 'Step 3', desc: 'Description 3' }
   ];
 
+  const nextStep = () => {
+    setActive((active + 1) % 3);
+  };
+
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Steps (Active: {active + 1})</Text>
+        <Text className="demo-title">1. Horizontal Steps (Active: {active})</Text>
         <MauiSteps steps={steps} active={active} />
-        <View style={{ marginTop: '12px' }}>
-          <MauiButton size="small" type="primary" onClick={() => setActive((active + 1) % 3)}>Next Step</MauiButton>
+        <View style={{ marginTop: '14px' }}>
+          <MauiButton type="primary" size="small" onClick={nextStep}>Next Step</MauiButton>
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'dialog': {
-    title: 'Dialog 弹出框 (Taro)',
-    code: `import React, { useState } from 'react';
+    title: 'Dialog 弹出框',
+    code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiButton, MauiDialog } from '@tarojs/plugin-platform-macle/dist/components-react';
 import Taro from '@tarojs/taro';
+import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function DialogPage() {
-  const [show, setShow] = useState(false);
+  const showAlert = () => {
+    Taro.showToast({ title: 'Dialog Verified!', icon: 'success' });
+  };
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Alert Dialog</Text>
-        <MauiButton type="primary" onClick={() => setShow(true)}>Open Dialog</MauiButton>
-        <MauiDialog
-          show={show}
-          title="Taro Dialog"
-          message="This dialog is rendered with Taro React!"
-          show-cancel-button
-          onConfirm={() => {
-            setShow(false);
-            Taro.showToast({ title: 'Confirmed!', icon: 'success' });
-          }}
-          onClose={() => setShow(false)}
-        />
+        <Text className="demo-title">1. Native Dialog Trigger</Text>
+        <MauiButton type="primary" block onClick={showAlert}>Trigger Alert Dialog</MauiButton>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'toast': {
-    title: 'Toast 轻提示 (Taro)',
+    title: 'Toast 轻提示',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
 import Taro from '@tarojs/taro';
+import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function ToastPage() {
+  const showSuccess = () => {
+    Taro.showToast({ title: 'Success!', icon: 'success' });
+  };
+
+  const showInfo = () => {
+    Taro.showToast({ title: 'Information message', icon: 'none' });
+  };
+
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Taro Toast Prompts</Text>
+        <Text className="demo-title">1. Toast Notifications</Text>
         <View className="demo-row">
-          <MauiButton type="primary" onClick={() => Taro.showToast({ title: 'Success!', icon: 'success' })}>
-            Success Toast
-          </MauiButton>
-          <MauiButton type="info" onClick={() => Taro.showToast({ title: 'Info prompt', icon: 'none' })}>
-            Info Toast
-          </MauiButton>
+          <MauiButton type="primary" onClick={showSuccess}>Success Toast</MauiButton>
+          <MauiButton type="info" onClick={showInfo}>Info Toast</MauiButton>
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'view': {
-    title: 'View 视图容器 (Taro)',
+    title: 'View 视图容器',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
+import './index.css';
 
 export default function ViewPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Flex Container</Text>
-        <View style={{ display: 'flex', gap: '8px' }}>
-          <View style={{ flex: 1, background: '#e0f2fe', padding: '16px', borderRadius: '6px', textAlign: 'center' }}>
-            <Text style={{ color: '#0369a1', fontWeight: 600 }}>Box 1</Text>
-          </View>
-          <View style={{ flex: 1, background: '#fef3c7', padding: '16px', borderRadius: '6px', textAlign: 'center' }}>
-            <Text style={{ color: '#b45309', fontWeight: 600 }}>Box 2</Text>
-          </View>
+        <Text className="demo-title">1. Flex Direction: Row</Text>
+        <View className="flex-row">
+          <View className="box bg-red">A</View>
+          <View className="box bg-green">B</View>
+          <View className="box bg-blue">C</View>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Flex Direction: Column</Text>
+        <View className="flex-col">
+          <View className="box bg-red">Row 1</View>
+          <View className="box bg-green">Row 2</View>
+          <View className="box bg-blue">Row 3</View>
         </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }
+.flex-row { display: flex; flex-direction: row; gap: 10px; }
+.flex-col { display: flex; flex-direction: column; gap: 10px; }
+.box { padding: 14px; color: #fff; text-align: center; border-radius: 6px; font-weight: bold; }
+.bg-red { background-color: #ef4444; flex: 1; }
+.bg-green { background-color: #10b981; flex: 1; }
+.bg-blue { background-color: #3b82f6; flex: 1; }
+`
   },
 
   'text': {
-    title: 'Text 文本 (Taro)',
+    title: 'Text 文本',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
+import './index.css';
 
 export default function TextPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Selectable Text</Text>
-        <Text selectable style={{ fontSize: '14px', color: '#334155' }}>
-          This text is selectable by long press in the mini program!
-        </Text>
+        <Text className="demo-title">1. Text Component</Text>
+        <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <Text style={{ fontSize: '16px', fontWeight: 'bold', color: '#0f172a' }}>Headline Bold Text</Text>
+          <Text style={{ fontSize: '13px', color: '#64748b' }}>Subtitle or description text style.</Text>
+          <Text selectable style={{ fontSize: '13px', color: '#2563eb' }}>This text is selectable (selectable=true)</Text>
+        </View>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }`
   },
 
   'swiper': {
-    title: 'Swiper 轮播 (Taro)',
+    title: 'Swiper 轮播',
     code: `import React from 'react';
 import { View, Text, Swiper, SwiperItem } from '@tarojs/components';
+import './index.css';
 
 export default function SwiperPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="demo-block">
-        <Text className="demo-title">1. Taro Swiper</Text>
-        <Swiper indicatorDots autoplay circular style={{ height: '140px', borderRadius: '8px', overflow: 'hidden' }}>
-          <SwiperItem style={{ background: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>Slide 1</Text>
+    <View className="page-body">
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <Swiper indicatorDots autoplay interval={3000} duration={500} style={{ height: '160px' }}>
+          <SwiperItem>
+            <View className="swiper-slide slide-1"><Text>Slide 1</Text></View>
           </SwiperItem>
-          <SwiperItem style={{ background: '#0284c7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>Slide 2</Text>
+          <SwiperItem>
+            <View className="swiper-slide slide-2"><Text>Slide 2</Text></View>
           </SwiperItem>
-          <SwiperItem style={{ background: '#0369a1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>Slide 3</Text>
+          <SwiperItem>
+            <View className="swiper-slide slide-3"><Text>Slide 3</Text></View>
           </SwiperItem>
         </Swiper>
       </View>
@@ -1069,46 +1215,45 @@ export default function SwiperPage() {
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }
+.swiper-slide { height: 160px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: bold; }
+.slide-1 { background: #3b82f6; }
+.slide-2 { background: #10b981; }
+.slide-3 { background: #8b5cf6; }
+`
   },
 
   'scroll-view': {
-    title: 'ScrollView 滚动视图 (Taro)',
+    title: 'ScrollView 滚动视图',
     code: `import React from 'react';
 import { View, Text, ScrollView } from '@tarojs/components';
+import './index.css';
 
 export default function ScrollViewPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Horizontal ScrollView</Text>
+        <Text className="demo-title">1. Horizontal Scroll View</Text>
         <ScrollView scrollX style={{ whiteSpace: 'nowrap', width: '100%' }}>
-          {[1, 2, 3, 4, 5, 6].map(num => (
-            <View
-              key={num}
-              style={{
-                display: 'inline-block',
-                width: '100px',
-                height: '70px',
-                background: '#e2e8f0',
-                marginRight: '8px',
-                borderRadius: '8px',
-                lineHeight: '70px',
-                textAlign: 'center',
-                color: '#475569',
-                fontWeight: 600
-              }}
-            >
-              Item {num}
-            </View>
-          ))}
+          <View className="scroll-item bg-1">Item 1</View>
+          <View className="scroll-item bg-2">Item 2</View>
+          <View className="scroll-item bg-3">Item 3</View>
+          <View className="scroll-item bg-4">Item 4</View>
+          <View className="scroll-item bg-5">Item 5</View>
         </ScrollView>
       </View>
     </View>
   );
 }
 `,
-    css: ''
+    css: `.page-body { padding: 8px 0; }
+.scroll-item { display: inline-block; width: 100px; height: 80px; margin-right: 10px; border-radius: 8px; line-height: 80px; text-align: center; color: #fff; font-weight: bold; }
+.bg-1 { background: #3b82f6; }
+.bg-2 { background: #10b981; }
+.bg-3 { background: #f59e0b; }
+.bg-4 { background: #ef4444; }
+.bg-5 { background: #8b5cf6; }
+`
   }
 };
 
@@ -1126,5 +1271,4 @@ for (const [pageKey, def] of Object.entries(pageDefinitions)) {
   }
 }
 
-console.log('[Taro Miniapp] 2. Generated all 23 Taro React showcase pages.');
-
+console.log('[Taro Miniapp] 2. Generated all 23 Taro React showcase pages matching Native MiniApp identically.');

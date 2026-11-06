@@ -26,8 +26,9 @@ export default defineAppConfig({
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0f172a",
-    "navigationBarTitleText": "⚛️ Taro React Showcase",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "Macle OpenDoc Showcase",
+    "navigationBarTextStyle": "black",
+    "capsuleTheme": "light"
   }
 });

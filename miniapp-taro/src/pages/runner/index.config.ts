@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Dynamic Taro Runner"
+  navigationBarTitleText: "Dynamic Snippet Runner"
 });

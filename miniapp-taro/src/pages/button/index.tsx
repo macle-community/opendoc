@@ -1,27 +1,19 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import './index.css';
 
 export default function ButtonPage() {
-  const handleClick = (type: string) => {
-    Taro.showToast({ title: `Clicked ${type} button!`, icon: 'none' });
-  };
-
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="taro-badge-banner">
-        <Text>⚛️ Taro React: MauiButton</Text>
-      </View>
-
+    <View className="page-body">
       <View className="demo-block">
         <Text className="demo-title">1. Button Types</Text>
         <View className="demo-row">
-          <MauiButton type="default" onClick={() => handleClick('default')}>default</MauiButton>
-          <MauiButton type="primary" onClick={() => handleClick('primary')}>primary</MauiButton>
-          <MauiButton type="info" onClick={() => handleClick('info')}>info</MauiButton>
-          <MauiButton type="warning" onClick={() => handleClick('warning')}>warning</MauiButton>
-          <MauiButton type="danger" onClick={() => handleClick('danger')}>danger</MauiButton>
+          <MauiButton type="default">default button</MauiButton>
+          <MauiButton type="primary">primary button</MauiButton>
+          <MauiButton type="info">information button</MauiButton>
+          <MauiButton type="warning">warning button</MauiButton>
+          <MauiButton type="danger">danger button</MauiButton>
         </View>
       </View>
 

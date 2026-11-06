@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Steps 步骤条 (Taro)"
+  navigationBarTitleText: "Steps 步骤条"
 });

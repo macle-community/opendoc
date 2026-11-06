@@ -1,15 +1,27 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiDivider } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function DividerPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Dividers</Text>
-        <MauiDivider contentPosition="center">Text Center</MauiDivider>
-        <MauiDivider contentPosition="left">Text Left</MauiDivider>
-        <MauiDivider dashed>Dashed Divider</MauiDivider>
+        <Text className="demo-title">1. Basic Divider</Text>
+        <MauiDivider />
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Content Position</Text>
+        <MauiDivider content-position="center">Center Text</MauiDivider>
+        <MauiDivider content-position="left">Left Text</MauiDivider>
+        <MauiDivider content-position="right">Right Text</MauiDivider>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Dashed & Custom Colors</Text>
+        <MauiDivider dashed />
+        <MauiDivider text-color="#1989fa" custom-style="color: #1989fa;">Blue Divider</MauiDivider>
       </View>
     </View>
   );

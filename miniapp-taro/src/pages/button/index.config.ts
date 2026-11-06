@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Button 按钮 (Taro)"
+  navigationBarTitleText: "Button 按钮"
 });

@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Loading 加载 (Taro)"
+  navigationBarTitleText: "Loading 加载"
 });

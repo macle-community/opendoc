@@ -4,7 +4,9 @@ var _component = require("../common/component");
 var _relation = require("../common/relation");
 (0, _component.MaComponent)({
   field: true,
-  relations: (0, _relation.useChildren)('checkbox'),
+  relations: (0, _relation.useChildren)('checkbox', function (target) {
+    if (target && target.updateFromParent) target.updateFromParent();
+  }),
   properties: {
     value: {
       type: Array,
@@ -20,9 +22,11 @@ var _relation = require("../common/relation");
       observer: 'updateChildren'
     }
   },
+  ready() {
+    this.updateChildren();
+  },
   methods: {
     updateChildren() {
-      this.triggerEvent('change', this.properties.value);
       const children = this.getRelationNodes('../checkbox/index');
       children.forEach(child => child.updateFromParent());
     }

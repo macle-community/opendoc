@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Swiper 轮播 (Taro)"
+  navigationBarTitleText: "Swiper 轮播"
 });

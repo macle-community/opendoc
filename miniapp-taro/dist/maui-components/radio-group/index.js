@@ -4,7 +4,9 @@ var _component = require("../common/component");
 var _relation = require("../common/relation");
 (0, _component.MaComponent)({
   field: true,
-  relations: (0, _relation.useChildren)('radio'),
+  relations: (0, _relation.useChildren)('radio', function (target) {
+    if (target && target.updateFromParent) target.updateFromParent();
+  }),
   properties: {
     value: {
       type: null,
@@ -16,9 +18,11 @@ var _relation = require("../common/relation");
       observer: 'updateChildren'
     }
   },
+  ready() {
+    this.updateChildren();
+  },
   methods: {
     updateChildren() {
-      this.triggerEvent('change', this.properties.value);
       const children = this.getRelationNodes('../radio/index');
       children.forEach(child => child.updateFromParent());
     }

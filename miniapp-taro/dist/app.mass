@@ -1,24 +1,12 @@
 page {
-  background-color: #f8fafc;
+  background-color: #f7f8fa;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #1e293b;
+  color: #323233;
   box-sizing: border-box;
 }
 
-.taro-badge-banner {
-  background: #0f172a;
-  color: #38bdf8;
-  padding: 8rpx 14rpx;
-  font-size: 11rpx;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6rpx;
-  border-bottom: 1rpx solid #1e293b;
-}
-
 .demo-block {
-  margin: 14rpx 12rpx;
+  margin: 16rpx 12rpx;
   background: #ffffff;
   border-radius: 12rpx;
   padding: 16rpx;
@@ -28,7 +16,7 @@ page {
 .demo-title {
   font-size: 14rpx;
   font-weight: 700;
-  color: #0f172a;
+  color: #1e293b;
   margin-bottom: 12rpx;
   display: block;
 }
@@ -44,27 +32,22 @@ page {
   margin-bottom: 12rpx;
 }
 
-.demo-layout-col {
-  background-color: #38bdf8;
-  color: #ffffff;
-  text-align: center;
-  border-radius: 4rpx;
-  padding: 10rpx 0;
-  font-size: 12rpx;
-  font-weight: 600;
-  box-sizing: border-box;
-  border: 1rpx dashed rgba(255, 255, 255, 0.7);
+/* Layout Grid Column Visual Borders */
+.maui-row {
+  margin-bottom: 12rpx;
 }
-
-.demo-layout-col-alt {
-  background-color: #0284c7;
-  color: #ffffff;
+.maui-col {
+  border: 1.5rpx solid #0284c7;
+  background-color: #f0f9ff;
+  color: #0369a1;
   text-align: center;
   border-radius: 4rpx;
-  padding: 10rpx 0;
-  font-size: 12rpx;
+  line-height: 38rpx;
+  margin-bottom: 6rpx;
   font-weight: 600;
-  box-sizing: border-box;
-  border: 1rpx dashed rgba(255, 255, 255, 0.7);
+  font-size: 13rpx;
+}
+.maui-col:nth-child(even) {
+  background-color: #e0f2fe;
 }
 

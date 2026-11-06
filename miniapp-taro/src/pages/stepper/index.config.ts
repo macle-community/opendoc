@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Stepper 步进器 (Taro)"
+  navigationBarTitleText: "Stepper 步进器"
 });

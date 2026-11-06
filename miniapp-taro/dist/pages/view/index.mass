@@ -1,0 +1,8 @@
+.page-body { padding: 8rpx 0; }
+.flex-row { display: flex; flex-direction: row; gap: 10rpx; }
+.flex-col { display: flex; flex-direction: column; gap: 10rpx; }
+.box { padding: 14rpx; color: #fff; text-align: center; border-radius: 6rpx; font-weight: bold; }
+.bg-red { background-color: #ef4444; flex: 1; }
+.bg-green { background-color: #10b981; flex: 1; }
+.bg-blue { background-color: #3b82f6; flex: 1; }
+

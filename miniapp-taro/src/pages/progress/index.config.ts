@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Progress 进度条 (Taro)"
+  navigationBarTitleText: "Progress 进度条"
 });

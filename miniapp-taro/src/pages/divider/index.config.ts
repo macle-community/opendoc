@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Divider 分割线 (Taro)"
+  navigationBarTitleText: "Divider 分割线"
 });

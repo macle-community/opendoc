@@ -1,24 +1,25 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { MauiCell, MauiCellGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import './index.css';
 
 export default function CellPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage</Text>
+    <View className="page-body">
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>1. Basic Usage</Text>
         <MauiCellGroup>
-          <MauiCell title="Cell Title" value="Content" />
-          <MauiCell title="Cell Title" value="Content" label="Description information" />
+          <MauiCell title="Cell title" value="Content" />
+          <MauiCell title="Cell title" value="Content" label="Description" />
         </MauiCellGroup>
       </View>
 
-      <View className="demo-block">
-        <Text className="demo-title">2. Navigation & Arrow</Text>
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>2. Cell Size & Links</Text>
         <MauiCellGroup>
-          <MauiCell title="URL Navigation" is-link onClick={() => Taro.showToast({ title: 'Navigated!', icon: 'none' })} />
-          <MauiCell title="Arrow Direction" is-link arrow-direction="down" value="Detail" />
+          <MauiCell title="Large Cell" value="Content" size="large" label="Description" />
+          <MauiCell title="Navigation Link" is-link />
+          <MauiCell title="Value Link" is-link value="Detail" />
         </MauiCellGroup>
       </View>
     </View>

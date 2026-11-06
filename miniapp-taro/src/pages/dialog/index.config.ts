@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Dialog 弹出框 (Taro)"
+  navigationBarTitleText: "Dialog 弹出框"
 });

@@ -5,10 +5,9 @@ import './index.css';
 export default function IndexPage() {
   return (
     <View className="home-container">
-      <View className="taro-banner">
-        <Text className="banner-badge">⚛️ Taro 4.3 + @tarojs/plugin-platform-macle</Text>
-        <Text className="banner-title">Macle Taro Showcase</Text>
-        <Text className="banner-sub">React-Powered MiniProgram Components</Text>
+      <View className="home-banner">
+        <Text className="banner-title">Macle OpenDoc</Text>
+        <Text className="banner-sub">MiniProgram Interactive Component Library</Text>
       </View>
 
       <View className="demo-block">

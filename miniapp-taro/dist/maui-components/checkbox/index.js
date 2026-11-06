@@ -9,6 +9,18 @@ var _relation = require("../common/relation");
   }),
   properties: {
     name: null,
+    value: {
+      type: Boolean,
+      value: false,
+      observer(val) {
+        const [parent] = this.getRelationNodes('../checkbox-group/index');
+        if (!parent) {
+          this.setData({
+            inParentArrIdx: val ? 0 : -1
+          });
+        }
+      }
+    },
     inParentArrIdx: {
       type: Number,
       value: -1
@@ -43,17 +55,25 @@ var _relation = require("../common/relation");
     direction: '',
     parentDisabled: false
   },
+  ready() {
+    const [parent] = this.getRelationNodes('../checkbox-group/index');
+    if (!parent) {
+      const isChecked = Boolean(this.data.value || this.properties.value);
+      this.setData({ inParentArrIdx: isChecked ? 0 : -1 });
+    } else {
+      this.updateFromParent();
+    }
+  },
   methods: {
     updateFromParent() {
       const [parent] = this.getRelationNodes('../checkbox-group/index');
       if (!parent) {
         return;
       }
-      const {
-        value,
-        disabled: parentDisabled,
-        direction
-      } = parent.data;
+      const rawVal = parent.data.value !== undefined ? parent.data.value : parent.properties.value;
+      const value = Array.isArray(rawVal) ? rawVal : [];
+      const parentDisabled = !!parent.data.disabled;
+      const direction = parent.data.direction || '';
       this.setData({
         inParentArrIdx: value.indexOf(this.data.name),
         direction,
@@ -62,18 +82,31 @@ var _relation = require("../common/relation");
     },
     emitChange(value) {
       const [parent] = this.getRelationNodes('../checkbox-group/index');
-      const maxItemNum = parseInt(parent.data.max);
       if (!parent) {
+        const currentChecked = this.data.inParentArrIdx >= 0 || this.data.value;
+        const newVal = !currentChecked;
+        this.setData({
+          value: newVal,
+          inParentArrIdx: newVal ? 0 : -1
+        });
+        this.triggerEvent('change', newVal);
         return;
       }
-      if (this.data.inParentArrIdx >= 0) {
-        parent.data.value.splice(this.data.inParentArrIdx, 1);
+      const maxItemNum = parseInt(parent.data.max) || 0;
+      const rawVal = parent.data.value !== undefined ? parent.data.value : parent.properties.value;
+      const parentValue = Array.isArray(rawVal) ? [...rawVal] : [];
+      const idx = parentValue.indexOf(value);
+      if (idx >= 0) {
+        parentValue.splice(idx, 1);
       } else {
-        if (maxItemNum > parent.data.value.length || maxItemNum === 0) {
-          parent.data.value.push(value);
+        if (maxItemNum === 0 || maxItemNum > parentValue.length) {
+          parentValue.push(value);
         }
       }
-      parent.updateChildren();
+      parent.setData({ value: parentValue });
+      parent.triggerEvent('change', parentValue);
+      const children = parent.getRelationNodes('../checkbox/index');
+      children.forEach(child => child.updateFromParent());
     },
     onChange() {
       const {

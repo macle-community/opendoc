@@ -9,8 +9,7 @@
         <maui-icon ma:if="{{ inParentArrIdx >= 0 }}" name="{{ customIcon }}" class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: inParentArrIdx >= 0 }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
         <view ma:else class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: inParentArrIdx >= 0 }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
     </view>
-    <view ma:if="{{ labelPosition === 'right' }}" class=" {{ utils.bem('checkbox__label', [labelPosition, { disabled: disabled || parentDisabled }]) }}" bindtap="onClickLabel">
+    <view ma:if="{{ labelPosition !== 'left' }}" class=" {{ utils.bem('checkbox__label', [labelPosition, { disabled: disabled || parentDisabled }]) }}" bindtap="onClickLabel">
         <slot />
     </view>
 </view>
-

@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiButton, MauiDialog } from '@tarojs/plugin-platform-macle/dist/components-react';
 import Taro from '@tarojs/taro';
+import { MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function DialogPage() {
-  const [show, setShow] = useState(false);
+  const showAlert = () => {
+    Taro.showToast({ title: 'Dialog Verified!', icon: 'success' });
+  };
 
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Alert Dialog</Text>
-        <MauiButton type="primary" onClick={() => setShow(true)}>Open Dialog</MauiButton>
-        <MauiDialog
-          show={show}
-          title="Taro Dialog"
-          message="This dialog is rendered with Taro React!"
-          show-cancel-button
-          onConfirm={() => {
-            setShow(false);
-            Taro.showToast({ title: 'Confirmed!', icon: 'success' });
-          }}
-          onClose={() => setShow(false)}
-        />
+        <Text className="demo-title">1. Native Dialog Trigger</Text>
+        <MauiButton type="primary" block onClick={showAlert}>Trigger Alert Dialog</MauiButton>
       </View>
     </View>
   );

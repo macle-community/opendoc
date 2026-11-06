@@ -1,8 +1,10 @@
-/// <reference types="@tarojs/taro" />
-declare const ma: any;
-declare namespace Taro {
-  interface TaroStatic {
-    tradePay?: (options: any) => Promise<any>;
-    startPay?: (options: any) => Promise<any>;
-  }
-}
+/// <reference types="@tarojs/extend" />
+declare module '*.png';
+declare module '*.gif';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.svg';
+declare module '*.css';
+declare module '*.less';
+declare module '*.scss';
+declare module '*.sass';

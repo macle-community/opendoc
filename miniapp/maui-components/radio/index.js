@@ -40,19 +40,20 @@ var _relation = require("../common/relation");
     direction: '',
     parentDisabled: false
   },
+  ready() {
+    this.updateFromParent();
+  },
   methods: {
     updateFromParent() {
       const [parentRadio] = this.getRelationNodes('../radio-group/index');
       if (!parentRadio) {
         return;
       }
-      const {
-        value,
-        disabled: parentDisabled,
-        direction
-      } = parentRadio.data;
+      const rawVal = parentRadio.data.value !== undefined ? parentRadio.data.value : parentRadio.properties.value;
+      const parentDisabled = !!parentRadio.data.disabled;
+      const direction = parentRadio.data.direction || '';
       this.setData({
-        value,
+        value: rawVal,
         direction,
         parentDisabled
       });
@@ -60,7 +61,13 @@ var _relation = require("../common/relation");
     emitChange(val) {
       const [parent] = this.getRelationNodes('../radio-group/index');
       if (parent) {
-        parent.data.value = val;
+        parent.setData({ value: val });
+        parent.triggerEvent('change', val);
+        const children = parent.getRelationNodes('../radio/index');
+        children.forEach(child => child.setData({ value: val }));
+      } else {
+        this.setData({ value: val });
+        this.triggerEvent('change', val);
       }
     },
     onChange() {

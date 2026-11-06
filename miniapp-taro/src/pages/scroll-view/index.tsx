@@ -1,31 +1,18 @@
 import React from 'react';
 import { View, Text, ScrollView } from '@tarojs/components';
+import './index.css';
 
 export default function ScrollViewPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Horizontal ScrollView</Text>
+        <Text className="demo-title">1. Horizontal Scroll View</Text>
         <ScrollView scrollX style={{ whiteSpace: 'nowrap', width: '100%' }}>
-          {[1, 2, 3, 4, 5, 6].map(num => (
-            <View
-              key={num}
-              style={{
-                display: 'inline-block',
-                width: '100px',
-                height: '70px',
-                background: '#e2e8f0',
-                marginRight: '8px',
-                borderRadius: '8px',
-                lineHeight: '70px',
-                textAlign: 'center',
-                color: '#475569',
-                fontWeight: 600
-              }}
-            >
-              Item {num}
-            </View>
-          ))}
+          <View className="scroll-item bg-1">Item 1</View>
+          <View className="scroll-item bg-2">Item 2</View>
+          <View className="scroll-item bg-3">Item 3</View>
+          <View className="scroll-item bg-4">Item 4</View>
+          <View className="scroll-item bg-5">Item 5</View>
         </ScrollView>
       </View>
     </View>

@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiField } from '@tarojs/plugin-platform-macle/dist/components-react';
+import { View } from '@tarojs/components';
+import { MauiField, MauiCellGroup } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function FieldPage() {
-  const [text, setText] = useState('');
+  const [username, setUsername] = useState('macle_user');
 
   return (
-    <View style={{ padding: '8px 0' }}>
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Field</Text>
-        <MauiField
-          value={text}
-          label="Username"
-          placeholder="Please enter username"
-          onChange={(e: any) => setText(e.detail || '')}
-        />
-        <Text style={{ fontSize: '12px', color: '#64748b', marginTop: '8px', display: 'block' }}>
-          Current input: {text}
-        </Text>
+    <View className="page-body">
+      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
+        <MauiCellGroup>
+          <MauiField
+            value={username}
+            placeholder="Please enter username"
+            label="Username"
+            onChange={(e: any) => setUsername(e.detail)}
+          />
+          <MauiField type="password" label="Password" placeholder="Enter password" />
+          <MauiField clearable label="Clearable" placeholder="Clearable input" />
+          <MauiField disabled label="Disabled" value="Input disabled" />
+        </MauiCellGroup>
       </View>
     </View>
   );

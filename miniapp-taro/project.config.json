@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "miniapp-taro",
-  "description": "Macle Taro React Mini App for OpenDoc",
+  "projectname": "opendoc-miniapp-taro",
+  "description": "OpenDoc Taro React Mini App Showcase for Macle",
   "appid": "macle-opendoc-taro",
   "setting": {
     "es6": true,

@@ -1,18 +1,14 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiEmpty, MauiButton } from '@tarojs/plugin-platform-macle/dist/components-react';
-import Taro from '@tarojs/taro';
+import { MauiEmpty } from '@tarojs/plugin-platform-macle/dist/components-react';
+import './index.css';
 
 export default function EmptyPage() {
   return (
-    <View style={{ padding: '8px 0' }}>
+    <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Empty State</Text>
-        <MauiEmpty description="No Data Available">
-          <MauiButton round type="danger" size="small" onClick={() => Taro.showToast({ title: 'Refreshing...', icon: 'loading' })}>
-            Refresh
-          </MauiButton>
-        </MauiEmpty>
+        <Text className="demo-title">1. Basic Usage</Text>
+        <MauiEmpty description="No Data" />
       </View>
     </View>
   );

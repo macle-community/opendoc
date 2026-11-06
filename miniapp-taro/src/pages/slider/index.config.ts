@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Slider 滑块 (Taro)"
+  navigationBarTitleText: "Slider 滑块"
 });
