@@ -24,3 +24,4 @@ Page({
     this.setData({ currentModal: '' });
   }
 });
+
