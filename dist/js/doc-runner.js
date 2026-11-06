@@ -18,14 +18,14 @@
   let modalEl = null;
   let activeViewMode = 'split'; // 'split', 'code', 'sim'
   let activeSimMode = 'live';   // 'live', 'devsuite'
-  let activeMiniApp = 'native'; // 'native' (miniapp) or 'taro' (taro-miniapp)
+  let activeMiniApp = 'native'; // 'native' (miniapp) or 'taro' (miniapp-taro)
   let currentDevSuitePage = 'pages/index/index';
   let simulatorInfo = {
     online: false,
     port: 30002,
     projectName: 'miniapp',
     native: { online: false, port: 30002, projectName: 'miniapp' },
-    taro: { online: false, port: 30003, projectName: 'taro-miniapp' }
+    taro: { online: false, port: 30003, projectName: 'dist' }
   };
   const consoleLogs = [];
 
@@ -44,13 +44,13 @@
       port: 30002,
       projectName: 'miniapp',
       native: { online: false, port: 30002, projectName: 'miniapp' },
-      taro: { online: false, port: 30003, projectName: 'taro-miniapp' }
+      taro: { online: false, port: 30003, projectName: 'dist' }
     };
   }
 
   function getActiveSimulatorProject() {
     if (activeMiniApp === 'taro') {
-      return (simulatorInfo.taro && simulatorInfo.taro.projectName) || 'taro-miniapp';
+      return (simulatorInfo.taro && simulatorInfo.taro.projectName) || 'dist';
     }
     return (simulatorInfo.native && simulatorInfo.native.projectName) || 'miniapp';
   }

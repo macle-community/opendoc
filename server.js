@@ -77,10 +77,13 @@ function detectSimulatorPort() {
 function getProxyTargetPort(req, reqPath) {
   const referer = req.headers['referer'] || '';
   if (
-    reqPath.startsWith('/taro-miniapp/') ||
-    reqPath.includes('taro-miniapp') ||
-    referer.includes('/taro-miniapp/') ||
-    req.url.includes('taro-miniapp')
+    reqPath.startsWith('/miniapp-taro/') ||
+    reqPath.startsWith('/dist/') ||
+    reqPath.includes('miniapp-taro') ||
+    referer.includes('/miniapp-taro/') ||
+    referer.includes('/dist/') ||
+    req.url.includes('miniapp-taro') ||
+    req.url.includes('dist')
   ) {
     return simulatorDaemons.taro.port || 30003;
   }
@@ -211,7 +214,7 @@ const server = http.createServer((req, res) => {
     reqPath.startsWith('/mcss/') ||
     reqPath.includes('/root/debug/') ||
     reqPath.startsWith('/miniapp/root/') ||
-    reqPath.startsWith('/taro-miniapp/root/') ||
+    reqPath.startsWith('/miniapp-taro/root/') ||
     reqPath.startsWith('/dist/root/') ||
     reqPath.startsWith('/store/') ||
     reqPath.startsWith('/tmp/');

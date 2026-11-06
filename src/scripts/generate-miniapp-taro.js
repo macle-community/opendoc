@@ -1127,3 +1127,4 @@ for (const [pageKey, def] of Object.entries(pageDefinitions)) {
 }
 
 console.log('[Taro Miniapp] 2. Generated all 23 Taro React showcase pages.');
+
