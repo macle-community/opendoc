@@ -15,6 +15,13 @@
 </tr>
 </thead>
 <tbody><tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">权限用途信息，该参数会显示在权限弹窗中（<strong>26.6.0-LG0001版本新增参数</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -106,6 +113,7 @@
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
 <pre><code class="language-js"><span class="hljs-keyword">ma</span>.openBluetoothAdapter({
+  desc: <span class="hljs-string">&#x27;&#x27;</span>,
   success: (<span class="hljs-keyword">res</span>) =&gt; {
     console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;openBluetoothAdapter success&#x27;</span>, <span class="hljs-keyword">res</span>)
     <span class="hljs-keyword">ma</span>.showModal({

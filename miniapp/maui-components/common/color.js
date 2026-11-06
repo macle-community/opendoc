@@ -2,17 +2,10 @@
 
 exports.__esModule = true;
 exports.WHITE = exports.RED = exports.ORANGE = exports.GREEN = exports.GRAY_DARK = exports.GRAY = exports.BLUE = void 0;
-const RED = '#ee0a24';
-exports.RED = RED;
-const BLUE = '#1989fa';
-exports.BLUE = BLUE;
-const GRAY_DARK = '#969799';
-exports.GRAY_DARK = GRAY_DARK;
-const WHITE = '#fff';
-exports.WHITE = WHITE;
-const ORANGE = '#ff976a';
-exports.ORANGE = ORANGE;
-const GREEN = '#07c160';
-exports.GREEN = GREEN;
-const GRAY = '#323233';
-exports.GRAY = GRAY;
+const RED = exports.RED = '#ee0a24';
+const BLUE = exports.BLUE = '#1989fa';
+const GRAY_DARK = exports.GRAY_DARK = '#969799';
+const WHITE = exports.WHITE = '#fff';
+const ORANGE = exports.ORANGE = '#ff976a';
+const GREEN = exports.GREEN = '#07c160';
+const GRAY = exports.GRAY = '#323233';

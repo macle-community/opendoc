@@ -466,9 +466,7 @@
 </template>
   
 <template name="tmpl_0_maui-modal">
-  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
-    <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
-  </maui-modal>
+  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" primary-button-style="{{i.primaryButtonStyle}}" secondary-button-style="{{i.secondaryButtonStyle}}" cancel-button-style="{{i.cancelButtonStyle}}" mask-closable="{{xs.b(i.maskClosable,true)}}" destroy-on-close="{{xs.b(i.destroyOnClose,false)}}" body-class-name="{{i.bodyClassName}}" body-style="{{i.bodyStyle}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></maui-modal>
 </template>
   
 <template name="tmpl_0_maui-list">
@@ -478,7 +476,7 @@
 </template>
   
 <template name="tmpl_0_maui-list-item">
-  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindcatchtap="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list-item>
 </template>
@@ -766,9 +764,7 @@
 </template>
   
 <template name="tmpl_1_maui-modal">
-  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
-    <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
-  </maui-modal>
+  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" primary-button-style="{{i.primaryButtonStyle}}" secondary-button-style="{{i.secondaryButtonStyle}}" cancel-button-style="{{i.cancelButtonStyle}}" mask-closable="{{xs.b(i.maskClosable,true)}}" destroy-on-close="{{xs.b(i.destroyOnClose,false)}}" body-class-name="{{i.bodyClassName}}" body-style="{{i.bodyStyle}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></maui-modal>
 </template>
   
 <template name="tmpl_1_maui-list">
@@ -778,7 +774,7 @@
 </template>
   
 <template name="tmpl_1_maui-list-item">
-  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindcatchtap="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list-item>
 </template>
@@ -933,12 +929,6 @@
   </maui-tabs>
 </template>
   
-<template name="tmpl_2_maui-modal">
-  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
-    <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
-  </maui-modal>
-</template>
-  
 <template name="tmpl_2_maui-list">
   <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{xs.b(i.radius,false)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
@@ -946,7 +936,7 @@
 </template>
   
 <template name="tmpl_2_maui-list-item">
-  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindcatchtap="eh" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list-item>
 </template>

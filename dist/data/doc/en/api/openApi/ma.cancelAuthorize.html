@@ -22,6 +22,13 @@
 <td align="left">Cancel the authorization scope of the current miniprogram.</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -186,6 +193,7 @@
 <pre><code class="language-js"> cancelAuthorize () {
     ma.cancelAuthorize({
         <span class="hljs-attr">scopes</span>: [<span class="hljs-string">&#x27;scope.location&#x27;</span>],
+        <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
         <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
             <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">`Authorization canceled successfully`</span>);
         },

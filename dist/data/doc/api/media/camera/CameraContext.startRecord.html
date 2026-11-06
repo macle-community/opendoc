@@ -29,6 +29,13 @@
 <td align="left">录制时长上限，单位为秒，当前支持传入 1 - 180 之间的正整数</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">权限用途信息，该参数会显示在权限弹窗中（<strong>26.6.0-LG0001版本新增参数</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -81,6 +88,7 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">startRecord</span>(<span class="hljs-params"></span>){
     <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
     ctx.<span class="hljs-title function_">startRecord</span>({
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
       <span class="hljs-attr">timeoutCallback</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
           <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempImagePath</span>

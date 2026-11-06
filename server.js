@@ -19,10 +19,15 @@ const TARO_MINIAPP_DIR = path.join(__dirname, 'miniapp-taro');
 const BASE_ROUTE = '/openplatform/macledocs';
 
 let macleCompiler = null;
-try {
-  macleCompiler = require('/home/f/nati/macle/DevToolkit_25.9.0/Macle_25.9.0_DevSuite_IDE/macle-miniprogram-tools-25.9.0-file/extension/node_modules/@macle/compiler');
-} catch (e) {
-  console.warn('Notice: @macle/compiler not loaded:', e.message);
+const compilerCandidates = [
+  '/home/f/nati/macle/DevToolkit_26.6.0/DevToolkit_26.6.0-LG0001/Macle_26.6.0-LG0001_Engine_Compiler/node_modules/@macle/compiler',
+  '/home/f/nati/macle/DevToolkit_25.9.0/Macle_25.9.0_DevSuite_IDE/macle-miniprogram-tools-25.9.0-file/extension/node_modules/@macle/compiler'
+];
+for (const cand of compilerCandidates) {
+  try {
+    macleCompiler = require(cand);
+    if (macleCompiler) break;
+  } catch (e) {}
 }
 
 // Active simulator daemons (Native MAML and Taro React)

@@ -70,6 +70,14 @@ API: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createCameraContext">ma
 <td align="left">This event is triggered when a recording exits abnormally. The error information and the storage path of the stopped recording are returned.</td>
 <td></td>
 </tr>
+<tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+<td></td>
+</tr>
 </tbody></table>
 <h3 id="valid-values-of-resolution">Valid Values of resolution</h3>
 <table>
@@ -172,7 +180,7 @@ API: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.createCameraContext">ma
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flash</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;width: 100%; height: 300px;&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;error&#x27;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">desc</span>=<span class="hljs-string">&#x27;Apply to use the camera.&#x27;</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flash</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;width: 100%; height: 300px;&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;error&#x27;</span>
         <span class="hljs-attr">bindstop</span>=<span class="hljs-string">&#x27;stop&#x27;</span> <span class="hljs-attr">bindinitdone</span>=<span class="hljs-string">&#x27;initdone&#x27;</span> <span class="hljs-attr">bindrecorderror</span>=<span class="hljs-string">&#x27;recorderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">camera</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;slider2&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;slider2change&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">sliderMax</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">show-value</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&#x27;1&#x27;</span>
         <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;margin-top:50px ;&#x27;</span> /&gt;</span>

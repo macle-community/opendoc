@@ -105,6 +105,16 @@
     ]
   },
   {
+    "name": "Mini Program Agent",
+    "path": "/agent",
+    "data": "/data/doc/devtools/agent.md"
+  },
+  {
+    "name": "Signature Private Key Management",
+    "path": "/signSetting",
+    "data": "/data/doc/devtools/signSetting.md"
+  },
+  {
     "name": "Packing",
     "path": "/upload",
     "data": "/data/doc/devtools/upload.md"

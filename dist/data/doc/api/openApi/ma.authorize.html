@@ -22,6 +22,13 @@
 <td align="left">需要获取权限的 scope，详见 <a onclick="_mdLinkClick(this.href)" href="#/api/authority">scope 列表</a></td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">权限用途信息，该参数会显示在权限弹窗中（<strong>26.6.0-LG0001版本新增参数</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -50,6 +57,7 @@ ma<span class="hljs-selector-class">.getSetting</span>({
     <span class="hljs-keyword">if</span> (!res<span class="hljs-selector-class">.authSetting</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scope.location&#x27;</span>]</span>) {
       ma<span class="hljs-selector-class">.authorize</span>({
         scope: <span class="hljs-string">&#x27;scope.location&#x27;</span>,
+        desc: <span class="hljs-string">&#x27;&#x27;</span>,
         success () {
           <span class="hljs-comment">// 用户已经同意小程序使用位置信息，后续调用 ma.getLocation 接口不会弹窗询问</span>
           ma<span class="hljs-selector-class">.getLocation</span>()

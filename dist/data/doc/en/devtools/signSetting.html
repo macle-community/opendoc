@@ -1,0 +1,85 @@
+<h1 id="signature-private-key-management">Signature Private Key Management</h1>
+<p>Signature Private Key Management is a module in the developer tools used to configure digital signing for mini program packages. By configuring an RSA private key file, developers can sign the exported offline code package to ensure its integrity and authenticity.</p>
+<h2 id="access-entry">Access Entry</h2>
+<p>In the developer tools top menu bar, select <strong>Settings &gt; Signature Private Key Management</strong> to open the management panel.</p>
+<h2 id="interface-description">Interface Description</h2>
+<p>The Signature Private Key Management panel contains the following elements:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Private Key File Path</strong></td>
+<td>Displays the absolute path of the currently configured private key file. Not shown if unconfigured. A delete button on the right clears the current configuration when clicked.</td>
+</tr>
+<tr>
+<td><strong>Need Password</strong></td>
+<td>A checkbox indicating whether the selected private key is encrypted (protected by a passphrase). When checked, the developer tools will prompt for a password during packaging.</td>
+</tr>
+<tr>
+<td><strong>Edit Button</strong></td>
+<td>Clicking this opens a system file picker dialog. Only <code>.pem</code> or <code>.enc</code> format private key files are accepted. The selection is saved automatically upon confirmation.</td>
+</tr>
+</tbody></table>
+<h2 id="configuration-steps">Configuration Steps</h2>
+<ol>
+<li>Click the <strong>Edit</strong> button. In the file picker dialog, select your RSA private key file (only <code>.pem</code> and <code>.enc</code> formats are supported).</li>
+<li>After selection, the private key path will appear on the panel. The configuration is automatically saved to the project&#39;s <code>macle.config.json</code> file.</li>
+<li>If your private key is passphrase-encrypted, check the <strong>Need Password</strong> box. Otherwise, leave it unchecked.</li>
+</ol>
+<h2 id="private-key-requirements">Private Key Requirements</h2>
+<ul>
+<li>Algorithm: RSA-3072 (recommended) or other RSA key sizes</li>
+<li>Format: PEM encoded (<code>.pem</code>) or encrypted PEM encoded (<code>.enc</code>)</li>
+<li>If the private key is protected by a passphrase, the &quot;Need Password&quot; option must be checked; otherwise, signing will fail due to inability to decrypt the key</li>
+</ul>
+<h2 id="signing-principle">Signing Principle</h2>
+<p>Packaging signature uses the <strong>RSA-SHA256 + PSS padding</strong> scheme. The process is as follows:</p>
+<ol>
+<li>Compute the SHA-256 digest of the ZIP package content (output as a hexadecimal string)</li>
+<li>Sign the digest using the configured RSA private key with RSA_PKCS1_PSS_PADDING padding mode</li>
+<li>Write the Base64-encoded signature result to a <code>&lt;zip-filename&gt;.sign</code> file in the same directory as the ZIP package</li>
+</ol>
+<h2 id="signing-during-packaging">Signing During Packaging</h2>
+<p>When executing the packaging operation, the developer tools automatically checks whether a valid private key is configured:</p>
+<ul>
+<li><strong>Configured and file exists</strong>: The ZIP package is signed directly using the private key, generating a <code>.sign</code> file.</li>
+<li><strong>Configured but file missing / not configured</strong>: A prompt appears indicating the signature file is not configured or is abnormal. You can choose to go to the Signature Private Key Management panel to set it up, or cancel and proceed with unsigned packaging.</li>
+<li><strong>&quot;Need Password&quot; checked</strong>: Before signing, a password input dialog will appear. The correct passphrase must be provided to complete the signing.</li>
+</ul>
+<h2 id="storage-location">Storage Location</h2>
+<p>The signature configuration is stored in the <code>macle.config.json</code> file at the project root. Relevant fields:</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;privateKeyPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/path/to/your/private-key.pem&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;needPassword&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>privateKeyPath</code></td>
+<td>String</td>
+<td>Absolute path to the private key file. Empty means not configured.</td>
+</tr>
+<tr>
+<td><code>needPassword</code></td>
+<td>Boolean</td>
+<td>Whether a passphrase is required to decrypt the private key. Defaults to <code>false</code>.</td>
+</tr>
+</tbody></table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Tip: Keep your private key file secure and do not commit it to source code repositories.</li>
+<li>Tip: After changing the private key, existing <code>.sign</code> files from previous builds will no longer match the new key. Re-package and re-sign to regenerate them.</li>
+<li>Tip: If you don&#39;t need signing, clear the private key file path or remove the <code>privateKeyPath</code> field from the configuration. Packaging will then skip the signing step.</li>
+<li>Tip: The signing process does not modify the original ZIP file. It generates an additional <code>.sign</code> file alongside it.</li>
+</ul>

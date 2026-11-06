@@ -22,6 +22,13 @@
 <td align="left">Scope of the permission to be obtained. For details, see  <a onclick="_mdLinkClick(this.href)" href="#/api/authority">Scope list</a>.</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -50,6 +57,7 @@ ma<span class="hljs-selector-class">.getSetting</span>({
     <span class="hljs-keyword">if</span> (!res<span class="hljs-selector-class">.authSetting</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;scope.location&#x27;</span>]</span>) {
       ma<span class="hljs-selector-class">.authorize</span>({
         scope: <span class="hljs-string">&#x27;scope.location&#x27;</span>,
+        desc: <span class="hljs-string">&#x27;&#x27;</span>,
         success () {
 <span class="hljs-comment">// The user has agreed that the Mini Program uses the location information. No dialog box will be displayed when the ma.getLocation API is invoked.</span>
           ma<span class="hljs-selector-class">.getLocation</span>()

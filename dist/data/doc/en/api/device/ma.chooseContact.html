@@ -15,6 +15,13 @@
 </tr>
 </thead>
 <tbody><tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -60,6 +67,7 @@
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-js">ma.chooseContact({
+  <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
   success(res) {
     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.phoneNumber);
     <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.displayName);

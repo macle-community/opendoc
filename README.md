@@ -1,6 +1,6 @@
 # Macle OpenDoc Documentation Suite
 
-Complete offline documentation suite and browser reader for **Macle Mini-Program Development** (version **9.1.69**, extracted from Macle DevToolkit 26.6.0).
+Complete offline documentation suite, browser reader, and interactive component playground for **Macle Mini-Program Development** (version **26.6.0-LG0001**, synchronized directly from Huawei DevToolkit 26.6.0-LG0001).
 
 ---
 
@@ -114,3 +114,8 @@ opendoc/
    - Payment (`ma.tradePay`).
 5. **Tools & Remote Debugging (`doc/devtools/`)**:
    - Simulator controls, storage inspection, remote console and network debugging.
+   - AI Agent IDE configuration (`agent.html`).
+   - Digital signature & RSA release signing (`signSetting.html`).
+6. **Interactive MiniApp Showcases**:
+   - **Native DSL MiniApp (`miniapp/`)**: 25 interactive pages showcasing all native components and 34 MAUI 26.6.0 components including List, ListItem, and Modal.
+   - **Taro React MiniApp (`miniapp-taro/`)**: 25 pages built with Taro 4 and React 18, utilizing `@tarojs/plugin-platform-macle`.

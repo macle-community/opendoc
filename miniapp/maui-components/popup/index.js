@@ -2,7 +2,7 @@
 
 var _component = require("../common/component");
 var _transition = _interopRequireDefault(require("../mixins/transition"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const i18n = getI18nInstance();
 (0, _component.MaComponent)({
   behaviors: [_transition.default],
@@ -69,7 +69,7 @@ const i18n = getI18nInstance();
   methods: {
     onClickCloseIcon: function onClickCloseIcon() {
       this.triggerEvent('close', '', {
-        bubbles: true
+        bubbles: false
       });
     },
     onClickOverlay: function onClickOverlay() {

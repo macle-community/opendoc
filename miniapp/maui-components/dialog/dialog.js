@@ -91,5 +91,4 @@ Dialog.resetDefaultOptions = () => {
   Dialog.currentOptions = currentOptions;
 };
 Dialog.resetDefaultOptions();
-var _default = Dialog;
-exports.default = _default;
+var _default = exports.default = Dialog;

@@ -1,0 +1,62 @@
+<sjs src="./index.sjs" module="arrowUtil" />
+<view
+        class="maui-list-item  {{ className ? className : '' }}"
+        style="{{ style || '' }}"
+        hover-class="{{ onTap || catchTap ? 'maui-list-item-hover' : '' }}"
+        hover-start-time="{{ 20 }}"
+        hover-stay-time="{{ 40 }}">
+    <view
+            class="maui-list-item  {{ className ? className : '' }}"
+            style="{{ style || '' }}"
+            bindTap="{{ onTap ? 'onTap' : '' }}"
+            catchTap="{{ catchTap ? 'catchTap' : '' }}"
+            hover-class="{{ onTap || catchTap ? 'maui-list-item-hover' : '' }}"
+            hover-start-time="{{ 20 }}"
+            hover-stay-time="{{ 40 }}">
+        <view
+                class="maui-list-item-line {{ showDivider ? 'maui-list-item-line-divider' : '' }} {{ disabled ? 'maui-list-item-line-disabled' : '' }}">
+            <view class="maui-list-item-image-container">
+                <image
+                        ma:if="{{ image }}"
+                        style="height: 1em; width: 1em"
+                        src="{{ image }}"
+                        class="{{ brief ? 'maui-list-item-image maui-list-item-image-large' : 'maui-list-item-image maui-list-item-image-normal' }}"
+                />
+            </view>
+            <view class="maui-list-item-content-container">
+                <view class="maui-list-item-content-title-container {{ title && brief ? 'maui-list-item-content-container-small-text' : 'maui-list-item-content-container-normal-text' }}">
+                    <view
+                            ma:if="{{ title }}"
+                            class="maui-list-item-content-title">
+                        {{ title }}
+                    </view>
+                </view>
+                <view class="maui-list-item-content-main">
+                    <slot />
+                </view>
+                <view class="maui-list-item-content-brief-container {{ title && brief ? 'maui-list-item-content-container-small-text' : 'maui-list-item-content-container-normal-text' }}">
+                    <view
+                            ma:if="{{ brief }}"
+                            class="maui-list-item-content-brief">
+                        {{ brief }}
+                    </view>
+                </view>
+            </view>
+            <view class="maui-list-item-extra-container">
+                <view class="maui-list-item-extra">
+                    <block ma:if="{{ extra }}">{{ extra }}</block>
+                </view>
+                <view class="maui-list-item-extra-brief">
+                    <block ma:if="{{ extraBrief }}">{{ extraBrief }}</block>
+                </view>
+            </view>
+            <view class="maui-list-item-arrow {{ extraBrief && extra ? 'maui-list-item-arrow-large-margin' : '' }}">
+                <maui-icon
+                        size="0.5em"
+                        ma:if="{{ arrowUtil.getArrow(arrow) }}"
+                        name="arrow"
+                        customStyle="{{ arrowUtil.getArrow(arrow) }}" />
+            </view>
+        </view>
+    </view>
+</view>

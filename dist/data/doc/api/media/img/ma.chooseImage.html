@@ -36,6 +36,13 @@
 <td align="left">选择图片的来源(模拟器无效果)</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">权限用途信息，该参数会显示在权限弹窗中（<strong>26.6.0-LG0001版本新增参数</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -132,13 +139,14 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
-  <span class="hljs-attr">count</span>: <span class="hljs-number">1</span>,
-  <span class="hljs-attr">sizeType</span>: [<span class="hljs-string">&#x27;original&#x27;</span>, <span class="hljs-string">&#x27;compressed&#x27;</span>],
-  <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
-  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+<pre><code class="language-js">ma.chooseImage({
+  <span class="hljs-keyword">count</span>: <span class="hljs-number">1</span>,
+  sizeType: [<span class="hljs-string">&#x27;original&#x27;</span>, <span class="hljs-string">&#x27;compressed&#x27;</span>],
+  sourceType: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+  success(res) {
     <span class="hljs-comment">// tempFilePath可以作为img标签的src属性显示图片</span>
-    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+    <span class="hljs-keyword">const</span> tempFilePaths = res.tempFilePaths;
   }
 });
 </code></pre>

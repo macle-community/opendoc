@@ -22,6 +22,13 @@
 <td align="left">Jump to third-party Url (currently only supports jumping to apps that have registered <code>ACTION_VIEW</code>)</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -62,12 +69,13 @@
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
 <pre><code class="language-js"><span class="hljs-comment">// Support promise</span>
-ma.<span class="hljs-title function_">gotoBrowser</span>({ <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+ma.<span class="hljs-title function_">gotoBrowser</span>({ <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span>, <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span> }).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
 });
 <span class="hljs-comment">// Support callback</span>
 ma.<span class="hljs-title function_">gotoBrowser</span>({
   <span class="hljs-attr">openUrl</span>: <span class="hljs-string">&#x27;https://xxx.com&#x27;</span>,
+  <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
   <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
   },

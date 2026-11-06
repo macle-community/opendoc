@@ -36,6 +36,13 @@
 <td align="left">Source of the selected image. (This function does not apply to the simulator does not take effect.)</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -132,13 +139,14 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-js">ma.<span class="hljs-title function_">chooseImage</span>({
-  <span class="hljs-attr">count</span>: <span class="hljs-number">1</span>,
-  <span class="hljs-attr">sizeType</span>: [<span class="hljs-string">&#x27;original&#x27;</span>, <span class="hljs-string">&#x27;compressed&#x27;</span>],
-  <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
-  <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
+<pre><code class="language-js">ma.chooseImage({
+  <span class="hljs-keyword">count</span>: <span class="hljs-number">1</span>,
+  sizeType: [<span class="hljs-string">&#x27;original&#x27;</span>, <span class="hljs-string">&#x27;compressed&#x27;</span>],
+  sourceType: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  <span class="hljs-keyword">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+  success(res) {
     <span class="hljs-comment">// tempFilePath can be used as the src attribute of the img tag to display images.</span>
-    <span class="hljs-keyword">const</span> tempFilePaths = res.<span class="hljs-property">tempFilePaths</span>;
+    <span class="hljs-keyword">const</span> tempFilePaths = res.tempFilePaths;
   }
 });
 </code></pre>

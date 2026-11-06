@@ -1,0 +1,16 @@
+<view
+        class="maui-list {{ className ? className : '' }} {{ radius ? 'maui-list-radius' : '' }}" style="{{style}}">
+    <view
+            ma:if="{{ header }}"
+            class="maui-list-header">
+        {{ header }}
+    </view>
+    <view class="maui-list-body">
+        <slot/>
+    </view>
+    <view
+            ma:if="{{ footer }}"
+            class="maui-list-footer">
+        {{ footer }}
+    </view>
+</view>

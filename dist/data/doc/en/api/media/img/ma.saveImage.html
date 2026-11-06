@@ -22,6 +22,13 @@
 <td align="left">Image file path, which can be a temporary file path or a permanent file path (local path). A network path is not supported. (The simulator supports only a code package path.)</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -46,6 +53,7 @@
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-js"><span class="hljs-keyword">ma</span>.saveImageToPhotosAlbum ({
   filePath: &#x27;https:<span class="hljs-comment">//example/test.png&#x27;,</span>
+  <span class="hljs-keyword">desc</span>: &#x27;&#x27;,
   success (res) {
     console.<span class="hljs-keyword">log</span> (res);
   },

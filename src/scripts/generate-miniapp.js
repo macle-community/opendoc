@@ -2,17 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 const MINIAPP_DIR = path.resolve(__dirname, '../../miniapp');
-const MAUI_SRC = '/home/f/nati/macle/DevToolkit_25.9.0/Macle_25.9.0_DevSuite_UI/dist';
+const MAUI_SRC = '/home/f/nati/macle/DevToolkit_26.6.0/DevToolkit_26.6.0-LG0001/Macle_26.6.0-LG0001_DevSuite_UI/dist';
 
 console.log('1. Creating directory structure at:', MINIAPP_DIR);
 fs.mkdirSync(MINIAPP_DIR, { recursive: true });
 
 // Copy maui-components
 const mauiDest = path.join(MINIAPP_DIR, 'maui-components');
-if (!fs.existsSync(mauiDest)) {
-  console.log('2. Copying MAUI components from DevSuite_UI...');
-  fs.cpSync(MAUI_SRC, mauiDest, { recursive: true });
-}
+console.log('2. Copying MAUI components from DevSuite_UI 26.6.0...');
+fs.cpSync(MAUI_SRC, mauiDest, { recursive: true });
 
 // Global usingComponents
 const usingComponents = {
@@ -29,7 +27,10 @@ const usingComponents = {
   'maui-field': '/maui-components/field/index',
   'maui-icon': '/maui-components/icon/index',
   'maui-image': '/maui-components/image/index',
+  'maui-list': '/maui-components/list/index',
+  'maui-list-item': '/maui-components/list-item/index',
   'maui-loading': '/maui-components/loading/index',
+  'maui-modal': '/maui-components/modal/index',
   'maui-overlay': '/maui-components/overlay/index',
   'maui-popup': '/maui-components/popup/index',
   'maui-progress': '/maui-components/progress/index',
@@ -69,6 +70,8 @@ const pagesList = [
   'pages/steps/index',
   'pages/dialog/index',
   'pages/toast/index',
+  'pages/list/index',
+  'pages/modal/index',
   'pages/view/index',
   'pages/text/index',
   'pages/swiper/index',
@@ -987,6 +990,169 @@ Page({
 .bg-3 { background: #f59e0b; }
 .bg-4 { background: #ef4444; }
 .bg-5 { background: #8b5cf6; }
+`
+  },
+
+  'list': {
+    title: 'List 列表',
+    maml: `
+<view class="page-container">
+  <view class="demo-section">
+    <text class="demo-section-title">1. Basic Usage (基础用法)</text>
+    <maui-list header="Basic Usage" radius footer="Top Description">
+      <maui-list-item>Item 1 (列表项 1)</maui-list-item>
+      <maui-list-item>Item 2 (列表项 2)</maui-list-item>
+      <maui-list-item>Item 3 (列表项 3)</maui-list-item>
+    </maui-list>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">2. List Item Properties (属性演示)</text>
+    <maui-list radius>
+      <maui-list-item arrow="right">Arrow Right (右箭头)</maui-list-item>
+      <maui-list-item arrow="up">Arrow Up (上箭头)</maui-list-item>
+      <maui-list-item arrow="down">Arrow Down (下箭头)</maui-list-item>
+      <maui-list-item brief="Second line auxiliary description">Brief Information (简述)</maui-list-item>
+      <maui-list-item disabled>Disabled Item (禁用状态)</maui-list-item>
+    </maui-list>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">3. Extended Usage (扩展属性)</text>
+    <maui-list header="Additional Information" radius footer="Synced with DevToolkit 26.6.0">
+      <maui-list-item extra="Extra Text" extraBrief="Auxiliary on Right">Information Display</maui-list-item>
+      <maui-list-item showDivider="false">No Divider Underscore (无底部分割线)</maui-list-item>
+      <maui-list-item title="Title Property">Body Slot Content</maui-list-item>
+      <maui-list-item title="Interactive Item" arrow="right" bindtap="handleClick">Click to Test Toast</maui-list-item>
+    </maui-list>
+  </view>
+</view>
+`,
+    js: `
+Page({
+  data: {},
+  handleClick() {
+    ma.showToast({ title: 'Item Clicked', icon: 'none' });
+  }
+});
+`,
+    mass: `
+.page-container { padding: 16px; background-color: #f7f8fa; min-height: 100vh; box-sizing: border-box; }
+.demo-section { margin-bottom: 20px; }
+.demo-section-title { display: block; font-size: 14px; font-weight: 600; color: #323233; margin-bottom: 8px; padding-left: 4px; }
+`
+  },
+
+  'modal': {
+    title: 'Modal 弹窗',
+    maml: `
+<view class="page-container">
+  <maui-modal
+    title="Basic Modal"
+    content="This is a basic MAUI modal dialog."
+    visible="{{ currentModal === 'modal1' }}"
+    primaryButtonText="Confirm"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    content="Alert content without title."
+    visible="{{ currentModal === 'modal2' }}"
+    primaryButtonText="Confirm"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Two-Button Modal"
+    content="Horizontal layout with primary and secondary buttons."
+    visible="{{ currentModal === 'modal3' }}"
+    primaryButtonText="Confirm"
+    secondaryButtonText="Cancel"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap"
+    bindsecondaryButtonTap="secondaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Three-Button Modal"
+    content="Modal with primary, secondary, and cancel actions."
+    visible="{{ currentModal === 'modal4' }}"
+    primaryButtonText="Primary"
+    secondaryButtonText="Secondary"
+    cancelButtonText="Cancel"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap"
+    bindsecondaryButtonTap="secondaryButtonTap"
+    bindcancelButtonTap="cancelButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Focus Mode"
+    content="Prominent single action button in focus style."
+    visible="{{ currentModal === 'modal5' }}"
+    type="focus"
+    primaryButtonText="I Understand"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Closable Modal"
+    content="Focus mode modal featuring an explicit close (X) icon."
+    visible="{{ currentModal === 'modal6' }}"
+    type="focus"
+    closable
+    primaryButtonText="Got It"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <view class="demo-section">
+    <text class="demo-section-title">1. Standard Modals (常规弹窗)</text>
+    <maui-cell-group>
+      <maui-cell title="Basic Modal (基础弹窗)" value="Open" bindclick="showModal" data-modal-value="modal1" />
+      <maui-cell title="Alert (无标题弹窗)" value="Open" bindclick="showModal" data-modal-value="modal2" />
+      <maui-cell title="Two Buttons (双按钮)" value="Open" bindclick="showModal" data-modal-value="modal3" />
+      <maui-cell title="Three Buttons (三按钮)" value="Open" bindclick="showModal" data-modal-value="modal4" />
+    </maui-cell-group>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">2. Focus Mode (强调模式)</text>
+    <maui-cell-group>
+      <maui-cell title="Focus Action (强调主按钮)" value="Open" bindclick="showModal" data-modal-value="modal5" />
+      <maui-cell title="Closable (含右上角关闭图标)" value="Open" bindclick="showModal" data-modal-value="modal6" />
+    </maui-cell-group>
+  </view>
+</view>
+`,
+    js: `
+Page({
+  data: { currentModal: '' },
+  showModal(e) {
+    this.setData({ currentModal: e.currentTarget.dataset['modalValue'] });
+  },
+  handleClose() { this.setData({ currentModal: '' }); },
+  primaryButtonTap() {
+    ma.showToast({ title: 'Primary Clicked', icon: 'none' });
+    this.setData({ currentModal: '' });
+  },
+  secondaryButtonTap() {
+    ma.showToast({ title: 'Secondary Clicked', icon: 'none' });
+    this.setData({ currentModal: '' });
+  },
+  cancelButtonTap() {
+    ma.showToast({ title: 'Cancel Clicked', icon: 'none' });
+    this.setData({ currentModal: '' });
+  }
+});
+`,
+    mass: `
+.page-container { padding: 16px; background-color: #f7f8fa; min-height: 100vh; box-sizing: border-box; }
+.demo-section { margin-bottom: 20px; }
+.demo-section-title { display: block; font-size: 14px; font-weight: 600; color: #323233; margin-bottom: 8px; padding-left: 4px; }
 `
   }
 };

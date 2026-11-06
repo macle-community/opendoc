@@ -1,0 +1,19 @@
+.page-container {
+  padding: 16px;
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.demo-section {
+  margin-bottom: 20px;
+}
+
+.demo-section-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #323233;
+  margin-bottom: 8px;
+  padding-left: 4px;
+}

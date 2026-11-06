@@ -1,0 +1,102 @@
+<h1 id="小程序-agent">小程序 Agent</h1>
+<p>小程序 Agent 是开发者工具中集成的 AI 编程助手功能，支持在 IDE 内直接启动 Claude、OpenCode 或 CodeAgent 等主流 AI Agent，结合 Macle 小程序平台的知识库与专用 Skill，帮助开发者高效完成需求探索、方案实现、代码诊断和智能编辑等工作。</p>
+<h2 id="前置准备">前置准备</h2>
+<p>使用小程序 Agent 前，请确保系统中已安装以下任意一款 AI Agent CLI 工具：</p>
+<ul>
+<li><strong>Claude</strong>：Anthropic 出品的命令行 AI 助手</li>
+<li><strong>OpenCode</strong>：开源的终端 AI 编程工具</li>
+<li><strong>CodeAgent</strong>：CodeAgent Team 独立开发的 AI 编程助手</li>
+</ul>
+<p>开发者工具会自动检测系统中已安装的 Agent，并在启动时提供选择。若仅安装了一款，则自动使用对应 Agent，无需手动选择。</p>
+<h2 id="启动小程序-agent">启动小程序 Agent</h2>
+<p>在开发者工具菜单栏中选择 <strong>开发辅助 &gt; 小程序 Agent &gt; 启动小程序 Agent</strong>，即可在当前项目工作区下打开一个 Agent 终端。</p>
+<p>首次启动时，开发者工具会自动将 Macle 小程序专用的 Agent Skill（命令、技能及知识库资料）复制到项目根目录下对应的 Agent 配置目录（如 <code>.claude</code>、<code>.opencode</code> 或 <code>.cac</code>），以便 Agent 获取小程序平台的上下文知识。</p>
+<h3 id="agent-目录说明">Agent 目录说明</h3>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>对应 Agent</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.claude</code></td>
+<td>Claude</td>
+<td>Claude 的配置与 Skill 存放目录</td>
+</tr>
+<tr>
+<td><code>.opencode</code></td>
+<td>OpenCode</td>
+<td>OpenCode 的配置与 Skill 存放目录</td>
+</tr>
+<tr>
+<td><code>.cac</code></td>
+<td>CodeAgent</td>
+<td>CodeAgent 的配置与 Skill 存放目录</td>
+</tr>
+</tbody></table>
+<p>若项目中已存在上述任一目录，开发者工具将优先使用对应 Agent；若多个 Agent 均已安装且无历史目录，则会弹窗让用户选择。</p>
+<h2 id="需求探索（explore-agent）">需求探索（Explore Agent）</h2>
+<p>需求探索 Agent 用于对用户需求进行分析和拆解。开发者输入自然语言描述的需求后，Agent 会结合 Macle 小程序平台知识库，对项目代码进行探索和理解，并输出需求分析结果与设计文档，生成到项目的 <code>docs/design</code> 目录中。</p>
+<p>使用方式：<strong>开发辅助 &gt; 小程序 Agent &gt; 需求探索</strong></p>
+<p>示例提示词：</p>
+<pre><code>探索登录功能的实现逻辑
+</code></pre>
+<h2 id="计划拆分（plan-split-agent）">计划拆分（Plan Split Agent）</h2>
+<p>计划拆分 Agent 在需求探索完成后使用，负责将探索阶段产出的设计方案拆分为可执行的实现步骤，为后续的实现阶段做准备。</p>
+<p>使用方式：<strong>开发辅助 &gt; 小程序 Agent &gt; 计划拆分</strong></p>
+<blockquote>
+<p>注意：执行计划拆分前，需先完成需求探索，否则将提示缺少设计文档。</p>
+</blockquote>
+<h2 id="实现计划（implement-plan-agent）">实现计划（Implement Plan Agent）</h2>
+<p>实现计划 Agent 根据计划拆分阶段输出的步骤，自动进行代码实现。该 Agent 同样依赖需求探索阶段生成的 <code>docs/design</code> 目录下的设计文档。</p>
+<p>使用方式：<strong>开发辅助 &gt; 小程序 Agent &gt; 实现计划</strong></p>
+<blockquote>
+<p>注意：执行实现计划前，需先完成需求探索和计划拆分两个阶段。</p>
+</blockquote>
+<h2 id="智能诊断（code-doctor-agent）">智能诊断（Code Doctor Agent）</h2>
+<p>智能诊断 Agent 用于对代码问题进行定位和诊断。开发者可以描述遇到的 Bug 或异常现象，Agent 将结合项目代码进行分析，给出问题原因和修复建议。</p>
+<p>使用方式：<strong>开发辅助 &gt; 小程序 Agent &gt; 智能诊断</strong></p>
+<p>示例提示词：</p>
+<pre><code>诊断登录接口超时的问题
+</code></pre>
+<h2 id="智能编辑（smart-edit-agent）">智能编辑（Smart Edit Agent）</h2>
+<p>智能编辑 Agent 用于对指定代码进行重构或修改。开发者描述编辑要求后，Agent 会对目标代码进行智能改写。</p>
+<p>使用方式：<strong>开发辅助 &gt; 小程序 Agent &gt; 智能编辑</strong></p>
+<p>示例提示词：</p>
+<pre><code>重构登录函数，拆分为参数校验和业务处理两个子函数
+</code></pre>
+<h2 id="更新-agent-skill">更新 Agent Skill</h2>
+<p>开发者可通过 <strong>开发辅助 &gt; 小程序 Agent &gt; 更新 Agent Skill</strong> 来更新项目中的 Agent Skill 资源。支持两种来源：</p>
+<ul>
+<li><strong>默认 Skill</strong>：使用开发者工具内置的小程序平台专用 Skill 包</li>
+<li><strong>自定义 Skill</strong>：导入开发者自行打包的 <code>agent.zip</code> 压缩包，压缩包内部结构应包含 <code>commands/</code> 和 <code>skills/</code> 目录</li>
+</ul>
+<p>更新时将覆盖项目中已有的 Agent Skill 文件。若已存在 Agent 目录，将提示选择是否强制覆盖。</p>
+<h2 id="自定义命令配置">自定义命令配置</h2>
+<p>Agent Skill 目录下的 <code>cmd.yaml</code> 文件用于配置各 Agent 的启动命令，开发者可按需修改。配置文件格式示例：</p>
+<pre><code class="language-yaml"><span class="hljs-symbol">commands:</span>
+  <span class="hljs-meta"># 需求探索 Agent 命令</span>
+<span class="hljs-symbol">  explore:</span> <span class="hljs-string">&quot; /macle-exploration &quot;</span>
+  <span class="hljs-meta"># 实现计划 Agent 命令</span>
+<span class="hljs-symbol">  implementPlan:</span> <span class="hljs-string">&quot; /macle-design-implementer &quot;</span>
+  <span class="hljs-meta"># 智能诊断 Agent 命令</span>
+<span class="hljs-symbol">  codeDoctor:</span> <span class="hljs-string">&quot; @macle-runtime-code-diagnostic &quot;</span>
+  <span class="hljs-meta"># 智能编辑 Agent 命令</span>
+<span class="hljs-symbol">  smartEdit:</span> <span class="hljs-string">&quot; /macle-smart-edit &quot;</span>
+
+<span class="hljs-meta"># Agent 启动等待配置（毫秒）</span>
+<span class="hljs-symbol">agentConfig:</span>
+<span class="hljs-symbol">  firstTimeWait:</span> <span class="hljs-number">20000</span>  <span class="hljs-meta"># 首次启动等待时间，需 &gt;= 20000</span>
+<span class="hljs-symbol">  normalWait:</span> <span class="hljs-number">5000</span>      <span class="hljs-meta"># 非首次启动等待时间，需 &gt;= 5000</span>
+</code></pre>
+<p>若项目中存在用户自定义的 <code>cmd.yaml</code>（位于 <code>.opencode</code>、<code>.claude</code> 或 <code>.cac</code> 目录下），其优先级高于扩展内置的默认配置。</p>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>Tip：使用任意 Agent 功能前，请务必先打开一个小程序项目（即 VS Code 工作空间），否则将无法启动。</li>
+<li>Tip：完整的开发流程建议按顺序执行：需求探索 → 计划拆分 → 实现计划，以确保 Agent 具备充足的上下文信息。</li>
+<li>Tip：智能诊断和智能编辑可独立使用，不依赖需求探索的输出。</li>
+<li>Tip：首次启动 Agent 时，开发者工具需要一定时间将 Skill 文件复制到项目目录，请耐心等待终端响应。</li>
+<li>Tip：<code>cmd.yaml</code> 中的 <code>firstTimeWait</code> 不得小于 20000ms，<code>normalWait</code> 不得小于 5000ms，否则可能导致命令无法正常注入到 Agent。</li>
+</ul>

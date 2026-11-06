@@ -29,6 +29,13 @@
 <td align="left">Scan Code Type</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -105,6 +112,7 @@
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-js"><span class="hljs-comment">// Allow scanning from camera and album.</span>
 ma.<span class="hljs-title function_">scanCode</span>({
+  <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
   <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
   }
@@ -113,6 +121,7 @@ ma.<span class="hljs-title function_">scanCode</span>({
 <span class="hljs-comment">// Scan code from camera only.</span>
 ma.<span class="hljs-title function_">scanCode</span>({
   <span class="hljs-attr">onlyFromCamera</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
   <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) {
     <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
   }

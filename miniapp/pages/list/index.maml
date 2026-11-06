@@ -1,0 +1,39 @@
+<view class="page-container">
+  <view class="demo-section">
+    <text class="demo-section-title">1. Basic Usage (基础用法)</text>
+    <maui-list header="Basic Usage" radius footer="Top Description">
+      <maui-list-item>Item 1 (列表项 1)</maui-list-item>
+      <maui-list-item>Item 2 (列表项 2)</maui-list-item>
+      <maui-list-item>Item 3 (列表项 3)</maui-list-item>
+    </maui-list>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">2. List Item Properties (属性演示)</text>
+    <maui-list radius>
+      <maui-list-item arrow="right">Arrow Right (右箭头)</maui-list-item>
+      <maui-list-item arrow="up">Arrow Up (上箭头)</maui-list-item>
+      <maui-list-item arrow="down">Arrow Down (下箭头)</maui-list-item>
+      <maui-list-item brief="Second line auxiliary description">Brief Information (简述)</maui-list-item>
+      <maui-list-item disabled>Disabled Item (禁用状态)</maui-list-item>
+    </maui-list>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">3. Extended Usage (扩展属性)</text>
+    <maui-list header="Additional Information" radius footer="Synced with DevToolkit 26.6.0">
+      <maui-list-item extra="Extra Text" extraBrief="Auxiliary on Right">
+        Information Display
+      </maui-list-item>
+      <maui-list-item showDivider="false">
+        No Divider Underscore (无底部分割线)
+      </maui-list-item>
+      <maui-list-item title="Title Property">
+        Body Slot Content
+      </maui-list-item>
+      <maui-list-item title="Interactive Item" arrow="right" bindtap="handleClick">
+        Click to Test Toast
+      </maui-list-item>
+    </maui-list>
+  </view>
+</view>

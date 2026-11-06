@@ -21,6 +21,7 @@ export default function IndexPage() {
           <Navigator url="/pages/progress/index" className="nav-item">Progress 进度条</Navigator>
           <Navigator url="/pages/divider/index" className="nav-item">Divider 分割线</Navigator>
           <Navigator url="/pages/empty/index" className="nav-item">Empty 空状态</Navigator>
+          <Navigator url="/pages/list/index" className="nav-item">List 列表</Navigator>
         </View>
       </View>
 
@@ -41,6 +42,7 @@ export default function IndexPage() {
         <View className="nav-grid">
           <Navigator url="/pages/dialog/index" className="nav-item">Dialog 弹出框</Navigator>
           <Navigator url="/pages/toast/index" className="nav-item">Toast 轻提示</Navigator>
+          <Navigator url="/pages/modal/index" className="nav-item">Modal 弹窗</Navigator>
           <Navigator url="/pages/steps/index" className="nav-item">Steps 步骤条</Navigator>
         </View>
       </View>

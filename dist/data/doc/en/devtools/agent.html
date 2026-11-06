@@ -1,0 +1,102 @@
+<h1 id="mini-program-agent">Mini Program Agent</h1>
+<p>Mini Program Agent is an AI-powered programming assistant integrated into the developer tools. It supports launching mainstream AI agents such as Claude, OpenCode, or CodeAgent directly within the IDE. Combined with Macle mini program platform knowledge base and dedicated Skills, it helps developers efficiently complete tasks including requirement exploration, solution implementation, code diagnosis, and intelligent editing.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before using Mini Program Agent, make sure one of the following AI Agent CLI tools is installed on your system:</p>
+<ul>
+<li><strong>Claude</strong>: Anthropic&#39;s command-line AI assistant</li>
+<li><strong>OpenCode</strong>: An open-source terminal AI programming tool</li>
+<li><strong>CodeAgent</strong>: An AI coding assistant independently developed by CodeAgent Team</li>
+</ul>
+<p>The developer tools will automatically detect installed agents on your system and provide a selection at startup. If only one agent is installed, it will be used automatically without manual selection.</p>
+<h2 id="starting-mini-program-agent">Starting Mini Program Agent</h2>
+<p>In the developer tools menu bar, select <strong>Development Assistance &gt; Mini Program Agent &gt; Start Mini Program Agent</strong> to open an Agent terminal in the current project workspace.</p>
+<p>On first launch, the developer tools will automatically copy Macle mini program–specific Agent Skills (commands, skills, and knowledge base materials) to the corresponding Agent configuration directory under the project root (e.g., <code>.claude</code>, <code>.opencode</code>, or <code>.cac</code>), so that the Agent can access the platform&#39;s contextual knowledge.</p>
+<h3 id="agent-directory-description">Agent Directory Description</h3>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Corresponding Agent</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.claude</code></td>
+<td>Claude</td>
+<td>Configuration and Skill directory for Claude</td>
+</tr>
+<tr>
+<td><code>.opencode</code></td>
+<td>OpenCode</td>
+<td>Configuration and Skill directory for OpenCode</td>
+</tr>
+<tr>
+<td><code>.cac</code></td>
+<td>CodeAgent</td>
+<td>Configuration and Skill directory for CodeAgent</td>
+</tr>
+</tbody></table>
+<p>If any of the above directories already exists in the project, the developer tools will prioritize using the corresponding Agent. If multiple agents are installed and no history directory exists, a dialog will prompt you to choose.</p>
+<h2 id="explore-agent">Explore Agent</h2>
+<p>The Explore Agent is used to analyze and break down user requirements. After entering a natural language description of your requirement, the Agent explores and interprets the project code in conjunction with the Macle mini program platform knowledge base, then outputs analysis results and design documents to the project&#39;s <code>docs/design</code> directory.</p>
+<p>How to use: <strong>Development Assistance &gt; Mini Program Agent &gt; Explore</strong></p>
+<p>Example prompt:</p>
+<pre><code>Explore <span class="hljs-keyword">the</span> implementation logic <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> login feature
+</code></pre>
+<h2 id="plan-split-agent">Plan Split Agent</h2>
+<p>The Plan Split Agent is used after the Explore phase. It splits the design output from the exploration stage into executable implementation steps, preparing for the subsequent implementation phase.</p>
+<p>How to use: <strong>Development Assistance &gt; Mini Program Agent &gt; Plan Split</strong></p>
+<blockquote>
+<p>Note: You must complete the Explore phase before running Plan Split; otherwise, a missing design document error will be reported.</p>
+</blockquote>
+<h2 id="implement-plan-agent">Implement Plan Agent</h2>
+<p>The Implement Plan Agent performs code implementation based on the steps produced by the Plan Split phase. This Agent also depends on the design documents generated in the <code>docs/design</code> directory during the Explore phase.</p>
+<p>How to use: <strong>Development Assistance &gt; Mini Program Agent &gt; Implement Plan</strong></p>
+<blockquote>
+<p>Note: Both the Explore and Plan Split phases must be completed before running Implement Plan.</p>
+</blockquote>
+<h2 id="code-doctor-agent">Code Doctor Agent</h2>
+<p>The Code Doctor Agent is used to locate and diagnose code issues. Describe a bug or abnormal behavior you are encountering, and the Agent will analyze the project code to identify the root cause and provide fix suggestions.</p>
+<p>How to use: <strong>Development Assistance &gt; Mini Program Agent &gt; Code Doctor</strong></p>
+<p>Example prompt:</p>
+<pre><code>Diagnose <span class="hljs-keyword">the</span> <span class="hljs-keyword">timeout</span> issue <span class="hljs-keyword">on</span> <span class="hljs-keyword">the</span> login API
+</code></pre>
+<h2 id="smart-edit-agent">Smart Edit Agent</h2>
+<p>The Smart Edit Agent is used to refactor or modify specified code. After describing your editing requirement, the Agent intelligently rewrites the target code.</p>
+<p>How to use: <strong>Development Assistance &gt; Mini Program Agent &gt; Smart Edit</strong></p>
+<p>Example prompt:</p>
+<pre><code>Refactor the <span class="hljs-keyword">login</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">by</span> splitting it <span class="hljs-keyword">into</span> two sub-<span class="hljs-keyword">functions</span>: parameter validation <span class="hljs-keyword">and</span> business processing
+</code></pre>
+<h2 id="updating-agent-skills">Updating Agent Skills</h2>
+<p>You can update the Agent Skill resources in your project via <strong>Development Assistance &gt; Mini Program Agent &gt; Update Agent Skill</strong>. Two sources are supported:</p>
+<ul>
+<li><strong>Default Skill</strong>: Use the built-in mini program platform Skill package bundled with the developer tools</li>
+<li><strong>Custom Skill</strong>: Import a developer-packaged <code>agent.zip</code> archive. The internal structure of the zip should contain <code>commands/</code> and <code>skills/</code> directories</li>
+</ul>
+<p>Updating will overwrite existing Agent Skill files in the project. If an Agent directory already exists, you will be prompted to choose whether to force overwrite.</p>
+<h2 id="custom-command-configuration">Custom Command Configuration</h2>
+<p>The <code>cmd.yaml</code> file in the Agent Skill directory configures the startup commands for each Agent. Developers can modify it as needed. Example configuration format:</p>
+<pre><code class="language-yaml"><span class="hljs-attr">commands:</span>
+  <span class="hljs-comment"># Explore Agent command</span>
+  <span class="hljs-attr">explore:</span> <span class="hljs-string">&quot; /macle-exploration &quot;</span>
+  <span class="hljs-comment"># Implement Plan Agent command</span>
+  <span class="hljs-attr">implementPlan:</span> <span class="hljs-string">&quot; /macle-design-implementer &quot;</span>
+  <span class="hljs-comment"># Code Doctor Agent command</span>
+  <span class="hljs-attr">codeDoctor:</span> <span class="hljs-string">&quot; @macle-runtime-code-diagnostic &quot;</span>
+  <span class="hljs-comment"># Smart Edit Agent command</span>
+  <span class="hljs-attr">smartEdit:</span> <span class="hljs-string">&quot; /macle-smart-edit &quot;</span>
+
+<span class="hljs-comment"># Agent startup wait configuration (milliseconds)</span>
+<span class="hljs-attr">agentConfig:</span>
+  <span class="hljs-attr">firstTimeWait:</span> <span class="hljs-number">20000</span>  <span class="hljs-comment"># First-time startup wait time, must be &gt;= 20000</span>
+  <span class="hljs-attr">normalWait:</span> <span class="hljs-number">5000</span>      <span class="hljs-comment"># Subsequent startup wait time, must be &gt;= 5000</span>
+</code></pre>
+<p>If a user-customized <code>cmd.yaml</code> exists in the project (located in the <code>.opencode</code>, <code>.claude</code>, or <code>.cac</code> directory), it takes priority over the extension&#39;s built-in default configuration.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Tip: Before using any Agent feature, make sure a mini program project (i.e., a VS Code workspace) is open; otherwise the Agent cannot start.</li>
+<li>Tip: For a complete development workflow, it is recommended to execute in order: Explore → Plan Split → Implement Plan, to ensure the Agent has sufficient contextual information.</li>
+<li>Tip: Code Doctor and Smart Edit can be used independently and do not depend on the output of the Explore phase.</li>
+<li>Tip: On first Agent startup, the developer tools need some time to copy Skill files to the project directory. Please wait patiently for the terminal to respond.</li>
+<li>Tip: In <code>cmd.yaml</code>, <code>firstTimeWait</code> must not be less than 20000 ms, and <code>normalWait</code> must not be less than 5000 ms; otherwise, commands may fail to inject into the Agent.</li>
+</ul>

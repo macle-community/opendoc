@@ -69,6 +69,14 @@
 <td align="left">录像异常退出时触发，返回错误信息以及被停止的录像的存储路径</td>
 <td></td>
 </tr>
+<tr>
+<td align="left">desc</td>
+<td align="left">string</td>
+<td align="left"></td>
+<td align="left">否</td>
+<td align="left">权限用途信息，该参数会显示在权限弹窗中（<strong>26.6.0-LG0001版本新增参数</strong>）</td>
+<td></td>
+</tr>
 </tbody></table>
 <h3 id="resolution">resolution</h3>
 <table>
@@ -171,7 +179,7 @@
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
 <pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flash</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;width: 100%; height: 300px;&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;error&#x27;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">camera</span> <span class="hljs-attr">desc</span>=<span class="hljs-string">&#x27;申请使用相机&#x27;</span> <span class="hljs-attr">device-position</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">flash</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">flash</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;width: 100%; height: 300px;&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;error&#x27;</span>
         <span class="hljs-attr">bindstop</span>=<span class="hljs-string">&#x27;stop&#x27;</span> <span class="hljs-attr">bindinitdone</span>=<span class="hljs-string">&#x27;initdone&#x27;</span> <span class="hljs-attr">bindrecorderror</span>=<span class="hljs-string">&#x27;recorderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">camera</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">slider</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;slider2&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;slider2change&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">sliderMax</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">show-value</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&#x27;1&#x27;</span>
         <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;margin-top:50px ;&#x27;</span> /&gt;</span>

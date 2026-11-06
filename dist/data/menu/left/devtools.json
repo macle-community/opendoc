@@ -105,6 +105,16 @@
     ]
   },
   {
+    "name": "小程序 Agent",
+    "path": "/agent",
+    "data": "/data/doc/devtools/agent.md"
+  },
+  {
+    "name": "签名私钥管理",
+    "path": "/signSetting",
+    "data": "/data/doc/devtools/signSetting.md"
+  },
+  {
     "name": "打包",
     "path": "/upload",
     "data": "/data/doc/devtools/upload.md"

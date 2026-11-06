@@ -3,6 +3,6 @@
 <maui-overlay show="{{show}}" duration="{{ duration }}" z-index="{{ zIndex }}" custom-style="{{ computed.overlayStyle({overlay, overlayStyle}) }}" bindclick="onClickOverlay" lock-scroll="{{ lockScroll }}" />
 <view ma:if="{{ inited }}" class=" custom-class {{ classes }} {{ computed.bem('popup', [position, { round, safe: safeAreaInsetBottom, safeTop: safeAreaInsetTop }]) }}" style="{{ computed.popupStyle({ zIndex, duration, display, customStyle }) }}" bind:transitionend="onTransitionEnd">
     <slot></slot>
-    <icon ma:if="{{ closeable }}" type="{{closeIcon}}" class="maui-popup__close-icon maui-popup__close-icon--{{ closeIconPosition }}" bindtap="onClickCloseIcon" />
+    <icon ma:if="{{ closeable }}" type="{{closeIcon}}" class="maui-popup__close-icon maui-popup__close-icon--{{ closeIconPosition }}" bindtap="onClickCloseIcon" color="#999999" size="16"/>
 </view>
 

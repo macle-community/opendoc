@@ -15,6 +15,13 @@
 </tr>
 </thead>
 <tbody><tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -106,6 +113,7 @@
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-js"><span class="hljs-keyword">ma</span>.openBluetoothAdapter({
+  desc: <span class="hljs-string">&#x27;&#x27;</span>,
   success: (<span class="hljs-keyword">res</span>) =&gt; {
     console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;openBluetoothAdapter success&#x27;</span>, <span class="hljs-keyword">res</span>)
     <span class="hljs-keyword">ma</span>.showModal({

@@ -1,6 +1,25 @@
 <h2 id="devtools-update-log">Devtools Update Log</h2>
-<h3 id="25120">25.12.0</h3>
+<h3 id="2660-lg0001">26.6.0-LG0001</h3>
 <h4 id="new">New</h4>
+<ol>
+<li>AI supports building traditional H5 SPA structure mini-programs</li>
+<li>Supports inject the [{&quot;command&quot;: &quot;simulator&quot;, &quot;parameters&quot;: {&quot;sourceDir&quot;: &quot;dist&quot;}}] command to the pending-commands.json file to automatically start the simulator and run the dist directory.</li>
+<li>The capability of verifying the integrity of applet packages is added. You can choose whether to generate a signature file. After the private key is configured in the signature private key management, the applet package and the corresponding signature file can be generated during compilation and packaging.</li>
+</ol>
+<h3 id="2660">26.6.0</h3>
+<h4 id="new-1">New</h4>
+<ol>
+<li>Added the AI agent capability for mini programs.</li>
+<li>The command <code>[{&quot;command&quot;: &quot;simulator&quot;}]</code> can be written to <code>&lt;Applet directory&gt;/.macle/pending-commands.json</code> to automatically pull the simulator.</li>
+</ol>
+<h3 id="2630">26.3.0</h3>
+<h4 id="new-2">New</h4>
+<ol>
+<li>Supports setting whether to disable iOS gesture control by configuring <code>setSwipeBack</code>.</li>
+<li>Supports setting the background color of the iOS safe area.</li>
+</ol>
+<h3 id="25120">25.12.0</h3>
+<h4 id="new-3">New</h4>
 <ol>
 <li><p>Mini Programs now support adjusting the navigation bar title position; the IDE adds enumeration values <code>center</code> and <code>left</code> for predictive text.</p>
 </li>
@@ -29,7 +48,7 @@
 <li>Fixed an issue where initializing the WebView component with an invalid value would block subsequent page updates to the src attribute.</li>
 </ol>
 <h3 id="2590">25.9.0</h3>
-<h4 id="new-1">New</h4>
+<h4 id="new-4">New</h4>
 <ol>
 <li>The success callback of the current network API now includes the <code>isConnectVPN</code> field to indicate whether the current device is connected to a VPN (Minimum version: 25.9.0).</li>
 </ol>
@@ -38,7 +57,7 @@
 <li>The Mini Program IDE plugin has removed the judgment for non-Chinese and non-English directories, continuously improving the development experience for Mini Program developers.</li>
 </ol>
 <h3 id="2560">25.6.0</h3>
-<h4 id="new-2">New</h4>
+<h4 id="new-5">New</h4>
 <ol>
 <li>Added H5 Mini Program online template.</li>
 </ol>
@@ -47,12 +66,12 @@
 <li>Optimized converter experience, optimized real-device debugging experience.</li>
 </ol>
 <h3 id="2530">25.3.0</h3>
-<h4 id="new-3">New</h4>
+<h4 id="new-6">New</h4>
 <ol>
 <li>The experience of the Mini Program  converter is optimized. The local resource image link can be used in the <code>MASS</code> file.</li>
 </ol>
 <h3 id="24120">24.12.0</h3>
-<h4 id="new-4">New</h4>
+<h4 id="new-7">New</h4>
 <ol>
 <li>The emulator supports setting the logo <a onclick="_mdLinkClick(this.href)" href="#/api/ma.setTabBarBadge">setTabBarBadge</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeTabBarBadge">removeTabBarBadge</a> in the upper right corner of the tabbar. The IDE supports code association.</li>
 <li>The simulator supports the function of listening to the <a onclick="_mdLinkClick(this.href)" href="#/api/ma.onKeyboardHeightChange">onKeyboardHeightChange</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.offKeyboardHeightChange">offKeyboardHeightChange</a> when the keyboard height changes. The IDE supports the association of related codes.</li>
@@ -75,7 +94,7 @@
 <li>The ES5 gasket becomes invalid when the development tool is compiled and packaged.</li>
 </ol>
 <h3 id="2490">24.9.0</h3>
-<h4 id="new-5">New</h4>
+<h4 id="new-8">New</h4>
 <ol>
 <li>IDE newly supports <a onclick="_mdLinkClick(this.href)" href="#/devtools/npmBuild">npm package management</a> capability</li>
 <li>The simulator has added the ability to support <a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseVideo">chooseVideo</a>, and the IDE supports related coding Lenovo</li>
@@ -92,7 +111,7 @@
 <li>Reduce the frequency of packaging failures caused by compilation resource release delays in low-performance scenarios</li>
 </ol>
 <h3 id="2460">24.6.0</h3>
-<h4 id="new-6">New</h4>
+<h4 id="new-9">New</h4>
 <ol>
 <li>The simulator adds a new exit miniprogram interface <a onclick="_mdLinkClick(this.href)" href="#/api/ma.exitMiniProgram">ma.exitMiniProgram</a>, and the IDE supports related coding associations</li>
 <li>The simulator has added support for <a onclick="_mdLinkClick(this.href)" href="#/api/ma.openBluetoothAdapter">Bluetooth pairing</a> capability, and the IDE supports related coding Lenovo</li>
@@ -113,7 +132,7 @@
 <li>Repair the style distortion of some components of the Mini Program management platform</li>
 </ol>
 <h3 id="2430">24.3.0</h3>
-<h4 id="new-7">New</h4>
+<h4 id="new-10">New</h4>
 <ol>
 <li>Added the ability to log in, and added new APIs to the simulator: <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getAuthCode">ma.getAuthCode</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getOpenUserInfo">ma.getOpenUserInfo</a>, and the IDE supports related API coding associations</li>
 </ol>
@@ -128,7 +147,7 @@
 <li>Supports simulator window size adjustment to optimize debugging experience</li>
 </ol>
 <h3 id="23120">23.12.0</h3>
-<h4 id="new-8">New</h4>
+<h4 id="new-11">New</h4>
 <ol>
 <li>The simulator has added a new <a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportLog">log reporting</a> API, and the IDE supports related API coding associations.</li>
 <li>The simulator adds <a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">Data Prefetch</a> API, and the IDE supports related API coding Lenovo</li>
@@ -152,7 +171,7 @@
 <li>Optimize the processing flow in the direct packaging scenario of unconverted projects and optimize the prompt information</li>
 </ol>
 <h3 id="2390">23.9.0</h3>
-<h4 id="new-9">New</h4>
+<h4 id="new-12">New</h4>
 <ol>
 <li>The simulator and converter support recording function</li>
 <li>Update IDE developer tools to support viewing <a onclick="_mdLinkClick(this.href)" href="#/devtools/errLog">logs</a></li>
@@ -166,7 +185,7 @@
 <li>Fix the problem that the custom navigation bar set by the simulator does not take effect</li>
 </ol>
 <h3 id="2360">23.6.0</h3>
-<h4 id="new-10">New</h4>
+<h4 id="new-13">New</h4>
 <ol>
 <li>The simulator and converter support the <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager">FileSystemManager</a> file manager, as well as <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.writeFile">writeFile</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.unlink">unlink</a>, <a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.readFile">readFile</a> and other file management related APIs</li>
 <li>The simulator and converter support <a onclick="_mdLinkClick(this.href)" href="#/api/ma.loadFontFace">loading user-defined font</a> files</li>
@@ -175,7 +194,7 @@
 <li>The simulator and converter have added the internationalization capabilities of <a onclick="_mdLinkClick(this.href)" href="#/api/ma.showModal">showModal</a> and <a onclick="_mdLinkClick(this.href)" href="#/component/picker">picker</a> components.</li>
 </ol>
 <h3 id="2330">23.3.0</h3>
-<h4 id="new-11">New</h4>
+<h4 id="new-14">New</h4>
 <ol>
 <li>IDE supports multi-language capabilities</li>
 <li>Coding association supports internationalization</li>

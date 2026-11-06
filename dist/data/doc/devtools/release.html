@@ -1,6 +1,25 @@
 <h2 id="开发工具更新日志">开发工具更新日志</h2>
-<h3 id="25120">25.12.0</h3>
+<h3 id="2660-lg0001">26.6.0-LG0001</h3>
 <h4 id="新增">新增</h4>
+<ol>
+<li>AI支持构建传统H5 SPA结构的小程序</li>
+<li>支持向<code>pending-commands.json</code>文件注入<code>[{&quot;command&quot;: &quot;simulator&quot;, &quot;parameters&quot;: {&quot;sourceDir&quot;: &quot;dist&quot;}}]</code>命令以自动启动模拟器并运行dist目录</li>
+<li>新增具备小程序包完整性校验能力，可选择是否生成签名文件。在签名私钥管理中配置私钥后，可在编译打包时生成小程序包及相应的签名文件</li>
+</ol>
+<h3 id="2660">26.6.0</h3>
+<h4 id="新增-1">新增</h4>
+<ol>
+<li>新增小程序AI Agent能力</li>
+<li>支持将 <code>[{&quot;command&quot;: &quot;simulator&quot;}]</code> 注入 <code>&lt;小程序目录&gt;/.macle/pending-commands.json</code> 以自动拉取模拟器</li>
+</ol>
+<h3 id="2630">26.3.0</h3>
+<h4 id="新增-2">新增</h4>
+<ol>
+<li>支持通过配置<code>setSwipeBack</code>设置是否禁用iOS手势控制</li>
+<li>支持设置iOS安全区域的背景颜色</li>
+</ol>
+<h3 id="25120">25.12.0</h3>
+<h4 id="新增-3">新增</h4>
 <ol>
 <li>小程序支持 导航栏title 位置调整，ide 新增枚举值 <code>center</code>、<code>left</code>联想</li>
 <li><code>webview</code> 组件新增 <code>loadingStyle</code> 属性，ide支持代码联想</li>
@@ -20,7 +39,7 @@
 <li>修复webview 组件 非法值初始化后会阻塞后续页面更新src的问题</li>
 </ol>
 <h3 id="2590">25.9.0</h3>
-<h4 id="新增-1">新增</h4>
+<h4 id="新增-4">新增</h4>
 <ol>
 <li>获取当前网络API成功回调新增isConnectVPN字段用于标志当前设备是否连接vpn（最低版本： 25.9.0）</li>
 </ol>
@@ -29,7 +48,7 @@
 <li>小程序IDE插件去除非中英文目录的判断，持续提升小程序开发者开发体验</li>
 </ol>
 <h3 id="2560">25.6.0</h3>
-<h4 id="新增-2">新增</h4>
+<h4 id="新增-5">新增</h4>
 <ol>
 <li>新增H5在线模板</li>
 </ol>
@@ -38,12 +57,12 @@
 <li>转换器体验优化、真机调试体验优化</li>
 </ol>
 <h3 id="2530">25.3.0</h3>
-<h4 id="新增-3">新增</h4>
+<h4 id="新增-6">新增</h4>
 <ol>
 <li>小程序转换器体验优化,新增支持在<code>MASS</code>文件中使用本地资源图片链接</li>
 </ol>
 <h3 id="24120">24.12.0</h3>
-<h4 id="新增-4">新增</h4>
+<h4 id="新增-7">新增</h4>
 <ol>
 <li>模拟器新增支持在tabbar右上角上设置徽标<a onclick="_mdLinkClick(this.href)" href="#/api/ma.setTabBarBadge">setTabBarBadge</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.removeTabBarBadge">removeTabBarBadge</a>，IDE支持相关编码联想</li>
 <li>模拟器新增支持小程序支持键盘高度变化监听<a onclick="_mdLinkClick(this.href)" href="#/api/ma.onKeyboardHeightChange">onKeyboardHeightChange</a>/<a onclick="_mdLinkClick(this.href)" href="#/api/ma.offKeyboardHeightChange">offKeyboardHeightChange</a>，IDE支持相关编码联想</li>
@@ -66,7 +85,7 @@
 <li>修复 开发工具编译打包时es5垫片失效的问题</li>
 </ol>
 <h3 id="2490">24.9.0</h3>
-<h4 id="新增-5">新增</h4>
+<h4 id="新增-8">新增</h4>
 <ol>
 <li>IDE新增支持<a onclick="_mdLinkClick(this.href)" href="#/devtools/npmBuild">npm包管理</a>能力</li>
 <li>模拟器新增支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.chooseVideo">chooseVideo</a>能力，IDE支持相关编码联想</li>
@@ -83,7 +102,7 @@
 <li>降低 低性能场景下编译资源释放延迟导致打包失败的频率</li>
 </ol>
 <h3 id="2460">24.6.0</h3>
-<h4 id="新增-6">新增</h4>
+<h4 id="新增-9">新增</h4>
 <ol>
 <li>模拟器新增退出小程序接口 <a onclick="_mdLinkClick(this.href)" href="#/api/ma.exitMiniProgram">ma.exitMiniProgram</a>，IDE支持相关编码联想</li>
 <li>模拟器新增支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.openBluetoothAdapter">蓝牙配对</a>能力，IDE支持相关编码联想</li>
@@ -104,7 +123,7 @@
 <li>修复小程序管理平台的部分组件样式失真</li>
 </ol>
 <h3 id="2430">24.3.0</h3>
-<h4 id="新增-7">新增</h4>
+<h4 id="新增-10">新增</h4>
 <ol>
 <li>新增免登能力，模拟器新增API：<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getAuthCode">ma.getAuthCode</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getOpenUserInfo">ma.getOpenUserInfo</a>，IDE支持相关API编码联想</li>
 </ol>
@@ -119,7 +138,7 @@
 <li>支持模拟器窗口大小调节，优化调试体验</li>
 </ol>
 <h3 id="23120">23.12.0</h3>
-<h4 id="新增-8">新增</h4>
+<h4 id="新增-11">新增</h4>
 <ol>
 <li>模拟器新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.reportLog">日志上报</a>API，IDE支持相关API编码联想</li>
 <li>模拟器新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.getBackgroundFetchData">数据预取</a>API，IDE支持相关API编码联想</li>
@@ -143,7 +162,7 @@
 <li>优化未转换工程直接打包场景下的处理流程，优化提示信息</li>
 </ol>
 <h3 id="2390">23.9.0</h3>
-<h4 id="新增-9">新增</h4>
+<h4 id="新增-12">新增</h4>
 <ol>
 <li>模拟器、转换器支持录像功能</li>
 <li>更新 IDE 开发者工具支持<a onclick="_mdLinkClick(this.href)" href="#/devtools/errLog">查看日志</a></li>
@@ -157,7 +176,7 @@
 <li>修复模拟器设置自定义导航栏未生效的问题</li>
 </ol>
 <h3 id="2360">23.6.0</h3>
-<h4 id="新增-10">新增</h4>
+<h4 id="新增-13">新增</h4>
 <ol>
 <li>模拟器、转换器支持<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager">FileSystemManager</a>文件管理器，以及<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.writeFile">writeFile</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.unlink">unlink</a>、<a onclick="_mdLinkClick(this.href)" href="#/api/FileSystemManager.readFile">readFile</a>等文件管理相关API</li>
 <li>模拟器、转换器支持<a onclick="_mdLinkClick(this.href)" href="#/api/ma.loadFontFace">loadFontFace</a>,加载用户自定义的字体文件</li>
@@ -166,7 +185,7 @@
 <li>模拟器、转换器新增<a onclick="_mdLinkClick(this.href)" href="#/api/ma.showModal">showModal</a>、<a onclick="_mdLinkClick(this.href)" href="#/component/picker">picker</a>组件国际化能力</li>
 </ol>
 <h3 id="2330">23.3.0</h3>
-<h4 id="新增-11">新增</h4>
+<h4 id="新增-14">新增</h4>
 <ol>
 <li>IDE支持多语言能力</li>
 <li>编码联想支持国际化</li>

@@ -29,6 +29,13 @@
 <td align="left">Maximum number of recording channels. A larger number of recording channels indicates a higher recording quality and a larger file size.</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">sampleRate</td>
 <td align="left">Number</td>
 <td align="left">8000</td>
@@ -38,7 +45,7 @@
 <tr>
 <td align="left">encodeBitRate</td>
 <td align="left">Number</td>
-<td align="left">480000</td>
+<td align="left">48000</td>
 <td align="left">No</td>
 <td align="left">Encoding bit rate, in bit/s. A higher encoding bit rate indicates higher recording quality and file size.The simulator does not support the setting of the encoding bit rate.</td>
 </tr>
@@ -119,7 +126,7 @@
 <pre><code class="language-javascript">Page({
     recorderStart() {
         const { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate } = this.<span class="hljs-built_in">data</span>;
-        const <span class="hljs-keyword">params</span> = { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate };
+        const <span class="hljs-keyword">params</span> = { <span class="hljs-built_in">duration</span>, numberOfChannels, sampleRate, encodeBitRate, desc: <span class="hljs-string">&#x27;&#x27;</span> };
         console.<span class="hljs-keyword">log</span>({ startParams: <span class="hljs-keyword">params</span> });
         recorderManager.start(<span class="hljs-keyword">params</span>);
     }

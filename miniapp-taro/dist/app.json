@@ -19,6 +19,8 @@
     "pages/steps/index",
     "pages/dialog/index",
     "pages/toast/index",
+    "pages/list/index",
+    "pages/modal/index",
     "pages/view/index",
     "pages/text/index",
     "pages/swiper/index",

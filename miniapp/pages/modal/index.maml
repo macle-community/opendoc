@@ -1,0 +1,83 @@
+<view class="page-container">
+  <!-- Modals -->
+  <maui-modal
+    title="Basic Modal"
+    content="This is a basic MAUI modal dialog."
+    visible="{{ currentModal === 'modal1' }}"
+    primaryButtonText="Confirm"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    content="Alert content without title."
+    visible="{{ currentModal === 'modal2' }}"
+    primaryButtonText="Confirm"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Two-Button Modal"
+    content="Horizontal layout with primary and secondary buttons."
+    visible="{{ currentModal === 'modal3' }}"
+    primaryButtonText="Confirm"
+    secondaryButtonText="Cancel"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap"
+    bindsecondaryButtonTap="secondaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Three-Button Modal"
+    content="Modal with primary, secondary, and cancel actions."
+    visible="{{ currentModal === 'modal4' }}"
+    primaryButtonText="Primary"
+    secondaryButtonText="Secondary"
+    cancelButtonText="Cancel"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap"
+    bindsecondaryButtonTap="secondaryButtonTap"
+    bindcancelButtonTap="cancelButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Focus Mode"
+    content="Prominent single action button in focus style."
+    visible="{{ currentModal === 'modal5' }}"
+    type="focus"
+    primaryButtonText="I Understand"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <maui-modal
+    title="Closable Modal"
+    content="Focus mode modal featuring an explicit close (X) icon."
+    visible="{{ currentModal === 'modal6' }}"
+    type="focus"
+    closable
+    primaryButtonText="Got It"
+    bindclose="handleClose"
+    bindprimaryButtonTap="primaryButtonTap">
+  </maui-modal>
+
+  <!-- Triggers -->
+  <view class="demo-section">
+    <text class="demo-section-title">1. Standard Modals (常规弹窗)</text>
+    <maui-cell-group>
+      <maui-cell title="Basic Modal (基础弹窗)" value="Open" bindclick="showModal" data-modal-value="modal1" />
+      <maui-cell title="Alert (无标题弹窗)" value="Open" bindclick="showModal" data-modal-value="modal2" />
+      <maui-cell title="Two Buttons (双按钮)" value="Open" bindclick="showModal" data-modal-value="modal3" />
+      <maui-cell title="Three Buttons (三按钮)" value="Open" bindclick="showModal" data-modal-value="modal4" />
+    </maui-cell-group>
+  </view>
+
+  <view class="demo-section">
+    <text class="demo-section-title">2. Focus Mode (强调模式)</text>
+    <maui-cell-group>
+      <maui-cell title="Focus Action (强调主按钮)" value="Open" bindclick="showModal" data-modal-value="modal5" />
+      <maui-cell title="Closable (含右上角关闭图标)" value="Open" bindclick="showModal" data-modal-value="modal6" />
+    </maui-cell-group>
+  </view>
+</view>

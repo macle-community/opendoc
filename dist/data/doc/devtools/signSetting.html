@@ -1,0 +1,85 @@
+<h1 id="签名私钥管理">签名私钥管理</h1>
+<p>签名私钥管理是开发者工具中用于配置小程序打包签名的功能模块。通过配置 RSA 私钥文件，开发者可以在导出离线包时对小程序代码包进行数字签名，确保包的完整性和来源可信。</p>
+<h2 id="打开入口">打开入口</h2>
+<p>在开发者工具顶部菜单栏中选择 <strong>设置 &gt; 签名私钥管理</strong>，即可打开签名私钥管理面板。</p>
+<h2 id="界面说明">界面说明</h2>
+<p>签名私钥管理面板包含以下元素：</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>私钥文件路径</strong></td>
+<td>显示当前已配置的私钥文件绝对路径。若未配置则不显示。右侧提供删除按钮，点击可清除当前配置。</td>
+</tr>
+<tr>
+<td><strong>需要密码</strong></td>
+<td>复选框，勾选后表示所选私钥文件为加密私钥（带 passphrase），打包时开发者工具会弹窗要求输入密码。</td>
+</tr>
+<tr>
+<td><strong>编辑按钮</strong></td>
+<td>点击后弹出系统文件选择对话框，支持选择 <code>.pem</code> 或 <code>.enc</code> 格式的私钥文件。选择完成后自动保存配置。</td>
+</tr>
+</tbody></table>
+<h2 id="配置流程">配置流程</h2>
+<ol>
+<li>点击 <strong>编辑</strong> 按钮，在弹出的文件选择窗口中选择你的 RSA 私钥文件（仅支持 <code>.pem</code>、<code>.enc</code> 格式）。</li>
+<li>选择完成后，私钥文件路径将显示在面板上，配置会自动保存到项目的 <code>macle.config.json</code> 文件中。</li>
+<li>如果你的私钥是加密的（设置了 passphrase），请勾选 <strong>需要密码</strong> 复选框；否则保持不勾选状态即可。</li>
+</ol>
+<h2 id="私钥要求">私钥要求</h2>
+<ul>
+<li>算法：RSA-3072（推荐）或其他 RSA 密钥</li>
+<li>格式：PEM 编码（<code>.pem</code>）或加密 PEM 编码（<code>.enc</code>）</li>
+<li>若私钥设置了密码保护，必须勾选&quot;需要密码&quot;选项，否则签名时将因无法解密而失败</li>
+</ul>
+<h2 id="签名原理">签名原理</h2>
+<p>打包签名采用 <strong>RSA-SHA256 + PSS 填充</strong> 方案，具体步骤如下：</p>
+<ol>
+<li>计算 ZIP 包内容的 SHA-256 摘要（以十六进制字符串形式）</li>
+<li>使用配置的 RSA 私钥对摘要进行签名，填充模式为 RSA_PKCS1_PSS_PADDING</li>
+<li>将签名结果以 Base64 编码写入 <code>&lt;zip文件名&gt;.sign</code> 文件，与 ZIP 包同目录输出</li>
+</ol>
+<h2 id="打包时的签名触发">打包时的签名触发</h2>
+<p>在执行打包操作时，开发者工具会自动检测是否已配置有效的私钥文件：</p>
+<ul>
+<li><strong>已配置且文件存在</strong>：直接使用私钥对 ZIP 包签名，生成 <code>.sign</code> 文件。</li>
+<li><strong>已配置但文件不存在 / 未配置</strong>：弹出提示，告知签名文件未配置或异常，用户可选择跳转至签名私钥管理面板进行配置，或取消后直接打包不签名。</li>
+<li>**勾选了&quot;需要密码&quot;**：签名前会先弹出密码输入框，输入正确的 passphrase 后才能完成签名。</li>
+</ul>
+<h2 id="存储位置">存储位置</h2>
+<p>签名配置保存在项目根目录下的 <code>macle.config.json</code> 文件中，相关字段如下：</p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;privateKeyPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/path/to/your/private-key.pem&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;needPassword&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>privateKeyPath</code></td>
+<td>String</td>
+<td>私钥文件的绝对路径，为空则表示未配置</td>
+</tr>
+<tr>
+<td><code>needPassword</code></td>
+<td>Boolean</td>
+<td>是否需要输入 passphrase 来解密私钥，默认 <code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>Tip：私钥文件应妥善保管，不要将其提交到代码仓库中。</li>
+<li>Tip：更换私钥后，历史版本的 <code>.sign</code> 文件将无法与新私钥验证匹配，需重新打包签名。</li>
+<li>Tip：如果不需要签名，可直接清空私钥文件路径或删除配置项 <code>privateKeyPath</code>，打包时将跳过签名步骤。</li>
+<li>Tip：签名过程不会修改原始 ZIP 文件，而是在其同级目录下额外生成一个 <code>.sign</code> 文件。</li>
+</ul>

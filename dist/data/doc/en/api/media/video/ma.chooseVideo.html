@@ -29,6 +29,13 @@
 <td align="left">The front or rear camera is pulled up by default. Android is not supported.</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -150,6 +157,7 @@
 <h3 id="sample-code">Sample Code</h3>
 <pre><code class="language-js">ma.chooseVideo({
   <span class="hljs-attr">sourceType</span>: [<span class="hljs-string">&#x27;album&#x27;</span>, <span class="hljs-string">&#x27;camera&#x27;</span>],
+  <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
   success(res) {
      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.tempFilePath);
      <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(res.duration);

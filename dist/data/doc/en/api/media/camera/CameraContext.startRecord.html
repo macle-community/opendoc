@@ -29,6 +29,13 @@
 <td align="left">Maximum recording duration, in seconds. Currently, a positive integer ranging from 1 to 180 is supported.</td>
 </tr>
 <tr>
+<td align="left">desc</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">No</td>
+<td align="left">Purpose information. This parameter will be displayed in the permission popup.（<strong>Added in 26.6.0-LG0001</strong>）</td>
+</tr>
+<tr>
 <td align="left">success</td>
 <td align="left">Function</td>
 <td align="left"></td>
@@ -81,6 +88,7 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">startRecord</span>(<span class="hljs-params"></span>){
     <span class="hljs-keyword">const</span> ctx = ma.<span class="hljs-title function_">createCameraContext</span>();
     ctx.<span class="hljs-title function_">startRecord</span>({
+      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;&#x27;</span>,
       <span class="hljs-attr">timeoutCallback</span>:<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>{
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
           <span class="hljs-attr">src</span>: res.<span class="hljs-property">tempImagePath</span>
