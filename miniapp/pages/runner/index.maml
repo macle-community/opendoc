@@ -1,9 +1,1 @@
-<view class="runner-page">
-  <view class="demo-block">
-    <text class="demo-title">Dynamic MAML Snippet Execution</text>
-    <view class="runner-content">
-      <text class="snippet-desc">{{ snippetTitle }}</text>
-      <maui-button type="primary" block bind:click="handleRunClick">Run Live Interactive Action</maui-button>
-    </view>
-  </view>
-</view>
+<view class="p-4"><text>Live Native Snippet Working!</text></view>

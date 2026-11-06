@@ -30,15 +30,73 @@ for (const cand of compilerCandidates) {
   } catch (e) {}
 }
 
+let MacleWebSimulatorServer = null;
+try {
+  MacleWebSimulatorServer = require('../macle-web-simulator/src/server').MacleWebSimulatorServer;
+} catch (e) {
+  try {
+    MacleWebSimulatorServer = require('macle-web-simulator/src/server').MacleWebSimulatorServer;
+  } catch (_) {}
+}
+
 // Active simulator daemons (Native MAML and Taro React)
 const simulatorDaemons = {
-  native: { port: 30002, projectName: 'miniapp', online: false },
-  taro: { port: 30003, projectName: 'taro-miniapp', online: false }
+  native: { port: 30002, projectName: 'miniapp', online: false, instance: null },
+  taro: { port: 30003, projectName: 'taro-miniapp', online: false, instance: null }
 };
 
 let activeSimulatorPort = 30002;
 let simulatorProjectName = 'miniapp';
 let simulatorIsOnline = false;
+
+async function startInternalSimulators() {
+  if (!MacleWebSimulatorServer) return;
+
+  // 1. Native MAML Simulator on 30002
+  try {
+    const nativeSim = new MacleWebSimulatorServer({
+      source: MINIAPP_DIR,
+      port: 30002,
+      host: '127.0.0.1'
+    });
+    await nativeSim.init();
+    await nativeSim.start();
+    simulatorDaemons.native.port = 30002;
+    simulatorDaemons.native.projectName = nativeSim.projectInfo.projectName;
+    simulatorDaemons.native.online = true;
+    simulatorDaemons.native.instance = nativeSim;
+    console.log('[OpenDoc] Standalone Native MAML Web Simulator online at http://127.0.0.1:30002');
+  } catch (err) {
+    console.warn('[OpenDoc] Native simulator notice:', err.message);
+  }
+
+  // 2. Taro React Simulator on 30003
+  try {
+    const taroDist = path.join(TARO_MINIAPP_DIR, 'dist');
+    if (fs.existsSync(taroDist)) {
+      const taroSim = new MacleWebSimulatorServer({
+        source: taroDist,
+        port: 30003,
+        host: '127.0.0.1'
+      });
+      await taroSim.init();
+      await taroSim.start();
+      simulatorDaemons.taro.port = 30003;
+      simulatorDaemons.taro.projectName = taroSim.projectInfo.projectName;
+      simulatorDaemons.taro.online = true;
+      simulatorDaemons.taro.instance = taroSim;
+      console.log('[OpenDoc] Standalone Taro React Web Simulator online at http://127.0.0.1:30003');
+    }
+  } catch (err) {
+    console.warn('[OpenDoc] Taro simulator notice:', err.message);
+  }
+
+  simulatorIsOnline = simulatorDaemons.native.online || simulatorDaemons.taro.online;
+  activeSimulatorPort = simulatorDaemons.native.online ? simulatorDaemons.native.port : simulatorDaemons.taro.port;
+  simulatorProjectName = simulatorDaemons.native.online ? simulatorDaemons.native.projectName : simulatorDaemons.taro.projectName;
+}
+
+startInternalSimulators();
 
 function detectSimulatorPort() {
   const candidatePorts = [30002, 30003, 30001, 30004, 30000];
@@ -170,6 +228,9 @@ const server = http.createServer((req, res) => {
             fs.mkdirSync(outApp, { recursive: true });
             await macleCompiler.compile(path.join(TARO_MINIAPP_DIR, 'dist'), outApp, { debug: true, es5: false });
           }
+          if (simulatorDaemons.taro.instance && simulatorDaemons.taro.instance.liveReload) {
+            simulatorDaemons.taro.instance.liveReload.notifyReload('snippet');
+          }
           res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
           return res.end(JSON.stringify({
             ok: true,
@@ -192,6 +253,9 @@ const server = http.createServer((req, res) => {
             const outApp = path.join(os.homedir(), '.macle/target/compose', simulatorDaemons.native.projectName, 'root/debug/app');
             fs.mkdirSync(outApp, { recursive: true });
             await macleCompiler.compile(MINIAPP_DIR, outApp, { debug: true, es5: false });
+          }
+          if (simulatorDaemons.native.instance && simulatorDaemons.native.instance.liveReload) {
+            simulatorDaemons.native.instance.liveReload.notifyReload('snippet');
           }
 
           res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });

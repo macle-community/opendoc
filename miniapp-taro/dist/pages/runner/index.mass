@@ -1,4 +1,0 @@
-.runner-page { padding: 12rpx; }
-.runner-content { display: flex; flex-direction: column; gap: 12rpx; }
-.snippet-desc { font-size: 13rpx; color: #64748b; }
-
