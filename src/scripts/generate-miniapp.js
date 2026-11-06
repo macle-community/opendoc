@@ -1001,3 +1001,4 @@ for (const [pageKey, config] of Object.entries(pageConfigs)) {
 }
 
 console.log('4. Successfully created miniapp with ' + Object.keys(pageConfigs).length + ' pages!');
+

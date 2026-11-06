@@ -131,6 +131,239 @@
     'maui-toast': '/maui-components/toast/index'
   };
 
+  // React Component name map for Taro (@tarojs/plugin-platform-macle)
+  const MAUI_REACT_NAME_MAP = {
+    'maui-button': 'MauiButton',
+    'maui-cell': 'MauiCell',
+    'maui-cell-group': 'MauiCellGroup',
+    'maui-checkbox': 'MauiCheckbox',
+    'maui-checkbox-group': 'MauiCheckboxGroup',
+    'maui-col': 'MauiCol',
+    'maui-row': 'MauiRow',
+    'maui-dialog': 'MauiDialog',
+    'maui-divider': 'MauiDivider',
+    'maui-empty': 'MauiEmpty',
+    'maui-field': 'MauiField',
+    'maui-icon': 'MauiIcon',
+    'maui-image': 'MauiImage',
+    'maui-loading': 'MauiLoading',
+    'maui-overlay': 'MauiOverlay',
+    'maui-popup': 'MauiPopup',
+    'maui-progress': 'MauiProgress',
+    'maui-radio': 'MauiRadio',
+    'maui-radio-group': 'MauiRadioGroup',
+    'maui-sidebar': 'MauiSidebar',
+    'maui-sidebar-item': 'MauiSidebarItem',
+    'maui-slider': 'MauiSlider',
+    'maui-stepper': 'MauiStepper',
+    'maui-steps': 'MauiSteps',
+    'maui-sticky': 'MauiSticky',
+    'maui-switch': 'MauiSwitch',
+    'maui-tab': 'MauiTab',
+    'maui-tabs': 'MauiTabs',
+    'maui-tag': 'MauiTag',
+    'maui-title-bar': 'MauiTitleBar',
+    'maui-toast': 'MauiToast',
+    'maui-modal': 'MauiModal',
+    'maui-list': 'MauiList',
+    'maui-list-item': 'MauiListItem'
+  };
+
+  // Convert MAML snippet to Taro JSX
+  function convertMamlToTaroJsx(snippet) {
+    let jsx = snippet.trim();
+    // Convert MAUI tags
+    jsx = jsx.replace(/<maui-([a-z0-9-]+)([^>]*)>/g, function(match, tag, attrs) {
+      const comp = MAUI_REACT_NAME_MAP['maui-' + tag] || ('Maui' + tag.charAt(0).toUpperCase() + tag.slice(1));
+      return '<' + comp + attrs + '>';
+    });
+    jsx = jsx.replace(/<\/maui-([a-z0-9-]+)>/g, function(match, tag) {
+      const comp = MAUI_REACT_NAME_MAP['maui-' + tag] || ('Maui' + tag.charAt(0).toUpperCase() + tag.slice(1));
+      return '</' + comp + '>';
+    });
+    // Convert standard tags
+    jsx = jsx.replace(/<view([^>]*)>/g, '<View$1>').replace(/<\/view>/g, '</View>');
+    jsx = jsx.replace(/<text([^>]*)>/g, '<Text$1>').replace(/<\/text>/g, '</Text>');
+    jsx = jsx.replace(/<button([^>]*)>/g, '<Button$1>').replace(/<\/button>/g, '</Button>');
+    jsx = jsx.replace(/<input([^>]*?)(\/?>)/g, function(m, attrs) {
+      return '<Input' + attrs + ' />';
+    });
+    jsx = jsx.replace(/<swiper([^>]*)>/g, '<Swiper$1>').replace(/<\/swiper>/g, '</Swiper>');
+    jsx = jsx.replace(/<swiper-item([^>]*)>/g, '<SwiperItem$1>').replace(/<\/swiper-item>/g, '</SwiperItem>');
+    jsx = jsx.replace(/<scroll-view([^>]*)>/g, '<ScrollView$1>').replace(/<\/scroll-view>/g, '</ScrollView>');
+    // JSX Attributes
+    jsx = jsx.replace(/\bclass=/g, 'className=');
+    jsx = jsx.replace(/\b(span|offset|gutter|step|min|max|current|count)="([0-9]+)"/g, '$1={$2}');
+    jsx = jsx.replace(/\bbindtap="([a-zA-Z0-9_]+)"/g, 'onClick={$1}');
+    jsx = jsx.replace(/\bbindchange="([a-zA-Z0-9_]+)"/g, 'onChange={$1}');
+    jsx = jsx.replace(/\bbindinput="([a-zA-Z0-9_]+)"/g, 'onInput={$1}');
+    jsx = jsx.replace(/\bbindclose="([a-zA-Z0-9_]+)"/g, 'onClose={$1}');
+    jsx = jsx.replace(/\bbindconfirm="([a-zA-Z0-9_]+)"/g, 'onConfirm={$1}');
+    return jsx;
+  }
+
+  // Detect used MAUI components
+  function detectUsedMauiComponents(snippet) {
+    const list = [];
+    const set = new Set();
+    const regex = /<maui-([a-z0-9-]+)/g;
+    let m;
+    while ((m = regex.exec(snippet)) !== null) {
+      const tag = 'maui-' + m[1];
+      const reactName = MAUI_REACT_NAME_MAP[tag];
+      if (reactName && !set.has(reactName)) {
+        set.add(reactName);
+        list.push(reactName);
+      }
+    }
+    return list;
+  }
+
+  // Generate Taro Snippet for inline documentation switch
+  function generateTaroSnippet(rawCode, lang, title) {
+    const trimmed = rawCode.trim();
+    const isJsApi = trimmed.startsWith('ma.') || trimmed.includes('ma.') || lang === 'js';
+
+    if (isJsApi) {
+      const taroApiCode = trimmed.replace(/\bma\.([a-zA-Z0-9_]+)/g, 'Taro.$1');
+      return `import Taro from '@tarojs/taro'\n\n// Macle API via @tarojs/plugin-platform-macle bridge\n${taroApiCode}`;
+    }
+
+    const mauiComps = detectUsedMauiComponents(trimmed);
+    let imports = `import React from 'react'\nimport { View } from '@tarojs/components'\n`;
+    if (mauiComps.length > 0) {
+      imports += `import {\n  ${mauiComps.join(',\n  ')}\n} from '@tarojs/plugin-platform-macle/dist/components-react'\n\n`;
+    } else {
+      imports += `import Taro from '@tarojs/taro'\n\n`;
+    }
+
+    const jsx = convertMamlToTaroJsx(trimmed);
+    return `${imports}// Inside your Taro React Component render:\n${jsx}`;
+  }
+
+  // Generate complete runnable Taro React file for modal and Full Package
+  function generateTaroFullComponent(rawCode, lang, title) {
+    const trimmed = rawCode.trim();
+    const isJsApi = trimmed.startsWith('ma.') || trimmed.includes('ma.') || lang === 'js';
+
+    if (isJsApi) {
+      const apiMatch = trimmed.match(/ma\.([a-zA-Z0-9_.]+)/);
+      const apiName = apiMatch ? 'Taro.' + apiMatch[1].replace(/^ma\./, '') : 'Taro API';
+      const taroCode = trimmed.replace(/\bma\.([a-zA-Z0-9_]+)/g, 'Taro.$1');
+
+      return `// src/pages/demo/index.tsx
+import React, { useState } from 'react'
+import { View, Text, Button } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import './index.css'
+
+/**
+ * ${escapeJs(title)}
+ * Macle MiniProgram API Demo with Taro 4 & @tarojs/plugin-platform-macle
+ */
+export default function ApiDemoPage() {
+  const [resultLog, setResultLog] = useState<string>('Ready to execute ${escapeJs(apiName)}')
+
+  const handleRunApi = async () => {
+    setResultLog('Executing ${escapeJs(apiName)}...')
+    try {
+      // Documentation Code Snippet (Native Macle Bridge via Taro)
+${indent(taroCode, 6)}
+      setResultLog('${escapeJs(apiName)} executed successfully.')
+    } catch (err: any) {
+      console.error('[Taro Execution Error]:', err)
+      setResultLog('Error: ' + (err?.message || JSON.stringify(err)))
+    }
+  }
+
+  return (
+    <View className="container">
+      <View className="demo-card">
+        <View className="demo-card__header">
+          <Text className="demo-card__title">${escapeHtml(title)}</Text>
+          <Text className="demo-card__desc">Interactive Taro Runner via @tarojs/plugin-platform-macle</Text>
+        </View>
+        <View className="demo-card__body">
+          <Button type="primary" onClick={handleRunApi} className="api-btn">
+            Execute ${escapeHtml(apiName)}
+          </Button>
+        </View>
+        {resultLog ? (
+          <View className="log-card">
+            <Text className="log-header">Execution Result:</Text>
+            <Text className="log-content">{resultLog}</Text>
+          </View>
+        ) : null}
+      </View>
+    </View>
+  )
+}`;
+    }
+
+    // UI Component Example
+    const mauiComps = detectUsedMauiComponents(trimmed);
+    let mauiImportBlock = '';
+    if (mauiComps.length > 0) {
+      mauiImportBlock = `import {\n  ${mauiComps.join(',\n  ')}\n} from '@tarojs/plugin-platform-macle/dist/components-react'\n`;
+    }
+
+    const jsx = convertMamlToTaroJsx(trimmed);
+
+    return `// src/pages/demo/index.tsx
+import React, { useState } from 'react'
+import { View, Text } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+${mauiImportBlock}import './index.css'
+
+/**
+ * ${escapeJs(title)}
+ * Native Macle UI Component example built with Taro 4 & @tarojs/plugin-platform-macle
+ */
+export default function DemoPage() {
+  const [count, setCount] = useState<number>(0)
+  const [checked, setChecked] = useState<boolean>(true)
+  const [inputValue, setInputValue] = useState<string>('')
+
+  // Interactive event handlers
+  const handleClick = () => {
+    const nextCount = count + 1
+    setCount(nextCount)
+    Taro.showToast({
+      title: 'Clicked (' + nextCount + ')',
+      icon: 'success',
+      duration: 1500
+    })
+  }
+
+  const handleChange = (e: any) => {
+    const nextVal = typeof e === 'boolean' ? e : (e?.detail !== undefined ? e.detail : !checked)
+    setChecked(nextVal)
+    Taro.showToast({
+      title: 'State: ' + (nextVal ? 'ON' : 'OFF'),
+      icon: 'none'
+    })
+  }
+
+  const handleInput = (e: any) => {
+    setInputValue(e.detail?.value || '')
+  }
+
+  return (
+    <View className="container">
+      <View className="demo-card">
+        <View className="demo-card__header">
+          <Text className="demo-card__title">${escapeHtml(title)}</Text>
+          <Text className="demo-card__desc">Taro + @tarojs/plugin-platform-macle Component</Text>
+        </View>
+        <View className="demo-card__body">
+${indent(jsx, 10)}
+        </View>
+      </View>
+    </View>
+  )
+}`;
+  }
+
   // 1. Initialize DOM Code Decorator
   function initDocRunner() {
     decorateAllCodeBlocks();
@@ -206,6 +439,11 @@
         badgeFile = 'index.mass';
       }
 
+      // State for this code block
+      const originalSnippet = codeEl.innerText;
+      const originalHtml = codeEl.innerHTML;
+      let currentActiveFw = 'native';
+
       // Create toolbar wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'macle-code-wrapper';
@@ -220,6 +458,53 @@
         <span class="macle-lang-badge">${badgeLang}</span>
         <span class="macle-file-badge">${badgeFile}</span>
       `;
+
+      // Framework Switcher for MAML and JS API examples
+      const rawText = originalSnippet.trim();
+      const isJsApi = rawText.includes('ma.') || (lang === 'js' && rawText.includes('ma'));
+      const canSupportTaro = isMaml || isJsApi;
+
+      if (canSupportTaro) {
+        const fwToggle = document.createElement('div');
+        fwToggle.className = 'macle-fw-toggle';
+        fwToggle.innerHTML = `
+          <button class="macle-fw-btn active" data-fw="native" title="View Native Mini Program Code">Native (${isMaml ? 'MAML' : 'JS'})</button>
+          <button class="macle-fw-btn" data-fw="taro" title="View Taro React Code with @tarojs/plugin-platform-macle">⚛️ Taro (React)</button>
+        `;
+
+        const nativeBtn = fwToggle.querySelector('[data-fw="native"]');
+        const taroBtn = fwToggle.querySelector('[data-fw="taro"]');
+        const langBadge = toolbarLeft.querySelector('.macle-lang-badge');
+        const fileBadge = toolbarLeft.querySelector('.macle-file-badge');
+
+        taroBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          currentActiveFw = 'taro';
+          nativeBtn.classList.remove('active');
+          taroBtn.classList.add('active');
+
+          const heading = getClosestHeading(pre);
+          const taroSnippet = generateTaroSnippet(originalSnippet, lang, heading);
+          codeEl.innerHTML = highlightCode(taroSnippet, 'taro');
+          langBadge.textContent = 'TSX';
+          fileBadge.textContent = 'index.tsx';
+          fileBadge.style.color = '#38bdf8';
+        });
+
+        nativeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          currentActiveFw = 'native';
+          taroBtn.classList.remove('active');
+          nativeBtn.classList.add('active');
+
+          codeEl.innerHTML = originalHtml;
+          langBadge.textContent = badgeLang;
+          fileBadge.textContent = badgeFile;
+          fileBadge.style.color = '#0284c7';
+        });
+
+        toolbarLeft.appendChild(fwToggle);
+      }
 
       // Toolbar Right (Copy, and Run for .maml only)
       const toolbarRight = document.createElement('div');
@@ -251,14 +536,14 @@
       if (isMaml) {
         const runBtn = document.createElement('button');
         runBtn.className = 'macle-btn macle-btn-run';
-        runBtn.title = 'Run MAML example in Macle Web Simulator with Full Code';
+        runBtn.title = 'Run example in Macle Web Simulator with Full Code';
         runBtn.innerHTML = `
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           <span>Run</span>
         `;
         runBtn.addEventListener('click', function(e) {
           e.stopPropagation();
-          handleRunCode(codeEl.innerText, lang, pre);
+          handleRunCode(originalSnippet, lang, pre, currentActiveFw);
         });
         toolbarRight.appendChild(runBtn);
       }
@@ -552,29 +837,37 @@ ${indent(trimmed, 6)}
 }`;
     }
 
+    // Taro React component
+    const taroCode = generateTaroFullComponent(rawCode, lang, title);
+
     // Full package combined
-    const packageCode = `// ==========================================
+    const packageCode = `// ========================================================
 // Macle MiniProgram Complete Runnable Package
 // Component/API: ${title}
 // Generated by Macle OpenDoc Code Runner
-// ==========================================
+// Supports: Native Macle DSL & Taro (@tarojs/plugin-platform-macle)
+// ========================================================
 
-// --- File 1: pages/demo/index.maml ---
+// --- File 1: pages/demo/index.maml (Native Markup) ---
 ${mamlCode}
 
-// --- File 2: pages/demo/index.js ---
+// --- File 2: pages/demo/index.js (Native Page Logic) ---
 ${jsCode}
 
-// --- File 3: pages/demo/index.json ---
+// --- File 3: pages/demo/index.json (Page Config) ---
 ${jsonCode}
 
-// --- File 4: pages/demo/index.mass ---
+// --- File 4: pages/demo/index.mass (Native Stylesheet) ---
 ${massCode}
+
+// --- File 5: src/pages/demo/index.tsx (Taro React with @tarojs/plugin-platform-macle) ---
+${taroCode}
 `;
 
     return {
       package: packageCode,
       maml: mamlCode,
+      taro: taroCode,
       js: jsCode,
       json: jsonCode,
       mass: massCode,
@@ -584,7 +877,7 @@ ${massCode}
   }
 
   // 5. Handle Click on "▶ Run"
-  function handleRunCode(rawCode, lang, preElement) {
+  function handleRunCode(rawCode, lang, preElement, preferredFw) {
     const title = getClosestHeading(preElement) || 'Macle Example';
     const files = synthesizeFullExample(rawCode, lang, title);
 
@@ -593,7 +886,7 @@ ${massCode}
       rawCode: rawCode,
       lang: lang,
       files: files,
-      activeTab: 'package'
+      activeTab: (preferredFw === 'taro') ? 'taro' : 'package'
     };
 
     openRunnerModal();
@@ -642,6 +935,9 @@ ${massCode}
               <div class="macle-tabs-list">
                 <button class="macle-tab active" data-tab="package">
                   <span class="macle-tab-icon">📦</span> Full Package
+                </button>
+                <button class="macle-tab is-taro" data-tab="taro">
+                  <span class="macle-tab-icon">⚛️</span> Taro (React)
                 </button>
                 <button class="macle-tab" data-tab="maml">
                   <span class="macle-tab-icon">📄</span> index.maml
@@ -1032,32 +1328,59 @@ ${massCode}
     if (!code) return '';
     let escaped = escapeHtml(code);
 
-    if (type === 'maml' || type === 'package') {
+    // 1. Extract strings and replace with placeholders so inner characters aren't touched
+    const strings = [];
+    escaped = escaped.replace(/(".*?"|'.*?'|`.*?`)/g, function(match) {
+      const idx = strings.length;
+      strings.push(match);
+      return '___STR_' + idx + '___';
+    });
+
+    // 2. Extract comments and replace with placeholders
+    const comments = [];
+    escaped = escaped.replace(/(&lt;!--.*?--&gt;|\/\/[^\n]*|\/\*[\s\S]*?\*\/)/g, function(match) {
+      const idx = comments.length;
+      comments.push(match);
+      return '___CMT_' + idx + '___';
+    });
+
+    if (type === 'taro' || type === 'tsx') {
+      // Tags (PascalCase)
+      escaped = escaped.replace(/(&lt;\/?[A-Z][a-zA-Z0-9_-]*)/g, '<span class="hl-tag">$1</span>');
+      // TSX / React keywords
+      escaped = escaped.replace(/\b(import|export|default|from|const|let|var|function|return|if|else|this|new|async|await|useState|useEffect|React|Taro)\b/g, '<span class="hl-kw">$1</span>');
+      // Attributes with bindings or string literals (e.g. span={8}, className="demo", onClick={handleClick})
+      escaped = escaped.replace(/\b([a-zA-Z0-9_:-]+)\s*=\s*(?=___STR_|\{)/g, '<span class="hl-attr">$1</span>=');
+      // Numbers & Booleans
+      escaped = escaped.replace(/\b(true|false|null|undefined|\d+)\b(?![_A-Z0-9]*___)/g, '<span class="hl-num">$1</span>');
+    } else if (type === 'maml') {
       // Tags
       escaped = escaped.replace(/(&lt;\/?[a-zA-Z0-9_-]+)/g, '<span class="hl-tag">$1</span>');
-      // Attributes
-      escaped = escaped.replace(/([a-zA-Z0-9_:-]+)=(&quot;.*?&quot;)/g, '<span class="hl-attr">$1</span>=<span class="hl-val">$2</span>');
-      // Comments
-      escaped = escaped.replace(/(&lt;!--.*?--&gt;)/g, '<span class="hl-comment">$1</span>');
-    }
-
-    if (type === 'js' || type === 'package') {
+      // Attributes (e.g. span="8", bindtap="handleTap")
+      escaped = escaped.replace(/\b([a-zA-Z0-9_:-]+)\s*=\s*(?=___STR_|\{)/g, '<span class="hl-attr">$1</span>=');
+    } else if (type === 'js') {
       // Keywords
       escaped = escaped.replace(/\b(const|let|var|function|return|if|else|this|new|Page|Component|ma)\b/g, '<span class="hl-kw">$1</span>');
-      // Strings
-      escaped = escaped.replace(/(&quot;.*?&quot;|&#39;.*?&#39;)/g, '<span class="hl-str">$1</span>');
-      // Comments
-      escaped = escaped.replace(/(\/\/[^\n]*)/g, '<span class="hl-comment">$1</span>');
+      // Numbers & Booleans
+      escaped = escaped.replace(/\b(true|false|null|undefined|\d+)\b(?![_A-Z0-9]*___)/g, '<span class="hl-num">$1</span>');
+    } else if (type === 'json') {
+      // Numbers & Booleans
+      escaped = escaped.replace(/\b(true|false|null|\d+)\b(?![_A-Z0-9]*___)/g, '<span class="hl-num">$1</span>');
+    } else {
+      // 'package' or other multi-language combined
+      escaped = escaped.replace(/(&lt;\/?[a-zA-Z0-9_-]+)/g, '<span class="hl-tag">$1</span>');
+      escaped = escaped.replace(/\b(import|export|default|from|const|let|var|function|return|if|else|this|new|async|await|useState|useEffect|React|Taro|Page|Component|ma)\b/g, '<span class="hl-kw">$1</span>');
+      escaped = escaped.replace(/\b([a-zA-Z0-9_:-]+)\s*=\s*(?=___STR_|\{)/g, '<span class="hl-attr">$1</span>=');
+      escaped = escaped.replace(/\b(true|false|null|undefined|\d+)\b(?![_A-Z0-9]*___)/g, '<span class="hl-num">$1</span>');
     }
 
-    if (type === 'json') {
-      // Keys
-      escaped = escaped.replace(/(&quot;[a-zA-Z0-9_-]+&quot;):/g, '<span class="hl-key">$1</span>:');
-      // Strings
-      escaped = escaped.replace(/: (&quot;.*?&quot;)/g, ': <span class="hl-str">$1</span>');
-      // Numbers & Booleans
-      escaped = escaped.replace(/\b(true|false|null|[0-9]+)\b/g, '<span class="hl-num">$1</span>');
-    }
+    // Restore strings and comments wrapped in spans
+    escaped = escaped.replace(/___STR_(\d+)___/g, function(match, idx) {
+      return '<span class="hl-str">' + strings[idx] + '</span>';
+    });
+    escaped = escaped.replace(/___CMT_(\d+)___/g, function(match, idx) {
+      return '<span class="hl-comment">' + comments[idx] + '</span>';
+    });
 
     return escaped;
   }
@@ -1563,9 +1886,7 @@ ${massCode}
     return String(str || '')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+      .replace(/>/g, '&gt;');
   }
 
   function escapeJs(str) {
