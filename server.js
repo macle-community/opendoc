@@ -35,8 +35,12 @@ try {
   MacleWebSimulatorServer = require('../macle-web-simulator/src/server').MacleWebSimulatorServer;
 } catch (e) {
   try {
-    MacleWebSimulatorServer = require('macle-web-simulator/src/server').MacleWebSimulatorServer;
-  } catch (_) {}
+    MacleWebSimulatorServer = require('@macle-community/simulator-web/src/server').MacleWebSimulatorServer;
+  } catch (_) {
+    try {
+      MacleWebSimulatorServer = require('macle-web-simulator/src/server').MacleWebSimulatorServer;
+    } catch (_2) {}
+  }
 }
 
 // Active simulator daemons (Native MAML and Taro React)
