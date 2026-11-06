@@ -1,1 +1,12 @@
 .page-body { padding: 8rpx 0; }
+maui-radio-group:not([direction="horizontal"]) maui-radio {
+  margin-bottom: 8rpx;
+  display: block;
+}
+maui-radio-group[direction="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+maui-radio-group[direction="horizontal"] maui-radio {
+  margin-right: 16rpx;
+}

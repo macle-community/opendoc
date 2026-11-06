@@ -1,15 +1,12 @@
 <sjs src="../sjs/utils.sjs" module="utils" />
 <sjs src="./index.sjs" module="computed" />
 
-<view class="{{ utils.bem('checkbox') }}">
-    <view ma:if="{{ labelPosition === 'left' }}" class="{{ utils.bem('checkbox__label', [labelPosition, { disabled: disabled || parentDisabled }]) }}" bindtap="onClickLabel">
-        <slot />
-    </view>
+<view class="{{ utils.bem('checkbox', [direction, { 'label-left': labelPosition === 'left' }]) }}">
     <view class="maui-checkbox__icon-wrap" style="font-size: {{ utils.addUnit(iconSize) }}" bindtap="onChange">
-        <maui-icon ma:if="{{ inParentArrIdx >= 0 }}" name="{{ customIcon }}" class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: inParentArrIdx >= 0 }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
-        <view ma:else class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: inParentArrIdx >= 0 }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
+        <maui-icon ma:if="{{ (value || inParentArrIdx >= 0) }}" name="{{ customIcon }}" class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: (value || inParentArrIdx >= 0) }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, value, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
+        <view ma:else class="{{ utils.bem('checkbox__icon', [shape, { disabled: disabled || parentDisabled, checked: (value || inParentArrIdx >= 0) }]) }}" style="{{ computed.iconStyle({ iconSize, checkedColor, disabled, parentDisabled, inParentArrIdx, value, name }) }}" custom-style="{{ computed.iconCustomStyle({ iconSize }) }}" />
     </view>
-    <view ma:if="{{ labelPosition !== 'left' }}" class=" {{ utils.bem('checkbox__label', [labelPosition, { disabled: disabled || parentDisabled }]) }}" bindtap="onClickLabel">
+    <view class="{{ utils.bem('checkbox__label', [labelPosition, { disabled: disabled || parentDisabled }]) }}" bindtap="onClickLabel">
         <slot />
     </view>
 </view>

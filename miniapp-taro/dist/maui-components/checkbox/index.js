@@ -2,6 +2,15 @@
 
 var _component = require("../common/component");
 var _relation = require("../common/relation");
+
+function getParent(ctx) {
+  let [p] = ctx.getRelationNodes('../checkbox-group/index') || [];
+  if (!p) {
+    [p] = ctx.getRelationNodes('maui-checkbox-group') || [];
+  }
+  return p;
+}
+
 (0, _component.MaComponent)({
   field: true,
   relations: (0, _relation.useParent)('checkbox-group', function () {
@@ -11,19 +20,7 @@ var _relation = require("../common/relation");
     name: null,
     value: {
       type: Boolean,
-      value: false,
-      observer(val) {
-        const [parent] = this.getRelationNodes('../checkbox-group/index');
-        if (!parent) {
-          this.setData({
-            inParentArrIdx: val ? 0 : -1
-          });
-        }
-      }
-    },
-    inParentArrIdx: {
-      type: Number,
-      value: -1
+      value: false
     },
     customIcon: {
       type: String,
@@ -52,11 +49,12 @@ var _relation = require("../common/relation");
     }
   },
   data: {
+    inParentArrIdx: -1,
     direction: '',
     parentDisabled: false
   },
   ready() {
-    const [parent] = this.getRelationNodes('../checkbox-group/index');
+    const parent = getParent(this);
     if (!parent) {
       const isChecked = Boolean(this.data.value || this.properties.value);
       this.setData({ inParentArrIdx: isChecked ? 0 : -1 });
@@ -66,7 +64,7 @@ var _relation = require("../common/relation");
   },
   methods: {
     updateFromParent() {
-      const [parent] = this.getRelationNodes('../checkbox-group/index');
+      const parent = getParent(this);
       if (!parent) {
         return;
       }
@@ -74,16 +72,18 @@ var _relation = require("../common/relation");
       const value = Array.isArray(rawVal) ? rawVal : [];
       const parentDisabled = !!parent.data.disabled;
       const direction = parent.data.direction || '';
+      const inParentArrIdx = value.indexOf(this.data.name);
       this.setData({
-        inParentArrIdx: value.indexOf(this.data.name),
+        inParentArrIdx,
+        value: inParentArrIdx >= 0,
         direction,
         parentDisabled
       });
     },
     emitChange(value) {
-      const [parent] = this.getRelationNodes('../checkbox-group/index');
+      const parent = getParent(this);
       if (!parent) {
-        const currentChecked = this.data.inParentArrIdx >= 0 || this.data.value;
+        const currentChecked = Boolean(this.data.value || this.properties.value || this.data.inParentArrIdx >= 0);
         const newVal = !currentChecked;
         this.setData({
           value: newVal,
@@ -105,8 +105,11 @@ var _relation = require("../common/relation");
       }
       parent.setData({ value: parentValue });
       parent.triggerEvent('change', parentValue);
-      const children = parent.getRelationNodes('../checkbox/index');
-      children.forEach(child => child.updateFromParent());
+      let children = parent.getRelationNodes('../checkbox/index') || [];
+      if (!children.length) {
+        children = parent.getRelationNodes('maui-checkbox') || [];
+      }
+      children.forEach(child => child.updateFromParent && child.updateFromParent());
     },
     onChange() {
       const {

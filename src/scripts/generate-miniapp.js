@@ -468,11 +468,9 @@ Page({
   <view class="demo-block">
     <text class="demo-title">3. Checkbox Group</text>
     <maui-checkbox-group value="{{ groupVal }}" bind:change="onGroupChange">
-      <view style="display: flex; flex-direction: column; gap: 8px;">
-        <maui-checkbox name="a">Option A</maui-checkbox>
-        <maui-checkbox name="b">Option B</maui-checkbox>
-        <maui-checkbox name="c">Option C</maui-checkbox>
-      </view>
+      <maui-checkbox name="a">Option A</maui-checkbox>
+      <maui-checkbox name="b">Option B</maui-checkbox>
+      <maui-checkbox name="c">Option C</maui-checkbox>
     </maui-checkbox-group>
   </view>
 </view>
@@ -505,21 +503,17 @@ Page({
   <view class="demo-block">
     <text class="demo-title">1. Radio Group (Selected: {{ currentRadio }})</text>
     <maui-radio-group value="{{ currentRadio }}" bind:change="onRadioChange">
-      <view style="display: flex; flex-direction: column; gap: 8px;">
-        <maui-radio name="1">Option 1</maui-radio>
-        <maui-radio name="2">Option 2</maui-radio>
-        <maui-radio name="3" disabled>Option 3 (Disabled)</maui-radio>
-      </view>
+      <maui-radio name="1">Option 1</maui-radio>
+      <maui-radio name="2">Option 2</maui-radio>
+      <maui-radio name="3" disabled>Option 3 (Disabled)</maui-radio>
     </maui-radio-group>
   </view>
 
   <view class="demo-block">
     <text class="demo-title">2. Horizontal Direction</text>
     <maui-radio-group direction="horizontal" value="{{ currentRadio }}" bind:change="onRadioChange">
-      <view style="display: flex; flex-direction: row; gap: 16px;">
-        <maui-radio name="1">One</maui-radio>
-        <maui-radio name="2">Two</maui-radio>
-      </view>
+      <maui-radio name="1">One</maui-radio>
+      <maui-radio name="2">Two</maui-radio>
     </maui-radio-group>
   </view>
 </view>
@@ -534,7 +528,18 @@ Page({
   }
 });
 `,
-    mass: `.page-body { padding: 8px 0; }`
+    mass: `.page-body { padding: 8px 0; }
+maui-radio-group:not([direction="horizontal"]) maui-radio {
+  margin-bottom: 8px;
+  display: block;
+}
+maui-radio-group[direction="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+maui-radio-group[direction="horizontal"] maui-radio {
+  margin-right: 16px;
+}`
   },
 
   'switch': {

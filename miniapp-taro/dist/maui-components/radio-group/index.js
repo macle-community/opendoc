@@ -23,8 +23,11 @@ var _relation = require("../common/relation");
   },
   methods: {
     updateChildren() {
-      const children = this.getRelationNodes('../radio/index');
-      children.forEach(child => child.updateFromParent());
+      let children = this.getRelationNodes('../radio/index') || [];
+      if (!children.length) {
+        children = this.getRelationNodes('maui-radio') || [];
+      }
+      children.forEach(child => child.updateFromParent && child.updateFromParent());
     }
   }
 });

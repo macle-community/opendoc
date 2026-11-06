@@ -16,11 +16,9 @@
   <view class="demo-block">
     <text class="demo-title">3. Checkbox Group</text>
     <maui-checkbox-group value="{{ groupVal }}" bind:change="onGroupChange">
-      <view style="display: flex; flex-direction: column; gap: 8px;">
-        <maui-checkbox name="a">Option A</maui-checkbox>
-        <maui-checkbox name="b">Option B</maui-checkbox>
-        <maui-checkbox name="c">Option C</maui-checkbox>
-      </view>
+      <maui-checkbox name="a">Option A</maui-checkbox>
+      <maui-checkbox name="b">Option B</maui-checkbox>
+      <maui-checkbox name="c">Option C</maui-checkbox>
     </maui-checkbox-group>
   </view>
 </view>

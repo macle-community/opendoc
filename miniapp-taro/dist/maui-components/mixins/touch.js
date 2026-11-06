@@ -12,7 +12,7 @@ function getDirection(x, y) {
   }
   return '';
 }
-const touch = Behavior({
+const touch = exports.touch = Behavior({
   methods: {
     resetTouchStatus() {
       this.deltaX = 0;
@@ -45,4 +45,3 @@ const touch = Behavior({
     }
   }
 });
-exports.touch = touch;

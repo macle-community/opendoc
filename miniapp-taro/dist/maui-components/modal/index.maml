@@ -1,0 +1,110 @@
+<sjs src="./index.sjs" module="utils" />
+
+<maui-popup
+        class="maui-modal {{ className || '' }}"
+        style="{{ style || '' }}"
+        overlay-style="{{ maskStyle }}"
+        show="{{ visible }}"
+        round
+        position="center"
+        destroy-on-close="{{ destroyOnClose }}"
+        closeable="{{ type === 'focus' && closable }}"
+        bindclose="onMaskClose">
+    <view
+            class="maui-modal-body {{ bodyClassName || '' }}"
+            style="{{ bodyStyle || '' }}">
+        <view
+                ma:if="{{ title }}"
+                class="maui-modal-body-title">
+            {{ title }}
+        </view>
+
+        <view
+                ma:if="{{ content }}"
+                class="maui-modal-body-content">
+            {{ content }}
+        </view>
+        <slot
+                ma:else
+                name="content"/>
+
+        <view>
+            <view
+                    ma:if="{{ type === 'focus' }}"
+                    class="maui-modal-body-footer-focus">
+                <button
+                        type="info"
+                        class="maui-modal-body-footer-focus-primary"
+                        style="{{ primaryButtonStyle || '' }}"
+                        bindtap="onPrimaryButtonTap">
+                    {{ primaryButtonText }}
+                </button>
+                <view
+                        ma:if="{{ secondaryButtonText }}"
+                        class="maui-modal-body-footer-focus-secondary"
+                        style="{{ secondaryButtonStyle || '' }}"
+                        bindtap="onSecondaryButtonTap">
+                    {{ secondaryButtonText }}
+                </view>
+                <view
+                        ma:if="{{ cancelButtonText }}"
+                        class="maui-modal-body-footer-focus-cancel"
+                        style="{{ cancelButtonStyle || '' }}"
+                        bindtap="onCancelButtonTap">
+                    {{ cancelButtonText }}
+                </view>
+            </view>
+            <view
+                    ma:elif="{{ utils.getDirection(primaryButtonText, secondaryButtonText, cancelButtonText, type) === 'horizontal' }}"
+                    class="maui-modal-body-footer-horizontal">
+                <view
+                        ma:if="{{ cancelButtonText }}"
+                        class="maui-modal-body-footer-horizontal-cancel"
+                        style="{{ cancelButtonStyle || '' }}"
+                        bindtap="onCancelButtonTap">
+                    {{ cancelButtonText }}
+                </view>
+                <view
+                        ma:if="{{ secondaryButtonText }}"
+                        class="maui-modal-body-footer-horizontal-secondary"
+                        style="{{ secondaryButtonStyle || '' }}"
+                        bindtap="onSecondaryButtonTap">
+                    {{ secondaryButtonText }}
+                </view>
+                <view
+                        ma:if="{{ primaryButtonText }}"
+                        class="maui-modal-body-footer-horizontal-primary"
+                        style="{{ primaryButtonStyle || '' }}"
+                        bindtap="onPrimaryButtonTap">
+                    {{ primaryButtonText }}
+                </view>
+            </view>
+            <view
+                    ma:elif="{{ utils.getDirection(primaryButtonText, secondaryButtonText, cancelButtonText, type) === 'vertical' }}"
+                    class="maui-modal-body-footer-vertical">
+                <view
+                        ma:if="{{ primaryButtonText }}"
+                        class="maui-modal-body-footer-vertical-primary"
+                        style="{{ primaryButtonStyle || '' }}"
+                        bindtap="onPrimaryButtonTap">
+                    {{ primaryButtonText }}
+                </view>
+                <view
+                        ma:if="{{ secondaryButtonText }}"
+                        class="maui-modal-body-footer-vertical-secondary"
+                        style="{{ secondaryButtonStyle || '' }}"
+                        bindtap="onSecondaryButtonTap">
+                    {{ secondaryButtonText }}
+                </view>
+                <view
+                        ma:if="{{ cancelButtonText }}"
+                        class="maui-modal-body-footer-vertical-cancel"
+                        style="{{ cancelButtonStyle || '' }}"
+                        bindtap="onCancelButtonTap">
+                    {{ cancelButtonText }}
+                </view>
+            </view>
+        </view>
+    </view>
+</maui-popup>
+

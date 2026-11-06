@@ -2,14 +2,34 @@
 
 var _component = require("../common/component");
 var _relation = require("../common/relation");
+
+function getParent(ctx) {
+  let [p] = ctx.getRelationNodes('../radio-group/index') || [];
+  if (!p) {
+    [p] = ctx.getRelationNodes('maui-radio-group') || [];
+  }
+  return p;
+}
+
 (0, _component.MaComponent)({
   field: true,
   relations: (0, _relation.useParent)('radio-group', function () {
     this.updateFromParent();
   }),
   properties: {
-    name: null,
-    value: null,
+    name: {
+      type: null,
+      value: undefined
+    },
+    value: {
+      type: null,
+      value: null,
+      observer(newVal) {
+        if (newVal !== undefined) {
+          this.setData({ value: newVal });
+        }
+      }
+    },
     customIcon: {
       type: String,
       value: 'success-white'
@@ -41,11 +61,19 @@ var _relation = require("../common/relation");
     parentDisabled: false
   },
   ready() {
-    this.updateFromParent();
+    const parentRadio = getParent(this);
+    if (!parentRadio) {
+      const val = this.data.value !== undefined ? this.data.value : this.properties.value;
+      if (val !== undefined && val !== null) {
+        this.setData({ value: val });
+      }
+    } else {
+      this.updateFromParent();
+    }
   },
   methods: {
     updateFromParent() {
-      const [parentRadio] = this.getRelationNodes('../radio-group/index');
+      const parentRadio = getParent(this);
       if (!parentRadio) {
         return;
       }
@@ -59,16 +87,18 @@ var _relation = require("../common/relation");
       });
     },
     emitChange(val) {
-      const [parent] = this.getRelationNodes('../radio-group/index');
+      const parent = getParent(this);
       if (parent) {
         parent.setData({ value: val });
         parent.triggerEvent('change', val);
-        const children = parent.getRelationNodes('../radio/index');
+        let children = parent.getRelationNodes('../radio/index') || [];
+        if (!children.length) {
+          children = parent.getRelationNodes('maui-radio') || [];
+        }
         children.forEach(child => child.setData({ value: val }));
-      } else {
-        this.setData({ value: val });
-        this.triggerEvent('change', val);
       }
+      this.setData({ value: val });
+      this.triggerEvent('change', val, { bubbles: true, composed: true });
     },
     onChange() {
       const {

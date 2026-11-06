@@ -17,6 +17,7 @@ export default function CheckboxPage() {
       <View className="demo-block">
         <Text className="demo-title">1. Basic Usage</Text>
         <MauiCheckbox
+          key="cb-basic"
           value={checked}
           onChange={(e: any) => {
             const nextVal = typeof e.detail === 'boolean' ? e.detail : !checked;
@@ -30,8 +31,9 @@ export default function CheckboxPage() {
       <View className="demo-block">
         <Text className="demo-title">2. Disabled & Shapes</Text>
         <View className="demo-row">
-          <MauiCheckbox disabled value={true}>Disabled Checked</MauiCheckbox>
+          <MauiCheckbox key="cb-disabled" disabled value={true}>Disabled Checked</MauiCheckbox>
           <MauiCheckbox
+            key="cb-square"
             shape="square"
             value={checkedSquare}
             onChange={(e: any) => {
@@ -41,7 +43,7 @@ export default function CheckboxPage() {
           >
             Square Checkbox
           </MauiCheckbox>
-          <MauiCheckbox checked-color="#07c160" value={true}>Custom Color</MauiCheckbox>
+          <MauiCheckbox key="cb-custom" checkedColor="#07c160" value={true}>Custom Color</MauiCheckbox>
         </View>
       </View>
 
@@ -54,11 +56,9 @@ export default function CheckboxPage() {
             setGroupVal(val);
           }}
         >
-          <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <MauiCheckbox name="a" value={groupVal.includes('a')} onChange={() => toggleGroup('a')}>Option A</MauiCheckbox>
-            <MauiCheckbox name="b" value={groupVal.includes('b')} onChange={() => toggleGroup('b')}>Option B</MauiCheckbox>
-            <MauiCheckbox name="c" value={groupVal.includes('c')} onChange={() => toggleGroup('c')}>Option C</MauiCheckbox>
-          </View>
+          <MauiCheckbox key="cb-group-a" name="a" value={groupVal.includes('a')} onChange={() => toggleGroup('a')}>Option A</MauiCheckbox>
+          <MauiCheckbox key="cb-group-b" name="b" value={groupVal.includes('b')} onChange={() => toggleGroup('b')}>Option B</MauiCheckbox>
+          <MauiCheckbox key="cb-group-c" name="c" value={groupVal.includes('c')} onChange={() => toggleGroup('c')}>Option C</MauiCheckbox>
         </MauiCheckboxGroup>
       </View>
     </View>

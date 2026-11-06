@@ -1,9 +1,9 @@
-<sjs src="./index.sjs" module="computed" />
-
-<view ma:if="{{ lockScroll }}" class="maui-overlay" style="{{ computed.rootStyle({ zIndex, duration, display, customStyle }) }}" duration="{{ duration }}" bindtap="onClick" catch:touchmove="noop">
-    <slot></slot>
+<view
+   class="overlay {{ show ? 'overlay--show' : '' }}"
+   style="z-index: {{ zIndex }};--overlay-duration: {{ duration }}ms;{{ customStyle }}"
+   bindtap="onClick"
+>
+    <view class="overlay--content" catchtap="handleContentTap">
+        <slot/>
+    </view>
 </view>
-<view ma:else class="maui-overlay" style="{{ computed.rootStyle({ zIndex, duration, display, customStyle }) }}" duration="{{ duration }}" bindtap="onClick">
-    <slot></slot>
-</view>
-

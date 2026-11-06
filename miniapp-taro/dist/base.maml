@@ -232,7 +232,7 @@
 </template>
 
 <template name="tmpl_0_15">
-  <canvas canvas-id="{{i.p0}}" disable-scroll="{{xs.b(i.p1,!1)}}" binderror="eh" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongpress="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <canvas canvas-id="{{i.p0}}" disable-scroll="{{xs.b(i.p1,!1)}}" binderror="eh" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongtap="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </canvas>
 </template>
@@ -298,7 +298,7 @@
 </template>
   
 <template name="tmpl_0_maui-checkbox">
-  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{xs.b(i.iconSize,20)}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox>
 </template>
@@ -382,7 +382,7 @@
 </template>
   
 <template name="tmpl_0_maui-radio">
-  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{xs.b(i.iconSize,20)}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio>
 </template>
@@ -598,7 +598,7 @@
 </template>
   
 <template name="tmpl_1_maui-checkbox">
-  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{i.customIcon}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-checkbox  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{xs.b(i.iconSize,20)}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-checkbox>
 </template>
@@ -682,7 +682,7 @@
 </template>
   
 <template name="tmpl_1_maui-radio">
-  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{i.iconSize}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <maui-radio  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" name="{{i.name}}" value="{{i.value}}" custom-icon="{{xs.b(i.customIcon,'success-white')}}" icon-size="{{xs.b(i.iconSize,20)}}" disabled="{{xs.b(i.disabled,false)}}" checked-color="{{i.checkedColor}}" label-position="{{xs.b(i.labelPosition,'right')}}" label-disabled="{{xs.b(i.labelDisabled,false)}}" shape="{{xs.b(i.shape,'round')}}" bindchange="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-radio>
 </template>
@@ -933,10 +933,22 @@
   </maui-tabs>
 </template>
   
+<template name="tmpl_2_maui-modal">
+  <maui-modal  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" visible="{{xs.b(i.visible,false)}}" title="{{i.title}}" content="{{i.content}}" type="{{xs.b(i.type,'default')}}" closable="{{xs.b(i.closable,false)}}" primary-button-text="{{i.primaryButtonText}}" secondary-button-text="{{i.secondaryButtonText}}" cancel-button-text="{{i.cancelButtonText}}" bindclose="eh" bindprimarybuttontap="eh" bindsecondarybuttontap="eh" bindcancelbuttontap="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
+  </maui-modal>
+</template>
+  
 <template name="tmpl_2_maui-list">
   <maui-list  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" header="{{i.header}}" footer="{{i.footer}}" radius="{{xs.b(i.radius,false)}}" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
   </maui-list>
+</template>
+  
+<template name="tmpl_2_maui-list-item">
+  <maui-list-item  class="{{i.cl}}" style="{{i.st}}" bindtap="eh" title="{{i.title}}" brief="{{i.brief}}" extra="{{i.extra}}" extra-brief="{{i.extraBrief}}" arrow="{{i.arrow}}" disabled="{{xs.b(i.disabled,false)}}" show-divider="{{xs.b(i.showDivider,true)}}" image="{{i.image}}" bindclick="eh" id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <template is="{{xs.a(c, item.nn, l)}}" data="{{i:item,c:c+1,l:xs.f(l,item.nn)}}" ma:for="{{i.cn}}" ma:key="sid" />
+  </maui-list-item>
 </template>
   
 <template name="tmpl_3_0">

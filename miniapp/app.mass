@@ -32,22 +32,3 @@ page {
 .demo-col {
   margin-bottom: 12px;
 }
-
-/* Layout Grid Column Visual Borders */
-.maui-row {
-  margin-bottom: 12px;
-}
-.maui-col {
-  border: 1.5px solid #0284c7;
-  background-color: #f0f9ff;
-  color: #0369a1;
-  text-align: center;
-  border-radius: 4px;
-  line-height: 38px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 13px;
-}
-.maui-col:nth-child(even) {
-  background-color: #e0f2fe;
-}

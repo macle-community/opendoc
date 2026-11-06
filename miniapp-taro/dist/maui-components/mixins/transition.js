@@ -33,7 +33,7 @@ const properties = {
     value: false
   }
 };
-var _default = new Behavior({
+var _default = exports.default = new Behavior({
   is: 'ma-transition',
   properties,
   data: {
@@ -139,4 +139,3 @@ var _default = new Behavior({
     }
   }
 });
-exports.default = _default;

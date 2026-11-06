@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "maui-button": "../button/index",
+    "maui-icon": "../icon/index",
+    "maui-popup": "../popup/index"
+  }
+}

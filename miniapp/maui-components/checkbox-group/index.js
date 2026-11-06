@@ -27,8 +27,11 @@ var _relation = require("../common/relation");
   },
   methods: {
     updateChildren() {
-      const children = this.getRelationNodes('../checkbox/index');
-      children.forEach(child => child.updateFromParent());
+      let children = this.getRelationNodes('../checkbox/index') || [];
+      if (!children.length) {
+        children = this.getRelationNodes('maui-checkbox') || [];
+      }
+      children.forEach(child => child.updateFromParent && child.updateFromParent());
     }
   }
 });

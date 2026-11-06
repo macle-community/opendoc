@@ -43,13 +43,12 @@ function getCurrentPage() {
   const pages = getCurrentPages();
   return pages[pages.length - 1];
 }
-const autoIncreaseId = (() => {
+const autoIncreaseId = exports.autoIncreaseId = (() => {
   let _id = 0;
   return () => {
     return ++_id;
   };
 })();
-exports.autoIncreaseId = autoIncreaseId;
 function getAllRect(context, selector) {
   return new Promise(resolve => {
     ma.createSelectorQuery().in(context).selectAll(selector).boundingClientRect().exec((rect = []) => resolve(rect[0]));

@@ -1,19 +1,23 @@
 "use strict";
 
 var _component = require("../common/component");
-var _transition = _interopRequireDefault(require("../mixins/transition"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 (0, _component.MaComponent)({
-  behaviors: [_transition.default],
   properties: {
-    customStyle: String,
+    show: {
+      type: Boolean,
+      value: false
+    },
     zIndex: {
-      type: Number,
+      type: [String, Number],
       value: 1
     },
-    lockScroll: {
-      type: Boolean,
-      value: true
+    duration: {
+      type: [String, Number],
+      value: 300
+    },
+    customStyle: {
+      type: String,
+      value: ''
     }
   },
   methods: {
@@ -22,7 +26,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
         bubbles: true
       });
     },
-    // for prevent touchmove
-    noop: function noop() {}
+    // 阻止内嵌组件冒泡，暂时不暴露给用户
+    handleContentTap() {}
   }
 });

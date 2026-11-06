@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.textareaProps = exports.inputProps = exports.commonProps = void 0;
-const commonProps = {
+const commonProps = exports.commonProps = {
   value: String,
   disabled: Boolean,
   placeholder: String,
@@ -26,12 +26,10 @@ const commonProps = {
     value: 140
   }
 };
-exports.commonProps = commonProps;
-const textareaProps = {
+const textareaProps = exports.textareaProps = {
   autosize: Boolean
 };
-exports.textareaProps = textareaProps;
-const inputProps = {
+const inputProps = exports.inputProps = {
   password: Boolean,
   confirmHold: Boolean,
   bindinput: String,
@@ -48,4 +46,3 @@ const inputProps = {
     value: 0
   }
 };
-exports.inputProps = inputProps;

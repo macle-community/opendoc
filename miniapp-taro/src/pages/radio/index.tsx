@@ -17,11 +17,9 @@ export default function RadioPage() {
             setCurrentRadio(val);
           }}
         >
-          <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <MauiRadio name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>Option 1</MauiRadio>
-            <MauiRadio name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Option 2</MauiRadio>
-            <MauiRadio name="3" value={currentRadio} onChange={() => setCurrentRadio('3')} disabled>Option 3 (Disabled)</MauiRadio>
-          </View>
+          <MauiRadio key="r1" name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>Option 1</MauiRadio>
+          <MauiRadio key="r2" name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Option 2</MauiRadio>
+          <MauiRadio key="r3" name="3" value={currentRadio} onChange={() => setCurrentRadio('3')} disabled>Option 3 (Disabled)</MauiRadio>
         </MauiRadioGroup>
       </View>
 
@@ -35,10 +33,8 @@ export default function RadioPage() {
             setCurrentRadio(val);
           }}
         >
-          <View style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
-            <MauiRadio name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>One</MauiRadio>
-            <MauiRadio name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Two</MauiRadio>
-          </View>
+          <MauiRadio key="rh1" name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>One</MauiRadio>
+          <MauiRadio key="rh2" name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Two</MauiRadio>
         </MauiRadioGroup>
       </View>
     </View>

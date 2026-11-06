@@ -7,10 +7,11 @@ function iconStyle(param) {
     'font-size': addUnit(param.iconSize)
   };
 
+  var isChecked = param.value || (param.inParentArrIdx !== undefined && param.inParentArrIdx >= 0);
   if (
     param.checkedColor &&
     !(param.disabled || param.parentDisabled) &&
-    param.inParentArrIdx >= 0
+    isChecked
   ) {
     styles['border-color'] = param.checkedColor;
     styles['background-color'] = param.checkedColor;
