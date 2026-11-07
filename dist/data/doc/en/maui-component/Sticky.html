@@ -9,19 +9,19 @@
 }
 </code></pre>
 <h2 id="sample-code">Sample Code</h2>
-<h3 id="basic-usage">Basic Usage</h3>
+<h3 id="basic-usage">1. Basic Usage</h3>
 <p>Just wrap the content in a <code>Sticky</code> component.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Basic usage<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sticky</span>&gt;</span>
 </code></pre>
-<h3 id="offset-top">Offset-top</h3>
+<h3 id="offset-top">2. Offset-top</h3>
 <p>The <code>offset-top</code> property can be used to set the distance between the component and the top when it is ceiling-mounted.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span> <span class="hljs-attr">offset-top</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">50</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>Ceiling distance<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sticky</span>&gt;</span></span>
 </code></pre>
-<h3 id="specify-container">Specify container</h3>
+<h3 id="specify-container">3. Specify container</h3>
 <p>The container of the component can be specified through the <code>container</code> attribute. When the page is scrolled, the component will always remain within the scope of the container. When the component is about to exceed the bottom of the container, it will return to its original position.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 150px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span> <span class="hljs-attr">container</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">container</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
@@ -41,7 +41,7 @@
   },
 })<span class="hljs-comment">;</span>
 </code></pre>
-<h3 id="used-nested-within-scroll-view">Used nested within scroll-view</h3>
+<h3 id="used-nested-within-scroll-view">4. Used nested within scroll-view</h3>
 <p>Nested use within scroll-view can be achieved through the <code>scroll-top</code> and <code>offset-top</code> properties.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>
   <span class="hljs-attr">bind:scroll</span>=<span class="hljs-string">&quot;onScroll&quot;</span>

@@ -9,19 +9,19 @@
 }
 </code></pre>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <p>将内容包裹在<code>Sticky</code>组件内即可。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>基础用法<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sticky</span>&gt;</span>
 </code></pre>
-<h4 id="吸顶距离">吸顶距离</h4>
+<h4 id="吸顶距离">2. 吸顶距离</h4>
 <p>通过<code>offset-top</code>属性可以设置组件在吸顶时与顶部的距离。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span> <span class="hljs-attr">offset-top</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">50</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>吸顶距离<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sticky</span>&gt;</span></span>
 </code></pre>
-<h4 id="指定容器">指定容器</h4>
+<h4 id="指定容器">3. 指定容器</h4>
 <p>通过<code>container</code>属性可以指定组件的容器，页面滚动时，组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 150px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sticky</span> <span class="hljs-attr">container</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">container</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
@@ -41,7 +41,7 @@
   },
 })<span class="hljs-comment">;</span>
 </code></pre>
-<h4 id="嵌套在-scroll-view-内使用">嵌套在 scroll-view 内使用</h4>
+<h4 id="嵌套在-scroll-view-内使用">4. 嵌套在 scroll-view 内使用</h4>
 <p>通过 <code>scroll-top</code> 与 <code>offset-top</code> 属性可以实现在 scroll-view 内嵌套使用。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span>
   <span class="hljs-attr">bind:scroll</span>=<span class="hljs-string">&quot;onScroll&quot;</span>

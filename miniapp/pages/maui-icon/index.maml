@@ -1,0 +1,22 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Icons & Sizes</text>
+    <view class="icon-row">
+  <maui-icon name="success" size="32px" color="#07c160" />
+  <maui-icon name="cross" size="32px" color="#ee0a24" />
+  <maui-icon name="star" size="32px" color="#ff976a" />
+  <maui-icon name="like" size="32px" color="#1989fa" />
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Badge & Dot Information</text>
+    <view class="icon-row">
+  <maui-icon name="chat-o" size="32px" dot />
+  <maui-icon name="chat-o" size="32px" info="9" />
+  <maui-icon name="chat-o" size="32px" info="99+" />
+</view>
+  </view>
+</view>

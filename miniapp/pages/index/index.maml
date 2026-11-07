@@ -78,4 +78,61 @@
       <navigator url="/pages/map/index" class="nav-item full-width">map 地图</navigator>
     </view>
   </view>
+
+  <view class="demo-block">
+    <text class="demo-title" style="border-left-color: #0284c7;">MAUI Basic Components 基础组件 (5)</text>
+    <view class="nav-grid">
+      <navigator url="/pages/maui-button/index" class="nav-item">Button 按钮</navigator>
+      <navigator url="/pages/maui-cell/index" class="nav-item">Cell 单元格</navigator>
+      <navigator url="/pages/maui-icon/index" class="nav-item">Icon 图标</navigator>
+      <navigator url="/pages/maui-image/index" class="nav-item">Image 图片</navigator>
+      <navigator url="/pages/maui-layout/index" class="nav-item">Layout 栅格布局</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title" style="border-left-color: #0284c7;">MAUI Form Components 表单组件 (6)</text>
+    <view class="nav-grid">
+      <navigator url="/pages/maui-checkbox/index" class="nav-item">Checkbox 复选框</navigator>
+      <navigator url="/pages/maui-field/index" class="nav-item">Field 输入框</navigator>
+      <navigator url="/pages/maui-radio/index" class="nav-item">Radio 单选框</navigator>
+      <navigator url="/pages/maui-slider/index" class="nav-item">Slider 滑块</navigator>
+      <navigator url="/pages/maui-stepper/index" class="nav-item">Stepper 步进器</navigator>
+      <navigator url="/pages/maui-switch/index" class="nav-item">Switch 开关</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title" style="border-left-color: #0284c7;">MAUI Feedback Components 反馈组件 (6)</text>
+    <view class="nav-grid">
+      <navigator url="/pages/maui-dialog/index" class="nav-item">Dialog 弹出框</navigator>
+      <navigator url="/pages/maui-loading/index" class="nav-item">Loading 加载</navigator>
+      <navigator url="/pages/maui-modal/index" class="nav-item">Modal 对话框</navigator>
+      <navigator url="/pages/maui-overlay/index" class="nav-item">Overlay 遮罩层</navigator>
+      <navigator url="/pages/maui-popup/index" class="nav-item">Popup 弹出层</navigator>
+      <navigator url="/pages/maui-toast/index" class="nav-item">Toast 轻提示</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title" style="border-left-color: #0284c7;">MAUI Navigation Components 导航组件 (4)</text>
+    <view class="nav-grid">
+      <navigator url="/pages/maui-sidebar/index" class="nav-item">Sidebar 侧边导航</navigator>
+      <navigator url="/pages/maui-steps/index" class="nav-item">Steps 步骤条</navigator>
+      <navigator url="/pages/maui-tab/index" class="nav-item">Tab 标签页</navigator>
+      <navigator url="/pages/maui-title-bar/index" class="nav-item">TitleBar 导航栏</navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title" style="border-left-color: #0284c7;">MAUI Display Components 展示组件 (6)</text>
+    <view class="nav-grid">
+      <navigator url="/pages/maui-divider/index" class="nav-item">Divider 分割线</navigator>
+      <navigator url="/pages/maui-empty/index" class="nav-item">Empty 空状态</navigator>
+      <navigator url="/pages/maui-list/index" class="nav-item">List 列表</navigator>
+      <navigator url="/pages/maui-progress/index" class="nav-item">Progress 进度条</navigator>
+      <navigator url="/pages/maui-sticky/index" class="nav-item">Sticky 粘性布局</navigator>
+      <navigator url="/pages/maui-tag/index" class="nav-item">Tag 标签</navigator>
+    </view>
+  </view>
 </view>

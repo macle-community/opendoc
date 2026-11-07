@@ -1,0 +1,17 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Horizontal Alignment</text>
+    <view class="item-col">
+  <maui-radio-group value="{{ radio1 }}">
+    <maui-radio name="1">Option 1</maui-radio>
+    <maui-radio name="2">Option 2</maui-radio>
+  </maui-radio-group>
+  <maui-radio-group value="{{ radio2 }}" direction="horizontal" style="margin-top: 10px;">
+    <maui-radio name="a" checked-color="#07c160">A (Green)</maui-radio>
+    <maui-radio name="b" shape="square">B (Square)</maui-radio>
+  </maui-radio-group>
+</view>
+  </view>
+</view>

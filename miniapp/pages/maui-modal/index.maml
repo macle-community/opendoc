@@ -1,0 +1,13 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Modal Dialog</text>
+    <view>
+  <maui-button type="primary" bind:tap="openModal">Open Modal</maui-button>
+  <maui-modal show="{{ showModal }}" title="Modal Title" bind:confirm="closeModal" bind:cancel="closeModal">
+    <view style="padding: 16px; text-align: center;">This is modal dialog content.</view>
+  </maui-modal>
+</view>
+  </view>
+</view>

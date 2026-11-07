@@ -111,6 +111,38 @@
     const raw = (currentExample.rawCode || '').toLowerCase();
     const title = (currentExample.title || '').toLowerCase();
 
+    // Check MAUI Component Library first if URL has maui-component or code uses maui- / Maui
+    const isMaui = hash.includes('maui-component') || raw.includes('maui-') || raw.includes('maui');
+    if (isMaui) {
+      if (hash.includes('button') || raw.includes('maui-button')) return 'pages/maui-button/index';
+      if (hash.includes('cell') || raw.includes('maui-cell')) return 'pages/maui-cell/index';
+      if (hash.includes('checkbox') || raw.includes('maui-checkbox')) return 'pages/maui-checkbox/index';
+      if (hash.includes('dialog') || raw.includes('maui-dialog')) return 'pages/maui-dialog/index';
+      if (hash.includes('divider') || raw.includes('maui-divider')) return 'pages/maui-divider/index';
+      if (hash.includes('empty') || raw.includes('maui-empty')) return 'pages/maui-empty/index';
+      if (hash.includes('field') || raw.includes('maui-field')) return 'pages/maui-field/index';
+      if (hash.includes('icon') || raw.includes('maui-icon')) return 'pages/maui-icon/index';
+      if (hash.includes('image') || raw.includes('maui-image')) return 'pages/maui-image/index';
+      if (hash.includes('layout') || raw.includes('maui-row') || raw.includes('maui-col')) return 'pages/maui-layout/index';
+      if (hash.includes('list') || raw.includes('maui-list')) return 'pages/maui-list/index';
+      if (hash.includes('loading') || raw.includes('maui-loading')) return 'pages/maui-loading/index';
+      if (hash.includes('modal') || raw.includes('maui-modal')) return 'pages/maui-modal/index';
+      if (hash.includes('overlay') || raw.includes('maui-overlay')) return 'pages/maui-overlay/index';
+      if (hash.includes('popup') || raw.includes('maui-popup')) return 'pages/maui-popup/index';
+      if (hash.includes('progress') || raw.includes('maui-progress')) return 'pages/maui-progress/index';
+      if (hash.includes('radio') || raw.includes('maui-radio')) return 'pages/maui-radio/index';
+      if (hash.includes('sidebar') || raw.includes('maui-sidebar')) return 'pages/maui-sidebar/index';
+      if (hash.includes('slider') || raw.includes('maui-slider')) return 'pages/maui-slider/index';
+      if (hash.includes('stepper') || raw.includes('maui-stepper')) return 'pages/maui-stepper/index';
+      if (hash.includes('steps') || raw.includes('maui-steps')) return 'pages/maui-steps/index';
+      if (hash.includes('sticky') || raw.includes('maui-sticky')) return 'pages/maui-sticky/index';
+      if (hash.includes('switch') || raw.includes('maui-switch')) return 'pages/maui-switch/index';
+      if (hash.includes('tab') || raw.includes('maui-tab')) return 'pages/maui-tab/index';
+      if (hash.includes('tag') || raw.includes('maui-tag')) return 'pages/maui-tag/index';
+      if (hash.includes('titlebar') || raw.includes('maui-title-bar')) return 'pages/maui-title-bar/index';
+      if (hash.includes('toast') || raw.includes('maui-toast')) return 'pages/maui-toast/index';
+    }
+
     // Specific multi-word / sub-components first
     if (hash.includes('scroll-view') || raw.includes('<scroll-view') || title.includes('scroll-view')) return 'pages/scroll-view/index';
     if (hash.includes('swiper-item') || raw.includes('<swiper-item') || title.includes('swiper-item')) return 'pages/swiper-item/index';
@@ -146,19 +178,6 @@
     if (hash.includes('audio') || raw.includes('<audio') || title.includes('audio')) return 'pages/audio/index';
     if (hash.includes('camera') || raw.includes('<camera') || title.includes('camera')) return 'pages/camera/index';
     if (hash.includes('map') || raw.includes('<map') || title.includes('map')) return 'pages/map/index';
-
-    // MAUI Component Library fallbacks
-    if (hash.includes('layout') || raw.includes('maui-row') || raw.includes('maui-col')) return 'pages/layout/index';
-    if (hash.includes('cell') || raw.includes('maui-cell')) return 'pages/cell/index';
-    if (hash.includes('stepper') || raw.includes('maui-stepper')) return 'pages/stepper/index';
-    if (hash.includes('field') || raw.includes('maui-field')) return 'pages/field/index';
-    if (hash.includes('tag') || raw.includes('maui-tag')) return 'pages/tag/index';
-    if (hash.includes('loading') || raw.includes('maui-loading')) return 'pages/loading/index';
-    if (hash.includes('divider') || raw.includes('maui-divider')) return 'pages/divider/index';
-    if (hash.includes('empty') || raw.includes('maui-empty')) return 'pages/empty/index';
-    if (hash.includes('steps') || raw.includes('maui-steps')) return 'pages/steps/index';
-    if (hash.includes('dialog') || raw.includes('maui-dialog')) return 'pages/dialog/index';
-    if (hash.includes('toast') || raw.includes('maui-toast')) return 'pages/toast/index';
 
     return 'pages/index/index';
   }
@@ -1155,6 +1174,35 @@ ${taroCode}
                   </optgroup>
                   <optgroup label="Map">
                     <option value="pages/map/index">map 地图</option>
+                  </optgroup>
+                  <optgroup label="MAUI UI Library (27)">
+                    <option value="pages/maui-button/index">maui-button 按钮</option>
+                    <option value="pages/maui-cell/index">maui-cell 单元格</option>
+                    <option value="pages/maui-checkbox/index">maui-checkbox 复选框</option>
+                    <option value="pages/maui-dialog/index">maui-dialog 弹出框</option>
+                    <option value="pages/maui-divider/index">maui-divider 分割线</option>
+                    <option value="pages/maui-empty/index">maui-empty 空状态</option>
+                    <option value="pages/maui-field/index">maui-field 输入框</option>
+                    <option value="pages/maui-icon/index">maui-icon 图标</option>
+                    <option value="pages/maui-image/index">maui-image 图片</option>
+                    <option value="pages/maui-layout/index">maui-layout 栅格布局</option>
+                    <option value="pages/maui-list/index">maui-list 列表</option>
+                    <option value="pages/maui-loading/index">maui-loading 加载</option>
+                    <option value="pages/maui-modal/index">maui-modal 对话框</option>
+                    <option value="pages/maui-overlay/index">maui-overlay 遮罩层</option>
+                    <option value="pages/maui-popup/index">maui-popup 弹出层</option>
+                    <option value="pages/maui-progress/index">maui-progress 进度条</option>
+                    <option value="pages/maui-radio/index">maui-radio 单选框</option>
+                    <option value="pages/maui-sidebar/index">maui-sidebar 侧边导航</option>
+                    <option value="pages/maui-slider/index">maui-slider 滑块</option>
+                    <option value="pages/maui-stepper/index">maui-stepper 步进器</option>
+                    <option value="pages/maui-steps/index">maui-steps 步骤条</option>
+                    <option value="pages/maui-sticky/index">maui-sticky 粘性布局</option>
+                    <option value="pages/maui-switch/index">maui-switch 开关</option>
+                    <option value="pages/maui-tab/index">maui-tab 标签页</option>
+                    <option value="pages/maui-tag/index">maui-tag 标签</option>
+                    <option value="pages/maui-title-bar/index">maui-title-bar 导航栏</option>
+                    <option value="pages/maui-toast/index">maui-toast 轻提示</option>
                   </optgroup>
                 </select>
               </div>

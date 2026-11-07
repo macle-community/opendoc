@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Tabs & Animated Switching</text>
+    <maui-tabs active="{{ activeTab }}" swipeable animated>
+  <maui-tab title="Tab 1"><view class="tab-content">Tab 1 Content</view></maui-tab>
+  <maui-tab title="Tab 2"><view class="tab-content">Tab 2 Content</view></maui-tab>
+  <maui-tab title="Tab 3"><view class="tab-content">Tab 3 Content</view></maui-tab>
+</maui-tabs>
+  </view>
+</view>

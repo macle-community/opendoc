@@ -1,0 +1,21 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Custom Types</text>
+    <maui-cell-group>
+  <maui-field value="{{ username }}" label="Username" placeholder="Enter username" />
+  <maui-field value="{{ password }}" type="password" label="Password" placeholder="Enter password" />
+  <maui-field value="Readonly value" readonly label="Status" />
+  <maui-field value="" disabled label="Disabled" placeholder="Disabled input" />
+</maui-cell-group>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Error Message & Content Alignment</text>
+    <maui-cell-group>
+  <maui-field value="{{ phone }}" label="Phone" placeholder="Enter phone" error-message="Phone format incorrect" />
+  <maui-field value="Right Aligned" label="Text" input-align="right" />
+</maui-cell-group>
+  </view>
+</view>

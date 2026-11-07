@@ -1,0 +1,21 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Text Position</text>
+    <view>
+  <maui-divider />
+  <maui-divider content-position="center">Centered Text</maui-divider>
+  <maui-divider content-position="left">Left Text</maui-divider>
+  <maui-divider content-position="right">Right Text</maui-divider>
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Dashed & Custom Color</text>
+    <view>
+  <maui-divider dashed>Dashed Line</maui-divider>
+  <maui-divider custom-style="color: #1989fa; border-color: #1989fa;">Custom Color</maui-divider>
+</view>
+  </view>
+</view>

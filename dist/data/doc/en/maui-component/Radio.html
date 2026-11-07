@@ -3,7 +3,7 @@
 <p>Make a single selection among a set of alternatives (minimum version: 24.6.0)</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <p>Bind the name of the currently selected item to the value via <code>value</code>.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -23,7 +23,7 @@
   },
 }); 
 </code></pre>
-<h4 id="arrange-horizontally">Arrange Horizontally</h4>
+<h4 id="arrange-horizontally">2. Arrange Horizontally</h4>
 <p>After setting the <code>direction</code> attribute to <code>horizontal</code>, the radio button group will become horizontally arranged.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span>
@@ -35,7 +35,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h3 id="disabled-state">Disabled State</h3>
+<h3 id="disabled-state">3. Disabled State</h3>
 <p>Disable option switching through the <code>disabled</code> attribute, and set <code>diabled</code> on <code>Radio</code> to disable individual options.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -43,7 +43,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-shape">Custom Shape</h4>
+<h4 id="custom-shape">4. Custom Shape</h4>
 <p>Set the <code>shape</code> attribute to <code>square</code>, and the shape of the radio button will become a square.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -51,7 +51,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-color">Custom Color</h4>
+<h4 id="custom-color">5. Custom Color</h4>
 <p>Set the icon color of the checked state through the <code>checked-color</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -59,7 +59,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">checked-color</span>=<span class="hljs-string">&#x27;#07c160&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-size">Custom Size</h4>
+<h4 id="custom-size">6. Custom Size</h4>
 <p>The size of the icon can be customized through the <code>icon-size</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -67,7 +67,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;24px&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-icon">Custom Icon</h4>
+<h4 id="custom-icon">7. Custom Icon</h4>
 <p><code>custom-icon</code> can set the icon when checked</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
@@ -75,7 +75,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;2&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/customIcon.png&#x27;</span>&gt;</span>radio 2<span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-radio-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="disable-label-click">Disable Label Click</h4>
+<h4 id="disable-label-click">8. Disable Label Click</h4>
 <p>Radio button text clicks can be disabled by setting the <code>label-disabled</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-radio-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">radio</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>

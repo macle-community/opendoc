@@ -2,7 +2,7 @@
 <h3 id="introduction"><strong>Introduction</strong></h3>
 <p>The popup layer container provides popups and messages. Multiple popup layers can be stacked.</p>
 <h2 id="sample-code"><strong>Sample Code</strong></h2>
-<h3 id="basic-usage"><strong>Basic usage</strong></h3>
+<h3 id="basic-usage">1. Basic usage</h3>
 <p>Use the <code>show</code> attribute to determine whether to display the popup layer.</p>
 <pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;show popup layer&quot;</span> <span class="hljs-attr">is-link</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;showPopup&quot;</span> /&amp;<span class="hljs-attr">gt</span>&quot;;
 
@@ -10,12 +10,12 @@
 Page(</span><span class="hljs-template-variable">{ data: { show: false, }</span><span class="language-xml">, showPopup() </span><span class="hljs-template-variable">{ this.setData({ show: true }</span><span class="language-xml">); }, onClose() </span><span class="hljs-template-variable">{ this.setData({ show: false }</span><span class="language-xml">);
 }, });</span>
 </code></pre>
-<h3 id="popup-position"><strong>Popup Position</strong></h3>
+<h3 id="popup-position">2. Popup Position</h3>
 <p>Use the <code>position</code> attribute to set the popup position. By default, the popup is centered. You can set it
 to <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code>.</p>
 <pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top&quot;</span> <span class="hljs-attr">custom-style</span>=<span class="hljs-string">&quot;height: 20%;&quot;</span> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
 </code></pre>
-<h3 id="close-icon"><strong>Close icon</strong></h3>
+<h3 id="close-icon">3. Close icon</h3>
 <p>Setting the <code>closeable</code> attribute displays the close icon in the upper right corner of the popup layer. You can set
 the <code>close-icon</code> attribute to customize the icon and set the <code>close-icon-position</code> attribute to customize the icon
 position.</p>
@@ -41,11 +41,11 @@ position.</p>
   <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
 /&gt;</span></span>
 </code></pre>
-<h3 id="round-corner-popup-window"><strong>Round corner popup window</strong></h3>
+<h3 id="round-corner-popup-window">4. Round corner popup window</h3>
 <p>Setting the <code>round</code> attribute adds different round corner styles to the popup window based on the popup position.</p>
 <pre><code class="language-maml">&lt;maui-popup <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">position</span>=<span class="hljs-string">&quot;bottom&quot;</span> custom-<span class="hljs-built_in">style</span>=<span class="hljs-string">&quot;height: 20%&quot;</span> bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
 </code></pre>
-<h3 id="scroll-penetration-forbidden"><strong>Scroll penetration forbidden</strong></h3>
+<h3 id="scroll-penetration-forbidden">5. Scroll penetration forbidden</h3>
 <p>If you continue to slide content to the end of a component, the underlying page will be scrolled. This is called scroll
 penetration.</p>
 <p>Setting the <code>lock-scroll</code> attribute of the component can resolve some of the scroll penetration problems, but due to

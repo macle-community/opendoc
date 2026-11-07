@@ -2336,6 +2336,266 @@ $gma=function(path,global){
     })(__MAML_GLOBAL__.ops_cached.$gma_73);
     return __MAML_GLOBAL__.ops_cached.$gma_73
   }
+  function gz$gma_74(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_74)return __MAML_GLOBAL__.ops_cached.$gma_74
+    __MAML_GLOBAL__.ops_cached.$gma_74=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_74);
+    return __MAML_GLOBAL__.ops_cached.$gma_74
+  }
+  function gz$gma_75(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_75)return __MAML_GLOBAL__.ops_cached.$gma_75
+    __MAML_GLOBAL__.ops_cached.$gma_75=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_75);
+    return __MAML_GLOBAL__.ops_cached.$gma_75
+  }
+  function gz$gma_76(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_76)return __MAML_GLOBAL__.ops_cached.$gma_76
+    __MAML_GLOBAL__.ops_cached.$gma_76=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_76);
+    return __MAML_GLOBAL__.ops_cached.$gma_76
+  }
+  function gz$gma_77(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_77)return __MAML_GLOBAL__.ops_cached.$gma_77
+    __MAML_GLOBAL__.ops_cached.$gma_77=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_77);
+    return __MAML_GLOBAL__.ops_cached.$gma_77
+  }
+  function gz$gma_78(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_78)return __MAML_GLOBAL__.ops_cached.$gma_78
+    __MAML_GLOBAL__.ops_cached.$gma_78=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_78);
+    return __MAML_GLOBAL__.ops_cached.$gma_78
+  }
+  function gz$gma_79(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_79)return __MAML_GLOBAL__.ops_cached.$gma_79
+    __MAML_GLOBAL__.ops_cached.$gma_79=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_79);
+    return __MAML_GLOBAL__.ops_cached.$gma_79
+  }
+  function gz$gma_80(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_80)return __MAML_GLOBAL__.ops_cached.$gma_80
+    __MAML_GLOBAL__.ops_cached.$gma_80=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_80);
+    return __MAML_GLOBAL__.ops_cached.$gma_80
+  }
+  function gz$gma_81(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_81)return __MAML_GLOBAL__.ops_cached.$gma_81
+    __MAML_GLOBAL__.ops_cached.$gma_81=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_81);
+    return __MAML_GLOBAL__.ops_cached.$gma_81
+  }
+  function gz$gma_82(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_82)return __MAML_GLOBAL__.ops_cached.$gma_82
+    __MAML_GLOBAL__.ops_cached.$gma_82=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_82);
+    return __MAML_GLOBAL__.ops_cached.$gma_82
+  }
+  function gz$gma_83(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_83)return __MAML_GLOBAL__.ops_cached.$gma_83
+    __MAML_GLOBAL__.ops_cached.$gma_83=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_83);
+    return __MAML_GLOBAL__.ops_cached.$gma_83
+  }
+  function gz$gma_84(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_84)return __MAML_GLOBAL__.ops_cached.$gma_84
+    __MAML_GLOBAL__.ops_cached.$gma_84=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_84);
+    return __MAML_GLOBAL__.ops_cached.$gma_84
+  }
+  function gz$gma_85(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_85)return __MAML_GLOBAL__.ops_cached.$gma_85
+    __MAML_GLOBAL__.ops_cached.$gma_85=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_85);
+    return __MAML_GLOBAL__.ops_cached.$gma_85
+  }
+  function gz$gma_86(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_86)return __MAML_GLOBAL__.ops_cached.$gma_86
+    __MAML_GLOBAL__.ops_cached.$gma_86=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_86);
+    return __MAML_GLOBAL__.ops_cached.$gma_86
+  }
+  function gz$gma_87(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_87)return __MAML_GLOBAL__.ops_cached.$gma_87
+    __MAML_GLOBAL__.ops_cached.$gma_87=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_87);
+    return __MAML_GLOBAL__.ops_cached.$gma_87
+  }
+  function gz$gma_88(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_88)return __MAML_GLOBAL__.ops_cached.$gma_88
+    __MAML_GLOBAL__.ops_cached.$gma_88=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_88);
+    return __MAML_GLOBAL__.ops_cached.$gma_88
+  }
+  function gz$gma_89(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_89)return __MAML_GLOBAL__.ops_cached.$gma_89
+    __MAML_GLOBAL__.ops_cached.$gma_89=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_89);
+    return __MAML_GLOBAL__.ops_cached.$gma_89
+  }
+  function gz$gma_90(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_90)return __MAML_GLOBAL__.ops_cached.$gma_90
+    __MAML_GLOBAL__.ops_cached.$gma_90=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_90);
+    return __MAML_GLOBAL__.ops_cached.$gma_90
+  }
+  function gz$gma_91(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_91)return __MAML_GLOBAL__.ops_cached.$gma_91
+    __MAML_GLOBAL__.ops_cached.$gma_91=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_91);
+    return __MAML_GLOBAL__.ops_cached.$gma_91
+  }
+  function gz$gma_92(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_92)return __MAML_GLOBAL__.ops_cached.$gma_92
+    __MAML_GLOBAL__.ops_cached.$gma_92=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_92);
+    return __MAML_GLOBAL__.ops_cached.$gma_92
+  }
+  function gz$gma_93(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_93)return __MAML_GLOBAL__.ops_cached.$gma_93
+    __MAML_GLOBAL__.ops_cached.$gma_93=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_93);
+    return __MAML_GLOBAL__.ops_cached.$gma_93
+  }
+  function gz$gma_94(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_94)return __MAML_GLOBAL__.ops_cached.$gma_94
+    __MAML_GLOBAL__.ops_cached.$gma_94=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_94);
+    return __MAML_GLOBAL__.ops_cached.$gma_94
+  }
+  function gz$gma_95(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_95)return __MAML_GLOBAL__.ops_cached.$gma_95
+    __MAML_GLOBAL__.ops_cached.$gma_95=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_95);
+    return __MAML_GLOBAL__.ops_cached.$gma_95
+  }
+  function gz$gma_96(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_96)return __MAML_GLOBAL__.ops_cached.$gma_96
+    __MAML_GLOBAL__.ops_cached.$gma_96=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_96);
+    return __MAML_GLOBAL__.ops_cached.$gma_96
+  }
+  function gz$gma_97(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_97)return __MAML_GLOBAL__.ops_cached.$gma_97
+    __MAML_GLOBAL__.ops_cached.$gma_97=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_97);
+    return __MAML_GLOBAL__.ops_cached.$gma_97
+  }
+  function gz$gma_98(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_98)return __MAML_GLOBAL__.ops_cached.$gma_98
+    __MAML_GLOBAL__.ops_cached.$gma_98=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_98);
+    return __MAML_GLOBAL__.ops_cached.$gma_98
+  }
+  function gz$gma_99(){
+    if(__MAML_GLOBAL__.ops_cached.$gma_99)return __MAML_GLOBAL__.ops_cached.$gma_99
+    __MAML_GLOBAL__.ops_cached.$gma_99=[];
+    (function(z){
+      function Z(ops){z.push(ops)}
+      Z([3,'taro_tmpl']);
+      Z([[8],"root",[[7],[3,"root"]]])
+    })(__MAML_GLOBAL__.ops_cached.$gma_99);
+    return __MAML_GLOBAL__.ops_cached.$gma_99
+  }
   __MAML_GLOBAL__.ops_set.$gma=z;
   __MAML_GLOBAL__.ops_init.$gma=true;
   
@@ -10260,385 +10520,879 @@ $gma=function(path,global){
   };
   e_["./pages/map/index.maml"]={f:m52,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/navigator/index.maml"]={};
+  d_["./pages/maui-button/index.maml"]={};
   var m53=function(e,s,r,gg){
     var z=gz$gma_54()
-    var oPYB=e_["./pages/navigator/index.maml"].i;_ai(oPYB,'../../base.maml',e_,'./pages/navigator/index.maml',0,0);var oRYB=_cvn();
+    var oPYB=e_["./pages/maui-button/index.maml"].i;_ai(oPYB,'../../base.maml',e_,'./pages/maui-button/index.maml',0,0);var oRYB=_cvn();
     var oSYB=_o(z,0,e,s,gg);
-    var oTYB=_gd('./pages/navigator/index.maml',oSYB,e_,d_);
+    var oTYB=_gd('./pages/maui-button/index.maml',oSYB,e_,d_);
     if(oTYB){
       var oUYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oTYB(oUYB,oUYB,oRYB,gg);
       gg.f=tgf;
     }else{
-      _w(oSYB,'./pages/navigator/index.maml',0,0);
+      _w(oSYB,'./pages/maui-button/index.maml',0,0);
     }
     _ac(r,oRYB);oPYB.pop();
     return r;
   };
-  e_["./pages/navigator/index.maml"]={f:m53,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-button/index.maml"]={f:m53,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/page-meta/index.maml"]={};
+  d_["./pages/maui-cell/index.maml"]={};
   var m54=function(e,s,r,gg){
     var z=gz$gma_55()
-    var oVYB=e_["./pages/page-meta/index.maml"].i;_ai(oVYB,'../../base.maml',e_,'./pages/page-meta/index.maml',0,0);var oXYB=_cvn();
+    var oVYB=e_["./pages/maui-cell/index.maml"].i;_ai(oVYB,'../../base.maml',e_,'./pages/maui-cell/index.maml',0,0);var oXYB=_cvn();
     var oYYB=_o(z,0,e,s,gg);
-    var oZYB=_gd('./pages/page-meta/index.maml',oYYB,e_,d_);
+    var oZYB=_gd('./pages/maui-cell/index.maml',oYYB,e_,d_);
     if(oZYB){
       var oaYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oZYB(oaYB,oaYB,oXYB,gg);
       gg.f=tgf;
     }else{
-      _w(oYYB,'./pages/page-meta/index.maml',0,0);
+      _w(oYYB,'./pages/maui-cell/index.maml',0,0);
     }
     _ac(r,oXYB);oVYB.pop();
     return r;
   };
-  e_["./pages/page-meta/index.maml"]={f:m54,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-cell/index.maml"]={f:m54,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/picker-view-column/index.maml"]={};
+  d_["./pages/maui-checkbox/index.maml"]={};
   var m55=function(e,s,r,gg){
     var z=gz$gma_56()
-    var obYB=e_["./pages/picker-view-column/index.maml"].i;_ai(obYB,'../../base.maml',e_,'./pages/picker-view-column/index.maml',0,0);var odYB=_cvn();
+    var obYB=e_["./pages/maui-checkbox/index.maml"].i;_ai(obYB,'../../base.maml',e_,'./pages/maui-checkbox/index.maml',0,0);var odYB=_cvn();
     var oeYB=_o(z,0,e,s,gg);
-    var ofYB=_gd('./pages/picker-view-column/index.maml',oeYB,e_,d_);
+    var ofYB=_gd('./pages/maui-checkbox/index.maml',oeYB,e_,d_);
     if(ofYB){
       var ogYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       ofYB(ogYB,ogYB,odYB,gg);
       gg.f=tgf;
     }else{
-      _w(oeYB,'./pages/picker-view-column/index.maml',0,0);
+      _w(oeYB,'./pages/maui-checkbox/index.maml',0,0);
     }
     _ac(r,odYB);obYB.pop();
     return r;
   };
-  e_["./pages/picker-view-column/index.maml"]={f:m55,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-checkbox/index.maml"]={f:m55,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/picker-view/index.maml"]={};
+  d_["./pages/maui-dialog/index.maml"]={};
   var m56=function(e,s,r,gg){
     var z=gz$gma_57()
-    var ohYB=e_["./pages/picker-view/index.maml"].i;_ai(ohYB,'../../base.maml',e_,'./pages/picker-view/index.maml',0,0);var ojYB=_cvn();
+    var ohYB=e_["./pages/maui-dialog/index.maml"].i;_ai(ohYB,'../../base.maml',e_,'./pages/maui-dialog/index.maml',0,0);var ojYB=_cvn();
     var okYB=_o(z,0,e,s,gg);
-    var olYB=_gd('./pages/picker-view/index.maml',okYB,e_,d_);
+    var olYB=_gd('./pages/maui-dialog/index.maml',okYB,e_,d_);
     if(olYB){
       var omYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       olYB(omYB,omYB,ojYB,gg);
       gg.f=tgf;
     }else{
-      _w(okYB,'./pages/picker-view/index.maml',0,0);
+      _w(okYB,'./pages/maui-dialog/index.maml',0,0);
     }
     _ac(r,ojYB);ohYB.pop();
     return r;
   };
-  e_["./pages/picker-view/index.maml"]={f:m56,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-dialog/index.maml"]={f:m56,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/picker/index.maml"]={};
+  d_["./pages/maui-divider/index.maml"]={};
   var m57=function(e,s,r,gg){
     var z=gz$gma_58()
-    var onYB=e_["./pages/picker/index.maml"].i;_ai(onYB,'../../base.maml',e_,'./pages/picker/index.maml',0,0);var opYB=_cvn();
+    var onYB=e_["./pages/maui-divider/index.maml"].i;_ai(onYB,'../../base.maml',e_,'./pages/maui-divider/index.maml',0,0);var opYB=_cvn();
     var oqYB=_o(z,0,e,s,gg);
-    var orYB=_gd('./pages/picker/index.maml',oqYB,e_,d_);
+    var orYB=_gd('./pages/maui-divider/index.maml',oqYB,e_,d_);
     if(orYB){
       var osYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       orYB(osYB,osYB,opYB,gg);
       gg.f=tgf;
     }else{
-      _w(oqYB,'./pages/picker/index.maml',0,0);
+      _w(oqYB,'./pages/maui-divider/index.maml',0,0);
     }
     _ac(r,opYB);onYB.pop();
     return r;
   };
-  e_["./pages/picker/index.maml"]={f:m57,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-divider/index.maml"]={f:m57,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/progress/index.maml"]={};
+  d_["./pages/maui-empty/index.maml"]={};
   var m58=function(e,s,r,gg){
     var z=gz$gma_59()
-    var otYB=e_["./pages/progress/index.maml"].i;_ai(otYB,'../../base.maml',e_,'./pages/progress/index.maml',0,0);var ovYB=_cvn();
+    var otYB=e_["./pages/maui-empty/index.maml"].i;_ai(otYB,'../../base.maml',e_,'./pages/maui-empty/index.maml',0,0);var ovYB=_cvn();
     var owYB=_o(z,0,e,s,gg);
-    var oxYB=_gd('./pages/progress/index.maml',owYB,e_,d_);
+    var oxYB=_gd('./pages/maui-empty/index.maml',owYB,e_,d_);
     if(oxYB){
       var oyYB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oxYB(oyYB,oyYB,ovYB,gg);
       gg.f=tgf;
     }else{
-      _w(owYB,'./pages/progress/index.maml',0,0);
+      _w(owYB,'./pages/maui-empty/index.maml',0,0);
     }
     _ac(r,ovYB);otYB.pop();
     return r;
   };
-  e_["./pages/progress/index.maml"]={f:m58,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-empty/index.maml"]={f:m58,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/radio-group/index.maml"]={};
+  d_["./pages/maui-field/index.maml"]={};
   var m59=function(e,s,r,gg){
     var z=gz$gma_60()
-    var ozYB=e_["./pages/radio-group/index.maml"].i;_ai(ozYB,'../../base.maml',e_,'./pages/radio-group/index.maml',0,0);var oAZB=_cvn();
+    var ozYB=e_["./pages/maui-field/index.maml"].i;_ai(ozYB,'../../base.maml',e_,'./pages/maui-field/index.maml',0,0);var oAZB=_cvn();
     var oBZB=_o(z,0,e,s,gg);
-    var oCZB=_gd('./pages/radio-group/index.maml',oBZB,e_,d_);
+    var oCZB=_gd('./pages/maui-field/index.maml',oBZB,e_,d_);
     if(oCZB){
       var oDZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oCZB(oDZB,oDZB,oAZB,gg);
       gg.f=tgf;
     }else{
-      _w(oBZB,'./pages/radio-group/index.maml',0,0);
+      _w(oBZB,'./pages/maui-field/index.maml',0,0);
     }
     _ac(r,oAZB);ozYB.pop();
     return r;
   };
-  e_["./pages/radio-group/index.maml"]={f:m59,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-field/index.maml"]={f:m59,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/radio/index.maml"]={};
+  d_["./pages/maui-icon/index.maml"]={};
   var m60=function(e,s,r,gg){
     var z=gz$gma_61()
-    var oEZB=e_["./pages/radio/index.maml"].i;_ai(oEZB,'../../base.maml',e_,'./pages/radio/index.maml',0,0);var oGZB=_cvn();
+    var oEZB=e_["./pages/maui-icon/index.maml"].i;_ai(oEZB,'../../base.maml',e_,'./pages/maui-icon/index.maml',0,0);var oGZB=_cvn();
     var oHZB=_o(z,0,e,s,gg);
-    var oIZB=_gd('./pages/radio/index.maml',oHZB,e_,d_);
+    var oIZB=_gd('./pages/maui-icon/index.maml',oHZB,e_,d_);
     if(oIZB){
       var oJZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oIZB(oJZB,oJZB,oGZB,gg);
       gg.f=tgf;
     }else{
-      _w(oHZB,'./pages/radio/index.maml',0,0);
+      _w(oHZB,'./pages/maui-icon/index.maml',0,0);
     }
     _ac(r,oGZB);oEZB.pop();
     return r;
   };
-  e_["./pages/radio/index.maml"]={f:m60,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-icon/index.maml"]={f:m60,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/rich-text/index.maml"]={};
+  d_["./pages/maui-image/index.maml"]={};
   var m61=function(e,s,r,gg){
     var z=gz$gma_62()
-    var oKZB=e_["./pages/rich-text/index.maml"].i;_ai(oKZB,'../../base.maml',e_,'./pages/rich-text/index.maml',0,0);var oMZB=_cvn();
+    var oKZB=e_["./pages/maui-image/index.maml"].i;_ai(oKZB,'../../base.maml',e_,'./pages/maui-image/index.maml',0,0);var oMZB=_cvn();
     var oNZB=_o(z,0,e,s,gg);
-    var oOZB=_gd('./pages/rich-text/index.maml',oNZB,e_,d_);
+    var oOZB=_gd('./pages/maui-image/index.maml',oNZB,e_,d_);
     if(oOZB){
       var oPZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oOZB(oPZB,oPZB,oMZB,gg);
       gg.f=tgf;
     }else{
-      _w(oNZB,'./pages/rich-text/index.maml',0,0);
+      _w(oNZB,'./pages/maui-image/index.maml',0,0);
     }
     _ac(r,oMZB);oKZB.pop();
     return r;
   };
-  e_["./pages/rich-text/index.maml"]={f:m61,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-image/index.maml"]={f:m61,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/runner/index.maml"]={};
+  d_["./pages/maui-layout/index.maml"]={};
   var m62=function(e,s,r,gg){
     var z=gz$gma_63()
-    var oQZB=e_["./pages/runner/index.maml"].i;_ai(oQZB,'../../base.maml',e_,'./pages/runner/index.maml',0,0);var oSZB=_cvn();
+    var oQZB=e_["./pages/maui-layout/index.maml"].i;_ai(oQZB,'../../base.maml',e_,'./pages/maui-layout/index.maml',0,0);var oSZB=_cvn();
     var oTZB=_o(z,0,e,s,gg);
-    var oUZB=_gd('./pages/runner/index.maml',oTZB,e_,d_);
+    var oUZB=_gd('./pages/maui-layout/index.maml',oTZB,e_,d_);
     if(oUZB){
       var oVZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oUZB(oVZB,oVZB,oSZB,gg);
       gg.f=tgf;
     }else{
-      _w(oTZB,'./pages/runner/index.maml',0,0);
+      _w(oTZB,'./pages/maui-layout/index.maml',0,0);
     }
     _ac(r,oSZB);oQZB.pop();
     return r;
   };
-  e_["./pages/runner/index.maml"]={f:m62,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-layout/index.maml"]={f:m62,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/scroll-view/index.maml"]={};
+  d_["./pages/maui-list/index.maml"]={};
   var m63=function(e,s,r,gg){
     var z=gz$gma_64()
-    var oWZB=e_["./pages/scroll-view/index.maml"].i;_ai(oWZB,'../../base.maml',e_,'./pages/scroll-view/index.maml',0,0);var oYZB=_cvn();
+    var oWZB=e_["./pages/maui-list/index.maml"].i;_ai(oWZB,'../../base.maml',e_,'./pages/maui-list/index.maml',0,0);var oYZB=_cvn();
     var oZZB=_o(z,0,e,s,gg);
-    var oaZB=_gd('./pages/scroll-view/index.maml',oZZB,e_,d_);
+    var oaZB=_gd('./pages/maui-list/index.maml',oZZB,e_,d_);
     if(oaZB){
       var obZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oaZB(obZB,obZB,oYZB,gg);
       gg.f=tgf;
     }else{
-      _w(oZZB,'./pages/scroll-view/index.maml',0,0);
+      _w(oZZB,'./pages/maui-list/index.maml',0,0);
     }
     _ac(r,oYZB);oWZB.pop();
     return r;
   };
-  e_["./pages/scroll-view/index.maml"]={f:m63,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-list/index.maml"]={f:m63,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/slider/index.maml"]={};
+  d_["./pages/maui-loading/index.maml"]={};
   var m64=function(e,s,r,gg){
     var z=gz$gma_65()
-    var ocZB=e_["./pages/slider/index.maml"].i;_ai(ocZB,'../../base.maml',e_,'./pages/slider/index.maml',0,0);var oeZB=_cvn();
+    var ocZB=e_["./pages/maui-loading/index.maml"].i;_ai(ocZB,'../../base.maml',e_,'./pages/maui-loading/index.maml',0,0);var oeZB=_cvn();
     var ofZB=_o(z,0,e,s,gg);
-    var ogZB=_gd('./pages/slider/index.maml',ofZB,e_,d_);
+    var ogZB=_gd('./pages/maui-loading/index.maml',ofZB,e_,d_);
     if(ogZB){
       var ohZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       ogZB(ohZB,ohZB,oeZB,gg);
       gg.f=tgf;
     }else{
-      _w(ofZB,'./pages/slider/index.maml',0,0);
+      _w(ofZB,'./pages/maui-loading/index.maml',0,0);
     }
     _ac(r,oeZB);ocZB.pop();
     return r;
   };
-  e_["./pages/slider/index.maml"]={f:m64,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-loading/index.maml"]={f:m64,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/swiper-item/index.maml"]={};
+  d_["./pages/maui-modal/index.maml"]={};
   var m65=function(e,s,r,gg){
     var z=gz$gma_66()
-    var oiZB=e_["./pages/swiper-item/index.maml"].i;_ai(oiZB,'../../base.maml',e_,'./pages/swiper-item/index.maml',0,0);var okZB=_cvn();
+    var oiZB=e_["./pages/maui-modal/index.maml"].i;_ai(oiZB,'../../base.maml',e_,'./pages/maui-modal/index.maml',0,0);var okZB=_cvn();
     var olZB=_o(z,0,e,s,gg);
-    var omZB=_gd('./pages/swiper-item/index.maml',olZB,e_,d_);
+    var omZB=_gd('./pages/maui-modal/index.maml',olZB,e_,d_);
     if(omZB){
       var onZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       omZB(onZB,onZB,okZB,gg);
       gg.f=tgf;
     }else{
-      _w(olZB,'./pages/swiper-item/index.maml',0,0);
+      _w(olZB,'./pages/maui-modal/index.maml',0,0);
     }
     _ac(r,okZB);oiZB.pop();
     return r;
   };
-  e_["./pages/swiper-item/index.maml"]={f:m65,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-modal/index.maml"]={f:m65,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/swiper/index.maml"]={};
+  d_["./pages/maui-overlay/index.maml"]={};
   var m66=function(e,s,r,gg){
     var z=gz$gma_67()
-    var ooZB=e_["./pages/swiper/index.maml"].i;_ai(ooZB,'../../base.maml',e_,'./pages/swiper/index.maml',0,0);var oqZB=_cvn();
+    var ooZB=e_["./pages/maui-overlay/index.maml"].i;_ai(ooZB,'../../base.maml',e_,'./pages/maui-overlay/index.maml',0,0);var oqZB=_cvn();
     var orZB=_o(z,0,e,s,gg);
-    var osZB=_gd('./pages/swiper/index.maml',orZB,e_,d_);
+    var osZB=_gd('./pages/maui-overlay/index.maml',orZB,e_,d_);
     if(osZB){
       var otZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       osZB(otZB,otZB,oqZB,gg);
       gg.f=tgf;
     }else{
-      _w(orZB,'./pages/swiper/index.maml',0,0);
+      _w(orZB,'./pages/maui-overlay/index.maml',0,0);
     }
     _ac(r,oqZB);ooZB.pop();
     return r;
   };
-  e_["./pages/swiper/index.maml"]={f:m66,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-overlay/index.maml"]={f:m66,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/switch/index.maml"]={};
+  d_["./pages/maui-popup/index.maml"]={};
   var m67=function(e,s,r,gg){
     var z=gz$gma_68()
-    var ouZB=e_["./pages/switch/index.maml"].i;_ai(ouZB,'../../base.maml',e_,'./pages/switch/index.maml',0,0);var owZB=_cvn();
+    var ouZB=e_["./pages/maui-popup/index.maml"].i;_ai(ouZB,'../../base.maml',e_,'./pages/maui-popup/index.maml',0,0);var owZB=_cvn();
     var oxZB=_o(z,0,e,s,gg);
-    var oyZB=_gd('./pages/switch/index.maml',oxZB,e_,d_);
+    var oyZB=_gd('./pages/maui-popup/index.maml',oxZB,e_,d_);
     if(oyZB){
       var ozZB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oyZB(ozZB,ozZB,owZB,gg);
       gg.f=tgf;
     }else{
-      _w(oxZB,'./pages/switch/index.maml',0,0);
+      _w(oxZB,'./pages/maui-popup/index.maml',0,0);
     }
     _ac(r,owZB);ouZB.pop();
     return r;
   };
-  e_["./pages/switch/index.maml"]={f:m67,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-popup/index.maml"]={f:m67,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/text/index.maml"]={};
+  d_["./pages/maui-progress/index.maml"]={};
   var m68=function(e,s,r,gg){
     var z=gz$gma_69()
-    var o_ZB=e_["./pages/text/index.maml"].i;_ai(o_ZB,'../../base.maml',e_,'./pages/text/index.maml',0,0);var oBaB=_cvn();
+    var o_ZB=e_["./pages/maui-progress/index.maml"].i;_ai(o_ZB,'../../base.maml',e_,'./pages/maui-progress/index.maml',0,0);var oBaB=_cvn();
     var oCaB=_o(z,0,e,s,gg);
-    var oDaB=_gd('./pages/text/index.maml',oCaB,e_,d_);
+    var oDaB=_gd('./pages/maui-progress/index.maml',oCaB,e_,d_);
     if(oDaB){
       var oEaB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oDaB(oEaB,oEaB,oBaB,gg);
       gg.f=tgf;
     }else{
-      _w(oCaB,'./pages/text/index.maml',0,0);
+      _w(oCaB,'./pages/maui-progress/index.maml',0,0);
     }
     _ac(r,oBaB);o_ZB.pop();
     return r;
   };
-  e_["./pages/text/index.maml"]={f:m68,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-progress/index.maml"]={f:m68,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/textarea/index.maml"]={};
+  d_["./pages/maui-radio/index.maml"]={};
   var m69=function(e,s,r,gg){
     var z=gz$gma_70()
-    var oFaB=e_["./pages/textarea/index.maml"].i;_ai(oFaB,'../../base.maml',e_,'./pages/textarea/index.maml',0,0);var oHaB=_cvn();
+    var oFaB=e_["./pages/maui-radio/index.maml"].i;_ai(oFaB,'../../base.maml',e_,'./pages/maui-radio/index.maml',0,0);var oHaB=_cvn();
     var oIaB=_o(z,0,e,s,gg);
-    var oJaB=_gd('./pages/textarea/index.maml',oIaB,e_,d_);
+    var oJaB=_gd('./pages/maui-radio/index.maml',oIaB,e_,d_);
     if(oJaB){
       var oKaB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oJaB(oKaB,oKaB,oHaB,gg);
       gg.f=tgf;
     }else{
-      _w(oIaB,'./pages/textarea/index.maml',0,0);
+      _w(oIaB,'./pages/maui-radio/index.maml',0,0);
     }
     _ac(r,oHaB);oFaB.pop();
     return r;
   };
-  e_["./pages/textarea/index.maml"]={f:m69,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-radio/index.maml"]={f:m69,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/video/index.maml"]={};
+  d_["./pages/maui-sidebar/index.maml"]={};
   var m70=function(e,s,r,gg){
     var z=gz$gma_71()
-    var oLaB=e_["./pages/video/index.maml"].i;_ai(oLaB,'../../base.maml',e_,'./pages/video/index.maml',0,0);var oNaB=_cvn();
+    var oLaB=e_["./pages/maui-sidebar/index.maml"].i;_ai(oLaB,'../../base.maml',e_,'./pages/maui-sidebar/index.maml',0,0);var oNaB=_cvn();
     var oOaB=_o(z,0,e,s,gg);
-    var oPaB=_gd('./pages/video/index.maml',oOaB,e_,d_);
+    var oPaB=_gd('./pages/maui-sidebar/index.maml',oOaB,e_,d_);
     if(oPaB){
       var oQaB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oPaB(oQaB,oQaB,oNaB,gg);
       gg.f=tgf;
     }else{
-      _w(oOaB,'./pages/video/index.maml',0,0);
+      _w(oOaB,'./pages/maui-sidebar/index.maml',0,0);
     }
     _ac(r,oNaB);oLaB.pop();
     return r;
   };
-  e_["./pages/video/index.maml"]={f:m70,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-sidebar/index.maml"]={f:m70,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/view/index.maml"]={};
+  d_["./pages/maui-slider/index.maml"]={};
   var m71=function(e,s,r,gg){
     var z=gz$gma_72()
-    var oRaB=e_["./pages/view/index.maml"].i;_ai(oRaB,'../../base.maml',e_,'./pages/view/index.maml',0,0);var oTaB=_cvn();
+    var oRaB=e_["./pages/maui-slider/index.maml"].i;_ai(oRaB,'../../base.maml',e_,'./pages/maui-slider/index.maml',0,0);var oTaB=_cvn();
     var oUaB=_o(z,0,e,s,gg);
-    var oVaB=_gd('./pages/view/index.maml',oUaB,e_,d_);
+    var oVaB=_gd('./pages/maui-slider/index.maml',oUaB,e_,d_);
     if(oVaB){
       var oWaB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       oVaB(oWaB,oWaB,oTaB,gg);
       gg.f=tgf;
     }else{
-      _w(oUaB,'./pages/view/index.maml',0,0);
+      _w(oUaB,'./pages/maui-slider/index.maml',0,0);
     }
     _ac(r,oTaB);oRaB.pop();
     return r;
   };
-  e_["./pages/view/index.maml"]={f:m71,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-slider/index.maml"]={f:m71,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
-  d_["./pages/web-view/index.maml"]={};
+  d_["./pages/maui-stepper/index.maml"]={};
   var m72=function(e,s,r,gg){
     var z=gz$gma_73()
-    var oXaB=e_["./pages/web-view/index.maml"].i;_ai(oXaB,'../../base.maml',e_,'./pages/web-view/index.maml',0,0);var oZaB=_cvn();
+    var oXaB=e_["./pages/maui-stepper/index.maml"].i;_ai(oXaB,'../../base.maml',e_,'./pages/maui-stepper/index.maml',0,0);var oZaB=_cvn();
     var oaaB=_o(z,0,e,s,gg);
-    var obaB=_gd('./pages/web-view/index.maml',oaaB,e_,d_);
+    var obaB=_gd('./pages/maui-stepper/index.maml',oaaB,e_,d_);
     if(obaB){
       var ocaB=_1(z,1,e,s,gg);
       var tgf=gg.f; // template will overwrite gg.f, so need to back up
       obaB(ocaB,ocaB,oZaB,gg);
       gg.f=tgf;
     }else{
-      _w(oaaB,'./pages/web-view/index.maml',0,0);
+      _w(oaaB,'./pages/maui-stepper/index.maml',0,0);
     }
     _ac(r,oZaB);oXaB.pop();
     return r;
   };
-  e_["./pages/web-view/index.maml"]={f:m72,j:[],i:[],ti:["../../base.maml"],ic:[]};
+  e_["./pages/maui-stepper/index.maml"]={f:m72,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-steps/index.maml"]={};
+  var m73=function(e,s,r,gg){
+    var z=gz$gma_74()
+    var odaB=e_["./pages/maui-steps/index.maml"].i;_ai(odaB,'../../base.maml',e_,'./pages/maui-steps/index.maml',0,0);var ofaB=_cvn();
+    var ogaB=_o(z,0,e,s,gg);
+    var ohaB=_gd('./pages/maui-steps/index.maml',ogaB,e_,d_);
+    if(ohaB){
+      var oiaB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      ohaB(oiaB,oiaB,ofaB,gg);
+      gg.f=tgf;
+    }else{
+      _w(ogaB,'./pages/maui-steps/index.maml',0,0);
+    }
+    _ac(r,ofaB);odaB.pop();
+    return r;
+  };
+  e_["./pages/maui-steps/index.maml"]={f:m73,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-sticky/index.maml"]={};
+  var m74=function(e,s,r,gg){
+    var z=gz$gma_75()
+    var ojaB=e_["./pages/maui-sticky/index.maml"].i;_ai(ojaB,'../../base.maml',e_,'./pages/maui-sticky/index.maml',0,0);var olaB=_cvn();
+    var omaB=_o(z,0,e,s,gg);
+    var onaB=_gd('./pages/maui-sticky/index.maml',omaB,e_,d_);
+    if(onaB){
+      var ooaB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      onaB(ooaB,ooaB,olaB,gg);
+      gg.f=tgf;
+    }else{
+      _w(omaB,'./pages/maui-sticky/index.maml',0,0);
+    }
+    _ac(r,olaB);ojaB.pop();
+    return r;
+  };
+  e_["./pages/maui-sticky/index.maml"]={f:m74,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-switch/index.maml"]={};
+  var m75=function(e,s,r,gg){
+    var z=gz$gma_76()
+    var opaB=e_["./pages/maui-switch/index.maml"].i;_ai(opaB,'../../base.maml',e_,'./pages/maui-switch/index.maml',0,0);var oraB=_cvn();
+    var osaB=_o(z,0,e,s,gg);
+    var otaB=_gd('./pages/maui-switch/index.maml',osaB,e_,d_);
+    if(otaB){
+      var ouaB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      otaB(ouaB,ouaB,oraB,gg);
+      gg.f=tgf;
+    }else{
+      _w(osaB,'./pages/maui-switch/index.maml',0,0);
+    }
+    _ac(r,oraB);opaB.pop();
+    return r;
+  };
+  e_["./pages/maui-switch/index.maml"]={f:m75,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-tab/index.maml"]={};
+  var m76=function(e,s,r,gg){
+    var z=gz$gma_77()
+    var ovaB=e_["./pages/maui-tab/index.maml"].i;_ai(ovaB,'../../base.maml',e_,'./pages/maui-tab/index.maml',0,0);var oxaB=_cvn();
+    var oyaB=_o(z,0,e,s,gg);
+    var ozaB=_gd('./pages/maui-tab/index.maml',oyaB,e_,d_);
+    if(ozaB){
+      var o_aB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      ozaB(o_aB,o_aB,oxaB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oyaB,'./pages/maui-tab/index.maml',0,0);
+    }
+    _ac(r,oxaB);ovaB.pop();
+    return r;
+  };
+  e_["./pages/maui-tab/index.maml"]={f:m76,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-tag/index.maml"]={};
+  var m77=function(e,s,r,gg){
+    var z=gz$gma_78()
+    var oAbB=e_["./pages/maui-tag/index.maml"].i;_ai(oAbB,'../../base.maml',e_,'./pages/maui-tag/index.maml',0,0);var oCbB=_cvn();
+    var oDbB=_o(z,0,e,s,gg);
+    var oEbB=_gd('./pages/maui-tag/index.maml',oDbB,e_,d_);
+    if(oEbB){
+      var oFbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oEbB(oFbB,oFbB,oCbB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oDbB,'./pages/maui-tag/index.maml',0,0);
+    }
+    _ac(r,oCbB);oAbB.pop();
+    return r;
+  };
+  e_["./pages/maui-tag/index.maml"]={f:m77,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-title-bar/index.maml"]={};
+  var m78=function(e,s,r,gg){
+    var z=gz$gma_79()
+    var oGbB=e_["./pages/maui-title-bar/index.maml"].i;_ai(oGbB,'../../base.maml',e_,'./pages/maui-title-bar/index.maml',0,0);var oIbB=_cvn();
+    var oJbB=_o(z,0,e,s,gg);
+    var oKbB=_gd('./pages/maui-title-bar/index.maml',oJbB,e_,d_);
+    if(oKbB){
+      var oLbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oKbB(oLbB,oLbB,oIbB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oJbB,'./pages/maui-title-bar/index.maml',0,0);
+    }
+    _ac(r,oIbB);oGbB.pop();
+    return r;
+  };
+  e_["./pages/maui-title-bar/index.maml"]={f:m78,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/maui-toast/index.maml"]={};
+  var m79=function(e,s,r,gg){
+    var z=gz$gma_80()
+    var oMbB=e_["./pages/maui-toast/index.maml"].i;_ai(oMbB,'../../base.maml',e_,'./pages/maui-toast/index.maml',0,0);var oObB=_cvn();
+    var oPbB=_o(z,0,e,s,gg);
+    var oQbB=_gd('./pages/maui-toast/index.maml',oPbB,e_,d_);
+    if(oQbB){
+      var oRbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oQbB(oRbB,oRbB,oObB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oPbB,'./pages/maui-toast/index.maml',0,0);
+    }
+    _ac(r,oObB);oMbB.pop();
+    return r;
+  };
+  e_["./pages/maui-toast/index.maml"]={f:m79,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/navigator/index.maml"]={};
+  var m80=function(e,s,r,gg){
+    var z=gz$gma_81()
+    var oSbB=e_["./pages/navigator/index.maml"].i;_ai(oSbB,'../../base.maml',e_,'./pages/navigator/index.maml',0,0);var oUbB=_cvn();
+    var oVbB=_o(z,0,e,s,gg);
+    var oWbB=_gd('./pages/navigator/index.maml',oVbB,e_,d_);
+    if(oWbB){
+      var oXbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oWbB(oXbB,oXbB,oUbB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oVbB,'./pages/navigator/index.maml',0,0);
+    }
+    _ac(r,oUbB);oSbB.pop();
+    return r;
+  };
+  e_["./pages/navigator/index.maml"]={f:m80,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/page-meta/index.maml"]={};
+  var m81=function(e,s,r,gg){
+    var z=gz$gma_82()
+    var oYbB=e_["./pages/page-meta/index.maml"].i;_ai(oYbB,'../../base.maml',e_,'./pages/page-meta/index.maml',0,0);var oabB=_cvn();
+    var obbB=_o(z,0,e,s,gg);
+    var ocbB=_gd('./pages/page-meta/index.maml',obbB,e_,d_);
+    if(ocbB){
+      var odbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      ocbB(odbB,odbB,oabB,gg);
+      gg.f=tgf;
+    }else{
+      _w(obbB,'./pages/page-meta/index.maml',0,0);
+    }
+    _ac(r,oabB);oYbB.pop();
+    return r;
+  };
+  e_["./pages/page-meta/index.maml"]={f:m81,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/picker-view-column/index.maml"]={};
+  var m82=function(e,s,r,gg){
+    var z=gz$gma_83()
+    var oebB=e_["./pages/picker-view-column/index.maml"].i;_ai(oebB,'../../base.maml',e_,'./pages/picker-view-column/index.maml',0,0);var ogbB=_cvn();
+    var ohbB=_o(z,0,e,s,gg);
+    var oibB=_gd('./pages/picker-view-column/index.maml',ohbB,e_,d_);
+    if(oibB){
+      var ojbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oibB(ojbB,ojbB,ogbB,gg);
+      gg.f=tgf;
+    }else{
+      _w(ohbB,'./pages/picker-view-column/index.maml',0,0);
+    }
+    _ac(r,ogbB);oebB.pop();
+    return r;
+  };
+  e_["./pages/picker-view-column/index.maml"]={f:m82,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/picker-view/index.maml"]={};
+  var m83=function(e,s,r,gg){
+    var z=gz$gma_84()
+    var okbB=e_["./pages/picker-view/index.maml"].i;_ai(okbB,'../../base.maml',e_,'./pages/picker-view/index.maml',0,0);var ombB=_cvn();
+    var onbB=_o(z,0,e,s,gg);
+    var oobB=_gd('./pages/picker-view/index.maml',onbB,e_,d_);
+    if(oobB){
+      var opbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oobB(opbB,opbB,ombB,gg);
+      gg.f=tgf;
+    }else{
+      _w(onbB,'./pages/picker-view/index.maml',0,0);
+    }
+    _ac(r,ombB);okbB.pop();
+    return r;
+  };
+  e_["./pages/picker-view/index.maml"]={f:m83,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/picker/index.maml"]={};
+  var m84=function(e,s,r,gg){
+    var z=gz$gma_85()
+    var oqbB=e_["./pages/picker/index.maml"].i;_ai(oqbB,'../../base.maml',e_,'./pages/picker/index.maml',0,0);var osbB=_cvn();
+    var otbB=_o(z,0,e,s,gg);
+    var oubB=_gd('./pages/picker/index.maml',otbB,e_,d_);
+    if(oubB){
+      var ovbB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oubB(ovbB,ovbB,osbB,gg);
+      gg.f=tgf;
+    }else{
+      _w(otbB,'./pages/picker/index.maml',0,0);
+    }
+    _ac(r,osbB);oqbB.pop();
+    return r;
+  };
+  e_["./pages/picker/index.maml"]={f:m84,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/progress/index.maml"]={};
+  var m85=function(e,s,r,gg){
+    var z=gz$gma_86()
+    var owbB=e_["./pages/progress/index.maml"].i;_ai(owbB,'../../base.maml',e_,'./pages/progress/index.maml',0,0);var oybB=_cvn();
+    var ozbB=_o(z,0,e,s,gg);
+    var o_bB=_gd('./pages/progress/index.maml',ozbB,e_,d_);
+    if(o_bB){
+      var oAcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      o_bB(oAcB,oAcB,oybB,gg);
+      gg.f=tgf;
+    }else{
+      _w(ozbB,'./pages/progress/index.maml',0,0);
+    }
+    _ac(r,oybB);owbB.pop();
+    return r;
+  };
+  e_["./pages/progress/index.maml"]={f:m85,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/radio-group/index.maml"]={};
+  var m86=function(e,s,r,gg){
+    var z=gz$gma_87()
+    var oBcB=e_["./pages/radio-group/index.maml"].i;_ai(oBcB,'../../base.maml',e_,'./pages/radio-group/index.maml',0,0);var oDcB=_cvn();
+    var oEcB=_o(z,0,e,s,gg);
+    var oFcB=_gd('./pages/radio-group/index.maml',oEcB,e_,d_);
+    if(oFcB){
+      var oGcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oFcB(oGcB,oGcB,oDcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oEcB,'./pages/radio-group/index.maml',0,0);
+    }
+    _ac(r,oDcB);oBcB.pop();
+    return r;
+  };
+  e_["./pages/radio-group/index.maml"]={f:m86,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/radio/index.maml"]={};
+  var m87=function(e,s,r,gg){
+    var z=gz$gma_88()
+    var oHcB=e_["./pages/radio/index.maml"].i;_ai(oHcB,'../../base.maml',e_,'./pages/radio/index.maml',0,0);var oJcB=_cvn();
+    var oKcB=_o(z,0,e,s,gg);
+    var oLcB=_gd('./pages/radio/index.maml',oKcB,e_,d_);
+    if(oLcB){
+      var oMcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oLcB(oMcB,oMcB,oJcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oKcB,'./pages/radio/index.maml',0,0);
+    }
+    _ac(r,oJcB);oHcB.pop();
+    return r;
+  };
+  e_["./pages/radio/index.maml"]={f:m87,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/rich-text/index.maml"]={};
+  var m88=function(e,s,r,gg){
+    var z=gz$gma_89()
+    var oNcB=e_["./pages/rich-text/index.maml"].i;_ai(oNcB,'../../base.maml',e_,'./pages/rich-text/index.maml',0,0);var oPcB=_cvn();
+    var oQcB=_o(z,0,e,s,gg);
+    var oRcB=_gd('./pages/rich-text/index.maml',oQcB,e_,d_);
+    if(oRcB){
+      var oScB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oRcB(oScB,oScB,oPcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oQcB,'./pages/rich-text/index.maml',0,0);
+    }
+    _ac(r,oPcB);oNcB.pop();
+    return r;
+  };
+  e_["./pages/rich-text/index.maml"]={f:m88,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/scroll-view/index.maml"]={};
+  var m89=function(e,s,r,gg){
+    var z=gz$gma_90()
+    var oTcB=e_["./pages/scroll-view/index.maml"].i;_ai(oTcB,'../../base.maml',e_,'./pages/scroll-view/index.maml',0,0);var oVcB=_cvn();
+    var oWcB=_o(z,0,e,s,gg);
+    var oXcB=_gd('./pages/scroll-view/index.maml',oWcB,e_,d_);
+    if(oXcB){
+      var oYcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oXcB(oYcB,oYcB,oVcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oWcB,'./pages/scroll-view/index.maml',0,0);
+    }
+    _ac(r,oVcB);oTcB.pop();
+    return r;
+  };
+  e_["./pages/scroll-view/index.maml"]={f:m89,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/slider/index.maml"]={};
+  var m90=function(e,s,r,gg){
+    var z=gz$gma_91()
+    var oZcB=e_["./pages/slider/index.maml"].i;_ai(oZcB,'../../base.maml',e_,'./pages/slider/index.maml',0,0);var obcB=_cvn();
+    var occB=_o(z,0,e,s,gg);
+    var odcB=_gd('./pages/slider/index.maml',occB,e_,d_);
+    if(odcB){
+      var oecB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      odcB(oecB,oecB,obcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(occB,'./pages/slider/index.maml',0,0);
+    }
+    _ac(r,obcB);oZcB.pop();
+    return r;
+  };
+  e_["./pages/slider/index.maml"]={f:m90,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/swiper-item/index.maml"]={};
+  var m91=function(e,s,r,gg){
+    var z=gz$gma_92()
+    var ofcB=e_["./pages/swiper-item/index.maml"].i;_ai(ofcB,'../../base.maml',e_,'./pages/swiper-item/index.maml',0,0);var ohcB=_cvn();
+    var oicB=_o(z,0,e,s,gg);
+    var ojcB=_gd('./pages/swiper-item/index.maml',oicB,e_,d_);
+    if(ojcB){
+      var okcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      ojcB(okcB,okcB,ohcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oicB,'./pages/swiper-item/index.maml',0,0);
+    }
+    _ac(r,ohcB);ofcB.pop();
+    return r;
+  };
+  e_["./pages/swiper-item/index.maml"]={f:m91,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/swiper/index.maml"]={};
+  var m92=function(e,s,r,gg){
+    var z=gz$gma_93()
+    var olcB=e_["./pages/swiper/index.maml"].i;_ai(olcB,'../../base.maml',e_,'./pages/swiper/index.maml',0,0);var oncB=_cvn();
+    var oocB=_o(z,0,e,s,gg);
+    var opcB=_gd('./pages/swiper/index.maml',oocB,e_,d_);
+    if(opcB){
+      var oqcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      opcB(oqcB,oqcB,oncB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oocB,'./pages/swiper/index.maml',0,0);
+    }
+    _ac(r,oncB);olcB.pop();
+    return r;
+  };
+  e_["./pages/swiper/index.maml"]={f:m92,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/switch/index.maml"]={};
+  var m93=function(e,s,r,gg){
+    var z=gz$gma_94()
+    var orcB=e_["./pages/switch/index.maml"].i;_ai(orcB,'../../base.maml',e_,'./pages/switch/index.maml',0,0);var otcB=_cvn();
+    var oucB=_o(z,0,e,s,gg);
+    var ovcB=_gd('./pages/switch/index.maml',oucB,e_,d_);
+    if(ovcB){
+      var owcB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      ovcB(owcB,owcB,otcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oucB,'./pages/switch/index.maml',0,0);
+    }
+    _ac(r,otcB);orcB.pop();
+    return r;
+  };
+  e_["./pages/switch/index.maml"]={f:m93,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/text/index.maml"]={};
+  var m94=function(e,s,r,gg){
+    var z=gz$gma_95()
+    var oxcB=e_["./pages/text/index.maml"].i;_ai(oxcB,'../../base.maml',e_,'./pages/text/index.maml',0,0);var ozcB=_cvn();
+    var o_cB=_o(z,0,e,s,gg);
+    var oAdB=_gd('./pages/text/index.maml',o_cB,e_,d_);
+    if(oAdB){
+      var oBdB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oAdB(oBdB,oBdB,ozcB,gg);
+      gg.f=tgf;
+    }else{
+      _w(o_cB,'./pages/text/index.maml',0,0);
+    }
+    _ac(r,ozcB);oxcB.pop();
+    return r;
+  };
+  e_["./pages/text/index.maml"]={f:m94,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/textarea/index.maml"]={};
+  var m95=function(e,s,r,gg){
+    var z=gz$gma_96()
+    var oCdB=e_["./pages/textarea/index.maml"].i;_ai(oCdB,'../../base.maml',e_,'./pages/textarea/index.maml',0,0);var oEdB=_cvn();
+    var oFdB=_o(z,0,e,s,gg);
+    var oGdB=_gd('./pages/textarea/index.maml',oFdB,e_,d_);
+    if(oGdB){
+      var oHdB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oGdB(oHdB,oHdB,oEdB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oFdB,'./pages/textarea/index.maml',0,0);
+    }
+    _ac(r,oEdB);oCdB.pop();
+    return r;
+  };
+  e_["./pages/textarea/index.maml"]={f:m95,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/video/index.maml"]={};
+  var m96=function(e,s,r,gg){
+    var z=gz$gma_97()
+    var oIdB=e_["./pages/video/index.maml"].i;_ai(oIdB,'../../base.maml',e_,'./pages/video/index.maml',0,0);var oKdB=_cvn();
+    var oLdB=_o(z,0,e,s,gg);
+    var oMdB=_gd('./pages/video/index.maml',oLdB,e_,d_);
+    if(oMdB){
+      var oNdB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oMdB(oNdB,oNdB,oKdB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oLdB,'./pages/video/index.maml',0,0);
+    }
+    _ac(r,oKdB);oIdB.pop();
+    return r;
+  };
+  e_["./pages/video/index.maml"]={f:m96,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/view/index.maml"]={};
+  var m97=function(e,s,r,gg){
+    var z=gz$gma_98()
+    var oOdB=e_["./pages/view/index.maml"].i;_ai(oOdB,'../../base.maml',e_,'./pages/view/index.maml',0,0);var oQdB=_cvn();
+    var oRdB=_o(z,0,e,s,gg);
+    var oSdB=_gd('./pages/view/index.maml',oRdB,e_,d_);
+    if(oSdB){
+      var oTdB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oSdB(oTdB,oTdB,oQdB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oRdB,'./pages/view/index.maml',0,0);
+    }
+    _ac(r,oQdB);oOdB.pop();
+    return r;
+  };
+  e_["./pages/view/index.maml"]={f:m97,j:[],i:[],ti:["../../base.maml"],ic:[]};
+
+  d_["./pages/web-view/index.maml"]={};
+  var m98=function(e,s,r,gg){
+    var z=gz$gma_99()
+    var oUdB=e_["./pages/web-view/index.maml"].i;_ai(oUdB,'../../base.maml',e_,'./pages/web-view/index.maml',0,0);var oWdB=_cvn();
+    var oXdB=_o(z,0,e,s,gg);
+    var oYdB=_gd('./pages/web-view/index.maml',oXdB,e_,d_);
+    if(oYdB){
+      var oZdB=_1(z,1,e,s,gg);
+      var tgf=gg.f; // template will overwrite gg.f, so need to back up
+      oYdB(oZdB,oZdB,oWdB,gg);
+      gg.f=tgf;
+    }else{
+      _w(oXdB,'./pages/web-view/index.maml',0,0);
+    }
+    _ac(r,oWdB);oUdB.pop();
+    return r;
+  };
+  e_["./pages/web-view/index.maml"]={f:m98,j:[],i:[],ti:["../../base.maml"],ic:[]};
 
   if(path&&e_[path]){
     return function(env,dd,global){
@@ -10708,6 +11462,33 @@ __maAppCode__['pages/index/index.maml']=$gma('./pages/index/index.maml');
 __maAppCode__['pages/input/index.maml']=$gma('./pages/input/index.maml');
 __maAppCode__['pages/label/index.maml']=$gma('./pages/label/index.maml');
 __maAppCode__['pages/map/index.maml']=$gma('./pages/map/index.maml');
+__maAppCode__['pages/maui-button/index.maml']=$gma('./pages/maui-button/index.maml');
+__maAppCode__['pages/maui-cell/index.maml']=$gma('./pages/maui-cell/index.maml');
+__maAppCode__['pages/maui-checkbox/index.maml']=$gma('./pages/maui-checkbox/index.maml');
+__maAppCode__['pages/maui-dialog/index.maml']=$gma('./pages/maui-dialog/index.maml');
+__maAppCode__['pages/maui-divider/index.maml']=$gma('./pages/maui-divider/index.maml');
+__maAppCode__['pages/maui-empty/index.maml']=$gma('./pages/maui-empty/index.maml');
+__maAppCode__['pages/maui-field/index.maml']=$gma('./pages/maui-field/index.maml');
+__maAppCode__['pages/maui-icon/index.maml']=$gma('./pages/maui-icon/index.maml');
+__maAppCode__['pages/maui-image/index.maml']=$gma('./pages/maui-image/index.maml');
+__maAppCode__['pages/maui-layout/index.maml']=$gma('./pages/maui-layout/index.maml');
+__maAppCode__['pages/maui-list/index.maml']=$gma('./pages/maui-list/index.maml');
+__maAppCode__['pages/maui-loading/index.maml']=$gma('./pages/maui-loading/index.maml');
+__maAppCode__['pages/maui-modal/index.maml']=$gma('./pages/maui-modal/index.maml');
+__maAppCode__['pages/maui-overlay/index.maml']=$gma('./pages/maui-overlay/index.maml');
+__maAppCode__['pages/maui-popup/index.maml']=$gma('./pages/maui-popup/index.maml');
+__maAppCode__['pages/maui-progress/index.maml']=$gma('./pages/maui-progress/index.maml');
+__maAppCode__['pages/maui-radio/index.maml']=$gma('./pages/maui-radio/index.maml');
+__maAppCode__['pages/maui-sidebar/index.maml']=$gma('./pages/maui-sidebar/index.maml');
+__maAppCode__['pages/maui-slider/index.maml']=$gma('./pages/maui-slider/index.maml');
+__maAppCode__['pages/maui-stepper/index.maml']=$gma('./pages/maui-stepper/index.maml');
+__maAppCode__['pages/maui-steps/index.maml']=$gma('./pages/maui-steps/index.maml');
+__maAppCode__['pages/maui-sticky/index.maml']=$gma('./pages/maui-sticky/index.maml');
+__maAppCode__['pages/maui-switch/index.maml']=$gma('./pages/maui-switch/index.maml');
+__maAppCode__['pages/maui-tab/index.maml']=$gma('./pages/maui-tab/index.maml');
+__maAppCode__['pages/maui-tag/index.maml']=$gma('./pages/maui-tag/index.maml');
+__maAppCode__['pages/maui-title-bar/index.maml']=$gma('./pages/maui-title-bar/index.maml');
+__maAppCode__['pages/maui-toast/index.maml']=$gma('./pages/maui-toast/index.maml');
 __maAppCode__['pages/navigator/index.maml']=$gma('./pages/navigator/index.maml');
 __maAppCode__['pages/page-meta/index.maml']=$gma('./pages/page-meta/index.maml');
 __maAppCode__['pages/picker-view-column/index.maml']=$gma('./pages/picker-view-column/index.maml');
@@ -10717,7 +11498,6 @@ __maAppCode__['pages/progress/index.maml']=$gma('./pages/progress/index.maml');
 __maAppCode__['pages/radio-group/index.maml']=$gma('./pages/radio-group/index.maml');
 __maAppCode__['pages/radio/index.maml']=$gma('./pages/radio/index.maml');
 __maAppCode__['pages/rich-text/index.maml']=$gma('./pages/rich-text/index.maml');
-__maAppCode__['pages/runner/index.maml']=$gma('./pages/runner/index.maml');
 __maAppCode__['pages/scroll-view/index.maml']=$gma('./pages/scroll-view/index.maml');
 __maAppCode__['pages/slider/index.maml']=$gma('./pages/slider/index.maml');
 __maAppCode__['pages/swiper-item/index.maml']=$gma('./pages/swiper-item/index.maml');

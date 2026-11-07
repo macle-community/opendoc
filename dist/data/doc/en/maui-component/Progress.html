@@ -3,22 +3,22 @@
 <p>Used to display the current progress of the operation (minimum version: 24.6.0)</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <p>The progress bar is blue by default, and the current progress can be set through the <code>percentage</code> property.</p>
 <pre><code class="language-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
 </code></pre>
-<h4 id="line-thickness">line thickness</h4>
+<h4 id="line-thickness">2. line thickness</h4>
 <p><code>stroke-width</code> can set the thickness of the progress bar.</p>
 <pre><code class="language-html">
 &lt;maui-progress percentage=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-built_in">stroke</span>-<span class="hljs-built_in">width</span>=<span class="hljs-string">&#x27;8&#x27;</span> /&gt;
 </code></pre>
-<h4 id="gray-out">Gray Out</h4>
+<h4 id="gray-out">3. Gray Out</h4>
 <p>The progress bar will be grayed out by setting the <code>inactive</code> attribute.</p>
 <pre><code class="language-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-progress</span> <span class="hljs-attr">inactive</span> <span class="hljs-attr">percentage</span>=<span class="hljs-string">&#x27;50&#x27;</span> /&gt;</span>
 </code></pre>
-<h4 id="custom-style">Custom Style</h4>
+<h4 id="custom-style">4. Custom Style</h4>
 <p>Use the <code>pivot-text</code> attribute to customize the text and the <code>color</code> attribute to customize the progress bar color.</p>
 <pre><code class="language-html">
 &lt;maui-progress <span class="hljs-attribute">pivot-text</span>=<span class="hljs-string">&#x27;Orange&#x27;</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;#f2826a&#x27;</span> <span class="hljs-attribute">percentage</span>=<span class="hljs-string">&#x27;25&#x27;</span> /&gt;

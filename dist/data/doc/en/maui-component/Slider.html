@@ -3,7 +3,7 @@
 <p>Sliding input bar for selecting a value within a given range (minimum version: 24.12.0)</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <pre><code class="language-html">
 &lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> bind:<span class="hljs-attribute">change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> /&gt;
 </code></pre>
@@ -16,29 +16,29 @@
     },
 })<span class="hljs-comment">;</span>
 </code></pre>
-<h4 id="specify-selection-range">Specify Selection Range</h4>
+<h4 id="specify-selection-range">2. Specify Selection Range</h4>
 <pre><code class="language-html">
 &lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-attribute">min</span>=<span class="hljs-string">&#x27;-50&#x27;</span> <span class="hljs-attribute">max</span>=<span class="hljs-string">&#x27;50&#x27;</span>&gt;&lt;/maui-slider&gt;
 </code></pre>
-<h4 id="disable">Disable</h4>
+<h4 id="disable">3. Disable</h4>
 <pre><code class="language-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">disabled</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">maui-slider</span>&gt;</span>
 </code></pre>
-<h4 id="specify-step-size">Specify Step Size</h4>
+<h4 id="specify-step-size">4. Specify Step Size</h4>
 <pre><code class="language-html">
 &lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attribute">step</span>=<span class="hljs-string">&#x27;10&#x27;</span>&gt;&lt;/maui-slider&gt;
 </code></pre>
-<h4 id="custom-color">Custom Color</h4>
+<h4 id="custom-color">5. Custom Color</h4>
 <pre><code class="language-html">
 &lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attribute">activeColor</span>=<span class="hljs-string">&#x27;red&#x27;</span>&gt;&lt;/maui-slider&gt;
 </code></pre>
-<h4 id="custom-button">Custom Button</h4>
+<h4 id="custom-button">6. Custom Button</h4>
 <pre><code class="language-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-slider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> <span class="hljs-attr">useButtonSlot</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>testButton<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-slider</span>&gt;</span>
 </code></pre>
-<h4 id="binding-events">Binding Events</h4>
+<h4 id="binding-events">7. Binding Events</h4>
 <pre><code class="language-html">
 &lt;maui-slider <span class="hljs-attribute">value</span>=<span class="hljs-string">&#x27;50&#x27;</span> bind:<span class="hljs-attribute">dragStart</span>=<span class="hljs-string">&#x27;testDragStart&#x27;</span> bind:<span class="hljs-attribute">dragEnd</span>=<span class="hljs-string">&#x27;testDragEnd&#x27;</span>&gt;&lt;/maui-slider&gt;
 </code></pre>

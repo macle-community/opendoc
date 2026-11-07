@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Text & Status Toasts</text>
+    <view class="btn-wrap">
+  <maui-button type="primary" bind:tap="showTextToast">Text Toast</maui-button>
+  <maui-button type="info" bind:tap="showLoadingToast">Loading Toast</maui-button>
+  <maui-toast id="maui-toast" />
+</view>
+  </view>
+</view>

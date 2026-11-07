@@ -1,0 +1,19 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic 24-Column Grid Layout</text>
+    <view class="grid-wrap">
+  <maui-row>
+    <maui-col span="8"><view class="col-box bg-dark">span: 8</view></maui-col>
+    <maui-col span="8"><view class="col-box bg-light">span: 8</view></maui-col>
+    <maui-col span="8"><view class="col-box bg-dark">span: 8</view></maui-col>
+  </maui-row>
+  <maui-row style="margin-top: 10px;">
+    <maui-col span="4"><view class="col-box bg-dark">span: 4</view></maui-col>
+    <maui-col span="10" offset="4"><view class="col-box bg-light">offset: 4, span: 10</view></maui-col>
+    <maui-col span="6"><view class="col-box bg-dark">span: 6</view></maui-col>
+  </maui-row>
+</view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Description</text>
+    <maui-cell-group>
+  <maui-cell title="Cell title" value="Content" />
+  <maui-cell title="Cell title" value="Content" label="Description" />
+</maui-cell-group>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Cell Size & Navigation Links</text>
+    <maui-cell-group>
+  <maui-cell title="Large Cell" value="Content" size="large" label="Description" />
+  <maui-cell title="Navigation Link" is-link />
+  <maui-cell title="Value Link" is-link value="Detail" />
+</maui-cell-group>
+  </view>
+</view>

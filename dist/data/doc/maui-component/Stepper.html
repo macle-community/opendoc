@@ -9,7 +9,7 @@
 }
 </code></pre>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <p>通过<code>value</code>设置输入值，可以通过<code>change</code>事件监听到输入值的变化。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
 </code></pre>
@@ -19,31 +19,31 @@
   }
 });
 </code></pre>
-<h4 id="步长设置">步长设置</h4>
+<h4 id="步长设置">2. 步长设置</h4>
 <p>通过<code>step</code>属性设置每次点击增加或减少按钮时变化的值，默认为<code>1</code>。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;2&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="限制输入范围">限制输入范围</h4>
+<h4 id="限制输入范围">3. 限制输入范围</h4>
 <p>通过<code>min</code>和<code>max</code>属性限制输入值的范围。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">5</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;8&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="限制输入整数">限制输入整数</h4>
+<h4 id="限制输入整数">4. 限制输入整数</h4>
 <p>设置<code>integer</code>属性后，输入框将限制只能输入整数。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">integer</span> /&gt;</span></span>
 </code></pre>
-<h4 id="禁用状态">禁用状态</h4>
+<h4 id="禁用状态">5. 禁用状态</h4>
 <p>通过设置<code>disabled</code>属性来禁用步进器，禁用状态下无法点击按钮或修改输入框。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">disabled</span> /&gt;</span></span>
 </code></pre>
-<h4 id="关闭长按">关闭长按</h4>
+<h4 id="关闭长按">6. 关闭长按</h4>
 <p>通过设置<code>long-press</code>属性决定步进器是否开启长按手势。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">long-press</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="固定小数位数">固定小数位数</h4>
+<h4 id="固定小数位数">7. 固定小数位数</h4>
 <p>通过设置<code>decimal-length</code>属性可以保留固定的小数位数。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;0.2&quot;</span> <span class="hljs-attr">decimal-length</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="异步变更">异步变更</h4>
+<h4 id="异步变更">8. 异步变更</h4>
 <p>如果需要异步地修改输入框的值，可以设置<code>async-change</code>属性，并在<code>change</code>事件中手动修改<code>value</code>。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">async-change</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
 </code></pre>
@@ -62,7 +62,7 @@
     });
 }
 </code></pre>
-<h4 id="自定义大小">自定义大小</h4>
+<h4 id="自定义大小">9. 自定义大小</h4>
 <p>通过<code>input-width</code>属性设置输入框宽度，通过<code>button-size</code>属性设置按钮大小和输入框高度。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">input-width</span>=<span class="hljs-string">&quot;40px&quot;</span> <span class="hljs-attr">button-size</span>=<span class="hljs-string">&quot;32px&quot;</span> /&gt;</span></span>
 </code></pre>

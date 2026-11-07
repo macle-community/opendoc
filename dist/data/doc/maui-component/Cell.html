@@ -3,30 +3,30 @@
 <p>单元格为列表中的单个展示项（最低版本： 24.6.0）</p>
 </blockquote>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <p><code>Cell</code>可以单独使用，也可以与<code>CellGroup</code>搭配使用。<code>CellGroup</code>可以为<code>Cell</code>提供上下外边框。</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-cell-group</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;内容&quot;</span> /&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;内容&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;描述信息&quot;</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-cell-group</span>&gt;</span></span>
 </code></pre>
-<h4 id="卡片风格">卡片风格</h4>
+<h4 id="卡片风格">2. 卡片风格</h4>
 <p>通过 <code>CellGroup</code> 的 <code>inset</code> 属性，可以将单元格转换为圆角卡片风格。</p>
 <pre><code class="language-html">&lt;maui-cell-group inset&gt;
   &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> /&gt;
   &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
 &lt;/maui-cell-group&gt;
 </code></pre>
-<h4 id="单元格大小">单元格大小</h4>
+<h4 id="单元格大小">3. 单元格大小</h4>
 <p>通过<code>size</code>属性可以控制单元格的大小。</p>
 <pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> /&gt;
 &lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;large&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
 </code></pre>
-<h4 id="展示图标">展示图标</h4>
+<h4 id="展示图标">4. 展示图标</h4>
 <p>通过<code>icon</code>属性在标题左侧展示图标。</p>
 <pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> icon<span class="hljs-operator">=</span><span class="hljs-string">&quot;location-o&quot;</span> /&gt;
 </code></pre>
-<h4 id="分组标题">分组标题</h4>
+<h4 id="分组标题">5. 分组标题</h4>
 <p>通过<code>CellGroup</code>的<code>title</code>属性可以指定分组标题。</p>
 <pre><code class="language-html">&lt;maui-cell-<span class="hljs-keyword">group</span> <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;分组1&quot;</span>&gt;
   &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> value=<span class="hljs-string">&quot;内容&quot;</span> /&gt;
@@ -35,13 +35,13 @@
   &lt;maui-cell <span class="hljs-keyword">title</span>=<span class="hljs-string">&quot;单元格&quot;</span> value=<span class="hljs-string">&quot;内容&quot;</span> /&gt;
 &lt;/maui-cell-<span class="hljs-keyword">group</span>&gt;
 </code></pre>
-<h4 id="使用插槽">使用插槽</h4>
+<h4 id="使用插槽">6. 使用插槽</h4>
 <p>如以上用法不能满足你的需求，可以使用插槽来自定义内容。</p>
 <pre><code class="language-html">&lt;maui-cell title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span>&gt;
   &lt;maui-icon name<span class="hljs-operator">=</span><span class="hljs-string">&quot;search&quot;</span> class<span class="hljs-operator">=</span><span class="hljs-string">&quot;custom-icon&quot;</span> /&gt;
 &lt;/maui-cell&gt;
 </code></pre>
-<h4 id="垂直居中">垂直居中</h4>
+<h4 id="垂直居中">7. 垂直居中</h4>
 <p>通过<code>center</code>属性可以让<code>Cell</code>的左右内容都垂直居中。</p>
 <pre><code class="language-html">&lt;maui-cell center title<span class="hljs-operator">=</span><span class="hljs-string">&quot;单元格&quot;</span> value<span class="hljs-operator">=</span><span class="hljs-string">&quot;内容&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述信息&quot;</span> /&gt;
 </code></pre>

@@ -2,18 +2,18 @@
 <h3 id="介绍">介绍</h3>
 <p>在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。</p>
 <h2 id="代码演示">代码演示</h2>
-<h3 id="文字提示">文字提示</h3>
+<h3 id="文字提示">1. 文字提示</h3>
 <pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;text&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;文字提示&#x27;</span>/&gt;
 </code></pre>
-<h3 id="加载提示">加载提示</h3>
+<h3 id="加载提示">2. 加载提示</h3>
 <p>使用 <code>Toast.loading</code> 方法展示加载提示，通过 <code>forbidClick</code> 属性可以禁用背景点击，通过 <code>loadingType</code> 属性可以自定义加载图标类型。</p>
 <pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;loading&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;加载提示&#x27;</span>/&gt;
 </code></pre>
-<h3 id="成功失败提示">成功/失败提示</h3>
+<h3 id="成功失败提示">3. 成功/失败提示</h3>
 <pre><code class="language-maml">&lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;成功提示&#x27;</span>/&gt;
 &lt;maui-toast<span class="hljs-built_in"> type </span>= <span class="hljs-string">&#x27;fail&#x27;</span> <span class="hljs-attribute">message</span>=<span class="hljs-string">&#x27;失败提示&#x27;</span>/&gt;
 </code></pre>
-<h3 id="动态更新提示">动态更新提示</h3>
+<h3 id="动态更新提示">4. 动态更新提示</h3>
 <pre><code class="language-javascript"><span class="hljs-title function_">page</span>({
     <span class="hljs-title function_">selectToast</span>(<span class="hljs-params">e</span>) {
         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({

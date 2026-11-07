@@ -7,7 +7,7 @@
 <span class="hljs-punctuation">}</span>
 </code></pre>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <pre><code class="language-html">&lt;maui-title-bar bind:<span class="hljs-attribute">clickLeft</span>=<span class="hljs-string">&quot;onClickLeft&quot;</span> bind:<span class="hljs-attribute">clickRight</span>=<span class="hljs-string">&quot;onClickRight&quot;</span> left-arrow <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;Malce&quot;</span> <span class="hljs-attribute">right-text</span>=<span class="hljs-string">&quot;按钮&quot;</span> <span class="hljs-attribute">left-text</span>=<span class="hljs-string">&quot;返回&quot;</span>  <span class="hljs-attribute">rightStyle</span>=<span class="hljs-string">&quot;color:purple;&quot;</span> <span class="hljs-attribute">leftStyle</span>=<span class="hljs-string">&quot;color:red&quot;</span> <span class="hljs-attribute">titleStyle</span>=<span class="hljs-string">&quot;color:orange&quot;</span> /&gt;
 
 Page({
@@ -19,7 +19,7 @@ Page({
   }
 });
 </code></pre>
-<h4 id="高级用法">高级用法</h4>
+<h4 id="高级用法">2. 高级用法</h4>
 <p>左侧自定义图标，右侧使用 slot 定制</p>
 <pre><code class="language-html">    &lt;maui-title-bar  use-slot  <span class="hljs-literal">left</span>-arrow <span class="hljs-literal">left</span>-<span class="hljs-keyword">icon</span>=<span class="hljs-string">&quot;reduce&quot;</span> title=<span class="hljs-string">&quot;Malce&quot;</span>  &gt;
         &lt;maui-<span class="hljs-keyword">icon</span> <span class="hljs-keyword">name</span>=<span class="hljs-string">&quot;reduce&quot;</span>&gt;&lt;/maui-<span class="hljs-keyword">icon</span>&gt;

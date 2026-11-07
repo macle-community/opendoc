@@ -1,0 +1,17 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Bottom & Top Popups</text>
+    <view class="btn-wrap">
+  <maui-button type="primary" bind:tap="openBottom">Bottom Popup</maui-button>
+  <maui-button type="info" bind:tap="openTop">Top Popup</maui-button>
+  <maui-popup show="{{ showBottom }}" position="bottom" round custom-style="height: 35%;" bind:close="closeBottom">
+    <view style="padding: 20px; text-align: center;">Bottom Sheet Content</view>
+  </maui-popup>
+  <maui-popup show="{{ showTop }}" position="top" custom-style="height: 25%;" bind:close="closeTop">
+    <view style="padding: 20px; text-align: center;">Top Sheet Content</view>
+  </maui-popup>
+</view>
+  </view>
+</view>

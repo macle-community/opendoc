@@ -9,7 +9,7 @@
 }
 </code></pre>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <p>Set the input value through <code>value</code>, and you can monitor changes in the input value through the <code>change</code> event.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
 </code></pre>
@@ -19,31 +19,31 @@
   }
 });
 </code></pre>
-<h4 id="step-size-setting">Step size setting</h4>
+<h4 id="step-size-setting">2. Step size setting</h4>
 <p>Use the <code>step</code> attribute to set the value that changes each time the increase or decrease button is clicked. The default is <code>1</code>.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;2&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="limit-input-range">Limit input range</h4>
+<h4 id="limit-input-range">3. Limit input range</h4>
 <p>Limit the range of input values ​​via the <code>min</code> and <code>max</code> attributes.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">5</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;8&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="limit-input-to-integers">Limit input to integers</h4>
+<h4 id="limit-input-to-integers">4. Limit input to integers</h4>
 <p>After setting the <code>integer</code> attribute, the input box will be restricted to only integers.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">integer</span> /&gt;</span></span>
 </code></pre>
-<h4 id="disabled-state">Disabled state</h4>
+<h4 id="disabled-state">5. Disabled state</h4>
 <p>Disable the stepper by setting the <code>disabled</code> attribute. In the disabled state, you cannot click the button or modify the input box.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">disabled</span> /&gt;</span></span>
 </code></pre>
-<h4 id="disable-long-press">Disable long press</h4>
+<h4 id="disable-long-press">6. Disable long press</h4>
 <p>Determine whether the stepper enables long press gesture by setting the <code>long-press</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">long-press</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">false</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="fixed-decimal-places">Fixed decimal places</h4>
+<h4 id="fixed-decimal-places">7. Fixed decimal places</h4>
 <p>A fixed number of decimal places can be retained by setting the <code>decimal-length</code> property.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;0.2&quot;</span> <span class="hljs-attr">decimal-length</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="asynchronous-changes">Asynchronous changes</h4>
+<h4 id="asynchronous-changes">8. Asynchronous changes</h4>
 <p>If you need to modify the value of the input box asynchronously, you can set the <code>async-change</code> attribute and manually modify <code>value</code> in the <code>change</code> event.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">async-change</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> /&gt;</span></span>
 </code></pre>
@@ -62,7 +62,7 @@
     });
 }
 </code></pre>
-<h4 id="custom-size">Custom size</h4>
+<h4 id="custom-size">9. Custom size</h4>
 <p>Set the input box width through the <code>input-width</code> property, and set the button size and input box height through the <code>button-size</code> property.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-stepper</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">1</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">input-width</span>=<span class="hljs-string">&quot;40px&quot;</span> <span class="hljs-attr">button-size</span>=<span class="hljs-string">&quot;32px&quot;</span> /&gt;</span></span>
 </code></pre>

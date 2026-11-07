@@ -3,7 +3,7 @@
 <p>Make multiple selections from a set of alternatives (minimum version: 24.6.0)</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
@@ -19,14 +19,14 @@
   },
 });
 </code></pre>
-<h4 id="disabled-state">Disabled State</h4>
+<h4 id="disabled-state">2. Disabled State</h4>
 <p>The checkbox can be disabled by setting the <code>disabled</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
   checkbox
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-shape">Custom Shape</h4>
+<h4 id="custom-shape">3. Custom Shape</h4>
 <p>The <code>shape</code> attribute can control the shape of the checkbox. For example, when set to <code>square</code>, the checkbox shape will
 become a square.</p>
 <pre><code class="language-html"><span class="language-xml">
@@ -34,7 +34,7 @@ become a square.</p>
   checkbox
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-color">Custom Color</h4>
+<h4 id="custom-color">4. Custom Color</h4>
 <p>The <code>checked-color</code> attribute can customize the color of the icon in the checked state.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span>
@@ -45,22 +45,22 @@ become a square.</p>
   checkbox
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-size">Custom Size</h4>
+<h4 id="custom-size">5. Custom Size</h4>
 <p>The <code>icon-size</code> attribute can customize the size of the icon.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;25px&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="custom-icon">Custom Icon</h4>
+<h4 id="custom-icon">6. Custom Icon</h4>
 <p>The <code>custom-icon</code> attribute can customize the icon when selected</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/icon.png&#x27;</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="disable-label-click">Disable Label Click</h4>
+<h4 id="disable-label-click">7. Disable Label Click</h4>
 <p>Set the <code>label-disabled</code> attribute to disable clicks on the checkbox text.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="checkbox-group">Checkbox Group</h4>
+<h4 id="checkbox-group">8. Checkbox Group</h4>
 <p>Need to be used with <code>maui-checkbox-group</code>. The selected value is an array, bound to <code>maui-checkbox-group</code>
 through <code>value</code>
 above, the items in the array are the values set by the <code>name</code> attribute of the selected <code>Checkbox</code>.</p>
@@ -83,7 +83,7 @@ above, the items in the array are the values set by the <code>name</code> attrib
   },
 });
 </code></pre>
-<h4 id="限制最大可选数">限制最大可选数</h4>
+<h4 id="限制最大可选数">9. 限制最大可选数</h4>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">2</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>复选框 a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>

@@ -9,14 +9,14 @@
 <span class="hljs-punctuation">}</span>
 </code></pre>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="message-prompt">Message Prompt</h4>
+<h4 id="message-prompt">1. Message Prompt</h4>
 <p>Used to prompt some messages, only containing a confirm button.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
 </code></pre>
 <p>Prompt with title</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-dialog</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Title&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attr">show</span>=</span></span><span class="hljs-template-variable">{{<span class="hljs-name">show</span>}}</span><span class="language-xml"><span class="hljs-tag"> <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;</span></span>
 </code></pre>
-<h4 id="message-confirmation">Message Confirmation</h4>
+<h4 id="message-confirmation">2. Message Confirmation</h4>
 <p>Used for confirming messages, including cancel and confirm buttons</p>
 <pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>/&gt;
 </code></pre>
@@ -26,7 +26,7 @@
 <p>Customize button color</p>
 <pre><code class="language-html">&lt;maui-dialog <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Title&quot;</span> confirmButtonColor=<span class="hljs-string">&quot;red&quot;</span> cancelButtonColor=<span class="hljs-string">&quot;blue&quot;</span> message=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-built_in">show</span>={{<span class="hljs-built_in">show</span>}} <span class="hljs-built_in">show</span>-cancel-button bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span> /&gt;
 </code></pre>
-<h4 id="custom-styles">Custom Styles</h4>
+<h4 id="custom-styles">3. Custom Styles</h4>
 <p>Modify message style using messageStyle
 Modify title style using titleStyle</p>
 <pre><code class="language-html">&lt;maui-dialog <span class="hljs-attribute">message</span>=<span class="hljs-string">&quot;Prompt message&quot;</span> <span class="hljs-attribute">messageStyle</span>=<span class="hljs-string">&quot;color:orange&quot;</span> <span class="hljs-attribute">titleStyle</span>=<span class="hljs-string">&quot;color:#F0F000&quot;</span> <span class="hljs-attribute">title</span>=<span class="hljs-string">&quot;Title&quot;</span> show={{show}} show-cancel-button bind:<span class="hljs-attribute">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>&gt;

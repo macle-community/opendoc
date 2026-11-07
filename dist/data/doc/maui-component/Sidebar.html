@@ -3,7 +3,7 @@
 <p>垂直展示的导航栏，用于在不同的内容区域之间进行切换(最低版本: 24.9.0)</p>
 </blockquote>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <p>通过在<code>maui-sidebar</code>上设置<code>activeKey</code>属性来控制选中项。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
@@ -18,7 +18,7 @@
   },</span>
 });
 </code></pre>
-<h4 id="徽标提示">徽标提示</h4>
+<h4 id="徽标提示">2. 徽标提示</h4>
 <p>设置<code>dot</code>属性后，会在右上角展示一个小红点。设置<code>info</code>属性后，会在右上角展示相应的徽标。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
@@ -27,7 +27,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;标签名&#x27;</span> <span class="hljs-attr">info</span>=<span class="hljs-string">&#x27;99+&#x27;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sidebar</span>&gt;</span></span>
 </code></pre>
-<h4 id="禁用选项">禁用选项</h4>
+<h4 id="禁用选项">3. 禁用选项</h4>
 <p>通过<code>disabled</code>属性禁用选项。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
@@ -36,7 +36,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;标签名&#x27;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sidebar</span>&gt;</span></span>
 </code></pre>
-<h4 id="监听切换事件">监听切换事件</h4>
+<h4 id="监听切换事件">4. 监听切换事件</h4>
 <p>设置<code>change</code>方法来监听切换导航项时的事件。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>

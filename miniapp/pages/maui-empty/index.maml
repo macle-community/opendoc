@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Image Types</text>
+    <view>
+  <maui-empty description="No Data" />
+  <maui-empty image="error" description="General Error" />
+  <maui-empty image="network" description="Network Disconnected" />
+</view>
+  </view>
+</view>

@@ -2,7 +2,7 @@
 <h3 id="introduction">Introduction</h3>
 <p>You can enter or edit text in the text box.</p>
 <h2 id="sample-code">Sample Code</h2>
-<h3 id="basic-usage">Basic usage</h3>
+<h3 id="basic-usage">1. Basic usage</h3>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
     <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">value</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
     <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter a username.&quot;</span>
@@ -14,7 +14,7 @@ Page({
   }
 });</span>
 </code></pre>
-<h3 id="custom-type">Custom type</h3>
+<h3 id="custom-type">2. Custom type</h3>
 <p>Use the <code>type</code> attribute to define different types of text boxes.</p>
 <pre><code class="language-html"><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">maui-field</span>
     <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">username</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
@@ -29,14 +29,14 @@ Page({
     <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter a password.&quot;</span>
   /&gt;</span></span>
 </code></pre>
-<h3 id="disable-text-box">Disable text box</h3>
+<h3 id="disable-text-box">3. Disable text box</h3>
 <pre><code class="language-html">&lt;maui-field
     value<span class="hljs-operator">=</span><span class="hljs-string">&quot;The text box is disabled.&quot;</span>
     label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Username&quot;</span>
     disabled
 /&gt;
 </code></pre>
-<h3 id="error-message">Error message</h3>
+<h3 id="error-message">4. Error message</h3>
 <p>Use the <code>error</code> or <code>error-message</code> attribute to add an error message.</p>
 <pre><code class="language-html">&lt;maui-field
     <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;{{ username }}&quot;</span>
@@ -51,11 +51,11 @@ Page({
     <span class="hljs-attribute">error-message</span>=<span class="hljs-string">&quot;Incorrect mobile number format.&quot;</span>
 /&gt;
 </code></pre>
-<h3 id="content-alignment-mode">Content alignment mode</h3>
+<h3 id="content-alignment-mode">5. Content alignment mode</h3>
 <p>Use the <code>input-align</code> attribute to set the content alignment mode.</p>
 <pre><code class="language-html">&lt;maui-field value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ username3 }}&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Username&quot;</span> placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;Enter a username.&quot;</span> input-align<span class="hljs-operator">=</span><span class="hljs-string">&quot;right&quot;</span> /&gt;
 </code></pre>
-<h3 id="auto-fit-height">Auto-fit height</h3>
+<h3 id="auto-fit-height">6. Auto-fit height</h3>
 <p>For <code>textarea</code>, uses the <code>autosize</code> attribute to automatically fit the height.</p>
 <pre><code class="language-html">&lt;maui-field value<span class="hljs-operator">=</span><span class="hljs-string">&quot;{{ message }}&quot;</span> label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Message&quot;</span> type<span class="hljs-operator">=</span><span class="hljs-string">&quot;textarea&quot;</span> placeholder<span class="hljs-operator">=</span><span class="hljs-string">&quot;Enter a message.&quot;</span> autosize /&gt;
 </code></pre>

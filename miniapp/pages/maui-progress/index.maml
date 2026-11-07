@@ -1,0 +1,13 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Stroke Width</text>
+    <view class="item-col">
+  <maui-progress percentage="30" />
+  <maui-progress percentage="60" stroke-width="8" />
+  <maui-progress percentage="85" color="#07c160" />
+  <maui-progress percentage="50" inactive />
+</view>
+  </view>
+</view>

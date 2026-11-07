@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Loading Types & Custom Colors</text>
+    <view class="icon-row">
+  <maui-loading type="circular" />
+  <maui-loading type="spinner" color="#1989fa" />
+  <maui-loading type="circular" color="#07c160" size="32px">Loading...</maui-loading>
+</view>
+  </view>
+</view>

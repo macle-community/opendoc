@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Custom Range/Color</text>
+    <view class="item-col">
+  <maui-slider value="{{ sliderVal }}" />
+  <maui-slider value="{{ 60 }}" step="10" bar-height="4px" active-color="#ee0a24" />
+  <maui-slider value="{{ 25 }}" min="10" max="90" disabled />
+</view>
+  </view>
+</view>

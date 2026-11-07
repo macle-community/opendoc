@@ -1,0 +1,11 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Horizontal & Vertical Steps</text>
+    <view>
+  <maui-steps steps="{{ steps }}" active="{{ activeStep }}" />
+  <maui-steps steps="{{ steps }}" active="{{ activeStep }}" direction="vertical" style="margin-top: 15px;" />
+</view>
+  </view>
+</view>

@@ -2,7 +2,7 @@
 <h3 id="介绍">介绍</h3>
 <p>弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。</p>
 <h2 id="代码演示">代码演示</h2>
-<h3 id="基础用法">基础用法</h3>
+<h3 id="基础用法">1. 基础用法</h3>
 <p>通过<code>show</code>属性控制弹出层是否展示。</p>
 <pre><code class="language-maml">&lt;button title=<span class="hljs-string">&quot;展示弹出层&quot;</span> is-link <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;showPopup&quot;</span> /&gt;
 
@@ -21,7 +21,7 @@
   },
 });
 </code></pre>
-<h3 id="弹出位置">弹出位置</h3>
+<h3 id="弹出位置">2. 弹出位置</h3>
 <p>通过<code>position</code>属性设置弹出位置，默认居中弹出，可以设置为<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>。</p>
 <pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
   <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
@@ -30,7 +30,7 @@
   <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
 /&gt;</span></span>
 </code></pre>
-<h3 id="关闭图标">关闭图标</h3>
+<h3 id="关闭图标">3. 关闭图标</h3>
 <p>设置<code>closeable</code>属性后，会在弹出层的右上角显示关闭图标，并且可以通过<code>close-icon</code>属性自定义图标，使用<code>close-icon-position</code>属性可以自定义图标位置。</p>
 <pre><code class="language-maml"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-popup</span>
   <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">show</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>
@@ -60,7 +60,7 @@
   <span class="hljs-attr">bind:close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
 /&gt;</span></span>
 </code></pre>
-<h3 id="圆角弹窗">圆角弹窗</h3>
+<h3 id="圆角弹窗">4. 圆角弹窗</h3>
 <p>设置<code>round</code>属性后，弹窗会根据弹出位置添加不同的圆角样式。</p>
 <pre><code class="language-maml">&lt;maui-popup
   <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span>
@@ -70,7 +70,7 @@
   bind:<span class="hljs-built_in">close</span>=<span class="hljs-string">&quot;onClose&quot;</span>
 /&gt;
 </code></pre>
-<h3 id="禁止滚动穿透">禁止滚动穿透</h3>
+<h3 id="禁止滚动穿透">5. 禁止滚动穿透</h3>
 <p>使用组件时，会发现内容部分滚动到底时，继续划动会导致底层页面的滚动，这就是滚动穿透。</p>
 <p>目前，组件可以通过 <code>lock-scroll</code> 属性处理部分滚动穿透问题。 <strong>但由于小程序自身原因，弹窗内容区域仍会出现滚动穿透。</strong> 不过，我们为开发者提供了一个推荐方案以完整解决滚动穿透：</p>
 <h4 id="page-meta"><a onclick="_mdLinkClick(this.href)" href="#/component/page-meta">page-meta</a></h4>

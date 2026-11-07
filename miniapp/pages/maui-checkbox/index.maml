@@ -1,0 +1,24 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Custom Shape</text>
+    <view class="item-col">
+  <maui-checkbox value="{{ checked1 }}">Basic Checkbox</maui-checkbox>
+  <maui-checkbox value="{{ checked2 }}" shape="square">Square Checkbox</maui-checkbox>
+  <maui-checkbox value="{{ false }}" disabled>Disabled Checkbox</maui-checkbox>
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Custom Color & Checkbox Group</text>
+    <view class="item-col">
+  <maui-checkbox value="{{ true }}" checked-color="#07c160">Custom Color (#07c160)</maui-checkbox>
+  <maui-checkbox-group value="{{ groupVal }}">
+    <maui-checkbox name="apple">Apple</maui-checkbox>
+    <maui-checkbox name="banana">Banana</maui-checkbox>
+    <maui-checkbox name="orange">Orange</maui-checkbox>
+  </maui-checkbox-group>
+</view>
+  </view>
+</view>

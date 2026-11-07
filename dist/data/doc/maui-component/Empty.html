@@ -2,10 +2,10 @@
 <h3 id="介绍">介绍</h3>
 <p>空状态时的占位提示。</p>
 <h2 id="代码演示">代码演示</h2>
-<h3 id="基础用法">基础用法</h3>
+<h3 id="基础用法">1. 基础用法</h3>
 <pre><code class="language-maml">&lt;maui-empty description<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述文字&quot;</span> /&gt;
 </code></pre>
-<h3 id="图片类型">图片类型</h3>
+<h3 id="图片类型">2. 图片类型</h3>
 <p>Empty 组件内置了多种占位图片类型，可以在不同业务场景下使用。</p>
 <pre><code class="language-maml"><span class="hljs-comment">&lt;!-- 通用错误 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&quot;error&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;描述文字&quot;</span> /&gt;</span>
@@ -14,7 +14,7 @@
 <span class="hljs-comment">&lt;!-- 搜索提示 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">image</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;描述文字&quot;</span> /&gt;</span>
 </code></pre>
-<h3 id="自定义图片">自定义图片</h3>
+<h3 id="自定义图片">3. 自定义图片</h3>
 <p>需要自定义图片时，可以在 image 属性中传入任意图片 URL。</p>
 <pre><code class="language-maml">&lt;maui-empty
   class<span class="hljs-operator">=</span><span class="hljs-string">&quot;custom-image&quot;</span>
@@ -22,7 +22,7 @@
   description<span class="hljs-operator">=</span><span class="hljs-string">&quot;描述文字&quot;</span>
 /&gt;
 </code></pre>
-<h3 id="底部内容">底部内容</h3>
+<h3 id="底部内容">4. 底部内容</h3>
 <p>通过默认插槽可以在 Empty 组件的下方插入内容。</p>
 <pre><code class="language-maml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-empty</span> <span class="hljs-attr">description</span>=<span class="hljs-string">&quot;描述文字&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">round</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;danger&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bottom-button&quot;</span>&gt;</span>按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>

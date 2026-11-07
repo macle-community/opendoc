@@ -1,0 +1,13 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Overlay & Embedded Content</text>
+    <view>
+  <maui-button type="primary" bind:tap="openOverlay">Show Overlay</maui-button>
+  <maui-overlay show="{{ showOverlay }}" bind:click="closeOverlay">
+    <view class="overlay-box">Centered Overlay Content</view>
+  </maui-overlay>
+</view>
+  </view>
+</view>

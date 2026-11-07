@@ -9,11 +9,11 @@
 <span class="hljs-punctuation">}</span>
 </code></pre>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <p>基础用法与原生 image 标签一致，可以设置 src，可额外设置 width 和 height，width 和 height 的默认值分别为 320px 和 240px</p>
 <pre><code class="language-html">&lt;maui-image width<span class="hljs-operator">=</span><span class="hljs-string">&quot;100&quot;</span> height<span class="hljs-operator">=</span><span class="hljs-string">&quot;100&quot;</span> src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://img.yzcdn.cn/vant/cat.jpeg&quot;</span> /&gt;
 </code></pre>
-<h4 id="填充模式">填充模式</h4>
+<h4 id="填充模式">2. 填充模式</h4>
 <p>通过 mode 属性可以设置图片填充模式，可选值见下方表格。</p>
 <pre><code class="language-html">&lt;maui-image
   width<span class="hljs-operator">=</span><span class="hljs-string">&quot;200&quot;</span>
@@ -22,11 +22,11 @@
   src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://img.yzcdn.cn/vant/cat.jpeg&quot;</span>
 /&gt;
 </code></pre>
-<h4 id="圆形图片">圆形图片</h4>
+<h4 id="圆形图片">3. 圆形图片</h4>
 <p>通过 round 属性可以设置图片变圆，注意当图片宽高不相等且 mode 为 aspectFit 时，将无法填充一个完整的圆形。</p>
 <pre><code class="language-html">&lt;maui-<span class="hljs-built_in">image</span> <span class="hljs-built_in">round</span> <span class="hljs-built_in">width</span>=<span class="hljs-string">&quot;350&quot;</span> <span class="hljs-built_in">height</span>=<span class="hljs-string">&quot;150&quot;</span> mode=<span class="hljs-string">&quot;aspectFit&quot;</span> src=<span class="hljs-string">&quot; https://img.yzcdn.cn/vant/cat.jpeg&quot;</span>&gt;&lt;/maui-<span class="hljs-built_in">image</span>&gt;
 </code></pre>
-<h4 id="加载提示">加载提示</h4>
+<h4 id="加载提示">4. 加载提示</h4>
 <p>Image 组件提供了默认的加载中与加载失败的提示</p>
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP4AAACzCAYAAACpUKHjAAAOEUlEQVR4Ae2diXNUVRaH/ZtEVERxmYC4ssoOOqBTOiUIEgV0EBAlAyKUOCWoTCEMSjnisAgyWGyiVLHDEByQJUFACIQQloQsDZyp3515TBJfeqGzdOd8XdX1wusm3elzvvudu7zbd9TU1ht3PgNywFcO3EHAfQWceBNv5QDgU/FQ8TnMAcB3GHSsj/UBH/AxvsMcAHyHQcf4GB/wAR/jO8wBwHcYdIyP8QEf8DG+wxwAfIdBx/gYH/ABH+M7zAHAdxh0jI/xAR/wMb7DHAB8h0HH+Bgf8AEf4zvMAcB3GHSMj/EBH/AxvsMcAHyHQcf4GB/wAR/jO8wBwHcYdIyP8QEf8DG+wxwAfIdBx/gYH/ABH+M7zAHAdxh0jI/xAR/wMb7DHAB8h0HH+Bgf8AEf4zvMAcB3GHSMj/EBH/AxvsMcAHyHQcf4GB/wAR/jO8wBwHcYdIyP8QEf8DG+wxwAfIdBx/gYH/ABH+M7zAHAdxh0jI/xAR/wMb7DHAB8h0HH+Bgf8AEf4zvMAcB3GHSMj/EBH/AxvsMcAHyHQcf4GB/wAR/jO8wBwHcYdIyP8QEf8DG+wxwAfIdBx/gYH/ABH+M7zAHAdxh0jI/xAR/wMb7DHAB8h0HH+Bgf8AEf4zvMAcB3GHSMj/EBH/AxvsMcAHyHQcf4GB/wAR/jO8wBwHcYdIyP8QEf8DG+wxwAfIdBx/gYH/ABH+M7zAHAdxh0jI/xAR/wMb7DHAB8h0HH+Bgf8AEf4zvMAcB3GHSMj/EBPwvwa+sSlrh+I9zrE9etuvqanS+/YCWlpXb8uO4lbu4lJaVWdu6cXa2qsvrEfz8XfT40MrnZyAB+FuDX1Sfs5s2bVl1dbcXFB23t2m9t8eIl9uGHf7F58z50ddffvGjRIlu1arXt3r3Hqqqq7FpNHeBnkV+t2WgCfhaBkdHq6+sD9FOmTLUePR61O+/s5Pr+8MOP2Jgxr9iePXussvIy4GeRX4Cfox9edXWNnT171qZMmWKPPtrTOnW6yzX0avT0GTz44EP28suj7eixEsDP0dzF+FkEpuLiJdu5c6f17/+M3X33Pe6hj6qdzp3vDvAfKP4J8LPIL4yfox9eWdl5W7Nmza0S/957u1jfvv1s9uzZ9vHHn9jChQvd3OfMmWvDh4+w++7reqsB3P+vA4Cfo7mL8bMIzK+/nrUvv/y7FRR0D8n+wAPdbPToMXbo0CG7dOlSGPTTwJ+H+7Fjx2zatLftoYceBvwscqo1Ld/wdwN+FkGKA3/s2HF24sSJMOhnjm6nT5+2d9+dYRrci0p+jJ+bU3lqAAAf8FukeQL83IW8oemjnwE/R8C/fv26Xbt2za5evRq6BolEokWAbKtfAviA72ZAJ9tSX4t/Lly4YFu2fG+ffrrQior+HMrloqIimz9/gW3YsCFMF+p5uX4DfMAH/DT6+Fr4U1ZWZsuXL7dXXhlr3bv3uNU3Vh9ZfeWXXvqjff75F3bq1KkWGTNQVaHXraurM/3ckg0K4AM+4KcA/8aNG3b+/HlbvXq19enTt9k1AFoM06tXb1u6dGl4vmC9nZv+38WLF62kpMSKi4vtwIEDplF4VRtqBFriBviAD/gpwFc/fuvWrTZo0CDr0uW+RqaPRsSjo9YG9OnTJzz/8uXLGTMqq6uR+eSTT23QoMFhnl1z7Y899rjNnz8/NAAtYX7AB3zATwH+L7+ctIUL/xogTLXMV4937Xq/zZs3L1zplwn5Mn1FRUUAfPDgwY0aGa007N27j33wwQdWWlqaya+NfS7gAz7gpwD/4MGf7J133k1q+sj4OmoJ7IQJE23//v2hbx5LXpOT6k5EYwhDhgxttKIu+t2CXw2CVhiq7E8kbq8roZcGfMAH/BTg79271954482MwNcVb7ouQINzqW4q3QXyd999ZyNHjrSuXf+/jDaCPjqq7B8xYoR98803Vl5ennbD0vQ9AD7gA34K8GXuyZMnZwT+uHGv2u7duy2d+X2tB/jxxx+tsPC1tF5DXYlnn33Wfvjhh7DU+Hb6/IAP+ICfAnyt5Z85c2ZaUEal/ttvTw/XAKSCUo+rYZk6dZppYDAye6qjuhOFhYW2Y8eO2xrpB3zAB/wU4J87d86++uqrMFd/112dk8Kpx7t1e9C++GKZnTlzpmmF3ejfgv748eM2c+Yse/zxJzLeH0BrB2bMKLJ9+/aZxggyuQE+4AN+CvBramrCfPpbb00JV7MlG9nX1W7jxxeGuXeV8M3d1AVQg7JgwQJ75pkBza4NSGV+rRt47733wutlAj/gAz7gpwBf8F65csW2b98e+uE9ez72G1BVeuu8+ukbN24Kz2+uzNe0nUbwV6xYEebqU60NSAa/KgxN873//hw7efJk2mU/4AM+4KcBvuCXpXft2hWm9rSY54knngwLa3QcMGBgWLevkfxk5lVjoFV5GzdutGHDhjWaq08GeLLHVIE8+eRT9tlni0P3Ip0BRcAHfMBPE3zBL1trow7ZdefOXfb991vDAJuu6dcKPz2e7KYltxrBHzdunKUaL0gGe9PHNMevfQS1rFjTfKlugA/4gJ8B+AJK1tb8vLakVhdARwHdXGkfQahKQBVD051vmkJ8O/+W9QX/888/b+vWrbPKykvRy8YeAR/wAT9D8GNJSnFS0B85ciQMxD311NNJZwZuB/zo/2g7Ma0a3Lx5c9gvoLm3BfiAD/itDH50Sa829Ozfv3/G03YR1Oke9X0Bqiq0PkD9/bhKBPABH/BbEXyZXlfbaYmtdvRVOZ4uwNk8T4N9mubT9wjELRsGfMAH/FYEX5fmbtq02QYMGNAiI/jpNgbq82u2QVcVquFpan3AB3zAbwZ8LdzRbjqHDh22I0eOhgU36UyVRf1qjf5v2bLFtG5fc/XJFv6kC3Qmz9MSYC3w0XfkadahIfyAD/iA3wT82trasPvNokWfhb7y669PsIkTJ9n06e/YunX/tDNnziadqxf4Kq81pz99+nQrKChok/I+rlHQlKEu8122bFm4FDdqlAAf8AG/AfhaZnv48GH76KP5YVFMwz65Vue98MIfbMWKlWGhTHMLdTSXf/ToUZs9+317+ule7QZ91BAI/hdffMlWrVpllZWVgX3AB3zA/x/4svTPP/9sCxZ8nPSCnAj+ioqLjcpnEaWugHbR0Qi+9ueL4Gvvo7oa2iR027ZtoRpRF4Yv1Mgf+NlXvxX31dfmltoySzvoJuuPy/zPPfd7+/rrf/xm4Y6gX7lypfXq1SvsxNPewDd8fV3NN378eCspKQ1dGcAHfBfWb25ffQGv0lzQ9+vXP60pt/vvf8BGjhwVymetvVfZL+jXr19vQ4cOi906qyGE7fGzGixt2qlxh82bt5iuNuQrtPIDfozfwsbXXvi6mm7u3Lk2cOCgjDbD0Cq5UaNGhTl6NRybNm0Km2NoND1ZxdAe0Eevec899wb4J02aZMOHDzc1YNFjfHde7jYCgN+C4Kvfq0U1b775pzDnnckOOBEssqgGznRZ7IQJExoZNHpOLh61b4AaroaDl4AP+B2y9G9a6ucikO35ngAf8AH/zk63SuD2hLEtXxvwAR/wAb9D5kD0tdP5dqSP34J9/La0aT68FsbH+B2ytaePn7z7AviAD/iU+h0yB/KtxI/eL6U+pX6rDTpifIzfIVt7Sn1K/cig+XbE+Bgf42eRA/kGfPR+AT+LoGN8jB+BlG9HwAd8jJ9FDuQb8NH7Bfwsgo7xMX4EUr4dAR/wMX4WOZBvwEfvF/CzCHrZuXL79tt1pn3n82ElXVu/R6bzmM7rkNN5Fysv2969e23w4CEZXXff1gC29evp0tyCgu5WfPDfHTLukTXz+YjxszB+9bWasEX2rFmzwrbTupa+rSHLtdfTRpzaaky7CJeUngD8LPKrNRsWwM8iMHX1ifBttqWlpVZUVBS+zz7XQGzr9/PII7+zwsLXwiajl69UAX4W+QX4OfrhCXzdtG++vmBi+/bttmbNWlu6dKktWfI3V3f9zdpuW1/ZrW3D9OUhNbV1gJ+juYvxswhMbV3CEonr4V5fnzCV/toi+9Sp03bypK+7/uby8gqrqqo2fRb6XGrrcndwqzVtmg+/G/CzAD8fAsx7pPGJywHAB3zKcYc5APgOgx5nAM75qgwAH/AxvsMcAHyHQcfuvuweF2/AB3yM7zAHAN9h0OMMwDlfVQDgAz7Gd5gDgO8w6Njdl93j4g34gI/xHeYA4DsMepwBOOerCgB8wMf4DnMA8B0GHbv7sntcvAEf8DG+wxwAfIdBjzMA53xVAYAP+BjfYQ4AvsOgY3dfdo+LN+ADPsZ3mAOA7zDocQbgnK8qAPABH+M7zAHAdxh07O7L7nHxBnzAx/gOcwDwHQY9zgCc81UFAD7gY3yHOQD4DoOO3X3ZPS7egA/4GN9hDgC+w6DHGYBzvqoAwAd8jO8wBwDfYdCxuy+7x8Ub8AEf4zvMAcB3GPQ4A3DOVxUA+ICP8R3mAOA7DDp292X3uHgDPuBjfIc5APgOgx5nAM75qgIAH/AxvsMcAHyHQcfuvuweF2/AB3yM7zAHAN9h0OMMwDlfVQDgAz7Gd5gDgO8w6Njdl93j4g34gI/xHeYA4DsMepwBOOerCgB8wMf4DnMA8B0GHbv7sntcvAEf8DG+wxwAfIdBjzMA53xVAYAP+BjfYQ4AvsOgY3dfdo+LN+ADPsZ3mAOA7zDocQbgnK8qAPABH+M7zAHAdxh07O7L7nHxBnzAx/gOcwDwHQY9zgCc81UFAD7gY3yHOQD4DoOO3X3ZPS7egA/4GN9hDgC+w6DHGYBzvqqA/wAjeeueJbajSAAAAABJRU5ErkJggg=="/>
 
@@ -95,7 +95,7 @@
 <ol>
 <li>round和radius为二选一属性，同时存在时radius的优先级高于round。</li>
 </ol>
-<h4 id="图片填充模式">图片填充模式</h4>
+<h4 id="图片填充模式">5. 图片填充模式</h4>
 <table>
 <thead>
 <tr>

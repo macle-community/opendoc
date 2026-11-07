@@ -10,7 +10,7 @@
 }
 </code></pre>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <p>Use <code>active</code> to set the index value corresponding to the currently active tag. The first tag is enabled by default.</p>
 <pre><code class="language-html">&lt;maui-tabs active=<span class="hljs-string">&quot;{{ active }}&quot;</span> bind:change=<span class="hljs-string">&quot;onChange&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -32,7 +32,7 @@
   },
 });
 </code></pre>
-<h4 id="match-by-name">Match by Name</h4>
+<h4 id="match-by-name">2. Match by Name</h4>
 <p>When the tag specifies the <code>name</code> attribute, the value of <code>active</code> is the <code>name</code> of the current tag (the tag cannot be matched by the index value at this time).</p>
 <pre><code class="language-html">&lt;maui-tabs active=<span class="hljs-string">&quot;a&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span> name=<span class="hljs-string">&quot;a&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -40,7 +40,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 3&quot;</span> name=<span class="hljs-string">&quot;c&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt;
 </code></pre>
-<h4 id="horizontal-scrolling">Horizontal Scrolling</h4>
+<h4 id="horizontal-scrolling">3. Horizontal Scrolling</h4>
 <p>Tabs can scroll horizontally when there are more than 5 tabs.</p>
 <pre><code class="language-html">&lt;maui-tabs active=<span class="hljs-string">&quot;{{ active }}&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -51,7 +51,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 6&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">6</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt;
 </code></pre>
-<h4 id="disable-tag">Disable Tag</h4>
+<h4 id="disable-tag">4. Disable Tag</h4>
 <p>The label can be disabled by setting the <code>disabled</code> attribute. If you need to listen to the click event of a disabled tab, you can listen to the <code>disabled</code> event on <code>maui-tabs</code>.</p>
 <pre><code class="language-html">&lt;maui-tabs bind:disabled=<span class="hljs-string">&quot;onClickDisabled&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -68,7 +68,7 @@
   },
 });
 </code></pre>
-<h4 id="style">Style</h4>
+<h4 id="style">5. Style</h4>
 <p><code>Tab</code> supports two styles: <code>line</code> and <code>card</code>. The default is <code>line</code> style, which can be modified through the <code>type</code> attribute.</p>
 <pre><code class="language-html">&lt;maui-tabs type=<span class="hljs-string">&quot;card&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -76,7 +76,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 3&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">3</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt;
 </code></pre>
-<h4 id="click-event">Click Event</h4>
+<h4 id="click-event">6. Click Event</h4>
 <p>The <code>click</code> event can be bound to <code>maui-tabs</code>, and the title and identifier of the clicked tab can be obtained in the <code>event.detail</code> of the callback parameter.</p>
 <pre><code class="language-html">&lt;maui-tabs bind:click=<span class="hljs-string">&quot;onClick&quot;</span>&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -92,7 +92,7 @@
   },
 });
 </code></pre>
-<h4 id="sticky-layout">Sticky Layout</h4>
+<h4 id="sticky-layout">7. Sticky Layout</h4>
 <p>Sticky layout can be enabled through the <code>sticky</code> attribute. Under sticky layout, when the Tab scrolls to the top, it will automatically stick to the top.</p>
 <pre><code class="language-html">&lt;maui-tabs sticky&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -101,7 +101,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 4&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt;
 </code></pre>
-<h4 id="switch-animation">Switch Animation</h4>
+<h4 id="switch-animation">8. Switch Animation</h4>
 <p>You can use <code>animated</code> to set whether to enable animation when switching tabs.</p>
 <pre><code class="language-html">&lt;maui-tabs animated&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -110,7 +110,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 4&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt;
 </code></pre>
-<h4 id="slide-to-switch">Slide to Switch</h4>
+<h4 id="slide-to-switch">9. Slide to Switch</h4>
 <p>Swipe switching tabs can be enabled through the <code>swipeable</code> attribute.</p>
 <pre><code class="language-html">&lt;maui-tabs swipeable&gt;
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">1</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
@@ -119,7 +119,7 @@
   &lt;maui-<span class="hljs-built_in">tab</span> <span class="hljs-built_in">title</span>=<span class="hljs-string">&quot;Label 4&quot;</span>&gt;<span class="hljs-built_in">content</span> <span class="hljs-number">4</span>&lt;/maui-<span class="hljs-built_in">tab</span>&gt;
 &lt;/maui-tabs&gt; 
 </code></pre>
-<h4 id="asynchronous-switching">Asynchronous Switching</h4>
+<h4 id="asynchronous-switching">10. Asynchronous Switching</h4>
 <p>Through the <code>before-change</code> event, specific logic can be executed before switching tags to achieve the purpose of verification before switching and asynchronous switching.</p>
 <pre><code class="language-html"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-tabs</span> <span class="hljs-attr">active</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">active</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">use-before-change</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">true</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&quot;onChange&quot;</span> <span class="hljs-attr">bind:before-change</span>=<span class="hljs-string">&quot;onBeforeChange&quot;</span> &gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-tab</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Label 1&quot;</span>&gt;</span>content 1<span class="hljs-tag">&lt;/<span class="hljs-name">maui-tab</span>&gt;</span>

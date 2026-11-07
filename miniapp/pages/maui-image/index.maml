@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & Fill Modes</text>
+    <view class="icon-row">
+  <maui-image width="80" height="80" fit="contain" src="https://via.placeholder.com/80" />
+  <maui-image width="80" height="80" fit="cover" src="https://via.placeholder.com/80" />
+  <maui-image width="80" height="80" round src="https://via.placeholder.com/80" />
+</view>
+  </view>
+</view>

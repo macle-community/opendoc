@@ -3,7 +3,7 @@
 <p>按钮用于触发一个操作，如提交表单。</p>
 </blockquote>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="按钮类型">按钮类型</h4>
+<h4 id="按钮类型">1. 按钮类型</h4>
 <p>支持<code>default</code>、<code>primary</code>、<code>info</code>、<code>warning</code>、<code>danger</code>五种类型，默认为<code>default</code>。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>默认按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>主要按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
@@ -11,46 +11,46 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;warning&quot;</span>&gt;</span>警告按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;</span>危险按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="朴素按钮">朴素按钮</h4>
+<h4 id="朴素按钮">2. 朴素按钮</h4>
 <p>通过<code>plain</code>属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>朴素按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>朴素按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="细边框">细边框</h4>
+<h4 id="细边框">3. 细边框</h4>
 <p>设置<code>hairline</code>属性可以开启 0.5px 边框，基于伪类实现。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">hairline</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>细边框按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">hairline</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>细边框按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="禁用状态">禁用状态</h4>
+<h4 id="禁用状态">4. 禁用状态</h4>
 <p>通过<code>disabled</code>属性来禁用按钮，此时按钮的<code>bind:click</code>事件不会触发。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>禁用状态<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>禁用状态<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="加载状态">加载状态</h4>
+<h4 id="加载状态">5. 加载状态</h4>
 <pre><code class="language-html">&lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> /&gt;
 &lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;primary&quot;</span> loading-type<span class="hljs-operator">=</span><span class="hljs-string">&quot;spinner&quot;</span> /&gt;
 &lt;maui-button loading type<span class="hljs-operator">=</span><span class="hljs-string">&quot;info&quot;</span> loading-text<span class="hljs-operator">=</span><span class="hljs-string">&quot;加载中...&quot;</span> /&gt;
 </code></pre>
-<h4 id="按钮形状">按钮形状</h4>
+<h4 id="按钮形状">6. 按钮形状</h4>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">square</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>方形按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">round</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>圆形按钮<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="图标按钮">图标按钮</h4>
+<h4 id="图标按钮">7. 图标按钮</h4>
 <p>通过<code>icon</code>属性设置按钮图标，可以传入图标 URL。</p>
 <pre><code class="language-html">&lt;maui-button <span class="hljs-attribute">icon</span>=<span class="hljs-string">&quot;https://example/logo.png&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;按钮&lt;/maui-button&gt;
 </code></pre>
-<h3 id="按钮尺寸">按钮尺寸</h3>
+<h3 id="按钮尺寸">8. 按钮尺寸</h3>
 <p>支持<code>large</code>、<code>normal</code>、<code>small</code>、<code>mini</code>四种尺寸，默认为<code>normal</code>。</p>
 <pre><code class="language-html">&lt;maui-button <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attribute">size</span>=<span class="hljs-string">&quot;large&quot;</span>&gt;大号按钮&lt;/maui-button&gt;
 &lt;maui-button <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attribute">size</span>=<span class="hljs-string">&quot;normal&quot;</span>&gt;普通按钮&lt;/maui-button&gt;
 &lt;maui-button <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attribute">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;小型按钮&lt;/maui-button&gt;
 &lt;maui-button <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attribute">size</span>=<span class="hljs-string">&quot;mini&quot;</span>&gt;迷你按钮&lt;/maui-button&gt;
 </code></pre>
-<h4 id="块级元素">块级元素</h4>
+<h4 id="块级元素">9. 块级元素</h4>
 <p>通过<code>block</code>属性可以将按钮的元素类型设置为块级元素。</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">maui-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">block</span>&gt;</span>块级元素<span class="hljs-tag">&lt;/<span class="hljs-name">maui-button</span>&gt;</span>
 </code></pre>
-<h4 id="自定义颜色">自定义颜色</h4>
+<h4 id="自定义颜色">10. 自定义颜色</h4>
 <p>通过<code>color</code>属性可以自定义按钮的颜色。</p>
 <pre><code class="language-html">&lt;maui-<span class="hljs-keyword">button</span> <span class="hljs-keyword">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span>&gt;单色按钮&lt;/maui-<span class="hljs-keyword">button</span>&gt;
 &lt;maui-<span class="hljs-keyword">button</span> <span class="hljs-keyword">color</span>=<span class="hljs-string">&quot;#7232dd&quot;</span> plain&gt;单色按钮&lt;/maui-<span class="hljs-keyword">button</span>&gt;

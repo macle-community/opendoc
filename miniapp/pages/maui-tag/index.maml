@@ -1,0 +1,16 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Tag Types & Plain/Round Styles</text>
+    <view class="icon-row">
+  <maui-tag type="primary">Primary</maui-tag>
+  <maui-tag type="success">Success</maui-tag>
+  <maui-tag type="danger">Danger</maui-tag>
+  <maui-tag type="warning">Warning</maui-tag>
+  <maui-tag plain type="primary">Plain</maui-tag>
+  <maui-tag round type="success">Round</maui-tag>
+  <maui-tag mark type="primary">Mark</maui-tag>
+</view>
+  </view>
+</view>

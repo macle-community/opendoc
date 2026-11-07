@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Message Prompt & Confirmation</text>
+    <view class="btn-wrap">
+  <maui-button type="primary" bind:tap="showPrompt">Message Prompt</maui-button>
+  <maui-button type="info" bind:tap="showConfirm">Message Confirmation</maui-button>
+  <maui-dialog id="maui-dialog" />
+</view>
+  </view>
+</view>

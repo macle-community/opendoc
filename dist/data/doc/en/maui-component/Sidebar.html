@@ -3,7 +3,7 @@
 <p>Vertically displayed navigation bar for switching between different content areas (minimum version: 24.9.0)</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<h4 id="basic-usage">Basic Usage</h4>
+<h4 id="basic-usage">1. Basic Usage</h4>
 <p>Control the selection by setting the <code>activeKey</code> property on <code>maui-sidebar</code>.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
@@ -18,7 +18,7 @@
   },</span>
 });
 </code></pre>
-<h4 id="info-tips">Info Tips</h4>
+<h4 id="info-tips">2. Info Tips</h4>
 <p>After setting the <code>dot</code> attribute, a small red dot will be displayed in the upper right corner. After setting the <code>info</code>
 attribute, the corresponding logo will be displayed in the upper right corner.</p>
 <pre><code class="language-html"><span class="language-xml">
@@ -28,7 +28,7 @@ attribute, the corresponding logo will be displayed in the upper right corner.</
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;tag name&#x27;</span> <span class="hljs-attr">info</span>=<span class="hljs-string">&#x27;99+&#x27;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sidebar</span>&gt;</span></span>
 </code></pre>
-<h4 id="disable-option">Disable Option</h4>
+<h4 id="disable-option">3. Disable Option</h4>
 <p>Disable options via the <code>disabled</code> attribute.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
@@ -37,7 +37,7 @@ attribute, the corresponding logo will be displayed in the upper right corner.</
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar-item</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&#x27;tag name&#x27;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-sidebar</span>&gt;</span></span>
 </code></pre>
-<h4 id="listen-for-switching-events">Listen for Switching Events</h4>
+<h4 id="listen-for-switching-events">4. Listen for Switching Events</h4>
 <p>Set up the <code>change</code> method to listen for events when switching navigation items.</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-sidebar</span> <span class="hljs-attr">active-key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">activeKey</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>

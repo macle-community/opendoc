@@ -1,0 +1,15 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Sidebar & Badge Tips</text>
+    <view style="display: flex;">
+  <maui-sidebar active-key="{{ activeSidebar }}">
+    <maui-sidebar-item title="Tab 1" />
+    <maui-sidebar-item title="Tab 2" badge="8" />
+    <maui-sidebar-item title="Tab 3" dot />
+    <maui-sidebar-item title="Tab 4" disabled />
+  </maui-sidebar>
+</view>
+  </view>
+</view>

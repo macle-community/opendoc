@@ -3,7 +3,7 @@
 <p>在一组备选项中进行多选（最低版本：24.6.0）</p>
 </blockquote>
 <h3 id="代码演示">代码演示</h3>
-<h4 id="基础用法">基础用法</h4>
+<h4 id="基础用法">1. 基础用法</h4>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
@@ -19,21 +19,21 @@
   },
 });
 </code></pre>
-<h4 id="禁用状态">禁用状态</h4>
+<h4 id="禁用状态">2. 禁用状态</h4>
 <p>设置<code>disabled</code>属性可以禁用复选框。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
   复选框
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="自定义形状">自定义形状</h4>
+<h4 id="自定义形状">3. 自定义形状</h4>
 <p><code>shape</code>属性可以控制复选框的形状，例如设置为<code>square</code>时，复选框形状会变为方形</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">shape</span>=<span class="hljs-string">&#x27;square&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
   复选框
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="自定义颜色">自定义颜色</h4>
+<h4 id="自定义颜色">4. 自定义颜色</h4>
 <p><code>checked-color</code>属性可以自定义选中状态下的图标颜色。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span>
@@ -44,22 +44,22 @@
   复选框
 <span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="自定义大小">自定义大小</h4>
+<h4 id="自定义大小">5. 自定义大小</h4>
 <p><code>icon-size</code>属性可以自定义图标的大小。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">icon-size</span>=<span class="hljs-string">&#x27;25px&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="自定义图标">自定义图标</h4>
+<h4 id="自定义图标">6. 自定义图标</h4>
 <p><code>custom-icon</code>属性可以自定义选中时的图标</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">custom-icon</span>=<span class="hljs-string">&#x27;../example/icon.png&#x27;</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="禁用文本点击">禁用文本点击</h4>
+<h4 id="禁用文本点击">7. 禁用文本点击</h4>
 <p>设置<code>label-disabled</code>属性可以禁用复选框文本点击。</p>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">checked</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">label-disabled</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span></span>
 </code></pre>
-<h4 id="复选框组">复选框组</h4>
+<h4 id="复选框组">8. 复选框组</h4>
 <p>需要与<code>maui-checkbox-group</code>一起使用，选中值是一个数组，通过<code>value</code>绑定在<code>maui-checkbox-group</code>
 上，数组中的项即为选中的<code>Checkbox</code>的<code>name</code>属性设置的值。</p>
 <pre><code class="language-html"><span class="language-xml">
@@ -81,7 +81,7 @@
   },
 });
 </code></pre>
-<h4 id="限制最大可选数">限制最大可选数</h4>
+<h4 id="限制最大可选数">9. 限制最大可选数</h4>
 <pre><code class="language-html"><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox-group</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">result</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bind:change</span>=<span class="hljs-string">&#x27;onChange&#x27;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">2</span> }}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">maui-checkbox</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;a&#x27;</span>&gt;</span>复选框 a<span class="hljs-tag">&lt;/<span class="hljs-name">maui-checkbox</span>&gt;</span>

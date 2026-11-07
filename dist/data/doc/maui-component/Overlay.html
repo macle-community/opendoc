@@ -2,7 +2,7 @@
 <h3 id="介绍">介绍</h3>
 <p>创建一个遮罩层，用于强调特定的页面元素，并阻止用户进行其他操作。</p>
 <h2 id="代码演示">代码演示</h2>
-<h3 id="基础用法">基础用法</h3>
+<h3 id="基础用法">1. 基础用法</h3>
 <pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;显示遮罩层&lt;/maui-button&gt;
 <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-overlay</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;onClickHide&quot;</span> /&gt;</span></span>
 <span class="hljs-title class_">Page</span>({
@@ -19,7 +19,7 @@
   },
 });
 </code></pre>
-<h3 id="嵌入内容">嵌入内容</h3>
+<h3 id="嵌入内容">2. 嵌入内容</h3>
 <p>通过默认插槽可以在遮罩层上嵌入任意内容。</p>
 <pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=&quot;primary&quot; bind:click=&quot;onClickShow&quot;&gt;嵌入内容&lt;/maui-button&gt;
 &lt;maui-overlay <span class="hljs-keyword">show</span>=&quot;{{ show }}&quot; bind:click=&quot;onClickHide&quot;&gt;

@@ -1,0 +1,11 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic TitleBar & Action Text</text>
+    <view>
+  <maui-title-bar title="Page Title" left-arrow />
+  <maui-title-bar title="Page Title" left-text="Back" right-text="Action" left-arrow style="margin-top: 10px;" />
+</view>
+  </view>
+</view>

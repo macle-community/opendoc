@@ -1,0 +1,13 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Usage & States</text>
+    <view class="icon-row">
+  <maui-switch checked="{{ switch1 }}" />
+  <maui-switch checked="{{ switch2 }}" disabled />
+  <maui-switch checked="{{ true }}" loading />
+  <maui-switch checked="{{ true }}" active-color="#07c160" size="24px" />
+</view>
+  </view>
+</view>

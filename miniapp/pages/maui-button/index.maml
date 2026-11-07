@@ -1,0 +1,43 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Button type</text>
+    <view class="btn-wrap">
+  <maui-button type="default">default button</maui-button>
+  <maui-button type="primary">primary button</maui-button>
+  <maui-button type="info">information button</maui-button>
+  <maui-button type="warning">warning button</maui-button>
+  <maui-button type="danger">danger button</maui-button>
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Plain button & Hairline border</text>
+    <view class="btn-wrap">
+  <maui-button plain type="primary">plain primary</maui-button>
+  <maui-button plain hairline type="info">hairline info</maui-button>
+  <maui-button plain hairline type="danger">hairline danger</maui-button>
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Disabled & Loading state</text>
+    <view class="btn-wrap">
+  <maui-button disabled type="primary">disabled</maui-button>
+  <maui-button loading type="primary" />
+  <maui-button loading type="info" loading-text="Loading..." />
+</view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">4. Button shape & size & custom color</text>
+    <view class="btn-wrap">
+  <maui-button round type="info">round button</maui-button>
+  <maui-button square type="primary">square button</maui-button>
+  <maui-button type="primary" size="small">small</maui-button>
+  <maui-button color="#7232dd">single-color</maui-button>
+  <maui-button block type="primary" style="margin-top: 10px;">block-level button</maui-button>
+</view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+
+<view class="page-body">
+  
+  <view class="demo-block">
+    <text class="demo-title">1. Basic Sticky Layout</text>
+    <view>
+  <maui-sticky offset-top="{{ 0 }}">
+    <maui-button type="primary">Sticky Top Button</maui-button>
+  </maui-sticky>
+</view>
+  </view>
+</view>

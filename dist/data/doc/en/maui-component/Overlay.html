@@ -2,13 +2,13 @@
 <h3 id="introduction">Introduction</h3>
 <p>Create a mask layer to emphasize specific page elements and prevent users from performing other operations.</p>
 <h2 id="sample-code">Sample Code</h2>
-<h3 id="basic-usage">Basic Usage</h3>
+<h3 id="basic-usage">1. Basic Usage</h3>
 <pre><code class="language-maml">&lt;maui-button <span class="hljs-keyword">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bind</span>:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;show mask layer &lt;/maui-button&gt;
 <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">maui-overlay</span> <span class="hljs-attr">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> <span class="hljs-attr">bind:click</span>=<span class="hljs-string">&quot;onClickHide&quot;</span> /&gt;</span></span>
 <span class="hljs-title class_">Page</span>({ <span class="hljs-attr">data</span>: { <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>, }, <span class="hljs-title function_">onClickShow</span>(<span class="hljs-params"></span>) { <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> }); }, <span class="hljs-title function_">onClickHide</span>(<span class="hljs-params"></span>) { <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({ <span class="hljs-attr">show</span>:
 <span class="hljs-literal">false</span> }); },});
 </code></pre>
-<h3 id="embedded-content">Embedded Content</h3>
+<h3 id="embedded-content">2. Embedded Content</h3>
 <p>Any content can be embedded at the mask layer through the default slot.</p>
 <pre><code class="language-maml">&lt;maui-button type=<span class="hljs-string">&quot;primary&quot;</span> bind:click=<span class="hljs-string">&quot;onClickShow&quot;</span>&gt;embedded <span class="hljs-built_in">content</span> &lt;/maui-button&gt;
 &lt;maui-overlay <span class="hljs-built_in">show</span>=<span class="hljs-string">&quot;{{ show }}&quot;</span> bind:click=<span class="hljs-string">&quot;onClickHide&quot;</span>&gt;
