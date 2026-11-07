@@ -1405,3 +1405,71 @@
   border-left: none !important;
 }
 
+/* --- Mobile Responsiveness for Runner & Simulator --- */
+@media (max-width: 868px) {
+  .macle-runner-overlay {
+    padding: 0;
+  }
+
+  .macle-runner-modal {
+    width: 100vw;
+    height: 100dvh;
+    height: 100vh;
+    max-width: 100vw;
+    border-radius: 0;
+    border: none;
+  }
+
+  .macle-runner-header {
+    height: 48px;
+    padding: 0 12px;
+  }
+
+  .macle-header-sub {
+    display: none;
+  }
+
+  .macle-view-btn[data-view="split"] {
+    display: none !important;
+  }
+
+  .macle-code-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .macle-toolbar-left,
+  .macle-toolbar-right {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .macle-devsuite-controls {
+    flex-wrap: wrap;
+  }
+
+  .macle-tabs-bar {
+    height: 38px;
+    padding: 0 8px;
+  }
+
+  .macle-sim-topbar {
+    height: 38px;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .macle-device-stage {
+    padding: 8px 4px;
+  }
+
+  .macle-phone-frame {
+    max-width: 100%;
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+}
+
+

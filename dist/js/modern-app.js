@@ -1,9 +1,10 @@
 /**
  * Macle OpenDoc — Modern Documentation Engine
  * Complete client-side controller supporting:
+ * - 100% Mobile Responsive Layout & Touch-Friendly Interactions
  * - Light / Dark / System themes with zero flash
- * - Responsive 3-column layout (Left Sidebar, Main Content, Right TOC)
- * - Mobile navigation drawer
+ * - Responsive 3-column layout (Desktop) / Slide-over Drawer + Sub-nav (Mobile)
+ * - Auto Table Horizontal-Scroll Wrappers (Prevents overflow on mobile)
  * - Command palette search (Cmd+K / Ctrl+K)
  * - Auto-extracted Table of Contents with Scrollspy
  * - Breadcrumbs, heading anchors, next/previous pagination
@@ -46,7 +47,7 @@
     globe: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
     github: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>',
     chevronDown: '<svg class="docs-nav-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>',
-    hamburger: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>',
+    hamburger: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>',
     close: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
     toc: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></svg>',
     link: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>',
@@ -182,6 +183,7 @@
         const matchingTop = state.topMenus.find(m => m.path === topPath) || state.topMenus[0];
         if (matchingTop) {
           state.currentTopMenu = matchingTop;
+          Navigation.updateTopNavActive();
           await Navigation.loadLeftMenu(matchingTop, subPath);
           return;
         }
@@ -227,10 +229,10 @@
     },
 
     renderTopNav() {
-      const container = document.getElementById('docs-top-nav');
-      if (!container) return;
-
-      container.innerHTML = state.topMenus.map(menu => {
+      const desktopNav = document.getElementById('docs-top-nav');
+      const mobileNav = document.getElementById('docs-mobile-top-nav');
+      
+      const renderLinks = () => state.topMenus.map(menu => {
         const isActive = state.currentTopMenu && state.currentTopMenu.path === menu.path;
         return `
           <a class="docs-nav-link ${isActive ? 'active' : ''}" 
@@ -241,25 +243,43 @@
         `;
       }).join('');
 
-      container.querySelectorAll('.docs-nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const path = link.dataset.path;
-          const target = state.topMenus.find(m => m.path === path);
-          if (target) {
-            state.currentTopMenu = target;
-            this.updateTopNavActive();
-            this.loadLeftMenu(target);
-          }
+      if (desktopNav) desktopNav.innerHTML = renderLinks();
+      if (mobileNav) mobileNav.innerHTML = renderLinks();
+
+      const attachHandlers = (container) => {
+        if (!container) return;
+        container.querySelectorAll('.docs-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const path = link.dataset.path;
+            const target = state.topMenus.find(m => m.path === path);
+            if (target) {
+              state.currentTopMenu = target;
+              this.updateTopNavActive();
+              this.loadLeftMenu(target);
+            }
+          });
         });
-      });
+      };
+
+      attachHandlers(desktopNav);
+      attachHandlers(mobileNav);
     },
 
     updateTopNavActive() {
-      document.querySelectorAll('#docs-top-nav .docs-nav-link').forEach(link => {
-        const isActive = state.currentTopMenu && state.currentTopMenu.path === link.dataset.path;
-        link.classList.toggle('active', isActive);
-      });
+      const updateList = (selector) => {
+        document.querySelectorAll(selector).forEach(link => {
+          const isActive = state.currentTopMenu && state.currentTopMenu.path === link.dataset.path;
+          link.classList.toggle('active', isActive);
+          if (isActive && selector.includes('mobile')) {
+            // Scroll active pill into view on mobile
+            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        });
+      };
+
+      updateList('#docs-top-nav .docs-nav-link');
+      updateList('#docs-mobile-top-nav .docs-nav-link');
     },
 
     async loadLeftMenu(topMenu, targetSubPath = null) {
@@ -316,7 +336,6 @@
 
       let html = '';
       state.currentLeftMenuData.forEach((group, gIdx) => {
-        // If there's a filter, filter child items
         let children = group.child || [];
         if (filter) {
           children = this.filterMenuTree(children, filter);
@@ -474,19 +493,29 @@
       // 1. Inject HTML into markdown body
       article.innerHTML = html;
 
-      // 2. Render Breadcrumbs
+      // 2. Wrap all <table> elements with responsive horizontal-scroll container
+      article.querySelectorAll('table').forEach(table => {
+        if (!table.parentElement.classList.contains('docs-table-wrapper')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'docs-table-wrapper';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      });
+
+      // 3. Render Breadcrumbs
       this.renderBreadcrumbs(leaf);
 
-      // 3. Process headings & Build Table of Contents
+      // 4. Process headings & Build Table of Contents
       this.processHeadingsAndTOC();
 
-      // 4. Render Previous / Next Page Pager
+      // 5. Render Previous / Next Page Pager
       this.renderPager(leaf);
 
-      // 5. Scroll main view back to top
+      // 6. Scroll main view back to top
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // 6. Notify Doc Runner to attach runnable toolbars & code simulator buttons
+      // 7. Notify Doc Runner to attach runnable toolbars & code simulator buttons
       if (window.initDocRunner) {
         window.initDocRunner();
       }
@@ -508,15 +537,16 @@
 
     processHeadingsAndTOC() {
       const article = document.getElementById('docs-markdown-body');
+      const tocSidebar = document.getElementById('docs-toc-sidebar');
       const tocList = document.getElementById('docs-toc-list');
-      if (!article || !tocList) return;
+      if (!article || !tocList || !tocSidebar) return;
 
       const headings = Array.from(article.querySelectorAll('h2, h3'));
       if (headings.length === 0) {
-        document.getElementById('docs-toc-sidebar').style.display = 'none';
+        tocSidebar.style.display = 'none';
         return;
       }
-      document.getElementById('docs-toc-sidebar').style.display = '';
+      tocSidebar.style.display = '';
 
       let tocHtml = '';
       headings.forEach((heading, idx) => {
@@ -607,14 +637,14 @@
         <div class="docs-pager">
           ${prevPage ? `
             <a class="docs-pager-card prev" href="#${prevPage.topPath}${prevPage.path}" data-path="${prevPage.path}">
-              <span class="docs-pager-label">← Previous Topic</span>
+              <span class="docs-pager-label">← ${state.locale === 'zh_CN' ? '上一节' : 'Previous Topic'}</span>
               <span class="docs-pager-title">${prevPage.name}</span>
             </a>
           ` : '<div></div>'}
           
           ${nextPage ? `
             <a class="docs-pager-card next" href="#${nextPage.topPath}${nextPage.path}" data-path="${nextPage.path}">
-              <span class="docs-pager-label">Next Topic →</span>
+              <span class="docs-pager-label">${state.locale === 'zh_CN' ? '下一节' : 'Next Topic'} →</span>
               <span class="docs-pager-title">${nextPage.name}</span>
             </a>
           ` : '<div></div>'}
@@ -650,9 +680,6 @@
   const Search = {
     async buildIndex() {
       state.searchIndex = [];
-      const isZh = state.locale === 'zh_CN';
-
-      // Load all left menu json files in parallel to build searchable index
       for (const top of state.topMenus) {
         try {
           const res = await fetch(`${BASE_URL}${top.data}`);
@@ -878,17 +905,18 @@
         <header class="docs-header">
           <div class="docs-header-inner">
             <div class="docs-header-left">
-              <button class="docs-hamburger-btn" id="docs-hamburger-btn" aria-label="Toggle navigation drawer">
+              <button class="docs-hamburger-btn mobile-only" id="docs-hamburger-btn" aria-label="Toggle navigation drawer">
                 ${ICONS.hamburger}
               </button>
 
               <a class="docs-brand" href="#/guide/installDevtool?locale=${state.locale}">
                 <img class="docs-brand-logo" src="${BASE_URL}/img/logo.png" alt="Macle Logo" />
-                <span>Macle Docs</span>
+                <span class="docs-brand-text">Macle Docs</span>
                 <span class="docs-brand-badge">v26.6</span>
               </a>
 
-              <nav class="docs-top-nav" id="docs-top-nav" aria-label="Documentation sections">
+              <!-- Desktop Top Nav -->
+              <nav class="docs-top-nav desktop-only" id="docs-top-nav" aria-label="Documentation sections">
                 <!-- Injected dynamically -->
               </nav>
             </div>
@@ -925,11 +953,18 @@
                 <span>${state.locale === 'zh_CN' ? '中文' : 'EN'}</span>
               </button>
 
-              <!-- GitHub Repository Link -->
-              <a class="docs-github-link" href="https://github.com/macle-community" target="_blank" rel="noopener noreferrer" title="Macle on GitHub">
+              <!-- GitHub Link (Desktop only) -->
+              <a class="docs-github-link desktop-only" href="https://github.com/macle-community" target="_blank" rel="noopener noreferrer" title="Macle on GitHub">
                 ${ICONS.github}
               </a>
             </div>
+          </div>
+
+          <!-- Mobile Sub-Navigation Bar: Horizontally scrollable section tabs -->
+          <div class="docs-subnav-bar mobile-only" id="docs-subnav-bar">
+            <nav class="docs-subnav-scroll" id="docs-mobile-top-nav" aria-label="Mobile sections">
+              <!-- Injected dynamically -->
+            </nav>
           </div>
         </header>
 
@@ -938,12 +973,23 @@
 
         <!-- Three-Column Documentation Layout -->
         <div class="docs-layout">
-          <!-- Left Navigation Sidebar -->
+          <!-- Left Navigation Sidebar / Mobile Drawer -->
           <aside class="docs-sidebar" id="docs-sidebar">
+            <div class="docs-sidebar-header mobile-only">
+              <div class="docs-sidebar-header-title">
+                <img src="${BASE_URL}/img/logo.png" class="docs-sidebar-header-logo" alt="" />
+                <span>${state.locale === 'zh_CN' ? '文档导航' : 'Navigation'}</span>
+              </div>
+              <button class="docs-sidebar-close-btn" id="docs-sidebar-close-btn" aria-label="Close drawer">
+                ${ICONS.close}
+              </button>
+            </div>
+
             <div class="docs-sidebar-filter">
               ${ICONS.search}
-              <input type="text" id="docs-sidebar-filter-input" placeholder="${state.locale === 'zh_CN' ? '过滤主题...' : 'Filter topics...'}" />
+              <input type="text" id="docs-sidebar-filter-input" placeholder="${state.locale === 'zh_CN' ? '过滤当前分类主题...' : 'Filter topics...'}" />
             </div>
+            
             <nav id="docs-sidebar-nav" aria-label="Topic navigation">
               <!-- Injected dynamically -->
             </nav>
@@ -1048,11 +1094,16 @@
       // Mobile Hamburger Drawer
       const hamburger = document.getElementById('docs-hamburger-btn');
       const backdrop = document.getElementById('docs-drawer-backdrop');
+      const drawerCloseBtn = document.getElementById('docs-sidebar-close-btn');
+
       if (hamburger) {
         hamburger.addEventListener('click', () => this.toggleMobileDrawer());
       }
       if (backdrop) {
         backdrop.addEventListener('click', () => this.closeMobileDrawer());
+      }
+      if (drawerCloseBtn) {
+        drawerCloseBtn.addEventListener('click', () => this.closeMobileDrawer());
       }
 
       // Close mobile drawer on resize to desktop
@@ -1072,6 +1123,7 @@
         sidebar.classList.toggle('open', state.mobileDrawerOpen);
         backdrop.classList.toggle('open', state.mobileDrawerOpen);
         hamburger.innerHTML = state.mobileDrawerOpen ? ICONS.close : ICONS.hamburger;
+        document.body.style.overflow = state.mobileDrawerOpen ? 'hidden' : '';
       }
     },
 
@@ -1084,6 +1136,7 @@
         sidebar.classList.remove('open');
         backdrop.classList.remove('open');
         hamburger.innerHTML = ICONS.hamburger;
+        document.body.style.overflow = '';
       }
     }
   };

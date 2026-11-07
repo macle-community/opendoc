@@ -1479,6 +1479,14 @@ ${taroCode}
     modalEl.classList.add('active');
     document.body.style.overflow = 'hidden';
 
+    // On mobile screens, automatically default to simulator view
+    if (window.innerWidth <= 868) {
+      const simBtn = modalEl.querySelector('.macle-view-btn[data-view="sim"]');
+      if (simBtn) {
+        simBtn.click();
+      }
+    }
+
     addLog('info', `Loaded '${currentExample.title}' in Web Simulator`);
   }
 
