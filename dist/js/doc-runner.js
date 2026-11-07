@@ -17,7 +17,7 @@
 
   let modalEl = null;
   let activeViewMode = 'split'; // 'split', 'code', 'sim'
-  let activeSimMode = 'live';   // 'live', 'devsuite'
+  let activeSimMode = 'devsuite';   // 'devsuite' Web Simulator
   let activeMiniApp = 'native'; // 'native' (miniapp) or 'taro' (miniapp-taro)
   let currentDevSuitePage = 'pages/index/index';
   let simulatorInfo = {
@@ -1098,44 +1098,64 @@ ${taroCode}
           <!-- Right: Web Simulator Panel -->
           <div class="macle-sim-panel">
             <div class="macle-sim-topbar">
-              <!-- Simulator Mode Selector -->
-              <div class="macle-sim-modes">
-                <button class="macle-sim-mode-btn active" data-sim="live">📱 Live Runner</button>
-                <button class="macle-sim-mode-btn" data-sim="devsuite">🌐 DevSuite Simulator</button>
-              </div>
-
-              <!-- DevSuite Page Controls (visible in devsuite mode) -->
-              <div class="macle-devsuite-page-controls" id="macle-devsuite-page-controls" style="display: none;">
+              <!-- Simulator Page Controls -->
+              <div class="macle-devsuite-page-controls" id="macle-devsuite-page-controls">
                 <!-- MiniApp Switcher: Native vs Taro -->
                 <div class="macle-miniapp-toggle" title="Switch between Native MiniApp and Taro React MiniApp">
                   <button class="macle-miniapp-btn active" data-app="native">📱 Native</button>
                   <button class="macle-miniapp-btn" data-app="taro">⚛️ Taro</button>
                 </div>
 
-                <select class="macle-sim-page-select" id="macle-devsuite-page-select" title="Switch DevSuite Simulator Page">
-                  <option value="pages/button/index">Button 按钮</option>
-                  <option value="pages/layout/index">Layout 栅格</option>
-                  <option value="pages/cell/index">Cell 单元格</option>
-                  <option value="pages/checkbox/index">Checkbox 复选框</option>
-                  <option value="pages/radio/index">Radio 单选框</option>
-                  <option value="pages/switch/index">Switch 开关</option>
-                  <option value="pages/slider/index">Slider 滑块</option>
-                  <option value="pages/stepper/index">Stepper 步进器</option>
-                  <option value="pages/field/index">Field 输入框</option>
-                  <option value="pages/tag/index">Tag 标签</option>
-                  <option value="pages/loading/index">Loading 加载</option>
-                  <option value="pages/progress/index">Progress 进度条</option>
-                  <option value="pages/divider/index">Divider 分割线</option>
-                  <option value="pages/empty/index">Empty 空状态</option>
-                  <option value="pages/steps/index">Steps 步骤条</option>
-                  <option value="pages/dialog/index">Dialog 弹出框</option>
-                  <option value="pages/toast/index">Toast 轻提示</option>
-                  <option value="pages/view/index">View 视图</option>
-                  <option value="pages/text/index">Text 文本</option>
-                  <option value="pages/swiper/index">Swiper 轮播</option>
-                  <option value="pages/scroll-view/index">ScrollView 滚动</option>
-                  <option value="pages/index/index">Showcase Catalog 目录</option>
-                  <option value="pages/runner/index">Custom Snippet 实时运行</option>
+                <select class="macle-sim-page-select" id="macle-devsuite-page-select" title="Switch Simulator Page">
+                  <optgroup label="Showcase Catalog">
+                    <option value="pages/index/index">Showcase Home (All 32 Components)</option>
+                  </optgroup>
+                  <optgroup label="View Container">
+                    <option value="pages/view/index">view 视图容器</option>
+                    <option value="pages/scroll-view/index">scroll-view 滚动视图</option>
+                    <option value="pages/swiper/index">swiper 滑块视图容器</option>
+                    <option value="pages/swiper-item/index">swiper-item 滑块项</option>
+                    <option value="pages/cover-view/index">cover-view 覆盖视图</option>
+                    <option value="pages/cover-image/index">cover-image 覆盖图片</option>
+                  </optgroup>
+                  <optgroup label="Basic Content">
+                    <option value="pages/text/index">text 文本</option>
+                    <option value="pages/icon/index">icon 图标</option>
+                    <option value="pages/rich-text/index">rich-text 富文本</option>
+                    <option value="pages/progress/index">progress 进度条</option>
+                  </optgroup>
+                  <optgroup label="Form Components">
+                    <option value="pages/button/index">button 按钮</option>
+                    <option value="pages/checkbox/index">checkbox 多选框</option>
+                    <option value="pages/checkbox-group/index">checkbox-group 多选框组</option>
+                    <option value="pages/form/index">form 表单</option>
+                    <option value="pages/input/index">input 输入框</option>
+                    <option value="pages/picker/index">picker 选择器</option>
+                    <option value="pages/picker-view/index">picker-view 嵌入选择器</option>
+                    <option value="pages/picker-view-column/index">picker-view-column 选择器列</option>
+                    <option value="pages/label/index">label 标签</option>
+                    <option value="pages/switch/index">switch 开关</option>
+                    <option value="pages/radio/index">radio 单选框</option>
+                    <option value="pages/radio-group/index">radio-group 单选框组</option>
+                    <option value="pages/slider/index">slider 滑块</option>
+                    <option value="pages/textarea/index">textarea 多行输入</option>
+                  </optgroup>
+                  <optgroup label="Navigating">
+                    <option value="pages/navigator/index">navigator 页面跳转</option>
+                  </optgroup>
+                  <optgroup label="Media Components">
+                    <option value="pages/image/index">image 图片</option>
+                    <option value="pages/video/index">video 视频</option>
+                    <option value="pages/audio/index">audio 音频</option>
+                    <option value="pages/camera/index">camera 相机</option>
+                  </optgroup>
+                  <optgroup label="Open Capability & Config">
+                    <option value="pages/web-view/index">web-view 网页容器</option>
+                    <option value="pages/page-meta/index">page-meta 页面配置</option>
+                  </optgroup>
+                  <optgroup label="Map">
+                    <option value="pages/map/index">map 地图</option>
+                  </optgroup>
                 </select>
               </div>
 
@@ -1312,69 +1332,23 @@ ${taroCode}
     });
 
     // Apply / Re-run
-    document.getElementById('macle-apply-btn').addEventListener('click', async function() {
-      renderLiveSimulator();
-      addLog('info', 'Code re-executed in Live Runner');
-
-      // Also compile snippet into the corresponding miniapp runner page
-      try {
-        const isTaro = activeMiniApp === 'taro' || currentExample.activeTab === 'taro';
-        const payload = isTaro ? {
-          framework: 'taro',
-          tsx: currentExample.files['taro'],
-          title: currentExample.title
-        } : {
-          framework: 'native',
-          maml: currentExample.files['index.maml'] || currentExample.rawCode,
-          js: currentExample.files['index.js'] || 'Page({ data: {} });',
-          json: currentExample.files['index.json'] || '{}',
-          mass: currentExample.files['index.mass'] || '',
-          title: currentExample.title
-        };
-        const res = await fetch('/api/compile-snippet', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          addLog('info', `Snippet compiled to ${isTaro ? 'Taro' : 'Native'} miniapp runner page`);
-          if (activeSimMode === 'devsuite') {
-            currentDevSuitePage = 'pages/runner/index';
-            const pageSelect = document.getElementById('macle-devsuite-page-select');
-            if (pageSelect) pageSelect.value = currentDevSuitePage;
-            const iframe = document.getElementById('macle-devsuite-iframe');
-            const proj = getActiveSimulatorProject();
-            if (iframe) iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=pages/runner/index`;
-          }
-        }
-      } catch (e) {
-        console.warn('Compile snippet failed:', e);
+    document.getElementById('macle-apply-btn').addEventListener('click', function() {
+      const iframe = document.getElementById('macle-devsuite-iframe');
+      const proj = getActiveSimulatorProject();
+      if (iframe) {
+        iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
       }
-    });
-
-    // Simulator Mode Switcher (Live vs DevSuite)
-    const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
-    simModeBtns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        simModeBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeSimMode = btn.dataset.sim;
-        switchSimulatorMode(activeSimMode);
-      });
+      addLog('info', `Simulator reloaded (${proj})`);
     });
 
     // Reload Simulator
     document.getElementById('macle-reload-sim').addEventListener('click', function() {
-      if (activeSimMode === 'devsuite') {
-        const iframe = document.getElementById('macle-devsuite-iframe');
-        const proj = getActiveSimulatorProject();
-        if (iframe) {
-          iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
-        }
-        updateDevSuiteStatusPill();
-      } else {
-        renderLiveSimulator();
+      const iframe = document.getElementById('macle-devsuite-iframe');
+      const proj = getActiveSimulatorProject();
+      if (iframe) {
+        iframe.src = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
       }
+      updateDevSuiteStatusPill();
       addLog('info', `Simulator reloaded (${getActiveSimulatorProject()})`);
     });
 
@@ -1445,21 +1419,10 @@ ${taroCode}
       pageSelect.value = currentDevSuitePage;
     }
 
-    // Check DevSuite simulator online status
-    const isOnline = await updateDevSuiteStatusPill();
-
-    // Default to DevSuite simulator mode if online so the miniapp page displays directly!
-    if (isOnline) {
-      activeSimMode = 'devsuite';
-      const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
-      simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'devsuite'));
-      await switchSimulatorMode('devsuite');
-    } else {
-      activeSimMode = 'live';
-      const simModeBtns = modalEl.querySelectorAll('.macle-sim-mode-btn');
-      simModeBtns.forEach(b => b.classList.toggle('active', b.dataset.sim === 'live'));
-      await switchSimulatorMode('live');
-    }
+    // Always use Web Simulator
+    activeSimMode = 'devsuite';
+    await updateDevSuiteStatusPill();
+    await switchSimulatorMode('devsuite');
 
     // Render code in active tab
     renderActiveCodeTab();
@@ -1546,7 +1509,7 @@ ${taroCode}
     return escaped;
   }
 
-  // 10. Switch between Live Runner and DevSuite Simulator
+  // 10. Configure Web Simulator
   async function switchSimulatorMode(mode) {
     const phoneFrame = document.getElementById('macle-phone-frame');
     const viewport = document.getElementById('macle-phone-viewport');
@@ -1554,45 +1517,28 @@ ${taroCode}
     const offlineOverlay = document.getElementById('macle-devsuite-offline');
     const pageControls = document.getElementById('macle-devsuite-page-controls');
 
-    if (mode === 'devsuite') {
-      phoneFrame?.classList.add('is-devsuite-mode');
-      viewport.style.display = 'none';
-      if (pageControls) pageControls.style.display = 'block';
+    phoneFrame?.classList.add('is-devsuite-mode');
+    if (viewport) viewport.style.display = 'none';
+    if (pageControls) pageControls.style.display = 'flex';
+    if (offlineOverlay) offlineOverlay.style.display = 'none';
+    if (iframe) iframe.style.display = 'block';
 
-      const isOnline = await updateDevSuiteStatusPill();
-      if (!isOnline) {
-        iframe.style.display = 'none';
-        if (offlineOverlay) offlineOverlay.style.display = 'flex';
-        addLog('warn', `DevSuite Simulator is offline on port ${simulatorInfo.port || 30002}`);
-        return;
-      }
-
-      if (offlineOverlay) offlineOverlay.style.display = 'none';
-      iframe.style.display = 'block';
-
-      if (!currentDevSuitePage) {
-        currentDevSuitePage = detectDocPage();
-      }
-      const pageSelect = document.getElementById('macle-devsuite-page-select');
-      if (pageSelect) {
-        pageSelect.value = currentDevSuitePage;
-      }
-
-      const proj = getActiveSimulatorProject();
-      const targetUrl = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
-      if (iframe.src !== targetUrl && !iframe.src.endsWith(targetUrl)) {
-        iframe.src = targetUrl;
-        addLog('info', `DevSuite Simulator displayed page: ${currentDevSuitePage} (${proj})`);
-      }
-    } else {
-      phoneFrame?.classList.remove('is-devsuite-mode');
-      if (pageControls) pageControls.style.display = 'none';
-      if (offlineOverlay) offlineOverlay.style.display = 'none';
-      iframe.style.display = 'none';
-      viewport.style.display = 'block';
-      updateDevSuiteStatusPill();
-      renderLiveSimulator();
+    if (!currentDevSuitePage) {
+      currentDevSuitePage = detectDocPage();
     }
+    const pageSelect = document.getElementById('macle-devsuite-page-select');
+    if (pageSelect) {
+      pageSelect.value = currentDevSuitePage;
+    }
+
+    const proj = getActiveSimulatorProject();
+    const targetUrl = `/${proj}/root/debug/simulator/?entryPagePath=${encodeURIComponent(currentDevSuitePage)}`;
+    if (iframe && (iframe.src !== targetUrl && !iframe.src.endsWith(targetUrl))) {
+      iframe.src = targetUrl;
+      addLog('info', `Web Simulator displaying: ${currentDevSuitePage} (${proj})`);
+    }
+
+    updateDevSuiteStatusPill();
   }
 
   // 11. Render Live Interactive Simulator
