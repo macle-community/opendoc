@@ -23,12 +23,45 @@
 
 ### 示例代码
 
-```html
+#### 1. 多行文本输入框与占位符
 
-<view class='textarea-wrp'>
-  <textarea focus id='textarea2' selection-start='1' selection-end='3' style='height: 3em' value='自动聚焦' maxlength='10' auto-height />
+```html
+<view class="textarea-wrp">
+  <textarea class="std-textarea" placeholder="Enter comments or description..." bindinput="onTextareaInput" maxlength="200" />
+  <view class="char-count">{{charLen}} / 200</view>
 </view>
 ```
+
+```js
+Page({
+  data: { charLen: 0 },
+  onTextareaInput(e) { this.setData({ charLen: (e.detail.value || '').length }); }
+});
+```
+
+```css
+.textarea-wrp { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; }
+.std-textarea { width: 100%; height: 90px; font-size: 14px; }
+.char-count { text-align: right; font-size: 11px; color: #94a3b8; margin-top: 4px; }
+```
+
+#### 2. 自动增高多行输入框与字数限制
+
+```html
+<view class="textarea-wrp">
+  <textarea auto-height="true" placeholder="Auto-height textarea expanding with lines" class="std-textarea" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.textarea-wrp { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; }
+.std-textarea { width: 100%; min-height: 40px; font-size: 14px; }
+```
+
 
 ### Bug & Tip
 

@@ -91,8 +91,25 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-operator">&lt;</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
-  <span class="hljs-operator">&lt;</span>progress fontSize<span class="hljs-operator">=</span>&quot;20&quot; <span class="hljs-keyword">percent</span><span class="hljs-operator">=</span>&quot;20&quot; <span class="hljs-keyword">show</span><span class="hljs-operator">-</span>info strokeWidth<span class="hljs-operator">=</span>&quot;2&quot; <span class="hljs-operator">/</span><span class="hljs-operator">&gt;</span>
-<span class="hljs-operator">&lt;</span><span class="hljs-operator">/</span><span class="hljs-keyword">view</span><span class="hljs-operator">&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. 基础进度条与百分比显示</h4>
+<pre><code class="language-html">&lt;view class=&quot;progress-col&quot;&gt;
+  &lt;progress percent=&quot;30&quot; show-info=&quot;true&quot; stroke-width=&quot;4&quot; /&gt;
+  &lt;progress percent=&quot;65&quot; show-info=&quot;true&quot; stroke-width=&quot;6&quot; active-color=&quot;#3b82f6&quot; /&gt;
+  &lt;progress percent=&quot;90&quot; show-info=&quot;true&quot; stroke-width=&quot;8&quot; active-color=&quot;#10b981&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.progress-col { display: flex; flex-direction: column; gap: 16px; }</code></pre>
+<h4 id="sample-code-2">2. 动画效果与自定义颜色尺寸</h4>
+<pre><code class="language-html">&lt;view class=&quot;progress-col&quot;&gt;
+  &lt;progress percent=&quot;{{animPercent}}&quot; show-info=&quot;true&quot; active=&quot;true&quot; active-mode=&quot;forwards&quot; stroke-width=&quot;8&quot; border-radius=&quot;4&quot; active-color=&quot;#8b5cf6&quot; /&gt;
+  &lt;button size=&quot;mini&quot; type=&quot;default&quot; bindtap=&quot;increaseProgress&quot; style=&quot;align-self: flex-start; margin-top: 8px;&quot;&gt;+20% Progress&lt;/button&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: { animPercent: 40 },
+  increaseProgress() {
+    let next = this.data.animPercent + 20;
+    if (next &gt; 100) next = 20;
+    this.setData({ animPercent: next });
+  }
+});</code></pre>
+<pre><code class="language-css">.progress-col { display: flex; flex-direction: column; gap: 10px; }</code></pre>

@@ -11,25 +11,20 @@
 
 ### Sample Code
 
-```html
+#### 1. Single Radio Button
 
-<view class='page-section page-section-gap'>
-  <view class='page-section-title'>Default style</view>
-  <label class='radio'>
-    <radio class='radio1' value='r1' checked='true' />
-    Selected
-  </label>
-  <label class='radio'>
-    <radio class='radio2' value='r2' />
-    Not selected
-  </label>
-  <label class='radio'>
-    <radio class='radio3' value='r3' disabled />
-    Disabled
-  </label>
-  <label class='radio'>
-    <radio class='radio4' value='r4' disabled='123' checked='456' color='red123' />
-    Invalid attribute
-  </label>
+```html
+<view class="radio-row">
+  <radio value="single" checked="true" color="#2563eb" />
+  <text style="margin-left: 8px; font-size: 14px;">Standalone Checked Radio</text>
 </view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.radio-row { display: flex; align-items: center; font-size: 14px; }
+```
+

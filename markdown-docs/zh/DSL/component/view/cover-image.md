@@ -19,7 +19,19 @@
 
 ### 示例代码
 
-```html
+#### 1. 原生组件上的图片覆盖
 
-<cover-image class='cover-image' src='https://example.jpg'></cover-image>
+```html
+<view class="media-container" style="position: relative; height: 160px; background: #1e293b; border-radius: 10px;">
+  <cover-image class="cover-logo" src="https://img.icons8.com/color/96/play--v1.png" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px;" />
+</view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.cover-logo { pointer-events: auto; }
+```
+

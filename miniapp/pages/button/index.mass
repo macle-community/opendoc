@@ -1,1 +1,7 @@
-.page-body { padding: 8px 0; }
+/* pages/button/index.mass */
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+

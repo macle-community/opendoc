@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "ScrollView 滚动视图"
+  navigationBarTitleText: 'scroll-view scroll-view'.trim()
 });

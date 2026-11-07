@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,
+    maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com">
+  <link rel="icon" href="data:image/ico;base64,aWNv">
+  
+</head>
+<body>
+ 
+      <div id="macleContent">
+          <div id="replaceContent"></div>
+      </div>
+
+
+<script src="../../../simulator/view/webview.js"></script>
+<script src="../../page-frame.js"></script>
+<script src="../../../framework/view/view.js"></script>
+
+
+<script src="../../page-mass.js"></script>
+<script src="../../page-maml.js"></script>
+<script src="../../page-json.js"></script>
+
+
+
+
+
+
+
+<script>
+  var __setCssStartTime__=Date.now();
+  __maAppCode__['pages/swiper-item/index.mass']();
+  var __setCssEndTime__=Date.now();
+  (function(){
+    var gf=$gma('./pages/swiper-item/index.maml');
+    if(window.__maAppCodeReadyCallback__){
+      window.__maAppCodeReadyCallback__(gf);
+    }else{
+      var data={detail:{generateFunc:gf,path:'pages/swiper-item/index'}}
+      document.dispatchEvent(new CustomEvent("generateFuncReady",data));
+    }
+  })();
+</script>
+</body>
+</html>

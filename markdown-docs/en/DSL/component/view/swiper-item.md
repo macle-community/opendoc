@@ -4,43 +4,27 @@
 
 ### Sample Code
 
+#### 1. Custom Swiper Item Card
+
 ```html
-
-<swiper class="swiper-container">
-    <swiper-item>
-        <view class="item">Page A</view>
-    </swiper-item>
-    <swiper-item>
-        <view class="item">Page B</view>
-    </swiper-item>
-    <swiper-item>
-        <view class="item">Page C</view>
-    </swiper-item>
+<swiper indicator-dots="true" style="height: 140px;">
+  <swiper-item class="swiper-custom-item">
+    <view class="card-content">
+      <text class="card-title">Custom Item Container</text>
+      <text class="card-sub">swiper-item wraps individual slides</text>
+    </view>
+  </swiper-item>
 </swiper>
+```
 
+```js
+Page({ data: {} });
 ```
 
 ```css
-
-.swiper-container{
-    height: 160px;
-}
-
-.item{
-    height: 100%;
-    line-height: 180px;
-    text-align: center;
-}
-
-swiper-item:nth-child(1) .item{
-    background-color: rgb(81, 170, 81);
-}
-swiper-item:nth-child(2) .item{
-    background-color: rgb(112, 183, 228);
-}
-swiper-item:nth-child(3) .item{
-    background-color: rgb(230, 174, 182);
-}
-
+.swiper-custom-item { padding: 10px; box-sizing: border-box; }
+.card-content { background: #f8fafc; border: 2px dashed #94a3b8; height: 100%; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.card-title { font-weight: bold; color: #1e293b; font-size: 15px; }
+.card-sub { font-size: 12px; color: #64748b; margin-top: 4px; }
 ```
 

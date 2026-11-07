@@ -41,25 +41,11 @@
 <td align="left">Color of <strong>radio</strong>, which is the same as the CSS color.</td>
 </tr>
 </tbody></table>
-<h3 id="sample">Sample</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>default style<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r1&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;true&#x27;</span> /&gt;</span>
-    selected
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r2&#x27;</span> /&gt;</span>
-    unselected
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r3&#x27;</span> <span class="hljs-attr">disabled</span> /&gt;</span>
-    disabled
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r4&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;123&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;456&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;red123&#x27;</span> /&gt;</span>
-    illegal attribute
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h3 id="sample-code">Sample Code</h3>
+<h4 id="sample-code-1">1. Single Radio Button</h4>
+<pre><code class="language-html">&lt;view class=&quot;radio-row&quot;&gt;
+  &lt;radio value=&quot;single&quot; checked=&quot;true&quot; color=&quot;#2563eb&quot; /&gt;
+  &lt;text style=&quot;margin-left: 8px; font-size: 14px;&quot;&gt;Standalone Checked Radio&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.radio-row { display: flex; align-items: center; font-size: 14px; }</code></pre>

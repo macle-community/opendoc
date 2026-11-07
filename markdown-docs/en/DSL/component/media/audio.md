@@ -27,73 +27,19 @@
 
 ### Sample Code
 
-```html
+#### 1. Audio Player with Playback Controls
 
-<view>
-  <view style='text-align: center;'>
-    <audio style='text-align: left'
-           id='myAudio'
-           src='{{src}}'
-           loop='{{loop}}'
-           poster='{{poster}}'
-           name='{{name}}'
-           author='{{author}}'
-           controls='{{controls}}'
-           bindplay='bindplay'
-           bindpause='bindpause'
-           bindtimeupdate='bindtimeupdate'
-           bindended='bindended'
-           binderror='binderror'></audio>
-  </view>
+```html
+<view class="audio-container">
+  <audio id="myAudio" name="Sample Audio Track" author="Macle OpenDoc" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls="true" style="width: 100%;" />
 </view>
 ```
 
 ```js
-Page({
-  onReady: function(res) {
-    this.audioContext = ma.createAudioContext('myAudio');
-    this.audioContext.setSrc('http://example.mp3');
-  },
-  onUnload: function() {
-    this.audioContext.pause();
-  },
-  data: {
-    src: '',
-    poster: 'http://example.jpg',
-    name: 'example',
-    author: 'example',
-    loop: false,
-    controls: true,
-    time: 30
-  },
-  playAudio: function() {
-    this.audioContext.play();
-  },
-  pauseAudio: function() {
-    this.audioContext.pause();
-  },
-  seekAudio: function() {
-    this.audioContext.seek(this.data.time);
-  },
-  binderror: function(e) {
-    console.log('audio error:' + e.detail.errMsg);
-  },
-  bindplay: function() {
-    console.log('audio is played');
-  },
-  bindpause: function() {
-    console.log('audio is paused');
-  },
-  bindtimeupdate: function(e) {
-    this.duration = e.detail.duration;
-    console.log('audio currentTime:' + e.detail.currentTime);
-  },
-  bindended: function() {
-    console.log('audio is ended');
-  },
-  binderror: function(e) {
-    console.log('audio error:' + e.detail.errMsg);
-  }
-})
-
+Page({ data: {} });
 ```
+
+```css
+.audio-container { background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+```
+

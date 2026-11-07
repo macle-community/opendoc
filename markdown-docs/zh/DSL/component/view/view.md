@@ -11,187 +11,86 @@
 
 ### 示例代码
 
-```js
-
-Page({
-    data: {
-        pageName: 'component/view',
-    },
-});
-
-```
+#### 1. 弹性布局（水平与垂直）
 
 ```html
+<view class="page-section">
+  <view class="page-section-title">flex-direction: row</view>
+  <view class="flex-row">
+    <view class="flex-item demo-bg-red">A</view>
+    <view class="flex-item demo-bg-green">B</view>
+    <view class="flex-item demo-bg-blue">C</view>
+  </view>
 
-<view class="page">
-    <view class="page-description">视图容器相当于 web 的 div 或 react-native 的 View</view>
-    <view class="page-section">
-        <view class="page-section-demo">
-            <view class="stream">
-                <view class="post">
-                    <view class="postUser">
-                        <view class="postUserName">Zoe</view>
-                    </view>
-                    <view class="postBody">
-                        <view class="postBodyContent">
-                            欢迎来到Macle小程序！
-                        </view>
-                        <view class="postBodyDate">
-                            June 12
-                        </view>
-                    </view>
-                </view>
-
-                <view class="post">
-                    <view class="postUser">
-                        <view class="postUserName">Jim</view>
-                    </view>
-                    <view class="postBody">
-                        <view class="postBodyContent">
-                            @Zog 如何开始？
-                        </view>
-                        <view class="postBodyDate">
-                            June 13
-                        </view>
-                    </view>
-                </view>
-
-                <view class="post">
-                    <view class="postUser">
-                        <view class="postUserName">Zog</view>
-                    </view>
-                    <view class="postBody">
-                        <view class="postBodyContent">
-                            你可以看 Demo，有一个简单的了解；下载我们的 IDE 进行开发~
-                        </view>
-                        <view class="postBodyDate">
-                            June 14
-                        </view>
-                    </view>
-                </view>
-
-                <view class="post">
-                    <view class="postUser">
-                        <view class="postUserName">Alice</view>
-                    </view>
-                    <!-- hover blue -->
-                    <view class="postBody" hover-class="burlywood">
-                        <view class="postBodyContent">
-                            excellent!
-                        </view>
-                        <view class="postBodyDate" hidden>
-                            June 15
-                        </view>
-                    </view>
-                </view>
-
-                <view class="post" hidden>
-                    <view class="postUser">
-                        <view class="postUserName">Alice</view>
-                    </view>
-                    <view class="postBody">
-                        <view class="postBodyContent">
-                            excellent +1
-                        </view>
-                        <view class="postBodyDate">
-                            June 15
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
+  <view class="page-section-title" style="margin-top: 16px;">flex-direction: column</view>
+  <view class="flex-col">
+    <view class="flex-item demo-bg-red">Row 1</view>
+    <view class="flex-item demo-bg-green">Row 2</view>
+    <view class="flex-item demo-bg-blue">Row 3</view>
+  </view>
 </view>
+```
 
+```js
+Page({
+  data: {}
+});
 ```
 
 ```css
-
-.burlywood {
-    background: burlywood;
-}
-
-.stream {
-    display: flex;
-    flex-direction: column;
-    padding: 15rpx;
-}
-
-.post + .post {
-    margin-top: 15rpx;
-}
-
-.post {
-    display: flex;
-}
-
-.postUser {
-    flex: 0 1 auto;
-    padding-bottom: 20rpx;
-}
-
-.postUserName {
-    width: 180rpx;
-    color: #7197a5;
-    font-size: 24rpx;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-top: 60rpx;
-}
-
-.postBody {
-    flex: 1 1 0%;
-    position: relative;
-    padding: 30rpx;
-    border: 2rpx solid #b0b7b9;
-    border-radius: 8rpx;
-}
-
-.postBody:after,
-.postBody:before {
-    right: 100%;
-    top: 70rpx;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-}
-
-.postBody:after {
-    border-color: transparent;
-    border-right-color: #ffffff;
-    border-width: 16rpx;
-    margin-top: -16rpx;
-}
-
-.postBody:before {
-    border-color: transparent;
-    border-right-color: #deebf0;
-    border-width: 18rpx;
-    margin-top: -18rpx;
-}
-
-.postBodyContent {
-    color: #769caa;
-    font-size: 24rpx;
-}
-
-.postBodyDate {
-    margin-top: 15rpx;
-    color: #708188;
-    font-size: 20rpx;
-    text-transform: uppercase;
-    letter-spacing: 2rpx;
-}
-
-.burlywood {
-    color: burlywood;
-}
-
+.flex-row { display: flex; flex-direction: row; gap: 10px; }
+.flex-col { display: flex; flex-direction: column; gap: 10px; }
+.flex-item { height: 50px; flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; border-radius: 6px; }
+.demo-bg-red { background-color: #ef4444; }
+.demo-bg-green { background-color: #10b981; }
+.demo-bg-blue { background-color: #3b82f6; }
 ```
+
+#### 2. 动态信息流与按压态
+
+```html
+<view class="stream">
+  <view class="post" hover-class="post-hover" hover-start-time="50" hover-stay-time="400">
+    <view class="post-user">
+      <view class="post-avatar">Z</view>
+      <text class="post-name">Zoe</text>
+    </view>
+    <view class="post-body">
+      <view class="post-content">Welcome to Macle Mini Program development!</view>
+      <view class="post-date">June 12</view>
+    </view>
+  </view>
+  <view class="post" hover-class="post-hover">
+    <view class="post-user">
+      <view class="post-avatar">J</view>
+      <text class="post-name">Jim</text>
+    </view>
+    <view class="post-body">
+      <view class="post-content">Great! How can I preview on the Web Simulator?</view>
+      <view class="post-date">June 13</view>
+    </view>
+  </view>
+</view>
+```
+
+```js
+Page({
+  data: {}
+});
+```
+
+```css
+.stream { display: flex; flex-direction: column; gap: 12px; }
+.post { display: flex; background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+.post-hover { background-color: #f1f5f9; }
+.post-user { display: flex; flex-direction: column; align-items: center; width: 60px; margin-right: 12px; }
+.post-avatar { width: 36px; height: 36px; border-radius: 18px; background: #0284c7; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.post-name { font-size: 12px; color: #64748b; margin-top: 4px; }
+.post-body { flex: 1; }
+.post-content { font-size: 14px; color: #1e293b; line-height: 1.5; }
+.post-date { font-size: 11px; color: #94a3b8; margin-top: 6px; }
+```
+
 
 ### Bug & Tip
 

@@ -1,0 +1,21 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Page Navigation (open-type="navigate")</text>
+    <view class="nav-container">
+      <navigator url="/pages/button/index" open-type="navigate" hover-class="nav-hover" class="nav-btn">
+        👉 Navigate to Button Component Page
+      </navigator>
+      <navigator url="/pages/input/index" open-type="navigate" hover-class="nav-hover" class="nav-btn">
+        👉 Navigate to Input Component Page
+      </navigator>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Page Redirect (open-type="redirect")</text>
+    <navigator url="/pages/view/index" open-type="redirect" class="nav-btn">
+      🔄 Redirect to View Page (Close Current)
+    </navigator>
+  </view>
+
+</view>

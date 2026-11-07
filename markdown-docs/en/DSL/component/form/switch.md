@@ -12,18 +12,44 @@
 
 ### Sample Code
 
-```html
+#### 1. Switch Selector with Change Event
 
-<view>
-  <switch bindchange='switchChange' />
+```html
+<view class="switch-row">
+  <text class="sw-title">Notification Enabled:</text>
+  <switch checked="{{isEnabled}}" bindchange="onSwitchToggle" color="#2563eb" />
 </view>
 ```
 
 ```js
 Page({
-  switchChange: function(e) {
-    console.log(e.detail.value)
+  data: { isEnabled: true },
+  onSwitchToggle(e) {
+    this.setData({ isEnabled: e.detail.value });
+    ma.showToast({ title: e.detail.value ? 'Enabled' : 'Disabled', icon: 'none' });
   }
-})
-
+});
 ```
+
+```css
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }
+.sw-title { font-size: 14px; font-weight: 500; }
+```
+
+#### 2. Checkbox Style Switch & Custom Color
+
+```html
+<view class="switch-row">
+  <text class="sw-title">Checkbox Style Switch:</text>
+  <switch type="checkbox" checked="true" color="#10b981" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }
+```
+

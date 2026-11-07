@@ -1,24 +1,32 @@
+
 page {
-  background-color: #f7f8fa;
+  background-color: #f8fafc;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #323233;
+  color: #1e293b;
   box-sizing: border-box;
 }
 
+.page-body {
+  padding: 12px;
+}
+
 .demo-block {
-  margin: 16px 12px;
+  margin-bottom: 16px;
   background: #ffffff;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
 }
 
 .demo-title {
   font-size: 14px;
   font-weight: 700;
-  color: #1e293b;
+  color: #0f172a;
   margin-bottom: 12px;
   display: block;
+  border-left: 3px solid #2563eb;
+  padding-left: 8px;
 }
 
 .demo-row {
@@ -29,24 +37,7 @@ page {
 }
 
 .demo-col {
-  margin-bottom: 12px;
-}
-
-/* Layout Grid Column Visual Borders */
-.maui-row {
-  margin-bottom: 12px;
-}
-.maui-col {
-  border: 1.5px solid #0284c7;
-  background-color: #f0f9ff;
-  color: #0369a1;
-  text-align: center;
-  border-radius: 4px;
-  line-height: 38px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 13px;
-}
-.maui-col:nth-child(even) {
-  background-color: #e0f2fe;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

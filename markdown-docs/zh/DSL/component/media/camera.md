@@ -50,221 +50,26 @@
 
 ### 示例代码
 
+#### 1. 系统相机取景器与前后置闪光灯
+
 ```html
-
-<camera device-position='{{position}}' flash='{{flash}}' style='width: 100%; height: 300px;' binderror='error'
-        bindstop='stop' bindinitdone='initdone' bindrecorderror='recorderror'></camera>
-<slider id='slider2' value='1' bindchange='slider2change' max='{{sliderMax}}' show-value step='1'
-        style='margin-top:50px ;' />
-
-<view class='button-group'>
-  <button class='takephoto' type='primary' bindtap='takePhoto'>拍照</button>
-  <button class='takephoto' type='primary' bindtap='startRecord'>录像</button>
-  <button class='takephoto' type='primary' bindtap='stopRecord'>停止录像</button>
-</view>
-
-<view class='button-group'>
-  <button class='takephoto' type='primary' bindtap='takePosition'>切换摄像头</button>
-  <button class='takephoto' type='primary' bindtap='takeFlash'>打开闪光灯</button>
+<view class="camera-wrapper">
+  <camera device-position="back" flash="off" style="width: 100%; height: 220px; border-radius: 8px; overflow: hidden;">
+    <cover-view style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px;">
+      Device: Back | Flash: Off
+    </cover-view>
+  </camera>
 </view>
 ```
 
 ```js
-const format = (res) => JSON.stringify(res, null, 4);
-Page({
-  data: {
-    src: '',
-    showText: '',
-    position: 'back',
-    flash: 'off',
-    videoSrc: '',
-    sliderMax: 100,
-    info: ''
-  },
-  slider2change(res) {
-    const ctx = ma.createCameraContext();
-    let zoom = parseInt(res.detail.value);
-    ctx.setZoom({
-      zoom: zoom,
-      success: (res) => {
-        console.log('设置zoom', res.zoom);
-        this.setData({
-          info: format(res)
-        });
-        ma.showToast({
-          title: '设置zoom成功',
-          icon: 'success'
-        });
-      },
-      fail: (res) => {
-        console.log('设置zoom fail');
-        this.setData({
-          info: format(res)
-        });
-        ma.showToast({
-          title: '设置zoom失败',
-          icon: 'error'
-        });
-      },
-      complete: (res) => {
-        console.log('设置zoom完成');
-      }
-    });
-  },
-  initdone(res) {
-    this.setData({
-      sliderMax: res.detail.maxZoom
-    });
-  },
-  takePhoto() {
-    const ctx = ma.createCameraContext();
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        this.setData({
-          src: res.tempImagePath,
-          info: format(res)
-        });
-      },
-      fail: (res) => {
-        this.setData({
-          info: format(res)
-        });
-      }
-    });
-  },
-  takePosition() {
-    if (this.data.position === 'front') {
-      this.setData({
-        position: 'back'
-      });
-    } else {
-      this.setData({
-        position: 'front'
-      });
-    }
-  },
-  startRecord() {
-    const ctx = ma.createCameraContext();
-    ctx.startRecord({
-      timeoutCallback: (res) => {
-        ma.showToast({
-          title: '录像定时结束',
-          icon: 'success'
-        });
-        this.setData({
-          src: res.tempThumbPath,
-          info: format(res)
-        });
-        this.setData({
-          videoSrc: res.tempVideoPath
-        });
-      },
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('录像启动成功');
-        ma.showToast({
-          title: '录像启动成功',
-          icon: 'success'
-        });
-      },
-      fail(res) {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('录像启动失败');
-        ma.showToast({
-          title: '录像启动失败',
-          icon: 'error'
-        });
-      },
-      complete(res) {
-        console.log('录像启动完成');
-        console.log(res);
-      }
-    });
-  },
-  stopRecord() {
-    const ctx = ma.createCameraContext();
-    ctx.stopRecord({
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('录像结束成功');
-        ma.showToast({
-          title: res.tempVideoPath,
-          icon: 'success'
-        }),
-          this.setData({
-            src: res.tempThumbPath,
-            info: format(res)
-          });
-        this.setData({
-          videoSrc: res.tempVideoPath
-        });
-      },
-      fail(res) {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('录像结束失败');
-        ma.showToast({
-          title: '录像结束失败',
-          icon: 'error'
-        });
-      },
-      complete(res) {
-        console.log(res);
-        console.log('录像结束完成');
-      }
-    });
-  },
-  takeFlash() {
-    this.setData({
-      flash: 'on'
-    });
-  },
-  error: function(e) {
-    console.log(e.detail.errMsg);
-    this.setData({
-      info: format(e)
-    });
-  },
-  stop: function(e) {
-    console.log('camera stop:stopstop');
-    this.setData({
-      info: format(res)
-    });
-    console.log(e.detail.errMsg);
-  },
-  recorderror: function(e) {
-    ma.showToast({
-      title: 'camera recorderror',
-      icon: 'error'
-    });
-    console.log(e.detail.errMsg);
-    console.log(e.detail.tempThumbPath);
-    console.log(e.detail.tempVideoPath);
-    this.setData({
-      src: e.detail.tempThumbPath
-    });
-    this.setData({
-      videoSrc: e.detail.tempVideoPath
-    });
-    this.setData({
-      info: format(e.detail)
-    });
-  }
-});
-
+Page({ data: {} });
 ```
+
+```css
+.camera-wrapper { width: 100%; border-radius: 8px; overflow: hidden; }
+```
+
 
 ### Bug & Tip
 

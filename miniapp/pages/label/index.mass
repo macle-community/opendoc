@@ -1,0 +1,6 @@
+/* pages/label/index.mass */
+.label-demo { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.bound-label { color: #1e293b; cursor: pointer; }
+
+.enclosing-label { display: flex; align-items: center; padding: 10px; background: #fff; border-radius: 6px; }
+

@@ -107,21 +107,28 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">image</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&#x27;scaleToFill&#x27;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">bindload</span>=<span class="hljs-string">&#x27;bindload&#x27;</span> <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">image</span>&gt;</span></span>
-</code></pre>
-<pre><code class="language-js">Page({
-  <span class="hljs-attr">data</span>: {
-    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;/image/example.jpg&#x27;</span>
-  },
-  <span class="hljs-attr">bindload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image load&#x27;</span>);
-  },
-  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;image error:&#x27;</span> + e.detail.errMsg);
-  }
-});
-</code></pre>
+<h4 id="sample-code-1">1. 常用图片缩放模式</h4>
+<pre><code class="language-html">&lt;view class=&quot;img-grid&quot;&gt;
+  &lt;view class=&quot;img-card&quot;&gt;
+    &lt;image class=&quot;demo-img&quot; mode=&quot;aspectFit&quot; src=&quot;https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&amp;q=80&quot; /&gt;
+    &lt;text class=&quot;img-label&quot;&gt;mode=&quot;aspectFit&quot;&lt;/text&gt;
+  &lt;/view&gt;
+  &lt;view class=&quot;img-card&quot;&gt;
+    &lt;image class=&quot;demo-img&quot; mode=&quot;aspectFill&quot; src=&quot;https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&amp;q=80&quot; /&gt;
+    &lt;text class=&quot;img-label&quot;&gt;mode=&quot;aspectFill&quot;&lt;/text&gt;
+  &lt;/view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.img-grid { display: flex; gap: 12px; }
+.img-card { flex: 1; background: #fff; padding: 8px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; }
+.demo-img { width: 100%; height: 110px; border-radius: 6px; background: #f8fafc; }
+.img-label { font-size: 11px; color: #64748b; margin-top: 6px; display: block; }</code></pre>
+<h4 id="sample-code-2">2. 本地与网络图片资源加载</h4>
+<pre><code class="language-html">&lt;view class=&quot;img-box&quot;&gt;
+  &lt;image class=&quot;wide-img&quot; src=&quot;https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&amp;q=80&quot; mode=&quot;widthFix&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.wide-img { width: 100%; border-radius: 8px; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>image 组件默认宽度 320px、高度 240px</li>

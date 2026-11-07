@@ -126,11 +126,25 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-&lt;<span class="hljs-keyword">view</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&#x27;textarea-wrp&#x27;</span>&gt;
-  &lt;textarea focus id=<span class="hljs-string">&#x27;textarea2&#x27;</span> selection-start=<span class="hljs-string">&#x27;1&#x27;</span> selection-end=<span class="hljs-string">&#x27;3&#x27;</span> style=<span class="hljs-string">&#x27;height: 3em&#x27;</span> <span class="hljs-keyword">value</span>=<span class="hljs-string">&#x27;自动聚焦&#x27;</span> maxlength=<span class="hljs-string">&#x27;10&#x27;</span> auto-height /&gt;
-&lt;/<span class="hljs-keyword">view</span>&gt;
-</code></pre>
+<h4 id="sample-code-1">1. 多行文本输入框与占位符</h4>
+<pre><code class="language-html">&lt;view class=&quot;textarea-wrp&quot;&gt;
+  &lt;textarea class=&quot;std-textarea&quot; placeholder=&quot;Enter comments or description...&quot; bindinput=&quot;onTextareaInput&quot; maxlength=&quot;200&quot; /&gt;
+  &lt;view class=&quot;char-count&quot;&gt;{{charLen}} / 200&lt;/view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: { charLen: 0 },
+  onTextareaInput(e) { this.setData({ charLen: (e.detail.value || &#39;&#39;).length }); }
+});</code></pre>
+<pre><code class="language-css">.textarea-wrp { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; }
+.std-textarea { width: 100%; height: 90px; font-size: 14px; }
+.char-count { text-align: right; font-size: 11px; color: #94a3b8; margin-top: 4px; }</code></pre>
+<h4 id="sample-code-2">2. 自动增高多行输入框与字数限制</h4>
+<pre><code class="language-html">&lt;view class=&quot;textarea-wrp&quot;&gt;
+  &lt;textarea auto-height=&quot;true&quot; placeholder=&quot;Auto-height textarea expanding with lines&quot; class=&quot;std-textarea&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.textarea-wrp { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; }
+.std-textarea { width: 100%; min-height: 40px; font-size: 14px; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li><code>textarea</code> 的 <code>blur</code> 事件会晚于页面上的 <code>tap</code> 事件，如果需要在 <code>button</code> 的点击事件获取 <code>textarea</code>，可以使用 <code>form</code>

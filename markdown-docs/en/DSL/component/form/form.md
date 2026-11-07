@@ -13,38 +13,40 @@ value of the form component will be submitted. A name must be added to the form 
 
 ### Sample Code
 
+#### 1. Form Container with Submit & Reset Handlers
+
 ```html
-
-<form bindsubmit='submit' bindreset='reset' id='form'>
-  <view>
-    <view>radio</view>
-    <radio-group name='radio' id='radioGroup'>
-      <label>
-        <radio value='radio1' id='radio1' />
-        radio1
-      </label>
-      <label>
-        <radio value='radio2' id='radio2' />
-        radio2
-      </label>
-    </radio-group>
+<form bindsubmit="onFormSubmit" bindreset="onFormReset">
+  <view class="form-field">
+    <text class="form-label">Username:</text>
+    <input name="username" class="form-input" placeholder="Enter username" />
   </view>
-
-  <view>
-    <button id='submit' type='primary' formType='submit'>Submit</button>
-    <button id='reset' formType='reset'>Reset</button>
+  <view class="form-field">
+    <text class="form-label">Notifications:</text>
+    <switch name="notify" checked="true" color="#2563eb" />
+  </view>
+  <view class="form-actions">
+    <button form-type="submit" type="primary" size="mini">Submit</button>
+    <button form-type="reset" type="default" size="mini">Reset</button>
   </view>
 </form>
 ```
 
 ```js
 Page({
-  submit: function(e) {
-    console.log(e.detail.value)
+  onFormSubmit(e) {
+    ma.showModal({ title: 'Form Submitted', content: JSON.stringify(e.detail.value), showCancel: false });
   },
-  reset: function() {
-    console.log('rest')
+  onFormReset() {
+    ma.showToast({ title: 'Form Reset', icon: 'none' });
   }
-})
+});
+```
+
+```css
+.form-field { margin-bottom: 14px; }
+.form-label { font-size: 13px; color: #475569; margin-bottom: 6px; display: block; }
+.form-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; font-size: 14px; }
+.form-actions { display: flex; gap: 10px; margin-top: 10px; }
 ```
 

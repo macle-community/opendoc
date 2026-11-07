@@ -21,42 +21,27 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;radioChange&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">items</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.checked</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;pink&#x27;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
-</code></pre>
+<h4 id="sample-code-1">1. Radio Group with Exclusive Selection</h4>
+<pre><code class="language-html">&lt;radio-group bindchange=&quot;onRadioChange&quot;&gt;
+  &lt;view class=&quot;radio-list&quot;&gt;
+    &lt;label class=&quot;radio-item&quot; ma:for=&quot;{{plans}}&quot; ma:key=&quot;{{item.id}}&quot;&gt;
+      &lt;radio value=&quot;{{item.id}}&quot; checked=&quot;{{item.id === currentPlan}}&quot; color=&quot;#2563eb&quot; /&gt;
+      &lt;text class=&quot;radio-label&quot;&gt;{{item.name}} ({{item.price}})&lt;/text&gt;
+    &lt;/label&gt;
+  &lt;/view&gt;
+&lt;/radio-group&gt;
+&lt;view class=&quot;selected-plan&quot;&gt;Selected: {{currentPlan}}&lt;/view&gt;</code></pre>
 <pre><code class="language-js">Page({
   data: {
-    <span class="hljs-built_in">items</span>: [
-      { value: <span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;USA&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;CHN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;China&#x27;</span>, checked: <span class="hljs-string">&#x27;true&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;BRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;Brazil&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;JPN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;Japan&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;ENG&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;UK&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;FRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;France&#x27;</span> }
-    ]
+    plans: [
+      { id: &#39;free&#39;, name: &#39;Free Tier&#39;, price: &#39;$0&#39; },
+      { id: &#39;pro&#39;, name: &#39;Pro Plan&#39;, price: &#39;$19/mo&#39; },
+      { id: &#39;team&#39;, name: &#39;Team Enterprise&#39;, price: &#39;$49/mo&#39; }
+    ],
+    currentPlan: &#39;pro&#39;
   },
-  radioChange: function(e) {
-    console.<span class="hljs-built_in">log</span>(e.detail.value);
-
-    var <span class="hljs-built_in">items</span> = this.data.<span class="hljs-built_in">items</span>;
-    <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>, len = <span class="hljs-built_in">items</span>.length; i &lt; len; ++i) {
-      <span class="hljs-built_in">items</span>[i].checked = <span class="hljs-built_in">items</span>[i].value == e.detail.value;
-    }
-
-    this.setData({
-      <span class="hljs-built_in">items</span>: <span class="hljs-built_in">items</span>
-    });
-  }
-});
-</code></pre>
+  onRadioChange(e) { this.setData({ currentPlan: e.detail.value }); }
+});</code></pre>
+<pre><code class="language-css">.radio-list { display: flex; flex-direction: column; gap: 10px; }
+.radio-item { display: flex; align-items: center; gap: 8px; font-size: 14px; background: #fff; padding: 10px; border-radius: 6px; }
+.selected-plan { margin-top: 10px; font-size: 13px; color: #2563eb; font-weight: 600; }</code></pre>

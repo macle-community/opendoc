@@ -61,6 +61,9 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-&lt;cover-image <span class="hljs-attribute">class</span>=<span class="hljs-string">&#x27;cover-image&#x27;</span> <span class="hljs-attribute">src</span>=<span class="hljs-string">&#x27;https://example.jpg&#x27;</span>&gt;&lt;/cover-image&gt;
-</code></pre>
+<h4 id="sample-code-1">1. 原生组件上的图片覆盖</h4>
+<pre><code class="language-html">&lt;view class=&quot;media-container&quot; style=&quot;position: relative; height: 160px; background: #1e293b; border-radius: 10px;&quot;&gt;
+  &lt;cover-image class=&quot;cover-logo&quot; src=&quot;https://img.icons8.com/color/96/play--v1.png&quot; style=&quot;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px;&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.cover-logo { pointer-events: auto; }</code></pre>

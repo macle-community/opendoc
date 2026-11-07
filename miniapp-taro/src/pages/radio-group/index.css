@@ -1,0 +1,5 @@
+/* pages/radio-group/index.css */
+.radio-list { display: flex; flex-direction: column; gap: 10px; }
+.radio-item { display: flex; align-items: center; gap: 8px; font-size: 14px; background: #fff; padding: 10px; border-radius: 6px; }
+.selected-plan { margin-top: 10px; font-size: 13px; color: #2563eb; font-weight: 600; }
+

@@ -288,27 +288,36 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">picker</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;picker1&#x27;</span> <span class="hljs-attr">headerText</span>=<span class="hljs-string">&#x27;title&#x27;</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;bindPickerChange&#x27;</span> <span class="hljs-attr">bindcancel</span>=<span class="hljs-string">&#x27;bindcancel&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">index</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-          <span class="hljs-attr">range</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">array</span>[index]}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">picker</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
-</code></pre>
+<h4 id="sample-code-1">1. 普通单列选择器</h4>
+<pre><code class="language-html">&lt;picker mode=&quot;selector&quot; range=&quot;{{fruits}}&quot; value=&quot;{{fruitIdx}}&quot; bindchange=&quot;onFruitChange&quot;&gt;
+  &lt;view class=&quot;picker-display&quot;&gt;Selected Fruit: &lt;text class=&quot;highlight&quot;&gt;{{fruits[fruitIdx]}}&lt;/text&gt;&lt;/view&gt;
+&lt;/picker&gt;</code></pre>
 <pre><code class="language-js">Page({
-  <span class="hljs-attr">data</span>: {
-    <span class="hljs-attr">array</span>: [<span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-string">&#x27;China&#x27;</span>, <span class="hljs-string">&#x27;Brazil&#x27;</span>, <span class="hljs-string">&#x27;Japan&#x27;</span>],
-    <span class="hljs-attr">index</span>: <span class="hljs-number">0</span>,
+  data: { fruits: [&#39;Apple&#39;, &#39;Banana&#39;, &#39;Orange&#39;, &#39;Strawberry&#39;], fruitIdx: 0 },
+  onFruitChange(e) { this.setData({ fruitIdx: e.detail.value }); }
+});</code></pre>
+<pre><code class="language-css">.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; margin-left: 6px; }</code></pre>
+<h4 id="sample-code-2">2. 多列选择器</h4>
+<pre><code class="language-html">&lt;picker mode=&quot;multiSelector&quot; range=&quot;{{multiRange}}&quot; value=&quot;{{multiIdx}}&quot; bindchange=&quot;onMultiChange&quot;&gt;
+  &lt;view class=&quot;picker-display&quot;&gt;Region: &lt;text class=&quot;highlight&quot;&gt;{{multiRange[0][multiIdx[0]]}} - {{multiRange[1][multiIdx[1]]}}&lt;/text&gt;&lt;/view&gt;
+&lt;/picker&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    multiRange: [[&#39;Asia&#39;, &#39;Europe&#39;, &#39;Americas&#39;], [&#39;China&#39;, &#39;Japan&#39;, &#39;Korea&#39;]],
+    multiIdx: [0, 0]
   },
-  <span class="hljs-attr">bindPickerChange</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
-    this.setData({
-      <span class="hljs-attr">index</span>: e.detail.value
-    })
-  },
-  <span class="hljs-attr">bindcancel</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e)
-  },
-})
-</code></pre>
+  onMultiChange(e) { this.setData({ multiIdx: e.detail.value }); }
+});</code></pre>
+<pre><code class="language-css">.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; }</code></pre>
+<h4 id="sample-code-3">3. 时间与日期选择器</h4>
+<pre><code class="language-html">&lt;picker mode=&quot;date&quot; value=&quot;{{selectedDate}}&quot; start=&quot;2020-01-01&quot; end=&quot;2030-12-31&quot; bindchange=&quot;onDateChange&quot;&gt;
+  &lt;view class=&quot;picker-display&quot;&gt;Date: &lt;text class=&quot;highlight&quot;&gt;{{selectedDate}}&lt;/text&gt;&lt;/view&gt;
+&lt;/picker&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: { selectedDate: &#39;2026-11-07&#39; },
+  onDateChange(e) { this.setData({ selectedDate: e.detail.value }); }
+});</code></pre>
+<pre><code class="language-css">.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; }</code></pre>

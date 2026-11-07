@@ -1,0 +1,12 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. HTML String Rendering</text>
+    <rich-text nodes="{{htmlSnippet}}" space="nbsp" />
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Node Array Structure</text>
+    <rich-text nodes="{{nodeArray}}" />
+  </view>
+
+</view>

@@ -1,8 +1,8 @@
-.page-body { padding: 8rpx 0; }
-.scroll-item { display: inline-block; width: 100rpx; height: 80rpx; margin-right: 10rpx; border-radius: 8rpx; line-height: 80rpx; text-align: center; color: #fff; font-weight: bold; }
-.bg-1 { background: #3b82f6; }
-.bg-2 { background: #10b981; }
-.bg-3 { background: #f59e0b; }
-.bg-4 { background: #ef4444; }
-.bg-5 { background: #8b5cf6; }
+/* pages/scroll-view/index.css */
+.scroll-v-item { height: 70rpx; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; margin-bottom: 8rpx; border-radius: 8rpx; }
+.bg-red { background: #ef4444; } .bg-orange { background: #f97316; } .bg-green { background: #10b981; } .bg-blue { background: #3b82f6; }
+
+.scroll-h-item { display: inline-block; width: 110rpx; height: 80rpx; margin-right: 10rpx; border-radius: 8rpx; text-align: center; line-height: 80rpx; color: #fff; font-weight: 600; }
+.bg-purple { background: #8b5cf6; } .bg-pink { background: #ec4899; }
+
 

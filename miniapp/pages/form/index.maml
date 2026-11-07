@@ -1,0 +1,20 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Form Container with Submit &amp; Reset Handlers</text>
+    <form bindsubmit="onFormSubmit" bindreset="onFormReset">
+      <view class="form-field">
+        <text class="form-label">Username:</text>
+        <input name="username" class="form-input" placeholder="Enter username" />
+      </view>
+      <view class="form-field">
+        <text class="form-label">Notifications:</text>
+        <switch name="notify" checked="true" color="#2563eb" />
+      </view>
+      <view class="form-actions">
+        <button form-type="submit" type="primary" size="mini">Submit</button>
+        <button form-type="reset" type="default" size="mini">Reset</button>
+      </view>
+    </form>
+  </view>
+
+</view>

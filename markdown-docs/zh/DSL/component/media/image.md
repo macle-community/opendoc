@@ -30,25 +30,48 @@
 
 ### 示例代码
 
-```html
+#### 1. 常用图片缩放模式
 
-<image mode='scaleToFill' src='{{src}}' bindload='bindload' binderror='binderror'></image>
+```html
+<view class="img-grid">
+  <view class="img-card">
+    <image class="demo-img" mode="aspectFit" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+    <text class="img-label">mode="aspectFit"</text>
+  </view>
+  <view class="img-card">
+    <image class="demo-img" mode="aspectFill" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+    <text class="img-label">mode="aspectFill"</text>
+  </view>
+</view>
 ```
 
 ```js
-Page({
-  data: {
-    src: '/image/example.jpg'
-  },
-  bindload: function(e) {
-    console.log('image load');
-  },
-  binderror: function(e) {
-    console.log('image error:' + e.detail.errMsg);
-  }
-});
-
+Page({ data: {} });
 ```
+
+```css
+.img-grid { display: flex; gap: 12px; }
+.img-card { flex: 1; background: #fff; padding: 8px; border-radius: 8px; border: 1px solid #e2e8f0; text-align: center; }
+.demo-img { width: 100%; height: 110px; border-radius: 6px; background: #f8fafc; }
+.img-label { font-size: 11px; color: #64748b; margin-top: 6px; display: block; }
+```
+
+#### 2. 本地与网络图片资源加载
+
+```html
+<view class="img-box">
+  <image class="wide-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" mode="widthFix" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.wide-img { width: 100%; border-radius: 8px; }
+```
+
 
 ### Bug & Tip
 

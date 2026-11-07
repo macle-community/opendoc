@@ -44,12 +44,60 @@
 
 ### 示例代码
 
-```html
+#### 1. 文本输入框与占位提示
 
-<view>
-  <input value='Hello World' />
+```html
+<view class="input-block">
+  <input class="std-input" placeholder="Standard text input..." bindinput="onInputSync" />
+  <text class="input-val-preview">Current Input: {{currentVal}}</text>
 </view>
 ```
+
+```js
+Page({
+  data: { currentVal: '' },
+  onInputSync(e) { this.setData({ currentVal: e.detail.value }); }
+});
+```
+
+```css
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+.input-val-preview { font-size: 12px; color: #64748b; margin-top: 6px; display: block; }
+```
+
+#### 2. 密码、数字与小数输入类型
+
+```html
+<view class="input-col">
+  <input class="std-input" password="true" placeholder="Password input" />
+  <input class="std-input" type="number" placeholder="Number keyboard input" />
+  <input class="std-input" type="digit" placeholder="Decimal digit keyboard input" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.input-col { display: flex; flex-direction: column; gap: 10px; }
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+```
+
+#### 3. 聚焦、最大长度与键盘按钮
+
+```html
+<input class="std-input" maxlength="10" confirm-type="done" placeholder="Maxlength 10 chars" />
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+```
+
 
 ### Bug & Tip
 

@@ -1,1 +1,1 @@
-{"version":3,"sources":["/pages/progress/index.mass"],"names":[],"mappings":"AAAA,kBAAa,aAAgB","file":"","sourcesContent":[".page-body { padding: 8px 0; }"]}
+{"version":3,"sources":["/pages/progress/index.mass"],"names":[],"mappings":"AACA,qBAAgB,YAAa,CAAE,qBAAsB,CAAE,QAAW;AAElE,qBAAgB,YAAa,CAAE,qBAAsB,CAAE,QAAW","file":"","sourcesContent":["/* pages/progress/index.mass */\n.progress-col { display: flex; flex-direction: column; gap: 16px; }\n\n.progress-col { display: flex; flex-direction: column; gap: 10px; }\n\n"]}

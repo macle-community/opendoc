@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/camera/index.mass"],"names":[],"mappings":"AACA,uBAAkB,UAAW,CAAE,iBAAkB,CAAE,eAAkB","file":"","sourcesContent":["/* pages/camera/index.mass */\n.camera-wrapper { width: 100%; border-radius: 8px; overflow: hidden; }\n\n"]}

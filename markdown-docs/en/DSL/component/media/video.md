@@ -57,102 +57,22 @@
 
 ### Sample Code
 
+#### 1. Video Player with Controls & Poster
+
 ```html
-
-<view>
-  <video id='myVideo'
-         src='{{src}}'
-         autoplay='{{autoplay}}'
-         loop='{{loop}}'
-         hidden='{{hidden}}'
-         controls='{{controls}}'
-         objectFit='{{objectFit}}'
-         poster='{{poster}}'
-         muted='{{muted}}'
-         binderror='binderror'
-         bindtimeupdate='bindtimeupdate'
-         bindplay='bindplay'
-         bindpause='bindpause'
-         bindended='bindended'></video>
-
-
-  <view>
-    <view>
-      <view>
-        <view>Jump position</view>
-      </view>
-      <view>
-        <input bindinput='bindInput' value='{{position}}' type='text'
-               placeholder='Enter the specified position here'
-               adjustPosition='false' />
-      </view>
-    </view>
-  </view>
-  <view class='btn-area'>
-    <button bindtap='play' type='primary'>Play</button>
-    <button bindtap='pause' type='primary'>Pause</button>
-    <button bindtap='seek' type='primary'>Jump to specified position (unit: seconds)</button>
-    <button bindtap="stop" class="page-body-button stop" type="primary">Stop</button>      
-  </view>
+<view class="video-container">
+  <video id="myVideo" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=80" controls="true" style="width: 100%; height: 200px; border-radius: 8px;" />
 </view>
 ```
 
 ```js
-
-Page({
-  onReady: function(res) {
-    this.videoContext = ma.createVideoContext('myVideo')
-  },
-  data: {
-    src: 'http://example.mp4',
-    autoplay: false,
-    position: '',
-    inputValue: '',
-    controls: true,
-    hidden: false,
-    objectFit: 'contain',
-    muted: false,
-    loop: false,
-    poster: 'http://example.png',
-    showFullscreenBtn: true
-  },
-  bindInput: function(e) {
-    this.setData({
-      position: e.detail.value
-    })
-  },
-  play: function() {
-    this.videoContext.play()
-  },
-  pause: function() {
-    this.videoContext.pause()
-  },
-  seek: function() {
-    this.videoContext.seek(this.data.position)
-  },
-  stop: function () {
-    this.videoContext.stop()
-  },
-
-  binderror: function(e) {
-    console.log('video error message:')
-    console.log(e.detail.errMsg)
-  },
-  bindplay: function() {
-    console.log('video start')
-  },
-  bindpause: function() {
-    console.log('video pause')
-  },
-  bindended: function() {
-    console.log('video end')
-  },
-  bindtimeupdate: function(e) {
-    console.log(e.detail.currentTime)
-  }
-})
-
+Page({ data: {} });
 ```
+
+```css
+.video-container { width: 100%; border-radius: 8px; overflow: hidden; }
+```
+
 
 ### Bug & Tip
 

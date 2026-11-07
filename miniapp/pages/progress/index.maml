@@ -1,18 +1,19 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Basic Usage (50%)</text>
-    <maui-progress percentage="50" />
+    <text class="demo-title">1. Basic Progress Bar with Percentage</text>
+    <view class="progress-col">
+      <progress percent="30" show-info="true" stroke-width="4" />
+      <progress percent="65" show-info="true" stroke-width="6" active-color="#3b82f6" />
+      <progress percent="90" show-info="true" stroke-width="8" active-color="#10b981" />
+    </view>
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Stroke Width & Inactive</text>
-    <maui-progress stroke-width="8" percentage="75" />
-    <view style="height: 12px;"></view>
-    <maui-progress inactive percentage="40" />
+    <text class="demo-title">2. Animated &amp; Custom Stroke/Color Progress</text>
+    <view class="progress-col">
+      <progress percent="{{animPercent}}" show-info="true" active="true" active-mode="forwards" stroke-width="8" border-radius="4" active-color="#8b5cf6" />
+      <button size="mini" type="default" bindtap="increaseProgress" style="align-self: flex-start; margin-top: 8px;">+20% Progress</button>
+    </view>
   </view>
 
-  <view class="demo-block">
-    <text class="demo-title">3. Custom Color</text>
-    <maui-progress color="#ee0a24" percentage="65" />
-  </view>
 </view>

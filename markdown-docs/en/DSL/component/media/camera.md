@@ -50,221 +50,26 @@
 
 ### Sample Code
 
+#### 1. Camera Viewfinder with Device Position & Flash
+
 ```html
-
-<camera device-position='{{position}}' flash='{{flash}}' style='width: 100%; height: 300px;' binderror='error'
-        bindstop='stop' bindinitdone='initdone' bindrecorderror='recorderror'></camera>
-<slider id='slider2' value='1' bindchange='slider2change' max='{{sliderMax}}' show-value step='1'
-        style='margin-top:50px ;' />
-
-<view class='button-group'>
-  <button class='takephoto' type='primary' bindtap='takePhoto'>Take photo</button>
-  <button class='takephoto' type='primary' bindtap='startRecord'>Record</button>
-  <button class='takephoto' type='primary' bindtap='stopRecord'>Stop recording</button>
-</view>
-
-<view class='button-group'>
-  <button class='takephoto' type='primary' bindtap='takePosition'>Switch camera</button>
-  <button class='takephoto' type='primary' bindtap='takeFlash'>Turn on flash</button>
+<view class="camera-wrapper">
+  <camera device-position="back" flash="off" style="width: 100%; height: 220px; border-radius: 8px; overflow: hidden;">
+    <cover-view style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px;">
+      Device: Back | Flash: Off
+    </cover-view>
+  </camera>
 </view>
 ```
 
 ```js
-const format = (res) => JSON.stringify(res, null, 4);
-Page({
-  data: {
-    src: '',
-    showText: '',
-    position: 'back',
-    flash: 'off',
-    videoSrc: '',
-    sliderMax: 100,
-    info: ''
-  },
-  slider2change(res) {
-    const ctx = ma.createCameraContext();
-    let zoom = parseInt(res.detail.value);
-    ctx.setZoom({
-      zoom: zoom,
-      success: (res) => {
-        console.log('Set zoom', res.zoom);
-        this.setData({
-          info: format(res)
-        });
-        ma.showToast({
-          title: 'Set zoom succeeded',
-          icon: 'success'
-        });
-      },
-      fail: (res) => {
-        console.log('Set zoom fail');
-        this.setData({
-          info: format(res)
-        });
-        ma.showToast({
-          title: 'Set zoom failed',
-          icon: 'error'
-        });
-      },
-      complete: (res) => {
-        console.log('Set zoom completed');
-      }
-    });
-  },
-  initdone(res) {
-    this.setData({
-      sliderMax: res.detail.maxZoom
-    });
-  },
-  takePhoto() {
-    const ctx = ma.createCameraContext();
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        this.setData({
-          src: res.tempImagePath,
-          info: format(res)
-        });
-      },
-      fail: (res) => {
-        this.setData({
-          info: format(res)
-        });
-      }
-    });
-  },
-  takePosition() {
-    if (this.data.position === 'front') {
-      this.setData({
-        position: 'back'
-      });
-    } else {
-      this.setData({
-        position: 'front'
-      });
-    }
-  },
-  startRecord() {
-    const ctx = ma.createCameraContext();
-    ctx.startRecord({
-      timeoutCallback: (res) => {
-        ma.showToast({
-          title: 'Recording timer ended',
-          icon: 'success'
-        });
-        this.setData({
-          src: res.tempThumbPath,
-          info: format(res)
-        });
-        this.setData({
-          videoSrc: res.tempVideoPath
-        });
-      },
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('Recording started successfully');
-        ma.showToast({
-          title: 'Recording started successfully',
-          icon: 'success'
-        });
-      },
-      fail(res) {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('Recording failed to start');
-        ma.showToast({
-          title: 'Recording failed to start',
-          icon: 'error'
-        });
-      },
-      complete(res) {
-        console.log('Recording start completed');
-        console.log(res);
-      }
-    });
-  },
-  stopRecord() {
-    const ctx = ma.createCameraContext();
-    ctx.stopRecord({
-      success: (res) => {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('Recording stopped successfully');
-        ma.showToast({
-          title: res.tempVideoPath,
-          icon: 'success'
-        }),
-          this.setData({
-            src: res.tempThumbPath,
-            info: format(res)
-          });
-        this.setData({
-          videoSrc: res.tempVideoPath
-        });
-      },
-      fail(res) {
-        console.log(res);
-        this.setData({
-          info: format(res)
-        });
-        console.log('Recording failed to stop');
-        ma.showToast({
-          title: 'Recording failed to stop',
-          icon: 'error'
-        });
-      },
-      complete(res) {
-        console.log(res);
-        console.log('Recording stop completed');
-      }
-    });
-  },
-  takeFlash() {
-    this.setData({
-      flash: 'on'
-    });
-  },
-  error: function(e) {
-    console.log(e.detail.errMsg);
-    this.setData({
-      info: format(e)
-    });
-  },
-  stop: function(e) {
-    console.log('camera stop:stopstop');
-    this.setData({
-      info: format(res)
-    });
-    console.log(e.detail.errMsg);
-  },
-  recorderror: function(e) {
-    ma.showToast({
-      title: 'camera recorderror',
-      icon: 'error'
-    });
-    console.log(e.detail.errMsg);
-    console.log(e.detail.tempThumbPath);
-    console.log(e.detail.tempVideoPath);
-    this.setData({
-      src: e.detail.tempThumbPath
-    });
-    this.setData({
-      videoSrc: e.detail.tempVideoPath
-    });
-    this.setData({
-      info: format(e.detail)
-    });
-  }
-});
-
+Page({ data: {} });
 ```
+
+```css
+.camera-wrapper { width: 100%; border-radius: 8px; overflow: hidden; }
+```
+
 
 ### Bug & Tip
 

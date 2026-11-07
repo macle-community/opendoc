@@ -1,12 +1,3 @@
-.page-body { padding: 8px 0; }
-maui-radio-group:not([direction="horizontal"]) maui-radio {
-  margin-bottom: 8px;
-  display: block;
-}
-maui-radio-group[direction="horizontal"] {
-  display: flex;
-  flex-direction: row;
-}
-maui-radio-group[direction="horizontal"] maui-radio {
-  margin-right: 16px;
-}
+/* pages/radio/index.mass */
+.radio-row { display: flex; align-items: center; font-size: 14px; }
+

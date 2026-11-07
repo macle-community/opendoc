@@ -88,7 +88,7 @@ var setCssToHead=function(file,info){
   }
   return rewritor;
 }
-__maAppCode__['app.json']={"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#ffffff","navigationBarTitleText":"Macle OpenDoc Showcase","navigationBarTextStyle":"black","capsuleTheme":"light"}};
+__maAppCode__['app.json']={"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#ffffff","navigationBarTitleText":"Macle MiniProgram Showcase","navigationBarTextStyle":"black","capsuleTheme":"light"}};
 
 
 

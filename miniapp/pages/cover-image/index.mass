@@ -1,0 +1,3 @@
+/* pages/cover-image/index.mass */
+.cover-logo { pointer-events: auto; }
+

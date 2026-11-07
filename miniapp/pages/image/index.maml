@@ -1,0 +1,23 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Image Scaling Modes (scaleToFill, aspectFit, aspectFill)</text>
+    <view class="img-grid">
+      <view class="img-card">
+        <image class="demo-img" mode="aspectFit" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+        <text class="img-label">mode="aspectFit"</text>
+      </view>
+      <view class="img-card">
+        <image class="demo-img" mode="aspectFill" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+        <text class="img-label">mode="aspectFill"</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Local &amp; Remote Image Source</text>
+    <view class="img-box">
+      <image class="wide-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" mode="widthFix" />
+    </view>
+  </view>
+
+</view>

@@ -44,12 +44,60 @@
 
 ### Sample Code
 
-```html
+#### 1. Text Input with Placeholder
 
-<view>
-  <input value='Hello World' />
+```html
+<view class="input-block">
+  <input class="std-input" placeholder="Standard text input..." bindinput="onInputSync" />
+  <text class="input-val-preview">Current Input: {{currentVal}}</text>
 </view>
 ```
+
+```js
+Page({
+  data: { currentVal: '' },
+  onInputSync(e) { this.setData({ currentVal: e.detail.value }); }
+});
+```
+
+```css
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+.input-val-preview { font-size: 12px; color: #64748b; margin-top: 6px; display: block; }
+```
+
+#### 2. Password, Number & Digit Input Types
+
+```html
+<view class="input-col">
+  <input class="std-input" password="true" placeholder="Password input" />
+  <input class="std-input" type="number" placeholder="Number keyboard input" />
+  <input class="std-input" type="digit" placeholder="Decimal digit keyboard input" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.input-col { display: flex; flex-direction: column; gap: 10px; }
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+```
+
+#### 3. Focus, Maxlength & Confirm Type
+
+```html
+<input class="std-input" maxlength="10" confirm-type="done" placeholder="Maxlength 10 chars" />
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+```
+
 
 ### Bug & Tip
 

@@ -1,0 +1,4 @@
+/* pages/audio/index.css */
+.audio-container { background: #fff; padding: 12rpx; border-radius: 8rpx; border: 1rpx solid #e2e8f0; }
+
+

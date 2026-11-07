@@ -1,1 +1,5 @@
-.page-body { padding: 8px 0; }
+/* pages/progress/index.css */
+.progress-col { display: flex; flex-direction: column; gap: 16px; }
+
+.progress-col { display: flex; flex-direction: column; gap: 10px; }
+

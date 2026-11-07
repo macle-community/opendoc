@@ -1,0 +1,17 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Multi-Line Textarea with Placeholder</text>
+    <view class="textarea-wrp">
+      <textarea class="std-textarea" placeholder="Enter comments or description..." bindinput="onTextareaInput" maxlength="200" />
+      <view class="char-count">{{charLen}} / 200</view>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Auto-Height Textarea with Maxlength</text>
+    <view class="textarea-wrp">
+      <textarea auto-height="true" placeholder="Auto-height textarea expanding with lines" class="std-textarea" />
+    </view>
+  </view>
+
+</view>

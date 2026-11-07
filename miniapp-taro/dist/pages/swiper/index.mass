@@ -1,6 +1,8 @@
-.page-body { padding: 8rpx 0; }
-.swiper-slide { height: 160rpx; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20rpx; font-weight: bold; }
-.slide-1 { background: #3b82f6; }
-.slide-2 { background: #10b981; }
-.slide-3 { background: #8b5cf6; }
+/* pages/swiper/index.css */
+.swiper-slide { height: 100%; display: flex; align-items: center; justify-content: center; }
+.slide-text { color: #fff; font-size: 18rpx; font-weight: bold; }
+.slide-blue { background: #2563eb; } .slide-green { background: #16a34a; } .slide-orange { background: #ea580c; }
+
+.slide-purple { background: #7c3aed; } .slide-teal { background: #0d9488; }
+
 

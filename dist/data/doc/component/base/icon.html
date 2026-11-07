@@ -35,8 +35,24 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">icon</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;success&#x27;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&#x27;93&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">icon</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. 常用系统图标</h4>
+<pre><code class="language-html">&lt;view class=&quot;icon-grid&quot;&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;success&quot; size=&quot;32&quot; /&gt;&lt;text&gt;success&lt;/text&gt;&lt;/view&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;info&quot; size=&quot;32&quot; /&gt;&lt;text&gt;info&lt;/text&gt;&lt;/view&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;warn&quot; size=&quot;32&quot; /&gt;&lt;text&gt;warn&lt;/text&gt;&lt;/view&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;waiting&quot; size=&quot;32&quot; /&gt;&lt;text&gt;waiting&lt;/text&gt;&lt;/view&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;cancel&quot; size=&quot;32&quot; /&gt;&lt;text&gt;cancel&lt;/text&gt;&lt;/view&gt;
+  &lt;view class=&quot;icon-item&quot;&gt;&lt;icon type=&quot;search&quot; size=&quot;32&quot; /&gt;&lt;text&gt;search&lt;/text&gt;&lt;/view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.icon-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.icon-item { width: 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }</code></pre>
+<h4 id="sample-code-2">2. 自定义图标大小与颜色</h4>
+<pre><code class="language-html">&lt;view class=&quot;demo-row&quot; style=&quot;display: flex; align-items: center; gap: 16px;&quot;&gt;
+  &lt;icon type=&quot;success&quot; size=&quot;24&quot; color=&quot;#10b981&quot; /&gt;
+  &lt;icon type=&quot;success&quot; size=&quot;36&quot; color=&quot;#3b82f6&quot; /&gt;
+  &lt;icon type=&quot;success&quot; size=&quot;48&quot; color=&quot;#f59e0b&quot; /&gt;
+  &lt;icon type=&quot;success&quot; size=&quot;60&quot; color=&quot;#ef4444&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.demo-row { margin-top: 8px; }</code></pre>

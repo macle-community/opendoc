@@ -248,74 +248,18 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html"><span class="language-xml">// index.maml
-
- <span class="hljs-tag">&lt;<span class="hljs-name">map</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myMap&quot;</span> <span class="hljs-attr">show-location</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">showLocation</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">scale</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">scale</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">markers</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">markers</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">polyline</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">polyline</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">longitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">longitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">latitude</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">latitude</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">include-points</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">includePoints</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">circles</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">circles</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">bindmarkertap</span>=<span class="hljs-string">&quot;markerTap&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;mapTap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
-</span>
-</code></pre>
-<pre><code class="language-js">
-<span class="hljs-string">//</span> <span class="hljs-string">index.js</span> 
-<span class="hljs-string">Page({</span>
-  <span class="hljs-attr">data:</span> {
-    <span class="hljs-attr">markers:</span> [],
-    <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
-    <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
-    <span class="hljs-attr">circles:</span> [
-      {
-        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
-        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
-        <span class="hljs-attr">radius:</span> <span class="hljs-number">20</span>,
-        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#87CEEB&#x27;</span>,
-      }
-    ],
-    <span class="hljs-attr">includePoints:</span> [
-      {
-        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
-        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
-      },
-      {
-        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
-        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
-      },
-      {
-        <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.97934</span>,
-        <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7673113</span>,
-      }
-    ],
-    <span class="hljs-attr">polyline:</span> [
-      {
-        <span class="hljs-attr">points:</span> [
-          {
-            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9751427</span>,
-            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7672672</span>,
-          },
-          {
-            <span class="hljs-attr">latitude:</span> <span class="hljs-number">31.9782417</span>,
-            <span class="hljs-attr">longitude:</span> <span class="hljs-number">118.7661415</span>,
-          }
-        ],
-        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#FFFFFF&#x27;</span>
-      }
-    ],
-    <span class="hljs-attr">showLocation:</span> <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">scale:</span> <span class="hljs-number">18</span>,
-  }<span class="hljs-string">,</span>
-   <span class="hljs-string">markerTap(e)</span> {
-    <span class="hljs-string">ma.showModal(</span>{
-      <span class="hljs-attr">content:</span> <span class="hljs-string">`markerTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
-    }<span class="hljs-string">);</span>
-  }<span class="hljs-string">,</span>
-  <span class="hljs-string">mapTap(e)</span> {
-    <span class="hljs-string">ma.showModal(</span>{
-      <span class="hljs-attr">content:</span> <span class="hljs-string">`mapTap$</span>{<span class="hljs-string">e</span>}<span class="hljs-string">`</span>,
-    }<span class="hljs-string">);</span>
-  }<span class="hljs-string">,</span>
-  <span class="hljs-string">})</span>
-</code></pre>
-<h4 id="tips">Tips</h4>
-<ol>
-<li>The value of color, fillColor, and colorList on the map must be a six-digit hexadecimal number. For example, #87CEEB.</li>
-<li>If the longitude and latitude of the map component are not specified, the longitude and latitude of the Beijing are used by default.</li>
-<li>The simulator needs to import the API key of Google. The API key needs to be applied for by the developer,as shown in the following figure:
-<img src="/openplatform/macledocs/data/doc/en/component/map/image/googleMap.png" alt="image" ></li>
-</ol>
+<h4 id="sample-code-1">1. Interactive Map with Markers &amp; Coordinates</h4>
+<pre><code class="language-html">&lt;map latitude=&quot;{{latitude}}&quot; longitude=&quot;{{longitude}}&quot; markers=&quot;{{markers}}&quot; scale=&quot;14&quot; style=&quot;width: 100%; height: 220px; border-radius: 8px; overflow: hidden;&quot; /&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    latitude: 31.2304,
+    longitude: 121.4737,
+    markers: [{
+      id: 1,
+      latitude: 31.2304,
+      longitude: 121.4737,
+      name: &#39;Macle Headquarters&#39;
+    }]
+  }
+});</code></pre>
+<pre><code class="language-css">map { width: 100%; border-radius: 8px; }</code></pre>

@@ -1,1 +1,9 @@
-.page-body { padding: 8rpx 0; }
+/* pages/text/index.css */
+.text-group { display: flex; flex-direction: column; gap: 8rpx; }
+.text-headline { font-size: 17rpx; font-weight: 700; color: #0f172a; }
+.text-sub { font-size: 13rpx; color: #64748b; }
+.text-selectable { font-size: 13rpx; color: #2563eb; background: #eff6ff; padding: 6rpx 10rpx; border-radius: 6rpx; border: 1rpx dashed #bfdbfe; }
+
+.text-group text { font-size: 14rpx; color: #334155; }
+
+

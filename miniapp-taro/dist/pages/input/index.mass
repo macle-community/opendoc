@@ -1,0 +1,10 @@
+/* pages/input/index.css */
+.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
+.input-val-preview { font-size: 12rpx; color: #64748b; margin-top: 6rpx; display: block; }
+
+.input-col { display: flex; flex-direction: column; gap: 10rpx; }
+.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
+
+.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
+
+

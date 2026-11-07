@@ -24,51 +24,45 @@
 
 ### Sample Code
 
-```html
+#### 1. Page Navigation (open-type="navigate")
 
-<view>
-  <view>
-    <navigator url='exampleUrl1' class='navigator'>
-      <button type='default'>navigateTo page 1</button>
-    </navigator>
-    <navigator url='exampleUrl2' class='navigator' open-type='redirect' hover-class='other-navigator-hover'>
-      <button type='default'>redirectTo page 2</button>
-    </navigator>
-    <navigator url='/page/tabbar/component/index' class='navigator' open-type='switchTab'
-               hover-class='custom-navigator-hover'>
-      <button type='default'>switchTab</button>
-    </navigator>
-    <navigator url='exampleUrl3' open-type='reLaunch' class='navigator'>
-      <button type='default'>reLaunch to page 3</button>
-    </navigator>
-    <navigator open-type='navigateBack' class='navigator' delta='1'>
-      <button type='default'>Back</button>
-    </navigator>
-  </view>
+```html
+<view class="nav-container">
+  <navigator url="/pages/button/index" open-type="navigate" hover-class="nav-hover" class="nav-btn">
+    👉 Navigate to Button Component Page
+  </navigator>
+  <navigator url="/pages/input/index" open-type="navigate" hover-class="nav-hover" class="nav-btn">
+    👉 Navigate to Input Component Page
+  </navigator>
 </view>
 ```
 
-```css
-.navigator-hover button {
-    background-color: #DEDEDE;
-}
-
-.other-navigator-hover button {
-    background-color: #DEDEDE;
-}
-
-.navigator {
-    padding: 10px
-}
-
-.custom-navigator-hover {
-    background-color: pink;
-}
-
-.other-navigator-hover {
-    background-color: rgb(228, 206, 7);
-}
+```js
+Page({ data: {} });
 ```
+
+```css
+.nav-container { display: flex; flex-direction: column; gap: 10px; }
+.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #2563eb; }
+.nav-hover { background: #f1f5f9; }
+```
+
+#### 2. Page Redirect (open-type="redirect")
+
+```html
+<navigator url="/pages/view/index" open-type="redirect" class="nav-btn">
+  🔄 Redirect to View Page (Close Current)
+</navigator>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; color: #2563eb; }
+```
+
 
 ### Bug & Tip
 

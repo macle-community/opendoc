@@ -1,0 +1,24 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Text Input with Placeholder</text>
+    <view class="input-block">
+      <input class="std-input" placeholder="Standard text input..." bindinput="onInputSync" />
+      <text class="input-val-preview">Current Input: {{currentVal}}</text>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Password, Number &amp; Digit Input Types</text>
+    <view class="input-col">
+      <input class="std-input" password="true" placeholder="Password input" />
+      <input class="std-input" type="number" placeholder="Number keyboard input" />
+      <input class="std-input" type="digit" placeholder="Decimal digit keyboard input" />
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">3. Focus, Maxlength &amp; Confirm Type</text>
+    <input class="std-input" maxlength="10" confirm-type="done" placeholder="Maxlength 10 chars" />
+  </view>
+
+</view>

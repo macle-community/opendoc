@@ -1,19 +1,47 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Flex Direction: Row</text>
-    <view class="flex-row">
-      <view class="box bg-red">A</view>
-      <view class="box bg-green">B</view>
-      <view class="box bg-blue">C</view>
+    <text class="demo-title">1. Flex Direction (Row &amp; Column Layout)</text>
+    <view class="page-section">
+      <view class="page-section-title">flex-direction: row</view>
+      <view class="flex-row">
+        <view class="flex-item demo-bg-red">A</view>
+        <view class="flex-item demo-bg-green">B</view>
+        <view class="flex-item demo-bg-blue">C</view>
+      </view>
+
+      <view class="page-section-title" style="margin-top: 16px;">flex-direction: column</view>
+      <view class="flex-col">
+        <view class="flex-item demo-bg-red">Row 1</view>
+        <view class="flex-item demo-bg-green">Row 2</view>
+        <view class="flex-item demo-bg-blue">Row 3</view>
+      </view>
     </view>
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Flex Direction: Column</text>
-    <view class="flex-col">
-      <view class="box bg-red">Row 1</view>
-      <view class="box bg-green">Row 2</view>
-      <view class="box bg-blue">Row 3</view>
+    <text class="demo-title">2. Stream Post Feed with Hover State</text>
+    <view class="stream">
+      <view class="post" hover-class="post-hover" hover-start-time="50" hover-stay-time="400">
+        <view class="post-user">
+          <view class="post-avatar">Z</view>
+          <text class="post-name">Zoe</text>
+        </view>
+        <view class="post-body">
+          <view class="post-content">Welcome to Macle Mini Program development!</view>
+          <view class="post-date">June 12</view>
+        </view>
+      </view>
+      <view class="post" hover-class="post-hover">
+        <view class="post-user">
+          <view class="post-avatar">J</view>
+          <text class="post-name">Jim</text>
+        </view>
+        <view class="post-body">
+          <view class="post-content">Great! How can I preview on the Web Simulator?</view>
+          <view class="post-date">June 13</view>
+        </view>
+      </view>
     </view>
   </view>
+
 </view>

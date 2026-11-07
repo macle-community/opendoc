@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { View, Text } from "@tarojs/components";
-import { MauiButton } from "@macle-community/taro-plugin-macle/components-react";
+import React from 'react';
+import { View, Text } from '@tarojs/components';
+import './index.css';
 
-export default function Demo() {
-  const [clicks, setClicks] = useState(0);
+export default function RunnerPage() {
   return (
-    <View style={{ padding: 24 }}>
-      <Text style={{ fontSize: 18, fontWeight: "bold" }}>Interactive Taro Runner</Text>
-      <MauiButton type="primary" onClick={() => setClicks(c => c + 1)}>Clicked {clicks} times</MauiButton>
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">Dynamic Taro React Runner</Text>
+        <Text style={{ fontSize: '13px', color: '#64748b' }}>Live Execution Sandbox</Text>
+      </View>
     </View>
   );
 }

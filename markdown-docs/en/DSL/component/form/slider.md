@@ -19,45 +19,40 @@
 
 ### Sample Code
 
+#### 1. Slider with Min, Max & Show-Value
+
 ```html
-
-<view>
-  <view>Slider</view>
-  <view>
-    <view>Set step</view>
-    <view>
-      <slider value='5' onChange='slider1change' step='5' />
-    </view>
-  </view>
-
-  <view>
-    <view>Set min/max range</view>
-    <view>
-      <slider value='33' onChange='slider2change' min='25' max='50' show-value />
-    </view>
-  </view>
-
-  <view>
-    <view>Custom style</view>
-    <view>
-      <slider value='33' onChange='slider3change' min='25' max='50' show-value
-              backgroundColor='#FFAA00' activeColor='#00aaee' trackSize='2' handleSize='6' handleColor='blue' />
-    </view>
-  </view>
+<view class="slider-box">
+  <slider min="0" max="100" value="{{volume}}" show-value="true" bindchange="onSliderChange" active-color="#2563eb" />
+  <text class="slider-text">Volume: {{volume}}%</text>
 </view>
-
 ```
 
 ```js
-const pageData = {};
-
-for (let i = 1; i < 3; ++i) {
-  (function(index) {
-    pageData['slider' + index + 'change'] = function(e) {
-      console.log('slider' + index + ' triggered a change event, carrying the value', e.detail.value);
-    };
-  })(i);
-}
-Page(pageData);
-
+Page({
+  data: { volume: 50 },
+  onSliderChange(e) { this.setData({ volume: e.detail.value }); }
+});
 ```
+
+```css
+.slider-box { background: #fff; padding: 12px; border-radius: 8px; }
+.slider-text { font-size: 12px; color: #64748b; margin-top: 4px; display: block; }
+```
+
+#### 2. Step Slider with Custom Colors
+
+```html
+<view class="slider-box">
+  <slider step="10" value="30" show-value="true" active-color="#10b981" block-color="#059669" block-size="20" />
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.slider-box { background: #fff; padding: 12px; border-radius: 8px; }
+```
+

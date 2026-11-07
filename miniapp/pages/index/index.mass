@@ -1,18 +1,19 @@
+
 .home-container { padding: 12px; }
 .home-banner {
   background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
-  padding: 20px 16px;
+  padding: 22px 18px;
   border-radius: 12px;
   margin-bottom: 14px;
 }
-.banner-title { font-size: 20px; font-weight: 800; display: block; margin-bottom: 4px; }
-.banner-sub { font-size: 12px; opacity: 0.9; display: block; }
+.banner-title { font-size: 20px; font-weight: 800; display: block; margin-bottom: 6px; }
+.banner-sub { font-size: 12px; opacity: 0.9; display: block; line-height: 1.4; }
 .nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .nav-item {
   background: #f1f5f9;
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 11px 12px;
   font-size: 13px;
   font-weight: 600;
   color: #334155;
@@ -20,3 +21,4 @@
   box-sizing: border-box;
   text-align: center;
 }
+.full-width { width: 100% !important; }

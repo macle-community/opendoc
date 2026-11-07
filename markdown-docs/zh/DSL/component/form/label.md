@@ -9,42 +9,38 @@
 
 ### 示例代码
 
-```html
+#### 1. 绑定组件 ID 的标签
 
-<view>
-  <view >label-for</view>
-  <radio-group bindchange='radioChange' id='radioGroup'>
-    <view ma:for='{{radioItems}}'>
-      <radio id='{{item.name}}' value='{{item.name}}' checked='{{item.checked}}' color='pink'></radio>
-      <label for='{{item.name}}'>
-        <text id='{{item.value}}'>{{item.name}}</text>
-      </label>
-    </view>
-  </radio-group>
+```html
+<view class="label-demo">
+  <checkbox id="agree-cb" color="#2563eb" />
+  <label for="agree-cb" class="bound-label">Tap this label text to toggle checkbox</label>
 </view>
 ```
 
 ```js
-Page({
-  data: {
-    radioItems: [
-      { name: 'USA', value: 'USA' },
-      { name: 'CHN', value: 'China', checked: 'true' }
-    ],
-    hidden: false
-  },
-  radioChange: function(e) {
-    var checked = e.detail.value
-    var changed = {}
-    for (var i = 0; i < this.data.radioItems.length; i++) {
-      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
-        changed['radioItems[' + i + '].checked'] = true
-      } else {
-        changed['radioItems[' + i + '].checked'] = false
-      }
-    }
-    this.setData(changed)
-  }
-})
-
+Page({ data: {} });
 ```
+
+```css
+.label-demo { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.bound-label { color: #1e293b; cursor: pointer; }
+```
+
+#### 2. 包裹表单控件扩大点击区域
+
+```html
+<label class="enclosing-label">
+  <radio value="r1" checked="true" color="#10b981" />
+  <text style="margin-left: 8px; font-size: 14px;">Enclosed Radio inside Label</text>
+</label>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.enclosing-label { display: flex; align-items: center; padding: 10px; background: #fff; border-radius: 6px; }
+```
+

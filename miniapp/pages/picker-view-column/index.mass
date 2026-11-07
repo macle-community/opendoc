@@ -1,0 +1,3 @@
+/* pages/picker-view-column/index.mass */
+picker-view { border-radius: 8px; }
+

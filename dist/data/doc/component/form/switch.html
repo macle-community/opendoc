@@ -49,14 +49,24 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">switch</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;switchChange&#x27;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. 开关选择器与状态变化事件</h4>
+<pre><code class="language-html">&lt;view class=&quot;switch-row&quot;&gt;
+  &lt;text class=&quot;sw-title&quot;&gt;Notification Enabled:&lt;/text&gt;
+  &lt;switch checked=&quot;{{isEnabled}}&quot; bindchange=&quot;onSwitchToggle&quot; color=&quot;#2563eb&quot; /&gt;
+&lt;/view&gt;</code></pre>
 <pre><code class="language-js">Page({
-  <span class="hljs-attr">switchChange</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
+  data: { isEnabled: true },
+  onSwitchToggle(e) {
+    this.setData({ isEnabled: e.detail.value });
+    ma.showToast({ title: e.detail.value ? &#39;Enabled&#39; : &#39;Disabled&#39;, icon: &#39;none&#39; });
   }
-})
-</code></pre>
+});</code></pre>
+<pre><code class="language-css">.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }
+.sw-title { font-size: 14px; font-weight: 500; }</code></pre>
+<h4 id="sample-code-2">2. 方形样式开关与自定义颜色</h4>
+<pre><code class="language-html">&lt;view class=&quot;switch-row&quot;&gt;
+  &lt;text class=&quot;sw-title&quot;&gt;Checkbox Style Switch:&lt;/text&gt;
+  &lt;switch type=&quot;checkbox&quot; checked=&quot;true&quot; color=&quot;#10b981&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }</code></pre>

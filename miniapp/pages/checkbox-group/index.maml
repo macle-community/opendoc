@@ -1,0 +1,15 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Multi-Select Checkbox Group with Change Handler</text>
+    <checkbox-group bindchange="onCheckboxChange">
+      <view class="cb-list">
+        <label class="cb-item" ma:for="{{options}}" ma:key="{{item.value}}">
+          <checkbox value="{{item.value}}" checked="{{item.checked}}" color="#0284c7" />
+          <text>{{item.label}}</text>
+        </label>
+      </view>
+    </checkbox-group>
+    <view class="selected-text">Selected: {{selectedList}}</view>
+  </view>
+
+</view>

@@ -10,6 +10,17 @@
 
 ### 示例代码
 
+#### 1. 内嵌网页全屏容器
+
 ```html
-<web-view src="https://example.com/" header="{ 'key': 'value' }" loadingStyle="loadingWithLogo"></web-view>
+<web-view src="https://example.com" />
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+web-view { width: 100%; height: 100%; }
+```
+

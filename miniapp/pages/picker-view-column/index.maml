@@ -1,0 +1,13 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Picker View Column Layout</text>
+    <picker-view indicator-style="height: 40px;" style="height: 120px; background: #fff;">
+      <picker-view-column>
+        <view style="line-height: 40px; text-align: center;">Option 1</view>
+        <view style="line-height: 40px; text-align: center;">Option 2</view>
+        <view style="line-height: 40px; text-align: center;">Option 3</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+
+</view>

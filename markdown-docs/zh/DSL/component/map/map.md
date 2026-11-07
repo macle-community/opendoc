@@ -133,3 +133,32 @@ Page({
 2. 地图组件的经纬度不填默认是北京的经纬度
 3. 模拟器需要自行导入谷歌的APIkey，配置APIKey要开发者自行申请，如下图所示：
    ![image](GOOGLEMAP_APIKEY) 
+
+
+### 示例代码
+
+#### 1. 地图展示与标记点标注
+
+```html
+<map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" scale="14" style="width: 100%; height: 220px; border-radius: 8px; overflow: hidden;" />
+```
+
+```js
+Page({
+  data: {
+    latitude: 31.2304,
+    longitude: 121.4737,
+    markers: [{
+      id: 1,
+      latitude: 31.2304,
+      longitude: 121.4737,
+      name: 'Macle Headquarters'
+    }]
+  }
+});
+```
+
+```css
+map { width: 100%; border-radius: 8px; }
+```
+

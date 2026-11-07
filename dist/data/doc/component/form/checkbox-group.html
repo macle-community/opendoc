@@ -21,45 +21,30 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">checkbox-group</span> <span class="hljs-attr">bindchange</span>=<span class="hljs-string">&#x27;checkboxChange&#x27;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">ma:for</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">items</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">ma:key</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.checked</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;pink&#x27;</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span><span class="hljs-template-variable">{{<span class="hljs-name">item.name</span>}}</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">checkbox-group</span>&gt;</span></span>
-</code></pre>
+<h4 id="sample-code-1">1. 多选框组合并处理选择事件</h4>
+<pre><code class="language-html">&lt;checkbox-group bindchange=&quot;onCheckboxChange&quot;&gt;
+  &lt;view class=&quot;cb-list&quot;&gt;
+    &lt;label class=&quot;cb-item&quot; ma:for=&quot;{{options}}&quot; ma:key=&quot;{{item.value}}&quot;&gt;
+      &lt;checkbox value=&quot;{{item.value}}&quot; checked=&quot;{{item.checked}}&quot; color=&quot;#0284c7&quot; /&gt;
+      &lt;text&gt;{{item.label}}&lt;/text&gt;
+    &lt;/label&gt;
+  &lt;/view&gt;
+&lt;/checkbox-group&gt;
+&lt;view class=&quot;selected-text&quot;&gt;Selected: {{selectedList}}&lt;/view&gt;</code></pre>
 <pre><code class="language-js">Page({
   data: {
-    <span class="hljs-built_in">items</span>: [
-      { value: <span class="hljs-string">&#x27;USA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;USA&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;CHN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;China&#x27;</span>, checked: <span class="hljs-string">&#x27;true&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;BRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;Brazil&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;JPN&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;Japan&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;ENG&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;England&#x27;</span> },
-      { value: <span class="hljs-string">&#x27;FRA&#x27;</span>, <span class="hljs-built_in">name</span>: <span class="hljs-string">&#x27;France&#x27;</span> }
-    ]
+    options: [
+      { value: &#39;JS&#39;, label: &#39;JavaScript&#39;, checked: true },
+      { value: &#39;TS&#39;, label: &#39;TypeScript&#39;, checked: true },
+      { value: &#39;REACT&#39;, label: &#39;React / Taro&#39; },
+      { value: &#39;MAML&#39;, label: &#39;Native MAML&#39; }
+    ],
+    selectedList: &#39;JS, TS&#39;
   },
-  checkboxChange: function(e) {
-    console.<span class="hljs-built_in">log</span>(e.detail.value)
-    var <span class="hljs-built_in">items</span> = this.data.<span class="hljs-built_in">items</span>,
-      values = e.detail.value
-    <span class="hljs-keyword">for</span> (var i = <span class="hljs-number">0</span>, lenI = <span class="hljs-built_in">items</span>.length; i &lt; lenI; ++i) {
-      <span class="hljs-built_in">items</span>[i].checked = <span class="hljs-literal">false</span>
-
-      <span class="hljs-keyword">for</span> (var j = <span class="hljs-number">0</span>, lenJ = values.length; j &lt; lenJ; ++j) {
-        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">items</span>[i].value === values[j]) {
-          <span class="hljs-built_in">items</span>[i].checked = <span class="hljs-literal">true</span>
-          <span class="hljs-built_in">break</span>
-        }
-      }
-    }
-
-    this.setData({
-      <span class="hljs-built_in">items</span>: <span class="hljs-built_in">items</span>
-    })
+  onCheckboxChange(e) {
+    this.setData({ selectedList: e.detail.value.join(&#39;, &#39;) });
   }
-})
-</code></pre>
+});</code></pre>
+<pre><code class="language-css">.cb-list { display: flex; flex-direction: column; gap: 10px; }
+.cb-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.selected-text { margin-top: 12px; font-size: 13px; color: #0284c7; font-weight: 600; }</code></pre>

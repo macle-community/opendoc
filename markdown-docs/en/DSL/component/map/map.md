@@ -133,3 +133,32 @@ Page({
 2. If the latitude/longitude of the map component is not filled in, it defaults to the latitude/longitude of Beijing
 3. The simulator needs to import Google's APIkey by itself. The developer must apply for the APIKey themselves, as shown in the figure below:
    ![image](GOOGLEMAP_APIKEY) 
+
+
+### Sample Code
+
+#### 1. Interactive Map with Markers & Coordinates
+
+```html
+<map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" scale="14" style="width: 100%; height: 220px; border-radius: 8px; overflow: hidden;" />
+```
+
+```js
+Page({
+  data: {
+    latitude: 31.2304,
+    longitude: 121.4737,
+    markers: [{
+      id: 1,
+      latitude: 31.2304,
+      longitude: 121.4737,
+      name: 'Macle Headquarters'
+    }]
+  }
+});
+```
+
+```css
+map { width: 100%; border-radius: 8px; }
+```
+

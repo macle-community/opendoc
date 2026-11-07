@@ -15,46 +15,46 @@
 
 ### Sample Code
 
+#### 1. Embedded Multi-Column Picker View
+
 ```html
-
 <view>
-    <view>Scrolling selector embedded in the page</view>
-    <view>
-        <view>
-            <picker-view style="height: 500px;width: 100%;text-align:center;">
-                <picker-view-column>
-                    <view>2013</view>
-                    <view>2014</view>
-                    <view>2015</view>
-                    <view>2016</view>
-                    <view>2017</view>
-                    <view>2018</view>
-                    <view>2019</view>
-                    <view>2020</view>
-                </picker-view-column>
-                <picker-view-column>
-                    <view>Q1</view>
-                    <view>Q2</view>
-                    <view>Q3</view>
-                    <view>Q4</view>
-                </picker-view-column>
-            </picker-view>
-        </view>
-    </view>
+  <view class="preview-date">{{year}}年 {{month}}月 {{day}}日</view>
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px; background: #fff; border-radius: 8px;" value="{{val}}" bindchange="onPickerViewChange">
+    <picker-view-column>
+      <view ma:for="{{years}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view ma:for="{{months}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view ma:for="{{days}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}日</view>
+    </picker-view-column>
+  </picker-view>
 </view>
-
 ```
 
 ```js
-
 Page({
-  data: {},
-  onChange(e) {
-    console.log(e.detail.value);
-    this.setData({
-      value: e.detail.value,
-    });
+  data: {
+    years: [2024, 2025, 2026, 2027],
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30],
+    val: [2, 10, 6],
+    year: 2026, month: 11, day: 7
   },
+  onPickerViewChange(e) {
+    const val = e.detail.value;
+    this.setData({
+      year: this.data.years[val[0]],
+      month: this.data.months[val[1]],
+      day: this.data.days[val[2]]
+    });
+  }
 });
-
 ```
+
+```css
+.preview-date { text-align: center; font-size: 16px; font-weight: bold; color: #2563eb; margin-bottom: 12px; }
+```
+

@@ -18,12 +18,45 @@
 
 ### Sample Code
 
-```html
+#### 1. Basic Text & Selectable Text
 
-<view>
-  <text userSelect=false space="nbsp">Chinese character space nbsp</text>
+```html
+<view class="text-group">
+  <text class="text-headline">Standard Headline Text</text>
+  <text class="text-sub">Regular secondary description text paragraph.</text>
+  <text selectable="true" class="text-selectable">This text is selectable (user-select / selectable=true)</text>
 </view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.text-group { display: flex; flex-direction: column; gap: 8px; }
+.text-headline { font-size: 17px; font-weight: 700; color: #0f172a; }
+.text-sub { font-size: 13px; color: #64748b; }
+.text-selectable { font-size: 13px; color: #2563eb; background: #eff6ff; padding: 6px 10px; border-radius: 6px; border: 1px dashed #bfdbfe; }
+```
+
+#### 2. Continuous Space Display (ensp, emsp, nbsp)
+
+```html
+<view class="text-group">
+  <text space="ensp">Half-width   space   (ensp)</text>
+  <text space="emsp">Full-width   space   (emsp)</text>
+  <text space="nbsp">Non-breaking   space   (nbsp)</text>
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.text-group text { font-size: 14px; color: #334155; }
+```
+
 
 ### Bug & Tip
 

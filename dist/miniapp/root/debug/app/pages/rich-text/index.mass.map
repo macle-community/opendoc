@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/rich-text/index.mass"],"names":[],"mappings":"AACA,aAAY,aAAgB;AAE5B,wBAAmB,WAAc","file":"","sourcesContent":["/* pages/rich-text/index.mass */\nrich-text { display: block; }\n\n.custom-node-box { padding: 8px; }\n\n"]}

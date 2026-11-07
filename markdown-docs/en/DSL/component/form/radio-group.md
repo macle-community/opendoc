@@ -8,45 +8,37 @@
 
 ### Sample Code
 
-```html
+#### 1. Radio Group with Exclusive Selection
 
-<view>
-  <view>
-    <radio-group bindchange='radioChange'>
-      <label ma:for='{{items}}' ma:key='{{item.value}}'>
-        <view>
-          <radio value='{{item.value}}' checked='{{item.checked}}' color='pink' />
-        </view>
-        <view>{{item.name}}</view>
-      </label>
-    </radio-group>
+```html
+<radio-group bindchange="onRadioChange">
+  <view class="radio-list">
+    <label class="radio-item" ma:for="{{plans}}" ma:key="{{item.id}}">
+      <radio value="{{item.id}}" checked="{{item.id === currentPlan}}" color="#2563eb" />
+      <text class="radio-label">{{item.name}} ({{item.price}})</text>
+    </label>
   </view>
-</view>
+</radio-group>
+<view class="selected-plan">Selected: {{currentPlan}}</view>
 ```
 
 ```js
 Page({
   data: {
-    items: [
-      { value: 'USA', name: 'USA' },
-      { value: 'CHN', name: 'China', checked: 'true' },
-      { value: 'BRA', name: 'Brazil' },
-      { value: 'JPN', name: 'Japan' },
-      { value: 'ENG', name: 'England' },
-      { value: 'FRA', name: 'France' }
-    ]
+    plans: [
+      { id: 'free', name: 'Free Tier', price: '$0' },
+      { id: 'pro', name: 'Pro Plan', price: '$19/mo' },
+      { id: 'team', name: 'Team Enterprise', price: '$49/mo' }
+    ],
+    currentPlan: 'pro'
   },
-  radioChange: function(e) {
-    console.log(e.detail.value);
-
-    var items = this.data.items;
-    for (var i = 0, len = items.length; i < len; ++i) {
-      items[i].checked = items[i].value == e.detail.value;
-    }
-
-    this.setData({
-      items: items
-    });
-  }
+  onRadioChange(e) { this.setData({ currentPlan: e.detail.value }); }
 });
 ```
+
+```css
+.radio-list { display: flex; flex-direction: column; gap: 10px; }
+.radio-item { display: flex; align-items: center; gap: 8px; font-size: 14px; background: #fff; padding: 10px; border-radius: 6px; }
+.selected-plan { margin-top: 10px; font-size: 13px; color: #2563eb; font-weight: 600; }
+```
+

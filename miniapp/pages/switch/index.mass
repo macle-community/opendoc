@@ -1,1 +1,6 @@
-.page-body { padding: 8px 0; }
+/* pages/switch/index.mass */
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }
+.sw-title { font-size: 14px; font-weight: 500; }
+
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px; border-radius: 8px; }
+

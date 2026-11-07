@@ -25,11 +25,13 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">page-meta</span> <span class="hljs-attr">root-font-size</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">rootSize</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;page-meta&#x27;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;font-size:2rem&#x27;</span>&gt;</span>
-    page-meta
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;fontStyle&#x27;</span>&gt;</span>Second node<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">page-meta</span>&gt;</span></span>
-</code></pre>
+<h4 id="sample-code-1">1. Dynamic Page Meta Configuration</h4>
+<pre><code class="language-html">&lt;page-meta background-color=&quot;#f8fafc&quot; page-style=&quot;padding: 12px;&quot; /&gt;
+&lt;view class=&quot;meta-content&quot;&gt;
+  &lt;text class=&quot;meta-title&quot;&gt;Page Meta Defined&lt;/text&gt;
+  &lt;text class=&quot;meta-desc&quot;&gt;Configures root page styling dynamically.&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.meta-content { background: #fff; padding: 16px; border-radius: 8px; }
+.meta-title { font-weight: bold; font-size: 15px; color: #1e293b; }
+.meta-desc { font-size: 13px; color: #64748b; margin-top: 4px; display: block; }</code></pre>

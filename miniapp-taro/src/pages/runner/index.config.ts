@@ -1,3 +1,1 @@
-export default definePageConfig({
-  navigationBarTitleText: "Dynamic Snippet Runner"
-});
+export default definePageConfig({ navigationBarTitleText: 'Runner' });

@@ -1,0 +1,4 @@
+/* pages/video/index.css */
+.video-container { width: 100%; border-radius: 8rpx; overflow: hidden; }
+
+

@@ -1,0 +1,5 @@
+/* pages/page-meta/index.mass */
+.meta-content { background: #fff; padding: 16px; border-radius: 8px; }
+.meta-title { font-weight: bold; font-size: 15px; color: #1e293b; }
+.meta-desc { font-size: 13px; color: #64748b; margin-top: 4px; display: block; }
+

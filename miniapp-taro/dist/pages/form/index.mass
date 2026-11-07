@@ -1,0 +1,7 @@
+/* pages/form/index.css */
+.form-field { margin-bottom: 14rpx; }
+.form-label { font-size: 13rpx; color: #475569; margin-bottom: 6rpx; display: block; }
+.form-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 8rpx 10rpx; font-size: 14rpx; }
+.form-actions { display: flex; gap: 10rpx; margin-top: 10rpx; }
+
+

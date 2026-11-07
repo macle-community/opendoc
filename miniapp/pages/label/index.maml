@@ -1,0 +1,18 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Label with for Attribute Binding</text>
+    <view class="label-demo">
+      <checkbox id="agree-cb" color="#2563eb" />
+      <label for="agree-cb" class="bound-label">Tap this label text to toggle checkbox</label>
+    </view>
+  </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Label Encapsulating Controls</text>
+    <label class="enclosing-label">
+      <radio value="r1" checked="true" color="#10b981" />
+      <text style="margin-left: 8px; font-size: 14px;">Enclosed Radio inside Label</text>
+    </label>
+  </view>
+
+</view>

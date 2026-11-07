@@ -1,0 +1,6 @@
+/* pages/swiper-item/index.mass */
+.swiper-custom-item { padding: 10px; box-sizing: border-box; }
+.card-content { background: #f8fafc; border: 2px dashed #94a3b8; height: 100%; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.card-title { font-weight: bold; color: #1e293b; font-size: 15px; }
+.card-sub { font-size: 12px; color: #64748b; margin-top: 4px; }
+

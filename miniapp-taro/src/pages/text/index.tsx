@@ -6,11 +6,20 @@ export default function TextPage() {
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Text Component</Text>
-        <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Text style={{ fontSize: '16px', fontWeight: 'bold', color: '#0f172a' }}>Headline Bold Text</Text>
-          <Text style={{ fontSize: '13px', color: '#64748b' }}>Subtitle or description text style.</Text>
-          <Text selectable style={{ fontSize: '13px', color: '#2563eb' }}>This text is selectable (selectable=true)</Text>
+        <Text className="demo-title">1. Basic Text & Selectable Text</Text>
+        <View className="text-group">
+          <Text className="text-headline">Standard Headline Text</Text>
+          <Text className="text-sub">Regular secondary description text paragraph.</Text>
+          <Text selectable className="text-selectable">This text is selectable (user-select / selectable=true)</Text>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Continuous Space Display (ensp, emsp, nbsp)</Text>
+        <View className="text-group">
+          <Text space="ensp">Half-width   space   (ensp)</Text>
+          <Text space="emsp">Full-width   space   (emsp)</Text>
+          <Text space="nbsp">Non-breaking   space   (nbsp)</Text>
         </View>
       </View>
     </View>

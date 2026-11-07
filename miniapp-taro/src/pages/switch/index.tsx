@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiSwitch } from '@macle-community/taro-plugin-macle/components-react';
+import { View, Text, Switch } from '@tarojs/components';
+import Taro from '@tarojs/taro';
 import './index.css';
 
 export default function SwitchPage() {
-  const [checked, setChecked] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(true);
+  const onToggle = (e: any) => {
+    setIsEnabled(e.detail.value);
+    Taro.showToast({ title: e.detail.value ? 'Enabled' : 'Disabled', icon: 'none' });
+  };
 
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (State: {checked ? 'ON' : 'OFF'})</Text>
-        <MauiSwitch checked={checked} onChange={(e: any) => setChecked(e.detail)} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Disabled & Loading</Text>
-        <View className="demo-row">
-          <MauiSwitch disabled checked={true} />
-          <MauiSwitch disabled checked={false} />
-          <MauiSwitch loading checked={true} />
+        <Text className="demo-title">1. Switch Selector with Change Event</Text>
+        <View className="switch-row">
+          <Text className="sw-title">Notification Enabled:</Text>
+          <Switch checked={isEnabled} onChange={onToggle} color="#2563eb" />
         </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">3. Custom Size & Colors</Text>
-        <View className="demo-row">
-          <MauiSwitch size="24px" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
-          <MauiSwitch active-color="#07c160" inactive-color="#ee0a24" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
+        <Text className="demo-title">2. Checkbox Style Switch & Custom Color</Text>
+        <View className="switch-row">
+          <Text className="sw-title">Checkbox Style Switch:</Text>
+          <Switch type="checkbox" checked color="#10b981" />
         </View>
       </View>
     </View>

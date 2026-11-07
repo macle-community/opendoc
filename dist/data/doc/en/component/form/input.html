@@ -197,11 +197,30 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;Hello World&#x27;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. Text Input with Placeholder</h4>
+<pre><code class="language-html">&lt;view class=&quot;input-block&quot;&gt;
+  &lt;input class=&quot;std-input&quot; placeholder=&quot;Standard text input...&quot; bindinput=&quot;onInputSync&quot; /&gt;
+  &lt;text class=&quot;input-val-preview&quot;&gt;Current Input: {{currentVal}}&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: { currentVal: &#39;&#39; },
+  onInputSync(e) { this.setData({ currentVal: e.detail.value }); }
+});</code></pre>
+<pre><code class="language-css">.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+.input-val-preview { font-size: 12px; color: #64748b; margin-top: 6px; display: block; }</code></pre>
+<h4 id="sample-code-2">2. Password, Number &amp; Digit Input Types</h4>
+<pre><code class="language-html">&lt;view class=&quot;input-col&quot;&gt;
+  &lt;input class=&quot;std-input&quot; password=&quot;true&quot; placeholder=&quot;Password input&quot; /&gt;
+  &lt;input class=&quot;std-input&quot; type=&quot;number&quot; placeholder=&quot;Number keyboard input&quot; /&gt;
+  &lt;input class=&quot;std-input&quot; type=&quot;digit&quot; placeholder=&quot;Decimal digit keyboard input&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.input-col { display: flex; flex-direction: column; gap: 10px; }
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }</code></pre>
+<h4 id="sample-code-3">3. Focus, Maxlength &amp; Confirm Type</h4>
+<pre><code class="language-html">&lt;input class=&quot;std-input&quot; maxlength=&quot;10&quot; confirm-type=&quot;done&quot; placeholder=&quot;Maxlength 10 chars&quot; /&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>The display of <code>confirm-type</code> is related to the implementation of the phone input method. Some Android input methods and third-party input methods may not be supported or fully supported.</li>

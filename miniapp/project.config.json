@@ -1,6 +1,6 @@
 {
-  "description": "Macle OpenDoc Mini Program Showcase",
-  "appid": "macle-opendoc-showcase",
+  "description": "Macle Native MiniProgram Showcase",
+  "appid": "macle-showcase",
   "projectname": "miniapp",
   "setting": {
     "es5": false

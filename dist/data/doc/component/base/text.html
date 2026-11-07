@@ -56,11 +56,25 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">userSelect</span>=<span class="hljs-string">false</span> <span class="hljs-attr">space</span>=<span class="hljs-string">&quot;nbsp&quot;</span>&gt;</span>中文字符 空格nbsp<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. 基础文本与长按可选文本</h4>
+<pre><code class="language-html">&lt;view class=&quot;text-group&quot;&gt;
+  &lt;text class=&quot;text-headline&quot;&gt;Standard Headline Text&lt;/text&gt;
+  &lt;text class=&quot;text-sub&quot;&gt;Regular secondary description text paragraph.&lt;/text&gt;
+  &lt;text selectable=&quot;true&quot; class=&quot;text-selectable&quot;&gt;This text is selectable (user-select / selectable=true)&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.text-group { display: flex; flex-direction: column; gap: 8px; }
+.text-headline { font-size: 17px; font-weight: 700; color: #0f172a; }
+.text-sub { font-size: 13px; color: #64748b; }
+.text-selectable { font-size: 13px; color: #2563eb; background: #eff6ff; padding: 6px 10px; border-radius: 6px; border: 1px dashed #bfdbfe; }</code></pre>
+<h4 id="sample-code-2">2. 空格排版格式</h4>
+<pre><code class="language-html">&lt;view class=&quot;text-group&quot;&gt;
+  &lt;text space=&quot;ensp&quot;&gt;Half-width   space   (ensp)&lt;/text&gt;
+  &lt;text space=&quot;emsp&quot;&gt;Full-width   space   (emsp)&lt;/text&gt;
+  &lt;text space=&quot;nbsp&quot;&gt;Non-breaking   space   (nbsp)&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.text-group text { font-size: 14px; color: #334155; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>decode 可以解析的有 <code>&amp;nbsp; &amp;lt; &amp;gt; &amp;amp; &amp;apos; &amp;ensp; &amp;emsp;</code></li>

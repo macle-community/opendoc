@@ -123,69 +123,9 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;text-align: center;&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;text-align: left&#x27;</span>
-           <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;myAudio&#x27;</span>
-           <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">loop</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loop</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">poster</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">poster</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">name</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">author</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">author</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">controls</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">controls</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-           <span class="hljs-attr">bindplay</span>=<span class="hljs-string">&#x27;bindplay&#x27;</span>
-           <span class="hljs-attr">bindpause</span>=<span class="hljs-string">&#x27;bindpause&#x27;</span>
-           <span class="hljs-attr">bindtimeupdate</span>=<span class="hljs-string">&#x27;bindtimeupdate&#x27;</span>
-           <span class="hljs-attr">bindended</span>=<span class="hljs-string">&#x27;bindended&#x27;</span>
-           <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
-</code></pre>
-<pre><code class="language-js"><span class="hljs-title class_">Page</span>({
-  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span> = ma.<span class="hljs-title function_">createAudioContext</span>(<span class="hljs-string">&#x27;myAudio&#x27;</span>);
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span>.<span class="hljs-title function_">setSrc</span>(<span class="hljs-string">&#x27;http://example.mp3&#x27;</span>);
-  },
-  <span class="hljs-attr">onUnload</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span>.<span class="hljs-title function_">pause</span>();
-  },
-  <span class="hljs-attr">data</span>: {
-    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;&#x27;</span>,
-    <span class="hljs-attr">poster</span>: <span class="hljs-string">&#x27;http://example.jpg&#x27;</span>,
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;example&#x27;</span>,
-    <span class="hljs-attr">author</span>: <span class="hljs-string">&#x27;example&#x27;</span>,
-    <span class="hljs-attr">loop</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">controls</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">time</span>: <span class="hljs-number">30</span>
-  },
-  <span class="hljs-attr">playAudio</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span>.<span class="hljs-title function_">play</span>();
-  },
-  <span class="hljs-attr">pauseAudio</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span>.<span class="hljs-title function_">pause</span>();
-  },
-  <span class="hljs-attr">seekAudio</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">audioContext</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">time</span>);
-  },
-  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio error:&#x27;</span> + e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>);
-  },
-  <span class="hljs-attr">bindplay</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio is played&#x27;</span>);
-  },
-  <span class="hljs-attr">bindpause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio is paused&#x27;</span>);
-  },
-  <span class="hljs-attr">bindtimeupdate</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">duration</span> = e.<span class="hljs-property">detail</span>.<span class="hljs-property">duration</span>;
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio currentTime:&#x27;</span> + e.<span class="hljs-property">detail</span>.<span class="hljs-property">currentTime</span>);
-  },
-  <span class="hljs-attr">bindended</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio is ended&#x27;</span>);
-  },
-  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;audio error:&#x27;</span> + e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>);
-  }
-})
-</code></pre>
+<h4 id="sample-code-1">1. 音频播放器与控制面板</h4>
+<pre><code class="language-html">&lt;view class=&quot;audio-container&quot;&gt;
+  &lt;audio id=&quot;myAudio&quot; name=&quot;Sample Audio Track&quot; author=&quot;Macle OpenDoc&quot; src=&quot;https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3&quot; controls=&quot;true&quot; style=&quot;width: 100%;&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.audio-container { background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }</code></pre>

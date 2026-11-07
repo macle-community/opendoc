@@ -39,16 +39,59 @@
 
 ### 示例代码
 
+#### 1. 默认按钮（普通与禁用）
+
 ```html
-
-<button type='default' hover-start-time='2000' hover-stay-time='1000'>
-  Normal
-</button>
-<button type='default' disabled='true'>Normal Disabled</button>
-
-<button type='warn' hover-class='none' disabled='false'>Warn</button>
-<button type='warn' disabled='true'>Warn Disabled</button>
+<view class="btn-group">
+  <button type="default" hover-start-time="200" hover-stay-time="500">Normal Default</button>
+  <button type="default" disabled="true">Default Disabled</button>
+</view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+```
+
+#### 2. 警告按钮（普通与禁用）
+
+```html
+<view class="btn-group">
+  <button type="warn">Warn Action</button>
+  <button type="warn" disabled="true">Warn Disabled</button>
+</view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+```
+
+#### 3. 主要按钮与表单操作
+
+```html
+<view class="btn-group">
+  <button type="primary" bindtap="handlePrimaryTap">Primary Button</button>
+  <button type="primary" size="mini" style="align-self: flex-start;">Mini Primary</button>
+</view>
+```
+
+```js
+Page({
+  handlePrimaryTap() { ma.showToast({ title: 'Tapped Primary', icon: 'success' }); }
+});
+```
+
+```css
+.btn-group { display: flex; flex-direction: column; gap: 10px; }
+```
+
 
 ### Bug & Tip
 

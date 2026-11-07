@@ -28,150 +28,49 @@
 
 ### 示例代码
 
-```js
-
-Page({
-    data: {
-        background: [
-            {color: 'pink', text: 'Macle'},
-            {color: 'peru', text: '小程序'},
-            {color: 'yellowgreen', text: 'Swiper'}
-        ],
-        indicatorDots: true,
-        autoplay: true,
-        vertical: false,
-        interval: 2000,
-        circular: false,
-        duration: 1000,
-    },
-    onLoad() {
-    },
-    whetherDisplayPanelIndicator(e) {
-        this.setData({
-            indicatorDots: !this.data.indicatorDots,
-        });
-    },
-    adoptDirectionVertical() {
-        this.setData({
-            vertical: !this.data.vertical,
-        });
-    },
-    adoptCircular(e) {
-        this.setData({
-            circular: !this.data.circular,
-        });
-    },
-    adoptAutoplayInterval(e) {
-        this.setData({
-            autoplay: !this.data.autoplay,
-        });
-    },
-    intervalAdopt(e) {
-        this.setData({
-            interval: e.detail.value,
-        });
-    },
-    durationAdopt(e) {
-        console.log(e.detail.value);
-        this.setData({
-            duration: e.detail.value,
-        });
-    }
-});
-
-```
+#### 1. 自动轮播与面板指示点
 
 ```html
+<swiper indicator-dots="true" autoplay="true" interval="2500" duration="500" circular="true" style="height: 160px; border-radius: 10px; overflow: hidden;">
+  <swiper-item>
+    <view class="swiper-slide slide-blue"><text class="slide-text">Slide A - Macle</text></view>
+  </swiper-item>
+  <swiper-item>
+    <view class="swiper-slide slide-green"><text class="slide-text">Slide B - Simulator</text></view>
+  </swiper-item>
+  <swiper-item>
+    <view class="swiper-slide slide-orange"><text class="slide-text">Slide C - OpenDoc</text></view>
+  </swiper-item>
+</swiper>
+```
 
-<view class="container">
-    <view class="page-description">滑块视图容器</view>
-    <view class="page-section">
-        <view class="page-section-demo">
-            <swiper style="height:150px" class="demo-swiper" previousMargin="10px" nextMargin="10px"
-                    indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" vertical="{{vertical}}"
-                    interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
-                <swiper-item ma:key="swiper-item-{{index}}" ma:for="{{background}}">
-                    <view class="swiper-item ma_{{item.color}}">{{item.text}}</view>
-                </swiper-item>
-            </swiper>
-        </view>
-        <view class="pagination-section-control">
-            <view>
-                是否显示面板展示点
-                <view>
-                    <switch bindchange="whetherDisplayPanelIndicator" checked="{{indicatorDots}}"/>
-                </view>
-            </view>
-            <view>
-                滑动方向是否为纵向
-                <view>
-                    <switch bindchange="adoptDirectionVertical" checked="{{vertical}}"/>
-                </view>
-            </view>
-            <view>
-                是否采用衔接滑动
-                <view>
-                    <switch bindchange="adoptCircular" checked="{{circular}}"/>
-                </view>
-            </view>
-            <view>
-                是否自动切换
-                <view>
-                    <switch bindchange="adoptAutoplayInterval" checked="{{autoplay}}"/>
-                </view>
-            </view>
-            <view>
-                <slider bindchange="intervalAdopt" value="{{interval}}" show-value min="500" max="30000"/>
-                <view>自动切换时间间隔(ms)</view>
-            </view>
-            <view>
-                <slider bindchange="durationAdopt" value="{{duration}}" show-value min="500" max="30000"/>
-                <view>滑动动画时长(ms)</view>
-            </view>
-        </view>
-    </view>
-</view>
-
+```js
+Page({ data: {} });
 ```
 
 ```css
-
-.swiper-item {
-    display: block;
-    height: 150px;
-    margin: 10px;
-    color: #fff;
-    text-align: center;
-    line-height: 150px;
-    font-size: 20px;
-}
-
-.pagination-section-control {
-    padding: 12px;
-}
-
-.pagination-section-control view {
-    margin-bottom: 12px;
-}
-
-
-.margin-t {
-    margin-top: 24px;
-}
-
-.ma_pink {
-    background-color: pink;
-}
-
-.ma_peru {
-    background-color: peru;
-}
-
-.ma_yellowgreen {
-    background-color: yellowgreen;
-}
-
+.swiper-slide { height: 100%; display: flex; align-items: center; justify-content: center; }
+.slide-text { color: #fff; font-size: 18px; font-weight: bold; }
+.slide-blue { background: #2563eb; } .slide-green { background: #16a34a; } .slide-orange { background: #ea580c; }
 ```
+
+#### 2. 循环衔接与纵向滑动
+
+```html
+<swiper vertical="true" indicator-dots="true" autoplay="false" style="height: 120px; border-radius: 10px; overflow: hidden;">
+  <swiper-item><view class="swiper-slide slide-purple"><text class="slide-text">Vertical Panel 1</text></view></swiper-item>
+  <swiper-item><view class="swiper-slide slide-teal"><text class="slide-text">Vertical Panel 2</text></view></swiper-item>
+</swiper>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.slide-purple { background: #7c3aed; } .slide-teal { background: #0d9488; }
+```
+
 
 ### Bug & Tip
 

@@ -111,28 +111,54 @@
     const raw = (currentExample.rawCode || '').toLowerCase();
     const title = (currentExample.title || '').toLowerCase();
 
-    if (hash.includes('button') || raw.includes('maui-button') || title.includes('button')) return 'pages/button/index';
-    if (hash.includes('layout') || raw.includes('maui-row') || raw.includes('maui-col') || title.includes('layout') || title.includes('col') || title.includes('row')) return 'pages/layout/index';
-    if (hash.includes('cell') || raw.includes('maui-cell') || title.includes('cell')) return 'pages/cell/index';
-    if (hash.includes('checkbox') || raw.includes('maui-checkbox') || title.includes('checkbox')) return 'pages/checkbox/index';
-    if (hash.includes('radio') || raw.includes('maui-radio') || title.includes('radio')) return 'pages/radio/index';
-    if (hash.includes('switch') || raw.includes('maui-switch') || title.includes('switch')) return 'pages/switch/index';
-    if (hash.includes('slider') || raw.includes('maui-slider') || title.includes('slider')) return 'pages/slider/index';
-    if (hash.includes('stepper') || raw.includes('maui-stepper') || title.includes('stepper')) return 'pages/stepper/index';
-    if (hash.includes('field') || raw.includes('maui-field') || title.includes('field') || title.includes('input')) return 'pages/field/index';
-    if (hash.includes('tag') || raw.includes('maui-tag') || title.includes('tag')) return 'pages/tag/index';
-    if (hash.includes('loading') || raw.includes('maui-loading') || title.includes('loading')) return 'pages/loading/index';
-    if (hash.includes('progress') || raw.includes('maui-progress') || title.includes('progress')) return 'pages/progress/index';
-    if (hash.includes('divider') || raw.includes('maui-divider') || title.includes('divider')) return 'pages/divider/index';
-    if (hash.includes('empty') || raw.includes('maui-empty') || title.includes('empty')) return 'pages/empty/index';
-    if (hash.includes('steps') || raw.includes('maui-steps') || title.includes('steps')) return 'pages/steps/index';
-    if (hash.includes('dialog') || raw.includes('maui-dialog') || title.includes('dialog')) return 'pages/dialog/index';
-    if (hash.includes('toast') || raw.includes('maui-toast') || title.includes('toast')) return 'pages/toast/index';
+    // Specific multi-word / sub-components first
+    if (hash.includes('scroll-view') || raw.includes('<scroll-view') || title.includes('scroll-view')) return 'pages/scroll-view/index';
+    if (hash.includes('swiper-item') || raw.includes('<swiper-item') || title.includes('swiper-item')) return 'pages/swiper-item/index';
+    if (hash.includes('swiper') || raw.includes('<swiper') || title.includes('swiper')) return 'pages/swiper/index';
+    if (hash.includes('cover-image') || raw.includes('<cover-image') || title.includes('cover-image')) return 'pages/cover-image/index';
+    if (hash.includes('cover-view') || raw.includes('<cover-view') || title.includes('cover-view')) return 'pages/cover-view/index';
+    if (hash.includes('checkbox-group') || raw.includes('<checkbox-group') || title.includes('checkbox-group')) return 'pages/checkbox-group/index';
+    if (hash.includes('checkbox') || raw.includes('<checkbox') || title.includes('checkbox')) return 'pages/checkbox/index';
+    if (hash.includes('radio-group') || raw.includes('<radio-group') || title.includes('radio-group')) return 'pages/radio-group/index';
+    if (hash.includes('radio') || raw.includes('<radio') || title.includes('radio')) return 'pages/radio/index';
+    if (hash.includes('picker-view-column') || raw.includes('<picker-view-column') || title.includes('picker-view-column')) return 'pages/picker-view-column/index';
+    if (hash.includes('picker-view') || raw.includes('<picker-view') || title.includes('picker-view')) return 'pages/picker-view/index';
+    if (hash.includes('picker') || raw.includes('<picker') || title.includes('picker')) return 'pages/picker/index';
+    if (hash.includes('web-view') || raw.includes('<web-view') || title.includes('web-view')) return 'pages/web-view/index';
+    if (hash.includes('page-meta') || raw.includes('<page-meta') || title.includes('page-meta')) return 'pages/page-meta/index';
+    if (hash.includes('rich-text') || raw.includes('<rich-text') || title.includes('rich-text')) return 'pages/rich-text/index';
 
-    if (hash.includes('view') && !hash.includes('scroll-view') && !hash.includes('web-view')) return 'pages/view/index';
-    if (hash.includes('text') || raw.includes('<text')) return 'pages/text/index';
-    if (hash.includes('swiper') || raw.includes('<swiper')) return 'pages/swiper/index';
-    if (hash.includes('scroll-view') || raw.includes('<scroll-view')) return 'pages/scroll-view/index';
+    // Standard native components
+    if (hash.includes('view') && !hash.includes('scroll-view') && !hash.includes('web-view') && !hash.includes('picker-view') && !hash.includes('cover-view')) return 'pages/view/index';
+    if (hash.includes('icon') || raw.includes('<icon') || title.includes('icon')) return 'pages/icon/index';
+    if (hash.includes('progress') || raw.includes('<progress') || title.includes('progress')) return 'pages/progress/index';
+    if (hash.includes('text') || raw.includes('<text') || title.includes('text')) return 'pages/text/index';
+    if (hash.includes('button') || raw.includes('<button') || title.includes('button')) return 'pages/button/index';
+    if (hash.includes('form') || raw.includes('<form') || title.includes('form')) return 'pages/form/index';
+    if (hash.includes('input') || raw.includes('<input') || title.includes('input')) return 'pages/input/index';
+    if (hash.includes('label') || raw.includes('<label') || title.includes('label')) return 'pages/label/index';
+    if (hash.includes('switch') || raw.includes('<switch') || title.includes('switch')) return 'pages/switch/index';
+    if (hash.includes('slider') || raw.includes('<slider') || title.includes('slider')) return 'pages/slider/index';
+    if (hash.includes('textarea') || raw.includes('<textarea') || title.includes('textarea')) return 'pages/textarea/index';
+    if (hash.includes('navigator') || raw.includes('<navigator') || title.includes('navigator')) return 'pages/navigator/index';
+    if (hash.includes('image') || raw.includes('<image') || title.includes('image')) return 'pages/image/index';
+    if (hash.includes('video') || raw.includes('<video') || title.includes('video')) return 'pages/video/index';
+    if (hash.includes('audio') || raw.includes('<audio') || title.includes('audio')) return 'pages/audio/index';
+    if (hash.includes('camera') || raw.includes('<camera') || title.includes('camera')) return 'pages/camera/index';
+    if (hash.includes('map') || raw.includes('<map') || title.includes('map')) return 'pages/map/index';
+
+    // MAUI Component Library fallbacks
+    if (hash.includes('layout') || raw.includes('maui-row') || raw.includes('maui-col')) return 'pages/layout/index';
+    if (hash.includes('cell') || raw.includes('maui-cell')) return 'pages/cell/index';
+    if (hash.includes('stepper') || raw.includes('maui-stepper')) return 'pages/stepper/index';
+    if (hash.includes('field') || raw.includes('maui-field')) return 'pages/field/index';
+    if (hash.includes('tag') || raw.includes('maui-tag')) return 'pages/tag/index';
+    if (hash.includes('loading') || raw.includes('maui-loading')) return 'pages/loading/index';
+    if (hash.includes('divider') || raw.includes('maui-divider')) return 'pages/divider/index';
+    if (hash.includes('empty') || raw.includes('maui-empty')) return 'pages/empty/index';
+    if (hash.includes('steps') || raw.includes('maui-steps')) return 'pages/steps/index';
+    if (hash.includes('dialog') || raw.includes('maui-dialog')) return 'pages/dialog/index';
+    if (hash.includes('toast') || raw.includes('maui-toast')) return 'pages/toast/index';
 
     return 'pages/index/index';
   }
@@ -222,24 +248,59 @@
       const comp = MAUI_REACT_NAME_MAP['maui-' + tag] || ('Maui' + tag.charAt(0).toUpperCase() + tag.slice(1));
       return '</' + comp + '>';
     });
-    // Convert standard tags
-    jsx = jsx.replace(/<view([^>]*)>/g, '<View$1>').replace(/<\/view>/g, '</View>');
-    jsx = jsx.replace(/<text([^>]*)>/g, '<Text$1>').replace(/<\/text>/g, '</Text>');
-    jsx = jsx.replace(/<button([^>]*)>/g, '<Button$1>').replace(/<\/button>/g, '</Button>');
-    jsx = jsx.replace(/<input([^>]*?)(\/?>)/g, function(m, attrs) {
-      return '<Input' + attrs + ' />';
-    });
-    jsx = jsx.replace(/<swiper([^>]*)>/g, '<Swiper$1>').replace(/<\/swiper>/g, '</Swiper>');
-    jsx = jsx.replace(/<swiper-item([^>]*)>/g, '<SwiperItem$1>').replace(/<\/swiper-item>/g, '</SwiperItem>');
-    jsx = jsx.replace(/<scroll-view([^>]*)>/g, '<ScrollView$1>').replace(/<\/scroll-view>/g, '</ScrollView>');
+    // Convert standard native tags
+    const standardTagMap = {
+      'view': 'View', 'text': 'Text', 'button': 'Button', 'input': 'Input',
+      'checkbox': 'Checkbox', 'checkbox-group': 'CheckboxGroup',
+      'radio': 'Radio', 'radio-group': 'RadioGroup',
+      'switch': 'Switch', 'slider': 'Slider', 'textarea': 'Textarea',
+      'picker': 'Picker', 'picker-view': 'PickerView', 'picker-view-column': 'PickerViewColumn',
+      'label': 'Label', 'form': 'Form', 'scroll-view': 'ScrollView',
+      'swiper': 'Swiper', 'swiper-item': 'SwiperItem', 'icon': 'Icon',
+      'progress': 'Progress', 'rich-text': 'RichText', 'navigator': 'Navigator',
+      'image': 'Image', 'video': 'Video', 'audio': 'Audio', 'camera': 'Camera',
+      'cover-view': 'CoverView', 'cover-image': 'CoverImage',
+      'web-view': 'WebView', 'page-meta': 'PageMeta', 'map': 'Map'
+    };
+    for (const [tag, comp] of Object.entries(standardTagMap)) {
+      const openRegex = new RegExp('<' + tag + '(\\b[^>]*)>', 'g');
+      const closeRegex = new RegExp('</' + tag + '>', 'g');
+      jsx = jsx.replace(openRegex, '<' + comp + '$1>').replace(closeRegex, '</' + comp + '>');
+    }
+    // Self-closing input/image
+    jsx = jsx.replace(/<Input([^>]*?)(?<!\/)>/g, '<Input$1 />');
+
     // JSX Attributes
     jsx = jsx.replace(/\bclass=/g, 'className=');
-    jsx = jsx.replace(/\b(span|offset|gutter|step|min|max|current|count)="([0-9]+)"/g, '$1={$2}');
+    jsx = jsx.replace(/\b(span|offset|gutter|step|min|max|current|count|percent|size|stroke-width)="([0-9]+)"/g, function(m, p, v) {
+      const camel = p.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+      return camel + '={' + v + '}';
+    });
+    jsx = jsx.replace(/\b(disabled|checked|focus|autoplay|circular|vertical|show-info|show-value|auto-height|selectable|indicator-dots)="true"/g, function(m, p) {
+      const camel = p.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+      return camel;
+    });
+    jsx = jsx.replace(/\b(disabled|checked|focus|autoplay|circular|vertical|show-info|show-value|auto-height|selectable|indicator-dots)="false"/g, function(m, p) {
+      const camel = p.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+      return camel + '={false}';
+    });
+    jsx = jsx.replace(/\bhover-class=/g, 'hoverClass=');
+    jsx = jsx.replace(/\bhover-start-time=/g, 'hoverStartTime=');
+    jsx = jsx.replace(/\bhover-stay-time=/g, 'hoverStayTime=');
+    jsx = jsx.replace(/\bactive-color=/g, 'activeColor=');
+    jsx = jsx.replace(/\bconfirm-type=/g, 'confirmType=');
+    jsx = jsx.replace(/\bdevice-position=/g, 'devicePosition=');
+    jsx = jsx.replace(/\bopen-type=/g, 'openType=');
+    jsx = jsx.replace(/\bindicator-dots=/g, 'indicatorDots=');
+    jsx = jsx.replace(/\bscroll-x=/g, 'scrollX=');
+    jsx = jsx.replace(/\bscroll-y=/g, 'scrollY=');
     jsx = jsx.replace(/\bbindtap="([a-zA-Z0-9_]+)"/g, 'onClick={$1}');
     jsx = jsx.replace(/\bbindchange="([a-zA-Z0-9_]+)"/g, 'onChange={$1}');
     jsx = jsx.replace(/\bbindinput="([a-zA-Z0-9_]+)"/g, 'onInput={$1}');
     jsx = jsx.replace(/\bbindclose="([a-zA-Z0-9_]+)"/g, 'onClose={$1}');
     jsx = jsx.replace(/\bbindconfirm="([a-zA-Z0-9_]+)"/g, 'onConfirm={$1}');
+    jsx = jsx.replace(/\bbindsubmit="([a-zA-Z0-9_]+)"/g, 'onSubmit={$1}');
+    jsx = jsx.replace(/\bbindreset="([a-zA-Z0-9_]+)"/g, 'onReset={$1}');
     return jsx;
   }
 
@@ -260,6 +321,26 @@
     return list;
   }
 
+  const STANDARD_TARO_COMPS = [
+    'View', 'Text', 'Button', 'Input', 'Checkbox', 'CheckboxGroup',
+    'Radio', 'RadioGroup', 'Switch', 'Slider', 'Textarea', 'Picker',
+    'PickerView', 'PickerViewColumn', 'Label', 'Form', 'ScrollView',
+    'Swiper', 'SwiperItem', 'Icon', 'Progress', 'RichText', 'Navigator',
+    'Image', 'Video', 'Audio', 'Camera', 'CoverView', 'CoverImage',
+    'WebView', 'PageMeta', 'Map'
+  ];
+
+  function detectUsedStandardTaroComponents(jsx) {
+    const found = [];
+    for (const comp of STANDARD_TARO_COMPS) {
+      if (jsx.includes('<' + comp)) {
+        found.push(comp);
+      }
+    }
+    if (found.length === 0) found.push('View');
+    return found;
+  }
+
   // Generate Taro Snippet for inline documentation switch
   function generateTaroSnippet(rawCode, lang, title) {
     const trimmed = rawCode.trim();
@@ -270,15 +351,17 @@
       return `import Taro from '@tarojs/taro'\n\n// Macle API via @macle-community/taro-plugin-macle bridge\n${taroApiCode}`;
     }
 
+    const jsx = convertMamlToTaroJsx(trimmed);
+    const standardComps = detectUsedStandardTaroComponents(jsx);
     const mauiComps = detectUsedMauiComponents(trimmed);
-    let imports = `import React from 'react'\nimport { View } from '@tarojs/components'\n`;
+
+    let imports = `import React from 'react'\nimport { ${standardComps.join(', ')} } from '@tarojs/components'\n`;
     if (mauiComps.length > 0) {
       imports += `import {\n  ${mauiComps.join(',\n  ')}\n} from '@macle-community/taro-plugin-macle/components-react'\n\n`;
     } else {
       imports += `import Taro from '@tarojs/taro'\n\n`;
     }
 
-    const jsx = convertMamlToTaroJsx(trimmed);
     return `${imports}// Inside your Taro React Component render:\n${jsx}`;
   }
 

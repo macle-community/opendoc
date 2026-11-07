@@ -1,0 +1,5 @@
+/* pages/rich-text/index.mass */
+rich-text { display: block; }
+
+.custom-node-box { padding: 8px; }
+

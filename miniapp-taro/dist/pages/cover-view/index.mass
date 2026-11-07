@@ -1,0 +1,4 @@
+/* pages/cover-view/index.css */
+.media-container { width: 100%; box-sizing: border-box; }
+
+

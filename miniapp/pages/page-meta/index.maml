@@ -1,0 +1,11 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Dynamic Page Meta Configuration</text>
+    <page-meta background-color="#f8fafc" page-style="padding: 12px;" />
+    <view class="meta-content">
+      <text class="meta-title">Page Meta Defined</text>
+      <text class="meta-desc">Configures root page styling dynamically.</text>
+    </view>
+  </view>
+
+</view>

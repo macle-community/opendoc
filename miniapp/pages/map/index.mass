@@ -1,0 +1,3 @@
+/* pages/map/index.mass */
+map { width: 100%; border-radius: 8px; }
+

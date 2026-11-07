@@ -1,1 +1,6 @@
-.page-body { padding: 8px 0; }
+/* pages/slider/index.mass */
+.slider-box { background: #fff; padding: 12px; border-radius: 8px; }
+.slider-text { font-size: 12px; color: #64748b; margin-top: 4px; display: block; }
+
+.slider-box { background: #fff; padding: 12px; border-radius: 8px; }
+

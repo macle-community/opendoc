@@ -1,0 +1,6 @@
+/* pages/form/index.mass */
+.form-field { margin-bottom: 14px; }
+.form-label { font-size: 13px; color: #475569; margin-bottom: 6px; display: block; }
+.form-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; font-size: 14px; }
+.form-actions { display: flex; gap: 10px; margin-top: 10px; }
+

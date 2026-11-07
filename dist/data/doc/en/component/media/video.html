@@ -230,97 +230,12 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;myVideo&#x27;</span>
-         <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">src</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">autoplay</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">autoplay</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">loop</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">loop</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">hidden</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">hidden</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">controls</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">controls</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">objectFit</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">objectFit</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">poster</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">poster</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">muted</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">muted</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span>
-         <span class="hljs-attr">binderror</span>=<span class="hljs-string">&#x27;binderror&#x27;</span>
-         <span class="hljs-attr">bindtimeupdate</span>=<span class="hljs-string">&#x27;bindtimeupdate&#x27;</span>
-         <span class="hljs-attr">bindplay</span>=<span class="hljs-string">&#x27;bindplay&#x27;</span>
-         <span class="hljs-attr">bindpause</span>=<span class="hljs-string">&#x27;bindpause&#x27;</span>
-         <span class="hljs-attr">bindended</span>=<span class="hljs-string">&#x27;bindended&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
-
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Jump location<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">bindinput</span>=<span class="hljs-string">&#x27;bindInput&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">position</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span>
-               <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&#x27;Enter specific location here&#x27;</span>
-               <span class="hljs-attr">adjustPosition</span>=<span class="hljs-string">&#x27;false&#x27;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;btn-area&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;play&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Play<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;pause&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Pause<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&#x27;seek&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span>&gt;</span>Jump to the specified location (unit: seconds)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;stop&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-body-button stop&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Stop<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
-</code></pre>
-<pre><code class="language-js">
-<span class="hljs-title class_">Page</span>({
-  <span class="hljs-attr">onReady</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span> = ma.<span class="hljs-title function_">createVideoContext</span>(<span class="hljs-string">&#x27;myVideo&#x27;</span>)
-  },
-  <span class="hljs-attr">data</span>: {
-    <span class="hljs-attr">src</span>: <span class="hljs-string">&#x27;http://example.mp4&#x27;</span>,
-    <span class="hljs-attr">autoplay</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;&#x27;</span>,
-    <span class="hljs-attr">inputValue</span>: <span class="hljs-string">&#x27;&#x27;</span>,
-    <span class="hljs-attr">controls</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">hidden</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">objectFit</span>: <span class="hljs-string">&#x27;contain&#x27;</span>,
-    <span class="hljs-attr">muted</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">loop</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">poster</span>: <span class="hljs-string">&#x27;http://example.png&#x27;</span>,
-    <span class="hljs-attr">showFullscreenBtn</span>: <span class="hljs-literal">true</span>
-  },
-  <span class="hljs-attr">bindInput</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>({
-      <span class="hljs-attr">position</span>: e.<span class="hljs-property">detail</span>.<span class="hljs-property">value</span>
-    })
-  },
-  <span class="hljs-attr">play</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">play</span>()
-  },
-  <span class="hljs-attr">pause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">pause</span>()
-  },
-  <span class="hljs-attr">seek</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">seek</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">position</span>)
-  },
-  <span class="hljs-attr">stop</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">videoContext</span>.<span class="hljs-title function_">stop</span>()
-   },
-
-  <span class="hljs-attr">binderror</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">errMsg</span>)
-  },
-  <span class="hljs-attr">bindplay</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video start&#x27;</span>)
-  },
-  <span class="hljs-attr">bindpause</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video pause&#x27;</span>)
-  },
-  <span class="hljs-attr">bindended</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;video end&#x27;</span>)
-  },
-  <span class="hljs-attr">bindtimeupdate</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">detail</span>.<span class="hljs-property">currentTime</span>)
-  }
-})
-</code></pre>
+<h4 id="sample-code-1">1. Video Player with Controls &amp; Poster</h4>
+<pre><code class="language-html">&lt;view class=&quot;video-container&quot;&gt;
+  &lt;video id=&quot;myVideo&quot; src=&quot;https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4&quot; poster=&quot;https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&amp;q=80&quot; controls=&quot;true&quot; style=&quot;width: 100%; height: 200px; border-radius: 8px;&quot; /&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.video-container { width: 100%; border-radius: 8px; overflow: hidden; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>The default width and height of the video are 300 px and 225 px. You can set the width and height by using the mass

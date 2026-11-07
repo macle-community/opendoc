@@ -30,34 +30,30 @@ tapped, value of the form component is submitted. You need to add name to the fo
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">bindsubmit</span>=<span class="hljs-string">&#x27;submit&#x27;</span> <span class="hljs-attr">bindreset</span>=<span class="hljs-string">&#x27;reset&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;form&#x27;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>radio<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio-group</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;radio&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radioGroup&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> /&gt;</span>
-        radio1
-      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> /&gt;</span>
-        radio2
-      <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">radio-group</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;submit&#x27;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;primary&#x27;</span> <span class="hljs-attr">formType</span>=<span class="hljs-string">&#x27;submit&#x27;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;reset&#x27;</span> <span class="hljs-attr">formType</span>=<span class="hljs-string">&#x27;reset&#x27;</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. Form Container with Submit &amp; Reset Handlers</h4>
+<pre><code class="language-html">&lt;form bindsubmit=&quot;onFormSubmit&quot; bindreset=&quot;onFormReset&quot;&gt;
+  &lt;view class=&quot;form-field&quot;&gt;
+    &lt;text class=&quot;form-label&quot;&gt;Username:&lt;/text&gt;
+    &lt;input name=&quot;username&quot; class=&quot;form-input&quot; placeholder=&quot;Enter username&quot; /&gt;
+  &lt;/view&gt;
+  &lt;view class=&quot;form-field&quot;&gt;
+    &lt;text class=&quot;form-label&quot;&gt;Notifications:&lt;/text&gt;
+    &lt;switch name=&quot;notify&quot; checked=&quot;true&quot; color=&quot;#2563eb&quot; /&gt;
+  &lt;/view&gt;
+  &lt;view class=&quot;form-actions&quot;&gt;
+    &lt;button form-type=&quot;submit&quot; type=&quot;primary&quot; size=&quot;mini&quot;&gt;Submit&lt;/button&gt;
+    &lt;button form-type=&quot;reset&quot; type=&quot;default&quot; size=&quot;mini&quot;&gt;Reset&lt;/button&gt;
+  &lt;/view&gt;
+&lt;/form&gt;</code></pre>
 <pre><code class="language-js">Page({
-  <span class="hljs-attr">submit</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(e.detail.value)
+  onFormSubmit(e) {
+    ma.showModal({ title: &#39;Form Submitted&#39;, content: JSON.stringify(e.detail.value), showCancel: false });
   },
-  <span class="hljs-attr">reset</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;rest&#x27;</span>)
+  onFormReset() {
+    ma.showToast({ title: &#39;Form Reset&#39;, icon: &#39;none&#39; });
   }
-})
-</code></pre>
+});</code></pre>
+<pre><code class="language-css">.form-field { margin-bottom: 14px; }
+.form-label { font-size: 13px; color: #475569; margin-bottom: 6px; display: block; }
+.form-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; font-size: 14px; }
+.form-actions { display: flex; gap: 10px; margin-top: 10px; }</code></pre>

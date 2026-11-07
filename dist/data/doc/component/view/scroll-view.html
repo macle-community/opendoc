@@ -126,17 +126,30 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-&lt;<span class="hljs-built_in">view</span>&gt;
-  &lt;scroll-<span class="hljs-built_in">view</span> scroll-y=&#x27;<span class="hljs-literal">true</span>&#x27; <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">height</span>: 200px;&#x27;&gt;
-    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: red; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
-    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: blue; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
-    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: green; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
-    &lt;<span class="hljs-built_in">view</span> <span class="hljs-built_in">style</span>=&#x27;<span class="hljs-built_in">background</span>-<span class="hljs-built_in">color</span>: yellow; <span class="hljs-built_in">height</span>: 200px&#x27;&gt;&lt;/<span class="hljs-built_in">view</span>&gt;
-  &lt;/scroll-<span class="hljs-built_in">view</span>&gt;
-&lt;/<span class="hljs-built_in">view</span>&gt;
-
-</code></pre>
+<h4 id="sample-code-1">1. 垂直滚动视图</h4>
+<pre><code class="language-html">&lt;scroll-view scroll-y=&quot;true&quot; style=&quot;height: 160px;&quot; bindscrolltoupper=&quot;onScrollToUpper&quot; bindscrolltolower=&quot;onScrollToLower&quot;&gt;
+  &lt;view class=&quot;scroll-v-item bg-red&quot;&gt;Scroll Item 1 (Top)&lt;/view&gt;
+  &lt;view class=&quot;scroll-v-item bg-orange&quot;&gt;Scroll Item 2&lt;/view&gt;
+  &lt;view class=&quot;scroll-v-item bg-green&quot;&gt;Scroll Item 3&lt;/view&gt;
+  &lt;view class=&quot;scroll-v-item bg-blue&quot;&gt;Scroll Item 4 (Bottom)&lt;/view&gt;
+&lt;/scroll-view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  onScrollToUpper() { ma.showToast({ title: &#39;Top Reached&#39;, icon: &#39;none&#39; }); },
+  onScrollToLower() { ma.showToast({ title: &#39;Bottom Reached&#39;, icon: &#39;none&#39; }); }
+});</code></pre>
+<pre><code class="language-css">.scroll-v-item { height: 70px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; margin-bottom: 8px; border-radius: 8px; }
+.bg-red { background: #ef4444; } .bg-orange { background: #f97316; } .bg-green { background: #10b981; } .bg-blue { background: #3b82f6; }</code></pre>
+<h4 id="sample-code-2">2. 水平滚动视图</h4>
+<pre><code class="language-html">&lt;scroll-view scroll-x=&quot;true&quot; style=&quot;white-space: nowrap; width: 100%;&quot;&gt;
+  &lt;view class=&quot;scroll-h-item bg-blue&quot;&gt;Card 1&lt;/view&gt;
+  &lt;view class=&quot;scroll-h-item bg-green&quot;&gt;Card 2&lt;/view&gt;
+  &lt;view class=&quot;scroll-h-item bg-orange&quot;&gt;Card 3&lt;/view&gt;
+  &lt;view class=&quot;scroll-h-item bg-purple&quot;&gt;Card 4&lt;/view&gt;
+  &lt;view class=&quot;scroll-h-item bg-pink&quot;&gt;Card 5&lt;/view&gt;
+&lt;/scroll-view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.scroll-h-item { display: inline-block; width: 110px; height: 80px; margin-right: 10px; border-radius: 8px; text-align: center; line-height: 80px; color: #fff; font-weight: 600; }
+.bg-purple { background: #8b5cf6; } .bg-pink { background: #ec4899; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li><p>scroll-into-view 的优先级高于 scroll-top，仅在初始状态有效。</p>

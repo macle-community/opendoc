@@ -1,16 +1,17 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Basic Usage (Value: {{ value }})</text>
-    <maui-slider value="{{ value }}" bind:change="onChange" />
+    <text class="demo-title">1. Slider with Min, Max &amp; Show-Value</text>
+    <view class="slider-box">
+      <slider min="0" max="100" value="{{volume}}" show-value="true" bindchange="onSliderChange" active-color="#2563eb" />
+      <text class="slider-text">Volume: {{volume}}%</text>
+    </view>
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Custom Range (-50 to 50)</text>
-    <maui-slider min="-50" max="50" value="0" />
+    <text class="demo-title">2. Step Slider with Custom Colors</text>
+    <view class="slider-box">
+      <slider step="10" value="30" show-value="true" active-color="#10b981" block-color="#059669" block-size="20" />
+    </view>
   </view>
 
-  <view class="demo-block">
-    <text class="demo-title">3. Step Size (step: 10)</text>
-    <maui-slider step="10" value="30" />
-  </view>
 </view>

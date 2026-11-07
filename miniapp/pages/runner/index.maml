@@ -1,1 +1,7 @@
-<view class="p-4"><maui-button type="primary">Native MAML @macle-community Live</maui-button></view>
+
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">Dynamic MAML Runner</text>
+    <text style="font-size: 13px; color: #64748b;">Live Execution Sandbox</text>
+  </view>
+</view>

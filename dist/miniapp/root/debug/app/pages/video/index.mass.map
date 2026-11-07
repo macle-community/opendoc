@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/video/index.mass"],"names":[],"mappings":"AACA,wBAAmB,UAAW,CAAE,iBAAkB,CAAE,eAAkB","file":"","sourcesContent":["/* pages/video/index.mass */\n.video-container { width: 100%; border-radius: 8px; overflow: hidden; }\n\n"]}

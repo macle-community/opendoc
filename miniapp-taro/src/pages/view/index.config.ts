@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "View 视图容器"
+  navigationBarTitleText: 'view view'.trim()
 });

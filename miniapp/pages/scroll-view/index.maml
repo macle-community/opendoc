@@ -1,12 +1,23 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Horizontal Scroll View</text>
-    <scroll-view scroll-x="true" style="white-space: nowrap; width: 100%;">
-      <view class="scroll-item bg-1">Item 1</view>
-      <view class="scroll-item bg-2">Item 2</view>
-      <view class="scroll-item bg-3">Item 3</view>
-      <view class="scroll-item bg-4">Item 4</view>
-      <view class="scroll-item bg-5">Item 5</view>
+    <text class="demo-title">1. Vertical Scroll View</text>
+    <scroll-view scroll-y="true" style="height: 160px;" bindscrolltoupper="onScrollToUpper" bindscrolltolower="onScrollToLower">
+      <view class="scroll-v-item bg-red">Scroll Item 1 (Top)</view>
+      <view class="scroll-v-item bg-orange">Scroll Item 2</view>
+      <view class="scroll-v-item bg-green">Scroll Item 3</view>
+      <view class="scroll-v-item bg-blue">Scroll Item 4 (Bottom)</view>
     </scroll-view>
   </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Horizontal Scroll View</text>
+    <scroll-view scroll-x="true" style="white-space: nowrap; width: 100%;">
+      <view class="scroll-h-item bg-blue">Card 1</view>
+      <view class="scroll-h-item bg-green">Card 2</view>
+      <view class="scroll-h-item bg-orange">Card 3</view>
+      <view class="scroll-h-item bg-purple">Card 4</view>
+      <view class="scroll-h-item bg-pink">Card 5</view>
+    </scroll-view>
+  </view>
+
 </view>

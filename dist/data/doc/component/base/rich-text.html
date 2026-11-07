@@ -373,11 +373,26 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">rich-text</span> <span class="hljs-attr">nodes</span>=<span class="hljs-string">&#x27;&lt;button&gt;testButton&lt;/button&gt;&#x27;</span> <span class="hljs-attr">space</span>=<span class="hljs-string">&#x27;nbsp&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">rich-text</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. HTML 字符串富文本渲染</h4>
+<pre><code class="language-html">&lt;rich-text nodes=&quot;{{htmlSnippet}}&quot; space=&quot;nbsp&quot; /&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    htmlSnippet: &#39;&lt;div style=&quot;background:#eff6ff;padding:12px;border-radius:8px;&quot;&gt;&lt;h4 style=&quot;color:#1d4ed8;margin:0 0 6px 0;&quot;&gt;Macle HTML RichText&lt;/h4&gt;&lt;p style=&quot;color:#334155;font-size:13px;margin:0;&quot;&gt;Render formatted HTML strings with &lt;b&gt;bold tags&lt;/b&gt; and &lt;span style=&quot;color:#ef4444;&quot;&gt;colored highlights&lt;/span&gt;.&lt;/p&gt;&lt;/div&gt;&#39;
+  }
+});</code></pre>
+<pre><code class="language-css">rich-text { display: block; }</code></pre>
+<h4 id="sample-code-2">2. 节点对象数组富文本</h4>
+<pre><code class="language-html">&lt;rich-text nodes=&quot;{{nodeArray}}&quot; /&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    nodeArray: [{
+      name: &#39;div&#39;,
+      attrs: { class: &#39;custom-node-box&#39;, style: &#39;color:#059669;font-weight:bold;font-size:14px;&#39; },
+      children: [{ type: &#39;text&#39;, text: &#39;✓ Rendered via Structured Node Array&#39; }]
+    }]
+  }
+});</code></pre>
+<pre><code class="language-css">.custom-node-box { padding: 8px; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>nodes 不推荐使用 String 类型，性能会有所下降。</li>

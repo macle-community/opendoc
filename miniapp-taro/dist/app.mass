@@ -1,27 +1,35 @@
 page {
   height: 100%;
 }
+
 page {
-  background-color: #f7f8fa;
+  background-color: #f8fafc;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #323233;
+  color: #1e293b;
   box-sizing: border-box;
 }
 
+.page-body {
+  padding: 12rpx;
+}
+
 .demo-block {
-  margin: 16rpx 12rpx;
+  margin-bottom: 16rpx;
   background: #ffffff;
   border-radius: 12rpx;
   padding: 16rpx;
   box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f1f5f9;
 }
 
 .demo-title {
   font-size: 14rpx;
   font-weight: 700;
-  color: #1e293b;
+  color: #0f172a;
   margin-bottom: 12rpx;
   display: block;
+  border-left: 3rpx solid #2563eb;
+  padding-left: 8rpx;
 }
 
 .demo-row {
@@ -32,25 +40,8 @@ page {
 }
 
 .demo-col {
-  margin-bottom: 12rpx;
-}
-
-/* Layout Grid Column Visual Borders */
-.maui-row {
-  margin-bottom: 12rpx;
-}
-.maui-col {
-  border: 1.5rpx solid #0284c7;
-  background-color: #f0f9ff;
-  color: #0369a1;
-  text-align: center;
-  border-radius: 4rpx;
-  line-height: 38rpx;
-  margin-bottom: 6rpx;
-  font-weight: 600;
-  font-size: 13rpx;
-}
-.maui-col:nth-child(even) {
-  background-color: #e0f2fe;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
 }
 

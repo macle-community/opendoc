@@ -1,0 +1,20 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Embedded Multi-Column Picker View</text>
+    <view>
+      <view class="preview-date">{{year}}年 {{month}}月 {{day}}日</view>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px; background: #fff; border-radius: 8px;" value="{{val}}" bindchange="onPickerViewChange">
+        <picker-view-column>
+          <view ma:for="{{years}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view ma:for="{{months}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view ma:for="{{days}}" ma:key="{{item}}" style="line-height: 50px; text-align: center;">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+
+</view>

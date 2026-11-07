@@ -1,0 +1,3 @@
+/* pages/video/index.mass */
+.video-container { width: 100%; border-radius: 8px; overflow: hidden; }
+

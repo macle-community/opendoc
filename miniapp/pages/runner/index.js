@@ -1,1 +1,1 @@
-Page({ onReady() { console.log("Native runner ready"); } });
+Page({ data: {} });

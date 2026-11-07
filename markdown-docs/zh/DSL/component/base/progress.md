@@ -18,9 +18,45 @@
 
 ### 示例代码
 
-```html
+#### 1. 基础进度条与百分比显示
 
-<view>
-  <progress fontSize="20" percent="20" show-info strokeWidth="2" />
+```html
+<view class="progress-col">
+  <progress percent="30" show-info="true" stroke-width="4" />
+  <progress percent="65" show-info="true" stroke-width="6" active-color="#3b82f6" />
+  <progress percent="90" show-info="true" stroke-width="8" active-color="#10b981" />
 </view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.progress-col { display: flex; flex-direction: column; gap: 16px; }
+```
+
+#### 2. 动画效果与自定义颜色尺寸
+
+```html
+<view class="progress-col">
+  <progress percent="{{animPercent}}" show-info="true" active="true" active-mode="forwards" stroke-width="8" border-radius="4" active-color="#8b5cf6" />
+  <button size="mini" type="default" bindtap="increaseProgress" style="align-self: flex-start; margin-top: 8px;">+20% Progress</button>
+</view>
+```
+
+```js
+Page({
+  data: { animPercent: 40 },
+  increaseProgress() {
+    let next = this.data.animPercent + 20;
+    if (next > 100) next = 20;
+    this.setData({ animPercent: next });
+  }
+});
+```
+
+```css
+.progress-col { display: flex; flex-direction: column; gap: 10px; }
+```
+

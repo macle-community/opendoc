@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "Radio 单选框"
+  navigationBarTitleText: 'radio radio'.trim()
 });

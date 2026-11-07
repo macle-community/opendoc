@@ -1,6 +1,6 @@
 
 App({
   onLaunch() {
-    console.log('[Macle OpenDoc MiniApp] launched');
+    console.log('[Macle MiniProgram Showcase] launched');
   }
 });

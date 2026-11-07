@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/map/index.mass"],"names":[],"mappings":"AACA,OAAM,UAAW,CAAE,iBAAoB","file":"","sourcesContent":["/* pages/map/index.mass */\nmap { width: 100%; border-radius: 8px; }\n\n"]}

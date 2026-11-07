@@ -1,0 +1,7 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Full-Screen Web Browser View</text>
+    <web-view src="https://example.com" />
+  </view>
+
+</view>

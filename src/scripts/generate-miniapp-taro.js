@@ -1,270 +1,98 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { componentSpecs } = require('./update-component-docs');
 
-const ROOT_DIR = path.resolve(__dirname, '../../../');
-const OPENDOC_DIR = path.resolve(__dirname, '../../');
-const TARO_DIR = path.join(OPENDOC_DIR, 'miniapp-taro');
-const SAMPLE_PROJECT_DIR = path.join(ROOT_DIR, 'sample-project');
+const TARO_DIR = path.resolve(__dirname, '../../miniapp-taro');
+const TARO_SRC = path.join(TARO_DIR, 'src');
 
-console.log('[Taro Miniapp] 1. Initializing directory at:', TARO_DIR);
-fs.mkdirSync(TARO_DIR, { recursive: true });
-fs.mkdirSync(path.join(TARO_DIR, 'config'), { recursive: true });
-fs.mkdirSync(path.join(TARO_DIR, 'types'), { recursive: true });
-fs.mkdirSync(path.join(TARO_DIR, 'src'), { recursive: true });
+console.log('1. Setting up Taro MiniApp at:', TARO_SRC);
+fs.mkdirSync(TARO_SRC, { recursive: true });
 
-// 1. Symlink node_modules to reuse sample-project dependencies
-const nodeModulesPath = path.join(TARO_DIR, 'node_modules');
-if (!fs.existsSync(nodeModulesPath)) {
-  fs.symlinkSync(path.join(SAMPLE_PROJECT_DIR, 'node_modules'), nodeModulesPath, 'dir');
-  console.log('[Taro Miniapp] Symlinked node_modules to sample-project/node_modules');
-}
-
-// 2. package.json
-const packageJson = {
-  name: "opendoc-miniapp-taro",
-  version: "1.0.0",
-  private: true,
-  description: "OpenDoc Taro React Mini App Showcase for Macle",
-  scripts: {
-    "build:macle": "taro build --type macle",
-    "dev:macle": "taro build --type macle --watch"
-  },
-  dependencies: {
-    "@tarojs/components": "^4.3.2",
-    "@tarojs/helper": "^4.3.2",
-    "@tarojs/plugin-framework-react": "^4.3.2",
-    "@macle-community/taro-plugin-macle": "file:../../plugin-platform-macle",
-    "@tarojs/react": "^4.3.2",
-    "@tarojs/runtime": "^4.3.2",
-    "@tarojs/shared": "^4.3.2",
-    "@tarojs/taro": "^4.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  devDependencies: {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-react": "^7.29.7",
-    "@tarojs/cli": "^4.3.2",
-    "@tarojs/webpack5-runner": "^4.3.2",
-    "@types/react": "^18.0.0",
-    "@types/webpack-env": "^1.13.6",
-    "babel-preset-taro": "^4.3.2",
-    "typescript": "^5.0.4",
-    "webpack": "^5.78.0"
-  }
-};
-fs.writeFileSync(path.join(TARO_DIR, 'package.json'), JSON.stringify(packageJson, null, 2));
-
-// 3. babel.config.js
-fs.writeFileSync(path.join(TARO_DIR, 'babel.config.js'), `// babel.config.js
-module.exports = {
-  presets: [
-    ['taro', {
-      framework: 'react',
-      ts: true
-    }]
-  ]
-};
-`);
-
-// 4. tsconfig.json
-fs.writeFileSync(path.join(TARO_DIR, 'tsconfig.json'), `{
-  "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "strictNullChecks": false,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "rootDir": ".",
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  },
-  "include": [
-    "src",
-    "types"
-  ],
-  "compileOnSave": false
-}
-`);
-
-// 5. types/global.d.ts
-fs.writeFileSync(path.join(TARO_DIR, 'types/global.d.ts'), `/// <reference types="@tarojs/extend" />
-declare module '*.png';
-declare module '*.gif';
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.svg';
-declare module '*.css';
-declare module '*.less';
-declare module '*.scss';
-declare module '*.sass';
-`);
-
-// 6. project.config.json
-fs.writeFileSync(path.join(TARO_DIR, 'project.config.json'), JSON.stringify({
-  miniprogramRoot: "dist/",
-  projectname: "opendoc-miniapp-taro",
-  description: "OpenDoc Taro React Mini App Showcase for Macle",
-  appid: "macle-opendoc-taro",
-  setting: {
-    es6: true,
-    es5: false
-  }
-}, null, 2));
-
-// 7. config/index.ts, config/dev.ts, config/prod.ts
-fs.writeFileSync(path.join(TARO_DIR, 'config/index.ts'), `import path from 'path';
-import { defineConfig, type UserConfigExport } from '@tarojs/cli';
-
-export default defineConfig(async (merge) => {
-  const baseConfig: UserConfigExport = {
-    projectName: 'opendoc-miniapp-taro',
-    date: '2026-11-06',
-    designWidth: 750,
-    deviceRatio: {
-      640: 2.34 / 2,
-      750: 1,
-      375: 2,
-      828: 1.81 / 2
-    },
-    sourceRoot: 'src',
-    outputRoot: 'dist',
-    plugins: [
-      '@tarojs/plugin-framework-react',
-      path.resolve(__dirname, '../../../plugin-platform-macle')
-    ],
-    framework: 'react',
-    compiler: 'webpack5',
-    cache: {
-      enable: false
-    },
-    mini: {
-      postcss: {
-        pxtransform: {
-          enable: true,
-          config: {}
-        },
-        cssModules: {
-          enable: false
-        }
-      }
-    }
-  };
-
-  if (process.env.NODE_ENV === 'development') {
-    return merge({}, baseConfig, require('./dev').default);
-  }
-  return merge({}, baseConfig, require('./prod').default);
-});
-`);
-
-fs.writeFileSync(path.join(TARO_DIR, 'config/dev.ts'), `import type { UserConfigExport } from '@tarojs/cli';
-export default {
-  logger: { quiet: false, stats: true },
-  mini: {}
-} satisfies UserConfigExport;
-`);
-
-fs.writeFileSync(path.join(TARO_DIR, 'config/prod.ts'), `import type { UserConfigExport } from '@tarojs/cli';
-export default {
-  mini: {}
-} satisfies UserConfigExport;
-`);
-
-// 8. Pages list
-const pageNames = [
-  'index',
-  'runner',
-  'button',
-  'layout',
-  'cell',
-  'checkbox',
-  'radio',
-  'switch',
-  'slider',
-  'stepper',
-  'field',
-  'tag',
-  'loading',
-  'progress',
-  'divider',
-  'empty',
-  'steps',
-  'dialog',
-  'toast',
-  'list',
-  'modal',
-  'view',
-  'text',
-  'swiper',
-  'scroll-view'
+// 32 Native Component page routes
+const nativeComponentRoutes = [
+  'pages/view/index',
+  'pages/scroll-view/index',
+  'pages/swiper/index',
+  'pages/swiper-item/index',
+  'pages/cover-view/index',
+  'pages/cover-image/index',
+  'pages/text/index',
+  'pages/icon/index',
+  'pages/rich-text/index',
+  'pages/progress/index',
+  'pages/button/index',
+  'pages/checkbox/index',
+  'pages/checkbox-group/index',
+  'pages/form/index',
+  'pages/input/index',
+  'pages/picker/index',
+  'pages/picker-view/index',
+  'pages/picker-view-column/index',
+  'pages/label/index',
+  'pages/switch/index',
+  'pages/radio/index',
+  'pages/radio-group/index',
+  'pages/slider/index',
+  'pages/textarea/index',
+  'pages/navigator/index',
+  'pages/image/index',
+  'pages/video/index',
+  'pages/audio/index',
+  'pages/camera/index',
+  'pages/web-view/index',
+  'pages/page-meta/index',
+  'pages/map/index'
 ];
 
-// src/app.config.ts
-const appConfig = {
-  pages: pageNames.map(name => `pages/${name}/index`),
+const allPages = [
+  'pages/index/index',
+  'pages/runner/index',
+  ...nativeComponentRoutes
+];
+
+// app.config.ts
+const appConfigContent = `export default defineAppConfig({
+  pages: ${JSON.stringify(allPages, null, 4)},
   window: {
-    backgroundTextStyle: "light",
-    navigationBarBackgroundColor: "#ffffff",
-    navigationBarTitleText: "Macle OpenDoc Showcase",
-    navigationBarTextStyle: "black",
-    capsuleTheme: "light"
+    backgroundTextStyle: 'light',
+    navigationBarBackgroundColor: '#ffffff',
+    navigationBarTitleText: 'Macle Taro MiniApp Showcase',
+    navigationBarTextStyle: 'black'
   }
-};
-fs.writeFileSync(path.join(TARO_DIR, 'src/app.config.ts'), `export default defineAppConfig(${JSON.stringify(appConfig, null, 2)});
-`);
+});
+`;
+fs.writeFileSync(path.join(TARO_SRC, 'app.config.ts'), appConfigContent);
 
-// src/app.ts
-fs.writeFileSync(path.join(TARO_DIR, 'src/app.ts'), `import { PropsWithChildren } from 'react';
-import { useLaunch } from '@tarojs/taro';
-import './app.css';
-
-function App({ children }: PropsWithChildren) {
-  useLaunch(() => {
-    console.log('[Macle Taro Miniapp] App launched successfully!');
-  });
-  return children;
-}
-
-export default App;
-`);
-
-// src/app.css - Identical to opendoc/miniapp/app.mass
-fs.writeFileSync(path.join(TARO_DIR, 'src/app.css'), `page {
-  background-color: #f7f8fa;
+// app.css
+fs.writeFileSync(path.join(TARO_SRC, 'app.css'), `
+page {
+  background-color: #f8fafc;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: #323233;
+  color: #1e293b;
   box-sizing: border-box;
 }
 
+.page-body {
+  padding: 12px;
+}
+
 .demo-block {
-  margin: 16px 12px;
+  margin-bottom: 16px;
   background: #ffffff;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
 }
 
 .demo-title {
   font-size: 14px;
   font-weight: 700;
-  color: #1e293b;
+  color: #0f172a;
   margin-bottom: 12px;
   display: block;
+  border-left: 3px solid #2563eb;
+  padding-left: 8px;
 }
 
 .demo-row {
@@ -275,36 +103,17 @@ fs.writeFileSync(path.join(TARO_DIR, 'src/app.css'), `page {
 }
 
 .demo-col {
-  margin-bottom: 12px;
-}
-
-/* Layout Grid Column Visual Borders */
-.maui-row {
-  margin-bottom: 12px;
-}
-.maui-col {
-  border: 1.5px solid #0284c7;
-  background-color: #f0f9ff;
-  color: #0369a1;
-  text-align: center;
-  border-radius: 4px;
-  line-height: 38px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 13px;
-}
-.maui-col:nth-child(even) {
-  background-color: #e0f2fe;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 `);
 
-// 9. All 23 Page Definitions - 100% Identical to opendoc/miniapp/pages/
-const pagesDir = path.join(TARO_DIR, 'src/pages');
+// Home Page (index)
+const indexDir = path.join(TARO_SRC, 'pages/index');
+fs.mkdirSync(indexDir, { recursive: true });
 
-const pageDefinitions = {
-  'index': {
-    title: 'Component Showcase',
-    code: `import React from 'react';
+fs.writeFileSync(path.join(indexDir, 'index.tsx'), `import React from 'react';
 import { View, Text, Navigator } from '@tarojs/components';
 import './index.css';
 
@@ -312,75 +121,105 @@ export default function IndexPage() {
   return (
     <View className="home-container">
       <View className="home-banner">
-        <Text className="banner-title">Macle OpenDoc</Text>
-        <Text className="banner-sub">MiniProgram Interactive Component Library</Text>
+        <Text className="banner-title">Macle Taro React Components</Text>
+        <Text className="banner-sub">32 Core MiniProgram DSL Components & Numbered Examples</Text>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">MAUI Basic Components</Text>
+        <Text className="demo-title">View Container 视图容器 (6)</Text>
         <View className="nav-grid">
-          <Navigator url="/pages/button/index" className="nav-item">Button 按钮</Navigator>
-          <Navigator url="/pages/layout/index" className="nav-item">Layout 栅格</Navigator>
-          <Navigator url="/pages/cell/index" className="nav-item">Cell 单元格</Navigator>
-          <Navigator url="/pages/tag/index" className="nav-item">Tag 标签</Navigator>
-          <Navigator url="/pages/loading/index" className="nav-item">Loading 加载</Navigator>
-          <Navigator url="/pages/progress/index" className="nav-item">Progress 进度条</Navigator>
-          <Navigator url="/pages/divider/index" className="nav-item">Divider 分割线</Navigator>
-          <Navigator url="/pages/empty/index" className="nav-item">Empty 空状态</Navigator>
-          <Navigator url="/pages/list/index" className="nav-item">List 列表</Navigator>
+          <Navigator url="/pages/view/index" className="nav-item">view 视图</Navigator>
+          <Navigator url="/pages/scroll-view/index" className="nav-item">scroll-view 滚动</Navigator>
+          <Navigator url="/pages/swiper/index" className="nav-item">swiper 滑块</Navigator>
+          <Navigator url="/pages/swiper-item/index" className="nav-item">swiper-item 项</Navigator>
+          <Navigator url="/pages/cover-view/index" className="nav-item">cover-view 覆盖视图</Navigator>
+          <Navigator url="/pages/cover-image/index" className="nav-item">cover-image 覆盖图片</Navigator>
         </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">MAUI Form Components</Text>
+        <Text className="demo-title">Basic Content 基础内容 (4)</Text>
         <View className="nav-grid">
-          <Navigator url="/pages/checkbox/index" className="nav-item">Checkbox 复选框</Navigator>
-          <Navigator url="/pages/radio/index" className="nav-item">Radio 单选框</Navigator>
-          <Navigator url="/pages/switch/index" className="nav-item">Switch 开关</Navigator>
-          <Navigator url="/pages/slider/index" className="nav-item">Slider 滑块</Navigator>
-          <Navigator url="/pages/stepper/index" className="nav-item">Stepper 步进器</Navigator>
-          <Navigator url="/pages/field/index" className="nav-item">Field 输入框</Navigator>
+          <Navigator url="/pages/text/index" className="nav-item">text 文本</Navigator>
+          <Navigator url="/pages/icon/index" className="nav-item">icon 图标</Navigator>
+          <Navigator url="/pages/rich-text/index" className="nav-item">rich-text 富文本</Navigator>
+          <Navigator url="/pages/progress/index" className="nav-item">progress 进度条</Navigator>
         </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">MAUI Feedback & Nav</Text>
+        <Text className="demo-title">Form Components 表单组件 (14)</Text>
         <View className="nav-grid">
-          <Navigator url="/pages/dialog/index" className="nav-item">Dialog 弹出框</Navigator>
-          <Navigator url="/pages/toast/index" className="nav-item">Toast 轻提示</Navigator>
-          <Navigator url="/pages/modal/index" className="nav-item">Modal 弹窗</Navigator>
-          <Navigator url="/pages/steps/index" className="nav-item">Steps 步骤条</Navigator>
+          <Navigator url="/pages/button/index" className="nav-item">button 按钮</Navigator>
+          <Navigator url="/pages/checkbox/index" className="nav-item">checkbox 多选框</Navigator>
+          <Navigator url="/pages/checkbox-group/index" className="nav-item">checkbox-group 组</Navigator>
+          <Navigator url="/pages/form/index" className="nav-item">form 表单</Navigator>
+          <Navigator url="/pages/input/index" className="nav-item">input 输入框</Navigator>
+          <Navigator url="/pages/picker/index" className="nav-item">picker 选择器</Navigator>
+          <Navigator url="/pages/picker-view/index" className="nav-item">picker-view 嵌入选择</Navigator>
+          <Navigator url="/pages/picker-view-column/index" className="nav-item">picker-view-column</Navigator>
+          <Navigator url="/pages/label/index" className="nav-item">label 标签</Navigator>
+          <Navigator url="/pages/switch/index" className="nav-item">switch 开关</Navigator>
+          <Navigator url="/pages/radio/index" className="nav-item">radio 单选框</Navigator>
+          <Navigator url="/pages/radio-group/index" className="nav-item">radio-group 组</Navigator>
+          <Navigator url="/pages/slider/index" className="nav-item">slider 滑块</Navigator>
+          <Navigator url="/pages/textarea/index" className="nav-item">textarea 多行输入</Navigator>
         </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">Standard DSL Components</Text>
+        <Text className="demo-title">Navigating 页面导航 (1)</Text>
         <View className="nav-grid">
-          <Navigator url="/pages/view/index" className="nav-item">View 视图</Navigator>
-          <Navigator url="/pages/text/index" className="nav-item">Text 文本</Navigator>
-          <Navigator url="/pages/swiper/index" className="nav-item">Swiper 轮播</Navigator>
-          <Navigator url="/pages/scroll-view/index" className="nav-item">ScrollView 滚动</Navigator>
+          <Navigator url="/pages/navigator/index" className="nav-item full-width">navigator 页面跳转</Navigator>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">Media Components 媒体组件 (4)</Text>
+        <View className="nav-grid">
+          <Navigator url="/pages/image/index" className="nav-item">image 图片</Navigator>
+          <Navigator url="/pages/video/index" className="nav-item">video 视频</Navigator>
+          <Navigator url="/pages/audio/index" className="nav-item">audio 音频</Navigator>
+          <Navigator url="/pages/camera/index" className="nav-item">camera 相机</Navigator>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">Open Capability & Config 开放能力与配置 (2)</Text>
+        <View className="nav-grid">
+          <Navigator url="/pages/web-view/index" className="nav-item">web-view 网页容器</Navigator>
+          <Navigator url="/pages/page-meta/index" className="nav-item">page-meta 页面配置</Navigator>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">Map 地图组件 (1)</Text>
+        <View className="nav-grid">
+          <Navigator url="/pages/map/index" className="nav-item full-width">map 地图</Navigator>
         </View>
       </View>
     </View>
   );
 }
-`,
-    css: `.home-container { padding: 12px; }
+`);
+
+fs.writeFileSync(path.join(indexDir, 'index.config.ts'), `export default definePageConfig({ navigationBarTitleText: 'Macle Component Showcase' });\n`);
+fs.writeFileSync(path.join(indexDir, 'index.css'), `
+.home-container { padding: 12px; }
 .home-banner {
   background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
-  padding: 20px 16px;
+  padding: 22px 18px;
   border-radius: 12px;
   margin-bottom: 14px;
 }
-.banner-title { font-size: 20px; font-weight: 800; display: block; margin-bottom: 4px; }
-.banner-sub { font-size: 12px; opacity: 0.9; display: block; }
+.banner-title { font-size: 20px; font-weight: 800; display: block; margin-bottom: 6px; }
+.banner-sub { font-size: 12px; opacity: 0.9; display: block; line-height: 1.4; }
 .nav-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .nav-item {
   background: #f1f5f9;
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 11px 12px;
   font-size: 13px;
   font-weight: 600;
   color: #334155;
@@ -388,757 +227,35 @@ export default function IndexPage() {
   box-sizing: border-box;
   text-align: center;
 }
-`
-  },
+.full-width { width: 100% !important; }
+`);
 
-  'runner': {
-    title: 'Dynamic Snippet Runner',
-    code: `import React, { useState } from 'react';
+// Runner Page
+const runnerDir = path.join(TARO_SRC, 'pages/runner');
+fs.mkdirSync(runnerDir, { recursive: true });
+fs.writeFileSync(path.join(runnerDir, 'index.tsx'), `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { useRouter } from '@tarojs/taro';
-import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function RunnerPage() {
-  const router = useRouter();
-  const [snippetTitle] = useState(router.params.title ? decodeURIComponent(router.params.title) : 'Macle MiniProgram Live Execution');
-
-  const handleRunClick = () => {
-    Taro.showToast({ title: 'Code executed in DevSuite!', icon: 'success' });
-  };
-
-  return (
-    <View className="runner-page">
-      <View className="demo-block">
-        <Text className="demo-title">Dynamic MAML Snippet Execution</Text>
-        <View className="runner-content">
-          <Text className="snippet-desc">{snippetTitle}</Text>
-          <MauiButton type="primary" block onClick={handleRunClick}>Run Live Interactive Action</MauiButton>
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.runner-page { padding: 12px; }
-.runner-content { display: flex; flex-direction: column; gap: 12px; }
-.snippet-desc { font-size: 13px; color: #64748b; }
-`
-  },
-
-  'button': {
-    title: 'Button 按钮',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function ButtonPage() {
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Button Types</Text>
-        <View className="demo-row">
-          <MauiButton type="default">default button</MauiButton>
-          <MauiButton type="primary">primary button</MauiButton>
-          <MauiButton type="info">information button</MauiButton>
-          <MauiButton type="warning">warning button</MauiButton>
-          <MauiButton type="danger">danger button</MauiButton>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Plain & Hairline</Text>
-        <View className="demo-row">
-          <MauiButton plain type="primary">plain primary</MauiButton>
-          <MauiButton plain type="info">plain info</MauiButton>
-          <MauiButton plain hairline type="primary">hairline primary</MauiButton>
-          <MauiButton plain hairline type="info">hairline info</MauiButton>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Disabled & Loading</Text>
-        <View className="demo-row">
-          <MauiButton disabled type="primary">disabled</MauiButton>
-          <MauiButton disabled type="info">disabled</MauiButton>
-          <MauiButton loading type="primary" />
-          <MauiButton loading type="primary" loading-type="spinner" />
-          <MauiButton loading type="info" loading-text="Loading..." />
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">4. Button Shapes & Sizes</Text>
-        <View className="demo-row">
-          <MauiButton square type="primary">square</MauiButton>
-          <MauiButton round type="info">round</MauiButton>
-          <MauiButton type="primary" size="large">large</MauiButton>
-          <MauiButton type="primary" size="normal">normal</MauiButton>
-          <MauiButton type="primary" size="small">small</MauiButton>
-          <MauiButton type="primary" size="mini">mini</MauiButton>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">5. Block-Level & Custom Colors</Text>
-        <View className="demo-col">
-          <MauiButton type="primary" block>block-level element</MauiButton>
-        </View>
-        <View className="demo-row" style={{ marginTop: '10px' }}>
-          <MauiButton color="#7232dd">single-color</MauiButton>
-          <MauiButton color="#7232dd" plain>single-color plain</MauiButton>
-          <MauiButton color="linear-gradient(to right, #4bb0ff, #6149f6)">Gradient color</MauiButton>
-        </View>
+        <Text className="demo-title">Dynamic Taro React Runner</Text>
+        <Text style={{ fontSize: '13px', color: '#64748b' }}>Live Execution Sandbox</Text>
       </View>
     </View>
   );
 }
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'layout': {
-    title: 'Layout 栅格',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiRow, MauiCol } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function LayoutPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (span: 8, 8, 8)</Text>
-        <MauiRow>
-          <MauiCol span="8">span: 8</MauiCol>
-          <MauiCol span="8">span: 8</MauiCol>
-          <MauiCol span="8">span: 8</MauiCol>
-        </MauiRow>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Column Offset (span: 4 + offset: 4, span: 10)</Text>
-        <MauiRow>
-          <MauiCol span="4">span: 4</MauiCol>
-          <MauiCol span="10" offset="4">offset: 4, span: 10</MauiCol>
-        </MauiRow>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Column Offset (offset: 12, span: 12)</Text>
-        <MauiRow>
-          <MauiCol offset="12" span="12">offset: 12, span: 12</MauiCol>
-        </MauiRow>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">4. Column Gutter (gutter: 20)</Text>
-        <MauiRow gutter="20">
-          <MauiCol span="8">span: 8</MauiCol>
-          <MauiCol span="8">span: 8</MauiCol>
-          <MauiCol span="8">span: 8</MauiCol>
-        </MauiRow>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">5. Flex Layout (justify: center / end)</Text>
-        <MauiRow type="flex" justify="center">
-          <MauiCol span="6">span: 6</MauiCol>
-          <MauiCol span="6">span: 6</MauiCol>
-        </MauiRow>
-        <View style={{ height: '10px' }} />
-        <MauiRow type="flex" justify="end">
-          <MauiCol span="6">span: 6</MauiCol>
-          <MauiCol span="6">span: 6</MauiCol>
-        </MauiRow>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }
-.maui-col {
-  border: 1.5px solid #0284c7;
-  background-color: #f0f9ff;
-  color: #0369a1;
-  text-align: center;
-  border-radius: 4px;
-  line-height: 38px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 13px;
-}
-.maui-col:nth-child(even) {
-  background-color: #e0f2fe;
-}
-`
-  },
-
-  'cell': {
-    title: 'Cell 单元格',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiCell, MauiCellGroup } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function CellPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
-        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>1. Basic Usage</Text>
-        <MauiCellGroup>
-          <MauiCell title="Cell title" value="Content" />
-          <MauiCell title="Cell title" value="Content" label="Description" />
-        </MauiCellGroup>
-      </View>
-
-      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
-        <Text className="demo-title" style={{ padding: '16px 16px 8px 16px' }}>2. Cell Size & Links</Text>
-        <MauiCellGroup>
-          <MauiCell title="Large Cell" value="Content" size="large" label="Description" />
-          <MauiCell title="Navigation Link" is-link />
-          <MauiCell title="Value Link" is-link value="Detail" />
-        </MauiCellGroup>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'checkbox': {
-    title: 'Checkbox 复选框',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiCheckbox, MauiCheckboxGroup } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function CheckboxPage() {
-  const [checked, setChecked] = useState(true);
-  const [checkedSquare, setCheckedSquare] = useState(true);
-  const [groupVal, setGroupVal] = useState<string[]>(['a', 'b']);
-
-  const toggleGroup = (name: string) => {
-    setGroupVal(prev => prev.includes(name) ? prev.filter(x => x !== name) : [...prev, name]);
-  };
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage</Text>
-        <MauiCheckbox
-          key="cb-basic"
-          value={checked}
-          onChange={(e: any) => {
-            const nextVal = typeof e.detail === 'boolean' ? e.detail : !checked;
-            setChecked(nextVal);
-          }}
-        >
-          Checkbox: {checked ? 'Checked' : 'Unchecked'}
-        </MauiCheckbox>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Disabled & Shapes</Text>
-        <View className="demo-row">
-          <MauiCheckbox key="cb-disabled" disabled value={true}>Disabled Checked</MauiCheckbox>
-          <MauiCheckbox
-            key="cb-square"
-            shape="square"
-            value={checkedSquare}
-            onChange={(e: any) => {
-              const nextVal = typeof e.detail === 'boolean' ? e.detail : !checkedSquare;
-              setCheckedSquare(nextVal);
-            }}
-          >
-            Square Checkbox
-          </MauiCheckbox>
-          <MauiCheckbox key="cb-custom" checkedColor="#07c160" value={true}>Custom Color</MauiCheckbox>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Checkbox Group</Text>
-        <MauiCheckboxGroup
-          value={groupVal}
-          onChange={(e: any) => {
-            const val = Array.isArray(e.detail) ? e.detail : (e.detail?.value || []);
-            setGroupVal(val);
-          }}
-        >
-          <MauiCheckbox key="cb-group-a" name="a" value={groupVal.includes('a')} onChange={() => toggleGroup('a')}>Option A</MauiCheckbox>
-          <MauiCheckbox key="cb-group-b" name="b" value={groupVal.includes('b')} onChange={() => toggleGroup('b')}>Option B</MauiCheckbox>
-          <MauiCheckbox key="cb-group-c" name="c" value={groupVal.includes('c')} onChange={() => toggleGroup('c')}>Option C</MauiCheckbox>
-        </MauiCheckboxGroup>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'radio': {
-    title: 'Radio 单选框',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiRadio, MauiRadioGroup } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function RadioPage() {
-  const [currentRadio, setCurrentRadio] = useState('1');
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Radio Group (Selected: {currentRadio})</Text>
-        <MauiRadioGroup
-          value={currentRadio}
-          onChange={(e: any) => {
-            const val = typeof e.detail === 'string' ? e.detail : (e.detail?.value || e.target?.value || '1');
-            setCurrentRadio(val);
-          }}
-        >
-          <MauiRadio key="r1" name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>Option 1</MauiRadio>
-          <MauiRadio key="r2" name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Option 2</MauiRadio>
-          <MauiRadio key="r3" name="3" value={currentRadio} onChange={() => setCurrentRadio('3')} disabled>Option 3 (Disabled)</MauiRadio>
-        </MauiRadioGroup>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Horizontal Direction</Text>
-        <MauiRadioGroup
-          direction="horizontal"
-          value={currentRadio}
-          onChange={(e: any) => {
-            const val = typeof e.detail === 'string' ? e.detail : (e.detail?.value || e.target?.value || '1');
-            setCurrentRadio(val);
-          }}
-        >
-          <MauiRadio key="rh1" name="1" value={currentRadio} onChange={() => setCurrentRadio('1')}>One</MauiRadio>
-          <MauiRadio key="rh2" name="2" value={currentRadio} onChange={() => setCurrentRadio('2')}>Two</MauiRadio>
-        </MauiRadioGroup>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }
-maui-radio-group:not([direction="horizontal"]) maui-radio {
-  margin-bottom: 8px;
-  display: block;
-}
-maui-radio-group[direction="horizontal"] {
-  display: flex;
-  flex-direction: row;
-}
-maui-radio-group[direction="horizontal"] maui-radio {
-  margin-right: 16px;
-}`
-  },
-
-  'switch': {
-    title: 'Switch 开关',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiSwitch } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function SwitchPage() {
-  const [checked, setChecked] = useState(true);
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (State: {checked ? 'ON' : 'OFF'})</Text>
-        <MauiSwitch checked={checked} onChange={(e: any) => setChecked(e.detail)} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Disabled & Loading</Text>
-        <View className="demo-row">
-          <MauiSwitch disabled checked={true} />
-          <MauiSwitch disabled checked={false} />
-          <MauiSwitch loading checked={true} />
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Custom Size & Colors</Text>
-        <View className="demo-row">
-          <MauiSwitch size="24px" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
-          <MauiSwitch active-color="#07c160" inactive-color="#ee0a24" checked={checked} onChange={(e: any) => setChecked(e.detail)} />
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'slider': {
-    title: 'Slider 滑块',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiSlider } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function SliderPage() {
-  const [value, setValue] = useState(50);
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (Value: {value})</Text>
-        <MauiSlider value={value} onChange={(e: any) => setValue(e.detail)} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Custom Range (-50 to 50)</Text>
-        <MauiSlider min={-50} max={50} value={0} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Step Size (step: 10)</Text>
-        <MauiSlider step={10} value={30} />
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'stepper': {
-    title: 'Stepper 步进器',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiStepper } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function StepperPage() {
-  const [count, setCount] = useState(3);
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (Value: {count})</Text>
-        <MauiStepper value={count} onChange={(e: any) => setCount(e.detail)} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Step Size & Limits (1 to 10, step 2)</Text>
-        <MauiStepper min={1} max={10} step={2} value={count} onChange={(e: any) => setCount(e.detail)} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Disabled</Text>
-        <MauiStepper disabled value={1} />
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'field': {
-    title: 'Field 输入框',
-    code: `import React, { useState } from 'react';
-import { View } from '@tarojs/components';
-import { MauiField, MauiCellGroup } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function FieldPage() {
-  const [username, setUsername] = useState('macle_user');
-
-  return (
-    <View className="page-body">
-      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
-        <MauiCellGroup>
-          <MauiField
-            value={username}
-            placeholder="Please enter username"
-            label="Username"
-            onChange={(e: any) => setUsername(e.detail)}
-          />
-          <MauiField type="password" label="Password" placeholder="Enter password" />
-          <MauiField clearable label="Clearable" placeholder="Clearable input" />
-          <MauiField disabled label="Disabled" value="Input disabled" />
-        </MauiCellGroup>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'tag': {
-    title: 'Tag 标签',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiTag } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function TagPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Tag Types</Text>
-        <View className="demo-row">
-          <MauiTag type="primary">Primary</MauiTag>
-          <MauiTag type="success">Success</MauiTag>
-          <MauiTag type="danger">Danger</MauiTag>
-          <MauiTag type="warning">Warning</MauiTag>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Plain & Shapes</Text>
-        <View className="demo-row">
-          <MauiTag plain type="primary">Plain</MauiTag>
-          <MauiTag round type="primary">Round</MauiTag>
-          <MauiTag mark type="primary">Mark</MauiTag>
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Custom Colors & Sizes</Text>
-        <View className="demo-row">
-          <MauiTag color="#7232dd">Custom #7232dd</MauiTag>
-          <MauiTag size="large" type="primary">Large</MauiTag>
-          <MauiTag size="medium" type="primary">Medium</MauiTag>
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'loading': {
-    title: 'Loading 加载',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiLoading } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function LoadingPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Loading Types</Text>
-        <View className="demo-row">
-          <MauiLoading />
-          <MauiLoading type="spinner" />
-        </View>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Custom Color & Vertical Text</Text>
-        <View className="demo-row">
-          <MauiLoading color="#1989fa" />
-          <MauiLoading size="24px" vertical>Loading...</MauiLoading>
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'progress': {
-    title: 'Progress 进度条',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiProgress } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function ProgressPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (50%)</Text>
-        <MauiProgress percentage={50} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Stroke Width & Inactive</Text>
-        <MauiProgress stroke-width="8" percentage={75} />
-        <View style={{ height: '12px' }} />
-        <MauiProgress inactive percentage={40} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Custom Color</Text>
-        <MauiProgress color="#ee0a24" percentage={65} />
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'divider': {
-    title: 'Divider 分割线',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiDivider } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function DividerPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Divider</Text>
-        <MauiDivider />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">2. Content Position</Text>
-        <MauiDivider content-position="center">Center Text</MauiDivider>
-        <MauiDivider content-position="left">Left Text</MauiDivider>
-        <MauiDivider content-position="right">Right Text</MauiDivider>
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Dashed & Custom Colors</Text>
-        <MauiDivider dashed />
-        <MauiDivider text-color="#1989fa" custom-style="color: #1989fa;">Blue Divider</MauiDivider>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'empty': {
-    title: 'Empty 空状态',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiEmpty } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function EmptyPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage</Text>
-        <MauiEmpty description="No Data" />
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'steps': {
-    title: 'Steps 步骤条',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiSteps, MauiButton } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function StepsPage() {
-  const [active, setActive] = useState(1);
-  const steps = [
-    { text: 'Step 1', desc: 'Description 1' },
-    { text: 'Step 2', desc: 'Description 2' },
-    { text: 'Step 3', desc: 'Description 3' }
-  ];
-
-  const nextStep = () => {
-    setActive((active + 1) % 3);
-  };
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Horizontal Steps (Active: {active})</Text>
-        <MauiSteps steps={steps} active={active} />
-        <View style={{ marginTop: '14px' }}>
-          <MauiButton type="primary" size="small" onClick={nextStep}>Next Step</MauiButton>
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'dialog': {
-    title: 'Dialog 弹出框',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function DialogPage() {
-  const showAlert = () => {
-    Taro.showToast({ title: 'Dialog Verified!', icon: 'success' });
-  };
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Native Dialog Trigger</Text>
-        <MauiButton type="primary" block onClick={showAlert}>Trigger Alert Dialog</MauiButton>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'toast': {
-    title: 'Toast 轻提示',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
-import './index.css';
-
-export default function ToastPage() {
-  const showSuccess = () => {
-    Taro.showToast({ title: 'Success!', icon: 'success' });
-  };
-
-  const showInfo = () => {
-    Taro.showToast({ title: 'Information message', icon: 'none' });
-  };
-
-  return (
-    <View className="page-body">
-      <View className="demo-block">
-        <Text className="demo-title">1. Toast Notifications</Text>
-        <View className="demo-row">
-          <MauiButton type="primary" onClick={showSuccess}>Success Toast</MauiButton>
-          <MauiButton type="info" onClick={showInfo}>Info Toast</MauiButton>
-        </View>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
-
-  'view': {
-    title: 'View 视图容器',
-    code: `import React from 'react';
+`);
+fs.writeFileSync(path.join(runnerDir, 'index.config.ts'), `export default definePageConfig({ navigationBarTitleText: 'Runner' });\n`);
+fs.writeFileSync(path.join(runnerDir, 'index.css'), ``);
+
+/**
+ * Custom React JSX definitions for each component
+ */
+const taroPageRenderers = {
+  'view': `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import './index.css';
 
@@ -1146,39 +263,185 @@ export default function ViewPage() {
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Flex Direction: Row</Text>
-        <View className="flex-row">
-          <View className="box bg-red">A</View>
-          <View className="box bg-green">B</View>
-          <View className="box bg-blue">C</View>
+        <Text className="demo-title">1. Flex Direction (Row & Column Layout)</Text>
+        <View className="page-section">
+          <View className="page-section-title">flex-direction: row</View>
+          <View className="flex-row">
+            <View className="flex-item demo-bg-red">A</View>
+            <View className="flex-item demo-bg-green">B</View>
+            <View className="flex-item demo-bg-blue">C</View>
+          </View>
+          <View className="page-section-title" style={{ marginTop: '16px' }}>flex-direction: column</View>
+          <View className="flex-col">
+            <View className="flex-item demo-bg-red">Row 1</View>
+            <View className="flex-item demo-bg-green">Row 2</View>
+            <View className="flex-item demo-bg-blue">Row 3</View>
+          </View>
         </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">2. Flex Direction: Column</Text>
-        <View className="flex-col">
-          <View className="box bg-red">Row 1</View>
-          <View className="box bg-green">Row 2</View>
-          <View className="box bg-blue">Row 3</View>
+        <Text className="demo-title">2. Stream Post Feed with Hover State</Text>
+        <View className="stream">
+          <View className="post" hoverClass="post-hover" hoverStartTime={50} hoverStayTime={400}>
+            <View className="post-user">
+              <View className="post-avatar">Z</View>
+              <Text className="post-name">Zoe</Text>
+            </View>
+            <View className="post-body">
+              <View className="post-content">Welcome to Macle Mini Program development!</View>
+              <View className="post-date">June 12</View>
+            </View>
+          </View>
+          <View className="post" hoverClass="post-hover">
+            <View className="post-user">
+              <View className="post-avatar">J</View>
+              <Text className="post-name">Jim</Text>
+            </View>
+            <View className="post-body">
+              <View className="post-content">Great! How can I preview on the Web Simulator?</View>
+              <View className="post-date">June 13</View>
+            </View>
+          </View>
         </View>
       </View>
     </View>
   );
-}
-`,
-    css: `.page-body { padding: 8px 0; }
-.flex-row { display: flex; flex-direction: row; gap: 10px; }
-.flex-col { display: flex; flex-direction: column; gap: 10px; }
-.box { padding: 14px; color: #fff; text-align: center; border-radius: 6px; font-weight: bold; }
-.bg-red { background-color: #ef4444; flex: 1; }
-.bg-green { background-color: #10b981; flex: 1; }
-.bg-blue { background-color: #3b82f6; flex: 1; }
-`
-  },
+}`,
 
-  'text': {
-    title: 'Text 文本',
-    code: `import React from 'react';
+  'scroll-view': `import React from 'react';
+import { View, Text, ScrollView } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import './index.css';
+
+export default function ScrollViewPage() {
+  const onScrollToUpper = () => { Taro.showToast({ title: 'Top Reached', icon: 'none' }); };
+  const onScrollToLower = () => { Taro.showToast({ title: 'Bottom Reached', icon: 'none' }); };
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Vertical Scroll View</Text>
+        <ScrollView scrollY style={{ height: '160px' }} onScrollToUpper={onScrollToUpper} onScrollToLower={onScrollToLower}>
+          <View className="scroll-v-item bg-red">Scroll Item 1 (Top)</View>
+          <View className="scroll-v-item bg-orange">Scroll Item 2</View>
+          <View className="scroll-v-item bg-green">Scroll Item 3</View>
+          <View className="scroll-v-item bg-blue">Scroll Item 4 (Bottom)</View>
+        </ScrollView>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Horizontal Scroll View</Text>
+        <ScrollView scrollX style={{ whiteSpace: 'nowrap', width: '100%' }}>
+          <View className="scroll-h-item bg-blue">Card 1</View>
+          <View className="scroll-h-item bg-green">Card 2</View>
+          <View className="scroll-h-item bg-orange">Card 3</View>
+          <View className="scroll-h-item bg-purple">Card 4</View>
+          <View className="scroll-h-item bg-pink">Card 5</View>
+        </ScrollView>
+      </View>
+    </View>
+  );
+}`,
+
+  'swiper': `import React from 'react';
+import { View, Text, Swiper, SwiperItem } from '@tarojs/components';
+import './index.css';
+
+export default function SwiperPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Interactive Swiper with Indicators & Autoplay</Text>
+        <Swiper indicatorDots autoplay interval={2500} duration={500} circular style={{ height: '160px', borderRadius: '10px', overflow: 'hidden' }}>
+          <SwiperItem>
+            <View className="swiper-slide slide-blue"><Text className="slide-text">Slide A - Macle</Text></View>
+          </SwiperItem>
+          <SwiperItem>
+            <View className="swiper-slide slide-green"><Text className="slide-text">Slide B - Simulator</Text></View>
+          </SwiperItem>
+          <SwiperItem>
+            <View className="swiper-slide slide-orange"><Text className="slide-text">Slide C - OpenDoc</Text></View>
+          </SwiperItem>
+        </Swiper>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Circular & Vertical Swiping</Text>
+        <Swiper vertical indicatorDots autoplay={false} style={{ height: '120px', borderRadius: '10px', overflow: 'hidden' }}>
+          <SwiperItem><View className="swiper-slide slide-purple"><Text className="slide-text">Vertical Panel 1</Text></View></SwiperItem>
+          <SwiperItem><View className="swiper-slide slide-teal"><Text className="slide-text">Vertical Panel 2</Text></View></SwiperItem>
+        </Swiper>
+      </View>
+    </View>
+  );
+}`,
+
+  'swiper-item': `import React from 'react';
+import { View, Text, Swiper, SwiperItem } from '@tarojs/components';
+import './index.css';
+
+export default function SwiperItemPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Custom Swiper Item Card</Text>
+        <Swiper indicatorDots style={{ height: '140px' }}>
+          <SwiperItem className="swiper-custom-item">
+            <View className="card-content">
+              <Text className="card-title">Custom Item Container</Text>
+              <Text className="card-sub">swiper-item wraps individual slides</Text>
+            </View>
+          </SwiperItem>
+        </Swiper>
+      </View>
+    </View>
+  );
+}`,
+
+  'cover-view': `import React from 'react';
+import { View, Text, CoverView } from '@tarojs/components';
+import './index.css';
+
+export default function CoverViewPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Cover View Overlay on Native Components</Text>
+        <View className="media-container" style={{ position: 'relative', height: '180px', background: '#0f172a', borderRadius: '10px', overflow: 'hidden' }}>
+          <View className="simulated-media" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+            [Media Surface Area]
+          </View>
+          <CoverView className="cover-badge" style={{ position: 'absolute', top: '12px', left: '12px', background: 'rgba(0,0,0,0.65)', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '12px' }}>
+            ● Live Stream Overlay
+          </CoverView>
+          <CoverView className="cover-actions" style={{ position: 'absolute', bottom: '12px', right: '12px', background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '6px', fontSize: '13px', fontWeight: '600' }}>
+            Overlay Button
+          </CoverView>
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'cover-image': `import React from 'react';
+import { View, Text, CoverImage } from '@tarojs/components';
+import './index.css';
+
+export default function CoverImagePage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Cover Image Overlay on Media Component</Text>
+        <View className="media-container" style={{ position: 'relative', height: '160px', background: '#1e293b', borderRadius: '10px' }}>
+          <CoverImage className="cover-logo" src="https://img.icons8.com/color/96/play--v1.png" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '48px', height: '48px' }} />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'text': `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import './index.css';
 
@@ -1186,319 +449,744 @@ export default function TextPage() {
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Text Component</Text>
-        <View style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Text style={{ fontSize: '16px', fontWeight: 'bold', color: '#0f172a' }}>Headline Bold Text</Text>
-          <Text style={{ fontSize: '13px', color: '#64748b' }}>Subtitle or description text style.</Text>
-          <Text selectable style={{ fontSize: '13px', color: '#2563eb' }}>This text is selectable (selectable=true)</Text>
+        <Text className="demo-title">1. Basic Text & Selectable Text</Text>
+        <View className="text-group">
+          <Text className="text-headline">Standard Headline Text</Text>
+          <Text className="text-sub">Regular secondary description text paragraph.</Text>
+          <Text selectable className="text-selectable">This text is selectable (user-select / selectable=true)</Text>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Continuous Space Display (ensp, emsp, nbsp)</Text>
+        <View className="text-group">
+          <Text space="ensp">Half-width   space   (ensp)</Text>
+          <Text space="emsp">Full-width   space   (emsp)</Text>
+          <Text space="nbsp">Non-breaking   space   (nbsp)</Text>
         </View>
       </View>
     </View>
   );
-}
-`,
-    css: `.page-body { padding: 8px 0; }`
-  },
+}`,
 
-  'swiper': {
-    title: 'Swiper 轮播',
-    code: `import React from 'react';
-import { View, Text, Swiper, SwiperItem } from '@tarojs/components';
+  'icon': `import React from 'react';
+import { View, Text, Icon } from '@tarojs/components';
 import './index.css';
 
-export default function SwiperPage() {
-  return (
-    <View className="page-body">
-      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
-        <Swiper indicatorDots autoplay interval={3000} duration={500} style={{ height: '160px' }}>
-          <SwiperItem>
-            <View className="swiper-slide slide-1"><Text>Slide 1</Text></View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className="swiper-slide slide-2"><Text>Slide 2</Text></View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className="swiper-slide slide-3"><Text>Slide 3</Text></View>
-          </SwiperItem>
-        </Swiper>
-      </View>
-    </View>
-  );
-}
-`,
-    css: `.page-body { padding: 8px 0; }
-.swiper-slide { height: 160px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: bold; }
-.slide-1 { background: #3b82f6; }
-.slide-2 { background: #10b981; }
-.slide-3 { background: #8b5cf6; }
-`
-  },
-
-  'scroll-view': {
-    title: 'ScrollView 滚动视图',
-    code: `import React from 'react';
-import { View, Text, ScrollView } from '@tarojs/components';
-import './index.css';
-
-export default function ScrollViewPage() {
+export default function IconPage() {
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Horizontal Scroll View</Text>
-        <ScrollView scrollX style={{ whiteSpace: 'nowrap', width: '100%' }}>
-          <View className="scroll-item bg-1">Item 1</View>
-          <View className="scroll-item bg-2">Item 2</View>
-          <View className="scroll-item bg-3">Item 3</View>
-          <View className="scroll-item bg-4">Item 4</View>
-          <View className="scroll-item bg-5">Item 5</View>
-        </ScrollView>
+        <Text className="demo-title">1. Standard System Icons</Text>
+        <View className="icon-grid">
+          <View className="icon-item"><Icon type="success" size="32" /><Text>success</Text></View>
+          <View className="icon-item"><Icon type="info" size="32" /><Text>info</Text></View>
+          <View className="icon-item"><Icon type="warn" size="32" /><Text>warn</Text></View>
+          <View className="icon-item"><Icon type="waiting" size="32" /><Text>waiting</Text></View>
+          <View className="icon-item"><Icon type="cancel" size="32" /><Text>cancel</Text></View>
+          <View className="icon-item"><Icon type="search" size="32" /><Text>search</Text></View>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Custom Icon Sizes and Colors</Text>
+        <View className="demo-row" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <Icon type="success" size="24" color="#10b981" />
+          <Icon type="success" size="36" color="#3b82f6" />
+          <Icon type="success" size="48" color="#f59e0b" />
+          <Icon type="success" size="60" color="#ef4444" />
+        </View>
       </View>
     </View>
   );
-}
-`,
-    css: `.page-body { padding: 8px 0; }
-.scroll-item { display: inline-block; width: 100px; height: 80px; margin-right: 10px; border-radius: 8px; line-height: 80px; text-align: center; color: #fff; font-weight: bold; }
-.bg-1 { background: #3b82f6; }
-.bg-2 { background: #10b981; }
-.bg-3 { background: #f59e0b; }
-.bg-4 { background: #ef4444; }
-.bg-5 { background: #8b5cf6; }
-`
-  },
+}`,
 
-  'list': {
-    title: 'List 列表',
-    code: `import React from 'react';
-import { View, Text } from '@tarojs/components';
-import Taro from '@tarojs/taro';
-import { MauiList, MauiListItem } from '@macle-community/taro-plugin-macle/components-react';
+  'rich-text': `import React from 'react';
+import { View, Text, RichText } from '@tarojs/components';
 import './index.css';
 
-export default function ListPage() {
-  const handleClick = () => {
-    Taro.showToast({ title: 'Item Clicked', icon: 'none' });
+export default function RichTextPage() {
+  const htmlSnippet = '<div style="background:#eff6ff;padding:12px;border-radius:8px;"><h4 style="color:#1d4ed8;margin:0 0 6px 0;">Macle HTML RichText</h4><p style="color:#334155;font-size:13px;margin:0;">Render formatted HTML strings with <b>bold tags</b> and <span style="color:#ef4444;">colored highlights</span>.</p></div>';
+  const nodeArray = [{
+    name: 'div',
+    attrs: { class: 'custom-node-box', style: 'color:#059669;font-weight:bold;font-size:14px;' },
+    children: [{ type: 'text', text: '✓ Rendered via Structured Node Array' }]
+  }];
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. HTML String Rendering</Text>
+        <RichText nodes={htmlSnippet} space="nbsp" />
+      </View>
+      <View className="demo-block">
+        <Text className="demo-title">2. Node Array Structure</Text>
+        <RichText nodes={nodeArray as any} />
+      </View>
+    </View>
+  );
+}`,
+
+  'progress': `import React, { useState } from 'react';
+import { View, Text, Progress, Button } from '@tarojs/components';
+import './index.css';
+
+export default function ProgressPage() {
+  const [percent, setPercent] = useState(40);
+  const increase = () => setPercent(p => (p >= 100 ? 20 : p + 20));
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Basic Progress Bar with Percentage</Text>
+        <View className="progress-col">
+          <Progress percent={30} showInfo strokeWidth={4} />
+          <Progress percent={65} showInfo strokeWidth={6} activeColor="#3b82f6" />
+          <Progress percent={90} showInfo strokeWidth={8} activeColor="#10b981" />
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Animated & Custom Stroke/Color Progress</Text>
+        <View className="progress-col">
+          <Progress percent={percent} showInfo active activeMode="forwards" strokeWidth={8} borderRadius={4} activeColor="#8b5cf6" />
+          <Button size="mini" type="default" onClick={increase} style={{ alignSelf: 'flex-start', marginTop: '8px' }}>+20% Progress</Button>
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'button': `import React from 'react';
+import { View, Text, Button } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import './index.css';
+
+export default function ButtonPage() {
+  const handlePrimaryTap = () => {
+    Taro.showToast({ title: 'Tapped Primary', icon: 'success' });
   };
 
   return (
-    <View className="page-container">
-      <View className="demo-section">
-        <Text className="demo-section-title">1. Basic Usage (基础用法)</Text>
-        <MauiList header="Basic Usage" radius footer="Top Description">
-          <MauiListItem>Item 1 (列表项 1)</MauiListItem>
-          <MauiListItem>Item 2 (列表项 2)</MauiListItem>
-          <MauiListItem>Item 3 (列表项 3)</MauiListItem>
-        </MauiList>
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Default Button (Normal & Disabled)</Text>
+        <View className="btn-group">
+          <Button type="default" hoverStartTime={200} hoverStayTime={500}>Normal Default</Button>
+          <Button type="default" disabled>Default Disabled</Button>
+        </View>
       </View>
 
-      <View className="demo-section">
-        <Text className="demo-section-title">2. List Item Properties (属性演示)</Text>
-        <MauiList radius>
-          <MauiListItem arrow="right">Arrow Right (右箭头)</MauiListItem>
-          <MauiListItem arrow="up">Arrow Up (上箭头)</MauiListItem>
-          <MauiListItem arrow="down">Arrow Down (下箭头)</MauiListItem>
-          <MauiListItem brief="Second line auxiliary description">Brief Information (简述)</MauiListItem>
-          <MauiListItem disabled>Disabled Item (禁用状态)</MauiListItem>
-        </MauiList>
+      <View className="demo-block">
+        <Text className="demo-title">2. Warn Button (Normal & Disabled)</Text>
+        <View className="btn-group">
+          <Button type="warn">Warn Action</Button>
+          <Button type="warn" disabled>Warn Disabled</Button>
+        </View>
       </View>
 
-      <View className="demo-section">
-        <Text className="demo-section-title">3. Extended Usage (扩展属性)</Text>
-        <MauiList header="Additional Information" radius footer="Synced with DevToolkit 26.6.0">
-          <MauiListItem extra="Extra Text" extraBrief="Auxiliary on Right">
-            Information Display
-          </MauiListItem>
-          <MauiListItem showDivider={false}>
-            No Divider Underscore (无底部分割线)
-          </MauiListItem>
-          <MauiListItem title="Title Property">
-            Body Slot Content
-          </MauiListItem>
-          <MauiListItem title="Interactive Item" arrow="right" onClick={handleClick}>
-            Click to Test Toast
-          </MauiListItem>
-        </MauiList>
+      <View className="demo-block">
+        <Text className="demo-title">3. Primary Button & Form Actions</Text>
+        <View className="btn-group">
+          <Button type="primary" onClick={handlePrimaryTap}>Primary Button</Button>
+          <Button type="primary" size="mini" style={{ alignSelf: 'flex-start' }}>Mini Primary</Button>
+        </View>
       </View>
     </View>
   );
-}
-`,
-    css: `.page-container {
-  padding: 16px;
-  background-color: #f7f8fa;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
+}`,
 
-.demo-section {
-  margin-bottom: 20px;
-}
-
-.demo-section-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #323233;
-  margin-bottom: 8px;
-  padding-left: 4px;
-}
-`
-  },
-
-  'modal': {
-    title: 'Modal 弹窗',
-    code: `import React, { useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import Taro from '@tarojs/taro';
-import { MauiModal, MauiCellGroup, MauiCell } from '@macle-community/taro-plugin-macle/components-react';
+  'checkbox': `import React, { useState } from 'react';
+import { View, Text, Label, Checkbox } from '@tarojs/components';
 import './index.css';
 
-export default function ModalPage() {
-  const [currentModal, setCurrentModal] = useState<string>('');
+export default function CheckboxPage() {
+  const [isAgree, setIsAgree] = useState(true);
 
-  const showModal = (val: string) => {
-    setCurrentModal(val);
-  };
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Single Checkbox with Checked State & Color</Text>
+        <View className="checkbox-demo">
+          <Label className="cb-row" onClick={() => setIsAgree(!isAgree)}>
+            <Checkbox value="agree" checked={isAgree} color="#2563eb" />
+            <Text className="cb-label">I agree to the Terms of Service</Text>
+          </Label>
+        </View>
+      </View>
+    </View>
+  );
+}`,
 
-  const handleClose = () => {
-    setCurrentModal('');
-  };
+  'checkbox-group': `import React, { useState } from 'react';
+import { View, Text, Label, Checkbox, CheckboxGroup } from '@tarojs/components';
+import './index.css';
 
-  const handlePrimary = () => {
-    Taro.showToast({ title: 'Primary Clicked', icon: 'none' });
-    setCurrentModal('');
-  };
+export default function CheckboxGroupPage() {
+  const [selectedList, setSelectedList] = useState('JS, TS');
+  const options = [
+    { value: 'JS', label: 'JavaScript', checked: true },
+    { value: 'TS', label: 'TypeScript', checked: true },
+    { value: 'REACT', label: 'React / Taro', checked: false },
+    { value: 'MAML', label: 'Native MAML', checked: false }
+  ];
 
-  const handleSecondary = () => {
-    Taro.showToast({ title: 'Secondary Clicked', icon: 'none' });
-    setCurrentModal('');
-  };
-
-  const handleCancel = () => {
-    Taro.showToast({ title: 'Cancel Clicked', icon: 'none' });
-    setCurrentModal('');
+  const onChange = (e: any) => {
+    setSelectedList(e.detail.value.join(', '));
   };
 
   return (
-    <View className="page-container">
-      <MauiModal
-        title="Basic Modal"
-        content="This is a basic MAUI modal dialog."
-        visible={currentModal === 'modal1'}
-        primaryButtonText="Confirm"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-      />
-
-      <MauiModal
-        content="Alert content without title."
-        visible={currentModal === 'modal2'}
-        primaryButtonText="Confirm"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-      />
-
-      <MauiModal
-        title="Two-Button Modal"
-        content="Horizontal layout with primary and secondary buttons."
-        visible={currentModal === 'modal3'}
-        primaryButtonText="Confirm"
-        secondaryButtonText="Cancel"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-        onSecondaryButtonTap={handleSecondary}
-      />
-
-      <MauiModal
-        title="Three-Button Modal"
-        content="Modal with primary, secondary, and cancel actions."
-        visible={currentModal === 'modal4'}
-        primaryButtonText="Primary"
-        secondaryButtonText="Secondary"
-        cancelButtonText="Cancel"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-        onSecondaryButtonTap={handleSecondary}
-        onCancelButtonTap={handleCancel}
-      />
-
-      <MauiModal
-        title="Focus Mode"
-        content="Prominent single action button in focus style."
-        visible={currentModal === 'modal5'}
-        type="focus"
-        primaryButtonText="I Understand"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-      />
-
-      <MauiModal
-        title="Closable Modal"
-        content="Focus mode modal featuring an explicit close (X) icon."
-        visible={currentModal === 'modal6'}
-        type="focus"
-        closable
-        primaryButtonText="Got It"
-        onClose={handleClose}
-        onPrimaryButtonTap={handlePrimary}
-      />
-
-      <View className="demo-section">
-        <Text className="demo-section-title">1. Standard Modals (常规弹窗)</Text>
-        <MauiCellGroup>
-          <MauiCell title="Basic Modal (基础弹窗)" value="Open" onClick={() => showModal('modal1')} />
-          <MauiCell title="Alert (无标题弹窗)" value="Open" onClick={() => showModal('modal2')} />
-          <MauiCell title="Two Buttons (双按钮)" value="Open" onClick={() => showModal('modal3')} />
-          <MauiCell title="Three Buttons (三按钮)" value="Open" onClick={() => showModal('modal4')} />
-        </MauiCellGroup>
-      </View>
-
-      <View className="demo-section">
-        <Text className="demo-section-title">2. Focus Mode (强调模式)</Text>
-        <MauiCellGroup>
-          <MauiCell title="Focus Action (强调主按钮)" value="Open" onClick={() => showModal('modal5')} />
-          <MauiCell title="Closable (含右上角关闭图标)" value="Open" onClick={() => showModal('modal6')} />
-        </MauiCellGroup>
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Multi-Select Checkbox Group with Change Handler</Text>
+        <CheckboxGroup onChange={onChange}>
+          <View className="cb-list">
+            {options.map(item => (
+              <Label key={item.value} className="cb-item">
+                <Checkbox value={item.value} checked={item.checked} color="#0284c7" />
+                <Text>{item.label}</Text>
+              </Label>
+            ))}
+          </View>
+        </CheckboxGroup>
+        <View className="selected-text">Selected: {selectedList}</View>
       </View>
     </View>
   );
-}
-`,
-    css: `.page-container {
-  padding: 16px;
-  background-color: #f7f8fa;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
+}`,
 
-.demo-section {
-  margin-bottom: 20px;
-}
+  'form': `import React from 'react';
+import { View, Text, Form, Input, Switch, Button } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import './index.css';
 
-.demo-section-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #323233;
-  margin-bottom: 8px;
-  padding-left: 4px;
-}
-`
-  }
+export default function FormPage() {
+  const onSubmit = (e: any) => {
+    Taro.showModal({ title: 'Form Submitted', content: JSON.stringify(e.detail.value), showCancel: false });
+  };
+  const onReset = () => {
+    Taro.showToast({ title: 'Form Reset', icon: 'none' });
+  };
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Form Container with Submit & Reset Handlers</Text>
+        <Form onSubmit={onSubmit} onReset={onReset}>
+          <View className="form-field">
+            <Text className="form-label">Username:</Text>
+            <Input name="username" className="form-input" placeholder="Enter username" />
+          </View>
+          <View className="form-field">
+            <Text className="form-label">Notifications:</Text>
+            <Switch name="notify" checked color="#2563eb" />
+          </View>
+          <View className="form-actions">
+            <Button formType="submit" type="primary" size="mini">Submit</Button>
+            <Button formType="reset" type="default" size="mini">Reset</Button>
+          </View>
+        </Form>
+      </View>
+    </View>
+  );
+}`,
+
+  'input': `import React, { useState } from 'react';
+import { View, Text, Input } from '@tarojs/components';
+import './index.css';
+
+export default function InputPage() {
+  const [val, setVal] = useState('');
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Text Input with Placeholder</Text>
+        <View className="input-block">
+          <Input className="std-input" placeholder="Standard text input..." onInput={e => setVal(e.detail.value)} />
+          <Text className="input-val-preview">Current Input: {val}</Text>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Password, Number & Digit Input Types</Text>
+        <View className="input-col">
+          <Input className="std-input" password placeholder="Password input" />
+          <Input className="std-input" type="number" placeholder="Number keyboard input" />
+          <Input className="std-input" type="digit" placeholder="Decimal digit keyboard input" />
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">3. Focus, Maxlength & Confirm Type</Text>
+        <Input className="std-input" maxLength={10} confirmType="done" placeholder="Maxlength 10 chars" />
+      </View>
+    </View>
+  );
+}`,
+
+  'picker': `import React, { useState } from 'react';
+import { View, Text, Picker } from '@tarojs/components';
+import './index.css';
+
+export default function PickerPage() {
+  const fruits = ['Apple', 'Banana', 'Orange', 'Strawberry'];
+  const [fruitIdx, setFruitIdx] = useState(0);
+  const [date, setDate] = useState('2026-11-07');
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Normal Selector (Single Column)</Text>
+        <Picker mode="selector" range={fruits} value={fruitIdx} onChange={(e: any) => setFruitIdx(e.detail.value)}>
+          <View className="picker-display">Selected Fruit: <Text className="highlight">{fruits[fruitIdx]}</Text></View>
+        </Picker>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Time & Date Selector</Text>
+        <Picker mode="date" value={date} onChange={(e: any) => setDate(e.detail.value)}>
+          <View className="picker-display">Date: <Text className="highlight">{date}</Text></View>
+        </Picker>
+      </View>
+    </View>
+  );
+}`,
+
+  'picker-view': `import React, { useState } from 'react';
+import { View, Text, PickerView, PickerViewColumn } from '@tarojs/components';
+import './index.css';
+
+export default function PickerViewPage() {
+  const years = [2024, 2025, 2026, 2027];
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const days = [1, 5, 10, 15, 20, 25, 30];
+  const [val, setVal] = useState([2, 10, 3]);
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Embedded Multi-Column Picker View</Text>
+        <View className="preview-date">{years[val[0]]}年 {months[val[1]]}月 {days[val[2]]}日</View>
+        <PickerView indicatorStyle="height: 50px;" style={{ width: '100%', height: '200px', background: '#fff', borderRadius: '8px' }} value={val} onChange={(e: any) => setVal(e.detail.value)}>
+          <PickerViewColumn>
+            {years.map(y => <View key={y} style={{ lineHeight: '50px', textAlign: 'center' }}>{y}年</View>)}
+          </PickerViewColumn>
+          <PickerViewColumn>
+            {months.map(m => <View key={m} style={{ lineHeight: '50px', textAlign: 'center' }}>{m}月</View>)}
+          </PickerViewColumn>
+          <PickerViewColumn>
+            {days.map(d => <View key={d} style={{ lineHeight: '50px', textAlign: 'center' }}>{d}日</View>)}
+          </PickerViewColumn>
+        </PickerView>
+      </View>
+    </View>
+  );
+}`,
+
+  'picker-view-column': `import React from 'react';
+import { View, Text, PickerView, PickerViewColumn } from '@tarojs/components';
+import './index.css';
+
+export default function PickerViewColumnPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Picker View Column Layout</Text>
+        <PickerView indicatorStyle="height: 40px;" style={{ height: '120px', background: '#fff' }}>
+          <PickerViewColumn>
+            <View style={{ lineHeight: '40px', textAlign: 'center' }}>Option 1</View>
+            <View style={{ lineHeight: '40px', textAlign: 'center' }}>Option 2</View>
+            <View style={{ lineHeight: '40px', textAlign: 'center' }}>Option 3</View>
+          </PickerViewColumn>
+        </PickerView>
+      </View>
+    </View>
+  );
+}`,
+
+  'label': `import React from 'react';
+import { View, Text, Label, Checkbox, Radio } from '@tarojs/components';
+import './index.css';
+
+export default function LabelPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Label with for Attribute Binding</Text>
+        <View className="label-demo">
+          <Checkbox id="agree-cb" color="#2563eb" />
+          <Label for="agree-cb" className="bound-label">Tap this label text to toggle checkbox</Label>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Label Encapsulating Controls</Text>
+        <Label className="enclosing-label">
+          <Radio value="r1" checked color="#10b981" />
+          <Text style={{ marginLeft: '8px', fontSize: '14px' }}>Enclosed Radio inside Label</Text>
+        </Label>
+      </View>
+    </View>
+  );
+}`,
+
+  'switch': `import React, { useState } from 'react';
+import { View, Text, Switch } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import './index.css';
+
+export default function SwitchPage() {
+  const [isEnabled, setIsEnabled] = useState(true);
+  const onToggle = (e: any) => {
+    setIsEnabled(e.detail.value);
+    Taro.showToast({ title: e.detail.value ? 'Enabled' : 'Disabled', icon: 'none' });
+  };
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Switch Selector with Change Event</Text>
+        <View className="switch-row">
+          <Text className="sw-title">Notification Enabled:</Text>
+          <Switch checked={isEnabled} onChange={onToggle} color="#2563eb" />
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Checkbox Style Switch & Custom Color</Text>
+        <View className="switch-row">
+          <Text className="sw-title">Checkbox Style Switch:</Text>
+          <Switch type="checkbox" checked color="#10b981" />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'radio': `import React from 'react';
+import { View, Text, Radio } from '@tarojs/components';
+import './index.css';
+
+export default function RadioPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Single Radio Button</Text>
+        <View className="radio-row">
+          <Radio value="single" checked color="#2563eb" />
+          <Text style={{ marginLeft: '8px', fontSize: '14px' }}>Standalone Checked Radio</Text>
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'radio-group': `import React, { useState } from 'react';
+import { View, Text, Label, Radio, RadioGroup } from '@tarojs/components';
+import './index.css';
+
+export default function RadioGroupPage() {
+  const [plan, setPlan] = useState('pro');
+  const plans = [
+    { id: 'free', name: 'Free Tier', price: '$0' },
+    { id: 'pro', name: 'Pro Plan', price: '$19/mo' },
+    { id: 'team', name: 'Team Enterprise', price: '$49/mo' }
+  ];
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Radio Group with Exclusive Selection</Text>
+        <RadioGroup onChange={(e: any) => setPlan(e.detail.value)}>
+          <View className="radio-list">
+            {plans.map(p => (
+              <Label key={p.id} className="radio-item">
+                <Radio value={p.id} checked={p.id === plan} color="#2563eb" />
+                <Text className="radio-label">{p.name} ({p.price})</Text>
+              </Label>
+            ))}
+          </View>
+        </RadioGroup>
+        <View className="selected-plan">Selected: {plan}</View>
+      </View>
+    </View>
+  );
+}`,
+
+  'slider': `import React, { useState } from 'react';
+import { View, Text, Slider } from '@tarojs/components';
+import './index.css';
+
+export default function SliderPage() {
+  const [volume, setVolume] = useState(50);
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Slider with Min, Max & Show-Value</Text>
+        <View className="slider-box">
+          <Slider min={0} max={100} value={volume} showValue onChange={(e: any) => setVolume(e.detail.value)} activeColor="#2563eb" />
+          <Text className="slider-text">Volume: {volume}%</Text>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Step Slider with Custom Colors</Text>
+        <View className="slider-box">
+          <Slider step={10} value={30} showValue activeColor="#10b981" blockColor="#059669" blockSize={20} />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'textarea': `import React, { useState } from 'react';
+import { View, Text, Textarea } from '@tarojs/components';
+import './index.css';
+
+export default function TextareaPage() {
+  const [len, setLen] = useState(0);
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Multi-Line Textarea with Placeholder</Text>
+        <View className="textarea-wrp">
+          <Textarea className="std-textarea" placeholder="Enter comments or description..." onInput={(e: any) => setLen(e.detail.value?.length || 0)} maxLength={200} />
+          <View className="char-count">{len} / 200</View>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Auto-Height Textarea with Maxlength</Text>
+        <View className="textarea-wrp">
+          <Textarea autoHeight placeholder="Auto-height textarea expanding with lines" className="std-textarea" />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'navigator': `import React from 'react';
+import { View, Text, Navigator } from '@tarojs/components';
+import './index.css';
+
+export default function NavigatorPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Page Navigation (open-type="navigate")</Text>
+        <View className="nav-container">
+          <Navigator url="/pages/button/index" openType="navigate" hoverClass="nav-hover" className="nav-btn">
+            👉 Navigate to Button Component Page
+          </Navigator>
+          <Navigator url="/pages/input/index" openType="navigate" hoverClass="nav-hover" className="nav-btn">
+            👉 Navigate to Input Component Page
+          </Navigator>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Page Redirect (open-type="redirect")</Text>
+        <Navigator url="/pages/view/index" openType="redirect" className="nav-btn">
+          🔄 Redirect to View Page (Close Current)
+        </Navigator>
+      </View>
+    </View>
+  );
+}`,
+
+  'image': `import React from 'react';
+import { View, Text, Image } from '@tarojs/components';
+import './index.css';
+
+export default function ImagePage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Image Scaling Modes (scaleToFill, aspectFit, aspectFill)</Text>
+        <View className="img-grid">
+          <View className="img-card">
+            <Image className="demo-img" mode="aspectFit" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+            <Text className="img-label">mode="aspectFit"</Text>
+          </View>
+          <View className="img-card">
+            <Image className="demo-img" mode="aspectFill" src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&q=80" />
+            <Text className="img-label">mode="aspectFill"</Text>
+          </View>
+        </View>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Local & Remote Image Source</Text>
+        <View className="img-box">
+          <Image className="wide-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" mode="widthFix" />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'video': `import React from 'react';
+import { View, Text, Video } from '@tarojs/components';
+import './index.css';
+
+export default function VideoPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Video Player with Controls & Poster</Text>
+        <View className="video-container">
+          <Video id="myVideo" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=80" controls style={{ width: '100%', height: '200px', borderRadius: '8px' }} />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'audio': `import React from 'react';
+import { View, Text, Audio } from '@tarojs/components';
+import './index.css';
+
+export default function AudioPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Audio Player with Playback Controls</Text>
+        <View className="audio-container">
+          <Audio id="myAudio" name="Sample Audio Track" author="Macle OpenDoc" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls style={{ width: '100%' }} />
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'camera': `import React from 'react';
+import { View, Text, Camera, CoverView } from '@tarojs/components';
+import './index.css';
+
+export default function CameraPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Camera Viewfinder with Device Position & Flash</Text>
+        <View className="camera-wrapper">
+          <Camera devicePosition="back" flash="off" style={{ width: '100%', height: '220px', borderRadius: '8px', overflow: 'hidden' }}>
+            <CoverView style={{ position: 'absolute', bottom: '10px', left: '10px', background: 'rgba(0,0,0,0.6)', color: '#fff', padding: '4px 8px', borderRadius: '4px', fontSize: '11px' }}>
+              Device: Back | Flash: Off
+            </CoverView>
+          </Camera>
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'web-view': `import React from 'react';
+import { View, Text, WebView } from '@tarojs/components';
+import './index.css';
+
+export default function WebViewPage() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Full-Screen Web Browser View</Text>
+        <WebView src="https://example.com" />
+      </View>
+    </View>
+  );
+}`,
+
+  'page-meta': `import React from 'react';
+import { View, Text, PageMeta } from '@tarojs/components';
+import './index.css';
+
+export default function PageMetaPage() {
+  return (
+    <View className="page-body">
+      <PageMeta backgroundColor="#f8fafc" pageStyle="padding: 12px;" />
+      <View className="demo-block">
+        <Text className="demo-title">1. Dynamic Page Meta Configuration</Text>
+        <View className="meta-content">
+          <Text className="meta-title">Page Meta Defined</Text>
+          <Text className="meta-desc">Configures root page styling dynamically.</Text>
+        </View>
+      </View>
+    </View>
+  );
+}`,
+
+  'map': `import React from 'react';
+import { View, Text, Map } from '@tarojs/components';
+import './index.css';
+
+export default function MapPage() {
+  const markers = [{
+    id: 1,
+    latitude: 31.2304,
+    longitude: 121.4737,
+    name: 'Macle Headquarters'
+  }];
+
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. Interactive Map with Markers & Coordinates</Text>
+        <Map latitude={31.2304} longitude={121.4737} markers={markers as any} scale={14} style={{ width: '100%', height: '220px', borderRadius: '8px', overflow: 'hidden' }} />
+      </View>
+    </View>
+  );
+}`
 };
 
-for (const [pageKey, def] of Object.entries(pageDefinitions)) {
-  const dir = path.join(pagesDir, pageKey);
-  fs.mkdirSync(dir, { recursive: true });
+// Generate each of the 32 Native Component Pages for Taro
+console.log('2. Generating 32 Taro Native Component pages...');
 
-  fs.writeFileSync(path.join(dir, 'index.tsx'), def.code);
-  fs.writeFileSync(path.join(dir, 'index.config.ts'), `export default definePageConfig({
-  navigationBarTitleText: ${JSON.stringify(def.title)}
+for (const [key, spec] of Object.entries(componentSpecs)) {
+  const componentName = key.split('/')[1];
+  const pageDir = path.join(TARO_SRC, 'pages', componentName);
+  fs.mkdirSync(pageDir, { recursive: true });
+
+  // TSX
+  const tsxCode = taroPageRenderers[componentName] || `import React from 'react';
+import { View, Text } from '@tarojs/components';
+import './index.css';
+
+export default function ${capitalize(componentName)}Page() {
+  return (
+    <View className="page-body">
+      <View className="demo-block">
+        <Text className="demo-title">1. ${componentName} Component</Text>
+      </View>
+    </View>
+  );
+}
+`;
+
+  // Config
+  const configCode = `export default definePageConfig({
+  navigationBarTitleText: '${componentName} ${spec.titleZh || ''}'.trim()
 });
-`);
-  if (def.css) {
-    fs.writeFileSync(path.join(dir, 'index.css'), def.css);
-  }
+`;
+
+  // CSS
+  let cssContent = `/* pages/${componentName}/index.css */\n`;
+  spec.samples.forEach(sample => {
+    if (sample.css) {
+      cssContent += sample.css.trim() + '\n\n';
+    }
+  });
+
+  fs.writeFileSync(path.join(pageDir, 'index.tsx'), tsxCode);
+  fs.writeFileSync(path.join(pageDir, 'index.config.ts'), configCode);
+  fs.writeFileSync(path.join(pageDir, 'index.css'), cssContent);
+
+  console.log(`Generated Taro page: pages/${componentName}/index`);
 }
 
-console.log('[Taro Miniapp] 2. Generated all 23 Taro React showcase pages matching Native MiniApp identically.');
+function capitalize(str) {
+  return str.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('');
+}
+
+console.log('✓ Successfully generated all 32 Taro React component pages.');

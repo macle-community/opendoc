@@ -3,40 +3,13 @@
 <p>Picker subitem. It can be placed only in the picker-view. The height of the child node is automatically set to the same as that of the checkbox in the picker-view.</p>
 </blockquote>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html"><span class="language-xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Scroll selector embedded in page<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">picker-view</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;</span></span></span><span class="hljs-template-variable">{{<span class="hljs-name">value</span>}}</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#x27;</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#x27;onChange&#x27;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2011<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2012<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2013<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2014<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2015<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2016<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2017<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2018<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Spring<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Summer<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Autumn<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Winter<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
-</code></pre>
-<pre><code class="language-js">Page({
-  <span class="hljs-attribute">data</span>: {},
-  onChange(e) {
-    console<span class="hljs-variable">.log</span>(e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>);
-    <span class="hljs-attribute">this.setData({
-      value</span>: e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>,
-    });
-  },
-});
-</code></pre>
+<h4 id="sample-code-1">1. Picker View Column Layout</h4>
+<pre><code class="language-html">&lt;picker-view indicator-style=&quot;height: 40px;&quot; style=&quot;height: 120px; background: #fff;&quot;&gt;
+  &lt;picker-view-column&gt;
+    &lt;view style=&quot;line-height: 40px; text-align: center;&quot;&gt;Option 1&lt;/view&gt;
+    &lt;view style=&quot;line-height: 40px; text-align: center;&quot;&gt;Option 2&lt;/view&gt;
+    &lt;view style=&quot;line-height: 40px; text-align: center;&quot;&gt;Option 3&lt;/view&gt;
+  &lt;/picker-view-column&gt;
+&lt;/picker-view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">picker-view { border-radius: 8px; }</code></pre>

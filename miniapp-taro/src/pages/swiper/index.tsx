@@ -5,17 +5,26 @@ import './index.css';
 export default function SwiperPage() {
   return (
     <View className="page-body">
-      <View className="demo-block" style={{ padding: 0, overflow: 'hidden' }}>
-        <Swiper indicatorDots autoplay interval={3000} duration={500} style={{ height: '160px' }}>
+      <View className="demo-block">
+        <Text className="demo-title">1. Interactive Swiper with Indicators & Autoplay</Text>
+        <Swiper indicatorDots autoplay interval={2500} duration={500} circular style={{ height: '160px', borderRadius: '10px', overflow: 'hidden' }}>
           <SwiperItem>
-            <View className="swiper-slide slide-1"><Text>Slide 1</Text></View>
+            <View className="swiper-slide slide-blue"><Text className="slide-text">Slide A - Macle</Text></View>
           </SwiperItem>
           <SwiperItem>
-            <View className="swiper-slide slide-2"><Text>Slide 2</Text></View>
+            <View className="swiper-slide slide-green"><Text className="slide-text">Slide B - Simulator</Text></View>
           </SwiperItem>
           <SwiperItem>
-            <View className="swiper-slide slide-3"><Text>Slide 3</Text></View>
+            <View className="swiper-slide slide-orange"><Text className="slide-text">Slide C - OpenDoc</Text></View>
           </SwiperItem>
+        </Swiper>
+      </View>
+
+      <View className="demo-block">
+        <Text className="demo-title">2. Circular & Vertical Swiping</Text>
+        <Swiper vertical indicatorDots autoplay={false} style={{ height: '120px', borderRadius: '10px', overflow: 'hidden' }}>
+          <SwiperItem><View className="swiper-slide slide-purple"><Text className="slide-text">Vertical Panel 1</Text></View></SwiperItem>
+          <SwiperItem><View className="swiper-slide slide-teal"><Text className="slide-text">Vertical Panel 2</Text></View></SwiperItem>
         </Swiper>
       </View>
     </View>

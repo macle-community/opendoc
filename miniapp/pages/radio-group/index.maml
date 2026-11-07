@@ -1,0 +1,15 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Radio Group with Exclusive Selection</text>
+    <radio-group bindchange="onRadioChange">
+      <view class="radio-list">
+        <label class="radio-item" ma:for="{{plans}}" ma:key="{{item.id}}">
+          <radio value="{{item.id}}" checked="{{item.id === currentPlan}}" color="#2563eb" />
+          <text class="radio-label">{{item.name}} ({{item.price}})</text>
+        </label>
+      </view>
+    </radio-group>
+    <view class="selected-plan">Selected: {{currentPlan}}</view>
+  </view>
+
+</view>

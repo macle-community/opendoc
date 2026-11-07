@@ -4,44 +4,23 @@
 
 ### 示例代码
 
-```html
+#### 1. 滚动选择器列结构
 
-<view class='page'>
-  <view>嵌入页面的滚动选择器</view>
-  <view>
-    <view>
-      <picker-view value='{{value}}' onChange='onChange'>
-        <picker-view-column>
-          <view>2011</view>
-          <view>2012</view>
-          <view>2013</view>
-          <view>2014</view>
-          <view>2015</view>
-          <view>2016</view>
-          <view>2017</view>
-          <view>2018</view>
-        </picker-view-column>
-        <picker-view-column>
-          <view>春</view>
-          <view>夏</view>
-          <view>秋</view>
-          <view>冬</view>
-        </picker-view-column>
-      </picker-view>
-    </view>
-  </view>
-</view>
+```html
+<picker-view indicator-style="height: 40px;" style="height: 120px; background: #fff;">
+  <picker-view-column>
+    <view style="line-height: 40px; text-align: center;">Option 1</view>
+    <view style="line-height: 40px; text-align: center;">Option 2</view>
+    <view style="line-height: 40px; text-align: center;">Option 3</view>
+  </picker-view-column>
+</picker-view>
 ```
 
 ```js
-Page({
-  data: {},
-  onChange(e) {
-    console.log(e.detail.value);
-    this.setData({
-      value: e.detail.value,
-    });
-  },
-});
-
+Page({ data: {} });
 ```
+
+```css
+picker-view { border-radius: 8px; }
+```
+

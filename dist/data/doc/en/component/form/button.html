@@ -139,15 +139,29 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span> <span class="hljs-attr">hover-start-time</span>=<span class="hljs-string">&#x27;2000&#x27;</span> <span class="hljs-attr">hover-stay-time</span>=<span class="hljs-string">&#x27;1000&#x27;</span>&gt;</span>
-  Normal
-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;true&#x27;</span>&gt;</span>Normal Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;warn&#x27;</span> <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&#x27;none&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;false&#x27;</span>&gt;</span>Warn<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;warn&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;true&#x27;</span>&gt;</span>Warn Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. Default Button (Normal &amp; Disabled)</h4>
+<pre><code class="language-html">&lt;view class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;default&quot; hover-start-time=&quot;200&quot; hover-stay-time=&quot;500&quot;&gt;Normal Default&lt;/button&gt;
+  &lt;button type=&quot;default&quot; disabled=&quot;true&quot;&gt;Default Disabled&lt;/button&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.btn-group { display: flex; flex-direction: column; gap: 10px; }</code></pre>
+<h4 id="sample-code-2">2. Warn Button (Normal &amp; Disabled)</h4>
+<pre><code class="language-html">&lt;view class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;warn&quot;&gt;Warn Action&lt;/button&gt;
+  &lt;button type=&quot;warn&quot; disabled=&quot;true&quot;&gt;Warn Disabled&lt;/button&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.btn-group { display: flex; flex-direction: column; gap: 10px; }</code></pre>
+<h4 id="sample-code-3">3. Primary Button &amp; Form Actions</h4>
+<pre><code class="language-html">&lt;view class=&quot;btn-group&quot;&gt;
+  &lt;button type=&quot;primary&quot; bindtap=&quot;handlePrimaryTap&quot;&gt;Primary Button&lt;/button&gt;
+  &lt;button type=&quot;primary&quot; size=&quot;mini&quot; style=&quot;align-self: flex-start;&quot;&gt;Mini Primary&lt;/button&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  handlePrimaryTap() { ma.showToast({ title: &#39;Tapped Primary&#39;, icon: &#39;success&#39; }); }
+});</code></pre>
+<pre><code class="language-css">.btn-group { display: flex; flex-direction: column; gap: 10px; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>The default value of <code>button-hover</code> is <code>{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}</code>.</li>

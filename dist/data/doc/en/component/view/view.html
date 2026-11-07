@@ -42,179 +42,66 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-js">
-Page({
-    data: {
-        pageName: <span class="hljs-string">&#x27;component/view&#x27;</span>,
-    },
-});
-</code></pre>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-description&quot;</span>&gt;</span>The view container is the equivalent of a web div or a react-native view<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page-section-demo&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stream&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Zoe<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
-                            Welcome to Macle MiniProgram！
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
-                            June 12
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+<h4 id="sample-code-1">1. Flex Direction (Row &amp; Column Layout)</h4>
+<pre><code class="language-html">&lt;view class=&quot;page-section&quot;&gt;
+  &lt;view class=&quot;page-section-title&quot;&gt;flex-direction: row&lt;/view&gt;
+  &lt;view class=&quot;flex-row&quot;&gt;
+    &lt;view class=&quot;flex-item demo-bg-red&quot;&gt;A&lt;/view&gt;
+    &lt;view class=&quot;flex-item demo-bg-green&quot;&gt;B&lt;/view&gt;
+    &lt;view class=&quot;flex-item demo-bg-blue&quot;&gt;C&lt;/view&gt;
+  &lt;/view&gt;
 
-                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Jim<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
-                            @Zog How do I get started?
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
-                            June 13
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Zog<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
-                            You can watch the demo to have a simple understanding; Download our IDE for development~
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
-                            June 14
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Alice<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-comment">&lt;!-- hover blue --&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span> <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&quot;burlywood&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
-                            excellent!
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span> <span class="hljs-attr">hidden</span>&gt;</span>
-                            June 15
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">hidden</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUser&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postUserName&quot;</span>&gt;</span>Alice<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBody&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyContent&quot;</span>&gt;</span>
-                            excellent +1
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;postBodyDate&quot;</span>&gt;</span>
-                            June 15
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
-<pre><code class="language-css">
-<span class="hljs-selector-class">.burlywood</span> {
-    <span class="hljs-attribute">background</span>: burlywood;
-}
-
-<span class="hljs-selector-class">.stream</span> {
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">flex-direction</span>: column;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15</span>rpx;
-}
-
-<span class="hljs-selector-class">.post</span> + <span class="hljs-selector-class">.post</span> {
-    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">15</span>rpx;
-}
-
-<span class="hljs-selector-class">.post</span> {
-    <span class="hljs-attribute">display</span>: flex;
-}
-
-<span class="hljs-selector-class">.postUser</span> {
-    <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">1</span> auto;
-    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">20</span>rpx;
-}
-
-<span class="hljs-selector-class">.postUserName</span> {
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">180</span>rpx;
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#7197a5</span>;
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24</span>rpx;
-    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
-    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
-    <span class="hljs-attribute">text-align</span>: center;
-    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">60</span>rpx;
-}
-
-<span class="hljs-selector-class">.postBody</span> {
-    <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0%</span>;
-    <span class="hljs-attribute">position</span>: relative;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">30</span>rpx;
-    <span class="hljs-attribute">border</span>: <span class="hljs-number">2</span>rpx solid <span class="hljs-number">#b0b7b9</span>;
-    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8</span>rpx;
-}
-
-<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:after</span>,
-<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:before</span> {
-    <span class="hljs-attribute">right</span>: <span class="hljs-number">100%</span>;
-    <span class="hljs-attribute">top</span>: <span class="hljs-number">70</span>rpx;
-    <span class="hljs-attribute">border</span>: solid transparent;
-    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; &quot;</span>;
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">position</span>: absolute;
-    <span class="hljs-attribute">pointer-events</span>: none;
-}
-
-<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:after</span> {
-    <span class="hljs-attribute">border-color</span>: transparent;
-    <span class="hljs-attribute">border-right-color</span>: <span class="hljs-number">#ffffff</span>;
-    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">16</span>rpx;
-    <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">16</span>rpx;
-}
-
-<span class="hljs-selector-class">.postBody</span><span class="hljs-selector-pseudo">:before</span> {
-    <span class="hljs-attribute">border-color</span>: transparent;
-    <span class="hljs-attribute">border-right-color</span>: <span class="hljs-number">#deebf0</span>;
-    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">18</span>rpx;
-    <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">18</span>rpx;
-}
-
-<span class="hljs-selector-class">.postBodyContent</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#769caa</span>;
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24</span>rpx;
-}
-
-<span class="hljs-selector-class">.postBodyDate</span> {
-    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">15</span>rpx;
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#708188</span>;
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20</span>rpx;
-    <span class="hljs-attribute">text-transform</span>: uppercase;
-    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">2</span>rpx;
-}
-
-<span class="hljs-selector-class">.burlywood</span> {
-    <span class="hljs-attribute">color</span>: burlywood;
-}
-</code></pre>
+  &lt;view class=&quot;page-section-title&quot; style=&quot;margin-top: 16px;&quot;&gt;flex-direction: column&lt;/view&gt;
+  &lt;view class=&quot;flex-col&quot;&gt;
+    &lt;view class=&quot;flex-item demo-bg-red&quot;&gt;Row 1&lt;/view&gt;
+    &lt;view class=&quot;flex-item demo-bg-green&quot;&gt;Row 2&lt;/view&gt;
+    &lt;view class=&quot;flex-item demo-bg-blue&quot;&gt;Row 3&lt;/view&gt;
+  &lt;/view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {}
+});</code></pre>
+<pre><code class="language-css">.flex-row { display: flex; flex-direction: row; gap: 10px; }
+.flex-col { display: flex; flex-direction: column; gap: 10px; }
+.flex-item { height: 50px; flex: 1; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; border-radius: 6px; }
+.demo-bg-red { background-color: #ef4444; }
+.demo-bg-green { background-color: #10b981; }
+.demo-bg-blue { background-color: #3b82f6; }</code></pre>
+<h4 id="sample-code-2">2. Stream Post Feed with Hover State</h4>
+<pre><code class="language-html">&lt;view class=&quot;stream&quot;&gt;
+  &lt;view class=&quot;post&quot; hover-class=&quot;post-hover&quot; hover-start-time=&quot;50&quot; hover-stay-time=&quot;400&quot;&gt;
+    &lt;view class=&quot;post-user&quot;&gt;
+      &lt;view class=&quot;post-avatar&quot;&gt;Z&lt;/view&gt;
+      &lt;text class=&quot;post-name&quot;&gt;Zoe&lt;/text&gt;
+    &lt;/view&gt;
+    &lt;view class=&quot;post-body&quot;&gt;
+      &lt;view class=&quot;post-content&quot;&gt;Welcome to Macle Mini Program development!&lt;/view&gt;
+      &lt;view class=&quot;post-date&quot;&gt;June 12&lt;/view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
+  &lt;view class=&quot;post&quot; hover-class=&quot;post-hover&quot;&gt;
+    &lt;view class=&quot;post-user&quot;&gt;
+      &lt;view class=&quot;post-avatar&quot;&gt;J&lt;/view&gt;
+      &lt;text class=&quot;post-name&quot;&gt;Jim&lt;/text&gt;
+    &lt;/view&gt;
+    &lt;view class=&quot;post-body&quot;&gt;
+      &lt;view class=&quot;post-content&quot;&gt;Great! How can I preview on the Web Simulator?&lt;/view&gt;
+      &lt;view class=&quot;post-date&quot;&gt;June 13&lt;/view&gt;
+    &lt;/view&gt;
+  &lt;/view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {}
+});</code></pre>
+<pre><code class="language-css">.stream { display: flex; flex-direction: column; gap: 12px; }
+.post { display: flex; background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+.post-hover { background-color: #f1f5f9; }
+.post-user { display: flex; flex-direction: column; align-items: center; width: 60px; margin-right: 12px; }
+.post-avatar { width: 36px; height: 36px; border-radius: 18px; background: #0284c7; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.post-name { font-size: 12px; color: #64748b; margin-top: 4px; }
+.post-body { flex: 1; }
+.post-content { font-size: 14px; color: #1e293b; line-height: 1.5; }
+.post-date { font-size: 11px; color: #94a3b8; margin-top: 6px; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li>To use the scroll view, you need to use the scroll-view component.</li>

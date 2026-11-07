@@ -1,10 +1,20 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Text Component</text>
-    <view style="display: flex; flex-direction: column; gap: 8px;">
-      <text style="font-size: 16px; font-weight: bold; color: #0f172a;">Headline Bold Text</text>
-      <text style="font-size: 13px; color: #64748b;">Subtitle or description text style.</text>
-      <text selectable="true" style="font-size: 13px; color: #2563eb;">This text is selectable (selectable=true)</text>
+    <text class="demo-title">1. Basic Text &amp; Selectable Text</text>
+    <view class="text-group">
+      <text class="text-headline">Standard Headline Text</text>
+      <text class="text-sub">Regular secondary description text paragraph.</text>
+      <text selectable="true" class="text-selectable">This text is selectable (user-select / selectable=true)</text>
     </view>
   </view>
+
+  <view class="demo-block">
+    <text class="demo-title">2. Continuous Space Display (ensp, emsp, nbsp)</text>
+    <view class="text-group">
+      <text space="ensp">Half-width   space   (ensp)</text>
+      <text space="emsp">Full-width   space   (emsp)</text>
+      <text space="nbsp">Non-breaking   space   (nbsp)</text>
+    </view>
+  </view>
+
 </view>

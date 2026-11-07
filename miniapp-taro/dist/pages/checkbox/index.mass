@@ -1,3 +1,4 @@
-.page-body { padding: 8rpx 0; }
-maui-checkbox-group maui-checkbox { margin-bottom: 8rpx; display: block; }
-maui-checkbox-group maui-checkbox:last-child { margin-bottom: 0; }
+/* pages/checkbox/index.css */
+.cb-row { display: flex; align-items: center; gap: 8rpx; font-size: 14rpx; }
+
+

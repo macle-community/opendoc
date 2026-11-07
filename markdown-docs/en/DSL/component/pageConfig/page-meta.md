@@ -13,12 +13,23 @@ and other interfaces.
 
 ### Sample Code
 
-```html
+#### 1. Dynamic Page Meta Configuration
 
-<page-meta root-font-size='{{rootSize}}'>
-  <view id='page-meta' style='font-size:2rem'>
-    page-meta
-  </view>
-  <view class='fontStyle'>Second node</view>
-</page-meta>
+```html
+<page-meta background-color="#f8fafc" page-style="padding: 12px;" />
+<view class="meta-content">
+  <text class="meta-title">Page Meta Defined</text>
+  <text class="meta-desc">Configures root page styling dynamically.</text>
+</view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.meta-content { background: #fff; padding: 16px; border-radius: 8px; }
+.meta-title { font-weight: bold; font-size: 15px; color: #1e293b; }
+.meta-desc { font-size: 13px; color: #64748b; margin-top: 4px; display: block; }
+```
+

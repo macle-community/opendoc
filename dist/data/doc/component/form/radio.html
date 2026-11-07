@@ -42,24 +42,10 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;page-section page-section-gap&#x27;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;page-section-title&#x27;</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio1&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r1&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;true&#x27;</span> /&gt;</span>
-    选中
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio2&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r2&#x27;</span> /&gt;</span>
-    未选中
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio3&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r3&#x27;</span> <span class="hljs-attr">disabled</span> /&gt;</span>
-    被禁用
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio&#x27;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">radio</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;radio4&#x27;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#x27;r4&#x27;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#x27;123&#x27;</span> <span class="hljs-attr">checked</span>=<span class="hljs-string">&#x27;456&#x27;</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&#x27;red123&#x27;</span> /&gt;</span>
-    非法属性
-  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
+<h4 id="sample-code-1">1. 单选框按钮</h4>
+<pre><code class="language-html">&lt;view class=&quot;radio-row&quot;&gt;
+  &lt;radio value=&quot;single&quot; checked=&quot;true&quot; color=&quot;#2563eb&quot; /&gt;
+  &lt;text style=&quot;margin-left: 8px; font-size: 14px;&quot;&gt;Standalone Checked Radio&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.radio-row { display: flex; align-items: center; font-size: 14px; }</code></pre>

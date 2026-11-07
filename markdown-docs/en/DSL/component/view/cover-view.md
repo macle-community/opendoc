@@ -9,16 +9,30 @@ Only nesting of cover-view is supported.
 
 ### Sample Code
 
-```html
+#### 1. Cover View Overlay on Native Components
 
-<camera device-position='back' flash='off' style='width: 100%; height: 360px;'>
-  <cover-view class='cover-view'>
-    <cover-view class='c-cover-view red'>red</cover-view>
-    <cover-view class='c-cover-view green'>green</cover-view>
-    <cover-view class='c-cover-view yellow'>yellow</cover-view>
+```html
+<view class="media-container" style="position: relative; height: 180px; background: #0f172a; border-radius: 10px; overflow: hidden;">
+  <view class="simulated-media" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+    [Media Surface Area]
+  </view>
+  <cover-view class="cover-badge" style="position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.65); color: #fff; padding: 4px 10px; border-radius: 16px; font-size: 12px;">
+    ● Live Stream Overlay
   </cover-view>
-</camera>
+  <cover-view class="cover-actions" style="position: absolute; bottom: 12px; right: 12px; background: #2563eb; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 600;">
+    Overlay Button
+  </cover-view>
+</view>
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.media-container { width: 100%; box-sizing: border-box; }
+```
+
 
 ### Bug & Tip
 

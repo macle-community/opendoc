@@ -92,47 +92,24 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">navigator</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&#x27;exampleUrl1&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;navigator&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span>&gt;</span>navigateToPage1<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">navigator</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">navigator</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&#x27;exampleUrl2&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;navigator&#x27;</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">&#x27;redirect&#x27;</span> <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&#x27;other-navigator-hover&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span>&gt;</span>redirectToPage2<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">navigator</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">navigator</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&#x27;/page/tabbar/component/index&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;navigator&#x27;</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">&#x27;switchTab&#x27;</span>
-               <span class="hljs-attr">hover-class</span>=<span class="hljs-string">&#x27;custom-navigator-hover&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span>&gt;</span>switchTab<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">navigator</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">navigator</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&#x27;exampleUrl3&#x27;</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">&#x27;reLaunch&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;navigator&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span>&gt;</span>reLaunchPage3<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">navigator</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">navigator</span> <span class="hljs-attr">open-type</span>=<span class="hljs-string">&#x27;navigateBack&#x27;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&#x27;navigator&#x27;</span> <span class="hljs-attr">delta</span>=<span class="hljs-string">&#x27;1&#x27;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;default&#x27;</span>&gt;</span>navigateBack<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">navigator</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
-<pre><code class="language-css"><span class="hljs-selector-class">.navigator-hover</span> <span class="hljs-selector-tag">button</span> {
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#DEDEDE</span>;
-}
-
-<span class="hljs-selector-class">.other-navigator-hover</span> <span class="hljs-selector-tag">button</span> {
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#DEDEDE</span>;
-}
-
-<span class="hljs-selector-class">.navigator</span> {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>
-}
-
-<span class="hljs-selector-class">.custom-navigator-hover</span> {
-    <span class="hljs-attribute">background-color</span>: pink;
-}
-
-<span class="hljs-selector-class">.other-navigator-hover</span> {
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">228</span>, <span class="hljs-number">206</span>, <span class="hljs-number">7</span>);
-}
-</code></pre>
+<h4 id="sample-code-1">1. Page Navigation (open-type=&quot;navigate&quot;)</h4>
+<pre><code class="language-html">&lt;view class=&quot;nav-container&quot;&gt;
+  &lt;navigator url=&quot;/pages/button/index&quot; open-type=&quot;navigate&quot; hover-class=&quot;nav-hover&quot; class=&quot;nav-btn&quot;&gt;
+    👉 Navigate to Button Component Page
+  &lt;/navigator&gt;
+  &lt;navigator url=&quot;/pages/input/index&quot; open-type=&quot;navigate&quot; hover-class=&quot;nav-hover&quot; class=&quot;nav-btn&quot;&gt;
+    👉 Navigate to Input Component Page
+  &lt;/navigator&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.nav-container { display: flex; flex-direction: column; gap: 10px; }
+.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #2563eb; }
+.nav-hover { background: #f1f5f9; }</code></pre>
+<h4 id="sample-code-2">2. Page Redirect (open-type=&quot;redirect&quot;)</h4>
+<pre><code class="language-html">&lt;navigator url=&quot;/pages/view/index&quot; open-type=&quot;redirect&quot; class=&quot;nav-btn&quot;&gt;
+  🔄 Redirect to View Page (Close Current)
+&lt;/navigator&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; color: #2563eb; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <p>1.The default background color of <code>navigator-hover</code> is <code>{background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}</code>, indicating that the background of the navigator child node is transparent.</p>

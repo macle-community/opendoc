@@ -1,23 +1,18 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Basic Usage (State: {{ checked ? 'ON' : 'OFF' }})</text>
-    <maui-switch checked="{{ checked }}" bind:change="onSwitchChange" />
-  </view>
-
-  <view class="demo-block">
-    <text class="demo-title">2. Disabled & Loading</text>
-    <view class="demo-row">
-      <maui-switch disabled checked="{{ true }}" />
-      <maui-switch disabled checked="{{ false }}" />
-      <maui-switch loading checked="{{ true }}" />
+    <text class="demo-title">1. Switch Selector with Change Event</text>
+    <view class="switch-row">
+      <text class="sw-title">Notification Enabled:</text>
+      <switch checked="{{isEnabled}}" bindchange="onSwitchToggle" color="#2563eb" />
     </view>
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">3. Custom Size & Colors</text>
-    <view class="demo-row">
-      <maui-switch size="24px" checked="{{ checked }}" bind:change="onSwitchChange" />
-      <maui-switch active-color="#07c160" inactive-color="#ee0a24" checked="{{ checked }}" bind:change="onSwitchChange" />
+    <text class="demo-title">2. Checkbox Style Switch &amp; Custom Color</text>
+    <view class="switch-row">
+      <text class="sw-title">Checkbox Style Switch:</text>
+      <switch type="checkbox" checked="true" color="#10b981" />
     </view>
   </view>
+
 </view>

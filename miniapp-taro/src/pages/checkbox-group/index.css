@@ -1,0 +1,5 @@
+/* pages/checkbox-group/index.css */
+.cb-list { display: flex; flex-direction: column; gap: 10px; }
+.cb-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.selected-text { margin-top: 12px; font-size: 13px; color: #0284c7; font-weight: 600; }
+

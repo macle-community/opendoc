@@ -1,0 +1,14 @@
+<view class="page-body">
+  <view class="demo-block">
+    <text class="demo-title">1. Custom Swiper Item Card</text>
+    <swiper indicator-dots="true" style="height: 140px;">
+      <swiper-item class="swiper-custom-item">
+        <view class="card-content">
+          <text class="card-title">Custom Item Container</text>
+          <text class="card-sub">swiper-item wraps individual slides</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+</view>

@@ -23,19 +23,50 @@
 
 ### Sample Code
 
+#### 1. Vertical Scroll View
+
 ```html
-
-<view>
-  <scroll-view scroll-y='true' style='height: 200px;'>
-    <view style='background-color: red; height: 200px'></view>
-    <view style='background-color: blue; height: 200px'></view>
-    <view style='background-color: green; height: 200px'></view>
-    <view style='background-color: yellow; height: 200px'></view>
-  </scroll-view>
-</view>
-
-
+<scroll-view scroll-y="true" style="height: 160px;" bindscrolltoupper="onScrollToUpper" bindscrolltolower="onScrollToLower">
+  <view class="scroll-v-item bg-red">Scroll Item 1 (Top)</view>
+  <view class="scroll-v-item bg-orange">Scroll Item 2</view>
+  <view class="scroll-v-item bg-green">Scroll Item 3</view>
+  <view class="scroll-v-item bg-blue">Scroll Item 4 (Bottom)</view>
+</scroll-view>
 ```
+
+```js
+Page({
+  onScrollToUpper() { ma.showToast({ title: 'Top Reached', icon: 'none' }); },
+  onScrollToLower() { ma.showToast({ title: 'Bottom Reached', icon: 'none' }); }
+});
+```
+
+```css
+.scroll-v-item { height: 70px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; margin-bottom: 8px; border-radius: 8px; }
+.bg-red { background: #ef4444; } .bg-orange { background: #f97316; } .bg-green { background: #10b981; } .bg-blue { background: #3b82f6; }
+```
+
+#### 2. Horizontal Scroll View
+
+```html
+<scroll-view scroll-x="true" style="white-space: nowrap; width: 100%;">
+  <view class="scroll-h-item bg-blue">Card 1</view>
+  <view class="scroll-h-item bg-green">Card 2</view>
+  <view class="scroll-h-item bg-orange">Card 3</view>
+  <view class="scroll-h-item bg-purple">Card 4</view>
+  <view class="scroll-h-item bg-pink">Card 5</view>
+</scroll-view>
+```
+
+```js
+Page({ data: {} });
+```
+
+```css
+.scroll-h-item { display: inline-block; width: 110px; height: 80px; margin-right: 10px; border-radius: 8px; text-align: center; line-height: 80px; color: #fff; font-weight: 600; }
+.bg-purple { background: #8b5cf6; } .bg-pink { background: #ec4899; }
+```
+
 
 ### Bug & Tip
 

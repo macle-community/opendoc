@@ -1,3 +1,1 @@
-export default definePageConfig({
-  navigationBarTitleText: "Component Showcase"
-});
+export default definePageConfig({ navigationBarTitleText: 'Macle Component Showcase' });

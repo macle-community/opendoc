@@ -1,26 +1,28 @@
-import React from 'react';
-import { View, Text } from '@tarojs/components';
-import { MauiProgress } from '@macle-community/taro-plugin-macle/components-react';
+import React, { useState } from 'react';
+import { View, Text, Progress, Button } from '@tarojs/components';
 import './index.css';
 
 export default function ProgressPage() {
+  const [percent, setPercent] = useState(40);
+  const increase = () => setPercent(p => (p >= 100 ? 20 : p + 20));
+
   return (
     <View className="page-body">
       <View className="demo-block">
-        <Text className="demo-title">1. Basic Usage (50%)</Text>
-        <MauiProgress percentage={50} />
+        <Text className="demo-title">1. Basic Progress Bar with Percentage</Text>
+        <View className="progress-col">
+          <Progress percent={30} showInfo strokeWidth={4} />
+          <Progress percent={65} showInfo strokeWidth={6} activeColor="#3b82f6" />
+          <Progress percent={90} showInfo strokeWidth={8} activeColor="#10b981" />
+        </View>
       </View>
 
       <View className="demo-block">
-        <Text className="demo-title">2. Stroke Width & Inactive</Text>
-        <MauiProgress stroke-width="8" percentage={75} />
-        <View style={{ height: '12px' }} />
-        <MauiProgress inactive percentage={40} />
-      </View>
-
-      <View className="demo-block">
-        <Text className="demo-title">3. Custom Color</Text>
-        <MauiProgress color="#ee0a24" percentage={65} />
+        <Text className="demo-title">2. Animated & Custom Stroke/Color Progress</Text>
+        <View className="progress-col">
+          <Progress percent={percent} showInfo active activeMode="forwards" strokeWidth={8} borderRadius={4} activeColor="#8b5cf6" />
+          <Button size="mini" type="default" onClick={increase} style={{ alignSelf: 'flex-start', marginTop: '8px' }}>+20% Progress</Button>
+        </View>
       </View>
     </View>
   );

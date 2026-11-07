@@ -1,0 +1,7 @@
+/* pages/navigator/index.mass */
+.nav-container { display: flex; flex-direction: column; gap: 10px; }
+.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #2563eb; }
+.nav-hover { background: #f1f5f9; }
+
+.nav-btn { background: #fff; border: 1px solid #cbd5e1; padding: 12px 14px; border-radius: 8px; font-size: 14px; color: #2563eb; }
+

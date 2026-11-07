@@ -56,11 +56,25 @@
 </tr>
 </tbody></table>
 <h3 id="sample-code">Sample Code</h3>
-<pre><code class="language-html">
-&lt;view&gt;
-  &lt;<span class="hljs-built_in">text</span> userSelect=<span class="hljs-literal">false</span> <span class="hljs-literal">space</span>=<span class="hljs-string">&quot;nbsp&quot;</span>&gt;Chinese <span class="hljs-built_in">characters</span> <span class="hljs-literal">space</span> nbsp&lt;/<span class="hljs-built_in">text</span>&gt;
-&lt;/view&gt;
-</code></pre>
+<h4 id="sample-code-1">1. Basic Text &amp; Selectable Text</h4>
+<pre><code class="language-html">&lt;view class=&quot;text-group&quot;&gt;
+  &lt;text class=&quot;text-headline&quot;&gt;Standard Headline Text&lt;/text&gt;
+  &lt;text class=&quot;text-sub&quot;&gt;Regular secondary description text paragraph.&lt;/text&gt;
+  &lt;text selectable=&quot;true&quot; class=&quot;text-selectable&quot;&gt;This text is selectable (user-select / selectable=true)&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.text-group { display: flex; flex-direction: column; gap: 8px; }
+.text-headline { font-size: 17px; font-weight: 700; color: #0f172a; }
+.text-sub { font-size: 13px; color: #64748b; }
+.text-selectable { font-size: 13px; color: #2563eb; background: #eff6ff; padding: 6px 10px; border-radius: 6px; border: 1px dashed #bfdbfe; }</code></pre>
+<h4 id="sample-code-2">2. Continuous Space Display (ensp, emsp, nbsp)</h4>
+<pre><code class="language-html">&lt;view class=&quot;text-group&quot;&gt;
+  &lt;text space=&quot;ensp&quot;&gt;Half-width   space   (ensp)&lt;/text&gt;
+  &lt;text space=&quot;emsp&quot;&gt;Full-width   space   (emsp)&lt;/text&gt;
+  &lt;text space=&quot;nbsp&quot;&gt;Non-breaking   space   (nbsp)&lt;/text&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({ data: {} });</code></pre>
+<pre><code class="language-css">.text-group text { font-size: 14px; color: #334155; }</code></pre>
 <h3 id="bug--tip">Bug &amp; Tip</h3>
 <ol>
 <li><code>&amp;nbsp</code>, <code>&amp;lt</code>, <code>&amp;gt</code>, <code>&amp;amp</code>, <code>&amp;apos</code>, <code>&amp;ensp</code>, and <code>&amp;emsp</code> can be parsed by <code>decode</code>.</li>

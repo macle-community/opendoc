@@ -10,6 +10,17 @@
 
 ### Sample Code
 
+#### 1. Full-Screen Web Browser View
+
 ```html
-<web-view src="https://example.com/" header="{ 'key': 'value' }" loadingStyle="loadingWithLogo"></web-view>
+<web-view src="https://example.com" />
 ```
+
+```js
+Page({ data: {} });
+```
+
+```css
+web-view { width: 100%; height: 100%; }
+```
+

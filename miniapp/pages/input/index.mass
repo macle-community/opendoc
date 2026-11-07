@@ -1,0 +1,9 @@
+/* pages/input/index.mass */
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+.input-val-preview { font-size: 12px; color: #64748b; margin-top: 6px; display: block; }
+
+.input-col { display: flex; flex-direction: column; gap: 10px; }
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+
+.std-input { border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; font-size: 14px; background: #fff; }
+

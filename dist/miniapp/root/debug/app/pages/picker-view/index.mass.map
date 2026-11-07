@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/picker-view/index.mass"],"names":[],"mappings":"AACA,qBAAgB,iBAAkB,CAAE,cAAe,CAAE,eAAiB,CAAE,aAAc,CAAE,kBAAqB","file":"","sourcesContent":["/* pages/picker-view/index.mass */\n.preview-date { text-align: center; font-size: 16px; font-weight: bold; color: #2563eb; margin-bottom: 12px; }\n\n"]}

@@ -79,30 +79,66 @@
 
 ### 示例代码
 
-```html
+#### 1. 普通单列选择器
 
-<view>
-  <picker name='picker1' headerText='title' bindchange='bindPickerChange' bindcancel='bindcancel' value='{{index}}'
-          range='{{array}}'>
-    <view>{{array[index]}}</view>
-  </picker>
-</view>
+```html
+<picker mode="selector" range="{{fruits}}" value="{{fruitIdx}}" bindchange="onFruitChange">
+  <view class="picker-display">Selected Fruit: <text class="highlight">{{fruits[fruitIdx]}}</text></view>
+</picker>
+```
+
+```js
+Page({
+  data: { fruits: ['Apple', 'Banana', 'Orange', 'Strawberry'], fruitIdx: 0 },
+  onFruitChange(e) { this.setData({ fruitIdx: e.detail.value }); }
+});
+```
+
+```css
+.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; margin-left: 6px; }
+```
+
+#### 2. 多列选择器
+
+```html
+<picker mode="multiSelector" range="{{multiRange}}" value="{{multiIdx}}" bindchange="onMultiChange">
+  <view class="picker-display">Region: <text class="highlight">{{multiRange[0][multiIdx[0]]}} - {{multiRange[1][multiIdx[1]]}}</text></view>
+</picker>
 ```
 
 ```js
 Page({
   data: {
-    array: ['USA', 'China', 'Brazil', 'Japan'],
-    index: 0,
+    multiRange: [['Asia', 'Europe', 'Americas'], ['China', 'Japan', 'Korea']],
+    multiIdx: [0, 0]
   },
-  bindPickerChange: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  bindcancel: function (e) {
-    console.log(e)
-  },
-})
+  onMultiChange(e) { this.setData({ multiIdx: e.detail.value }); }
+});
 ```
+
+```css
+.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; }
+```
+
+#### 3. 时间与日期选择器
+
+```html
+<picker mode="date" value="{{selectedDate}}" start="2020-01-01" end="2030-12-31" bindchange="onDateChange">
+  <view class="picker-display">Date: <text class="highlight">{{selectedDate}}</text></view>
+</picker>
+```
+
+```js
+Page({
+  data: { selectedDate: '2026-11-07' },
+  onDateChange(e) { this.setData({ selectedDate: e.detail.value }); }
+});
+```
+
+```css
+.picker-display { background: #fff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 14px; }
+.highlight { color: #2563eb; font-weight: bold; }
+```
+

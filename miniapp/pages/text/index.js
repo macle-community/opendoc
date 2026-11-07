@@ -1,1 +1,4 @@
-Page({ data: {} });
+Page({
+  data: {},
+
+});

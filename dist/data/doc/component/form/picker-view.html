@@ -70,41 +70,36 @@
 </tr>
 </tbody></table>
 <h3 id="示例代码">示例代码</h3>
-<pre><code class="language-html">
-<span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>嵌入页面的滚动选择器<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">picker-view</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 500px;width: 100%;text-align:center;&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2013<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2014<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2015<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2016<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2017<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2018<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>2020<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">picker-view-column</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q1<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q2<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q3<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span>Q4<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view-column</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">picker-view</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
-</code></pre>
-<pre><code class="language-js">
-Page({
-  <span class="hljs-attribute">data</span>: {},
-  onChange(e) {
-    console<span class="hljs-variable">.log</span>(e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>);
-    <span class="hljs-attribute">this.setData({
-      value</span>: e<span class="hljs-variable">.detail</span><span class="hljs-variable">.value</span>,
-    });
+<h4 id="sample-code-1">1. 嵌入页面的多列滚动选择视图</h4>
+<pre><code class="language-html">&lt;view&gt;
+  &lt;view class=&quot;preview-date&quot;&gt;{{year}}年 {{month}}月 {{day}}日&lt;/view&gt;
+  &lt;picker-view indicator-style=&quot;height: 50px;&quot; style=&quot;width: 100%; height: 200px; background: #fff; border-radius: 8px;&quot; value=&quot;{{val}}&quot; bindchange=&quot;onPickerViewChange&quot;&gt;
+    &lt;picker-view-column&gt;
+      &lt;view ma:for=&quot;{{years}}&quot; ma:key=&quot;{{item}}&quot; style=&quot;line-height: 50px; text-align: center;&quot;&gt;{{item}}年&lt;/view&gt;
+    &lt;/picker-view-column&gt;
+    &lt;picker-view-column&gt;
+      &lt;view ma:for=&quot;{{months}}&quot; ma:key=&quot;{{item}}&quot; style=&quot;line-height: 50px; text-align: center;&quot;&gt;{{item}}月&lt;/view&gt;
+    &lt;/picker-view-column&gt;
+    &lt;picker-view-column&gt;
+      &lt;view ma:for=&quot;{{days}}&quot; ma:key=&quot;{{item}}&quot; style=&quot;line-height: 50px; text-align: center;&quot;&gt;{{item}}日&lt;/view&gt;
+    &lt;/picker-view-column&gt;
+  &lt;/picker-view&gt;
+&lt;/view&gt;</code></pre>
+<pre><code class="language-js">Page({
+  data: {
+    years: [2024, 2025, 2026, 2027],
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30],
+    val: [2, 10, 6],
+    year: 2026, month: 11, day: 7
   },
-});
-</code></pre>
+  onPickerViewChange(e) {
+    const val = e.detail.value;
+    this.setData({
+      year: this.data.years[val[0]],
+      month: this.data.months[val[1]],
+      day: this.data.days[val[2]]
+    });
+  }
+});</code></pre>
+<pre><code class="language-css">.preview-date { text-align: center; font-size: 16px; font-weight: bold; color: #2563eb; margin-bottom: 12px; }</code></pre>
