@@ -126,6 +126,17 @@ async function bundle() {
   fs.writeFileSync(path.join(apiDir, 'simulator-info.json'), JSON.stringify(simInfo, null, 2));
   fs.writeFileSync(path.join(apiDir, 'simulator-info'), JSON.stringify(simInfo, null, 2));
 
+  // Copy Google Search Console verification files
+  try {
+    const rootFiles = fs.readdirSync(OPENDOC_DIR);
+    for (const f of rootFiles) {
+      if (f.startsWith('google') && f.endsWith('.html')) {
+        fs.copyFileSync(path.join(OPENDOC_DIR, f), path.join(DIST_DIR, f));
+        console.log(`[Google Verification] Preserved ${f} in dist/`);
+      }
+    }
+  } catch (_) {}
+
   // 6. Generate Google SEO XML Sitemap & robots.txt
   console.log('[6/6] Generating SEO Sitemaps & robots.txt...');
   try {

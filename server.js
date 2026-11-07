@@ -354,7 +354,8 @@ const server = http.createServer((req, res) => {
     reqPath === '/favicon.ico' ||
     reqPath === '/robots.txt' ||
     reqPath === '/sitemap.xml' ||
-    reqPath === '/sitemap.json'
+    reqPath === '/sitemap.json' ||
+    reqPath.startsWith('/google')
   ) {
     subPath = reqPath;
   }

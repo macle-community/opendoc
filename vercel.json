@@ -11,6 +11,14 @@
   ],
   "rewrites": [
     {
+      "source": "/google0269ffca7ba73ed2.html",
+      "destination": "/google0269ffca7ba73ed2.html"
+    },
+    {
+      "source": "/openplatform/macledocs/google0269ffca7ba73ed2.html",
+      "destination": "/google0269ffca7ba73ed2.html"
+    },
+    {
       "source": "/robots.txt",
       "destination": "/robots.txt"
     },
