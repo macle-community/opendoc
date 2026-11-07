@@ -175,6 +175,8 @@ const MIME_TYPES = {
   '.js': 'application/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -337,7 +339,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 4. Handle route under BASE_ROUTE or direct dist assets (/data, /css, /js, /img, /favicon.ico)
+  // 4. Handle route under BASE_ROUTE or direct dist assets (/data, /css, /js, /img, /favicon.ico, robots.txt, sitemap.xml)
   let subPath = null;
   if (reqPath.startsWith(BASE_ROUTE)) {
     subPath = reqPath.slice(BASE_ROUTE.length);
@@ -349,7 +351,10 @@ const server = http.createServer((req, res) => {
     reqPath.startsWith('/css/') ||
     reqPath.startsWith('/js/') ||
     reqPath.startsWith('/img/') ||
-    reqPath === '/favicon.ico'
+    reqPath === '/favicon.ico' ||
+    reqPath === '/robots.txt' ||
+    reqPath === '/sitemap.xml' ||
+    reqPath === '/sitemap.json'
   ) {
     subPath = reqPath;
   }

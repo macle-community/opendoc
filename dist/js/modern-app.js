@@ -132,17 +132,28 @@
   // 3. Locale & URL Router
   // ---------------------------------------------------------------------------
   const Router = {
-    init() {
-      // Parse initial locale from query param or default to en_US
+    getLocaleFromUrl() {
+      // 1. Check window.location.search (?locale=zh_CN)
       const searchParams = new URLSearchParams(window.location.search);
-      const urlLocale = searchParams.get('locale');
-      if (urlLocale === 'zh_CN' || urlLocale === 'en_US') {
-        state.locale = urlLocale;
-      } else {
-        state.locale = 'en_US';
+      let loc = searchParams.get('locale');
+      if (loc === 'zh_CN' || loc === 'en_US') return loc;
+
+      // 2. Check hash query string (e.g. #/component/button?locale=zh_CN)
+      const hash = window.location.hash || '';
+      if (hash.includes('?')) {
+        const hashQuery = new URLSearchParams(hash.split('?')[1]);
+        loc = hashQuery.get('locale');
+        if (loc === 'zh_CN' || loc === 'en_US') return loc;
       }
 
-      document.title = state.locale === 'zh_CN' ? 'Macle 开放文档' : 'Macle Open Document';
+      return 'en_US';
+    },
+
+    init() {
+      state.locale = this.getLocaleFromUrl();
+      document.title = state.locale === 'zh_CN' 
+        ? 'Macle 开放文档 — Telebirr 小程序开发平台' 
+        : 'Macle Open Platform — Official Developer Documentation for Telebirr MiniApps';
 
       // Global link handler for internal links inside markdown
       window._mdLinkClick = (href) => {
@@ -163,19 +174,36 @@
     },
 
     parseHash() {
-      const hash = window.location.hash || '';
-      if (!hash || hash === '#') {
+      // 1. Check query parameter first (e.g. ?page=/component/button or ?path=/component/button)
+      const searchParams = new URLSearchParams(window.location.search);
+      const queryPage = searchParams.get('page') || searchParams.get('path');
+
+      let targetPath = '';
+      if (queryPage) {
+        targetPath = queryPage;
+      } else {
+        const hash = window.location.hash || '';
+        targetPath = hash.replace(/^#\/?/, '').split('?')[0];
+      }
+
+      if (!targetPath) {
         return { topPath: '/guide', subPath: '/installDevtool' };
       }
-      // e.g. #/component/button?locale=en_US
-      const cleanHash = hash.split('?')[0]; // #/component/button
-      const parts = cleanHash.replace(/^#\/?/, '').split('/'); // ['component', 'button']
+
+      const parts = targetPath.replace(/^\//, '').split('/');
       const topPath = '/' + (parts[0] || 'guide');
       const subPath = parts.length > 1 ? '/' + parts.slice(1).join('/') : '';
       return { topPath, subPath };
     },
 
     async handleHashChange() {
+      const urlLocale = this.getLocaleFromUrl();
+      if (urlLocale !== state.locale) {
+        state.locale = urlLocale;
+        await Navigation.loadTopMenus();
+        return;
+      }
+
       const { topPath, subPath } = this.parseHash();
 
       // Check if top section changed
@@ -503,19 +531,32 @@
         }
       });
 
-      // 3. Render Breadcrumbs
+      // 3. Image SEO: ensure meaningful alt and lazy loading
+      article.querySelectorAll('img').forEach(img => {
+        if (!img.getAttribute('alt')) {
+          img.setAttribute('alt', `${leaf.name || 'Macle'} - Telebirr MiniApp documentation diagram`);
+        }
+        if (!img.getAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+
+      // 4. Render Semantic Breadcrumbs with Schema.org microdata
       this.renderBreadcrumbs(leaf);
 
-      // 4. Process headings & Build Table of Contents
+      // 5. Process headings & Build Table of Contents
       this.processHeadingsAndTOC();
 
-      // 5. Render Previous / Next Page Pager
+      // 6. Render Previous / Next Page Pager
       this.renderPager(leaf);
 
-      // 6. Scroll main view back to top
+      // 7. Dynamic SEO Updates (Title, Description, Canonical, OG, Twitter, JSON-LD)
+      SEOManager.updatePageSEO(leaf, html);
+
+      // 8. Scroll main view back to top
       window.scrollTo({ top: 0, behavior: 'instant' });
 
-      // 7. Notify Doc Runner to attach runnable toolbars & code simulator buttons
+      // 9. Notify Doc Runner to attach runnable toolbars & code simulator buttons
       if (window.initDocRunner) {
         window.initDocRunner();
       }
@@ -525,13 +566,19 @@
       const breadcrumbEl = document.getElementById('docs-breadcrumbs');
       if (!breadcrumbEl) return;
 
-      const items = [...(leaf.parent || []), leaf.name];
+      const sectionName = state.currentTopMenu?.name || 'Documentation';
+      const items = ['Docs', sectionName, ...(leaf.parent || []), leaf.name];
+
       breadcrumbEl.innerHTML = `
-        <span class="docs-breadcrumb-item">Macle</span>
-        ${items.map((item, idx) => `
-          <span class="docs-breadcrumb-separator">/</span>
-          <span class="${idx === items.length - 1 ? 'docs-breadcrumb-current' : 'docs-breadcrumb-item'}">${item}</span>
-        `).join('')}
+        <ol class="docs-breadcrumb-list" style="display: flex; align-items: center; gap: 6px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;" itemscope itemtype="https://schema.org/BreadcrumbList">
+          ${items.map((item, idx) => `
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="display: inline-flex; align-items: center;">
+              ${idx > 0 ? `<span class="docs-breadcrumb-separator" style="margin-right: 6px;">/</span>` : ''}
+              <span itemprop="name" class="${idx === items.length - 1 ? 'docs-breadcrumb-current' : 'docs-breadcrumb-item'}">${item}</span>
+              <meta itemprop="position" content="${idx + 1}" />
+            </li>
+          `).join('')}
+        </ol>
       `;
     },
 
@@ -675,7 +722,134 @@
   };
 
   // ---------------------------------------------------------------------------
-  // 6. Global Search & Command Palette (Cmd + K)
+  // 6. Dynamic SEO & Structured Data Manager
+  // ---------------------------------------------------------------------------
+  const SEOManager = {
+    updatePageSEO(leaf, docHtml) {
+      if (!leaf) return;
+
+      const section = state.currentTopMenu?.name || 'Documentation';
+      const leafName = leaf.name || 'Doc';
+      const isZh = state.locale === 'zh_CN';
+
+      // 1. Dynamic Page Title
+      const pageTitle = isZh
+        ? `${leafName} - ${section} | Macle 官方文档 (Telebirr 小程序平台)`
+        : `${leafName} — ${section} | Macle Docs (Telebirr MiniApp Platform)`;
+      document.title = pageTitle;
+
+      // 2. Extract or Generate Search Description
+      let description = '';
+      if (docHtml) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = docHtml;
+        const firstP = tmp.querySelector('p, blockquote');
+        if (firstP) {
+          description = firstP.textContent.replace(/\s+/g, ' ').trim();
+        }
+      }
+
+      const telebirrSnippet = isZh
+        ? `Telebirr 小程序官方开发文档。使用 Macle 原生 MAML 与 Taro React 快速构建。`
+        : `Official documentation for developing Telebirr SuperApp MiniApps with Macle framework.`;
+
+      if (!description || description.length < 20) {
+        description = `${leafName} (${section}) - ${telebirrSnippet}`;
+      } else {
+        description = `${description} - ${telebirrSnippet}`;
+      }
+
+      if (description.length > 160) {
+        description = description.slice(0, 157) + '...';
+      }
+
+      // 3. Dynamic Canonical URL
+      const canonicalUrl = `https://macle-opendoc.vercel.app/openplatform/macledocs/#${state.currentTopMenu?.path || ''}${leaf.path || ''}?locale=${state.locale}`;
+
+      // 4. Update Meta Tags
+      this.setMeta('description', description);
+      this.setMeta('keywords', `Telebirr miniapp, Telebirr mini program, Macle docs, ${leafName}, ${section}, Ethio telecom miniapp, Taro React, MAML, MAUI`);
+      this.setCanonical(canonicalUrl);
+
+      // 5. Update Open Graph
+      this.setOgMeta('og:title', pageTitle);
+      this.setOgMeta('og:description', description);
+      this.setOgMeta('og:url', canonicalUrl);
+
+      // 6. Update Twitter Card
+      this.setMeta('twitter:title', pageTitle);
+      this.setMeta('twitter:description', description);
+
+      // 7. Dynamic JSON-LD Structured Data (TechArticle)
+      this.updateJsonLd(leaf, section, pageTitle, description, canonicalUrl);
+    },
+
+    setMeta(name, content) {
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('name', name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    },
+
+    setOgMeta(prop, content) {
+      let el = document.querySelector(`meta[property="${prop}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', prop);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    },
+
+    setCanonical(url) {
+      let el = document.querySelector('link[rel="canonical"]');
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', 'canonical');
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', url);
+    },
+
+    updateJsonLd(leaf, section, title, description, url) {
+      let script = document.getElementById('schema-tech-article');
+      if (!script) {
+        script = document.createElement('script');
+        script.id = 'schema-tech-article';
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": title,
+        "description": description,
+        "url": url,
+        "inLanguage": state.locale === 'zh_CN' ? 'zh-CN' : 'en-US',
+        "articleSection": section,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Macle Open Platform",
+          "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
+          "logo": "https://macle-opendoc.vercel.app/openplatform/macledocs/img/logo.png"
+        },
+        "about": {
+          "@type": "SoftwareApplication",
+          "name": "Telebirr MiniApp Platform (Macle Framework)",
+          "operatingSystem": "Android, iOS, Web"
+        }
+      };
+
+      script.textContent = JSON.stringify(structuredData, null, 2);
+    }
+  };
+
+  // ---------------------------------------------------------------------------
+  // 7. Global Search & Command Palette (Cmd + K)
   // ---------------------------------------------------------------------------
   const Search = {
     async buildIndex() {

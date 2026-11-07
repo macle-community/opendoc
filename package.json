@@ -8,6 +8,8 @@
     "sim:taro": "node ../macle-web-simulator/src/cli.js -s ./miniapp-taro/dist -p 30003",
     "build:taro": "cd miniapp-taro && npm run build:macle",
     "md-package": "node src/scripts/md-package.js",
+    "seo:sitemap": "node src/scripts/generate-sitemap.js",
+    "seo:og": "node src/scripts/generate-og-image.js",
     "bundle:simulator": "node src/scripts/bundle-simulator-dist.js",
     "build": "node src/scripts/bundle-simulator-dist.js",
     "lint": "vue-cli-service lint"

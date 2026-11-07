@@ -1,0 +1,29 @@
+# ==============================================================================
+# Macle Open Platform — Official Developer Documentation for Telebirr MiniApps
+# Google SEO & Web Crawler Configuration
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /openplatform/macledocs/
+Allow: /openplatform/macledocs/img/
+Allow: /openplatform/macledocs/css/
+Allow: /openplatform/macledocs/js/
+Allow: /openplatform/macledocs/data/
+Allow: /data/
+Allow: /img/
+Allow: /css/
+Allow: /js/
+
+# Disallow internal simulator runtime and live-runner compiler endpoints
+Disallow: /api/compile-snippet
+Disallow: /_simulator/
+Disallow: /openplatform/macledocs/_simulator/
+Disallow: /miniapp/root/
+Disallow: /miniapp-taro/root/
+Disallow: /tmp/
+Disallow: /store/
+
+# Sitemaps declaration
+Sitemap: https://macle-opendoc.vercel.app/sitemap.xml
+Sitemap: https://macle-opendoc.vercel.app/openplatform/macledocs/sitemap.xml

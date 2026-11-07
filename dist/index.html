@@ -5,7 +5,91 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <link rel="icon" href="/openplatform/macledocs/favicon.ico"/>
-  <title>Macle Open Document</title>
+
+  <!-- Primary SEO Metadata -->
+  <title>Macle Open Platform — Official Developer Documentation for Telebirr MiniApps</title>
+  <meta name="description" content="Official documentation, component libraries, and API reference for building cross-platform MiniApps on Telebirr SuperApp using the Macle framework, Native MAML, and Taro React."/>
+  <meta name="keywords" content="Telebirr miniapp, Telebirr mini program, Macle docs, Telebirr developer, Ethio telecom miniapp, mini program framework, MAUI components, Taro React, Macle DevSuite, MAML, MASS, Telebirr payment API, web simulator"/>
+  <meta name="author" content="Macle Community & Telebirr MiniApp Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+  <meta name="application-name" content="Macle OpenDoc"/>
+  <meta name="theme-color" content="#090d16"/>
+
+  <!-- Google Search Console Verification Placeholder -->
+  <meta name="google-site-verification" content="google-search-console-verification-token"/>
+
+  <!-- Canonical and Multilingual Alternates -->
+  <link rel="canonical" href="https://macle-opendoc.vercel.app/openplatform/macledocs/"/>
+  <link rel="alternate" hreflang="en" href="https://macle-opendoc.vercel.app/openplatform/macledocs/#/guide/installDevtool?locale=en_US"/>
+  <link rel="alternate" hreflang="zh" href="https://macle-opendoc.vercel.app/openplatform/macledocs/#/guide/installDevtool?locale=zh_CN"/>
+  <link rel="alternate" hreflang="x-default" href="https://macle-opendoc.vercel.app/openplatform/macledocs/"/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Macle Open Platform (Telebirr MiniApps)"/>
+  <meta property="og:title" content="Macle Open Platform — Official Developer Documentation for Telebirr MiniApps"/>
+  <meta property="og:description" content="Build high-performance MiniApps for Telebirr SuperApp with 50+ MAUI components, API references, DevSuite IDE, and live Web Simulator."/>
+  <meta property="og:url" content="https://macle-opendoc.vercel.app/openplatform/macledocs/"/>
+  <meta property="og:image" content="https://macle-opendoc.vercel.app/openplatform/macledocs/img/og-preview.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="Macle Developer Platform for Telebirr MiniApps"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:locale:alternate" content="zh_CN"/>
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@macle_framework"/>
+  <meta name="twitter:creator" content="@macle_framework"/>
+  <meta name="twitter:title" content="Macle Open Platform — Official Developer Documentation for Telebirr MiniApps"/>
+  <meta name="twitter:description" content="Build high-performance MiniApps for Telebirr SuperApp with 50+ MAUI components, API references, DevSuite IDE, and live Web Simulator."/>
+  <meta name="twitter:image" content="https://macle-opendoc.vercel.app/openplatform/macledocs/img/og-preview.png"/>
+  <meta name="twitter:image:alt" content="Macle Developer Platform for Telebirr MiniApps"/>
+
+  <!-- Schema.org JSON-LD Structured Data: WebSite & SoftwareApplication & Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://macle-opendoc.vercel.app/#organization",
+        "name": "Macle Open Platform",
+        "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/img/logo.png",
+          "width": 60,
+          "height": 60
+        },
+        "description": "Official development framework and engine powering Telebirr MiniApps."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://macle-opendoc.vercel.app/#website",
+        "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
+        "name": "Macle Open Document — Telebirr MiniApp Developer Platform",
+        "publisher": {
+          "@id": "https://macle-opendoc.vercel.app/#organization"
+        },
+        "inLanguage": ["en-US", "zh-CN"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://macle-opendoc.vercel.app/#software",
+        "name": "Macle MiniProgram Framework & DevSuite",
+        "operatingSystem": "Android, iOS, Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "The enterprise cross-platform Mini Program Engine, DevSuite IDE, and UI Component Library powering Telebirr SuperApp MiniApps."
+      }
+    ]
+  }
+  </script>
 
   <!-- Prevent Theme Flashing (FOUT) -->
   <script>
@@ -18,7 +102,6 @@
         } else if (saved === 'light') {
           theme = 'light';
         } else {
-          // system default
           theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         document.documentElement.setAttribute('data-theme', theme);
@@ -26,9 +109,10 @@
     })();
   </script>
 
-  <!-- Google Fonts: Inter / JetBrains Mono (with system fallback) -->
+  <!-- Performance Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Core Modern Documentation Stylesheet -->
@@ -42,10 +126,84 @@
 </head>
 <body>
   <noscript>
-    <div style="padding: 24px; text-align: center; font-family: sans-serif;">
-      <strong>We're sorry but Macle OpenDoc requires JavaScript enabled. Please enable it to continue.</strong>
+    <div style="padding: 28px; text-align: center; font-family: sans-serif; background: #f8fafc; color: #0f172a;">
+      <h2>Macle Open Document — Telebirr MiniApp Platform</h2>
+      <p style="margin-top: 10px; color: #475569;">
+        Please enable JavaScript to enjoy the interactive Web Simulator and search experience, or explore the documentation index below.
+      </p>
     </div>
   </noscript>
-  <div id="app"></div>
+
+  <!-- Semantic HTML Fallback & Crawlable Index for Search Engines (Hydrated by modern-app.js) -->
+  <div id="app">
+    <div class="docs-seo-prerender-container" style="max-width: 1000px; margin: 40px auto; padding: 0 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1e293b;">
+      <header style="margin-bottom: 32px; border-bottom: 1px solid #e2e8f0; padding-bottom: 24px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+          <img src="/openplatform/macledocs/img/logo.png" alt="Macle Logo" width="48" height="48" style="border-radius: 8px;" />
+          <div>
+            <h1 style="font-size: 28px; font-weight: 800; color: #0f172a; margin: 0;">Macle Open Platform — Developer Documentation for Telebirr MiniApps</h1>
+            <p style="font-size: 14px; color: #64748b; margin-top: 4px;">Official Guide, Component Library, API Reference, and DevSuite for Telebirr SuperApp Mini Programs</p>
+          </div>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: #334155;">
+          Macle is the official mini-program framework and runtime engine powering <strong>Telebirr SuperApp MiniApps</strong> (Ethio Telecom).
+          It enables developers to build high-performance, native-speed mini programs using both <strong>Native MAML (MiniApp Markup Language)</strong> and <strong>Taro 3.x React</strong>.
+          Explore our complete component library, Telebirr payment and device APIs, and interactive Web Simulator.
+        </p>
+      </header>
+
+      <section style="margin-bottom: 36px;">
+        <h2 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 14px;">Core Documentation Sections</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/guide/installDevtool?locale=en_US" style="color: inherit; text-decoration: none;">Getting Started & DevSuite</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">Install Macle DevSuite IDE, configure your first Telebirr miniapp project, and learn debugging workflows.</p>
+          </div>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/component/button?locale=en_US" style="color: inherit; text-decoration: none;">Built-in Components</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">Comprehensive guide for View, Scroll-View, Swiper, Button, Input, Form, Checkbox, Canvas, and Map.</p>
+          </div>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/maui-component/Button?locale=en_US" style="color: inherit; text-decoration: none;">MAUI UI Component Library</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">50+ pre-built, production-ready UI components for Telebirr MiniApps with dual MAML and Taro React support.</p>
+          </div>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/api/network/request?locale=en_US" style="color: inherit; text-decoration: none;">Mini Program APIs</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">Network Requests, Telebirr Payment, User Authentication, Local Storage, Location, Barcode Scan, and Bluetooth.</p>
+          </div>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/framework/app-service/app?locale=en_US" style="color: inherit; text-decoration: none;">Framework Architecture</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">Dual-thread architecture, Page Lifecycle, Data Binding, Custom Components, and Performance Optimization.</p>
+          </div>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; background: #ffffff;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #2563eb; margin-bottom: 8px;">
+              <a href="/openplatform/macledocs/#/devtools/ide?locale=en_US" style="color: inherit; text-decoration: none;">Developer Tools</a>
+            </h3>
+            <p style="font-size: 13.5px; color: #64748b; line-height: 1.5;">Macle DevSuite IDE, CLI compiler, Remote Debugging, and Web Simulator preview tools.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13px; color: #94a3b8; display: flex; justify-content: space-between;">
+        <span>&copy; 2026 Macle Open Platform. All rights reserved.</span>
+        <span>Powering Telebirr SuperApp Mini Programs (Ethio Telecom)</span>
+      </footer>
+    </div>
+  </div>
 </body>
 </html>

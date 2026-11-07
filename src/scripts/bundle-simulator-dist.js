@@ -126,6 +126,15 @@ async function bundle() {
   fs.writeFileSync(path.join(apiDir, 'simulator-info.json'), JSON.stringify(simInfo, null, 2));
   fs.writeFileSync(path.join(apiDir, 'simulator-info'), JSON.stringify(simInfo, null, 2));
 
+  // 6. Generate Google SEO XML Sitemap & robots.txt
+  console.log('[6/6] Generating SEO Sitemaps & robots.txt...');
+  try {
+    const { generate } = require('./generate-sitemap');
+    generate();
+  } catch (seoErr) {
+    console.warn('[Warning] Sitemap generation notice:', seoErr.message);
+  }
+
   console.log('='.repeat(60));
   console.log('✅ Static Simulator Bundle Complete!');
   console.log('Ready for instant deployment on Vercel / Netlify / Cloudflare Pages.');
