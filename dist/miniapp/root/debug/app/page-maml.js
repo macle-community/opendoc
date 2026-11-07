@@ -1615,7 +1615,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Default Button (Normal \x26amp; Disabled)']);
+      Z([3,'1. Default Button (Normal \x26 Disabled)']);
       Z([3,'btn-group']);
       Z([3,'200']);
       Z([3,'500']);
@@ -1623,11 +1623,11 @@ $gma=function(path,global){
       Z([3,'Normal Default']);
       Z([3,'true']);
       Z([3,'Default Disabled']);
-      Z([3,'2. Warn Button (Normal \x26amp; Disabled)']);
+      Z([3,'2. Warn Button (Normal \x26 Disabled)']);
       Z([3,'warn']);
       Z([3,'Warn Action']);
       Z([3,'Warn Disabled']);
-      Z([3,'3. Primary Button \x26amp; Form Actions']);
+      Z([3,'3. Primary Button \x26 Form Actions']);
       Z([3,'handlePrimaryTap']);
       Z([3,'primary']);
       Z([3,'Primary Button']);
@@ -1645,7 +1645,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Camera Viewfinder with Device Position \x26amp; Flash']);
+      Z([3,'1. Camera Viewfinder with Device Position \x26 Flash']);
       Z([3,'camera-wrapper']);
       Z([3,'back']);
       Z([3,'off']);
@@ -1709,7 +1709,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Single Checkbox with Checked State \x26amp; Color']);
+      Z([3,'1. Single Checkbox with Checked State \x26 Color']);
       Z([3,'checkbox-demo']);
       Z([3,'cb-row']);
       Z([3,'onAgreeChange']);
@@ -1844,7 +1844,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Form Container with Submit \x26amp; Reset Handlers']);
+      Z([3,'1. Form Container with Submit \x26 Reset Handlers']);
       Z([3,'onFormReset']);
       Z([3,'onFormSubmit']);
       Z([3,'form-field']);
@@ -1918,7 +1918,7 @@ $gma=function(path,global){
       Z([3,'mode\x3d\x22aspectFit\x22']);
       Z([3,'aspectFill']);
       Z([3,'mode\x3d\x22aspectFill\x22']);
-      Z([3,'2. Local \x26amp; Remote Image Source']);
+      Z([3,'2. Local \x26 Remote Image Source']);
       Z([3,'img-box']);
       Z([3,'wide-img']);
       Z([3,'widthFix']);
@@ -2031,7 +2031,7 @@ $gma=function(path,global){
       Z([3,'Standard text input...']);
       Z([3,'input-val-preview']);
       Z([11,[3,'Current Input: '],[[7],[3,"currentVal"]]]);
-      Z([3,'2. Password, Number \x26amp; Digit Input Types']);
+      Z([3,'2. Password, Number \x26 Digit Input Types']);
       Z([3,'input-col']);
       Z([3,'true']);
       Z([3,'Password input']);
@@ -2039,7 +2039,7 @@ $gma=function(path,global){
       Z([3,'number']);
       Z([3,'Decimal digit keyboard input']);
       Z([3,'digit']);
-      Z([3,'3. Focus, Maxlength \x26amp; Confirm Type']);
+      Z([3,'3. Focus, Maxlength \x26 Confirm Type']);
       Z([3,'done']);
       Z([3,'10']);
       Z([3,'Maxlength 10 chars'])
@@ -2169,7 +2169,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Interactive Map with Markers \x26amp; Coordinates']);
+      Z([3,'1. Interactive Map with Markers \x26 Coordinates']);
       Z([[7],[3,"latitude"]]);
       Z([[7],[3,"longitude"]]);
       Z([[7],[3,"markers"]]);
@@ -2345,7 +2345,7 @@ $gma=function(path,global){
       Z([[7],[3,"multiIdx"]]);
       Z([3,'Region:']);
       Z([11,[[6],[[6],[[7],[3,"multiRange"]],[1,0]],[[6],[[7],[3,"multiIdx"]],[1,0]]],[3,' - '],[[6],[[6],[[7],[3,"multiRange"]],[1,1]],[[6],[[7],[3,"multiIdx"]],[1,1]]]]);
-      Z([3,'3. Time \x26amp; Date Selector']);
+      Z([3,'3. Time \x26 Date Selector']);
       Z([3,'onDateChange']);
       Z([3,'2030-12-31']);
       Z([3,'date']);
@@ -2375,7 +2375,7 @@ $gma=function(path,global){
       Z([3,'#10b981']);
       Z([3,'90']);
       Z([3,'8']);
-      Z([3,'2. Animated \x26amp; Custom Stroke/Color Progress']);
+      Z([3,'2. Animated \x26 Custom Stroke/Color Progress']);
       Z([3,'#8b5cf6']);
       Z([3,'forwards']);
       Z([[7],[3,"animPercent"]]);
@@ -2502,7 +2502,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Slider with Min, Max \x26amp; Show-Value']);
+      Z([3,'1. Slider with Min, Max \x26 Show-Value']);
       Z([3,'slider-box']);
       Z([3,'#2563eb']);
       Z([3,'onSliderChange']);
@@ -2588,7 +2588,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Interactive Swiper with Indicators \x26amp; Autoplay']);
+      Z([3,'1. Interactive Swiper with Indicators \x26 Autoplay']);
       Z([3,'true']);
       Z([3,'500']);
       Z([3,'2500']);
@@ -2600,7 +2600,7 @@ $gma=function(path,global){
       Z([3,'Slide B - Simulator']);
       Z([3,'swiper-slide slide-orange']);
       Z([3,'Slide C - OpenDoc']);
-      Z([3,'2. Circular \x26amp; Vertical Swiping']);
+      Z([3,'2. Circular \x26 Vertical Swiping']);
       Z([3,'false']);
       Z([3,'height: 120px; border-radius: 10px; overflow: hidden;']);
       Z([3,'swiper-slide slide-purple']);
@@ -2625,7 +2625,7 @@ $gma=function(path,global){
       Z([3,'onSwitchToggle']);
       Z([[7],[3,"isEnabled"]]);
       Z([3,'#2563eb']);
-      Z([3,'2. Checkbox Style Switch \x26amp; Custom Color']);
+      Z([3,'2. Checkbox Style Switch \x26 Custom Color']);
       Z([3,'Checkbox Style Switch:']);
       Z([3,'true']);
       Z([3,'#10b981']);
@@ -2674,7 +2674,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Basic Text \x26amp; Selectable Text']);
+      Z([3,'1. Basic Text \x26 Selectable Text']);
       Z([3,'text-group']);
       Z([3,'text-headline']);
       Z([3,'Standard Headline Text']);
@@ -2742,7 +2742,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Video Player with Controls \x26amp; Poster']);
+      Z([3,'1. Video Player with Controls \x26 Poster']);
       Z([3,'video-container']);
       Z([3,'true']);
       Z([3,'myVideo']);
@@ -2760,7 +2760,7 @@ $gma=function(path,global){
       Z([3,'page-body']);
       Z([3,'demo-block']);
       Z([3,'demo-title']);
-      Z([3,'1. Flex Direction (Row \x26amp; Column Layout)']);
+      Z([3,'1. Flex Direction (Row \x26 Column Layout)']);
       Z([3,'page-section']);
       Z([3,'page-section-title']);
       Z([3,'flex-direction: row']);

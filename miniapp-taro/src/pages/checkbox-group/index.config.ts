@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'checkbox-group checkbox-group'.trim()
+  navigationBarTitleText: 'checkbox-group 多选框组'.trim()
 });

@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Form Container with Submit &amp; Reset Handlers</text>
+    <text class="demo-title">1. Form Container with Submit & Reset Handlers</text>
     <form bindsubmit="onFormSubmit" bindreset="onFormReset">
       <view class="form-field">
         <text class="form-label">Username:</text>

@@ -13,7 +13,7 @@ const ZH_HTML_DIR = path.join(ROOT_DIR, 'dist/data/doc/component');
 const componentSpecs = {
   'view/view': {
     titleEn: 'view',
-    titleZh: 'view',
+    titleZh: '视图',
     samples: [
       {
         id: 1,
@@ -88,7 +88,7 @@ const componentSpecs = {
 
   'view/scroll-view': {
     titleEn: 'scroll-view',
-    titleZh: 'scroll-view',
+    titleZh: '滚动视图',
     samples: [
       {
         id: 1,
@@ -127,7 +127,7 @@ const componentSpecs = {
 
   'view/swiper': {
     titleEn: 'swiper',
-    titleZh: 'swiper',
+    titleZh: '滑块视图',
     samples: [
       {
         id: 1,
@@ -165,7 +165,7 @@ const componentSpecs = {
 
   'view/swiper-item': {
     titleEn: 'swiper-item',
-    titleZh: 'swiper-item',
+    titleZh: '滑块视图项',
     samples: [
       {
         id: 1,
@@ -190,7 +190,7 @@ const componentSpecs = {
 
   'view/cover-view': {
     titleEn: 'cover-view',
-    titleZh: 'cover-view',
+    titleZh: '覆盖文本视图',
     samples: [
       {
         id: 1,
@@ -215,7 +215,7 @@ const componentSpecs = {
 
   'view/cover-image': {
     titleEn: 'cover-image',
-    titleZh: 'cover-image',
+    titleZh: '覆盖图片视图',
     samples: [
       {
         id: 1,
@@ -232,7 +232,7 @@ const componentSpecs = {
 
   'base/text': {
     titleEn: 'text',
-    titleZh: 'text',
+    titleZh: '文本',
     samples: [
       {
         id: 1,
@@ -266,7 +266,7 @@ const componentSpecs = {
 
   'base/icon': {
     titleEn: 'icon',
-    titleZh: 'icon',
+    titleZh: '图标',
     samples: [
       {
         id: 1,
@@ -302,7 +302,7 @@ const componentSpecs = {
 
   'base/rich-text': {
     titleEn: 'rich-text',
-    titleZh: 'rich-text',
+    titleZh: '富文本',
     samples: [
       {
         id: 1,
@@ -337,7 +337,7 @@ const componentSpecs = {
 
   'base/progress': {
     titleEn: 'progress',
-    titleZh: 'progress',
+    titleZh: '进度条',
     samples: [
       {
         id: 1,
@@ -374,7 +374,7 @@ const componentSpecs = {
 
   'form/button': {
     titleEn: 'button',
-    titleZh: 'button',
+    titleZh: '按钮',
     samples: [
       {
         id: 1,
@@ -416,7 +416,7 @@ const componentSpecs = {
 
   'form/checkbox': {
     titleEn: 'checkbox',
-    titleZh: 'checkbox',
+    titleZh: '多选框',
     samples: [
       {
         id: 1,
@@ -441,7 +441,7 @@ const componentSpecs = {
 
   'form/checkbox-group': {
     titleEn: 'checkbox-group',
-    titleZh: 'checkbox-group',
+    titleZh: '多选框组',
     samples: [
       {
         id: 1,
@@ -479,7 +479,7 @@ const componentSpecs = {
 
   'form/form': {
     titleEn: 'form',
-    titleZh: 'form',
+    titleZh: '表单',
     samples: [
       {
         id: 1,
@@ -517,7 +517,7 @@ const componentSpecs = {
 
   'form/input': {
     titleEn: 'input',
-    titleZh: 'input',
+    titleZh: '输入框',
     samples: [
       {
         id: 1,
@@ -560,7 +560,7 @@ const componentSpecs = {
 
   'form/picker': {
     titleEn: 'picker',
-    titleZh: 'picker',
+    titleZh: '选择器',
     samples: [
       {
         id: 1,
@@ -612,7 +612,7 @@ const componentSpecs = {
 
   'form/picker-view': {
     titleEn: 'picker-view',
-    titleZh: 'picker-view',
+    titleZh: '嵌入选择器',
     samples: [
       {
         id: 1,
@@ -656,7 +656,7 @@ const componentSpecs = {
 
   'form/picker-view-column': {
     titleEn: 'picker-view-column',
-    titleZh: 'picker-view-column',
+    titleZh: '选择器列',
     samples: [
       {
         id: 1,
@@ -677,7 +677,7 @@ const componentSpecs = {
 
   'form/label': {
     titleEn: 'label',
-    titleZh: 'label',
+    titleZh: '标签',
     samples: [
       {
         id: 1,
@@ -707,7 +707,7 @@ const componentSpecs = {
 
   'form/switch': {
     titleEn: 'switch',
-    titleZh: 'switch',
+    titleZh: '开关',
     samples: [
       {
         id: 1,
@@ -743,7 +743,7 @@ const componentSpecs = {
 
   'form/radio': {
     titleEn: 'radio',
-    titleZh: 'radio',
+    titleZh: '单选框',
     samples: [
       {
         id: 1,
@@ -761,7 +761,7 @@ const componentSpecs = {
 
   'form/radio-group': {
     titleEn: 'radio-group',
-    titleZh: 'radio-group',
+    titleZh: '单选框组',
     samples: [
       {
         id: 1,
@@ -796,7 +796,7 @@ const componentSpecs = {
 
   'form/slider': {
     titleEn: 'slider',
-    titleZh: 'slider',
+    titleZh: '滑块',
     samples: [
       {
         id: 1,
@@ -828,7 +828,7 @@ const componentSpecs = {
 
   'form/textarea': {
     titleEn: 'textarea',
-    titleZh: 'textarea',
+    titleZh: '多行输入',
     samples: [
       {
         id: 1,
@@ -862,7 +862,7 @@ const componentSpecs = {
 
   'navigating/navigator': {
     titleEn: 'navigator',
-    titleZh: 'navigator',
+    titleZh: '页面跳转',
     samples: [
       {
         id: 1,
@@ -896,7 +896,7 @@ const componentSpecs = {
 
   'media/image': {
     titleEn: 'image',
-    titleZh: 'image',
+    titleZh: '图片',
     samples: [
       {
         id: 1,
@@ -933,7 +933,7 @@ const componentSpecs = {
 
   'media/video': {
     titleEn: 'video',
-    titleZh: 'video',
+    titleZh: '视频',
     samples: [
       {
         id: 1,
@@ -950,7 +950,7 @@ const componentSpecs = {
 
   'media/audio': {
     titleEn: 'audio',
-    titleZh: 'audio',
+    titleZh: '音频',
     samples: [
       {
         id: 1,
@@ -967,7 +967,7 @@ const componentSpecs = {
 
   'media/camera': {
     titleEn: 'camera',
-    titleZh: 'camera',
+    titleZh: '相机',
     samples: [
       {
         id: 1,
@@ -988,7 +988,7 @@ const componentSpecs = {
 
   'openCapability/web-view': {
     titleEn: 'web-view',
-    titleZh: 'web-view',
+    titleZh: '网页容器',
     samples: [
       {
         id: 1,
@@ -1003,7 +1003,7 @@ const componentSpecs = {
 
   'pageConfig/page-meta': {
     titleEn: 'page-meta',
-    titleZh: 'page-meta',
+    titleZh: '页面配置',
     samples: [
       {
         id: 1,
@@ -1024,7 +1024,7 @@ const componentSpecs = {
 
   'map/map': {
     titleEn: 'map',
-    titleZh: 'map',
+    titleZh: '地图',
     samples: [
       {
         id: 1,

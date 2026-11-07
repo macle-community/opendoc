@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'audio audio'.trim()
+  navigationBarTitleText: 'audio 音频'.trim()
 });

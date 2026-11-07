@@ -283,40 +283,39 @@ for (const [key, spec] of Object.entries(componentSpecs)) {
   let mamlContent = `<view class="page-body">\n`;
   spec.samples.forEach(sample => {
     mamlContent += `  <view class="demo-block">\n`;
-    mamlContent += `    <text class="demo-title">${escapeXml(sample.titleEn)}</text>\n`;
+    mamlContent += `    <text class="demo-title">${sample.titleEn}</text>\n`;
     mamlContent += indent(sample.maml.trim(), 4) + '\n';
     mamlContent += `  </view>\n\n`;
   });
   mamlContent += `</view>\n`;
 
   // JS (Combine page data and methods from samples)
-  const combinedData = {};
-  const methods = [];
+  let mergedData = {};
+  const methodStrings = [];
+
   spec.samples.forEach(sample => {
     if (sample.js) {
-      // Extract data object
-      const dataMatch = sample.js.match(/data:\s*(\{[\s\S]*?\n\s*\})/);
-      if (dataMatch) {
-        try {
-          const fn = new Function('return ' + dataMatch[1]);
-          Object.assign(combinedData, fn());
-        } catch (e) {}
-      }
-      // Extract functions
-      const funcMatches = sample.js.matchAll(/([a-zA-Z0-9_]+)\s*\(([^)]*)\)\s*\{([\s\S]*?\n\s*\})/g);
-      for (const fm of funcMatches) {
-        if (fm[1] !== 'data') {
-          methods.push(`${fm[1]}(${fm[2]}) {${fm[3]}`);
+      try {
+        let extractedObj = null;
+        const fakePage = (o) => { extractedObj = o; };
+        const fn = new Function('Page', 'ma', sample.js);
+        fn(fakePage, {});
+
+        if (extractedObj) {
+          if (extractedObj.data) Object.assign(mergedData, extractedObj.data);
+          for (const [prop, val] of Object.entries(extractedObj)) {
+            if (prop !== 'data' && typeof val === 'function') {
+              methodStrings.push(val.toString());
+            }
+          }
         }
+      } catch (err) {
+        console.error('JS extraction error in ' + componentName + ':', err.message);
       }
     }
   });
 
-  let jsContent = `Page({\n  data: ${JSON.stringify(combinedData, null, 2)},\n\n`;
-  if (methods.length > 0) {
-    jsContent += '  ' + methods.join(',\n\n  ') + '\n';
-  }
-  jsContent += `});\n`;
+  const jsContent = `Page({\n  data: ${JSON.stringify(mergedData, null, 2)}${methodStrings.length > 0 ? ',\n\n  ' + methodStrings.join(',\n\n  ') : ''}\n});\n`;
 
   // MASS
   let massContent = `/* pages/${componentName}/index.mass */\n`;

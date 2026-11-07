@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'web-view web-view'.trim()
+  navigationBarTitleText: 'web-view 网页容器'.trim()
 });

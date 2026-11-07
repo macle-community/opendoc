@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'image image'.trim()
+  navigationBarTitleText: 'image 图片'.trim()
 });

@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'picker picker'.trim()
+  navigationBarTitleText: 'picker 选择器'.trim()
 });

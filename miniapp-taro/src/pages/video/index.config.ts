@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'video video'.trim()
+  navigationBarTitleText: 'video 视频'.trim()
 });

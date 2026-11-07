@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Flex Direction (Row &amp; Column Layout)</text>
+    <text class="demo-title">1. Flex Direction (Row & Column Layout)</text>
     <view class="page-section">
       <view class="page-section-title">flex-direction: row</view>
       <view class="flex-row">

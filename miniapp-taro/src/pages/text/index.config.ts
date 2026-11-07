@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'text text'.trim()
+  navigationBarTitleText: 'text 文本'.trim()
 });

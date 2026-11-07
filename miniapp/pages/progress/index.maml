@@ -9,7 +9,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Animated &amp; Custom Stroke/Color Progress</text>
+    <text class="demo-title">2. Animated & Custom Stroke/Color Progress</text>
     <view class="progress-col">
       <progress percent="{{animPercent}}" show-info="true" active="true" active-mode="forwards" stroke-width="8" border-radius="4" active-color="#8b5cf6" />
       <button size="mini" type="default" bindtap="increaseProgress" style="align-self: flex-start; margin-top: 8px;">+20% Progress</button>

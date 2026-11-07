@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'label label'.trim()
+  navigationBarTitleText: 'label 标签'.trim()
 });

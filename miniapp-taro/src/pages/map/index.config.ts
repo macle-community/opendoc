@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'map map'.trim()
+  navigationBarTitleText: 'map 地图'.trim()
 });

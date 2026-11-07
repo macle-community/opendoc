@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'rich-text rich-text'.trim()
+  navigationBarTitleText: 'rich-text 富文本'.trim()
 });

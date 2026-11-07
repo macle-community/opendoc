@@ -1,8 +1,8 @@
 Page({
-  data: {},
+  data: {
+  "isAgree": true
+},
 
-  Page({
-  data: { isAgree: true },
   onAgreeChange(e) {
     this.setData({ isAgree: !this.data.isAgree });
   }

@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'navigator navigator'.trim()
+  navigationBarTitleText: 'navigator 页面跳转'.trim()
 });

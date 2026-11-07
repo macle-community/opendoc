@@ -1,8 +1,7 @@
 Page({
-  data: {},
+  data: {
+  "currentVal": ""
+},
 
-  Page({
-  data: { currentVal: '' },
   onInputSync(e) { this.setData({ currentVal: e.detail.value }); }
-}
 });

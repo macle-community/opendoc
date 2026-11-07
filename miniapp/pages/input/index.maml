@@ -8,7 +8,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Password, Number &amp; Digit Input Types</text>
+    <text class="demo-title">2. Password, Number & Digit Input Types</text>
     <view class="input-col">
       <input class="std-input" password="true" placeholder="Password input" />
       <input class="std-input" type="number" placeholder="Number keyboard input" />
@@ -17,7 +17,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">3. Focus, Maxlength &amp; Confirm Type</text>
+    <text class="demo-title">3. Focus, Maxlength & Confirm Type</text>
     <input class="std-input" maxlength="10" confirm-type="done" placeholder="Maxlength 10 chars" />
   </view>
 

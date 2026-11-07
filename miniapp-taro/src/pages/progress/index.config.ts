@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'progress progress'.trim()
+  navigationBarTitleText: 'progress 进度条'.trim()
 });

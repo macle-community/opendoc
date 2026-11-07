@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'cover-image cover-image'.trim()
+  navigationBarTitleText: 'cover-image 覆盖图片视图'.trim()
 });

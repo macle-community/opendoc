@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'swiper swiper'.trim()
+  navigationBarTitleText: 'swiper 滑块视图'.trim()
 });

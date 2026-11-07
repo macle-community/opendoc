@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'camera camera'.trim()
+  navigationBarTitleText: 'camera 相机'.trim()
 });

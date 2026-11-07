@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'cover-view cover-view'.trim()
+  navigationBarTitleText: 'cover-view 覆盖文本视图'.trim()
 });

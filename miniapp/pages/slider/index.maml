@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Slider with Min, Max &amp; Show-Value</text>
+    <text class="demo-title">1. Slider with Min, Max & Show-Value</text>
     <view class="slider-box">
       <slider min="0" max="100" value="{{volume}}" show-value="true" bindchange="onSliderChange" active-color="#2563eb" />
       <text class="slider-text">Volume: {{volume}}%</text>

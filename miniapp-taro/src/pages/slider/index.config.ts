@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'slider slider'.trim()
+  navigationBarTitleText: 'slider 滑块'.trim()
 });

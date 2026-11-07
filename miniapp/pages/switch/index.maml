@@ -8,7 +8,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Checkbox Style Switch &amp; Custom Color</text>
+    <text class="demo-title">2. Checkbox Style Switch & Custom Color</text>
     <view class="switch-row">
       <text class="sw-title">Checkbox Style Switch:</text>
       <switch type="checkbox" checked="true" color="#10b981" />

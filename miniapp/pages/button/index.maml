@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Default Button (Normal &amp; Disabled)</text>
+    <text class="demo-title">1. Default Button (Normal & Disabled)</text>
     <view class="btn-group">
       <button type="default" hover-start-time="200" hover-stay-time="500">Normal Default</button>
       <button type="default" disabled="true">Default Disabled</button>
@@ -8,7 +8,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Warn Button (Normal &amp; Disabled)</text>
+    <text class="demo-title">2. Warn Button (Normal & Disabled)</text>
     <view class="btn-group">
       <button type="warn">Warn Action</button>
       <button type="warn" disabled="true">Warn Disabled</button>
@@ -16,7 +16,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">3. Primary Button &amp; Form Actions</text>
+    <text class="demo-title">3. Primary Button & Form Actions</text>
     <view class="btn-group">
       <button type="primary" bindtap="handlePrimaryTap">Primary Button</button>
       <button type="primary" size="mini" style="align-self: flex-start;">Mini Primary</button>

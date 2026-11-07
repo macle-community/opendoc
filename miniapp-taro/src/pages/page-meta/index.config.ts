@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'page-meta page-meta'.trim()
+  navigationBarTitleText: 'page-meta 页面配置'.trim()
 });

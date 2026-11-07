@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'textarea textarea'.trim()
+  navigationBarTitleText: 'textarea 多行输入'.trim()
 });

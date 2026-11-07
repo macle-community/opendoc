@@ -1,7 +1,6 @@
 Page({
   data: {},
 
-  Page({
   onFormSubmit(e) {
     ma.showModal({ title: 'Form Submitted', content: JSON.stringify(e.detail.value), showCancel: false });
   },

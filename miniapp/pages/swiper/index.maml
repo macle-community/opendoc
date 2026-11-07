@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Interactive Swiper with Indicators &amp; Autoplay</text>
+    <text class="demo-title">1. Interactive Swiper with Indicators & Autoplay</text>
     <swiper indicator-dots="true" autoplay="true" interval="2500" duration="500" circular="true" style="height: 160px; border-radius: 10px; overflow: hidden;">
       <swiper-item>
         <view class="swiper-slide slide-blue"><text class="slide-text">Slide A - Macle</text></view>
@@ -15,7 +15,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Circular &amp; Vertical Swiping</text>
+    <text class="demo-title">2. Circular & Vertical Swiping</text>
     <swiper vertical="true" indicator-dots="true" autoplay="false" style="height: 120px; border-radius: 10px; overflow: hidden;">
       <swiper-item><view class="swiper-slide slide-purple"><text class="slide-text">Vertical Panel 1</text></view></swiper-item>
       <swiper-item><view class="swiper-slide slide-teal"><text class="slide-text">Vertical Panel 2</text></view></swiper-item>

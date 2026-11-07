@@ -14,7 +14,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">3. Time &amp; Date Selector</text>
+    <text class="demo-title">3. Time & Date Selector</text>
     <picker mode="date" value="{{selectedDate}}" start="2020-01-01" end="2030-12-31" bindchange="onDateChange">
       <view class="picker-display">Date: <text class="highlight">{{selectedDate}}</text></view>
     </picker>

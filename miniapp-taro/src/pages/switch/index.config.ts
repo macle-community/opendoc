@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'switch switch'.trim()
+  navigationBarTitleText: 'switch 开关'.trim()
 });

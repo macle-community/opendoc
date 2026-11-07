@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Basic Text &amp; Selectable Text</text>
+    <text class="demo-title">1. Basic Text & Selectable Text</text>
     <view class="text-group">
       <text class="text-headline">Standard Headline Text</text>
       <text class="text-sub">Regular secondary description text paragraph.</text>

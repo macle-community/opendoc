@@ -14,7 +14,7 @@
   </view>
 
   <view class="demo-block">
-    <text class="demo-title">2. Local &amp; Remote Image Source</text>
+    <text class="demo-title">2. Local & Remote Image Source</text>
     <view class="img-box">
       <image class="wide-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" mode="widthFix" />
     </view>

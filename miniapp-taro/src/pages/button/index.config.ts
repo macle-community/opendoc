@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'button button'.trim()
+  navigationBarTitleText: 'button 按钮'.trim()
 });

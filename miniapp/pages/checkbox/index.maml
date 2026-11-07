@@ -1,6 +1,6 @@
 <view class="page-body">
   <view class="demo-block">
-    <text class="demo-title">1. Single Checkbox with Checked State &amp; Color</text>
+    <text class="demo-title">1. Single Checkbox with Checked State & Color</text>
     <view class="checkbox-demo">
       <label class="cb-row">
         <checkbox value="agree" checked="{{isAgree}}" bindchange="onAgreeChange" color="#2563eb" />

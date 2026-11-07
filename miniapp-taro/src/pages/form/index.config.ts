@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'form form'.trim()
+  navigationBarTitleText: 'form 表单'.trim()
 });

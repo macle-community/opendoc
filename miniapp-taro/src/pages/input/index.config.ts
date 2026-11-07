@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: 'input input'.trim()
+  navigationBarTitleText: 'input 输入框'.trim()
 });
