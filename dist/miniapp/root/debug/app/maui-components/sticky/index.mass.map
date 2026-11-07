@@ -1,0 +1,1 @@
+{"version":3,"sources":["/maui-components/sticky/index.mass"],"names":[],"mappings":"AAA+B,oBAAa,iBAAiB;AAAC,gCAAyB,MAAM,CAAC,cAAc,CAAC,OAAO","file":"","sourcesContent":["@import '../common/index.mass';.maui-sticky{position:relative}.maui-sticky-wrap--fixed{left:0;position:fixed;right:0}"]}

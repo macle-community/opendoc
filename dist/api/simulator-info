@@ -1,0 +1,15 @@
+{
+  "online": true,
+  "port": 443,
+  "projectName": "miniapp",
+  "native": {
+    "port": 443,
+    "projectName": "miniapp",
+    "online": true
+  },
+  "taro": {
+    "port": 443,
+    "projectName": "opendoc-miniapp-taro",
+    "online": true
+  }
+}

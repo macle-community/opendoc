@@ -1,0 +1,1 @@
+{"version":3,"sources":["/pages/checkbox/index.mass"],"names":[],"mappings":"AAAA,kBAAa,aAAgB;AAC7B,wCAAoC,iBAAkB,CAAE,aAAgB;AACxE,mDAA+C,eAAkB","file":"","sourcesContent":[".page-body { padding: 8px 0; }\nmaui-checkbox-group maui-checkbox { margin-bottom: 8px; display: block; }\nmaui-checkbox-group maui-checkbox:last-child { margin-bottom: 0; }"]}

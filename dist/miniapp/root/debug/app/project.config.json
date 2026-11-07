@@ -1,0 +1,8 @@
+{
+  "description": "Macle OpenDoc Mini Program Showcase",
+  "appid": "macle-opendoc-showcase",
+  "projectname": "miniapp",
+  "setting": {
+    "es5": false
+  }
+}

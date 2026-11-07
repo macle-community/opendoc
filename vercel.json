@@ -11,6 +11,26 @@
   ],
   "rewrites": [
     {
+      "source": "/api/simulator-info",
+      "destination": "/api/simulator-info.json"
+    },
+    {
+      "source": "/_simulator/:match*",
+      "destination": "/_simulator/:match*"
+    },
+    {
+      "source": "/openplatform/macledocs/_simulator/:match*",
+      "destination": "/_simulator/:match*"
+    },
+    {
+      "source": "/miniapp/:match*",
+      "destination": "/miniapp/:match*"
+    },
+    {
+      "source": "/opendoc-miniapp-taro/:match*",
+      "destination": "/opendoc-miniapp-taro/:match*"
+    },
+    {
       "source": "/openplatform/macledocs/:match*",
       "destination": "/:match*"
     },

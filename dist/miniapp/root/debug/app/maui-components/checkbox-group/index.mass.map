@@ -1,0 +1,1 @@
+{"version":3,"sources":["/maui-components/checkbox-group/index.mass"],"names":[],"mappings":"AAA+B,wCAAiC,YAAY,CAAC,cAAc","file":"","sourcesContent":["@import '../common/index.mass';.maui-checkbox-group--horizontal{display:flex;flex-wrap:wrap}"]}

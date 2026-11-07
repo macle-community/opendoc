@@ -1,0 +1,13 @@
+define("maui-components/empty/index.js",(function(require,module,exports,window,document,frames,self,location,navigator,localStorage,history,Caches,screen,alert,confirm,prompt,XMLHttpRequest,WebSocket,Reporter,webkit){"use strict";
+
+var _component = require("../common/component");
+(0, _component.MaComponent)({
+  properties: {
+    description: String,
+    image: {
+      type: String,
+      value: 'default'
+    }
+  }
+});
+}));
