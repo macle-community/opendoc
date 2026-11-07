@@ -4,8 +4,8 @@
   "scripts": {
     "start": "node server.js",
     "serve": "vue-cli-service serve",
-    "sim:native": "node ../macle-web-simulator/bin/macle-web-simulator.js -s ./miniapp -p 30002",
-    "sim:taro": "node ../macle-web-simulator/bin/macle-web-simulator.js -s ./miniapp-taro/dist -p 30003",
+    "sim:native": "node ../macle-web-simulator/src/cli.js -s ./miniapp -p 30002",
+    "sim:taro": "node ../macle-web-simulator/src/cli.js -s ./miniapp-taro/dist -p 30003",
     "build:taro": "cd miniapp-taro && npm run build:macle",
     "md-package": "node src/scripts/md-package.js",
     "build": "echo Pre-built dist assets ready",

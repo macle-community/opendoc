@@ -6,7 +6,7 @@
   "scripts": {
     "build:macle": "taro build --type macle",
     "dev:macle": "taro build --type macle --watch",
-    "sim": "node ../../macle-web-simulator/bin/macle-web-simulator.js -s ./dist -p 30003"
+    "sim": "node ../../macle-web-simulator/src/cli.js -s ./dist -p 30003"
   },
   "dependencies": {
     "@tarojs/components": "^4.3.2",
