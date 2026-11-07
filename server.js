@@ -223,7 +223,10 @@ const server = http.createServer((req, res) => {
           const taroRunnerDir = path.join(TARO_MINIAPP_DIR, 'src/pages/runner');
           fs.mkdirSync(taroRunnerDir, { recursive: true });
           if (tsx) {
-            fs.writeFileSync(path.join(taroRunnerDir, 'index.tsx'), tsx);
+            const normalizedTsx = tsx
+              .replace(/@(?:tarojs|macle-community)\/(?:plugin-platform-macle|taro-plugin-macle)\/dist\/components-react/g, '@macle-community/taro-plugin-macle/components-react')
+              .replace(/@tarojs\/plugin-platform-macle\/components-react/g, '@macle-community/taro-plugin-macle/components-react');
+            fs.writeFileSync(path.join(taroRunnerDir, 'index.tsx'), normalizedTsx);
           }
           const { execSync } = require('child_process');
           execSync('./node_modules/.bin/taro build --type macle', { cwd: TARO_MINIAPP_DIR, stdio: 'pipe' });
