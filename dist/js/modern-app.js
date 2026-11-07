@@ -566,18 +566,40 @@
       const breadcrumbEl = document.getElementById('docs-breadcrumbs');
       if (!breadcrumbEl) return;
 
+      const rootUrl = 'https://macle-opendoc.vercel.app/openplatform/macledocs/';
       const sectionName = state.currentTopMenu?.name || 'Documentation';
-      const items = ['Docs', sectionName, ...(leaf.parent || []), leaf.name];
+      const sectionPath = state.currentTopMenu?.path
+        ? `${rootUrl}#${state.currentTopMenu.path}`
+        : rootUrl;
+      const currentUrl = `${rootUrl}#${leaf.path || ''}`;
+
+      const items = [
+        { name: 'Docs', url: rootUrl },
+        { name: sectionName, url: sectionPath }
+      ];
+
+      if (leaf.parent && Array.isArray(leaf.parent)) {
+        leaf.parent.forEach(p => {
+          items.push({ name: p, url: currentUrl });
+        });
+      }
+
+      items.push({ name: leaf.name, url: currentUrl });
 
       breadcrumbEl.innerHTML = `
         <ol class="docs-breadcrumb-list" style="display: flex; align-items: center; gap: 6px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;" itemscope itemtype="https://schema.org/BreadcrumbList">
-          ${items.map((item, idx) => `
+          ${items.map((item, idx) => {
+            const isLast = idx === items.length - 1;
+            return `
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" style="display: inline-flex; align-items: center;">
-              ${idx > 0 ? `<span class="docs-breadcrumb-separator" style="margin-right: 6px;">/</span>` : ''}
-              <span itemprop="name" class="${idx === items.length - 1 ? 'docs-breadcrumb-current' : 'docs-breadcrumb-item'}">${item}</span>
+              ${idx > 0 ? `<span class="docs-breadcrumb-separator" style="margin-right: 6px; color: var(--text-muted, #888); user-select: none;">/</span>` : ''}
+              <a itemprop="item" href="${item.url}" class="${isLast ? 'docs-breadcrumb-current' : 'docs-breadcrumb-item'}" style="text-decoration: none; color: ${isLast ? 'var(--text-primary, #111827)' : 'var(--text-muted, #64748b)'}; font-weight: ${isLast ? '600' : '500'};">
+                <span itemprop="name">${item.name}</span>
+              </a>
               <meta itemprop="position" content="${idx + 1}" />
             </li>
-          `).join('')}
+          `;
+          }).join('')}
         </ol>
       `;
     },
@@ -831,16 +853,33 @@
         "url": url,
         "inLanguage": state.locale === 'zh_CN' ? 'zh-CN' : 'en-US',
         "articleSection": section,
+        "image": [
+          "https://macle-opendoc.vercel.app/openplatform/macledocs/img/og-preview.png"
+        ],
+        "datePublished": "2026-01-01T00:00:00Z",
+        "dateModified": "2026-11-07T00:00:00Z",
+        "author": {
+          "@type": "Organization",
+          "name": "Macle Open Platform",
+          "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/"
+        },
         "publisher": {
           "@type": "Organization",
           "name": "Macle Open Platform",
           "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
-          "logo": "https://macle-opendoc.vercel.app/openplatform/macledocs/img/logo.png"
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/img/logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": url
         },
         "about": {
-          "@type": "SoftwareApplication",
+          "@type": "Thing",
           "name": "Telebirr MiniApp Platform (Macle Framework)",
-          "operatingSystem": "Android, iOS, Web"
+          "description": "Cross-platform mini program engine and developer suite powering Telebirr SuperApp MiniApps."
         }
       };
 

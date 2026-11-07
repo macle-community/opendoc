@@ -46,7 +46,7 @@
   <meta name="twitter:image" content="https://macle-opendoc.vercel.app/openplatform/macledocs/img/og-preview.png"/>
   <meta name="twitter:image:alt" content="Macle Developer Platform for Telebirr MiniApps"/>
 
-  <!-- Schema.org JSON-LD Structured Data: WebSite & SoftwareApplication & Organization -->
+  <!-- Schema.org JSON-LD Structured Data: WebSite, WebPage & Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -68,24 +68,32 @@
         "@type": "WebSite",
         "@id": "https://macle-opendoc.vercel.app/#website",
         "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
-        "name": "Macle Open Document — Telebirr MiniApp Developer Platform",
+        "name": "Macle Open Platform",
+        "alternateName": [
+          "Macle Docs",
+          "Telebirr MiniApp Docs",
+          "Macle Open Document"
+        ],
         "publisher": {
           "@id": "https://macle-opendoc.vercel.app/#organization"
         },
         "inLanguage": ["en-US", "zh-CN"]
       },
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://macle-opendoc.vercel.app/#software",
-        "name": "Macle MiniProgram Framework & DevSuite",
-        "operatingSystem": "Android, iOS, Web",
-        "applicationCategory": "DeveloperApplication",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+        "@type": "WebPage",
+        "@id": "https://macle-opendoc.vercel.app/openplatform/macledocs/#webpage",
+        "url": "https://macle-opendoc.vercel.app/openplatform/macledocs/",
+        "name": "Macle Open Platform — Official Developer Documentation for Telebirr MiniApps",
+        "description": "Official developer documentation, guides, APIs, component references, DevSuite IDE, and live Web Simulator for building cross-platform Telebirr SuperApp Mini Programs with Macle Framework.",
+        "isPartOf": {
+          "@id": "https://macle-opendoc.vercel.app/#website"
         },
-        "description": "The enterprise cross-platform Mini Program Engine, DevSuite IDE, and UI Component Library powering Telebirr SuperApp MiniApps."
+        "about": {
+          "@type": "Thing",
+          "name": "Telebirr MiniApp Platform (Macle Framework)",
+          "description": "Cross-platform mini program engine and developer suite powering Telebirr SuperApp MiniApps."
+        },
+        "inLanguage": ["en-US", "zh-CN"]
       }
     ]
   }
