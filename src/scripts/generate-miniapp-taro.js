@@ -397,7 +397,7 @@ export default function IndexPage() {
 import { View, Text } from '@tarojs/components';
 import { useRouter } from '@tarojs/taro';
 import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function RunnerPage() {
@@ -431,7 +431,7 @@ export default function RunnerPage() {
     title: 'Button 按钮',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function ButtonPage() {
@@ -503,7 +503,7 @@ export default function ButtonPage() {
     title: 'Layout 栅格',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiRow, MauiCol } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiRow, MauiCol } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function LayoutPage() {
@@ -580,7 +580,7 @@ export default function LayoutPage() {
     title: 'Cell 单元格',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiCell, MauiCellGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiCell, MauiCellGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function CellPage() {
@@ -613,7 +613,7 @@ export default function CellPage() {
     title: 'Checkbox 复选框',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiCheckbox, MauiCheckboxGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiCheckbox, MauiCheckboxGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function CheckboxPage() {
@@ -685,7 +685,7 @@ export default function CheckboxPage() {
     title: 'Radio 单选框',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiRadio, MauiRadioGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiRadio, MauiRadioGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function RadioPage() {
@@ -744,7 +744,7 @@ maui-radio-group[direction="horizontal"] maui-radio {
     title: 'Switch 开关',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiSwitch } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiSwitch } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function SwitchPage() {
@@ -784,7 +784,7 @@ export default function SwitchPage() {
     title: 'Slider 滑块',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiSlider } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiSlider } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function SliderPage() {
@@ -817,7 +817,7 @@ export default function SliderPage() {
     title: 'Stepper 步进器',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiStepper } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiStepper } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function StepperPage() {
@@ -850,7 +850,7 @@ export default function StepperPage() {
     title: 'Field 输入框',
     code: `import React, { useState } from 'react';
 import { View } from '@tarojs/components';
-import { MauiField, MauiCellGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiField, MauiCellGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function FieldPage() {
@@ -882,7 +882,7 @@ export default function FieldPage() {
     title: 'Tag 标签',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiTag } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiTag } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function TagPage() {
@@ -926,7 +926,7 @@ export default function TagPage() {
     title: 'Loading 加载',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiLoading } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiLoading } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function LoadingPage() {
@@ -958,7 +958,7 @@ export default function LoadingPage() {
     title: 'Progress 进度条',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiProgress } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiProgress } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function ProgressPage() {
@@ -991,7 +991,7 @@ export default function ProgressPage() {
     title: 'Divider 分割线',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiDivider } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiDivider } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function DividerPage() {
@@ -1025,7 +1025,7 @@ export default function DividerPage() {
     title: 'Empty 空状态',
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiEmpty } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiEmpty } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function EmptyPage() {
@@ -1046,7 +1046,7 @@ export default function EmptyPage() {
     title: 'Steps 步骤条',
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiSteps, MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiSteps, MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function StepsPage() {
@@ -1082,7 +1082,7 @@ export default function StepsPage() {
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function DialogPage() {
@@ -1108,7 +1108,7 @@ export default function DialogPage() {
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function ToastPage() {
@@ -1272,7 +1272,7 @@ export default function ScrollViewPage() {
     code: `import React from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import { MauiList, MauiListItem } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiList, MauiListItem } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function ListPage() {
@@ -1350,7 +1350,7 @@ export default function ListPage() {
     code: `import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import { MauiModal, MauiCellGroup, MauiCell } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiModal, MauiCellGroup, MauiCell } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function ModalPage() {

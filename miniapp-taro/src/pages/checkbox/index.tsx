@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiCheckbox, MauiCheckboxGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiCheckbox, MauiCheckboxGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function CheckboxPage() {

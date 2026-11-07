@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import { MauiButton } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiButton } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function DialogPage() {

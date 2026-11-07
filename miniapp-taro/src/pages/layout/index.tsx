@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiRow, MauiCol } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiRow, MauiCol } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function LayoutPage() {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { MauiSwitch } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiSwitch } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function SwitchPage() {

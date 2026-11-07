@@ -273,7 +273,7 @@
     const mauiComps = detectUsedMauiComponents(trimmed);
     let imports = `import React from 'react'\nimport { View } from '@tarojs/components'\n`;
     if (mauiComps.length > 0) {
-      imports += `import {\n  ${mauiComps.join(',\n  ')}\n} from '@macle-community/taro-plugin-macle/dist/components-react'\n\n`;
+      imports += `import {\n  ${mauiComps.join(',\n  ')}\n} from '@macle-community/taro-plugin-macle/components-react'\n\n`;
     } else {
       imports += `import Taro from '@tarojs/taro'\n\n`;
     }
@@ -345,7 +345,7 @@ ${indent(taroCode, 6)}
     const mauiComps = detectUsedMauiComponents(trimmed);
     let mauiImportBlock = '';
     if (mauiComps.length > 0) {
-      mauiImportBlock = `import {\n  ${mauiComps.join(',\n  ')}\n} from '@macle-community/taro-plugin-macle/dist/components-react'\n`;
+      mauiImportBlock = `import {\n  ${mauiComps.join(',\n  ')}\n} from '@macle-community/taro-plugin-macle/components-react'\n`;
     }
 
     const jsx = convertMamlToTaroJsx(trimmed);

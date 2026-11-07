@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from '@tarojs/components';
-import { MauiField, MauiCellGroup } from '@macle-community/taro-plugin-macle/dist/components-react';
+import { MauiField, MauiCellGroup } from '@macle-community/taro-plugin-macle/components-react';
 import './index.css';
 
 export default function FieldPage() {
