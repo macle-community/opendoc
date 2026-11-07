@@ -1,6 +1,6 @@
 /* pages/page-meta/index.css */
-.meta-content { background: #fff; padding: 16rpx; border-radius: 8rpx; }
-.meta-title { font-weight: bold; font-size: 15rpx; color: #1e293b; }
-.meta-desc { font-size: 13rpx; color: #64748b; margin-top: 4rpx; display: block; }
+.meta-content { background: #fff; padding: 32rpx; border-radius: 16rpx; }
+.meta-title { font-weight: bold; font-size: 30rpx; color: #1e293b; }
+.meta-desc { font-size: 26rpx; color: #64748b; margin-top: 8rpx; display: block; }
 
 

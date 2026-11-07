@@ -1,11 +1,11 @@
 /* pages/picker/index.css */
-.picker-display { background: #fff; border: 1rpx solid #cbd5e1; padding: 12rpx; border-radius: 6rpx; font-size: 14rpx; }
-.highlight { color: #2563eb; font-weight: bold; margin-left: 6rpx; }
+.picker-display { background: #fff; border: 2rpx solid #cbd5e1; padding: 24rpx; border-radius: 12rpx; font-size: 28rpx; }
+.highlight { color: #2563eb; font-weight: bold; margin-left: 12rpx; }
 
-.picker-display { background: #fff; border: 1rpx solid #cbd5e1; padding: 12rpx; border-radius: 6rpx; font-size: 14rpx; }
+.picker-display { background: #fff; border: 2rpx solid #cbd5e1; padding: 24rpx; border-radius: 12rpx; font-size: 28rpx; }
 .highlight { color: #2563eb; font-weight: bold; }
 
-.picker-display { background: #fff; border: 1rpx solid #cbd5e1; padding: 12rpx; border-radius: 6rpx; font-size: 14rpx; }
+.picker-display { background: #fff; border: 2rpx solid #cbd5e1; padding: 24rpx; border-radius: 12rpx; font-size: 28rpx; }
 .highlight { color: #2563eb; font-weight: bold; }
 
 

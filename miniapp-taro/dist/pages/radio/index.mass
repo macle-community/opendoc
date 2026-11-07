@@ -1,4 +1,4 @@
 /* pages/radio/index.css */
-.radio-row { display: flex; align-items: center; font-size: 14rpx; }
+.radio-row { display: flex; align-items: center; font-size: 28rpx; }
 
 

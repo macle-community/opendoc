@@ -1,46 +1,46 @@
 
 .page-body {
-  padding: 16rpx;
+  padding: 32rpx;
   background-color: #f8fafc;
   min-height: 100vh;
   box-sizing: border-box;
 }
 .demo-block {
   background: #ffffff;
-  border-radius: 12rpx;
-  padding: 16rpx;
-  margin-bottom: 16rpx;
-  box-shadow: 0 1rpx 3rpx rgba(0,0,0,0.05);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.05);
 }
 .demo-title {
-  font-size: 14rpx;
+  font-size: 28rpx;
   font-weight: 600;
   color: #1e293b;
-  margin-bottom: 12rpx;
+  margin-bottom: 24rpx;
   display: block;
 }
 .btn-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 8rpx;
+  gap: 16rpx;
 }
 .item-col {
   display: flex;
   flex-direction: column;
-  gap: 12rpx;
+  gap: 24rpx;
 }
 .icon-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12rpx;
+  gap: 24rpx;
   align-items: center;
 }
 .col-box {
   color: #fff;
-  font-size: 12rpx;
-  line-height: 36rpx;
+  font-size: 24rpx;
+  line-height: 72rpx;
   text-align: center;
-  border-radius: 4rpx;
+  border-radius: 8rpx;
 }
 .bg-dark { background-color: #39a9ed; }
 .bg-light { background-color: #66c6f2; }
@@ -53,9 +53,9 @@
   font-weight: bold;
 }
 .tab-content {
-  padding: 20rpx;
+  padding: 40rpx;
   text-align: center;
   color: #64748b;
-  font-size: 14rpx;
+  font-size: 28rpx;
 }
 

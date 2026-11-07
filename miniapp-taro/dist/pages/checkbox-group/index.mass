@@ -1,6 +1,6 @@
 /* pages/checkbox-group/index.css */
-.cb-list { display: flex; flex-direction: column; gap: 10rpx; }
-.cb-item { display: flex; align-items: center; gap: 8rpx; font-size: 14rpx; }
-.selected-text { margin-top: 12rpx; font-size: 13rpx; color: #0284c7; font-weight: 600; }
+.cb-list { display: flex; flex-direction: column; gap: 20rpx; }
+.cb-item { display: flex; align-items: center; gap: 16rpx; font-size: 28rpx; }
+.selected-text { margin-top: 24rpx; font-size: 26rpx; color: #0284c7; font-weight: 600; }
 
 

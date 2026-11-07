@@ -1,4 +1,4 @@
 /* pages/picker-view-column/index.css */
-picker-view { border-radius: 8rpx; }
+picker-view { border-radius: 16rpx; }
 
 

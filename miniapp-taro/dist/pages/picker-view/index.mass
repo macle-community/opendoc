@@ -1,4 +1,4 @@
 /* pages/picker-view/index.css */
-.preview-date { text-align: center; font-size: 16rpx; font-weight: bold; color: #2563eb; margin-bottom: 12rpx; }
+.preview-date { text-align: center; font-size: 32rpx; font-weight: bold; color: #2563eb; margin-bottom: 24rpx; }
 
 

@@ -1,7 +1,7 @@
 /* pages/switch/index.css */
-.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12rpx; border-radius: 8rpx; }
-.sw-title { font-size: 14rpx; font-weight: 500; }
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 24rpx; border-radius: 16rpx; }
+.sw-title { font-size: 28rpx; font-weight: 500; }
 
-.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12rpx; border-radius: 8rpx; }
+.switch-row { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 24rpx; border-radius: 16rpx; }
 
 

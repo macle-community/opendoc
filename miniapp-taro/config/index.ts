@@ -5,7 +5,7 @@ export default defineConfig(async (merge) => {
   const baseConfig: UserConfigExport = {
     projectName: 'opendoc-miniapp-taro',
     date: '2026-11-06',
-    designWidth: 750,
+    designWidth: 375,
     deviceRatio: {
       640: 2.34 / 2,
       750: 1,

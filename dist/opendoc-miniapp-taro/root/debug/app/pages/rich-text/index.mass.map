@@ -1,1 +1,1 @@
-{"version":3,"sources":["/pages/rich-text/index.mass"],"names":[],"mappings":"AACA,aAAY,aAAgB;AAE5B,wBAAmB,iBAAe","file":"","sourcesContent":["/* pages/rich-text/index.css */\nrich-text { display: block; }\n\n.custom-node-box { padding: 8rpx; }\n\n\n"]}
+{"version":3,"sources":["/pages/rich-text/index.mass"],"names":[],"mappings":"AACA,aAAY,aAAgB;AAE5B,wBAAmB,kBAAgB","file":"","sourcesContent":["/* pages/rich-text/index.css */\nrich-text { display: block; }\n\n.custom-node-box { padding: 16rpx; }\n\n\n"]}

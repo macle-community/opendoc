@@ -1,10 +1,10 @@
 /* pages/input/index.css */
-.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
-.input-val-preview { font-size: 12rpx; color: #64748b; margin-top: 6rpx; display: block; }
+.std-input { border: 2rpx solid #cbd5e1; border-radius: 12rpx; padding: 20rpx; font-size: 28rpx; background: #fff; }
+.input-val-preview { font-size: 24rpx; color: #64748b; margin-top: 12rpx; display: block; }
 
-.input-col { display: flex; flex-direction: column; gap: 10rpx; }
-.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
+.input-col { display: flex; flex-direction: column; gap: 20rpx; }
+.std-input { border: 2rpx solid #cbd5e1; border-radius: 12rpx; padding: 20rpx; font-size: 28rpx; background: #fff; }
 
-.std-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 10rpx; font-size: 14rpx; background: #fff; }
+.std-input { border: 2rpx solid #cbd5e1; border-radius: 12rpx; padding: 20rpx; font-size: 28rpx; background: #fff; }
 
 

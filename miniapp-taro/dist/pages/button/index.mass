@@ -1,8 +1,8 @@
 /* pages/button/index.css */
-.btn-group { display: flex; flex-direction: column; gap: 10rpx; }
+.btn-group { display: flex; flex-direction: column; gap: 20rpx; }
 
-.btn-group { display: flex; flex-direction: column; gap: 10rpx; }
+.btn-group { display: flex; flex-direction: column; gap: 20rpx; }
 
-.btn-group { display: flex; flex-direction: column; gap: 10rpx; }
+.btn-group { display: flex; flex-direction: column; gap: 20rpx; }
 
 

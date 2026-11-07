@@ -1,6 +1,6 @@
 /* pages/rich-text/index.css */
 rich-text { display: block; }
 
-.custom-node-box { padding: 8rpx; }
+.custom-node-box { padding: 16rpx; }
 
 

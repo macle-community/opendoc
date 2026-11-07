@@ -1,8 +1,8 @@
 /* pages/navigator/index.css */
-.nav-container { display: flex; flex-direction: column; gap: 10rpx; }
-.nav-btn { background: #fff; border: 1rpx solid #cbd5e1; padding: 12rpx 14rpx; border-radius: 8rpx; font-size: 14rpx; font-weight: 500; color: #2563eb; }
+.nav-container { display: flex; flex-direction: column; gap: 20rpx; }
+.nav-btn { background: #fff; border: 2rpx solid #cbd5e1; padding: 24rpx 28rpx; border-radius: 16rpx; font-size: 28rpx; font-weight: 500; color: #2563eb; }
 .nav-hover { background: #f1f5f9; }
 
-.nav-btn { background: #fff; border: 1rpx solid #cbd5e1; padding: 12rpx 14rpx; border-radius: 8rpx; font-size: 14rpx; color: #2563eb; }
+.nav-btn { background: #fff; border: 2rpx solid #cbd5e1; padding: 24rpx 28rpx; border-radius: 16rpx; font-size: 28rpx; color: #2563eb; }
 
 

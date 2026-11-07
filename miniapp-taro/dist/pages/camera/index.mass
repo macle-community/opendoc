@@ -1,4 +1,4 @@
 /* pages/camera/index.css */
-.camera-wrapper { width: 100%; border-radius: 8rpx; overflow: hidden; }
+.camera-wrapper { width: 100%; border-radius: 16rpx; overflow: hidden; }
 
 

@@ -1,7 +1,7 @@
 /* pages/form/index.css */
-.form-field { margin-bottom: 14rpx; }
-.form-label { font-size: 13rpx; color: #475569; margin-bottom: 6rpx; display: block; }
-.form-input { border: 1rpx solid #cbd5e1; border-radius: 6rpx; padding: 8rpx 10rpx; font-size: 14rpx; }
-.form-actions { display: flex; gap: 10rpx; margin-top: 10rpx; }
+.form-field { margin-bottom: 28rpx; }
+.form-label { font-size: 26rpx; color: #475569; margin-bottom: 12rpx; display: block; }
+.form-input { border: 2rpx solid #cbd5e1; border-radius: 12rpx; padding: 16rpx 20rpx; font-size: 28rpx; }
+.form-actions { display: flex; gap: 20rpx; margin-top: 20rpx; }
 
 

@@ -1,7 +1,7 @@
 /* pages/label/index.css */
-.label-demo { display: flex; align-items: center; gap: 8rpx; font-size: 14rpx; }
+.label-demo { display: flex; align-items: center; gap: 16rpx; font-size: 28rpx; }
 .bound-label { color: #1e293b; cursor: pointer; }
 
-.enclosing-label { display: flex; align-items: center; padding: 10rpx; background: #fff; border-radius: 6rpx; }
+.enclosing-label { display: flex; align-items: center; padding: 20rpx; background: #fff; border-radius: 12rpx; }
 
 
