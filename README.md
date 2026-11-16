@@ -25,6 +25,16 @@ Once started, open your browser (English is the default language):
 
 ---
 
+## Deploy to GitHub Pages
+
+The GitHub Actions workflow in [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) deploys the static documentation site whenever changes are pushed to `main`. It can also be started manually from the repository's **Actions** tab.
+
+1. In the repository's **Settings → Pages**, set the build and deployment source to **GitHub Actions**.
+2. Push to `main` or run **Deploy to GitHub Pages** from the **Actions** tab.
+3. Open `https://macle-community.github.io/opendoc/` after the workflow completes.
+
+The workflow prepares the committed `dist/` files for the repository's `/opendoc/` Pages URL. GitHub Pages is static hosting, so the interactive web simulator and server-side code compilation are unavailable there; the documentation and static examples remain available.
+
 ## Deploy to Vercel
 
 The project includes pre-configured [`vercel.json`](vercel.json) ready for instant deployment.

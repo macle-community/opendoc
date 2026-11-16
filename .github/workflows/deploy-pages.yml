@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static site
+        env:
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}
+          PAGES_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          PAGES_DIRECTORY: ${{ runner.temp }}/github-pages
+        run: |
+          mkdir -p "$PAGES_DIRECTORY"
+          cp -R dist/. "$PAGES_DIRECTORY/"
+
+          find "$PAGES_DIRECTORY" -type f \( \
+            -name '*.html' -o -name '*.js' -o -name '*.css' \
+            -o -name '*.json' -o -name '*.xml' -o -name '*.txt' \
+            -o -name '*.svg' \
+          \) -exec sed -i \
+            -e "s|https://macle-opendoc.vercel.app/openplatform/macledocs|${PAGES_SITE_URL}|g" \
+            -e "s|/openplatform/macledocs|${PAGES_BASE_PATH}|g" \
+            {} +
+
+          sed -i "s|fetch('/api/simulator-info')|fetch('${PAGES_BASE_PATH}/api/simulator-info')|g" \
+            "$PAGES_DIRECTORY/js/doc-runner.js"
+          printf '%s\n' \
+            '{"online":false,"port":30002,"projectName":"miniapp","native":{"online":false,"port":30002,"projectName":"miniapp"},"taro":{"online":false,"port":30003,"projectName":"opendoc-miniapp-taro"}}' \
+            | tee "$PAGES_DIRECTORY/api/simulator-info" "$PAGES_DIRECTORY/api/simulator-info.json" >/dev/null
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/github-pages
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
